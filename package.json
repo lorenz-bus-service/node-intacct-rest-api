@@ -1,6 +1,6 @@
 {
   "name": "@lorenzbus/intacct-rest",
-  "version": "0.1.0-beta.0",
+  "version": "0.1.0-beta.1",
   "description": "Typed, host-agnostic TypeScript client for the Sage Intacct REST API, generated from Sage's OpenAPI specification.",
   "license": "MIT",
   "type": "module",
@@ -22,6 +22,16 @@
       "require": {
         "types": "./dist/cjs/index.d.ts",
         "default": "./dist/cjs/index.js"
+      }
+    },
+    "./windmill": {
+      "import": {
+        "types": "./dist/esm/windmill/index.d.ts",
+        "default": "./dist/esm/windmill/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/windmill/index.d.ts",
+        "default": "./dist/cjs/windmill/index.js"
       }
     },
     "./*": {
@@ -49,7 +59,8 @@
     "@types/node": "^24.13.5",
     "openapi-typescript": "^7.13.0",
     "typescript": "^5.9.3",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.1",
+    "windmill-client": "^1.813.0"
   },
   "repository": {
     "type": "git",
@@ -63,6 +74,15 @@
     "api",
     "client",
     "typescript",
-    "openapi"
-  ]
+    "openapi",
+    "windmill"
+  ],
+  "peerDependencies": {
+    "windmill-client": ">=1"
+  },
+  "peerDependenciesMeta": {
+    "windmill-client": {
+      "optional": true
+    }
+  }
 }

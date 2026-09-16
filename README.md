@@ -111,6 +111,39 @@ new ClientCredentials({ clientId, clientSecret, username, store, onToken: (t) =>
 
 The initial authorization-code redirect flow is a one-time human step and is out of scope; see Sage's [OAuth 2.0 guide](https://developer.sage.com/intacct/docs/1/sage-intacct-rest-api/authorization-and-security/oauth2).
 
+## Windmill
+
+Windmill runs each job in a fresh process, so the in-memory cache never carries a token between runs. The `windmill` entry point provides a `TokenStore` backed by a Windmill secret variable, so every script that shares the path reuses one token until it expires. `windmill-client` is an optional peer dependency that Windmill supplies.
+
+```ts
+import { IntacctClient, ClientCredentials } from "@lorenzbus/intacct-rest";
+import { WindmillTokenStore } from "@lorenzbus/intacct-rest/windmill";
+import { accountsReceivable } from "@lorenzbus/intacct-rest/accounts-receivable";
+
+type CSageIntacctRestApi = {
+  username: string;
+  client_id: string;
+  company_id: string;
+  client_secret: string;
+  access_token_path: string; // e.g. "f/intacct/access_token_cache"
+};
+
+export async function main(sageIntacct: CSageIntacctRestApi) {
+  const client = new IntacctClient({
+    auth: new ClientCredentials({
+      clientId: sageIntacct.client_id,
+      clientSecret: sageIntacct.client_secret,
+      username: `${sageIntacct.username}@${sageIntacct.company_id}`,
+      store: new WindmillTokenStore(sageIntacct.access_token_path),
+    }),
+  });
+  const page = await accountsReceivable(client).customer.query({ fields: ["id", "name"], size: 100 });
+  return page.items;
+}
+```
+
+The variable is created as a secret on first use. The job's permissions must allow writing variables in that folder.
+
 ## Entities
 
 For multi-entity companies, set a default on the client and override per call. `null` forces the top level.

@@ -1,6 +1,6 @@
 # Intacct REST Client
 
-A usage-agnostic TypeScript library for Sage Intacct's REST API (`/ia/api/v1`). It knows nothing about the host that calls it.
+A usage-agnostic TypeScript library for Sage Intacct's REST API (`/ia/api/v1`). The core knows nothing about the host that calls it; host adapters live in optional subpaths (see ADR 0003).
 
 ## Language
 
