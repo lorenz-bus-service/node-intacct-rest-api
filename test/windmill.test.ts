@@ -22,6 +22,11 @@ beforeEach(() => {
 describe("WindmillTokenStore", () => {
   const token = { accessToken: "a", expiresAt: 123 };
 
+  it("rejects a missing or empty variable path with a clear message", () => {
+    expect(() => new WindmillTokenStore(undefined as unknown as string)).toThrow(/variablePath is required/);
+    expect(() => new WindmillTokenStore("")).toThrow(/does not backfill existing resources/);
+  });
+
   it("returns undefined and does not throw when the variable does not exist", async () => {
     expect(await new WindmillTokenStore("f/x/cache").get("k")).toBeUndefined();
   });

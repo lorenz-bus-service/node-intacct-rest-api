@@ -18,7 +18,18 @@ export class WindmillTokenStore implements TokenStore {
    * @param variablePath Windmill variable path, e.g. `f/intacct/access_token_cache`.
    *   Created as a secret on first write if it does not exist.
    */
-  constructor(private readonly variablePath: string) {}
+  private readonly variablePath: string;
+
+  constructor(variablePath: string) {
+    if (typeof variablePath !== "string" || variablePath.trim() === "") {
+      throw new TypeError(
+        "WindmillTokenStore: variablePath is required (e.g. \"f/intacct/access_token_cache\"). " +
+          "If it comes from a resource, check the resource has that field filled in: adding a field to a " +
+          "resource type does not backfill existing resources.",
+      );
+    }
+    this.variablePath = variablePath.trim();
+  }
 
   async get(key: string): Promise<StoredToken | undefined> {
     return (await this.read())[key];
