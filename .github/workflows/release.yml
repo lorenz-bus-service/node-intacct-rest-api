@@ -18,15 +18,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # No registry-url here: setup-node would write an .npmrc with an empty
-      # _authToken placeholder, and npm then sends that instead of negotiating
-      # an OIDC token for Trusted Publishing (shows up as a 404 on publish).
-      - uses: actions/setup-node@v4
+      # Per https://docs.npmjs.com/trusted-publishers: registry-url is required,
+      # no dependency caching in release builds, npm >= 11.5.1, Node >= 22.14.
+      - uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: npm
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
       - run: npm ci
-      - run: npm --version # Trusted Publishing needs npm >= 11.5.1
+      - run: npm --version
       - name: Publish (prerelease versions go to the "beta" dist-tag, stable ones to "latest")
         run: |
           VERSION=$(node -p "require('./package.json').version")
