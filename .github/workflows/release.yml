@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
       # Per https://docs.npmjs.com/trusted-publishers: registry-url is required,
       # no dependency caching in release builds, npm >= 11.5.1, Node >= 22.14.
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
