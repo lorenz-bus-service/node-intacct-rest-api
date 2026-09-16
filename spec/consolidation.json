@@ -1,0 +1,6442 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "title": "Consolidation",
+  "version": "1",
+  "description": "Consolidation in Sage Intacct supports either multi-entity financial reporting or the aggregation of financial data from multiple entities into a single set of financial statements. This allows organizations to view their overall financial performance across all entities, while still maintaining separate books for each individual entity."
+ },
+ "servers": [
+  {
+   "url": "https://api.intacct.com/ia/api/v1",
+   "x-try-it": "sage-intacct-api"
+  }
+ ],
+ "tags": [
+  {
+   "name": "Consolidation_Consolidation books",
+   "x-displayName": "Consolidation books",
+   "description": "Consolidation books define how to combine the financial and operational information within multi-entity companies. They specify the entities included in the consolidation, the method for translating foreign currency amounts, and other operational details. You can have multiple consolidation books to support different reporting requirements.\n\nFor more information, read about [consolidation books](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Book_setup_GC) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Consolidation_Consolidation entities",
+   "x-displayName": "Consolidation entities",
+   "description": "A consolidation entity represents an entity that is included in a consolidation book. Entities can be added to a consolidation book at any time, whereas they can only be removed before the first consolidation is run.      \nA consolidation book either takes entities that perform their day-to-day operations in different accounting currencies and consolidates them into a single currency for reporting, or consolidates entities that are part of a corporate group structure with a single base currency.\n\nFor more information about consolidation books and entities, read about [setting up a consolidation book](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Book_setup_overview) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Consolidation_Consolidation elimination accounts",
+   "x-displayName": "Consolidation elimination accounts",
+   "description": "Elimination accounts reference the General Ledger (GL) accounts that you use for inter-entity auto-elimination in consolidation books. They post offsetting so that inter-entity transactions do not affect reporting in the consolidated book.\n\nFor more information, read about elimination accounts for [global consolidations](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Elimination_accounts_GC) and [domestic consolidations](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Elimination_accounts_tab_dchttps://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Elimination_accounts_tab_dc) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Consolidation_Consolidation override accounts",
+   "x-displayName": "Consolidation override accounts",
+   "description": "Override accounts are used to set up specific General Ledger (GL) accounts that require a different currency conversion method than the one defined for the overall consolidation book.\n\nFor more information, read about [accounts to override](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Accts_to_override_GC) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Consolidation_Consolidation adjustment journals",
+   "x-displayName": "Consolidation adjustment journals",
+   "description": "When you first create a consolidation book, Global or Domestic Consolidation creates the proposed journals to be used during consolidation. Consolidation journals are required for compliance, tax, or user-defined books. After you run a consolidation, journals can no longer be modified.\n\nFor more information, read about [journals for global consolidations](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Journals_tab_book_setup_GC) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Consolidation_Consolidation time periods",
+   "x-displayName": "Consolidation time periods",
+   "description": "Time periods in consolidation represent standard months or company-defined accounting periods, including the first and last days of each period.\n\nFor more information, read about [time periods when running a consolidation](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Consolidating_Subsidiary_Data) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Consolidation_Consolidation run statuses",
+   "x-displayName": "Consolidation run statuses",
+   "description": "The consolidation run status represents the status of a consolidation process for a specific book, entity, and period. It is required to track the progress and outcome of a consolidation and provides information about whether the consolidation is in progress, successful, failed, or requires re-consolidation.\n\nFor more information, read about [running a consolidation](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Consolidating_Subsidiary_Data) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Consolidation_Consolidation ownership structures",
+   "x-displayName": "Consolidation ownership structures",
+   "description": "Ownership structures define the hierarchical relationships between parent and child (subsidiary) entities in a consolidation. Advanced Ownership Consolidation uses ownership structures to automate combining your business activity across entities over time into a consolidation book.\n\nFor more information, read [about ownership structures](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Overview_Adv_Own_Cons) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Consolidation_Consolidation ownership structure periods",
+   "x-displayName": "Consolidation ownership structure periods",
+   "description": "Ownership structure periods represent time-bound segments within an ownership structure used for consolidation in Sage Intacct. Each period encapsulates the relationships and details of parent and child entities during that specific timeframe.\n\nFor more information, read [about ownership structures](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Overview_Adv_Own_Cons) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Consolidation_Consolidation ownership entities",
+   "x-displayName": "Consolidation ownership entities",
+   "description": "Ownership entities represent parent entities within an ownership structure, detailing their relationships with subsidiary entities and associated consolidation books. They must have at least one child entity in an active state, where the ownership percentage between parent and child is defined.\n\nFor more information, read about [setting up ownership structures](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=aa_TOC_aoc_setup_ownership_structures).\n"
+  },
+  {
+   "name": "Consolidation_Consolidation ownership subsidiary entities",
+   "x-displayName": "Consolidation ownership subsidiary entities",
+   "description": "Ownership subsidiary entities represent the child entities within an ownership structure used for consolidation purposes. They cannot exist without a parent entity and an ownership structure. These entities are part of a hierarchical framework that defines how ownership and control are distributed among various subsidiaries under a parent entity.\n\nFor more information, read about [setting up ownership structures](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=aa_TOC_aoc_setup_ownership_structures) in the Sage Intacct Help Center.\n"
+  }
+ ],
+ "paths": {
+  "/objects/consolidation/book": {
+   "get": {
+    "summary": "List consolidation books",
+    "description": "Returns a collection with a key, ID, and link for each consolidation book. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation books"
+    ],
+    "operationId": "list-consolidation-book",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of consolidation books",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List consolidation books": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "49",
+             "id": "consol_book_US_operations",
+             "href": "/objects/consolidation/book/49"
+            },
+            {
+             "key": "65",
+             "id": "consol_book_holdings",
+             "href": "/objects/consolidation/book/65"
+            },
+            {
+             "key": "89",
+             "id": "consolBookApi",
+             "href": "/objects/consolidation/book/89"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a consolidation book",
+    "description": "Creates a consolidation book.",
+    "tags": [
+     "Consolidation_Consolidation books"
+    ],
+    "operationId": "create-consolidation-book",
+    "requestBody": {
+     "description": "Create a consolidation book.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.book"
+         },
+         {
+          "$ref": "#/components/schemas/consolidation-bookRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a consolidation book": {
+         "value": {
+          "id": "consol_book_US_entities",
+          "description": "Consolidation book for US entities",
+          "status": "active",
+          "multiCurrency": {
+           "currency": "USD",
+           "cumulativeTranslationAdjustment": {
+            "netAssetGLAccount": {
+             "key": "9"
+            },
+            "netIncomeGLAccount": {
+             "key": "10"
+            }
+           },
+           "exchangeRateType": "intacctDailyRate",
+           "translationMethod": {
+            "balanceSheetTranslationMethod": "endingSpotRate",
+            "incomeTranslationMethod": "weightedAverageRate"
+           }
+          },
+          "statisticalJournal": {
+           "id": "consol_book_SJ",
+           "name": "consol_book statistical journal"
+          },
+          "budget": {
+           "key": "1"
+          },
+          "department": {
+           "key": "1"
+          },
+          "elimination": {
+           "entity": "USDE",
+           "enableInterEntityAutoElimination": true,
+           "adjustmentGLAccount": {
+            "key": "11"
+           },
+           "enableEliminationByAffiliateEntity": true
+          },
+          "accountingMethod": "accrual",
+          "bookJournal": {
+           "id": "consol_book_J",
+           "name": "consol_book journal"
+          },
+          "isLegacyBook": false,
+          "historicalRateDateType": "lineLevelExchangeRateDate",
+          "consolidateDimensions": [
+           "department",
+           "location",
+           "vendor"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to consolidation book",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to consolidation book": {
+          "value": {
+           "ia::result": {
+            "key": "105",
+            "id": "consol_book_EMEA_entities",
+            "href": "/objects/consolidation/book/105"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/book/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the consolidation book.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "89"
+    }
+   ],
+   "get": {
+    "summary": "Get a consolidation book",
+    "description": "Returns detailed information for a specified consolidation book.",
+    "tags": [
+     "Consolidation_Consolidation books"
+    ],
+    "operationId": "get-consolidation-book-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get a consolidation book",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.book"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a consolidation book": {
+          "value": {
+           "ia::result": {
+            "key": "89",
+            "id": "consol_book",
+            "description": "Consolidation book for US entities.",
+            "status": "active",
+            "multiCurrency": {
+             "currency": "USD",
+             "cumulativeTranslationAdjustment": {
+              "netAssetGLAccount": {
+               "id": "1000",
+               "key": "9",
+               "name": "Bank of America A/c.",
+               "href": "/objects/general-ledger/account/9"
+              },
+              "netIncomeGLAccount": {
+               "id": "1001",
+               "key": "10",
+               "name": "CitiBank",
+               "href": "/objects/general-ledger/account/10"
+              }
+             },
+             "exchangeRateType": "intacctDailyRate",
+             "translationMethod": {
+              "balanceSheetTranslationMethod": "endingSpotRate",
+              "incomeTranslationMethod": "weightedAverageRate"
+             }
+            },
+            "statisticalJournal": {
+             "id": "consol_book_SJ",
+             "name": "consol_book statistical journal",
+             "key": "161",
+             "href": "/objects/general-ledger/statistical-journal/161"
+            },
+            "budget": {
+             "id": "Std_Budget",
+             "key": "1",
+             "href": "/objects/general-ledger/budget/1"
+            },
+            "department": {
+             "id": "OP",
+             "key": "1",
+             "name": "Operations",
+             "href": "/objects/company-config/department/1"
+            },
+            "elimination": {
+             "entity": "USDE",
+             "enableInterEntityAutoElimination": true,
+             "adjustmentGLAccount": {
+              "id": "1002",
+              "key": "11",
+              "name": "HSBC - GBP",
+              "href": "/objects/general-ledger/account/11"
+             },
+             "enableEliminationByAffiliateEntity": true
+            },
+            "bookType": "consolidation",
+            "accountingMethod": "accrual",
+            "bookJournal": {
+             "id": "consol_book_J",
+             "name": "consol_book_J",
+             "key": "243",
+             "href": "/objects/general-ledger/journal/243"
+            },
+            "isLegacyBook": false,
+            "historicalRateDateType": "lineLevelExchangeRateDate",
+            "consolidateDimensions": [
+             "department",
+             "location",
+             "vendor"
+            ],
+            "ownershipStructure": {
+             "key": null,
+             "id": null,
+             "description": null
+            },
+            "audit": {
+             "modifiedDateTime": "2025-04-13T09:19:58Z",
+             "modifiedBy": "1",
+             "modifiedByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             },
+             "createdDateTime": "2025-04-13T09:05:08Z",
+             "createdBy": "1",
+             "createdByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             }
+            },
+            "href": "/objects/consolidation/book/89"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         },
+         "Get an advanced ownership consolidation book": {
+          "value": {
+           "ia::result": {
+            "key": "89",
+            "id": "us_book",
+            "description": "Advanced ownership consolidation book.",
+            "status": "active",
+            "multiCurrency": {
+             "currency": "USD",
+             "cumulativeTranslationAdjustment": {
+              "netAssetGLAccount": {
+               "id": "1000",
+               "key": "9",
+               "name": "Bank of America A/c.",
+               "href": "/objects/general-ledger/account/9"
+              },
+              "netIncomeGLAccount": {
+               "id": "1001",
+               "key": "10",
+               "name": "CitiBank",
+               "href": "/objects/general-ledger/account/10"
+              }
+             },
+             "exchangeRateType": "intacctDailyRate",
+             "translationMethod": {
+              "balanceSheetTranslationMethod": "endingSpotRate",
+              "incomeTranslationMethod": "weightedAverageRate"
+             }
+            },
+            "statisticalJournal": {
+             "id": null,
+             "name": null,
+             "key": null
+            },
+            "budget": {
+             "id": "Std_Budget",
+             "key": "1",
+             "href": "/objects/general-ledger/budget/1"
+            },
+            "department": {
+             "id": "OP",
+             "key": "1",
+             "name": "Operations",
+             "href": "/objects/company-config/department/1"
+            },
+            "elimination": {
+             "entity": "USDE",
+             "enableInterEntityAutoElimination": true,
+             "adjustmentGLAccount": {
+              "id": "1002",
+              "key": "11",
+              "name": "HSBC - GBP",
+              "href": "/objects/general-ledger/account/11"
+             },
+             "enableEliminationByAffiliateEntity": true
+            },
+            "bookType": "tierConsolidation",
+            "accountingMethod": "accrual",
+            "bookJournal": {
+             "id": null,
+             "name": null,
+             "key": null
+            },
+            "isLegacyBook": false,
+            "historicalRateDateType": "lineLevelExchangeRateDate",
+            "consolidateDimensions": [
+             "department",
+             "location",
+             "vendor"
+            ],
+            "ownershipStructure": {
+             "key": "1",
+             "id": "North America",
+             "description": "All entities in North America."
+            },
+            "audit": {
+             "modifiedDateTime": "2025-04-13T09:19:58Z",
+             "modifiedBy": "1",
+             "modifiedByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             },
+             "createdDateTime": "2025-04-13T09:05:08Z",
+             "createdBy": "1",
+             "createdByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             }
+            },
+            "href": "/objects/consolidation/book/89"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a consolidation book",
+    "description": "Deletes a consolidation book.",
+    "tags": [
+     "Consolidation_Consolidation books"
+    ],
+    "operationId": "delete-consolidation-book-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a consolidation book",
+    "description": "Updates an existing consolidation book by setting field values. Any field values not provided remain unchanged.",
+    "tags": [
+     "Consolidation_Consolidation books"
+    ],
+    "operationId": "update-consolidation-book-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.book"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           },
+           "accountingMethod": {
+            "readOnly": true
+           },
+           "multiCurrency": {
+            "properties": {
+             "exchangeRateType": {
+              "readOnly": true
+             }
+            }
+           },
+           "bookJournal": {
+            "properties": {
+             "id": {
+              "readOnly": true
+             }
+            }
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a consolidation book": {
+         "value": {
+          "description": "Consolidation book for GBP entities - updated.",
+          "status": "inactive",
+          "statisticalJournal": {
+           "id": "consol_book_SJ1",
+           "name": "consol_book statistical journal-1"
+          },
+          "budget": {
+           "key": "1"
+          },
+          "department": {
+           "key": "1"
+          },
+          "elimination": {
+           "entity": "GBPE",
+           "enableInterEntityAutoElimination": true,
+           "adjustmentGLAccount": {
+            "key": "11"
+           },
+           "enableEliminationByAffiliateEntity": true
+          },
+          "historicalRateDateType": "transactionDate",
+          "consolidateDimensions": [
+           "department",
+           "location"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to consolidation book",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to consolidation book": {
+          "value": {
+           "ia::result": {
+            "key": "89",
+            "id": "consol_book",
+            "href": "/objects/consolidation/book/89"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/consolidation/book/consolidate": {
+   "post": {
+    "summary": "Consolidate a book for a specified period",
+    "description": "Service to consolidate a book for a specified period.",
+    "tags": [
+     "Consolidation_Consolidation books"
+    ],
+    "operationId": "post-consolidation-book-consolidate",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/consolidation-book-consolidate-request"
+       },
+       "examples": {
+        "Consolidate a book for a new period": {
+         "value": {
+          "consolidationBook": {
+           "id": "consolBook"
+          },
+          "timePeriod": {
+           "id": "Mar 2025"
+          },
+          "notificationEmail": "john.smith@TechSolutions.com"
+         }
+        },
+        "Consolidate a book for a new period online": {
+         "value": {
+          "consolidationBook": {
+           "id": "consolBook"
+          },
+          "timePeriod": {
+           "id": "Apr 2025"
+          },
+          "runOffline": false
+         }
+        },
+        "Consolidate a book for a new period with custom rate": {
+         "value": {
+          "consolidationBook": {
+           "id": "consolBook"
+          },
+          "timePeriod": {
+           "id": "May 2025"
+          },
+          "notificationEmail": "john.smith@TechSolutions.com",
+          "entities": [
+           {
+            "entity": {
+             "id": "US"
+            },
+            "endingSpotRate": "1.3303",
+            "weightedAverageRate": "1.3534"
+           },
+           {
+            "entity": {
+             "id": "IN"
+            },
+            "endingSpotRate": "0.0199",
+            "weightedAverageRate": "0.02008"
+           },
+           {
+            "entity": {
+             "id": "USDE"
+            },
+            "endingSpotRate": "1",
+            "weightedAverageRate": "1"
+           }
+          ]
+         }
+        },
+        "Re-consolidate a book for the last period with net changes": {
+         "value": {
+          "consolidationBook": {
+           "id": "consolBook"
+          },
+          "timePeriod": {
+           "id": "May 2025"
+          },
+          "notificationEmail": "john.smith@TechSolutions.com"
+         }
+        },
+        "Delete and re-consolidate a book for the last period": {
+         "value": {
+          "consolidationBook": {
+           "id": "consolBook"
+          },
+          "timePeriod": {
+           "id": "May 2025"
+          },
+          "updateNetChanges": false,
+          "notificationEmail": "john.smith@TechSolutions.com"
+         }
+        },
+        "Re-consolidate a book for a past period and update all subsequent periods": {
+         "value": {
+          "consolidationBook": {
+           "id": "consolBook"
+          },
+          "timePeriod": {
+           "id": "Mar 2025"
+          },
+          "updateSubsequentPeriods": true,
+          "notificationEmail": "john.smith@TechSolutions.com"
+         }
+        },
+        "Re-consolidate a book for a past period with net changes and delete all the subsequent period": {
+         "value": {
+          "consolidationBook": {
+           "id": "consolBook"
+          },
+          "timePeriod": {
+           "id": "Mar 2025"
+          },
+          "notificationEmail": "john.smith@TechSolutions.com"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Executed",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/consolidation-book-consolidate-response"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Consolidate book online": {
+          "value": {
+           "ia::result": {
+            "status": "success",
+            "message": "The consolidation completed successfully."
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         },
+         "Consolidate book offline": {
+          "value": {
+           "ia::result": {
+            "status": "success",
+            "message": "A job has been queued to run an offline consolidation. Go to Company > Offline job queue to view the job status."
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/entity": {
+   "get": {
+    "summary": "List consolidation entities",
+    "description": "Returns a collection with a key, ID, and link for each consolidation entity. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation entities"
+    ],
+    "operationId": "list-consolidation-entity",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of consolidation entities",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List consolidation entities": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "73",
+             "id": "73",
+             "href": "/objects/consolidation/entity/73"
+            },
+            {
+             "key": "74",
+             "id": "74",
+             "href": "/objects/consolidation/entity/74"
+            },
+            {
+             "key": "75",
+             "id": "75",
+             "href": "/objects/consolidation/entity/75"
+            },
+            {
+             "key": "76",
+             "id": "76",
+             "href": "/objects/consolidation/entity/76"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 4,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a consolidation entity",
+    "description": "Creates a consolidation entity.",
+    "tags": [
+     "Consolidation_Consolidation entities"
+    ],
+    "operationId": "create-consolidation-entity",
+    "requestBody": {
+     "description": "Create a consolidation entity.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.entity"
+         },
+         {
+          "$ref": "#/components/schemas/consolidation-entityRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a consolidation entity": {
+         "value": {
+          "consolidationBook": {
+           "key": "49"
+          },
+          "consolidationEntity": {
+           "key": "3"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to consolidation entity",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to consolidation entity": {
+          "value": {
+           "ia::result": {
+            "id": "93",
+            "key": "93",
+            "href": "/objects/consolidation/entity/93"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/entity/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the consolidation entity.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "74"
+    }
+   ],
+   "get": {
+    "summary": "Get a consolidation entity",
+    "description": "Returns detailed information for a specified consolidation entity.",
+    "tags": [
+     "Consolidation_Consolidation entities"
+    ],
+    "operationId": "get-consolidation-entity-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get a consolidation entity",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.entity"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a consolidation entity": {
+          "value": {
+           "ia::result": {
+            "id": "74",
+            "key": "74",
+            "consolidationBook": {
+             "id": "consol_book",
+             "key": "49",
+             "href": "/objects/consolidation/book/49"
+            },
+            "consolidationEntity": {
+             "id": "2",
+             "name": "India",
+             "key": "2",
+             "href": "/objects/company-config/entity/2"
+            },
+            "audit": {
+             "modifiedDateTime": "2025-04-13T09:19:58Z",
+             "modifiedBy": "1",
+             "modifiedByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             },
+             "createdDateTime": "2025-04-13T09:05:08Z",
+             "createdBy": "1",
+             "createdByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             }
+            },
+            "href": "/objects/consolidation/entity/74"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a consolidation entity",
+    "description": "Updates an existing consolidation entity by setting field values. Any field values not provided remain unchanged.",
+    "tags": [
+     "Consolidation_Consolidation entities"
+    ],
+    "operationId": "update-consolidation-entity-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.entity"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           },
+           "consolidationBook": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a consolidation entity": {
+         "value": {
+          "consolidationEntity": {
+           "key": "5"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to consolidation entity.",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to consolidation entity": {
+          "value": {
+           "ia::result": {
+            "id": "74",
+            "key": "74",
+            "href": "/objects/consolidation/entity/74"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a consolidation entity",
+    "description": "Deletes a consolidation entity.",
+    "tags": [
+     "Consolidation_Consolidation entities"
+    ],
+    "operationId": "delete-consolidation-entity-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/elimination-account": {
+   "get": {
+    "summary": "List elimination accounts",
+    "description": "Returns a collection with a key, ID, and link for each elimination account. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation elimination accounts"
+    ],
+    "operationId": "list-consolidation-elimination-account",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of elimination accounts",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List elimination accounts": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "12",
+             "id": "12",
+             "href": "/objects/consolidation/elimination-account/12"
+            },
+            {
+             "key": "16",
+             "id": "16",
+             "href": "/objects/consolidation/elimination-account/16"
+            },
+            {
+             "key": "18",
+             "id": "18",
+             "href": "/objects/consolidation/elimination-account/18"
+            },
+            {
+             "key": "19",
+             "id": "19",
+             "href": "/objects/consolidation/elimination-account/19"
+            },
+            {
+             "key": "20",
+             "id": "20",
+             "href": "/objects/consolidation/elimination-account/20"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 5,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an elimination account",
+    "description": "Creates an elimination account.",
+    "tags": [
+     "Consolidation_Consolidation elimination accounts"
+    ],
+    "operationId": "create-consolidation-elimination-account",
+    "requestBody": {
+     "description": "Create an elimination account.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.elimination-account"
+         },
+         {
+          "$ref": "#/components/schemas/consolidation-elimination-accountRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create an elimination account": {
+         "value": {
+          "consolidationBook": {
+           "key": "49"
+          },
+          "glAccount": {
+           "key": "10"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to elimination account",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to elimination account": {
+          "value": {
+           "ia::result": {
+            "id": "22",
+            "key": "22",
+            "href": "/objects/consolidation/elimination-account/22"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/elimination-account/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the elimination account.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "22"
+    }
+   ],
+   "get": {
+    "summary": "Get an elimination account",
+    "description": "Returns detailed information for a specified elimination account.",
+    "tags": [
+     "Consolidation_Consolidation elimination accounts"
+    ],
+    "operationId": "get-consolidation-elimination-account-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get an elimination account",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.elimination-account"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an elimination account": {
+          "value": {
+           "ia::result": {
+            "id": "22",
+            "key": "22",
+            "consolidationBook": {
+             "id": "consol_book",
+             "key": "49",
+             "href": "/objects/consolidation/book/49"
+            },
+            "glAccount": {
+             "key": "10",
+             "id": "1001",
+             "name": "CitiBank",
+             "href": "/objects/general-ledger/account/10"
+            },
+            "audit": {
+             "modifiedDateTime": "2025-04-13T09:19:58Z",
+             "modifiedBy": "1",
+             "modifiedByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             },
+             "createdDateTime": "2025-04-13T09:05:08Z",
+             "createdBy": "1",
+             "createdByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             }
+            },
+            "href": "/objects/consolidation/elimination-account/22"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an elimination account",
+    "description": "Updates an existing elimination account by setting field values. Any field values not provided remain unchanged.",
+    "tags": [
+     "Consolidation_Consolidation elimination accounts"
+    ],
+    "operationId": "update-consolidation-elimination-account-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.elimination-account"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           },
+           "consolidationBook": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update an elimination account": {
+         "value": {
+          "glAccount": {
+           "key": "11"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to elimination account.",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to elimination account": {
+          "value": {
+           "ia::result": {
+            "id": "22",
+            "key": "22",
+            "href": "/objects/consolidation/elimination-account/22"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an elimination account",
+    "description": "Deletes an elimination account.",
+    "tags": [
+     "Consolidation_Consolidation elimination accounts"
+    ],
+    "operationId": "delete-consolidation-elimination-account-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/override-account": {
+   "get": {
+    "summary": "List override accounts",
+    "description": "Returns a collection with a key, ID, and link for each override account. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation override accounts"
+    ],
+    "operationId": "list-consolidation-override-account",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of override accounts",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List override accounts": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "35",
+             "id": "35",
+             "href": "/objects/consolidation/override-account/35"
+            },
+            {
+             "key": "36",
+             "id": "36",
+             "href": "/objects/consolidation/override-account/36"
+            },
+            {
+             "key": "37",
+             "id": "37",
+             "href": "/objects/consolidation/override-account/37"
+            },
+            {
+             "key": "40",
+             "id": "40",
+             "href": "/objects/consolidation/override-account/40"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 4,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an override account",
+    "description": "Creates an override account.",
+    "tags": [
+     "Consolidation_Consolidation override accounts"
+    ],
+    "operationId": "create-consolidation-override-account",
+    "requestBody": {
+     "description": "Create an override account.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.override-account"
+         },
+         {
+          "$ref": "#/components/schemas/consolidation-override-accountRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create an override account": {
+         "value": {
+          "consolidationBook": {
+           "key": "49"
+          },
+          "glAccount": {
+           "key": "11"
+          },
+          "exchangeRate": {
+           "rateType": "endingSpotRate",
+           "rate": "Intacct daily rate"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to override account",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to override account": {
+          "value": {
+           "ia::result": {
+            "id": "40",
+            "key": "40",
+            "href": "/objects/consolidation/override-account/40"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/override-account/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the override account.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "40"
+    }
+   ],
+   "get": {
+    "summary": "Get an override account",
+    "description": "Returns detailed information for a specified override account.",
+    "tags": [
+     "Consolidation_Consolidation override accounts"
+    ],
+    "operationId": "get-consolidation-override-account-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get an override account",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.override-account"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an override account": {
+          "value": {
+           "ia::result": {
+            "id": "40",
+            "key": "40",
+            "consolidationBook": {
+             "id": "consol_book",
+             "key": "49",
+             "href": "/objects/consolidation/book/49"
+            },
+            "glAccount": {
+             "key": "11",
+             "id": "1002",
+             "name": "HSBC - GBP",
+             "href": "/objects/general-ledger/account/11"
+            },
+            "exchangeRate": {
+             "rateType": "endingSpotRate",
+             "rate": "IDR",
+             "useUntilPeriod": null
+            },
+            "audit": {
+             "modifiedDateTime": "2025-04-13T09:19:58Z",
+             "modifiedBy": "1",
+             "modifiedByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             },
+             "createdDateTime": "2025-04-13T09:05:08Z",
+             "createdBy": "1",
+             "createdByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             }
+            },
+            "href": "/objects/consolidation/override-account/40"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an override account",
+    "description": "Updates an existing override account by setting field values. Any field values not provided remain unchanged.",
+    "tags": [
+     "Consolidation_Consolidation override accounts"
+    ],
+    "operationId": "update-consolidation-override-account-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.override-account"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           },
+           "consolidationBook": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update an override account": {
+         "value": {
+          "glAccount": {
+           "key": "16"
+          },
+          "exchangeRate": {
+           "rateType": "historicalRate",
+           "rate": "MXN-Rate",
+           "useUntilPeriod": "2025-01-31"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to override account.",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to override account": {
+          "value": {
+           "ia::result": {
+            "id": "40",
+            "key": "40",
+            "href": "/objects/consolidation/override-account/40"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an override account",
+    "description": "Deletes an override account.",
+    "tags": [
+     "Consolidation_Consolidation override accounts"
+    ],
+    "operationId": "delete-consolidation-override-account-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/adjustment-journal": {
+   "get": {
+    "summary": "List adjustment journals",
+    "description": "Returns a collection with a key, ID, and link for each adjustment journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation adjustment journals"
+    ],
+    "operationId": "list-consolidation-adjustment-journal",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of adjustment journals",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List adjustment journals": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "22",
+             "id": "22",
+             "href": "/objects/consolidation/adjustment-journal/22"
+            },
+            {
+             "key": "53",
+             "id": "53",
+             "href": "/objects/consolidation/adjustment-journal/53"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an adjustment journal",
+    "description": "Creates an adjustment journal.",
+    "tags": [
+     "Consolidation_Consolidation adjustment journals"
+    ],
+    "operationId": "create-consolidation-adjustment-journal",
+    "requestBody": {
+     "description": "Create an adjustment journal.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.adjustment-journal"
+         },
+         {
+          "$ref": "#/components/schemas/consolidation-adjustment-journalRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create an adjustment journal": {
+         "value": {
+          "consolidationBookId": "consol_book",
+          "userDefinedBookType": "userDefined",
+          "glJournal": {
+           "id": "consol_book_api",
+           "name": "consol_book useradj api"
+          },
+          "userDefinedBookId": "consol_book_userdef"
+         }
+        },
+        "Create an adjustment journal for a TAX adjustment": {
+         "value": {
+          "consolidationBookId": "consol_book",
+          "userDefinedBookType": "tax",
+          "glJournal": {
+           "id": "consol_book_tax",
+           "name": "consol_book tax api"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to adjustment journal",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to adjustment journal": {
+          "value": {
+           "ia::result": {
+            "id": "55",
+            "key": "55",
+            "href": "/objects/consolidation/adjustment-journal/55"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/adjustment-journal/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the adjustment journal.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "70"
+    }
+   ],
+   "get": {
+    "summary": "Get an adjustment journal",
+    "description": "Returns detailed information for a specified adjustment journal.",
+    "tags": [
+     "Consolidation_Consolidation adjustment journals"
+    ],
+    "operationId": "get-consolidation-adjustment-journal-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get a consolidation-adjustment-journal",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.adjustment-journal"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an adjustment journal": {
+          "value": {
+           "ia::result": {
+            "id": "70",
+            "key": "70",
+            "consolidationBookId": "consol_book",
+            "userDefinedBookType": "gaap",
+            "glJournal": {
+             "key": "139",
+             "id": "consol_book_api",
+             "name": "consol_book gaap api",
+             "href": "/objects/general-ledger/journal/139"
+            },
+            "userDefinedBookId": "GAAPADJ",
+            "audit": {
+             "createdDateTime": "2025-03-20T15:01:23Z",
+             "modifiedDateTime": "2025-03-20T15:05:17Z",
+             "createdBy": "1",
+             "modifiedBy": "1"
+            },
+            "href": "/objects/consolidation/adjustment-journal/70"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an adjustment journal",
+    "description": "Updates an existing adjustment journal by setting field values. Any field values not provided remain unchanged.",
+    "tags": [
+     "Consolidation_Consolidation adjustment journals"
+    ],
+    "operationId": "update-consolidation-adjustment-journal-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.adjustment-journal"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           },
+           "consolidationBookId": {
+            "readOnly": true
+           },
+           "userDefinedBookType": {
+            "readOnly": true
+           },
+           "userDefinedBookId": {
+            "readOnly": true
+           },
+           "glJournal": {
+            "type": "object",
+            "properties": {
+             "key": {
+              "readOnly": true
+             },
+             "id": {
+              "readOnly": true
+             }
+            }
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update an adjustment journal": {
+         "value": {
+          "glJournal": {
+           "name": "consol_book gaap api - updated"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to adjustment journal",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to adjustment journal": {
+          "value": {
+           "ia::result": {
+            "id": "70",
+            "key": "70",
+            "href": "/objects/consolidation/adjustment-journal/70"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an adjustment journal",
+    "description": "Deletes an adjustment journal.",
+    "tags": [
+     "Consolidation_Consolidation adjustment journals"
+    ],
+    "operationId": "delete-consolidation-adjustment-journal-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/time-period": {
+   "get": {
+    "summary": "List time periods",
+    "description": "Returns a collection with a key, ID, and link for each consolidation time period. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation time periods"
+    ],
+    "operationId": "list-consolidation-time-period",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of consolidation time periods",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List consolidation time periods": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "860",
+             "id": "Sep 2041",
+             "href": "/objects/consolidation/time-period/860"
+            },
+            {
+             "key": "861",
+             "id": "Oct 2041",
+             "href": "/objects/consolidation/time-period/861"
+            },
+            {
+             "key": "862",
+             "id": "Nov 2041",
+             "href": "/objects/consolidation/time-period/862"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 3,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/time-period/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the consolidation time period.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "43"
+    }
+   ],
+   "get": {
+    "summary": "Get a consolidation time period",
+    "description": "Returns detailed information for a specified consolidation time period.",
+    "tags": [
+     "Consolidation_Consolidation time periods"
+    ],
+    "operationId": "get-consolidation-time-period-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get a consolidation time period",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.time-period"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a consolidation time period": {
+          "value": {
+           "ia::result": {
+            "id": "Sep 2025",
+            "key": "620",
+            "periodName": "Sep 2025",
+            "startDate": "2025-09-01",
+            "endDate": "2025-09-30",
+            "href": "/objects/consolidation/time-period/620"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/run-status": {
+   "get": {
+    "summary": "List consolidation run statuses",
+    "description": "Returns a collection with a key, ID, and link for each consolidation run status. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation run statuses"
+    ],
+    "operationId": "list-consolidation-run-status",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of consolidation run statuses",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List consolidation run statuses": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "22",
+             "id": "22",
+             "href": "/objects/consolidation/run-status/22"
+            },
+            {
+             "key": "53",
+             "id": "53",
+             "href": "/objects/consolidation/run-status/53"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/run-status/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the consolidation run-status.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "70"
+    }
+   ],
+   "get": {
+    "summary": "Get a consolidation run-status",
+    "description": "Returns detailed information for a specified consolidation run-status.",
+    "tags": [
+     "Consolidation_Consolidation run statuses"
+    ],
+    "operationId": "get-consolidation-run-status-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get a consolidation run status",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.run-status"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a consolidation run status": {
+          "value": {
+           "ia::result": {
+            "id": "78291",
+            "key": "78291",
+            "book": {
+             "id": "CASE-1",
+             "key": "373",
+             "href": "/objects/consolidation/book/373"
+            },
+            "entity": {
+             "key": "1",
+             "id": "1",
+             "name": "United States of America",
+             "href": "/objects/company-config/entity/140"
+            },
+            "period": {
+             "key": "600",
+             "id": "Jan 2025",
+             "href": "/objects/consolidation/time-period/600"
+            },
+            "consolidationDateTime": "2025-06-04T16:06:22Z",
+            "runBy": {
+             "key": "1",
+             "id": "Admin",
+             "href": "/objects/company-config/user/1"
+            },
+            "exchangeRate": {
+             "weightedAverageRate": "71.311800000000",
+             "endingSpotRate": "71.585300000000"
+            },
+            "status": "background",
+            "statusMessage": "Offline consolidation in progress",
+            "ownershipStructure": {
+             "key": "44",
+             "id": "struct_US_holdings",
+             "description": "Ownership structure for US company holdings.",
+             "href": "/objects/consolidation/ownership-structure/44"
+            },
+            "href": "/objects/consolidation/run-status/70"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/ownership-structure": {
+   "get": {
+    "summary": "List ownership structures",
+    "description": "Returns a collection with a key, ID, and link for each ownership structure. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation ownership structures"
+    ],
+    "operationId": "list-consolidation-ownership-structure",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of ownership structures",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List ownership structures": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "41",
+             "id": "global_corporate_structure",
+             "href": "/objects/consolidation/ownership-structure/41"
+            },
+            {
+             "key": "25",
+             "id": "holding_company_subsidiaries",
+             "href": "/objects/consolidation/ownership-structure/25"
+            },
+            {
+             "key": "28",
+             "id": "group_consolidation_structure",
+             "href": "/objects/consolidation/ownership-structure/28"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": 101,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an ownership structure",
+    "description": "Creates an ownership structure.",
+    "tags": [
+     "Consolidation_Consolidation ownership structures"
+    ],
+    "operationId": "create-consolidation-ownership-structure",
+    "requestBody": {
+     "description": "Create an ownership structure.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.ownership-structure"
+         },
+         {
+          "$ref": "#/components/schemas/consolidation-ownership-structureRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create an ownership structure": {
+         "value": {
+          "id": "struct_US_holding_subsidiaries",
+          "description": "Ownership structure for US holding company subsidiaries.",
+          "status": "active",
+          "elimination": {
+           "enableInterEntityAutoElimination": true,
+           "enableEliminationByAffiliateEntity": true
+          },
+          "accountingMethod": "accrual",
+          "userDefinedBookForEquityMethod": {
+           "id": "CE"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to ownership structure",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to ownership structure": {
+          "value": {
+           "ia::result": {
+            "key": "49",
+            "id": "struct_US_holding_subsidiaries",
+            "href": "/objects/consolidation/ownership-structure/49"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/ownership-structure/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the ownership structure.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "43"
+    }
+   ],
+   "get": {
+    "summary": "Get an ownership structure",
+    "description": "Returns information for a specified ownership structure.",
+    "tags": [
+     "Consolidation_Consolidation ownership structures"
+    ],
+    "operationId": "get-consolidation-ownership-structure-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get an ownership structure",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.ownership-structure"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an ownership structure": {
+          "value": {
+           "ia::result": {
+            "key": "43",
+            "id": "struct_US_holdings",
+            "description": "Ownership structure for US company holdings.",
+            "status": "active",
+            "elimination": {
+             "enableInterEntityAutoElimination": true,
+             "enableEliminationByAffiliateEntity": true
+            },
+            "accountingMethod": "accrual",
+            "userDefinedBookForEquityMethod": {
+             "id": "CE",
+             "key": "4",
+             "href": "/objects/general-ledger/user-defined-book/4"
+            },
+            "audit": {
+             "createdDateTime": "2025-03-14T15:32:47Z",
+             "modifiedDateTime": "2025-03-14T15:32:47Z",
+             "createdBy": "1",
+             "modifiedBy": "1"
+            },
+            "href": "/objects/consolidation/ownership-structure/43"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an ownership structure",
+    "description": "Deletes an ownership structure.",
+    "tags": [
+     "Consolidation_Consolidation ownership structures"
+    ],
+    "operationId": "delete-consolidation-ownership-structure-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an ownership structure",
+    "description": "Updates an existing ownership structure by setting field values. Any field values not provided remain unchanged.",
+    "tags": [
+     "Consolidation_Consolidation ownership structures"
+    ],
+    "operationId": "update-consolidation-ownership-structure-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.ownership-structure"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "type": "string",
+            "readOnly": true
+           },
+           "elimination": {
+            "type": "object",
+            "properties": {
+             "enableInterEntityAutoElimination": {
+              "type": "boolean",
+              "default": true,
+              "readOnly": true
+             }
+            }
+           },
+           "userDefinedBookForEquityMethod": {
+            "type": "object",
+            "properties": {
+             "id": {
+              "type": "string"
+             }
+            }
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update an ownership structure": {
+         "value": {
+          "description": "Ownership structure for new US company holdings.",
+          "status": "active"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to ownership structure.",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to ownership structure": {
+          "value": {
+           "ia::result": {
+            "key": "16",
+            "id": "igc",
+            "href": "/objects/consolidation/ownership-structure/16"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/consolidation/ownership-structure/consolidate": {
+   "post": {
+    "summary": "Consolidate an ownership structure",
+    "description": "Consolidate an ownership structure. \n\nThis operation consolidates the ownership structure based on the provided time period and ownership structure. \n\nFor more information, read about [consolidating an ownership structure](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Cons_ownership_struct) in the Sage Intacct Help Center.\n",
+    "tags": [
+     "Consolidation_Consolidation ownership structures"
+    ],
+    "operationId": "post-consolidation-ownership-structure-consolidate",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/consolidation-ownership-structure-consolidate-request"
+       },
+       "examples": {
+        "Consolidate an ownership structure": {
+         "value": {
+          "ownershipStructure": {
+           "id": "consolOwnershipStructure"
+          },
+          "timePeriod": {
+           "id": "Apr 2025"
+          },
+          "notificationEmail": "tom.johnson@techsoma.com"
+         }
+        },
+        "Consolidate and override exchange rates for an ownership structure entities": {
+         "value": {
+          "ownershipStructure": {
+           "id": "consolOwnershipStructure"
+          },
+          "timePeriod": {
+           "id": "Jan 2025"
+          },
+          "notificationEmail": "tom.johnson@techsoma.com",
+          "overrideExchangeRate": [
+           {
+            "consolidationBook": {
+             "id": "us_book"
+            },
+            "consolidationEntities": [
+             {
+              "entity": {
+               "id": "USA"
+              },
+              "endingSpotRate": "1",
+              "weightedAverageRate": "1"
+             },
+             {
+              "entity": {
+               "key": "IND"
+              },
+              "endingSpotRate": "0.01151",
+              "weightedAverageRate": "0.01149"
+             },
+             {
+              "entity": {
+               "id": "UK"
+              },
+              "endingSpotRate": "1.2607",
+              "weightedAverageRate": "1.2467"
+             },
+             {
+              "entity": {
+               "id": "USDE"
+              },
+              "endingSpotRate": "1",
+              "weightedAverageRate": "1"
+             }
+            ]
+           },
+           {
+            "consolidationBook": {
+             "id": "ind_book"
+            },
+            "consolidationEntities": [
+             {
+              "entity": {
+               "id": "IND"
+              },
+              "endingSpotRate": "0.01151",
+              "weightedAverageRate": "0.01149"
+             },
+             {
+              "entity": {
+               "id": "AUS"
+              },
+              "endingSpotRate": "0.6352",
+              "weightedAverageRate": "0.6279"
+             },
+             {
+              "entity": {
+               "id": "INDE"
+              },
+              "endingSpotRate": "1",
+              "weightedAverageRate": "1"
+             }
+            ]
+           }
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Executed",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/consolidation-ownership-structure-consolidate-response"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Consolidate an ownership structure": {
+          "value": {
+           "ia::result": {
+            "status": "success",
+            "message": "A job has been queued to run an offline consolidation. Go to Company > Offline job queue to view the job status."
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/ownership-structure-period/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the ownership structure period.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "43"
+    }
+   ],
+   "get": {
+    "summary": "Get an ownership structure period",
+    "description": "Returns detailed information for a specified ownership structure period.",
+    "tags": [
+     "Consolidation_Consolidation ownership structure periods"
+    ],
+    "operationId": "get-consolidation-ownership-structure-period-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get an ownership structure period",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.ownership-structure-period"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an ownership structure period": {
+          "value": {
+           "ia::result": {
+            "key": "125",
+            "id": "125",
+            "ownershipStructure": {
+             "id": "level10",
+             "key": "45",
+             "href": "/objects/consolidation/ownership-structure/45"
+            },
+            "fromPeriod": {
+             "id": "Apr 2025"
+            },
+            "comment": "Time period from April 2025.",
+            "state": "draft",
+            "status": "active",
+            "audit": {
+             "createdDateTime": "2025-06-30T11:11:26Z",
+             "modifiedDateTime": "2025-06-30T11:11:26Z",
+             "createdBy": "1",
+             "modifiedBy": "1"
+            },
+            "ownershipEntities": [
+             {
+              "key": "195",
+              "id": "195",
+              "ownershipStructurePeriod": {
+               "id": "125",
+               "key": "125",
+               "href": "/objects/consolidation/ownership-structure-period/125"
+              },
+              "parentEntity": {
+               "key": "1",
+               "id": "1",
+               "name": "United States of America",
+               "href": "/objects/company-config/entity/1"
+              },
+              "consolidationBook": {
+               "multiCurrency": {
+                "cumulativeTranslationAdjustment": {
+                 "netAssetGLAccount": "1000",
+                 "netIncomeGLAccount": "1000"
+                },
+                "translationMethod": {
+                 "balanceSheetTranslationMethod": "endingSpotRate",
+                 "incomeTranslationMethod": "weightedAverageRate"
+                },
+                "currency": "USD"
+               },
+               "elimination": {
+                "entity": "USDE",
+                "adjustmentGLAccount": "1000"
+               },
+               "key": "222",
+               "id": "conso_book_holdings",
+               "description": "Consolidation book for company holdings.",
+               "href": "/objects/consolidation/book/222"
+              },
+              "audit": {
+               "createdDateTime": "2025-06-30T11:11:26Z",
+               "modifiedDateTime": "2025-06-30T11:11:26Z",
+               "createdBy": "1",
+               "modifiedBy": "1"
+              },
+              "ownershipSubsidiaryEntities": [
+               {
+                "key": "343",
+                "id": "343",
+                "ownershipEntity": {
+                 "id": "195",
+                 "key": "195",
+                 "href": "/objects/consolidation/ownership-entity/195"
+                },
+                "subsidiaryEntity": {
+                 "id": "2",
+                 "name": "India",
+                 "key": "2",
+                 "href": "/objects/company-config/entity/2"
+                },
+                "ownershipPercentage": 44,
+                "consolidationMethod": "consolidation",
+                "allocateSubsidiaryIncome": false,
+                "nonControllingInterestGLAccounts": {
+                 "investmentInSubsidiaryGLAccount": {
+                  "key": "380",
+                  "id": "1203.01",
+                  "name": "Billed Accounts Receivable",
+                  "href": "/objects/general-ledger/account/380"
+                 },
+                 "subsidiaryRevenueGLAccount": {
+                  "key": "380",
+                  "id": "1203.01",
+                  "name": "Billed Accounts Receivable",
+                  "href": "/objects/general-ledger/account/380"
+                 },
+                 "netIncomeAttributableToNCIGLAccount": {
+                  "key": "380",
+                  "id": "1203.01",
+                  "name": "Billed Accounts Receivable",
+                  "href": "/objects/general-ledger/account/380"
+                 },
+                 "equityAttributableToNCIGLAccount": {
+                  "key": "76",
+                  "id": "1280.25",
+                  "name": "Germany (India) - Inter Entity Receivable",
+                  "href": "/objects/general-ledger/account/76"
+                 },
+                 "contributedCapitalGLAccount": {
+                  "key": "380",
+                  "id": "1203.01",
+                  "name": "Billed Accounts Receivable",
+                  "href": "/objects/general-ledger/account/380"
+                 }
+                },
+                "audit": {
+                 "createdDateTime": "2025-06-30T11:11:26Z",
+                 "modifiedDateTime": "2025-06-30T11:11:26Z",
+                 "createdBy": "1",
+                 "modifiedBy": "1"
+                },
+                "href": "/objects/consolidation/ownership-subsidiary-entity/343"
+               }
+              ],
+              "href": "/objects/consolidation/ownership-entity/195"
+             }
+            ],
+            "href": "/objects/consolidation/ownership-structure-period/125"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an ownership structure period",
+    "description": "Updates an existing ownership structure period by setting field values. Any field values not provided remain unchanged.",
+    "tags": [
+     "Consolidation_Consolidation ownership structure periods"
+    ],
+    "operationId": "update-consolidation-ownership-structure-period-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.ownership-structure-period"
+         }
+        ]
+       },
+       "examples": {
+        "Update an ownership structure period": {
+         "value": {
+          "ownershipStructure": {
+           "key": "45"
+          },
+          "fromPeriod": {
+           "id": "Mar 2025"
+          },
+          "comment": "Time period from March 2025.",
+          "state": "draft",
+          "status": "active",
+          "ownershipEntities": [
+           {
+            "key": "194",
+            "ownershipStructurePeriod": {
+             "key": "124"
+            },
+            "parentEntity": {
+             "key": "1"
+            },
+            "ownershipSubsidiaryEntities": [
+             {
+              "key": "342",
+              "ownershipEntity": {
+               "key": "194"
+              },
+              "subsidiaryEntity": {
+               "key": "2"
+              },
+              "ownershipPercentage": 44,
+              "consolidationMethod": "consolidation",
+              "allocateSubsidiaryIncome": true,
+              "nonControllingInterestGLAccounts": {
+               "investmentInSubsidiaryGLAccount": {
+                "key": "380"
+               },
+               "subsidiaryRevenueGLAccount": {
+                "key": "76"
+               },
+               "netIncomeAttributableToNCIGLAccount": {
+                "key": "380"
+               },
+               "equityAttributableToNCIGLAccount": {
+                "key": "76"
+               },
+               "contributedCapitalGLAccount": {
+                "key": "380"
+               }
+              }
+             }
+            ]
+           }
+          ]
+         }
+        }
+       }
+      }
+     },
+     "description": "Updates an ownership structure period."
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to ownership structure period.",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to ownership structure period": {
+          "value": {
+           "ia::result": {
+            "key": "124",
+            "id": "124",
+            "href": "/objects/consolidation/ownership-structure-period/124"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an ownership structure period",
+    "description": "Deletes an ownership structure period.",
+    "tags": [
+     "Consolidation_Consolidation ownership structure periods"
+    ],
+    "operationId": "delete-consolidation-ownership-structure-period-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/ownership-structure-period": {
+   "get": {
+    "summary": "List ownership structure periods",
+    "description": "Returns a collection with a key, ID, and link for each ownership structure period. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation ownership structure periods"
+    ],
+    "operationId": "list-consolidation-ownership-structure-period",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of ownership structure periods",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List ownership structure periods": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "11",
+             "id": "11",
+             "href": "/objects/consolidation/ownership-structure-period/11"
+            },
+            {
+             "key": "12",
+             "id": "12",
+             "href": "/objects/consolidation/ownership-structure-period/12"
+            },
+            {
+             "key": "13",
+             "id": "13",
+             "href": "/objects/consolidation/ownership-structure-period/13"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an ownership structure period",
+    "description": "Creates an ownership structure period.",
+    "tags": [
+     "Consolidation_Consolidation ownership structure periods"
+    ],
+    "operationId": "create-consolidation-ownership-structure-period",
+    "requestBody": {
+     "description": "Create an ownership structure period.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.consolidation.ownership-structure-period"
+         },
+         {
+          "$ref": "#/components/schemas/consolidation-ownership-structure-periodRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create an ownership structure period": {
+         "value": {
+          "ownershipStructure": {
+           "key": "45"
+          },
+          "fromPeriod": {
+           "id": "Apr 2025"
+          },
+          "comment": "Time period from April 2025.",
+          "state": "draft",
+          "status": "active",
+          "ownershipEntities": [
+           {
+            "parentEntity": {
+             "key": "1"
+            },
+            "consolidationBook": {
+             "elimination": {
+              "adjustmentGLAccount": "1000",
+              "entity": "USDE"
+             },
+             "multiCurrency": {
+              "cumulativeTranslationAdjustment": {
+               "netAssetGLAccount": "1000",
+               "netIncomeGLAccount": "1000"
+              },
+              "translationMethod": {
+               "balanceSheetTranslationMethod": "endingSpotRate",
+               "incomeTranslationMethod": "weightedAverageRate"
+              },
+              "currency": "USD"
+             },
+             "description": "Consolidation book for company holdings.",
+             "id": "conso_book_holdings"
+            },
+            "ownershipSubsidiaryEntities": [
+             {
+              "ownershipEntity": {
+               "key": "151"
+              },
+              "subsidiaryEntity": {
+               "key": "2"
+              },
+              "ownershipPercentage": 44,
+              "consolidationMethod": "consolidation",
+              "allocateSubsidiaryIncome": false,
+              "nonControllingInterestGLAccounts": {
+               "investmentInSubsidiaryGLAccount": {
+                "key": "10"
+               },
+               "subsidiaryRevenueGLAccount": {
+                "key": "11"
+               },
+               "netIncomeAttributableToNCIGLAccount": {
+                "key": "380"
+               },
+               "equityAttributableToNCIGLAccount": {
+                "key": "76"
+               },
+               "contributedCapitalGLAccount": {
+                "key": "354"
+               }
+              }
+             }
+            ]
+           }
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to ownership structure period",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to ownership structure period": {
+          "value": {
+           "ia::result": {
+            "key": "125",
+            "id": "125",
+            "href": "/objects/consolidation/ownership-structure-period/125"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/ownership-entity": {
+   "get": {
+    "summary": "List ownership entities",
+    "description": "Returns a collection with a key, ID, and link for each ownership entity. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation ownership entities"
+    ],
+    "operationId": "list-consolidation-ownership-entity",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of ownership entities",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List ownership entities": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "32",
+             "id": "32",
+             "href": "/objects/consolidation/ownership-entity/32"
+            },
+            {
+             "key": "33",
+             "id": "33",
+             "href": "/objects/consolidation/ownership-entity/33"
+            },
+            {
+             "key": "34",
+             "id": "34",
+             "href": "/objects/consolidation/ownership-entity/34"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/ownership-entity/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the ownership entity.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "43"
+    }
+   ],
+   "get": {
+    "summary": "Get an ownership entity",
+    "description": "Returns detailed information for a specified ownership entity.",
+    "tags": [
+     "Consolidation_Consolidation ownership entities"
+    ],
+    "operationId": "get-consolidation-ownership-entity-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get an ownership entity",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.ownership-entity"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an ownership entity": {
+          "value": {
+           "ia::result": {
+            "key": "86",
+            "id": "86",
+            "ownershipStructurePeriod": {
+             "id": "45",
+             "key": "45",
+             "href": "/objects/consolidation/ownership-structure-period/45"
+            },
+            "parentEntity": {
+             "key": "1",
+             "id": "1",
+             "name": "United States of America",
+             "href": "/objects/company-config/entity/1"
+            },
+            "consolidationBook": {
+             "multiCurrency": {
+              "cumulativeTranslationAdjustment": {
+               "netAssetGLAccount": "1000",
+               "netIncomeGLAccount": "1000"
+              },
+              "translationMethod": {
+               "balanceSheetTranslationMethod": "endingSpotRate",
+               "incomeTranslationMethod": "weightedAverageRate"
+              },
+              "currency": "USD"
+             },
+             "elimination": {
+              "entity": "USDE",
+              "adjustmentGLAccount": "1000"
+             },
+             "key": "140",
+             "id": "sage62",
+             "description": "sage62",
+             "href": "/objects/consolidation/book/140"
+            },
+            "audit": {
+             "createdDateTime": "2025-07-28T10:15:10Z",
+             "modifiedDateTime": "2025-04-26T18:30:42Z",
+             "createdBy": "1",
+             "modifiedBy": "1"
+            },
+            "ownershipSubsidiaryEntities": [
+             {
+              "key": "223",
+              "id": "223",
+              "ownershipEntity": {
+               "id": "86",
+               "key": "86",
+               "href": "/objects/consolidation/ownership-entity/86"
+              },
+              "subsidiaryEntity": {
+               "id": "2",
+               "name": "India",
+               "key": "2",
+               "href": "/objects/company-config/entity/2"
+              },
+              "ownershipPercentage": 44,
+              "consolidationMethod": "consolidation",
+              "allocateSubsidiaryIncome": true,
+              "nonControllingInterestGLAccounts": {
+               "investmentInSubsidiaryGLAccount": {
+                "key": "10",
+                "id": "1001",
+                "name": "CitiBank",
+                "href": "/objects/general-ledger/account/10"
+               },
+               "subsidiaryRevenueGLAccount": {
+                "key": "11",
+                "id": "1002",
+                "name": "HSBC - GBP",
+                "href": "/objects/general-ledger/account/11"
+               },
+               "netIncomeAttributableToNCIGLAccount": {
+                "key": "380",
+                "id": "1203.01",
+                "name": "Billed Accounts Receivable",
+                "href": "/objects/general-ledger/account/380"
+               },
+               "equityAttributableToNCIGLAccount": {
+                "key": "76",
+                "id": "1280.25",
+                "name": "Germany (India) - Inter Entity Receivable",
+                "href": "/objects/general-ledger/account/76"
+               },
+               "contributedCapitalGLAccount": {
+                "key": "354",
+                "id": "7516",
+                "name": "Edit & Delete < Account > - !@#$%^&*()",
+                "href": "/objects/general-ledger/account/354"
+               }
+              },
+              "audit": {
+               "createdDateTime": "2025-07-28T10:15:10Z",
+               "modifiedDateTime": "2025-05-17T10:15:13Z",
+               "createdBy": "1",
+               "modifiedBy": "1"
+              },
+              "href": "/objects/consolidation/ownership-subsidiary-entity/223"
+             }
+            ],
+            "href": "/objects/consolidation/ownership-entity/86"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an ownership entity",
+    "description": "Deletes an ownership entity.",
+    "tags": [
+     "Consolidation_Consolidation ownership entities"
+    ],
+    "operationId": "delete-consolidation-ownership-entity-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/ownership-subsidiary-entity/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the ownership subsidiary entity.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "43"
+    }
+   ],
+   "get": {
+    "summary": "Get an ownership subsidiary entity",
+    "description": "Returns detailed information for a specified ownership subsidiary entity.",
+    "tags": [
+     "Consolidation_Consolidation ownership subsidiary entities"
+    ],
+    "operationId": "get-consolidation-ownership-subsidiary-entity-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get an ownership subsidiary entity",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.consolidation.ownership-subsidiary-entity"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an ownership subsidiary entity": {
+          "value": {
+           "ia::result": {
+            "key": "340",
+            "id": "340",
+            "ownershipEntity": {
+             "id": "192",
+             "key": "192",
+             "href": "/objects/consolidation/ownership-entity/192"
+            },
+            "subsidiaryEntity": {
+             "id": "05",
+             "name": "NY Bldg",
+             "key": "104",
+             "href": "/objects/company-config/entity/104"
+            },
+            "ownershipPercentage": 44,
+            "consolidationMethod": "consolidation",
+            "allocateSubsidiaryIncome": false,
+            "nonControllingInterestGLAccounts": {
+             "investmentInSubsidiaryGLAccount": {
+              "key": null,
+              "id": null,
+              "name": null
+             },
+             "subsidiaryRevenueGLAccount": {
+              "key": null,
+              "id": null,
+              "name": null
+             },
+             "netIncomeAttributableToNCIGLAccount": {
+              "key": "380",
+              "id": "1203.01",
+              "name": "Billed Accounts Receivable",
+              "href": "/objects/general-ledger/account/380"
+             },
+             "equityAttributableToNCIGLAccount": {
+              "key": "76",
+              "id": "1280.25",
+              "name": "Germany (India) - Inter Entity Receivable",
+              "href": "/objects/general-ledger/account/76"
+             },
+             "contributedCapitalGLAccount": {
+              "key": "380",
+              "id": "1203.01",
+              "name": "Billed Accounts Receivable",
+              "href": "/objects/general-ledger/account/380"
+             }
+            },
+            "audit": {
+             "createdDateTime": "2025-06-27T17:13:08Z",
+             "modifiedDateTime": "2025-06-27T17:13:08Z",
+             "createdBy": "1",
+             "modifiedBy": "1"
+            },
+            "href": "/objects/consolidation/ownership-subsidiary-entity/340"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an ownership subsidiary entity",
+    "description": "Deletes an ownership subsidiary entity.",
+    "tags": [
+     "Consolidation_Consolidation ownership subsidiary entities"
+    ],
+    "operationId": "delete-consolidation-ownership-subsidiary-entity-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/consolidation/ownership-subsidiary-entity": {
+   "get": {
+    "summary": "List ownership subsidiary entity",
+    "description": "Returns a collection with a key, ID, and link for each ownership subsidiary entity. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Consolidation_Consolidation ownership subsidiary entities"
+    ],
+    "operationId": "list-consolidation-ownership-subsidiary-entity",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of ownership subsidiary entities",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List ownership subsidiary entities": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "102",
+             "id": "102",
+             "href": "/objects/consolidation/ownership-subsidiary-entity/102"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 1,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "object-reference": {
+    "type": "object",
+    "description": "Reference to created or updated object.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the object.",
+      "example": "12345"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the object.",
+      "example": "ID123"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL endpoint for the object.",
+      "example": "/objects/<application>/<name>/12345"
+     }
+    }
+   },
+   "metadata-pages": {
+    "description": "Metadata for collection response",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total number of members in the result set.",
+      "readOnly": true,
+      "example": 3
+     },
+     "start": {
+      "type": "integer",
+      "description": "First member of the result set included in the current response.",
+      "readOnly": true,
+      "example": 1
+     },
+     "pageSize": {
+      "type": "integer",
+      "description": "Maximum number of members included in the current response. The response may contain fewer members if the final page of the result set is smaller than the page size.",
+      "readOnly": true,
+      "example": 100
+     },
+     "next": {
+      "type": "integer",
+      "description": "First member number of the next page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": 101
+     },
+     "previous": {
+      "type": "integer",
+      "description": "First member number of the previous page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": null
+     }
+    }
+   },
+   "objects.consolidation.book": {
+    "type": "object",
+    "description": "Consolidation books define how to combine the financial and operational information within multi-entity companies.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the consolidation book.",
+      "readOnly": true,
+      "example": "89"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the consolidation book.",
+      "nullable": false,
+      "example": "consol_book-holdings"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL endpoint for the consolidation book.",
+      "example": "/objects/consolidation/book/21"
+     },
+     "description": {
+      "type": "string",
+      "description": "Provides a brief contextual description for the consolidation book.",
+      "nullable": false,
+      "example": "Consolidation book for all US entities."
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     },
+     "statisticalJournal": {
+      "type": "object",
+      "description": "References the statistical journal associated with the consolidation book.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the statistical journal.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the statistical journal.",
+        "nullable": true,
+        "example": "consol_book_SJ"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the statistical journal.",
+        "nullable": true,
+        "example": "consol_book statistical journal"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the statistical journal.",
+        "example": "/objects/general-ledger/statistical-journal/23",
+        "readOnly": true
+       }
+      }
+     },
+     "budget": {
+      "type": "object",
+      "description": "References the budget to use with the consolidation book.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the budget.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the budget.",
+        "example": "Std_Budget"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the budget.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/budget/1"
+       }
+      }
+     },
+     "accountingMethod": {
+      "type": "string",
+      "description": "Indicates whether the accounting method for reporting will be on an `accrual` or `cash` basis.",
+      "enum": [
+       "accrual",
+       "cash"
+      ],
+      "example": "accrual"
+     },
+     "department": {
+      "type": "object",
+      "description": "References the department to be used for the journal entries created during consolidation.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the department.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the department.",
+        "example": "OP"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the department.",
+        "readOnly": true,
+        "example": "Operations"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the department.",
+        "readOnly": true,
+        "example": "/objects/company-config/department/1"
+       }
+      }
+     },
+     "multiCurrency": {
+      "type": "object",
+      "description": "Provides multi-currency details for global consolidations only. Does not include details for domestic consolidations.",
+      "properties": {
+       "currency": {
+        "type": "string",
+        "description": "Specifies the currency for the consolidation book, used for global consolidations.",
+        "nullable": false,
+        "example": "USD"
+       },
+       "cumulativeTranslationAdjustment": {
+        "type": "object",
+        "description": "Provides details of the accounts used for cumulative translation adjustment of net assets for the consolidation book.",
+        "properties": {
+         "netAssetGLAccount": {
+          "type": "object",
+          "description": "References the General Ledger (GL) account for net assets.",
+          "properties": {
+           "key": {
+            "type": "string",
+            "description": "Unique key for the GL account.",
+            "example": "9"
+           },
+           "id": {
+            "type": "string",
+            "description": "Identifier for the GL account.",
+            "example": "1000"
+           },
+           "name": {
+            "type": "string",
+            "description": "Name for the GL account.",
+            "readOnly": true,
+            "example": "Bank of America A/c."
+           },
+           "href": {
+            "type": "string",
+            "description": "URL endpoint for the GL account.",
+            "readOnly": true,
+            "example": "/objects/general-ledger/account/9"
+           }
+          }
+         },
+         "netIncomeGLAccount": {
+          "type": "object",
+          "description": "References the General Ledger (GL) account for net income.",
+          "properties": {
+           "key": {
+            "type": "string",
+            "description": "Unique key for the GL account.",
+            "example": "10"
+           },
+           "id": {
+            "type": "string",
+            "description": "Identifier for the GL account.",
+            "example": "1001"
+           },
+           "name": {
+            "type": "string",
+            "description": "Name for the GL account.",
+            "readOnly": true,
+            "example": "CitiBank"
+           },
+           "href": {
+            "type": "string",
+            "description": "URL endpoint for the GL account.",
+            "readOnly": true,
+            "example": "/objects/general-ledger/account/10"
+           }
+          }
+         }
+        }
+       },
+       "exchangeRateType": {
+        "type": "string",
+        "description": "Specifies the exchange rate type used to determine current exchange rates. Exchange rate types are used only to customize your own exchange rates; the default is `intacctDailyRate`.\n\nFor more information, read [about the Intacct daily rate](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_daily_rate) in the Sage Intacct Help Center.\n",
+        "enum": [
+         "intacctDailyRate"
+        ],
+        "default": "intacctDailyRate",
+        "example": "intacctDailyRate"
+       },
+       "translationMethod": {
+        "type": "object",
+        "description": "Specifies the exchange rate translation method to be used for balance sheet accounts and income statement accounts.",
+        "properties": {
+         "balanceSheetTranslationMethod": {
+          "type": "string",
+          "description": "Indicates the translation method for balance sheet accounts.",
+          "enum": [
+           "endingSpotRate",
+           "weightedAverageRate"
+          ],
+          "default": "endingSpotRate",
+          "example": "endingSpotRate"
+         },
+         "incomeTranslationMethod": {
+          "type": "string",
+          "description": "Indicates the translation method for income statement accounts.",
+          "enum": [
+           "endingSpotRate",
+           "weightedAverageRate"
+          ],
+          "default": "weightedAverageRate",
+          "example": "weightedAverageRate"
+         }
+        }
+       }
+      }
+     },
+     "elimination": {
+      "type": "object",
+      "properties": {
+       "entity": {
+        "type": "string",
+        "description": "Name for the entity used for elimination in the consolidation book.",
+        "nullable": false,
+        "example": "USDE"
+       },
+       "enableInterEntityAutoElimination": {
+        "type": "boolean",
+        "description": "Indicates whether to enable inter-entity auto-elimination.",
+        "default": false,
+        "example": true
+       },
+       "adjustmentGLAccount": {
+        "type": "object",
+        "description": "Specifies the General Ledger (GL) account for elimination adjustment.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "Unique key for the GL account.",
+          "example": "11"
+         },
+         "id": {
+          "type": "string",
+          "description": "Identifier for the GL account.",
+          "example": "1002"
+         },
+         "name": {
+          "type": "string",
+          "description": "Name for the GL account.",
+          "readOnly": true,
+          "example": "HSBC - GBP"
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the GL account.",
+          "readOnly": true,
+          "example": "/objects/general-ledger/account/11"
+         }
+        }
+       },
+       "enableEliminationByAffiliateEntity": {
+        "type": "boolean",
+        "description": "Indicates whether to enable elimination by affiliate entity.",
+        "default": false,
+        "example": false
+       }
+      }
+     },
+     "consolidateDimensions": {
+      "type": "array",
+      "description": "Standard Sage Intacct dimensions to include in the consolidated journal entries.",
+      "example": [
+       "location",
+       "department",
+       "vendor"
+      ],
+      "items": {
+       "type": "string"
+      }
+     },
+     "bookJournal": {
+      "type": "object",
+      "description": "Provides details for the consolidation book journal.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the journal.",
+        "nullable": true,
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the book journal.",
+        "nullable": true,
+        "example": "consol_book_J"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the book journal.",
+        "nullable": true,
+        "example": "consol_book journal"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the journal.",
+        "example": "/objects/general-ledger/journal/23"
+       }
+      }
+     },
+     "historicalRateDateType": {
+      "type": "string",
+      "description": "Specifies the type of historical rate date for the consolidation book.",
+      "enum": [
+       "lineLevelExchangeRateDate",
+       "transactionDate"
+      ],
+      "default": "lineLevelExchangeRateDate",
+      "example": "lineLevelExchangeRateDate"
+     },
+     "bookType": {
+      "type": "string",
+      "description": "Specifies the type of consolidation book.",
+      "enum": [
+       "consolidation",
+       "tierConsolidation"
+      ],
+      "default": "consolidation",
+      "readOnly": true,
+      "example": "consolidation"
+     },
+     "isLegacyBook": {
+      "type": "boolean",
+      "description": "Indicates whether the consolidation book is a legacy book.",
+      "default": false,
+      "readOnly": true,
+      "example": false
+     },
+     "ownershipStructure": {
+      "type": "object",
+      "description": "References the ownership structure associated with the consolidation book.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the ownership structure.",
+        "nullable": true,
+        "readOnly": true,
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Name for the ownership structure.",
+        "nullable": true,
+        "readOnly": true,
+        "example": "North America"
+       },
+       "description": {
+        "type": "string",
+        "description": "Provides a brief contextual description of the ownership structure.",
+        "nullable": true,
+        "readOnly": true,
+        "example": "All entities in North America"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the ownership structure.",
+        "readOnly": true,
+        "example": "/objects/consolidation/ownership-structure/11"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "consolidation-bookRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id",
+     "description",
+     "statisticalJournal",
+     "accountingMethod",
+     "bookJournal",
+     "elimination"
+    ],
+    "properties": {
+     "elimination": {
+      "type": "object",
+      "required": [
+       "entity"
+      ]
+     },
+     "multiCurrency": {
+      "type": "object",
+      "required": [
+       "currency",
+       "cumulativeTranslationAdjustment",
+       "translationMethod"
+      ]
+     }
+    }
+   },
+   "metadata": {
+    "description": "Metadata for the response.",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total count.",
+      "readOnly": true,
+      "example": 3
+     },
+     "totalSuccess": {
+      "type": "integer",
+      "description": "Total success.",
+      "readOnly": true,
+      "example": 2
+     },
+     "totalError": {
+      "type": "integer",
+      "description": "Total errors.",
+      "readOnly": true,
+      "example": 1
+     }
+    }
+   },
+   "consolidation-book-consolidate-request": {
+    "description": "Consolidate book request",
+    "type": "object",
+    "required": [
+     "consolidationBook",
+     "timePeriod"
+    ],
+    "properties": {
+     "consolidationBook": {
+      "type": "object",
+      "description": "References the consolidation book to consolidate.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the consolidation book.",
+        "example": "123"
+       },
+       "id": {
+        "type": "string",
+        "nullable": false,
+        "description": "Identifier for the consolidation book.",
+        "example": "consolBook"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the consolidation book.",
+        "example": "/objects/consolidation/book/21"
+       }
+      }
+     },
+     "timePeriod": {
+      "type": "object",
+      "description": "References the consolidation time period to consolidate.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the consolidation time period.",
+        "example": "624"
+       },
+       "id": {
+        "type": "string",
+        "nullable": false,
+        "description": "Identifier for the consolidation time period.",
+        "example": "Jan 2022"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the consolidation time period.",
+        "readOnly": true,
+        "example": "/objects/consolidation/time-period/23"
+       }
+      }
+     },
+     "runOffline": {
+      "type": "boolean",
+      "nullable": false,
+      "description": "Indicates whether to run the consolidation offline:\n\n* `true` - Run the consolidation offline. Use when consolidating a past period with `updateSubsequentPeriods` set to `true` as offline consolidation is required to update subsequent periods.\n* `false` - Run the consolidation online.\n",
+      "default": true,
+      "example": false
+     },
+     "updateSubsequentPeriods": {
+      "type": "boolean",
+      "nullable": false,
+      "description": "Indicates whether to update all subsequent periods after the specified period when re-consolidating a past period:\n\n* `true` - Update all subsequent periods after the specified period. Use when `runOffline` is `true` as offline consolidation is required to update subsequent periods.\n* `false` - Do not update subsequent periods after the specified period. Deletes all subsequent periods after the specified period. \n",
+      "default": false,
+      "example": true
+     },
+     "updateNetChanges": {
+      "type": "boolean",
+      "nullable": false,
+      "description": "Indicates whether to only consolidate net changes since last consolidation. \n\n* `true` - Consolidate only the net changes since the last consolidation.\n* `false` - Delete the existing consolidation and re-consolidate everything. Set to `false` when `updateSubsequentPeriods` is `true` as offline consolidation is required to update subsequent periods.\n",
+      "default": true,
+      "example": false
+     },
+     "notificationEmail": {
+      "type": "string",
+      "nullable": false,
+      "description": "Specifies the email address to receive notifications.",
+      "example": "john.smith@IntechSol.com"
+     },
+     "entities": {
+      "type": "array",
+      "description": "References a collection of entities to consolidate, required to consolidate with custom rates. If `enableInterEntityAutoElimination` is set to `true` in `consolidation.book`, all entities must be consolidated together.\n",
+      "items": {
+       "type": "object",
+       "properties": {
+        "entity": {
+         "type": "object",
+         "description": "References the entity to be consolidated in the book.",
+         "properties": {
+          "key": {
+           "type": "string",
+           "description": "Unique key for the entity.",
+           "example": "123"
+          },
+          "id": {
+           "type": "string",
+           "nullable": false,
+           "description": "Identifier for the entity.",
+           "example": "US"
+          },
+          "href": {
+           "type": "string",
+           "description": "URL endpoint for the entity.",
+           "readOnly": true,
+           "example": "/objects/company-config/entity/2"
+          }
+         }
+        },
+        "endingSpotRate": {
+         "type": "string",
+         "format": "decimal-precision-10",
+         "nullable": false,
+         "description": "Specifies the ending spot rate for the consolidation entity in the book.",
+         "example": "1.3303"
+        },
+        "weightedAverageRate": {
+         "type": "string",
+         "format": "decimal-precision-10",
+         "nullable": false,
+         "description": "Specifies the weighted average rate for the consolidation entity in the book.",
+         "example": "1.3534"
+        }
+       }
+      }
+     }
+    }
+   },
+   "consolidation-book-consolidate-response": {
+    "description": "Consolidate book response",
+    "type": "object",
+    "properties": {
+     "status": {
+      "type": "string",
+      "description": "Indicates the status of the consolidation request.",
+      "example": "success"
+     },
+     "message": {
+      "type": "string",
+      "description": "Specifies the response message for the consolidation request.",
+      "example": "The consolidation completed successfully."
+     }
+    }
+   },
+   "objects.consolidation.entity": {
+    "type": "object",
+    "description": "A consolidation entity represents an entity that is included in a consolidation book. Entities can be added to a consolidation book at any time, whereas they can only be removed before the first consolidation is run.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the consolidation entity.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the consolidation entity. This value is the same as `key` for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the consolidation entity.",
+      "readOnly": true,
+      "example": "/objects/consolidation/entity/23"
+     },
+     "consolidationBook": {
+      "type": "object",
+      "description": "Specifies the consolidation book associated with the consolidation entity.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the consolidation book.",
+        "example": "123"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the consolidation book.",
+        "example": "consol_book_holdings"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the consolidation book.",
+        "readOnly": true,
+        "example": "/objects/consolidation/book/123"
+       }
+      }
+     },
+     "consolidationEntity": {
+      "type": "object",
+      "description": "References the entity to be consolidated in the book.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the entity.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the entity.",
+        "example": "US"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the entity.",
+        "readOnly": true,
+        "example": "United States of America"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the entity.",
+        "readOnly": true,
+        "example": "/objects/company-config/entity/1"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "consolidation-entityRequiredProperties": {
+    "type": "object",
+    "required": [
+     "consolidationBook",
+     "consolidationEntity"
+    ]
+   },
+   "objects.consolidation.elimination-account": {
+    "type": "object",
+    "description": "Elimination accounts reference the General Ledger (GL) accounts that you use for inter-entity auto-elimination in consolidation books.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the consolidation book elimination account.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the consolidation book elimination account. This value is the same as `key` for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the consolidation book elimination account.",
+      "readOnly": true,
+      "example": "/objects/consolidation/elimination-account/23"
+     },
+     "consolidationBook": {
+      "type": "object",
+      "description": "Specifies the consolidation book, you want to add or remove elimination account.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the consolidation book.",
+        "example": "123"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the consolidation book.",
+        "example": "consol_book_holdings"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the consolidation book.",
+        "readOnly": true,
+        "example": "/objects/consolidation/book/123"
+       }
+      }
+     },
+     "glAccount": {
+      "type": "object",
+      "description": "References the General Ledger (GL) account for inter-entity auto-elimination.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the GL account.",
+        "example": "411"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the GL account.",
+        "example": "1501.04"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the GL account.",
+        "readOnly": true,
+        "example": "Bank of America A/c."
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/account/411"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "consolidation-elimination-accountRequiredProperties": {
+    "type": "object",
+    "required": [
+     "consolidationBook",
+     "glAccount"
+    ]
+   },
+   "objects.consolidation.override-account": {
+    "type": "object",
+    "description": "Override accounts are used to set up specific General Ledger (GL) accounts that require a different currency conversion method than the one defined for the overall consolidation book.\n",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the consolidation account to override.",
+      "readOnly": true,
+      "example": "17"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the consolidation account to override. This value is the same as `key` for this object.",
+      "readOnly": true,
+      "example": "17"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL for the consolidation account to override.",
+      "example": "/objects/consolidation/override-account/21"
+     },
+     "consolidationBook": {
+      "type": "object",
+      "description": "References the consolidation book associated with the override account.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the consolidation book.",
+        "example": "123"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the consolidation book.",
+        "example": "consol_book_holdings"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the consolidation book.",
+        "readOnly": true,
+        "example": "/objects/consolidation/book/123"
+       }
+      }
+     },
+     "glAccount": {
+      "type": "object",
+      "description": "References the General Ledger (GL) account to override the exchange rate translation method.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the GL account.",
+        "example": "411"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the GL account.",
+        "example": "1000"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the GL account.",
+        "readOnly": true,
+        "example": "Bank of America A/c."
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/account/411"
+       }
+      }
+     },
+     "exchangeRate": {
+      "type": "object",
+      "description": "Provides details of the exchange rate associated with the override account.",
+      "properties": {
+       "rateType": {
+        "type": "string",
+        "description": "Currency exchange rate to apply to the GL account.",
+        "nullable": false,
+        "default": "endingSpotRate",
+        "enum": [
+         "endingSpotRate",
+         "weightedAverageRate",
+         "historicalRate"
+        ],
+        "example": "historicalRate"
+       },
+       "rate": {
+        "type": "string",
+        "description": "Exchange rate to apply to the GL account.",
+        "default": "Intacct daily rate",
+        "nullable": false,
+        "example": "Intacct daily rate"
+       },
+       "useUntilPeriod": {
+        "type": "string",
+        "format": "date",
+        "description": "Specifies the override expiry date for the last period when the selected rate should be used.",
+        "example": "2025-01-31"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "consolidation-override-accountRequiredProperties": {
+    "type": "object",
+    "required": [
+     "consolidationBook",
+     "glAccount",
+     "exchangeRate"
+    ],
+    "properties": {
+     "exchangeRate": {
+      "type": "object",
+      "required": [
+       "rateType",
+       "rate"
+      ]
+     }
+    }
+   },
+   "objects.consolidation.adjustment-journal": {
+    "type": "object",
+    "description": "When you first create a consolidation book, Global or Domestic Consolidation creates the proposed list of journals to be used during consolidation. Consolidation journals are required for compliance, tax, or user-defined books. After you run a consolidation, journals can no longer be modified.\n",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the consolidation adjustment journal.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the consolidation adjustment journal. This value is the same as `key` for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the consolidation adjustment journal.",
+      "readOnly": true,
+      "example": "/objects/consolidation/adjustment-journal/23"
+     },
+     "consolidationBookId": {
+      "type": "string",
+      "description": "Name for the consolidation book.",
+      "nullable": false,
+      "example": "consol_book_holding"
+     },
+     "userDefinedBookType": {
+      "type": "string",
+      "description": "Specifies the book type for the journal to be added to the consolidation book.",
+      "enum": [
+       "gaap",
+       "tax",
+       "userDefined"
+      ],
+      "nullable": false,
+      "example": "userDefined"
+     },
+     "userDefinedBookId": {
+      "type": "string",
+      "description": "Identifier for the user-defined book whose journal you want to add to the consolidation book. If `userDefinedBookType` is set to `gaap` or `tax`, this value will be `gaap` or `tax`, respectively, by default.\n",
+      "nullable": false,
+      "example": "Global Consolidation Book - Monthly Close"
+     },
+     "glJournal": {
+      "type": "object",
+      "description": "References the General Ledger (GL) consolidation journals associated with this consolidation book, for example, user-defined books.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the GL journal.",
+        "example": "123"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the GL journal.",
+        "nullable": false,
+        "example": "consol_book_userdef"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the GL journal.",
+        "nullable": false,
+        "example": "GL Consolidation Journal - Monthly Close (Global)."
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL journal.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/journal/123"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "consolidation-adjustment-journalRequiredProperties": {
+    "type": "object",
+    "required": [
+     "consolidationBookId",
+     "userDefinedBookType",
+     "glJournal"
+    ],
+    "properties": {
+     "glJournal": {
+      "type": "object",
+      "required": [
+       "id",
+       "name"
+      ]
+     }
+    }
+   },
+   "objects.consolidation.time-period": {
+    "type": "object",
+    "description": "Consolidation time periods represent standard months or company-defined accounting periods, including the first and last days of each period.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the time period.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the time period.",
+      "example": "Jan 2025",
+      "readOnly": true
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the time period.",
+      "readOnly": true,
+      "example": "/objects/consolidation/time-period/23"
+     },
+     "periodName": {
+      "type": "string",
+      "description": "Specifies the name of the time period, such as a standard month or a company-defined accounting period.",
+      "example": "Jan 2025"
+     },
+     "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Specifies the start date for the time period, which is the first day of the period.",
+      "example": "2025-04-01"
+     },
+     "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Specifies the end date for the time period, which is the last day of the period.",
+      "example": "2025-06-30"
+     }
+    }
+   },
+   "objects.consolidation.run-status": {
+    "type": "object",
+    "description": "The consolidation run status object provides information about the status of a consolidation process for a specific book, entity, and period.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the consolidation run status.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the consolidation run status. This value is the same as `key` for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the consolidation run status.",
+      "readOnly": true,
+      "example": "/objects/consolidation/run-status/23"
+     },
+     "book": {
+      "type": "object",
+      "description": "References the consolidation book associated with the consolidation run.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the consolidation book.",
+        "example": "123"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the consolidation book.",
+        "example": "MariposaBook"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the consolidation book.",
+        "readOnly": true,
+        "example": "/objects/consolidation/book/123"
+       }
+      }
+     },
+     "entity": {
+      "type": "object",
+      "description": "References the entity associated with the consolidation run.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the entity.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the entity.",
+        "example": "US"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the entity.",
+        "readOnly": true,
+        "example": "United States of America"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the entity.",
+        "readOnly": true,
+        "example": "/objects/company-config/entity/1"
+       }
+      }
+     },
+     "period": {
+      "type": "object",
+      "description": "References the consolidation period associated with the consolidation run.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the consolidation period.",
+        "example": "600"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the consolidation period.",
+        "readOnly": true,
+        "example": "Jan 2025"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the consolidation period.",
+        "example": "/objects/consolidation/time-period/624",
+        "readOnly": true
+       }
+      }
+     },
+     "consolidationDateTime": {
+      "description": "Specifies the date and time the consolidation ran.",
+      "type": "string",
+      "format": "date-time",
+      "example": "2025-06-20T16:20:00Z"
+     },
+     "runBy": {
+      "type": "object",
+      "description": "References the user who ran the consolidation.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Unique key for the user.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Identifier for the user.",
+        "example": "Admin"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/1"
+       }
+      }
+     },
+     "exchangeRate": {
+      "type": "object",
+      "description": "Provides exchange rate details for the consolidation run.",
+      "properties": {
+       "weightedAverageRate": {
+        "type": "string",
+        "description": "Weighted average rate for the exchange rate conversion.",
+        "format": "decimal-precision-10",
+        "example": "1.345"
+       },
+       "endingSpotRate": {
+        "type": "string",
+        "description": "Ending spot rate for the exchange rate conversion.",
+        "format": "decimal-precision-10",
+        "example": "1.345"
+       }
+      }
+     },
+     "status": {
+      "type": "string",
+      "description": "Specifies the current state of the consolidation.",
+      "enum": [
+       "success",
+       "inProgress",
+       "multiRun",
+       "background",
+       "failed",
+       "queued",
+       "reconsolidationRequired"
+      ],
+      "example": "success"
+     },
+     "statusMessage": {
+      "type": "string",
+      "description": "System generated message describing the state of the consolidation.",
+      "nullable": true,
+      "example": "Consolidation in progress"
+     },
+     "ownershipStructure": {
+      "type": "object",
+      "description": "References the ownership structure related to the consolidation run.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the ownership structure.",
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the ownership structure.",
+        "example": "MariposaNorth"
+       },
+       "description": {
+        "type": "string",
+        "description": "Provides a brief contextual description of the ownership structure.",
+        "example": "Mariposa North group",
+        "readOnly": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the ownership structure.",
+        "example": "/objects/consolidation/ownership-structure/23",
+        "readOnly": true
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "objects.consolidation.ownership-structure": {
+    "type": "object",
+    "description": "An ownership structure defines the hierarchical relationships between parent and child (subsidiary) entities in a consolidation.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the ownership structure.",
+      "example": "518",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the ownership structure.",
+      "example": "struct_US_holding_subsidiaries",
+      "nullable": false
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the ownership structure.",
+      "readOnly": true,
+      "example": "/objects/consolidation/ownership-structure/132"
+     },
+     "description": {
+      "type": "string",
+      "description": "Provides a brief contextual description of the ownership structure.",
+      "example": "Holding company represents 100% of US operations and 50% of EMEA operations."
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     },
+     "elimination": {
+      "type": "object",
+      "properties": {
+       "enableInterEntityAutoElimination": {
+        "type": "boolean",
+        "description": "Indicates whether to enable inter-entity auto-elimination.",
+        "default": true,
+        "example": true
+       },
+       "enableEliminationByAffiliateEntity": {
+        "type": "boolean",
+        "description": "Indicates whether to enable elimination by affiliate entity.",
+        "default": false,
+        "example": false
+       }
+      }
+     },
+     "accountingMethod": {
+      "type": "string",
+      "description": "Specifies the accounting method for the ownership structure, which determines how transactions are recorded and reported in the consolidation process.",
+      "enum": [
+       "accrual",
+       "cash"
+      ],
+      "default": "accrual",
+      "example": "accrual"
+     },
+     "userDefinedBookForEquityMethod": {
+      "type": "object",
+      "description": "References the user-defined book for the equity consolidation method. An ownership structure that uses the equity consolidation method requires a user-defined book for writing equity entries.\n\nFor more information, read about the [equity consolidation method](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=about_udb_for_equity_method) in the Sage Intacct Help Center.\n",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the user-defined book.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the user-defined book.",
+        "example": "CE"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the user-defined book.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/user-defined-book/1"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "consolidation-ownership-structureRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "consolidation-ownership-structure-consolidate-request": {
+    "description": "Consolidate ownership-structure request",
+    "type": "object",
+    "required": [
+     "ownershipStructure",
+     "timePeriod"
+    ],
+    "properties": {
+     "ownershipStructure": {
+      "type": "object",
+      "description": "References the ownership structure to consolidate.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the ownership structure.",
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the ownership structure.",
+        "example": "abc"
+       }
+      }
+     },
+     "timePeriod": {
+      "type": "object",
+      "description": "References the time period for which to consolidate the ownership structure.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the time period.",
+        "example": "624"
+       },
+       "id": {
+        "type": "string",
+        "nullable": false,
+        "description": "Identifier for the time period.",
+        "example": "Jan 2025"
+       }
+      }
+     },
+     "notificationEmail": {
+      "type": "string",
+      "nullable": false,
+      "description": "Specifies the email address to which notifications will be sent.",
+      "example": "user@company.com"
+     },
+     "overrideExchangeRate": {
+      "type": "array",
+      "description": "Provides the exchange rates to override for consolidation. If provided, the override exchange rates will be applied to the specified consolidation book and entities during the consolidation process.",
+      "items": {
+       "type": "object",
+       "properties": {
+        "consolidationBook": {
+         "type": "object",
+         "description": "References the consolidation book to use for the override exchange rates.",
+         "properties": {
+          "key": {
+           "type": "string",
+           "description": "System-assigned unique key for the consolidation book.",
+           "example": "123"
+          },
+          "id": {
+           "type": "string",
+           "nullable": false,
+           "description": "Unique identifier for the consolidation book.",
+           "example": "consol_book"
+          }
+         }
+        },
+        "consolidationEntities": {
+         "type": "array",
+         "description": "References a collection of consolidation entities to use for the override exchange rates. The override exchange rates provided will be applied to these specified consolidation entities during the consolidation process.",
+         "items": {
+          "type": "object",
+          "properties": {
+           "entity": {
+            "type": "object",
+            "description": "References the entity to be consolidated in the book.",
+            "properties": {
+             "key": {
+              "type": "string",
+              "description": "Unique key for the consolidation-entity.",
+              "example": "123"
+             },
+             "id": {
+              "type": "string",
+              "nullable": false,
+              "description": "Identifier for the consolidation-entity.",
+              "example": "US"
+             }
+            }
+           },
+           "endingSpotRate": {
+            "type": "string",
+            "format": "decimal-precision-10",
+            "nullable": false,
+            "description": "Indicates the ending spot rate for the consolidation entity in the book.",
+            "example": 1.3303
+           },
+           "weightedAverageRate": {
+            "type": "string",
+            "format": "decimal-precision-10",
+            "nullable": false,
+            "description": "Specifies the weighted average rate for the consolidation entity in the book.",
+            "example": 1.353
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "consolidation-ownership-structure-consolidate-response": {
+    "description": "Consolidate ownership-structure response",
+    "type": "object",
+    "properties": {
+     "status": {
+      "type": "string",
+      "description": "Specifies the status of the consolidation request.",
+      "example": "success"
+     },
+     "message": {
+      "type": "string",
+      "description": "Specifies the response message for the consolidation request.",
+      "example": "A job has been queued to run an offline consolidation. Go to Company > Offline job queue to view the job status."
+     }
+    }
+   },
+   "objects.consolidation.ownership-structure-period": {
+    "type": "object",
+    "description": "An ownership structure period represents a time-bound segment within an ownership structure used for consolidation in Sage Intacct.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the ownership structure period.",
+      "example": "23",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the ownership structure period. This value is the same as `key` for this object.",
+      "example": "23",
+      "readOnly": true
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the ownership structure period.",
+      "example": "/objects/consolidation/ownership-structure-period/23",
+      "readOnly": true
+     },
+     "state": {
+      "type": "string",
+      "description": "Specifies the current state of the ownership structure period.",
+      "example": "draft",
+      "enum": [
+       "draft",
+       "activated",
+       "review"
+      ],
+      "default": "draft"
+     },
+     "comment": {
+      "type": "string",
+      "description": "Provides a brief contextual comment about the ownership structure period.",
+      "example": "Time period for March 2025"
+     },
+     "fromPeriod": {
+      "type": "object",
+      "description": "References the starting time period for the ownership structure period.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the starting time period.",
+        "example": "624"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the starting time period.",
+        "example": "Jan 2025"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the starting time period.",
+        "example": "/objects/consolidation/time-period/624",
+        "readOnly": true
+       }
+      }
+     },
+     "ownershipStructure": {
+      "type": "object",
+      "description": "References the ownership structure associated with this ownership structure period.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the ownership structure.",
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the ownership structure.",
+        "example": "Holding companies for Global Holdings Inc."
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the ownership structure.",
+        "example": "/objects/consolidation/ownership-structure/23",
+        "readOnly": true
+       }
+      }
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     },
+     "ownershipEntities": {
+      "description": "Specifies a collection of ownership entities associated with the ownership structure period.",
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/objects.consolidation.ownership-entity"
+      }
+     }
+    }
+   },
+   "consolidation-ownership-structure-periodRequiredProperties": {
+    "type": "object",
+    "required": [
+     "fromPeriod",
+     "state"
+    ]
+   },
+   "objects.consolidation.ownership-entity": {
+    "type": "object",
+    "description": "An ownership entity represents a parent entity within an ownership structure, detailing its relationships with subsidiary entities and associated consolidation books.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the ownership entity.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the ownership entity. This value is the same as `key` for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the ownership entity.",
+      "readOnly": true,
+      "example": "/objects/consolidation/ownership-entity/23"
+     },
+     "consolidationBook": {
+      "type": "object",
+      "description": "References the consolidation book associated with the ownership entity.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the consolidation book.",
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the consolidation book.",
+        "example": "consol_book_holdings"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the consolidation book.",
+        "readOnly": true,
+        "example": "/objects/consolidation/book/23"
+       },
+       "description": {
+        "type": "string",
+        "description": "Provides a brief contextual description of the consolidation book.",
+        "example": "Consolidation book for holding companies."
+       },
+       "multiCurrency": {
+        "type": "object",
+        "description": "Provides multi-currency details for the global consolidation. Does not apply to domestic consolidations.",
+        "properties": {
+         "currency": {
+          "type": "string",
+          "description": "Provides currency details for the global consolidation.",
+          "example": "USD"
+         },
+         "cumulativeTranslationAdjustment": {
+          "type": "object",
+          "description": "Provides details of the cumulative translation adjustment (CTA) accounts for multi-currency consolidations.",
+          "properties": {
+           "netAssetGLAccount": {
+            "type": "string",
+            "description": "Net asset General Ledger (GL) account for currency translation.",
+            "example": "7509"
+           },
+           "netIncomeGLAccount": {
+            "type": "string",
+            "description": "Net income General Ledger (GL) account for currency translation.",
+            "example": "7509"
+           }
+          }
+         },
+         "translationMethod": {
+          "type": "object",
+          "description": "Provides details of the currency translation method for multi-currency consolidations.",
+          "properties": {
+           "balanceSheetTranslationMethod": {
+            "type": "string",
+            "description": "Specifies the translation method for balance sheet accounts:\n\n* `endingSpotRate` - Translates all balance sheet accounts using the exchange rate at the end of the reporting period.\n* `weightedAverageRate` - Uses a weighted average exchange rate for the reporting period to translate balance sheet accounts.\n",
+            "example": "endingSpotRate",
+            "enum": [
+             "endingSpotRate",
+             "weightedAverageRate"
+            ],
+            "default": "endingSpotRate"
+           },
+           "incomeTranslationMethod": {
+            "type": "string",
+            "description": "Specifies the translation method for income statement accounts:\n\n* `endingSpotRate` - Uses the exchange rate at the end of the reporting period to translate all income statement accounts.\n* `weightedAverageRate` - Translates all income statement accounts using a weighted average exchange rate for the reporting period.\n",
+            "example": "weightedAverageRate",
+            "enum": [
+             "endingSpotRate",
+             "weightedAverageRate"
+            ],
+            "default": "weightedAverageRate"
+           }
+          }
+         }
+        }
+       },
+       "elimination": {
+        "type": "object",
+        "properties": {
+         "entity": {
+          "type": "string",
+          "description": "Specifies the entity used for elimination in the consolidation process.",
+          "nullable": false,
+          "example": "USDE"
+         },
+         "adjustmentGLAccount": {
+          "type": "string",
+          "description": "Specifies the General Ledger (GL) account used for elimination adjustments in the consolidation process.",
+          "example": "1000"
+         }
+        }
+       }
+      }
+     },
+     "parentEntity": {
+      "type": "object",
+      "description": "References the parent entity associated with the ownership entity.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the parent entity.",
+        "example": "23"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the parent entity.",
+        "readOnly": true,
+        "example": "/objects/company-config/entity/23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the parent entity.",
+        "example": "1"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the parent entity.",
+        "readOnly": true,
+        "example": "USA"
+       }
+      }
+     },
+     "ownershipStructurePeriod": {
+      "type": "object",
+      "description": "References the time period for the ownership structure associated with the ownership entity.",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Identifier for the ownership structure period.",
+        "example": "132"
+       },
+       "key": {
+        "type": "string",
+        "description": "Unique key for the ownership structure period.",
+        "example": "132"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the ownership structure period.",
+        "readOnly": true,
+        "example": "/objects/consolidation/ownership-structure-period/132"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     },
+     "ownershipSubsidiaryEntities": {
+      "description": "References a collection of subsidiary (child) entities for the ownership entity. There must be at least one child in an `active` state.",
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/objects.consolidation.ownership-subsidiary-entity"
+      }
+     }
+    }
+   },
+   "objects.consolidation.ownership-subsidiary-entity": {
+    "type": "object",
+    "description": "Ownership subsidiary entities represent the child entities within an ownership structure used for consolidation purposes. They cannot exist without a parent entity and an ownership structure.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the ownership subsidiary entity.",
+      "example": "23",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the ownership subsidiary entity. This value is the same as `key` for this object.",
+      "example": "23",
+      "readOnly": true
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the ownership subsidiary entity.",
+      "example": "/objects/consolidation/ownership-subsidiary-entity/23",
+      "readOnly": true
+     },
+     "ownershipPercentage": {
+      "type": "number",
+      "description": "Specifies the percentage of ownership that the parent entity holds in the subsidiary entity.",
+      "example": 85
+     },
+     "consolidationMethod": {
+      "type": "string",
+      "description": "Specifies the method used to consolidate the data of both the parent and subsidiary entity.\n\n* `consolidation` - Use when the parent entity has controlling interest of the subsidiary with ownership less than 100%.\n* `proportional` - Use for management reporting only, distributes the account activity of an entity based on the `ownershipPercentage`.\n* `fullConsolidation` - Consolidate all of the account activity for the subsidiary at 100% of the subsidiary's equity.\n* `equity` - Automatically record a subsidiary's net income to the parent entity based on ownership percentage.\n\nFor more information, read about [consolidation methods](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_Consolidation_methods) in the Sage Intacct Help Center.\n",
+      "example": "proportional",
+      "enum": [
+       "consolidation",
+       "proportional",
+       "fullConsolidation",
+       "equity"
+      ],
+      "default": "fullConsolidation"
+     },
+     "allocateSubsidiaryIncome": {
+      "type": "boolean",
+      "description": "Indicates whether to allocate subsidiary income to the parent entity.",
+      "default": true,
+      "example": false
+     },
+     "nonControllingInterestGLAccounts": {
+      "type": "object",
+      "properties": {
+       "contributedCapitalGLAccount": {
+        "type": "object",
+        "description": "Specifies the contributed capital General Ledger (GL) account for the subsidiary entity.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "Unique key for the contributed capital GL account.",
+          "example": "9"
+         },
+         "id": {
+          "type": "string",
+          "description": "Identifier for the contributed capital GL account.",
+          "example": "1000"
+         },
+         "name": {
+          "type": "string",
+          "description": "Name for the contributed capital GL account.",
+          "readOnly": true,
+          "example": "Bank of America A/c."
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the contributed capital GL account.",
+          "readOnly": true,
+          "example": "/objects/general-ledger/account/9"
+         }
+        }
+       },
+       "investmentInSubsidiaryGLAccount": {
+        "type": "object",
+        "description": "Specifies the investment in subsidiary General Ledger (GL) account for the investment in the subsidiary entity.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "Unique key for the investment in subsidiary GL account.",
+          "example": "9"
+         },
+         "id": {
+          "type": "string",
+          "description": "Identifier for the investment in subsidiary GL account.",
+          "example": "1000"
+         },
+         "name": {
+          "type": "string",
+          "description": "Name for the investment in subsidiary GL account.",
+          "readOnly": true,
+          "example": "Bank of America A/c."
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the investment in subsidiary GL account.",
+          "readOnly": true,
+          "example": "/objects/general-ledger/account/9"
+         }
+        }
+       },
+       "netIncomeAttributableToNCIGLAccount": {
+        "type": "object",
+        "description": "Specifies the net income attributable to the non-controlling interest (NCI) General Ledger (GL) account for the subsidiary entity.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "Unique key for the NCI net income GL account.",
+          "example": "9"
+         },
+         "id": {
+          "type": "string",
+          "description": "Identifier for the NCI net income GL account.",
+          "example": "1000"
+         },
+         "name": {
+          "type": "string",
+          "description": "Name for the NCI net income GL account.",
+          "readOnly": true,
+          "example": "Bank of America A/c."
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the NCI net income GL account.",
+          "readOnly": true,
+          "example": "/objects/general-ledger/account/9"
+         }
+        }
+       },
+       "equityAttributableToNCIGLAccount": {
+        "type": "object",
+        "description": "Specifies the General Ledger (GL) account for equity attributable to the non-controlling interest (NCI) for the subsidiary entity.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "Unique key for the NCI equity GL account.",
+          "example": "9"
+         },
+         "id": {
+          "type": "string",
+          "description": "Identifier for the NCI equity GL account.",
+          "example": "1000"
+         },
+         "name": {
+          "type": "string",
+          "description": "Name for the NCI equity GL account.",
+          "readOnly": true,
+          "example": "Bank of America A/c."
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the NCI equity GL account.",
+          "readOnly": true,
+          "example": "/objects/general-ledger/account/9"
+         }
+        }
+       },
+       "subsidiaryRevenueGLAccount": {
+        "type": "object",
+        "description": "Specifies the subsidiary revenue General Ledger (GL) account for the subsidiary entity.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "Unique key for the subsidiary revenue GL account.",
+          "example": "9"
+         },
+         "id": {
+          "type": "string",
+          "description": "Identifier for the subsidiary revenue GL account.",
+          "example": "1000"
+         },
+         "name": {
+          "type": "string",
+          "description": "Name for the subsidiary revenue GL account.",
+          "readOnly": true,
+          "example": "Bank of America A/c."
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the subsidiary revenue GL account.",
+          "readOnly": true,
+          "example": "/objects/general-ledger/account/9"
+         }
+        }
+       }
+      }
+     },
+     "subsidiaryEntity": {
+      "type": "object",
+      "description": "References the associated subsidiary entities within the ownership hierarchy.",
+      "properties": {
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the subsidiary entity.",
+        "example": "/objects/company-config/entity/23",
+        "readOnly": true
+       },
+       "key": {
+        "type": "string",
+        "description": "Unique key for the subsidiary entity.",
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the subsidiary entity.",
+        "example": "1"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the subsidiary entity.",
+        "example": "USA",
+        "readOnly": true
+       }
+      }
+     },
+     "ownershipEntity": {
+      "type": "object",
+      "description": "References the parent entity that owns the subsidiary entity.",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Identifier for the parent entity.",
+        "example": "132"
+       },
+       "key": {
+        "type": "string",
+        "description": "Unique key for the parent entity.",
+        "example": "132"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the parent entity.",
+        "example": "/objects/consolidation/ownership-entity/132"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "error-response": {
+    "type": "object",
+    "description": "Error response",
+    "properties": {
+     "ia::result": {
+      "type": "object",
+      "properties": {
+       "ia::error": {
+        "type": "object",
+        "properties": {
+         "code": {
+          "type": "string",
+          "example": "invalidRequest"
+         },
+         "message": {
+          "type": "string",
+          "example": "Payload contains errors"
+         },
+         "supportId": {
+          "type": "string",
+          "example": "sQrM9%7EYdh5oDEWVb80mrn9xuHjoAAAABBQ"
+         },
+         "errorId": {
+          "type": "string",
+          "example": "REST-1064"
+         },
+         "additionalInfo": {
+          "type": "object",
+          "properties": {
+           "messageId": {
+            "type": "string",
+            "example": "IA.PAYLOAD_CONTAINS_ERRORS"
+           },
+           "placeholders": {
+            "type": "object",
+            "example": {}
+           },
+           "propertySet": {
+            "type": "object",
+            "example": {}
+           }
+          }
+         },
+         "details": {
+          "type": "array",
+          "items": {
+           "type": "object",
+           "properties": {
+            "code": {
+             "type": "string",
+             "example": "invalidRequest"
+            },
+            "message": {
+             "type": "string",
+             "example": "/newDate is not a valid field"
+            },
+            "errorId": {
+             "type": "string",
+             "example": "REST-1043"
+            },
+            "target": {
+             "type": "string",
+             "example": "/newDate"
+            },
+            "additionalInfo": {
+             "type": "object",
+             "properties": {
+              "messageId": {
+               "type": "string",
+               "example": "IA.NOT_A_VALID_FIELD"
+              },
+              "placeholders": {
+               "type": "object",
+               "example": {}
+              },
+              "propertySet": {
+               "type": "object",
+               "example": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "ia::meta": {
+        "$ref": "#/components/schemas/metadata"
+       }
+      }
+     }
+    },
+    "example": {
+     "ia::result": {
+      "ia::error": {
+       "code": "invalidRequest",
+       "message": "A POST request requires a payload",
+       "errorId": "REST-1028",
+       "additionalInfo": {
+        "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+        "placeholders": {
+         "OPERATION": "POST"
+        },
+        "propertySet": {}
+       },
+       "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+      }
+     },
+     "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 0,
+      "totalError": 1
+     }
+    }
+   },
+   "status": {
+    "type": "string",
+    "description": "Object status. Active objects are fully functional. Inactive objects are essentially hidden and cannot be used or referenced.",
+    "enum": [
+     "active",
+     "inactive"
+    ],
+    "default": "active",
+    "example": "active"
+   },
+   "audit.s1": {
+    "type": "object",
+    "readOnly": true,
+    "properties": {
+     "createdDateTime": {
+      "description": "Date and time when the record was created.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-05-16T15:34:35Z"
+     },
+     "modifiedDateTime": {
+      "description": "Date and time when the record was last modified.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-09-14T21:23:42Z"
+     },
+     "createdBy": {
+      "description": "This field has been deprecated. Use the `createdByUser` field instead.",
+      "type": "string",
+      "readOnly": true,
+      "nullable": true,
+      "deprecated": true
+     },
+     "modifiedBy": {
+      "description": "This field has been deprecated. Use the `modifiedByUser` field instead.",
+      "type": "string",
+      "readOnly": true,
+      "nullable": true,
+      "deprecated": true
+     },
+     "createdByUser": {
+      "type": "object",
+      "description": "The user who created the object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "436"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JohnDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/436"
+       }
+      }
+     },
+     "modifiedByUser": {
+      "type": "object",
+      "description": "The user who last modified this object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "3086"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JaneDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/3086"
+       }
+      }
+     }
+    }
+   }
+  },
+  "responses": {
+   "400error": {
+    "description": "Bad Request",
+    "content": {
+     "application/json": {
+      "schema": {
+       "$ref": "#/components/schemas/error-response"
+      },
+      "examples": {
+       "Response example": {
+        "value": {
+         "ia::result": {
+          "ia::error": {
+           "code": "invalidRequest",
+           "message": "A POST request requires a payload",
+           "errorId": "REST-1028",
+           "additionalInfo": {
+            "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+            "placeholders": {
+             "OPERATION": "POST"
+            },
+            "propertySet": {}
+           },
+           "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+          }
+         },
+         "ia::meta": {
+          "totalCount": 1,
+          "totalSuccess": 0,
+          "totalError": 1
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "securitySchemes": {
+   "OAuth2": {
+    "description": "Sage Intacct OAuth 2.0 authorization code flow",
+    "type": "oauth2",
+    "flows": {
+     "authorizationCode": {
+      "authorizationUrl": "https://api.intacct.com/ia/api/v1/oauth2/authorize",
+      "tokenUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "refreshUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "scopes": {}
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+name: Publish to npm
+
+# Authenticates to npm with Trusted Publishing (OIDC): no NPM_TOKEN secret.
+# One-time setup, after the first manual publish: on npmjs.com open the package,
+# Settings > Publishing access > Trusted publisher > GitHub Actions, and enter
+# organization lorenz-bus-service, repository node-intacct-rest-api, workflow release.yml.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      - run: npm ci
+      - name: Publish (prerelease versions go to the "beta" dist-tag, stable ones to "latest")
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *-* ]]; then TAG=beta; else TAG=latest; fi
+          npm publish --access public --provenance --tag "$TAG"

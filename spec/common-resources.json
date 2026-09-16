@@ -1,0 +1,5590 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "title": "Common Resources",
+  "version": "1",
+  "description": "Services available throughout the API."
+ },
+ "servers": [
+  {
+   "url": "https://api.intacct.com/ia/api/v1",
+   "x-try-it": "sage-intacct-api"
+  }
+ ],
+ "tags": [
+  {
+   "name": "Common_Resources_Models",
+   "x-displayName": "Models",
+   "description": "Use the model service to find details about a resource, such as an object's queryable fields and their data types, valid values (for enums) and relationships to other objects. You can use any of those within the select and/or filter elements of a query. The model service works with all resource types including standard objects, custom objects, services, and workflows."
+  },
+  {
+   "name": "Common_Resources_Query",
+   "x-displayName": "Query",
+   "description": "The query service lets you query the data in a Sage Intacct company to return a list of objects that match given conditions. You can specify complex filter expressions and define the list of fields that you want included for each object in the results."
+  },
+  {
+   "name": "Common_Resources_Allowed operations",
+   "x-displayName": "Allowed operations",
+   "description": "Returns allowed operations for specified instances of an object type. Note that individual users may have role or permission settings that restrict them from performing certain operations."
+  },
+  {
+   "name": "Common_Resources_Bulk requests",
+   "x-displayName": "Bulk requests",
+   "description": "Use the bulk service to send multiple operations for one REST object for asynchronous processing. See the [Bulk requests](https://developer.sage.com/intacct/docs/developer-portal/api-essentials/bulk-requests/#bulk-requests) topic for more details."
+  },
+  {
+   "name": "Common_Resources_Bulk status requests",
+   "x-displayName": "Bulk status requests",
+   "description": "Use the bulk status service to monitor the status of a bulk request."
+  },
+  {
+   "name": "Common_Resources_Composite requests",
+   "x-displayName": "Composite requests",
+   "description": "Composite request service for submitting multiple \"subrequests\" in a single POST request. See the [Composite request service guide](https://developer.sage.com/intacct/docs/developer-portal/api-essentials/bulk-requests/#composite-requests) for a full description and examples."
+  },
+  {
+   "name": "Common_Resources_Session IDs",
+   "x-displayName": "Session IDs",
+   "description": "Obtains an XML API session ID using a REST API access token, which can then be used for XML API calls. The request must include a valid `Bearer` token with appropriate permissions in the `Authorization` header.\n\nEach session ID is unique and is associated with the specific access token. Keep session IDs secure and don't expose them in logs or client-side code."
+  },
+  {
+   "name": "Common_Resources_Transaction definitions",
+   "x-displayName": "Transaction definitions",
+   "description": "Template for a transaction definition."
+  },
+  {
+   "name": "Common_Resources_Exports",
+   "x-displayName": "Exports",
+   "description": "Use the export service to export data out of Sage Intacct. Export the complete objects you need or filter to export granular data, for example only invoices from January through March."
+  },
+  {
+   "name": "Common_Resources_Operations",
+   "x-displayName": "Operations",
+   "description": "Details of scheduled action that automates execution of recurring jobs."
+  },
+  {
+   "name": "Common_Resources_Schedules",
+   "x-displayName": "Schedules",
+   "description": "Defines the scheduling details for recurring transactions, including start date, frequency, next execution date, and end conditions."
+  },
+  {
+   "name": "Common_Resources_Scheduled operations",
+   "x-displayName": "Scheduled operations",
+   "description": "Maps the scheduling details and the operation for recurring transactions."
+  },
+  {
+   "name": "Common_Resources_View service",
+   "x-displayName": "View service",
+   "description": "Use the view service to execute a [system view](core.system-view) or [user view](core.user-view) and get the data that matches the view's filter and sort options at the time of execution. \n\nAny parameters that you provide in the request body override the same parameters defined in the view. For example, if a view is defined to return 10 records but you set `size` to 20 in the request body, the response will include 20 records.\n"
+  },
+  {
+   "name": "Common_Resources_System views",
+   "x-displayName": "System views",
+   "description": "System views are pre-defined query filters for objects, and are used in Sage Intacct to display data in ways that meet the needs of most users. Each time you execute a view, the response includes all data that matches the filtering and sorting options set up in the view.\n\nSystem views cannot be changed, but users can use the UI to create user views based on them. For example, a user could create a user view that uses the same filter as a system view but returns different fields.\n\nUse the [view service](core.view) to execute a system view and get the data that matches the view's filter and sort options. \n\nNote: Queries for system views must use a very specific set of `filters` in the request body, as shown in this example:\n\n  ```\n  object: system-view\n  fields:\n    - key\n    - id\n    - name\n    - description\n    - query\n  filters:\n    - $eq:\n        object: expenses/electronic-receipt\n    - $eq:\n        contexts: __default\n    - $eq:\n        id: getAllVendors\n  ```\n  \n  System view query rules:\n\n  * The only supported filter is `$eq`.\n  * Filtering by context is done via the `$eq` operation on the `contexts` field, and can only be a single context. If you need to query for more than one context you must execute 2 separate queries.\n  * If `id` is not provided the query will return all system views in a specific context.\n  * If `id` is unique across all contexts, the `context` filter is not required.\n"
+  },
+  {
+   "name": "Common_Resources_User views",
+   "x-displayName": "User views",
+   "description": "User views are stored queries on objects that can be used to get a filtered list of objects based on current data at any given time. User views can be created and modified through the UI or the API, and can be restricted to the user who creates one or made available to all users.\n\nUse the [view service](core.view) to execute a view and get the data that matches the view's filter and sort options. \n\nNote that user views are not the same as custom views, although they are similar. This API object and operations only apply to user views."
+  }
+ ],
+ "paths": {
+  "/services/core/model": {
+   "get": {
+    "summary": "Get an object model definition",
+    "description": "List all the fields and relationships for an object, service, or other resource. Example requests:\n\n- Short definition of all resources in the current version: `/services/core/model`\n- Full model of a specified resource: `/services/core/model?name=company-config/department`\n- Full model or a resource in a specific API version: `/services/core/model?name=projects/task&version=v1`\n- Full model for all resources of a specified type in a version: `/services/core/model?version=v1&schema=true&type=workflow`",
+    "operationId": "get-services-model",
+    "tags": [
+     "Common_Resources_Models"
+    ],
+    "parameters": [
+     {
+      "name": "name",
+      "description": "Resource name, in the form `<application-name>/<resource name>`. Note that some services have 3-part names, such as `company-config/document-sequence/get-next-sequence`. For custom objects use `platform-apps/nsp::<object-name>`.",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "example": "accounts-payable/vendor"
+     },
+     {
+      "name": "type",
+      "description": "A resource type to get a list of all resources of that type.\n\n- `object`\n- `service`\n- `workflow`\n- A specific resource type, such as `ownedObject`. The resource type is one of the fields returned in the resource model.\n- A comma-separated list of resource types. `object` and `service` cannot be included in the list.",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "example": "object"
+     },
+     {
+      "name": "version",
+      "description": "The API version for which you want a list of resources or a resource model. Use with the `name` parameter to ger a resource model as defined in a specific version of the API. Use `version=all` to get a list of versions. The default is the version used in the URL path of the `model` request.",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "example": "v1"
+     },
+     {
+      "name": "schema",
+      "description": "Set to `true` to return the full model of the resource. Set to `false` to return the short definition. The default is `true` when requesting a single resource and `false` when requesting a list of resources.",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "example": true
+     },
+     {
+      "name": "description",
+      "description": "Set to `true` to return in addition of the model the descriptions, examples and tags. Set to `false` to return only the model definition. The default is `false`.",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "example": true
+     },
+     {
+      "name": "filter",
+      "description": "The RegExp filter to apply to the resource names. The default is `.*`, which returns all resources.",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "example": ".*company-config\\/cla.*"
+     },
+     {
+      "name": "descriptionFilter",
+      "description": "The RegExp filter to apply to the descriptions. The default is `.*`, which returns all resources.",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "example": ".*company config.*"
+     },
+     {
+      "name": "tags",
+      "deprecated": true,
+      "description": "Use `true` (default) to return the resource schema formatted as-is. Use `false` to return the schema without the wrapping objects for groups, refs, and lists.",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "example": false
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Model response",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-model"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Model for department": {
+          "value": {
+           "ia::result": {
+            "fields": {
+             "id": {
+              "mutable": false,
+              "nullable": false,
+              "type": "string",
+              "readOnly": false,
+              "writeOnly": false,
+              "required": false
+             },
+             "key": {
+              "readOnly": true,
+              "type": "string",
+              "writeOnly": false,
+              "required": false,
+              "nullable": true,
+              "mutable": false
+             },
+             "name": {
+              "nullable": false,
+              "type": "string",
+              "readOnly": false,
+              "writeOnly": false,
+              "required": false,
+              "mutable": true
+             },
+             "reportTitle": {
+              "nullable": true,
+              "type": "string",
+              "readOnly": false,
+              "writeOnly": false,
+              "required": false,
+              "mutable": true
+             },
+             "status": {
+              "enum": [
+               "active",
+               "activeNonPosting",
+               "inactive"
+              ],
+              "type": "string",
+              "readOnly": false,
+              "writeOnly": false,
+              "required": false,
+              "nullable": false,
+              "mutable": true
+             }
+            },
+            "groups": {
+             "audit": {
+              "fields": {
+               "createdBy": {
+                "readOnly": true,
+                "type": "string",
+                "writeOnly": false,
+                "required": false,
+                "nullable": true,
+                "mutable": false
+               },
+               "createdDateTime": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string",
+                "writeOnly": false,
+                "required": false,
+                "nullable": true,
+                "mutable": false
+               },
+               "modifiedBy": {
+                "readOnly": true,
+                "type": "string",
+                "writeOnly": false,
+                "required": false,
+                "nullable": true,
+                "mutable": false
+               },
+               "modifiedDateTime": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string",
+                "writeOnly": false,
+                "required": false,
+                "nullable": true,
+                "mutable": false
+               }
+              }
+             }
+            },
+            "httpMethods": "OPTIONS,GET,POST,DELETE,PATCH",
+            "refs": {
+             "parent": {
+              "apiObject": "company-config/department",
+              "fields": {
+               "id": {
+                "type": "string",
+                "readOnly": false,
+                "writeOnly": false,
+                "required": false,
+                "nullable": true,
+                "mutable": true
+               },
+               "key": {
+                "nullable": true,
+                "type": "string",
+                "readOnly": false,
+                "writeOnly": false,
+                "required": false,
+                "mutable": true
+               },
+               "name": {
+                "readOnly": true,
+                "type": "string",
+                "writeOnly": false,
+                "required": false,
+                "nullable": true,
+                "mutable": false
+               }
+              }
+             },
+             "supervisor": {
+              "apiObject": "company-config/employee",
+              "fields": {
+               "id": {
+                "type": "string",
+                "readOnly": false,
+                "writeOnly": false,
+                "required": false,
+                "nullable": true,
+                "mutable": true
+               },
+               "key": {
+                "nullable": true,
+                "type": "string",
+                "readOnly": false,
+                "writeOnly": false,
+                "required": false,
+                "mutable": true
+               },
+               "name": {
+                "readOnly": true,
+                "type": "string",
+                "writeOnly": false,
+                "required": false,
+                "nullable": true,
+                "mutable": false
+               }
+              }
+             }
+            },
+            "lists": [],
+            "idempotenceSupported": true
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/core/query": {
+   "post": {
+    "summary": "Query an object",
+    "description": "Queries an object for filtered data.",
+    "operationId": "post-services-query",
+    "tags": [
+     "Common_Resources_Query"
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/core-query"
+       },
+       "examples": {
+        "Query vendor": {
+         "value": {
+          "object": "accounts-payable/vendor",
+          "fields": [
+           "id",
+           "name",
+           "status",
+           "href"
+          ],
+          "filters": [
+           {
+            "$eq": {
+             "status": "active"
+            }
+           },
+           {
+            "$eq": {
+             "billingType": "openItem"
+            }
+           }
+          ],
+          "filterExpression": "1 and 2",
+          "filterParameters": {
+           "caseSensitiveComparison": true,
+           "includePrivate": true
+          },
+          "orderBy": [
+           {
+            "id": "asc"
+           }
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Query results",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "description": "Fields requested in query",
+           "items": {
+            "type": "object",
+            "description": "List of fields and their values",
+            "additionalProperties": {
+             "anyOf": [
+              {
+               "type": "string",
+               "nullable": true
+              },
+              {
+               "type": "number"
+              },
+              {
+               "type": "object"
+              },
+              {
+               "type": "boolean"
+              }
+             ]
+            }
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "Response - Query vendor": {
+          "value": {
+           "ia::result": [
+            {
+             "id": "Vend-00002",
+             "name": "Test vendor",
+             "status": "active",
+             "href": "/objects/accounts-payable/vendor/85"
+            },
+            {
+             "id": "VEND-00010",
+             "name": "Design Works",
+             "status": "active",
+             "href": "/objects/accounts-payable/vendor/111"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/core/allowed-operations/list": {
+   "post": {
+    "summary": "Get allowed operations",
+    "description": "Returns allowed operations for specified objects.",
+    "tags": [
+     "Common_Resources_Allowed operations"
+    ],
+    "operationId": "list-allowed-operations",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/services.core.allowed-operations-request"
+       },
+       "examples": {
+        "Get allowed operations for specified vendors": {
+         "value": {
+          "object": "accounts-payable/vendor",
+          "keys": [
+           "1",
+           "6",
+           "65"
+          ],
+          "operations": [
+           "canView",
+           "canEdit",
+           "canDelete"
+          ],
+          "options": {
+           "includePrivate": true
+          },
+          "additionalData": {
+           "requestType": "vendor-list"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Allowed operations",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/services.core.allowed-operations-response"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Vendor Allowed Operations Response": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "operations": [
+              "canView",
+              "canEdit",
+              "canDelete"
+             ],
+             "additionalData": {
+              "operationCode": 123
+             }
+            },
+            {
+             "key": "6",
+             "operations": [
+              "canView",
+              "canEdit"
+             ],
+             "additionalData": {
+              "operationCode": 0
+             }
+            },
+            {
+             "key": "65",
+             "operations": [
+              "canView"
+             ],
+             "additionalData": {
+              "operationCode": 150
+             }
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/bulk/job/create": {
+   "post": {
+    "summary": "Send a bulk request",
+    "description": "Send a bulk request for asynchronous processing.",
+    "tags": [
+     "Common_Resources_Bulk requests"
+    ],
+    "operationId": "post-bulk-job-create",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/bulk-job-create-request"
+       },
+       "examples": {
+        "Request example": {
+         "value": {
+          "objectName": "vendor",
+          "operation": "create",
+          "jobFile": "vendor.json",
+          "fileContentType": "json",
+          "callbackURL": "https://example.com/callback"
+         },
+         "isAutoGenerated": true
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/bulk-job-create-response"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": {
+            "jobId": "950bf10d-f119-41c9-a352-1b68b34498c3",
+            "statusURL": "/services/bulk/job/status?jobId=950bf10d-f119-41c9-a352-1b68b34498c3",
+            "createdDateTime": "2023-08-01T01:20:30"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/bulk/job/status": {
+   "get": {
+    "summary": "Get a bulk request status",
+    "description": "Monitor the status of a bulk request.",
+    "tags": [
+     "Common_Resources_Bulk status requests"
+    ],
+    "operationId": "get-bulk-job-status",
+    "parameters": [
+     {
+      "schema": {
+       "type": "string"
+      },
+      "in": "query",
+      "name": "jobId",
+      "description": "Unique identifier for the bulk request.",
+      "required": true,
+      "example": "950bf10d-f119-41c9-a352-1b68b34498c3"
+     },
+     {
+      "schema": {
+       "type": "boolean"
+      },
+      "in": "query",
+      "name": "download",
+      "description": "After the bulk request has completed (`status` field is set to `completed`), set to `true`to download the response file which contains the results of all the operations in JSON format.",
+      "example": true
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/bulk-job-status-response"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": {
+            "jobId": "950bf10d-f119-41c9-a352-1b68b34498c3",
+            "status": "completed",
+            "percentComplete": 100,
+            "downloadURL": "/services/bulk/job/status?jobId=950bf10d-f119-41c9-a352-1b68b34498c3&download=true",
+            "jobStatusFile": "950bf10d-f119-41c9-a352-1b68b34498c3-response.json"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/core/composite": {
+   "post": {
+    "summary": "Send a composite request",
+    "description": "Sends multiple requests within a single POST request.",
+    "tags": [
+     "Common_Resources_Composite requests"
+    ],
+    "operationId": "post-services-composite",
+    "requestBody": {
+     "description": "Array of subrequests",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/core-composite-request"
+       },
+       "examples": {
+        "Multiple independent requests to change employee location": {
+         "value": [
+          {
+           "method": "PATCH",
+           "path": "/objects/company-config/employee/26",
+           "body": {
+            "location": {
+             "key": "6"
+            }
+           }
+          },
+          {
+           "method": "PATCH",
+           "path": "/objects/company-config/employee/33",
+           "body": {
+            "location": {
+             "key": "6"
+            }
+           }
+          },
+          {
+           "method": "PATCH",
+           "path": "/objects/company-config/employee/62",
+           "body": {
+            "location": {
+             "key": "6"
+            }
+           }
+          }
+         ]
+        },
+        "Multiple requests using data from previous": {
+         "value": [
+          {
+           "method": "GET",
+           "path": "/objects/company-config/employee/52",
+           "resultReference": "employee"
+          },
+          {
+           "method": "POST",
+           "path": "/services/core/query",
+           "body": {
+            "object": "employee",
+            "fields": [
+             "id",
+             "jobTitle",
+             "department.key",
+             "employeeType.id"
+            ],
+            "filters": [
+             {
+              "$eq": {
+               "department.key": "@{employee.department.key}"
+              }
+             },
+             {
+              "$eq": {
+               "employeeType.id": "@{employee.employeeType.id}"
+              }
+             }
+            ],
+            "filterExpression": "1 and 2",
+            "orderBy": [
+             {
+              "id": "asc"
+             }
+            ]
+           }
+          }
+         ]
+        },
+        "Multi-status example": {
+         "value": [
+          {
+           "method": "GET",
+           "path": "/services/core/async/job-status?jobId=NjQ2NTc2MzAzMVl1Ul9qVmd6M2t4M2pPdEJya2J5Y2dBQUFBQTE"
+          },
+          {
+           "method": "GET",
+           "path": "/objects/company-config/contact/2662"
+          }
+         ]
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "description": "Composite response",
+           "items": {
+            "type": "object",
+            "properties": {
+             "ia::status": {
+              "type": "integer",
+              "description": "HTTP status code"
+             },
+             "ia::result": {
+              "anyOf": [
+               {
+                "type": "object",
+                "description": "Response of CRUD on a single object"
+               },
+               {
+                "type": "array",
+                "description": "Response of a query",
+                "items": {
+                 "type": "object"
+                }
+               }
+              ]
+             },
+             "ia::meta": {
+              "anyOf": [
+               {
+                "$ref": "#/components/schemas/metadata"
+               },
+               {
+                "$ref": "#/components/schemas/metadata-pages"
+               }
+              ]
+             }
+            }
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Multiple independent requests to change employee location": {
+          "value": {
+           "ia::result": [
+            {
+             "ia::result": {
+              "key": "26",
+              "id": "0014",
+              "href": "/objects/company-config/employee/26"
+             },
+             "ia::meta": {
+              "totalCount": 1
+             },
+             "ia::status": 200
+            },
+            {
+             "ia::result": {
+              "key": "33",
+              "id": "1",
+              "href": "/objects/company-config/employee/33"
+             },
+             "ia::meta": {
+              "totalCount": 1
+             },
+             "ia::status": 200
+            },
+            {
+             "ia::result": {
+              "key": "62",
+              "id": "2",
+              "href": "/objects/company-config/employee/62"
+             },
+             "ia::meta": {
+              "totalCount": 1
+             },
+             "ia::status": 200
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3
+           }
+          }
+         },
+         "Multiple Requests using data from previous": {
+          "value": {
+           "ia::result": [
+            {
+             "ia::result": {
+              "key": "52",
+              "id": "Emp2",
+              "SSN": "100000001",
+              "jobTitle": "Sr Software Eng",
+              "location": {
+               "id": "10",
+               "key": "15",
+               "name": "Indianapolis",
+               "href": "/objects/company-config/location/15"
+              },
+              "department": {
+               "id": "10",
+               "key": "10",
+               "name": "QA - II",
+               "href": "/objects/company-config/department/10"
+              },
+              "manager": {
+               "key": "11",
+               "id": "10",
+               "href": "/objects/company-config/employee/11"
+              },
+              "birthDate": "1984-04-14",
+              "startDate": "2021-05-01",
+              "endDate": "2025-04-02",
+              "status": "active",
+              "employeeType": {
+               "id": "Part Time",
+               "key": "2",
+               "href": "/objects/company-config/employee-type/2"
+              },
+              "gender": "female",
+              "terminationType": "involuntary",
+              "primaryContact": {
+               "id": "abc(C02)",
+               "name": "abc(C02)",
+               "key": "205",
+               "href": "/objects/company-config/contact/205"
+              },
+              "defaultCurrency": "MXN",
+              "earningType": {
+               "key": "2",
+               "id": "earningType2",
+               "name": "earningType2",
+               "href": "/objects/company-config/earning-type/2"
+              },
+              "class": {
+               "id": "SW-Office",
+               "name": "Office Software",
+               "key": "9",
+               "href": "/objects/company-config/class/9"
+              },
+              "href": "/objects/company-config/employee/52"
+             },
+             "ia::meta": {
+              "totalCount": 1
+             },
+             "ia::status": 200
+            },
+            {
+             "ia::result": [
+              {
+               "id": "Emp2",
+               "jobTitle": "Sr Software Eng",
+               "department.key": "10",
+               "employeeType.id": "Part Time"
+              },
+              {
+               "id": "Emp10",
+               "jobTitle": "QA Engineer",
+               "department.key": "10",
+               "employeeType.id": "Part Time"
+              },
+              {
+               "id": "Emp22",
+               "jobTitle": "Architect",
+               "department.key": "10",
+               "employeeType.id": "Full Time"
+              }
+             ],
+             "ia::meta": {
+              "totalCount": 3,
+              "start": 1,
+              "pageSize": 100,
+              "next": null,
+              "previous": null
+             },
+             "ia::status": 200
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "207": {
+      "description": "Multi-Status",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "description": "Composite response",
+           "items": {
+            "type": "object",
+            "properties": {
+             "ia::status": {
+              "type": "integer",
+              "description": "HTTP status code"
+             },
+             "ia::result": {
+              "anyOf": [
+               {
+                "type": "object",
+                "description": "Response of CRUD on a single object"
+               },
+               {
+                "type": "array",
+                "description": "Response of a query",
+                "items": {
+                 "type": "object"
+                }
+               },
+               {
+                "type": "object",
+                "description": "Error response",
+                "properties": {
+                 "ia::error": {
+                  "$ref": "#/components/schemas/error"
+                 }
+                }
+               }
+              ]
+             },
+             "ia::error": {
+              "$ref": "#/components/schemas/error"
+             },
+             "ia::meta": {
+              "anyOf": [
+               {
+                "$ref": "#/components/schemas/metadata"
+               },
+               {
+                "$ref": "#/components/schemas/metadata-pages"
+               }
+              ]
+             }
+            }
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Multi-status example": {
+          "value": {
+           "ia::result": [
+            {
+             "ia::error": {
+              "code": "notFound",
+              "message": "Asynchronous job 6465763031YSPy9lgWtJCMGZ6UkUbA6QAAAAY1 status could not be found",
+              "supportId": "tqKR0%7EYsTZeDEdVao0_h01dZFQqgAAAAY"
+             },
+             "ia::status": 404
+            },
+            {
+             "ia::error": {
+              "code": "unprocessed",
+              "message": "Operation skipped due to atomic transaction failure"
+             },
+             "ia::status": 422
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "totalSuccess": 0,
+            "totalError": 2
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/core/session/id": {
+   "get": {
+    "summary": "Get an XML API session ID",
+    "description": "Get an XML API session ID for a REST API access token.",
+    "tags": [
+     "Common_Resources_Session IDs"
+    ],
+    "operationId": "get-core-session-id",
+    "responses": {
+     "200": {
+      "description": "Executed",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/core-session-id-response"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "success": {
+          "value": {
+           "ia::result": {
+            "sessionId": "Qw8RmZ3TnB5GyJ7Hq8UvFzE0Xr9PLK2K1D4YjC7V6qDkZxWfB3l-tgJ2",
+            "expiresIn": 21600
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/txn-definition": {
+   "get": {
+    "summary": "List transaction definitions",
+    "description": "Returns a collection with a key, ID, and link for each transaction definition. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find users that meet certain criteria and specify the properties that are returned.",
+    "tags": [
+     "Common_Resources_Transaction definitions"
+    ],
+    "operationId": "list-common-core-txn-definition",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of txn-definition objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List transaction definitions": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "33",
+             "id": "33",
+             "href": "/objects/core/txn-definition/33"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 1,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a transaction definition",
+    "description": "Creates a new transaction definition.",
+    "tags": [
+     "Common_Resources_Transaction definitions"
+    ],
+    "operationId": "create-common-core-txn-definition",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.core.txn-definition"
+         },
+         {
+          "$ref": "#/components/schemas/common-core-txn-definitionRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "example-1": {
+         "value": {
+          "id": "Sales Invoice"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New txn-definition",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "201 response example": {
+          "value": {
+           "ia::result": {
+            "key": "12345",
+            "id": "ID123",
+            "href": "/objects/<application>/<name>/12345"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/txn-definition/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned key for the transaction definition.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "34"
+    }
+   ],
+   "get": {
+    "summary": "Get a transaction definition",
+    "description": "Returns detailed information for a specified transaction definition.",
+    "tags": [
+     "Common_Resources_Transaction definitions"
+    ],
+    "operationId": "get-common-core-txn-definition-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the txn-definition",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.core.txn-definition"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a transaction definition": {
+          "value": {
+           "ia::result": {
+            "key": "154",
+            "id": "Sales Invoice",
+            "href": "/objects/core/txn-definition/154"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a transaction definition",
+    "description": "Updates an existing transaction definition by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Common_Resources_Transaction definitions"
+    ],
+    "operationId": "update-common-core-txn-definition-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.core.txn-definition"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a transaction definition": {
+         "value": {
+          "key": "154",
+          "id": "true"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated txn-definition",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated transaction definition": {
+          "value": {
+           "ia::result": {
+            "key": "33",
+            "id": "33",
+            "href": "/objects/core/txn-definition/33"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a transaction definition",
+    "description": "Deletes a transaction definition.",
+    "tags": [
+     "Common_Resources_Transaction definitions"
+    ],
+    "operationId": "delete-common-core-txn-definition-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/core/export": {
+   "post": {
+    "summary": "Export objects",
+    "operationId": "post-core-export",
+    "description": "Export a collection of objects. Use the `query` property to filter data.",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/vnd.ms-word": {},
+       "application/vnd.ms-excel": {},
+       "application/pdf": {},
+       "text/xml": {}
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "tags": [
+     "Common_Resources_Exports"
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/services.core.export"
+       },
+       "examples": {
+        "Export vendor objects": {
+         "value": {
+          "fileType": "pdf",
+          "query": {
+           "object": "vendor",
+           "fields": [
+            "id",
+            "name",
+            "status",
+            "key"
+           ],
+           "filters": [
+            {
+             "$eq": {
+              "status": "active"
+             }
+            },
+            {
+             "$eq": {
+              "billingType": "openItem"
+             }
+            }
+           ],
+           "filterExpression": "1 and 2",
+           "orderBy": [
+            {
+             "id": "asc"
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/operation": {
+   "get": {
+    "summary": "List operations",
+    "description": "Returns a collection with a key, ID, and link for each operation. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Common_Resources_Operations"
+    ],
+    "operationId": "list-core-operation",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of operation objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "12345",
+             "id": "ID123",
+             "href": "/objects/<application>/<name>/12345"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": 101,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an operation",
+    "description": "Creates a new operation.",
+    "tags": [
+     "Common_Resources_Operations"
+    ],
+    "operationId": "create-core-operation",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.core.operation"
+         },
+         {
+          "$ref": "#/components/schemas/core-operationRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Request example": {
+         "value": {
+          "id": "Monthly inventory check",
+          "description": "Monthly inventory check for organic produce",
+          "userKey": 23,
+          "entity": "string",
+          "action": "checkInventory",
+          "bodyData": "Check inventory",
+          "moduleKey": "orderEntry",
+          "locationKey": "string",
+          "contactEmail": "admin@company.org",
+          "userInfo": "adminUser",
+          "status": "active"
+         },
+         "isAutoGenerated": true
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New operation",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "201 response example": {
+          "value": {
+           "ia::result": {
+            "key": "12345",
+            "id": "ID123",
+            "href": "/objects/<application>/<name>/12345"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/operation/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned key for the operation.",
+     "in": "path",
+     "required": true,
+     "example": "34",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "summary": "Get an operation",
+    "description": "Returns detailed information for a specified operation.",
+    "tags": [
+     "Common_Resources_Operations"
+    ],
+    "operationId": "get-core-operation-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the operation",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.core.operation"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": {
+            "key": "23",
+            "id": "Monthly inventory check",
+            "description": "Monthly inventory check for organic produce",
+            "userKey": 23,
+            "entity": "string",
+            "action": "checkInventory",
+            "bodyData": "Check inventory",
+            "moduleKey": "orderEntry",
+            "locationKey": "string",
+            "contactEmail": "admin@company.org",
+            "userInfo": "adminUser",
+            "href": "/objects/core/operation/23",
+            "status": "active"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an operation",
+    "description": "Updates an existing operation by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Common_Resources_Operations"
+    ],
+    "operationId": "update-core-operation-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.core.operation"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Request example": {
+         "value": {
+          "description": "Monthly inventory check for organic produce",
+          "userKey": 23,
+          "entity": "string",
+          "action": "checkInventory",
+          "bodyData": "Check inventory",
+          "moduleKey": "orderEntry",
+          "locationKey": "string",
+          "contactEmail": "admin@company.org",
+          "userInfo": "adminUser",
+          "status": "active"
+         },
+         "isAutoGenerated": true
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated operation",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": {
+            "key": "12345",
+            "id": "ID123",
+            "href": "/objects/<application>/<name>/12345"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an operation",
+    "description": "Deletes an operation.",
+    "tags": [
+     "Common_Resources_Operations"
+    ],
+    "operationId": "delete-core-operation-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/schedule": {
+   "get": {
+    "summary": "List schedules",
+    "description": "Returns a collection with a key, ID, and link for each schedule. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Common_Resources_Schedules"
+    ],
+    "operationId": "list-core-schedule",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of schedule objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "12345",
+             "id": "ID123",
+             "href": "/objects/<application>/<name>/12345"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": 101,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a schedule",
+    "description": "Creates a new schedule.",
+    "tags": [
+     "Common_Resources_Schedules"
+    ],
+    "operationId": "create-core-schedule",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.core.schedule"
+         },
+         {
+          "$ref": "#/components/schemas/core-scheduleRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Request example": {
+         "value": {
+          "id": "Monthly installment billing",
+          "description": "Monthly installment billing for organic produce",
+          "executionType": "automatic",
+          "startDate": "2024-06-01",
+          "endDate": "2025-06-01",
+          "repeatBy": "month",
+          "repeatDate": 3,
+          "repeatInterval": 2,
+          "repeatCount": 5,
+          "nextExecutionDate": "2025-04-01",
+          "lastExecutionDate": "2025-06-01",
+          "dueDate": "2025-06-01",
+          "executionCount": 12,
+          "cronID": "234",
+          "startOn": 15,
+          "endOn": 7,
+          "userinfo": "Admin",
+          "status": "active"
+         },
+         "isAutoGenerated": true
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New schedule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "201 response example": {
+          "value": {
+           "ia::result": {
+            "key": "12345",
+            "id": "ID123",
+            "href": "/objects/<application>/<name>/12345"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/schedule/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned key for the schedule.",
+     "in": "path",
+     "required": true,
+     "example": "34",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "summary": "Get a schedule",
+    "description": "Returns detailed information for a specified schedule.",
+    "tags": [
+     "Common_Resources_Schedules"
+    ],
+    "operationId": "get-core-schedule-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the schedule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.core.schedule"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": {
+            "key": "34",
+            "id": "Monthly installment billing",
+            "description": "Monthly installment billing for organic produce",
+            "executionType": "automatic",
+            "startDate": "2024-06-01",
+            "endDate": "2025-06-01",
+            "repeatBy": "month",
+            "repeatDate": 3,
+            "repeatInterval": 2,
+            "repeatCount": 5,
+            "nextExecutionDate": "2025-04-01",
+            "lastExecutionDate": "2025-06-01",
+            "dueDate": "2025-06-01",
+            "executionCount": 12,
+            "cronID": "234",
+            "startOn": 15,
+            "endOn": 7,
+            "userinfo": "Admin",
+            "href": "/objects/core/schedule/234",
+            "status": "active"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a schedule",
+    "description": "Updates an existing schedule by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Common_Resources_Schedules"
+    ],
+    "operationId": "update-core-schedule-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.core.schedule"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Request example": {
+         "value": {
+          "description": "Monthly installment billing for organic produce",
+          "executionType": "automatic",
+          "startDate": "2024-06-01",
+          "endDate": "2025-06-01",
+          "repeatBy": "month",
+          "repeatDate": 3,
+          "repeatInterval": 2,
+          "repeatCount": 5,
+          "nextExecutionDate": "2025-04-01",
+          "lastExecutionDate": "2025-06-01",
+          "dueDate": "2025-06-01",
+          "executionCount": 12,
+          "cronID": "234",
+          "startOn": 15,
+          "endOn": 7,
+          "userinfo": "Admin",
+          "status": "active"
+         },
+         "isAutoGenerated": true
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated schedule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": {
+            "key": "12345",
+            "id": "ID123",
+            "href": "/objects/<application>/<name>/12345"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a schedule",
+    "description": "Deletes a schedule.",
+    "tags": [
+     "Common_Resources_Schedules"
+    ],
+    "operationId": "delete-core-schedule-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/scheduled-operation": {
+   "get": {
+    "summary": "List scheduled operations",
+    "description": "Returns a collection with a key, ID, and link for each scheduled operation. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Common_Resources_Scheduled operations"
+    ],
+    "operationId": "list-core-scheduled-operation",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of scheduled-operation objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "12345",
+             "id": "ID123",
+             "href": "/objects/<application>/<name>/12345"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": 101,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a scheduled operation",
+    "description": "Creates a new scheduled operation.",
+    "tags": [
+     "Common_Resources_Scheduled operations"
+    ],
+    "operationId": "create-core-scheduled-operation",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.core.scheduled-operation"
+         },
+         {
+          "$ref": "#/components/schemas/core-scheduled-operationRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Request example": {
+         "value": {
+          "id": "string",
+          "scheduleKey": 83,
+          "operationKey": 234,
+          "description": "string",
+          "operation": {
+           "key": "234",
+           "id": "Generate monthly invoice"
+          },
+          "schedule": {
+           "key": "83",
+           "id": "Monthly invoice generation",
+           "nextScheduledDate": "2025-07-01"
+          },
+          "userinfo": "admin",
+          "status": "active"
+         },
+         "isAutoGenerated": true
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New scheduled-operation",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "201 response example": {
+          "value": {
+           "ia::result": {
+            "key": "12345",
+            "id": "ID123",
+            "href": "/objects/<application>/<name>/12345"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/scheduled-operation/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned key for the scheduled operation.",
+     "in": "path",
+     "required": true,
+     "example": "54",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "summary": "Get a scheduled operation",
+    "description": "Returns detailed information for a specified scheduled operation.",
+    "tags": [
+     "Common_Resources_Scheduled operations"
+    ],
+    "operationId": "get-core-scheduled-operation-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the scheduled-operation",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.core.scheduled-operation"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": {
+            "key": "string",
+            "id": "string",
+            "scheduleKey": 83,
+            "operationKey": 234,
+            "description": "string",
+            "operation": {
+             "key": "234",
+             "id": "Generate monthly invoice",
+             "href": "/objects/core/operation/234"
+            },
+            "schedule": {
+             "key": "83",
+             "id": "Monthly invoice generation",
+             "nextScheduledDate": "2025-07-01",
+             "href": "/objects/core/schedule/83"
+            },
+            "userinfo": "admin",
+            "href": "/objects/core/scheduled-operation/234",
+            "status": "active"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a scheduled operation",
+    "description": "Updates an existing scheduled operation by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Common_Resources_Scheduled operations"
+    ],
+    "operationId": "update-core-scheduled-operation-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.core.scheduled-operation"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Request example": {
+         "value": {
+          "scheduleKey": 83,
+          "operationKey": 234,
+          "description": "string",
+          "operation": {
+           "key": "234",
+           "id": "Generate monthly invoice"
+          },
+          "schedule": {
+           "key": "83",
+           "id": "Monthly invoice generation",
+           "nextScheduledDate": "2025-07-01"
+          },
+          "userinfo": "admin",
+          "status": "active"
+         },
+         "isAutoGenerated": true
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated scheduled-operation",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "200 response example": {
+          "value": {
+           "ia::result": {
+            "key": "12345",
+            "id": "ID123",
+            "href": "/objects/<application>/<name>/12345"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 2,
+            "totalError": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a scheduled operation",
+    "description": "Deletes a scheduled operation.",
+    "tags": [
+     "Common_Resources_Scheduled operations"
+    ],
+    "operationId": "delete-core-scheduled-operation-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/core/view": {
+   "post": {
+    "summary": "Execute a view",
+    "description": "Requests current data that matches the filter and sort options defined in a system view or user view, modified by any parameters in the request body.",
+    "tags": [
+     "Common_Resources_View service"
+    ],
+    "operationId": "post-services-view",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/services.core.view"
+       },
+       "examples": {
+        "User view": {
+         "value": {
+          "key": "540",
+          "viewType": "user",
+          "size": 3,
+          "start": 7,
+          "filterParameters": {
+           "asOfDate": "2025-04-01",
+           "caseSensitiveComparison": false
+          }
+         }
+        },
+        "System view": {
+         "value": {
+          "key": "expenses/employee-expense::systemfw1",
+          "viewType": "system",
+          "size": 3,
+          "start": 4,
+          "filterParameters": {
+           "caseSensitiveComparison": true,
+           "includePrivate": true
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "View query response",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "description": "Data requested in query",
+           "items": {
+            "type": "object"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "User view": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "61",
+             "id": "Vend-00010",
+             "name": "Design Works",
+             "status": "active",
+             "href": "/objects/accounts-payable/vendor/61"
+            },
+            {
+             "key": "63",
+             "id": "V1234555",
+             "name": "North Fork Power",
+             "status": "active",
+             "href": "/objects/accounts-payable/vendor/63"
+            },
+            {
+             "key": "38",
+             "id": "V80863",
+             "name": "Woodland Construction",
+             "status": "active",
+             "href": "/objects/accounts-payable/vendor/38"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 49,
+            "start": 7,
+            "pageSize": 3,
+            "next": 10,
+            "previous": 4
+           }
+          }
+         },
+         "System view": {
+          "value": {
+           "ia::result": [
+            {
+             "id": "5604",
+             "employeeContact.lastName": "Belton",
+             "employeeContact.firstName": "Michael",
+             "createdDate": "2019-03-20",
+             "expenseReportNumber": "EE-000050",
+             "reimbursement.totalEntered": "378.00",
+             "nonReimbursable.reimbursementTotalEntered": "0.00",
+             "reimbursement.reimbursementCurrency": "USD",
+             "basePayment.totalEntered": "378.00",
+             "state": "approved"
+            },
+            {
+             "id": "5339",
+             "employeeContact.lastName": "Belton",
+             "employeeContact.firstName": "Michael",
+             "createdDate": "2019-03-20",
+             "expenseReportNumber": "EE-000049",
+             "reimbursement.totalEntered": "334.00",
+             "nonReimbursable.reimbursementTotalEntered": "0.00",
+             "reimbursement.reimbursementCurrency": "USD",
+             "basePayment.totalEntered": "334.00",
+             "state": "approved"
+            },
+            {
+             "id": "5159",
+             "employeeContact.lastName": "Lumbergh",
+             "employeeContact.firstName": "Bill",
+             "createdDate": "2019-03-19",
+             "expenseReportNumber": "EE-000040",
+             "reimbursement.totalEntered": "100.00",
+             "nonReimbursable.reimbursementTotalEntered": "0.00",
+             "reimbursement.reimbursementCurrency": "USD",
+             "basePayment.totalEntered": "100.00",
+             "state": "approved"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 45,
+            "start": 4,
+            "pageSize": 3,
+            "next": 7,
+            "previous": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/system-view": {
+   "parameters": [
+    {
+     "name": "name",
+     "description": "The name of an object or system view. \n\n* Use the form `<application-name>/<object name>` to get all views defined for an object, such as `expenses/employee-expense`.\n* Use the form `<application-name>/<object name>::<view ID>` to get a specific system view, such as `expenses/employee-expense::systemfw1`.",
+     "in": "query",
+     "schema": {
+      "type": "string"
+     },
+     "required": true,
+     "example": "accounts-payable/vendor::systemVendorFW1"
+    }
+   ],
+   "get": {
+    "summary": "Get a system view",
+    "description": "Returns all system views for an object or a specified system view.",
+    "tags": [
+     "Common_Resources_System views"
+    ],
+    "operationId": "get-core-system-view-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "oneOf": [
+          {
+           "type": "object",
+           "title": "Details of a specified system view",
+           "properties": {
+            "ia::result": {
+             "$ref": "#/components/schemas/objects.core.system-view"
+            },
+            "ia::meta": {
+             "$ref": "#/components/schemas/metadata"
+            }
+           }
+          },
+          {
+           "type": "object",
+           "title": "Details of all system views for an object",
+           "properties": {
+            "ia::result": {
+             "type": "array",
+             "items": {
+              "$ref": "#/components/schemas/objects.core.system-view"
+             }
+            },
+            "ia::meta": {
+             "$ref": "#/components/schemas/metadata"
+            }
+           }
+          }
+         ]
+        },
+        "examples": {
+         "A single system view": {
+          "value": {
+           "ia::result": {
+            "contexts": [
+             "__default"
+            ],
+            "description": "IA.ALL_ACTIVE_EMPLOYEE_EXPENSES",
+            "id": "systemfw1",
+            "key": "expenses/employee-expense::systemfw1",
+            "name": "IA.ALL",
+            "object": "expenses/employee-expense",
+            "query": {
+             "fields": [
+              "id",
+              "employeeContact.lastName",
+              "employeeContact.firstName",
+              "createdDate",
+              "expenseReportNumber",
+              "reimbursement.totalEntered",
+              "nonReimbursable.reimbursementTotalEntered",
+              "reimbursement.reimbursementCurrency",
+              "basePayment.totalEntered",
+              "state"
+             ],
+             "object": "expenses/employee-expense",
+             "orderBy": [
+              {
+               "createdDate": "desc"
+              }
+             ]
+            },
+            "href": "/objects/core/system-view?name=expenses/employee-expense::systemfw1"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         },
+         "All views for an object": {
+          "value": {
+           "ia::result": [
+            {
+             "contexts": [
+              "__default"
+             ],
+             "description": "IA.ALL_ACTIVE_EMPLOYEE_EXPENSES",
+             "id": "systemfw1",
+             "key": "expenses/employee-expense::systemfw1",
+             "name": "IA.ALL",
+             "object": "expenses/employee-expense",
+             "query": {
+              "fields": [
+               "id",
+               "employeeContact.lastName",
+               "employeeContact.firstName",
+               "createdDate",
+               "expenseReportNumber",
+               "reimbursement.totalEntered",
+               "nonReimbursable.reimbursementTotalEntered",
+               "reimbursement.reimbursementCurrency",
+               "basePayment.totalEntered",
+               "state"
+              ],
+              "object": "expenses/employee-expense",
+              "orderBy": [
+               {
+                "createdDate": "desc"
+               }
+              ]
+             },
+             "href": "/objects/core/system-view?name=expenses/employee-expense::systemfw1"
+            },
+            {
+             "contexts": [
+              "__default"
+             ],
+             "description": "IA.ALL_RECENTLY_MODIFIED",
+             "id": "systemfw2",
+             "key": "expenses/employee-expense::systemfw2",
+             "name": "IA.RECENTLY_MODIFIED",
+             "object": "expenses/employee-expense",
+             "query": {
+              "fields": [
+               "id",
+               "employeeContact.lastName",
+               "employeeContact.firstName",
+               "createdDate",
+               "expenseReportNumber",
+               "reimbursement.totalEntered",
+               "nonReimbursable.reimbursementTotalEntered",
+               "reimbursement.reimbursementCurrency",
+               "basePayment.totalEntered",
+               "state",
+               "audit.modifiedDateTime",
+               "audit.modifiedBy"
+              ],
+              "object": "expenses/employee-expense",
+              "orderBy": [
+               {
+                "audit.modifiedDateTime": "desc"
+               }
+              ]
+             },
+             "href": "/objects/core/system-view?name=expenses/employee-expense::systemfw2"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "totalSuccess": 2,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/user-view": {
+   "get": {
+    "summary": "List user views",
+    "description": "Returns a collection with a key, ID, and link for each user view. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find user views that meet specific criteria and to specify the properties that you want in the response.",
+    "tags": [
+     "Common_Resources_User views"
+    ],
+    "operationId": "list-core-user-view",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of user views",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List of user views": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "9",
+             "id": "9",
+             "href": "/objects/core/user-view/9"
+            },
+            {
+             "key": "6",
+             "id": "6",
+             "href": "/objects/core/user-view/6"
+            },
+            {
+             "key": "5",
+             "id": "5",
+             "href": "/objects/core/user-view/5"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a user view",
+    "description": "Creates a new  user view.",
+    "tags": [
+     "Common_Resources_User views"
+    ],
+    "operationId": "create-core-user-view",
+    "requestBody": {
+     "description": "User view to create",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.core.user-view"
+         },
+         {
+          "$ref": "#/components/schemas/core-user-viewRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "User view for vendor": {
+         "value": {
+          "name": "Inactive vendors",
+          "query": {
+           "object": "accounts-payable/vendor",
+           "fields": [
+            "id",
+            "name",
+            "status",
+            "href"
+           ],
+           "filters": [
+            {
+             "$eq": {
+              "status": "inactive"
+             }
+            },
+            {
+             "$eq": {
+              "billingType": "balanceForward"
+             }
+            }
+           ],
+           "filterExpression": "1 and 2",
+           "orderBy": [
+            {
+             "id": "desc"
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New user view reference",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to new user view": {
+          "value": {
+           "ia::result": {
+            "key": "9",
+            "id": "9",
+            "href": "/objects/core/user-view/9"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/core/user-view/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "in": "path",
+     "description": "System-assigned key for a user view.",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "262"
+    }
+   ],
+   "get": {
+    "summary": "Get a user view",
+    "description": "Returns detailed information for a specified user view.",
+    "tags": [
+     "Common_Resources_User views"
+    ],
+    "operationId": "get-core-user-view-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the user-view",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.core.user-view"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "User view details": {
+          "value": {
+           "ia::result": {
+            "key": "262",
+            "id": "262",
+            "name": "Active vendors",
+            "description": "Active vendors with open billing items",
+            "category": null,
+            "owner": {
+             "key": "1",
+             "id": "Admin",
+             "href": "/objects/company-config/user/1"
+            },
+            "object": "accounts-payable/vendor",
+            "query": {
+             "object": "accounts-payable/vendor",
+             "fields": [
+              "id",
+              "name",
+              "status",
+              "href"
+             ],
+             "filters": [
+              {
+               "$eq": {
+                "status": "active"
+               }
+              },
+              {
+               "$eq": {
+                "billingType": "openItem"
+               }
+              }
+             ],
+             "filterExpression": "1 and 2",
+             "orderBy": [
+              {
+               "id": "asc"
+              }
+             ]
+            },
+            "status": "active",
+            "viewVersion": "0",
+            "audit": {
+             "createdDateTime": "2025-05-16T17:41:55Z",
+             "modifiedDateTime": "2025-05-17T17:41:55Z",
+             "createdBy": "1",
+             "modifiedBy": "1"
+            },
+            "href": "/objects/core/user-view/262"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a user view",
+    "description": "Updates an existing user view by setting field values. \n\nTo change one or more `metadata` values and preserve the rest, you must provide the entire `metadata` object, not just the fields you want to change. Any `metadata` fields that you do not include in the request will be reset to their default values.",
+    "tags": [
+     "Common_Resources_User views"
+    ],
+    "operationId": "update-core-user-view-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/objects.core.user-view"
+       },
+       "examples": {
+        "Update query and metadata": {
+         "value": {
+          "query": {
+           "object": "company-config/employee",
+           "fields": [
+            "key",
+            "primaryContact.lastName",
+            "primaryContact.prefix",
+            "primaryContact.firstName",
+            "primaryContact.id",
+            "startDate"
+           ],
+           "filters": [
+            {
+             "$eq": {
+              "status": "active"
+             }
+            },
+            {
+             "$eq": {
+              "startDate": "currentYear"
+             }
+            }
+           ],
+           "filterExpression": "and",
+           "orderBy": [
+            {
+             "primaryContact.lastName": "asc"
+            }
+           ],
+           "filterParameters": {
+            "includeHierarchyFields": false
+           }
+          },
+          "metadata": {
+           "columns": [
+            {
+             "id": "primaryContact.lastName",
+             "textFormat": "clip"
+            },
+            {
+             "id": "primaryContact.prefix",
+             "textFormat": "wrap"
+            },
+            {
+             "id": "primaryContact.firstName",
+             "textFormat": "clip"
+            },
+            {
+             "id": "primaryContact.id",
+             "textFormat": "wrap"
+            },
+            {
+             "id": "status",
+             "textFormat": "clip"
+            }
+           ],
+           "frozenColumnCount": 1
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated user view reference",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated user view": {
+          "value": {
+           "ia::result": {
+            "key": "8",
+            "id": "8",
+            "href": "/objects/core/user-view/8"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a user view",
+    "description": "Deletes a user view.",
+    "tags": [
+     "Common_Resources_User views"
+    ],
+    "operationId": "delete-core-user-view-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "object-model": {
+    "oneOf": [
+     {
+      "title": "resource",
+      "type": "array",
+      "description": "Short definition of all resources or all in a specified resource type. An empty array is returned if a specified resource is not found.",
+      "items": {
+       "type": "object",
+       "properties": {
+        "apiObject": {
+         "type": "string",
+         "description": "Full name for the REST API resource, which consist of the resource type, application name, and the resource name.",
+         "example": "objects/company-config/department"
+        },
+        "type": {
+         "type": "string",
+         "description": "The type for the resource, for example: `rootObject`, `ownedObject`, `service`, or `workflow`.",
+         "example": "rootObject"
+        },
+        "httpMethods": {
+         "type": "string",
+         "description": "HTTP methods supported by the resource.",
+         "example": "OPTIONS,GET,DELETE,PATCH,POST"
+        },
+        "href": {
+         "type": "string",
+         "description": "URL endpoint (full description) for the resource.",
+         "example": "/services/core/model?version=v1&name=objects/company-config/department"
+        }
+       }
+      }
+     },
+     {
+      "title": "service or workflow",
+      "type": "object",
+      "description": "Full model of a specified resource type (service or workflow).",
+      "properties": {
+       "request": {
+        "type": "object",
+        "properties": {
+         "fields": {
+          "type": "object",
+          "description": "Fields for the service or workflow."
+         },
+         "groups": {
+          "type": "array",
+          "description": "Groups of logically related fields or objects for the service or workflow.",
+          "items": {}
+         },
+         "refs": {
+          "type": "array",
+          "description": "References to related objects for the service or workflow.",
+          "items": {}
+         },
+         "lists": {
+          "type": "array",
+          "description": "Lists (arrays) of repeatable groups or owned objects for the service or workflow.",
+          "items": {}
+         },
+         "httpMethods": {
+          "type": "string",
+          "description": "HTTP methods supported by the service or workflow.",
+          "example": "OPTIONS,GET,DELETE,PATCH,POST"
+         }
+        }
+       },
+       "response": {
+        "type": "object",
+        "properties": {
+         "fields": {
+          "type": "object",
+          "description": "Fields for the service or workflow."
+         },
+         "groups": {
+          "type": "array",
+          "description": "Groups of logically related fields or objects for the service or workflow.",
+          "items": {}
+         },
+         "refs": {
+          "type": "array",
+          "description": "References to related objects for the service or workflow.",
+          "items": {}
+         },
+         "lists": {
+          "type": "array",
+          "description": "Lists (arrays) of repeatable groups or owned objects for the service or workflow.",
+          "items": {}
+         },
+         "httpMethods": {
+          "type": "string",
+          "description": "HTTP methods supported by the service or workflow.",
+          "example": "OPTIONS,GET,DELETE,PATCH,POST"
+         }
+        }
+       },
+       "idempotenceSupported": {
+        "type": "boolean",
+        "description": "Set to `true` if the service or workflow is idempotent.",
+        "example": true,
+        "default": true
+       },
+       "apiObject": {
+        "type": "string",
+        "description": "Full name for the REST API resource, which consist of the resource type, application name, and the resource name.",
+        "example": "objects/company-config/department"
+       },
+       "type": {
+        "type": "string",
+        "description": "The type for the resource, for example: `rootObject`, `ownedObject`, `service`, or `workflow`.",
+        "example": "rootObject"
+       },
+       "httpMethods": {
+        "type": "string",
+        "description": "HTTP methods supported by the service or workflow.",
+        "example": "OPTIONS,GET,DELETE,PATCH,POST"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the model request.",
+        "example": "/services/core/model?version=v1&name=objects/company-config/department"
+       }
+      }
+     },
+     {
+      "title": "object",
+      "type": "object",
+      "description": "Full model of an object resource.",
+      "properties": {
+       "fields": {
+        "type": "object",
+        "description": "Fields for the object resource.\n\nNote: The `required` field is always set to `false`. To determine if a field is required for a POST or a PATCH operation, check the reference documentation for the specified `object`."
+       },
+       "groups": {
+        "type": "object",
+        "description": "Groups of logically related fields or objects for the object resource."
+       },
+       "refs": {
+        "type": "object",
+        "description": "References to related objects for the object resource."
+       },
+       "lists": {
+        "type": "object",
+        "description": "Lists (arrays) of repeatable groups or owned objects for the object resource."
+       },
+       "idempotenceSupported": {
+        "type": "boolean",
+        "description": "Set to `true` if the operations supported for the object are idempotent.",
+        "example": true
+       },
+       "apiObject": {
+        "type": "string",
+        "description": "Full name for the REST API resource, which consist of the resource type, application name, and the resource name.",
+        "example": "objects/company-config/department"
+       },
+       "type": {
+        "type": "string",
+        "description": "The type for the resource, for example: `rootObject` or `ownedObject`.",
+        "example": "rootObject"
+       },
+       "httpMethods": {
+        "type": "string",
+        "description": "HTTP methods supported by the object.",
+        "example": "OPTIONS,GET,DELETE,PATCH,POST"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the model request.",
+        "example": "/services/core/model?version=v1&name=objects/company-config/department"
+       }
+      }
+     }
+    ]
+   },
+   "metadata": {
+    "description": "Metadata for the response.",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total count.",
+      "readOnly": true,
+      "example": 3
+     },
+     "totalSuccess": {
+      "type": "integer",
+      "description": "Total success.",
+      "readOnly": true,
+      "example": 2
+     },
+     "totalError": {
+      "type": "integer",
+      "description": "Total errors.",
+      "readOnly": true,
+      "example": 1
+     }
+    }
+   },
+   "core-query": {
+    "description": "Query request",
+    "type": "object",
+    "properties": {
+     "object": {
+      "type": "string",
+      "example": "accounts-payable/vendor",
+      "description": "Object type to query, in the form `<application-name>/<object name>`. For custom objects use `platform-apps/nsp::<object-name>`."
+     },
+     "fields": {
+      "description": "List of fields to include in the response. Can be any combination of these:\n* The name of a field in the object that you are querying, such as `id`.\n* The name of a field in a related object, using the form `relatedObjectName.fieldName`, such as `vendor.id`.\n* The result of an aggregate function run against the values in the returned objects. Use the form `function:fieldName`, such as `min:startDate` to return the earliest starting date. Valid function names are:\n\n\n\n\n\n    * `count`\n    * `avg`\n    * `sum`\n    * `min`\n    * `max`\n\n* The result of an aggregate function run against the values in related objects, using the form `function:relatedObjectName.fieldName`, such as `max:vendor.creditLimit`. The same functions are supported as for object fields.",
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "example": [
+       "key",
+       "id",
+       "max:vendor.creditLimit"
+      ]
+     },
+     "filters": {
+      "description": "Filter conditions to select the objects to return based on their field values. You use operators and conditions to build your filter, such as `{\"$eq\":{\"status\":\"active\"}}` to select objects in which `status` is equal to \"active\".",
+      "example": [
+       {
+        "$eq": {
+         "status": "active"
+        }
+       },
+       {
+        "$gt": {
+         "totalDue": "1000"
+        }
+       },
+       {
+        "$contains": {
+         "name": "Acme"
+        }
+       }
+      ],
+      "type": "array",
+      "items": {
+       "anyOf": [
+        {
+         "title": "equal",
+         "type": "object",
+         "description": "Field value must be equal to this specified value.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [filterParameters](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.\n\nFor example, `{\"eq\":{\"postingDate\":\"priorYear\"}}`.",
+         "properties": {
+          "$eq": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string",
+              "nullable": true
+             },
+             {
+              "type": "number"
+             },
+             {
+              "type": "boolean"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$eq": {
+           "status": "active"
+          }
+         }
+        },
+        {
+         "title": "not equal",
+         "type": "object",
+         "description": "Field value must not be equal to this specified value.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [filterParameters](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.",
+         "properties": {
+          "$ne": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string",
+              "nullable": true
+             },
+             {
+              "type": "number"
+             },
+             {
+              "type": "boolean"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$ne": {
+           "status": "inactive"
+          }
+         }
+        },
+        {
+         "title": "less than",
+         "type": "object",
+         "description": "Field value must be less than this specified value.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [filterParameters](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.",
+         "properties": {
+          "$lt": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$lt": {
+           "totalDue": "100"
+          }
+         }
+        },
+        {
+         "title": "less than or equal",
+         "type": "object",
+         "description": "Field value must be less than or equal to this specified value.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [filterParameters](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.",
+         "properties": {
+          "$lte": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             },
+             {
+              "type": "boolean"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$lte": {
+           "totalDue": "500"
+          }
+         }
+        },
+        {
+         "title": "greater than",
+         "type": "object",
+         "description": "Field value must be greater than this specified value.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [`filterParameters`](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.",
+         "properties": {
+          "$gt": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$gt": {
+           "totalDue": "1000"
+          }
+         }
+        },
+        {
+         "title": "greater than or equal",
+         "type": "object",
+         "description": "Field value must be greater than or equal to this specified value.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [`filterParameters`](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.",
+         "properties": {
+          "$gte": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             },
+             {
+              "type": "boolean"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$gte": {
+           "totalDue": "999"
+          }
+         }
+        },
+        {
+         "title": "in",
+         "type": "object",
+         "description": "Field value is one of the specified values.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [`filterParameters`](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.",
+         "properties": {
+          "$in": {
+           "type": "object",
+           "description": "The field name and list of values to be compared with object values.",
+           "additionalProperties": {
+            "type": "array",
+            "items": {
+             "oneOf": [
+              {
+               "type": "string"
+              },
+              {
+               "type": "number"
+              },
+              {
+               "type": "boolean"
+              }
+             ]
+            }
+           }
+          }
+         },
+         "example": {
+          "$in": {
+           "firstName": [
+            "Tim",
+            "Anjali",
+            "Gabriel"
+           ]
+          }
+         }
+        },
+        {
+         "title": "not in",
+         "type": "object",
+         "description": "Field value is not one of the specified values.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [`filterParameters`](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.",
+         "properties": {
+          "$notIn": {
+           "type": "object",
+           "description": "The field name and list of values to be compared with object values.",
+           "additionalProperties": {
+            "type": "array",
+            "items": {
+             "oneOf": [
+              {
+               "type": "string"
+              },
+              {
+               "type": "number"
+              },
+              {
+               "type": "boolean"
+              }
+             ]
+            }
+           }
+          }
+         },
+         "example": {
+          "$notIn": {
+           "country": [
+            "United States",
+            "Canada"
+           ]
+          }
+         }
+        },
+        {
+         "title": "between",
+         "type": "object",
+         "description": "Field value is within the given range, inclusive.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [`filterParameters`](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.",
+         "properties": {
+          "$between": {
+           "type": "object",
+           "description": "The field name and the beginning and ending values to be compared with object values.",
+           "additionalProperties": {
+            "type": "array",
+            "items": {
+             "oneOf": [
+              {
+               "type": "string"
+              },
+              {
+               "type": "number"
+              }
+             ]
+            }
+           }
+          }
+         },
+         "example": {
+          "$between": {
+           "totalDue": [
+            "1",
+            "1000"
+           ]
+          }
+         }
+        },
+        {
+         "title": "not between",
+         "type": "object",
+         "description": "Field value is not within the given range.\n\nFor date fields, you can use these macro values that are relative to the current date or the `asOfDate` in [`filterParameters`](#filterParameters), if set:\n\n<table>\n<tr>\n<td>\n<ul>\n<li><code>today</code></li>\n<li><code>currentWeek</code></li>\n<li><code>currentMonth</code></li>\n<li><code>currentQuarter</code></li>\n<li><code>currentYear</code></li>\n</ul>\n</td>\n<td>\n<ul>\n<li><code>yesterday</code></li>\n<li><code>lastWeek</code></li>\n<li><code>priorMonth</code></li>\n<li><code>priorQuarter</code></li>\n<li><code>priorYear</code></li>\n</ul>\n</td>\n</tr>\n</table>\n\nThese are most useful for queries that you want to save and use repeatedly, such as for views or reports. Just change the `asOfDate` each time to retrieve the same data set for different time periods.",
+         "properties": {
+          "$notBetween": {
+           "type": "object",
+           "description": "The field name and the beginning and ending values to be compared with object values.",
+           "additionalProperties": {
+            "type": "array",
+            "items": {
+             "oneOf": [
+              {
+               "type": "string"
+              },
+              {
+               "type": "number"
+              }
+             ]
+            }
+           }
+          }
+         },
+         "example": {
+          "$notBetween": {
+           "totalDue": [
+            "100",
+            "1000"
+           ]
+          }
+         }
+        },
+        {
+         "title": "contains",
+         "type": "object",
+         "description": "Field value contains the given string or number. Cannot be used with date fields.",
+         "properties": {
+          "$contains": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$contains": {
+           "name": "Acme"
+          }
+         }
+        },
+        {
+         "title": "does not contain",
+         "type": "object",
+         "description": "Field value does not contain the given string or number. Cannot be used with date fields.",
+         "properties": {
+          "$notContains": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$notContains": {
+           "name": "llc"
+          }
+         }
+        },
+        {
+         "title": "has",
+         "type": "object",
+         "description": "A field that is an array of strings contains the given value.",
+         "properties": {
+          "$has": {
+           "type": "object",
+           "description": "The array field name and the value to be compared with array values.",
+           "additionalProperties": {
+            "type": "string"
+           }
+          }
+         },
+         "example": {
+          "$has": {
+           "documentType": "Sales Order"
+          }
+         }
+        },
+        {
+         "title": "starts with",
+         "type": "object",
+         "description": "Field value starts with this string or number. Cannot be used with date fields.",
+         "properties": {
+          "$startsWith": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$startsWith": {
+           "name": "A"
+          }
+         }
+        },
+        {
+         "title": "does not start with",
+         "type": "object",
+         "description": "Field value does not start with this string or number. Cannot be used with date fields.",
+         "properties": {
+          "$notStartsWith": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$notStartsWith": {
+           "name": "Q"
+          }
+         }
+        },
+        {
+         "title": "ends with",
+         "type": "object",
+         "description": "Field value ends with this string or number. Cannot be used with date fields.",
+         "properties": {
+          "$endsWith": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$endsWith": {
+           "name": "inc"
+          }
+         }
+        },
+        {
+         "title": "does not end with",
+         "type": "object",
+         "description": "Field value does not end with this string or number. Cannot be used with date fields.",
+         "properties": {
+          "$notEndsWith": {
+           "type": "object",
+           "description": "The field name and value to be compared with object values.",
+           "additionalProperties": {
+            "oneOf": [
+             {
+              "type": "string"
+             },
+             {
+              "type": "number"
+             }
+            ]
+           }
+          }
+         },
+         "example": {
+          "$notEndsWith": {
+           "name": "llc"
+          }
+         }
+        }
+       ]
+      }
+     },
+     "filterExpression": {
+      "description": "Logical operators to apply when there are multiple filter conditions. The conditions in the `filters` array are implicitly numbered starting at 1. Supports `and`, `or`, and grouping with parentheses.\n\nShortcuts:\n+ `and` by itself means that all conditions must be true.\n+ `or` by itself means that at least one condition must be true.\n",
+      "type": "string",
+      "example": "(1 and 2) or 3",
+      "default": "and"
+     },
+     "filterParameters": {
+      "description": "<a name=\"filterParameters\"></a>\nPre-defined filter options.",
+      "type": "object",
+      "properties": {
+       "asOfDate": {
+        "type": "string",
+        "format": "date",
+        "description": "The \"as of\" date to use with any relative date comparisons in `filters`. For example, if `asOfDate` is set to \"2022-04-01\" then `priorMonth` will be \"03\".\n\nThe current date is used if `asOfDate` is not set.",
+        "example": "2022-04-01"
+       },
+       "includeHierarchyFields": {
+        "description": "Set to `true` to include hierarchical structure information with each object in the response.",
+        "type": "boolean",
+        "example": false,
+        "default": false
+       },
+       "caseSensitiveComparison": {
+        "description": "Queries are case-sensitive by default. Set to `false` to ignore case in a query.",
+        "type": "boolean",
+        "example": true,
+        "default": true
+       },
+       "includePrivate": {
+        "description": "By default, in a multi-entity company queries from the top-level entity do not access data in private entities. Set `includePrivate` to true if you want to query data in private entities.",
+        "type": "boolean",
+        "default": false,
+        "example": false
+       }
+      }
+     },
+     "orderBy": {
+      "description": "Set the order of the results by specifying field names to sort by and whether they should be in ascending or descending order.",
+      "type": "array",
+      "items": {
+       "type": "object",
+       "title": "field name and sort order",
+       "additionalProperties": {
+        "type": "string",
+        "enum": [
+         "asc",
+         "desc"
+        ]
+       }
+      },
+      "example": [
+       {
+        "totalDue": "asc"
+       },
+       {
+        "lastPaymentMadeDate": "desc"
+       }
+      ]
+     },
+     "start": {
+      "description": "First record of the result set to include in the response.",
+      "type": "integer",
+      "example": 1
+     },
+     "size": {
+      "description": "Number of records to include in the result set, 4000 maximum.",
+      "type": "integer",
+      "example": 100
+     }
+    }
+   },
+   "metadata-pages": {
+    "description": "Metadata for collection response",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total number of members in the result set.",
+      "readOnly": true,
+      "example": 3
+     },
+     "start": {
+      "type": "integer",
+      "description": "First member of the result set included in the current response.",
+      "readOnly": true,
+      "example": 1
+     },
+     "pageSize": {
+      "type": "integer",
+      "description": "Maximum number of members included in the current response. The response may contain fewer members if the final page of the result set is smaller than the page size.",
+      "readOnly": true,
+      "example": 100
+     },
+     "next": {
+      "type": "integer",
+      "description": "First member number of the next page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": 101
+     },
+     "previous": {
+      "type": "integer",
+      "description": "First member number of the previous page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": null
+     }
+    }
+   },
+   "services.core.allowed-operations-request": {
+    "description": "allowed-operations",
+    "type": "object",
+    "required": [
+     "object",
+     "keys"
+    ],
+    "properties": {
+     "object": {
+      "type": "string",
+      "example": "vendor",
+      "description": "Object name to query, in the form `<application-name>/<object-name>`."
+     },
+     "keys": {
+      "type": "array",
+      "description": "Array of up to 1000 object keys for which you want to get allowed operations.",
+      "items": {
+       "type": "string"
+      }
+     },
+     "operations": {
+      "type": "array",
+      "description": "List of operations that you want to query specifically. If not provided, the response will include all supported operations.\n",
+      "items": {
+       "type": "string"
+      }
+     },
+     "options": {
+      "type": "object",
+      "description": "Options for the request.",
+      "properties": {
+       "includePrivate": {
+        "type": "boolean",
+        "description": "By default, in a multi-entity company queries from the top-level entity do not access data in private entities. Set `includePrivate` to true if you want to query data in private entities."
+       },
+       "moduleKey": {
+        "type": "string"
+       }
+      }
+     },
+     "additionalData": {
+      "type": "object",
+      "description": "Optional key-value pairs providing additional configuration details for the request."
+     }
+    }
+   },
+   "services.core.allowed-operations-response": {
+    "description": "Array of objects and allowed operations.",
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "key": {
+       "type": "string",
+       "description": "Unique key of the object."
+      },
+      "operations": {
+       "type": "array",
+       "description": "List of operations supported by the object. If an `operations` list was included in the request, the response only includes supported operations from that list.",
+       "items": {
+        "type": "string"
+       }
+      },
+      "additionalData": {
+       "type": "object",
+       "description": "Optional key-value pairs providing additional configuration details."
+      }
+     }
+    }
+   },
+   "bulk-job-create-request": {
+    "description": "Bulk request.",
+    "type": "object",
+    "required": [
+     "objectName",
+     "operation",
+     "jobFile",
+     "fileContentType"
+    ],
+    "properties": {
+     "objectName": {
+      "type": "string",
+      "description": "The name of the REST object targeted by the request.",
+      "nullable": false,
+      "example": "vendor"
+     },
+     "operation": {
+      "type": "string",
+      "description": "The HTTP operation for the request.",
+      "nullable": false,
+      "enum": [
+       "create",
+       "update",
+       "delete"
+      ],
+      "example": "create"
+     },
+     "jobFile": {
+      "type": "string",
+      "description": "The name for the input file.",
+      "nullable": false,
+      "format": "inbound-binary",
+      "example": "vendor.json"
+     },
+     "fileContentType": {
+      "type": "string",
+      "description": "The format for the input file.",
+      "nullable": false,
+      "enum": [
+       "json"
+      ],
+      "example": "json"
+     },
+     "callbackURL": {
+      "type": "string",
+      "description": "Callback URL for receiving the asynchronous response.",
+      "nullable": true,
+      "example": "https://example.com/callback"
+     }
+    }
+   },
+   "bulk-job-create-response": {
+    "description": "Bulk response.",
+    "type": "object",
+    "properties": {
+     "jobId": {
+      "type": "string",
+      "description": "Unique identifier for the request used to monitor the status of the bulk request.",
+      "example": "950bf10d-f119-41c9-a352-1b68b34498c3"
+     },
+     "statusURL": {
+      "type": "string",
+      "description": "URL endpoint for the job status.",
+      "example": "/services/bulk/job/status?jobId=950bf10d-f119-41c9-a352-1b68b34498c3"
+     },
+     "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the request was created.",
+      "example": "2023-08-01T01:20:30"
+     }
+    }
+   },
+   "bulk-job-status-response": {
+    "description": "Bulk status response.",
+    "type": "object",
+    "properties": {
+     "jobId": {
+      "type": "string",
+      "description": "Unique identifier for the bulk request.",
+      "example": "950bf10d-f119-41c9-a352-1b68b34498c3"
+     },
+     "status": {
+      "type": "string",
+      "description": "Status of the bulk request. Possible values are \n* 'queued' - The bulk request has been received and is waiting to be processed.\n* 'preprocessing' - The bulk request is being prepared for processing.\n* 'processing' - The bulk request is being processed.\n* 'postprocessing' - The bulk request has been processed and is being prepared for download.\n* 'completed' - The bulk request has been processed and is ready for download.\n* 'failed' - The bulk request has failed.\n",
+      "enum": [
+       "queued",
+       "preprocessing",
+       "processing",
+       "postprocessing",
+       "completed",
+       "failed"
+      ],
+      "example": "completed"
+     },
+     "percentComplete": {
+      "type": "integer",
+      "default": 0,
+      "description": "Percentage of the bulk request that has been processed. This field will show progress only when the `status` field is set to `processing`.",
+      "example": 100
+     },
+     "downloadURL": {
+      "type": "string",
+      "nullable": true,
+      "description": "URL endpoint for the bulk status request. This field will be present only when the `status` field is set to `completed`.",
+      "example": "/services/bulk/job/status?jobId=950bf10d-f119-41c9-a352-1b68b34498c3&download=true"
+     },
+     "jobStatusFile": {
+      "type": "string",
+      "description": "File which contains the results of all the operations in the bulk request, in JSON format.",
+      "format": "outbound-binary",
+      "example": "950bf10d-f119-41c9-a352-1b68b34498c3-response.json"
+     }
+    }
+   },
+   "core-composite-request": {
+    "type": "array",
+    "items": {
+     "$ref": "#/components/schemas/services.core.composite"
+    }
+   },
+   "error": {
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "example": "invalidRequest"
+     },
+     "message": {
+      "type": "string",
+      "example": "Payload contains errors"
+     },
+     "supportId": {
+      "type": "string",
+      "example": "sQrM9%7EYdh5oDEWVb80mrn9xuHjoAAAABBQ"
+     },
+     "errorId": {
+      "type": "string",
+      "example": "REST-1064"
+     },
+     "additionalInfo": {
+      "type": "object",
+      "properties": {
+       "messageId": {
+        "type": "string",
+        "example": "IA.PAYLOAD_CONTAINS_ERRORS"
+       },
+       "placeholders": {
+        "type": "string",
+        "example": {}
+       },
+       "propertySet": {
+        "type": "string",
+        "example": {}
+       }
+      }
+     },
+     "details": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "code": {
+         "type": "string",
+         "example": "invalidRequest"
+        },
+        "message": {
+         "type": "string",
+         "example": "/newDate is not a valid field"
+        },
+        "errorId": {
+         "type": "string",
+         "example": "REST-1043"
+        },
+        "target": {
+         "type": "string",
+         "example": "/newDate"
+        },
+        "additionalInfo": {
+         "type": "object",
+         "properties": {
+          "messageId": {
+           "type": "string",
+           "example": "IA.NOT_A_VALID_FIELD"
+          },
+          "placeholders": {
+           "type": "string",
+           "example": {
+            "FIELD": "/newDate"
+           }
+          },
+          "propertySet": {
+           "type": "string",
+           "example": {}
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "core-session-id-response": {
+    "description": "Session IDs response.",
+    "type": "object",
+    "properties": {
+     "sessionId": {
+      "type": "string",
+      "description": "Session ID for the XML API.",
+      "example": "Tz1Bh8NxmR4JkF0Ld3Xh9pA7G5uC6YQ8mW2ZqR1FqP9jC8FvDg5sTzHw"
+     },
+     "expiresIn": {
+      "type": "integer",
+      "description": "Length of time after which the session expires, in seconds.",
+      "example": 3600
+     }
+    }
+   },
+   "object-reference": {
+    "type": "object",
+    "description": "Reference to created or updated object.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the object.",
+      "example": "12345"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the object.",
+      "example": "ID123"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL endpoint for the object.",
+      "example": "/objects/<application>/<name>/12345"
+     }
+    }
+   },
+   "objects.core.txn-definition": {
+    "type": "object",
+    "description": "Transaction definition",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the transaction definition.",
+      "readOnly": true,
+      "example": "154"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the transaction definition.",
+      "example": "Sales Invoice"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the transaction definition.",
+      "readOnly": true,
+      "example": "/objects/core/txn-definition/154"
+     }
+    }
+   },
+   "common-core-txn-definitionRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "services.core.export": {
+    "description": "Export",
+    "type": "object",
+    "properties": {
+     "fileType": {
+      "description": "File format for the export.",
+      "enum": [
+       "pdf",
+       "csv",
+       "word",
+       "xml",
+       "xlsx"
+      ],
+      "type": "string",
+      "example": "csv"
+     },
+     "query": {
+      "type": "object",
+      "description": "Query parameters for filtered data.",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/core-query"
+       },
+       {
+        "type": "object"
+       }
+      ]
+     }
+    }
+   },
+   "objects.core.operation": {
+    "type": "object",
+    "description": "Details of scheduled action that automates execution of recurring jobs.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the operation.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the operation. This value cannot be modified.",
+      "example": "Monthly inventory check"
+     },
+     "description": {
+      "type": "string",
+      "description": "Description for the action.",
+      "example": "Monthly inventory check for organic produce"
+     },
+     "userKey": {
+      "type": "integer",
+      "description": "System-generated key for the user that created the operation.",
+      "example": 23
+     },
+     "entity": {
+      "type": "string",
+      "description": "Entity associated with the operation."
+     },
+     "action": {
+      "type": "string",
+      "description": "Action to be performed when the operation is executed.",
+      "example": "checkInventory"
+     },
+     "bodyData": {
+      "type": "string",
+      "description": "Data to be used when the operation is executed.",
+      "example": "Check inventory"
+     },
+     "moduleKey": {
+      "type": "string",
+      "description": "System-generated key for the module associated with the operation.",
+      "example": "orderEntry"
+     },
+     "locationKey": {
+      "type": "string",
+      "description": "System-generated key for the location associated with the operation."
+     },
+     "contactEmail": {
+      "type": "string",
+      "description": "Email address to send notifications to when the operation is executed.",
+      "example": "admin@company.org"
+     },
+     "userInfo": {
+      "type": "string",
+      "description": "Login ID for the user who created the operation.",
+      "example": "adminUser"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the operation.",
+      "readOnly": true,
+      "example": "/objects/core/operation/23"
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     }
+    }
+   },
+   "core-operationRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.core.schedule": {
+    "type": "object",
+    "description": "Defines the scheduling details for recurring transactions, including start date, frequency, next execution date, and end conditions.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the schedule.",
+      "readOnly": true,
+      "example": "34"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the schedule. This value cannot be changed using the PATCH operation.",
+      "example": "Monthly installment billing"
+     },
+     "description": {
+      "type": "string",
+      "description": "Description for the schedule.",
+      "example": "Monthly installment billing for organic produce"
+     },
+     "executionType": {
+      "type": "string",
+      "description": "Indicates whether the scheduled jobs will be executed automatically, manually, or immediately.",
+      "enum": [
+       "automatic",
+       "manual",
+       "immediate"
+      ],
+      "example": "automatic"
+     },
+     "startDate": {
+      "type": "string",
+      "description": "The date the schedule begins.",
+      "format": "date",
+      "example": "2024-06-01"
+     },
+     "endDate": {
+      "type": "string",
+      "description": "The date the schedule expires. A `repeatCount` can be specified instead of an `endDate`, but not both.",
+      "format": "date",
+      "example": "2025-06-01"
+     },
+     "repeatBy": {
+      "type": "string",
+      "description": "Specifies the regular interval at which the schedule should repeat. This field works in conjunction with the `repeatInterval` field, where you specify the number of intervals. For example, if you set `repeatBy` to `months` and set the `repeatInterval` to `3`, the schedule will run every 3 months.",
+      "enum": [
+       "none",
+       "day",
+       "week",
+       "month",
+       "year",
+       "endOfMonth"
+      ],
+      "example": "month"
+     },
+     "repeatDate": {
+      "type": "integer",
+      "description": "The day of the week or month on which the schedule runs. This field works in conjunction with the `repeatBy` field.",
+      "example": 3
+     },
+     "repeatInterval": {
+      "type": "integer",
+      "description": "Specifies the interval at which the schedule repeats. This field works in conjunction with the `repeatBy` field, where you specify the regular interval at which the schedule should repeat. For example, if you set `repeatBy` to `months` and set the `repeatInterval` to `3`, the schedule will run every 3 months.",
+      "example": 2
+     },
+     "repeatCount": {
+      "type": "integer",
+      "description": "Specifies the number of times the transaction should be executed. Either this field or the `endDate` field must be specified to define the end condition, not both.",
+      "example": 5
+     },
+     "nextExecutionDate": {
+      "type": "string",
+      "description": "Next execution date for the schedule.",
+      "format": "date",
+      "example": "2025-04-01"
+     },
+     "lastExecutionDate": {
+      "type": "string",
+      "description": "Last execution date for the schedule.",
+      "format": "date",
+      "example": "2025-06-01"
+     },
+     "dueDate": {
+      "type": "string",
+      "description": "The due date for the scheduled execution of the transaction.",
+      "format": "date",
+      "example": "2025-06-01"
+     },
+     "executionCount": {
+      "type": "integer",
+      "description": "The number of attempts to execute the scheduled transaction.",
+      "example": 12
+     },
+     "cronID": {
+      "type": "string",
+      "description": "Process ID, if the schedule is for a Cron job.",
+      "example": "234"
+     },
+     "startOn": {
+      "type": "integer",
+      "description": "Used for consolidation. Specify when you want the first consolidation of each month to be performed, by specifying the number of days (between 1 and 31). For example, if you enter 6, consolidation will automatically occur 6 days after the month end.",
+      "example": 15
+     },
+     "endOn": {
+      "type": "integer",
+      "description": "Used for consolidation. Specify the day of the month to stop running the consolidation. The schedule will start again on the first day of the next month.",
+      "example": 7
+     },
+     "userinfo": {
+      "type": "string",
+      "description": "Login ID for the user who created the schedule.",
+      "example": "Admin"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the schedule.",
+      "readOnly": true,
+      "example": "/objects/core/schedule/234"
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     }
+    }
+   },
+   "core-scheduleRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.core.scheduled-operation": {
+    "type": "object",
+    "description": "Scheduling details and the operation for recurring transactions.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the scheduled operation.",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the scheduled operation. This value cannot be modified."
+     },
+     "scheduleKey": {
+      "type": "integer",
+      "description": "System-assigned key for the associated schedule.",
+      "example": 83
+     },
+     "operationKey": {
+      "type": "integer",
+      "description": "System-assigned key for the associated operation.",
+      "example": 234
+     },
+     "description": {
+      "type": "string",
+      "description": "Description for the scheduled operation."
+     },
+     "operation": {
+      "type": "object",
+      "description": "Reference to the operation that will be executed according to the schedule.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the operation.",
+        "example": "234"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the operation.",
+        "example": "Generate monthly invoice"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the operation.",
+        "readOnly": true,
+        "example": "/objects/core/operation/234"
+       }
+      }
+     },
+     "schedule": {
+      "type": "object",
+      "description": "Reference to the schedule that defines when the operation will be executed.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-generated key for the schedule.",
+        "example": "83"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the schedule.",
+        "example": "Monthly invoice generation"
+       },
+       "nextScheduledDate": {
+        "type": "string",
+        "description": "Next scheduled execution date for the operation based on the schedule's configuration.",
+        "format": "date",
+        "example": "2025-07-01"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the schedule.",
+        "readOnly": true,
+        "example": "/objects/core/schedule/83"
+       }
+      }
+     },
+     "userinfo": {
+      "type": "string",
+      "description": "User who created the scheduled operation.",
+      "example": "admin"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the scheduled operation.",
+      "readOnly": true,
+      "example": "/objects/core/scheduled-operation/234"
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     }
+    }
+   },
+   "core-scheduled-operationRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "services.core.view": {
+    "description": "View",
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "Key to identify the view. For system views the key is in the form of `<application-name>/<object name>::<view ID>`, such as `expenses/employee-expense::systemfw1`. For user views the key is numeric, such as `540`.",
+      "example": "12"
+     },
+     "viewType": {
+      "type": "string",
+      "description": "The type of view to execute, either system or user.",
+      "example": "user",
+      "enum": [
+       "user",
+       "system"
+      ]
+     },
+     "filterParameters": {
+      "type": "object",
+      "description": "Any filter parameters supported by the query service to narrow the search",
+      "properties": {
+       "asOfDate": {
+        "type": "string",
+        "format": "date",
+        "description": "The \"as of\" date to use with any relative date comparisons in `filters` defined in the view. For example, if `asOfDate` is set to \"2025-04-01\" then `priorMonth` will be \"03\".\n\nThe current date is used if `asOfDate` is not set.",
+        "example": "2025-04-01"
+       },
+       "caseSensitiveComparison": {
+        "description": "Queries are case-sensitive by default. Set to `false` to ignore case in a query.",
+        "type": "boolean",
+        "example": true,
+        "default": true
+       },
+       "includeHierarchyFields": {
+        "description": "Set to `true` to include hierarchical structure information with each object in the response.",
+        "type": "boolean",
+        "example": false,
+        "default": false
+       },
+       "includePrivate": {
+        "description": "By default, in a multi-entity company queries from the top-level entity do not access data in private entities. Set `includePrivate` to `true` if you want to query data in private entities.",
+        "type": "boolean",
+        "default": false,
+        "example": false
+       }
+      }
+     },
+     "start": {
+      "type": "integer",
+      "description": "First record of the result set to include in the response. Use with `size` to paginate the result set. The first record is 1.",
+      "example": 1
+     },
+     "size": {
+      "type": "integer",
+      "description": "Number of records per page, 4000 maximum.",
+      "example": 100
+     }
+    },
+    "required": [
+     "key",
+     "viewType"
+    ]
+   },
+   "objects.core.system-view": {
+    "type": "object",
+    "description": "Filter View.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the system view.",
+      "readOnly": true,
+      "example": "expenses/employee-expense::systemfw1"
+     },
+     "id": {
+      "type": "string",
+      "description": "ID for the system view. IDs are unique within a context.",
+      "readOnly": true,
+      "example": "systemfw1"
+     },
+     "name": {
+      "type": "string",
+      "description": "View name.",
+      "example": "IA.RECENTLY_MODIFIED"
+     },
+     "description": {
+      "type": "string",
+      "description": "Description of the system view.",
+      "example": "Specifies all active electronic-receipts"
+     },
+     "object": {
+      "type": "string",
+      "description": "Object that is queried to create the system view.",
+      "example": "expenses/employee-expense"
+     },
+     "query": {
+      "type": "object",
+      "description": "Query parameters that define the object being queried, the filters that select the records to return based on field values, the fields (columns) returned in the view, and the ordering of the returned records.",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/core-query"
+       },
+       {
+        "type": "object"
+       }
+      ],
+      "example": {
+       "fields": [
+        "id",
+        "employeeContact.lastName",
+        "employeeContact.firstName",
+        "createdDate",
+        "expenseReportNumber",
+        "reimbursement.totalEntered",
+        "nonReimbursable.reimbursementTotalEntered",
+        "reimbursement.reimbursementCurrency",
+        "basePayment.totalEntered",
+        "state"
+       ],
+       "object": "expenses/employee-expense",
+       "orderBy": [
+        {
+         "createdDate": "desc"
+        }
+       ]
+      }
+     },
+     "contexts": {
+      "type": "array",
+      "description": "Contexts where the system view is available. A value of `__default` means that the system view is available in all contexts.",
+      "items": {
+       "type": "string"
+      },
+      "readOnly": true,
+      "example": [
+       "__default"
+      ]
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint of the system view.",
+      "readOnly": true,
+      "example": "/objects/core/system-view?name=expenses/employee-expense::systemfw1"
+     }
+    }
+   },
+   "objects.core.user-view": {
+    "type": "object",
+    "description": "Filter View.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the user view.",
+      "readOnly": true,
+      "example": "42"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the user view. This value is the same as `key` for this object.",
+      "readOnly": true,
+      "example": "42"
+     },
+     "name": {
+      "type": "string",
+      "description": "Unique name for the user view.",
+      "example": "Vendors with overdue balances"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the user view.",
+      "readOnly": true,
+      "example": "/objects/core/user-view/42"
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     },
+     "description": {
+      "type": "string",
+      "description": "A brief description of the user view.",
+      "example": "Shows vendors with overdue balances greater than $200"
+     },
+     "object": {
+      "type": "string",
+      "description": "Object that is queried to create the user view. Must match the `object` property in the `query` object.",
+      "example": "accounts-payable/bill"
+     },
+     "category": {
+      "type": "string",
+      "description": "View category. Can be used to group user view.",
+      "nullable": true,
+      "example": "Vendor views"
+     },
+     "viewVersion": {
+      "type": "string",
+      "description": "The API version at which the user view object was created or last updated. The system will try to adjust the output as needed if a view created in an older version of the API is executed in a newer version.",
+      "example": "1"
+     },
+     "isPublic": {
+      "type": "boolean",
+      "description": "Indicates whether this user view is only usable by the user who created it (`false`) or is usable by others (`true`).",
+      "default": false,
+      "example": true
+     },
+     "context": {
+      "type": "string",
+      "description": "UI context where the user view is available. A value of `__default` means that the user view is available in all contexts. This field can be used to group views that are stored queries that aren't intended for use in the UI.",
+      "example": "__default"
+     },
+     "query": {
+      "type": "object",
+      "description": "Query parameters that define the object being queried, the filters that select the records to return based on field values, the fields (columns) returned in the view, and the ordering of the returned records.",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/core-query"
+       },
+       {
+        "type": "object"
+       }
+      ],
+      "example": {
+       "object": "accounts-receivable/customer",
+       "fields": [
+        "name",
+        "contacts.default.mailingAddress.city",
+        "customerType.id",
+        "totalDue"
+       ],
+       "filters": [
+        {
+         "$gte": {
+          "totalDue": "200"
+         }
+        }
+       ],
+       "orderBy": [
+        {
+         "totalDue": "asc"
+        }
+       ],
+       "filterExpression": "and",
+       "filterParameters": {
+        "includePrivate": true
+       }
+      }
+     },
+     "metadata": {
+      "type": "object",
+      "description": "Settings for displaying the view in the UI.",
+      "properties": {
+       "frozenColumnCount": {
+        "type": "number",
+        "description": "Number of frozen columns in the view.",
+        "example": 2
+       },
+       "frozenColumnsCount": {
+        "deprecated": true,
+        "type": "number",
+        "description": "This property is deprecated and replaced by `frozenColumnCount`."
+       },
+       "columns": {
+        "type": "array",
+        "description": "Ordered list of columns in the view.",
+        "items": {
+         "type": "object",
+         "properties": {
+          "id": {
+           "type": "string",
+           "description": "Field displayed in the column.",
+           "example": "customerType.id"
+          },
+          "textFormat": {
+           "type": "string",
+           "description": "Column format, either `clip` or `wrap`.",
+           "example": "clip"
+          },
+          "format": {
+           "deprecated": true,
+           "type": "string",
+           "description": "This property is deprecated and replaced by `textFormat`."
+          }
+         }
+        }
+       }
+      }
+     },
+     "owner": {
+      "type": "object",
+      "description": "The user who created and owns the user view.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "example": "512"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the user.",
+        "example": "rmccamy"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for this user.",
+        "readOnly": true,
+        "example": "/objects/company-config/user/512"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "core-user-viewRequiredProperties": {
+    "type": "object",
+    "required": [
+     "name",
+     "query"
+    ]
+   },
+   "error-response": {
+    "type": "object",
+    "description": "Error response",
+    "properties": {
+     "ia::result": {
+      "type": "object",
+      "properties": {
+       "ia::error": {
+        "type": "object",
+        "properties": {
+         "code": {
+          "type": "string",
+          "example": "invalidRequest"
+         },
+         "message": {
+          "type": "string",
+          "example": "Payload contains errors"
+         },
+         "supportId": {
+          "type": "string",
+          "example": "sQrM9%7EYdh5oDEWVb80mrn9xuHjoAAAABBQ"
+         },
+         "errorId": {
+          "type": "string",
+          "example": "REST-1064"
+         },
+         "additionalInfo": {
+          "type": "object",
+          "properties": {
+           "messageId": {
+            "type": "string",
+            "example": "IA.PAYLOAD_CONTAINS_ERRORS"
+           },
+           "placeholders": {
+            "type": "object",
+            "example": {}
+           },
+           "propertySet": {
+            "type": "object",
+            "example": {}
+           }
+          }
+         },
+         "details": {
+          "type": "array",
+          "items": {
+           "type": "object",
+           "properties": {
+            "code": {
+             "type": "string",
+             "example": "invalidRequest"
+            },
+            "message": {
+             "type": "string",
+             "example": "/newDate is not a valid field"
+            },
+            "errorId": {
+             "type": "string",
+             "example": "REST-1043"
+            },
+            "target": {
+             "type": "string",
+             "example": "/newDate"
+            },
+            "additionalInfo": {
+             "type": "object",
+             "properties": {
+              "messageId": {
+               "type": "string",
+               "example": "IA.NOT_A_VALID_FIELD"
+              },
+              "placeholders": {
+               "type": "object",
+               "example": {}
+              },
+              "propertySet": {
+               "type": "object",
+               "example": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "ia::meta": {
+        "$ref": "#/components/schemas/metadata"
+       }
+      }
+     }
+    },
+    "example": {
+     "ia::result": {
+      "ia::error": {
+       "code": "invalidRequest",
+       "message": "A POST request requires a payload",
+       "errorId": "REST-1028",
+       "additionalInfo": {
+        "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+        "placeholders": {
+         "OPERATION": "POST"
+        },
+        "propertySet": {}
+       },
+       "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+      }
+     },
+     "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 0,
+      "totalError": 1
+     }
+    }
+   },
+   "services.core.composite": {
+    "description": "Schema for describing a single request that will be included as part of a POST body sent to the composite request service.",
+    "type": "object",
+    "properties": {
+     "method": {
+      "type": "string",
+      "description": "Operation for request.",
+      "nullable": false,
+      "example": "POST",
+      "enum": [
+       "GET",
+       "POST",
+       "PATCH",
+       "DELETE"
+      ]
+     },
+     "path": {
+      "type": "string",
+      "description": "Path to the request endpoint in the Intacct REST API.",
+      "nullable": false,
+      "pattern": "^\\/(objects|services)\\/[a-z_][a-z_0-9.\\-:]+(.*)?$",
+      "example": "/objects/accounts-payable/vendor"
+     },
+     "headers": {
+      "type": "object",
+      "description": "Headers needed for this request.",
+      "example": {
+       "Idempotency-Key": "e9606bb2-6be1-4c9e-a2a7-134cd644a5ee"
+      }
+     },
+     "body": {
+      "type": "object",
+      "description": "Request body for POST or PATCH operations.",
+      "example": {
+       "lastName": "Doe",
+       "firstName": "John",
+       "id": "Doe, John"
+      }
+     },
+     "resultReference": {
+      "type": "string",
+      "description": "Reference identifier for success results, used by other requests as input data.",
+      "nullable": false,
+      "example": "contactRef"
+     }
+    },
+    "required": [
+     "method",
+     "path"
+    ]
+   },
+   "status": {
+    "type": "string",
+    "description": "Object status. Active objects are fully functional. Inactive objects are essentially hidden and cannot be used or referenced.",
+    "enum": [
+     "active",
+     "inactive"
+    ],
+    "default": "active",
+    "example": "active"
+   },
+   "audit.s1": {
+    "type": "object",
+    "readOnly": true,
+    "properties": {
+     "createdDateTime": {
+      "description": "Date and time when the record was created.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-05-16T15:34:35Z"
+     },
+     "modifiedDateTime": {
+      "description": "Date and time when the record was last modified.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-09-14T21:23:42Z"
+     },
+     "createdBy": {
+      "description": "This field has been deprecated. Use the `createdByUser` field instead.",
+      "type": "string",
+      "readOnly": true,
+      "nullable": true,
+      "deprecated": true
+     },
+     "modifiedBy": {
+      "description": "This field has been deprecated. Use the `modifiedByUser` field instead.",
+      "type": "string",
+      "readOnly": true,
+      "nullable": true,
+      "deprecated": true
+     },
+     "createdByUser": {
+      "type": "object",
+      "description": "The user who created the object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "436"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JohnDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/436"
+       }
+      }
+     },
+     "modifiedByUser": {
+      "type": "object",
+      "description": "The user who last modified this object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "3086"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JaneDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/3086"
+       }
+      }
+     }
+    }
+   }
+  },
+  "responses": {
+   "400error": {
+    "description": "Bad Request",
+    "content": {
+     "application/json": {
+      "schema": {
+       "$ref": "#/components/schemas/error-response"
+      },
+      "examples": {
+       "Response example": {
+        "value": {
+         "ia::result": {
+          "ia::error": {
+           "code": "invalidRequest",
+           "message": "A POST request requires a payload",
+           "errorId": "REST-1028",
+           "additionalInfo": {
+            "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+            "placeholders": {
+             "OPERATION": "POST"
+            },
+            "propertySet": {}
+           },
+           "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+          }
+         },
+         "ia::meta": {
+          "totalCount": 1,
+          "totalSuccess": 0,
+          "totalError": 1
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "securitySchemes": {
+   "OAuth2": {
+    "description": "Sage Intacct OAuth 2.0 authorization code flow",
+    "type": "oauth2",
+    "flows": {
+     "authorizationCode": {
+      "authorizationUrl": "https://api.intacct.com/ia/api/v1/oauth2/authorize",
+      "tokenUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "refreshUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "scopes": {}
+     }
+    }
+   }
+  }
+ }
+}

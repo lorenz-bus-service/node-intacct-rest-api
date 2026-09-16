@@ -1,0 +1,5203 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "title": "Time",
+  "version": "1",
+  "description": "Time ensures that workers' time is recorded, workers are paid, and that overall project costs are tracked."
+ },
+ "servers": [
+  {
+   "url": "https://api.intacct.com/ia/api/v1",
+   "x-try-it": "sage-intacct-api"
+  }
+ ],
+ "tags": [
+  {
+   "name": "Time_Timesheets",
+   "x-displayName": "Timesheets",
+   "description": "Timesheets ensure that workers are paid appropriately. They also help project managers invoice clients and track overall project costs and expenses over time. Timesheets are used in both Projects and Time & Expenses. \n\nEach time a timesheet entry is submitted, a timesheet approval history object is created for tracking purposes. Many settings that impact required timesheet information are configured in Projects. For more information, see [Configure Projects](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Setting_Up_the_Projects_Application) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Time_Timesheet lines",
+   "x-displayName": "Timesheet lines",
+   "description": "A timesheet line is an entry on a timesheet that represents work done by one employee on a single day. Each timesheet line should reflect the dimensions used by the company. That is, work done for one customer or project should be recorded in a separate timesheet line from work done for another customer or project, etc. Reports and invoices use the dimension values to group timesheet lines for billing.\n\nFor more information, see [Fill out timesheets](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Fill_out_timesheets) in the Sage Intacct Help center. \n"
+  },
+  {
+   "name": "Time_Time types",
+   "x-displayName": "Time types",
+   "description": "Time types capture and track categories of time, such as salary, contract hours, overtime, vacation, and travel time. When you use time types, you can generate improved reports that use time types to identify project work time for your categories. You can also use time types to post labor costs to general ledger accounts. For more information, see [Add time types](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Add_time_types)."
+  },
+  {
+   "name": "Time_Approve timesheet",
+   "x-displayName": "Approve timesheet",
+   "description": "The approval and decline processes are generally the same. You can approve or decline an entire timesheet or only portions of it (individual days).\n\nA partially approved or declined timesheet includes a mix of approved or declined and submitted time entries. The last action determines whether the timesheet status appears as partially approved or declined. For example, if you last approved entries, the timesheet appears as partially approved; if you last declined entries, the timesheet appears as partially declined."
+  },
+  {
+   "name": "Time_Timesheet approval records",
+   "x-displayName": "Timesheet approval records",
+   "description": "An approval record is the history of a specific timesheet entry’s approvals. An approval record does not exist for timesheet entries that are auto-approved or those that do not require approval. Approvals can include from 1 to 5 levels. For example, a level 1 approval might simply require a department manager's approval. A level 2 approval might require a department manager's approval followed by a department director's approval.\n\n The approval record also includes the current approval state. Approval states are: Submitted, Pending Approval, Approved, and Declined. For more information about timesheet approval status, see [Track timesheet status](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Track_timesheet_status).  \n"
+  },
+  {
+   "name": "Time_Timesheet rules",
+   "x-displayName": "Timesheet rules",
+   "description": "Set up timesheet rules to enforce policies when an employee enters a timesheet. Timesheets that don't meet the rules cannot be submitted. Create a timesheet rule that's global to apply across an entire organization. Or, create a timesheet rule that applies only to a specific holiday schedule or designated project workers. Create specific timesheet rules if projects span multiple departments or multiple entities that have different work schedules. See [Specify timesheet rules](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Adding_Editing_Viewing_Timesheet_Rules) in the Sage Intacct Help Center for more information.\n"
+  }
+ ],
+ "paths": {
+  "/objects/time/timesheet": {
+   "get": {
+    "summary": "List timesheets",
+    "description": "Returns a collection with a key, ID, and link for each timesheet. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Time_Timesheets"
+    ],
+    "operationId": "list-time-timesheet",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of timesheets",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List of timesheets": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "101",
+             "id": "101",
+             "href": "/objects/time/timesheet/101"
+            },
+            {
+             "key": "102",
+             "id": "102",
+             "href": "/objects/time/timesheet/102"
+            },
+            {
+             "key": "103",
+             "id": "103",
+             "href": "/objects/time/timesheet/103"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": 0,
+            "previous": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a timesheet",
+    "description": "Creates a new timesheet.",
+    "tags": [
+     "Time_Timesheets"
+    ],
+    "operationId": "create-time-timesheet",
+    "requestBody": {
+     "description": "timesheet",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.time.timesheet"
+         },
+         {
+          "$ref": "#/components/schemas/time-timesheetRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a timesheet": {
+         "value": {
+          "beginDate": "2024-01-01",
+          "state": "submitted",
+          "description": "Week of 01/01/24",
+          "employee": {
+           "key": "973"
+          },
+          "attachment": {
+           "key": "8420"
+          },
+          "lines": [
+           {
+            "dimensions": {
+             "department": {
+              "key": "11"
+             },
+             "location": {
+              "key": "22"
+             },
+             "project": {
+              "key": "1"
+             },
+             "costType": {
+              "key": "2"
+             },
+             "task": {
+              "key": "1"
+             },
+             "customer": {
+              "key": "13"
+             },
+             "item": {
+              "key": "13"
+             }
+            },
+            "entryDate": "2024-04-01",
+            "quantity": 6,
+            "description": "Week of 04/01/24",
+            "notes": "Talked to client regarding project",
+            "timeType": {
+             "key": "1"
+            },
+            "isBillable": true
+           }
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New timesheet",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to new timesheet": {
+          "value": {
+           "ia::result": {
+            "key": "40",
+            "id": "40",
+            "href": "/objects/time/timesheet/40"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/timesheet/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the timesheet.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string",
+      "example": "23"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a timesheet",
+    "description": "Returns detailed information for a specified timesheet.",
+    "tags": [
+     "Time_Timesheets"
+    ],
+    "operationId": "get-time-timesheet-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the timesheet",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.time.timesheet"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a timesheet": {
+          "value": {
+           "ia::result": {
+            "key": "23",
+            "id": "23",
+            "href": "/objects/time/timesheet/23",
+            "beginDate": "2024-01-01",
+            "endDate": "2024-12-31",
+            "postingDate": "2024-01-01",
+            "state": "submitted",
+            "unitOfMeasure": "Hours",
+            "hoursInDay": 8,
+            "description": "Week of 01/01/24",
+            "calculationMethod": "hourly",
+            "postActualLaborCost": false,
+            "employee": {
+             "key": "973",
+             "id": "E-001",
+             "href": "/objects/company-config/employee/973"
+            },
+            "employeeContact": {
+             "key": "977",
+             "id": "John Smith",
+             "firstName": "John",
+             "lastName": "Smith",
+             "href": "/objects/company-config/contact/977"
+            },
+            "attachment": {
+             "key": "8420",
+             "id": "Attach-01",
+             "href": "/objects/company-config/attachment/973"
+            },
+            "employeeClassId": "EMP_CLS_001",
+            "employeeDepartmentId": "DEP-11",
+            "employeeLocation": {
+             "key": "22",
+             "id": "LOC-22",
+             "href": "/objects/company-config/location/22"
+            },
+            "employeePositionId": "MGR",
+            "lines": [
+             {
+              "key": "1411",
+              "id": "1411",
+              "href": "/objects/time/timesheet-line/1411",
+              "timesheet": {
+               "key": "11",
+               "id": "11",
+               "href": "/objects/time/timesheet/11"
+              },
+              "dimensions": {
+               "department": {
+                "key": "11",
+                "id": "DEP-11",
+                "name": "Sales and Marketing",
+                "href": "/objects/company-config/department/11"
+               },
+               "location": {
+                "key": "22",
+                "id": "LOC-22",
+                "name": "California",
+                "href": "/objects/company-config/location/22"
+               },
+               "employee": {
+                "key": "10",
+                "id": "EMP-10",
+                "name": "Garcia, John",
+                "href": "/objects/company-config/employee/10"
+               },
+               "project": {
+                "key": "1",
+                "id": "Proj-001",
+                "name": "Implementation",
+                "href": "/objects/projects/project/1"
+               },
+               "costType": {
+                "id": "2",
+                "key": "2",
+                "name": "Project Expense",
+                "href": "/objects/construction/cost-type/2"
+               },
+               "task": {
+                "id": "1",
+                "key": "1",
+                "name": "Project Task",
+                "href": "/objects/projects/task/1"
+               },
+               "customer": {
+                "key": "13",
+                "id": "CUST-13",
+                "name": "Jack In the Box",
+                "href": "/objects/accounts-receivable/customer/13"
+               },
+               "item": {
+                "key": "13",
+                "id": "Case 13",
+                "name": "Platform pack",
+                "href": "/objects/inventory-control/item/13"
+               }
+              },
+              "entryDate": "2024-04-01",
+              "quantity": 6,
+              "lineNumber": 1,
+              "description": "Week of 04/01/24",
+              "notes": "Talked to client regarding project",
+              "state": "approved",
+              "timeType": {
+               "key": "1",
+               "id": "Salaries At Root",
+               "name": "Salaries At Root",
+               "href": "/objects/time/time-type/1"
+              },
+              "isBillable": true,
+              "isBilled": "false",
+              "statisticalJournal": {
+               "key": "7483",
+               "id": "7483",
+               "href": "/objects/company-config/employee/10"
+              },
+              "billableUtilizedAccount": {
+               "key": "8293",
+               "id": "8293",
+               "href": "/objects/general-ledger/statistical-account/8293"
+              },
+              "nonBbillableUtilizedAccount": {
+               "key": "8294",
+               "id": "8294",
+               "href": "/objects/general-ledger/statistical-account/8294"
+              },
+              "billableNonUtilizedAccount": {
+               "key": "8295",
+               "id": "8295",
+               "href": "/objects/general-ledger/statistical-account/8295"
+              },
+              "nonBillableNonUtilizedAccount": {
+               "key": "8296",
+               "id": "8296",
+               "href": "/objects/general-ledger/statistical-account/8296"
+              },
+              "hours": {
+               "billable": 8,
+               "nonBillable": 2,
+               "approved": 10,
+               "approvedBillable": 8,
+               "approvedNonBillable": 2,
+               "utilized": 10,
+               "nonUtilized": 4,
+               "approvedUtilized": 3,
+               "approvedNonUtilized": 2
+              },
+              "externalPayroll": {
+               "costRate": 1,
+               "billingRate": 1,
+               "amount": "90",
+               "employerTaxes": 15,
+               "fringes": 10,
+               "cashFringes": 2
+              },
+              "laborClass": {
+               "key": "15",
+               "id": "15",
+               "name": "Labor Class",
+               "href": "/objects/construction/labor-class/15"
+              },
+              "audit": {
+               "createdDateTime": "2022-04-20T16:20:00Z",
+               "modifiedDateTime": "2022-04-20T16:20:00Z",
+               "createdByUser": {
+                "key": "1",
+                "id": "Admin",
+                "href": "/objects/company-config/user/1"
+               },
+               "createdBy": "1",
+               "modifiedByUser": {
+                "key": "95",
+                "id": "Hal",
+                "href": "/objects/company-config/user/95"
+               },
+               "modifiedBy": "95"
+              },
+              "entity": {
+               "key": "46",
+               "id": "Western Region",
+               "name": "Western Region",
+               "href": "/objects/company-config/entity/46"
+              }
+             }
+            ],
+            "audit": {
+             "createdDateTime": "2022-04-20T16:20:00Z",
+             "modifiedDateTime": "2022-04-20T16:20:00Z",
+             "createdBy": "1",
+             "modifiedBy": "95"
+            }
+           },
+           "ia::meta": {
+            "totalCount": 3
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a timesheet",
+    "description": "Updates an existing timesheet by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Time_Timesheets"
+    ],
+    "operationId": "update-time-timesheet-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.time.timesheet"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Updates a timesheet": {
+         "value": {
+          "state": "submitted",
+          "description": "Week of 01/01/24"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated timesheet",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated timesheet": {
+          "value": {
+           "ia::result": {
+            "key": "40",
+            "id": "40",
+            "href": "/objects/time/timesheet/40"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a timesheet",
+    "description": "Deletes a timesheet.",
+    "tags": [
+     "Time_Timesheets"
+    ],
+    "operationId": "delete-time-timesheet-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/timesheet-line": {
+   "get": {
+    "summary": "List timesheet lines",
+    "description": "Returns up to 100 object references from the collection with a key, ID, and link for each timesheet line. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find timesheet lines that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Time_Timesheet lines"
+    ],
+    "operationId": "list-time-timesheet-line",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List timesheet lines",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List of timesheet lines": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "4101",
+             "id": "4101",
+             "href": "/objects/time/timesheet-line/4101"
+            },
+            {
+             "key": "4102",
+             "id": "4102",
+             "href": "/objects/time/timesheet-line/4102"
+            },
+            {
+             "key": "4103",
+             "id": "4103",
+             "href": "/objects/time/timesheet-line/4103"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": 0,
+            "previous": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a timesheet line",
+    "description": "Creates a new timesheet line.",
+    "tags": [
+     "Time_Timesheet lines"
+    ],
+    "operationId": "create-time-timesheet-line",
+    "requestBody": {
+     "description": "timesheet-line",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.time.timesheet-line"
+         },
+         {
+          "$ref": "#/components/schemas/time-timesheet-lineRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Creates a timesheet line": {
+         "value": {
+          "timesheet": {
+           "key": "11"
+          },
+          "dimensions": {
+           "department": {
+            "key": "11"
+           },
+           "location": {
+            "key": "22"
+           },
+           "project": {
+            "key": "1"
+           },
+           "costType": {
+            "key": "2"
+           },
+           "task": {
+            "key": "1"
+           },
+           "customer": {
+            "key": "13"
+           },
+           "item": {
+            "key": "13"
+           }
+          },
+          "entryDate": "2024-04-01",
+          "quantity": 6,
+          "description": "Week of 04/01/24",
+          "notes": "Talked to client regarding project",
+          "timeType": {
+           "key": "1"
+          },
+          "isBillable": true
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New timesheet-line",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to new timesheet line": {
+          "value": {
+           "ia::result": {
+            "key": "4108",
+            "id": "4108",
+            "href": "/objects/time/timesheet-line/4108"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/timesheet-line/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the timesheet line.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string",
+      "example": "1411"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a timesheet line",
+    "description": "Returns detailed information for a specified timesheet line.",
+    "tags": [
+     "Time_Timesheet lines"
+    ],
+    "operationId": "get-time-timesheet-line-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the timesheet-line",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.time.timesheet-line"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a timesheet line": {
+          "value": {
+           "ia::result": {
+            "key": "1411",
+            "id": "1411",
+            "href": "/objects/time/timesheet-line/1411",
+            "timesheet": {
+             "key": "11",
+             "id": "11",
+             "href": "/objects/time/timesheet/11"
+            },
+            "dimensions": {
+             "employee": {
+              "key": "10",
+              "id": "EMP-10",
+              "name": "Thomas, Glenn",
+              "href": "/objects/company-config/employee/10"
+             },
+             "department": {
+              "key": "11",
+              "id": "DEP-11",
+              "name": "Sales and Marketing",
+              "href": "/objects/company-config/department/11"
+             },
+             "location": {
+              "key": "22",
+              "id": "LOC-22",
+              "name": "California",
+              "href": "/objects/company-config/location/22"
+             },
+             "project": {
+              "key": "1",
+              "id": "Proj-001",
+              "name": "Implementation",
+              "href": "/objects/projects/project/1"
+             },
+             "costType": {
+              "key": "2",
+              "id": "2",
+              "name": "Project Expense",
+              "href": "/objects/construction/cost-type/2"
+             },
+             "task": {
+              "id": "1",
+              "key": "1",
+              "name": "Project Task",
+              "href": "/objects/projects/task/1"
+             },
+             "customer": {
+              "key": "13",
+              "id": "CUST-13",
+              "name": "Jack In the Box",
+              "href": "/objects/accounts-receivable/customer/13"
+             },
+             "item": {
+              "key": "13",
+              "id": "Case 13",
+              "name": "Platform pack",
+              "href": "/objects/inventory-control/item/13"
+             }
+            },
+            "entryDate": "2024-04-01",
+            "quantity": 6,
+            "lineNumber": 1,
+            "description": "Week of 04/01/24",
+            "notes": "Talked to client regarding project",
+            "state": "approved",
+            "timeType": {
+             "key": "1",
+             "id": "Salaries At Root",
+             "href": "/objects/time/time-type/1"
+            },
+            "isBillable": true,
+            "isBilled": "false",
+            "statisticalJournal": {
+             "key": "7483",
+             "id": "TSSJ",
+             "href": "/objects/general-ledger/statistical-account/10"
+            },
+            "billableUtilizedAccount": {
+             "key": "8293",
+             "id": "9293",
+             "href": "/objects/general-ledger/statistical-account/8293"
+            },
+            "nonBbillableUtilizedAccount": {
+             "key": "8294",
+             "id": "9294",
+             "href": "/objects/general-ledger/statistical-account/8294"
+            },
+            "billableNonUtilizedAccount": {
+             "key": "8295",
+             "id": "9295",
+             "href": "/objects/general-ledger/statistical-account/8295"
+            },
+            "nonBillableNonUtilizedAccount": {
+             "key": "8296",
+             "id": "9296",
+             "href": "/objects/general-ledger/statistical-account/8296"
+            },
+            "hours": {
+             "billable": 8,
+             "nonBillable": 2,
+             "approved": 10,
+             "approvedBillable": 8,
+             "approvedNonBillable": 2,
+             "utilized": 10,
+             "nonUtilized": 4,
+             "approvedUtilized": 3,
+             "approvedNonUtilized": 2
+            },
+            "externalPayroll": {
+             "costRate": 1,
+             "billingRate": 1,
+             "amount": "90",
+             "employerTaxes": 15,
+             "fringes": 10,
+             "cashFringes": 2
+            },
+            "laborClass": {
+             "key": "15",
+             "id": "LC001",
+             "name": "Labor Class",
+             "href": "/objects/construction/labor-class/15"
+            },
+            "laborShift": {
+             "key": "18",
+             "id": "LS001",
+             "name": "Labor Shift",
+             "href": "/objects/construction/labor-class/18"
+            },
+            "laborUnion": {
+             "key": "20",
+             "id": "LU001",
+             "name": "Labor Union",
+             "href": "/objects/construction/labor-class/20"
+            },
+            "audit": {
+             "createdDateTime": "2022-04-20T16:20:00Z",
+             "modifiedDateTime": "2022-04-20T16:20:00Z",
+             "createdByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             },
+             "createdBy": "1",
+             "modifiedByUser": {
+              "key": "95",
+              "id": "Hal",
+              "href": "/objects/company-config/user/95"
+             },
+             "modifiedBy": "95"
+            }
+           },
+           "ia::meta": {
+            "totalCount": 3
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a timesheet line",
+    "description": "Updates an existing timesheet line by setting field values. Any fields not provided remain unchanged. Whether approvals are turned on for a company, and where a timesheet is in the approval process determines if a timesheet line can be edited. For more information, see [Edit timesheets to correct information](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Edit_timesheets) in the Sage Intacct Help center.",
+    "tags": [
+     "Time_Timesheet lines"
+    ],
+    "operationId": "update-time-timesheet-line-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/objects.time.timesheet-line"
+       },
+       "examples": {
+        "Updates a timesheet line": {
+         "value": {
+          "key": "40",
+          "description": "Week of 04/01/24",
+          "notes": "Talked to client regarding project"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated timesheet-line",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated timesheet line": {
+          "value": {
+           "ia::result": {
+            "key": "40",
+            "id": "40",
+            "href": "/objects/time/timesheet-line/40"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalFailure": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a timesheet line",
+    "description": "Deletes a timesheet line. If a timesheet has posted to the General Ledger or has been invoiced, it cannot be deleted.",
+    "tags": [
+     "Time_Timesheet lines"
+    ],
+    "operationId": "delete-time-timesheet-line-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/time-type": {
+   "get": {
+    "summary": "List time types",
+    "description": "Returns a collection with a key, ID, and link for each time type. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Time_Time types"
+    ],
+    "operationId": "list-time-type",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of time-type objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List time types": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "46",
+             "id": "Overtime",
+             "href": "/objects/time/time-type/46"
+            },
+            {
+             "key": "44",
+             "id": "Part time",
+             "href": "/objects/time/time-type/44"
+            },
+            {
+             "key": "40",
+             "id": "Full time",
+             "href": "/objects/time/time-type/40"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 5,
+            "next": 0,
+            "previous": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a time type",
+    "description": "Creates a new time type.",
+    "tags": [
+     "Time_Time types"
+    ],
+    "operationId": "create-time-type",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.time.time-type"
+         },
+         {
+          "$ref": "#/components/schemas/time-typeRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a time type": {
+         "value": {
+          "id": "Overtime",
+          "earningType": {
+           "key": "22"
+          },
+          "glAccount": {
+           "key": "12"
+          },
+          "offsetGLAccount": {
+           "key": "15"
+          },
+          "status": "active"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New time-type",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to new time type": {
+          "value": {
+           "ia::result": {
+            "key": "10",
+            "id": "10",
+            "href": "/objects/time/time-type/10"
+           },
+           "ia::meta": {
+            "totalCount": 3
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/time-type/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the time type.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a time type",
+    "description": "Returns detailed information for a specified time type.",
+    "tags": [
+     "Time_Time types"
+    ],
+    "operationId": "get-time-type-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the time-type",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.time.time-type"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a time type": {
+          "value": {
+           "ia::result": {
+            "key": "46",
+            "id": "Overtime",
+            "href": "/objects/time/time-type/46",
+            "earningType": {
+             "href": "/objects/company-config/earning-type/22",
+             "key": "22",
+             "id": "Salary"
+            },
+            "glAccount": {
+             "href": "/objects/general-ledger/account/12",
+             "key": "12",
+             "id": "5001",
+             "name": "Labor"
+            },
+            "offsetGLAccount": {
+             "href": "/objects/general-ledger/account/15",
+             "key": "15",
+             "id": "5002",
+             "name": "Labor Offset"
+            },
+            "status": "active",
+            "entity": {
+             "key": "46",
+             "id": "Western Region",
+             "name": "Western Region",
+             "href": "/objects/company-config/entity/46"
+            }
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 3,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a time type",
+    "description": "Updates an existing time type by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Time_Time types"
+    ],
+    "operationId": "update-time-type-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.time.time-type"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a time type": {
+         "value": {
+          "status": "active"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated time-type",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated time type": {
+          "value": {
+           "ia::result": {
+            "key": "10",
+            "id": "Overtime",
+            "href": "/objects/time/time-type/10"
+           },
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 3,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a time type",
+    "description": "Deletes a time type.",
+    "tags": [
+     "Time_Time types"
+    ],
+    "operationId": "delete-time-type-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/timesheet-to-approve": {
+   "get": {
+    "summary": "List timesheets to approve",
+    "description": "Returns a collection with a key, ID, and link for each timesheet to approve. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Time_Approve timesheet"
+    ],
+    "operationId": "list-time-timesheet-to-approve",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List timesheet to approve objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List timesheets to approve": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "101",
+             "id": "101",
+             "href": "/objects/time/timesheet-to-approve/101"
+            },
+            {
+             "key": "102",
+             "id": "102",
+             "href": "/objects/time/timesheet-to-approve/102"
+            },
+            {
+             "key": "103",
+             "id": "103",
+             "href": "/objects/time/timesheet-to-approve/103"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "totalSuccess": 3,
+            "totalError": 0,
+            "start": 1,
+            "pageSize": 100,
+            "next": 0,
+            "previous": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/timesheet-to-approve/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "system-assigned unique key for the timesheet-to-approve.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a timesheet to approve",
+    "description": "Returns detailed information for a specified timesheet to approve.",
+    "tags": [
+     "Time_Approve timesheet"
+    ],
+    "operationId": "get-time-timesheet-to-approve-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the timesheet-to-approve",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.time.timesheet-to-approve"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Details of the timesheet to approve": {
+          "value": {
+           "ia::result": {
+            "key": "23",
+            "id": "23",
+            "href": "/objects/projects/timesheet/23",
+            "beginDate": "2025-01-01",
+            "endDate": "2025-01-07",
+            "postingDate": "2025-01-07",
+            "state": "submitted",
+            "unitOfMeasure": "Hours",
+            "hoursInDay": 8,
+            "billableQuantity": 40,
+            "nonBillableQuantity": 2,
+            "description": "Week of 2025-01-01",
+            "calculationMethod": "hourly",
+            "postActualLaborCost": false,
+            "employee": {
+             "key": "973",
+             "id": "E-001",
+             "href": "/objects/company-config/employee/973"
+            },
+            "employeeContact": {
+             "key": "973",
+             "name": "John Smith",
+             "firstName": "John",
+             "lastName": "Smith",
+             "href": "/objects/company-config/contact/973"
+            },
+            "attachment": {
+             "key": "8420",
+             "id": "Attach-01",
+             "href": "string"
+            },
+            "lines": [
+             {
+              "key": "1411",
+              "id": "1411",
+              "href": "/objects/time/timesheet-to-approve-line/1411",
+              "timesheetToApprove": {
+               "key": "11",
+               "id": "11",
+               "href": "/objects/time/timesheet-to-approve/11"
+              },
+              "entryDate": "2025-04-01",
+              "quantity": 6,
+              "lineNumber": 1,
+              "description": "Week of 04/01/23",
+              "notes": "Talked to client regarding project",
+              "state": "approved",
+              "timeType": {
+               "key": "1",
+               "id": "Salaries At Root",
+               "name": "Salaries At Root",
+               "href": "/objects/projects/time-type/1"
+              },
+              "isBillable": true,
+              "isBilled": "false",
+              "statisticalJournal": {
+               "key": "7483",
+               "id": "TSSJ",
+               "href": "/objects/general-ledger/statistical-journal/7483"
+              },
+              "billableUtilizedGLAccount": {
+               "key": "8293",
+               "id": "9293",
+               "href": "/objects/general-ledger/statistical-account/8293"
+              },
+              "nonBillableUtilizedGLAccount": {
+               "key": "8294",
+               "id": "9294",
+               "href": "/objects/general-ledger/statistical-account/8294"
+              },
+              "billableNonUtilizedGLAccount": {
+               "key": "8295",
+               "id": "9295",
+               "href": "/objects/general-ledger/statistical-account/8295"
+              },
+              "nonBillableNonUtilizedGLAccount": {
+               "key": "8296",
+               "id": "9296",
+               "href": "/objects/general-ledger/statistical-account/8296"
+              },
+              "hours": {
+               "billable": 8,
+               "nonBillable": 2,
+               "approved": 10,
+               "approvedBillable": 8,
+               "approvedNonBillable": 2,
+               "utilized": 10,
+               "nonUtilized": 4,
+               "approvedUtilized": 3,
+               "approvedNonUtilized": 2
+              },
+              "externalPayroll": {
+               "costRate": 1,
+               "billingRate": 1,
+               "amount": "90",
+               "employerTaxes": 15,
+               "fringes": 10,
+               "cashFringes": 2
+              },
+              "laborClass": {
+               "key": "15",
+               "id": "LC001",
+               "name": "Labor Class",
+               "href": "/objects/construction/labor-class/15"
+              },
+              "laborShift": {
+               "key": "18",
+               "id": "LS001",
+               "name": "Labor Shift",
+               "href": "/objects/construction/labor-shift/18"
+              },
+              "laborUnion": {
+               "key": "20",
+               "id": "LU001",
+               "name": "Labor Union",
+               "href": "/objects/construction/labor-union/20"
+              },
+              "dimensions": {
+               "location": {
+                "key": "1",
+                "id": "1",
+                "name": "USA"
+               },
+               "department": {
+                "key": "1",
+                "id": "1",
+                "name": "IT"
+               },
+               "employee": {
+                "key": "10",
+                "id": "EMP-10",
+                "name": "Thomas, Glenn",
+                "href": "/objects/company-config/employee/10"
+               },
+               "project": {
+                "key": "2",
+                "id": "NET-XML30-2",
+                "name": "Talcomp training",
+                "href": "/objects/projects/project/2"
+               },
+               "customer": {
+                "key": "13",
+                "id": "CUST-13",
+                "name": "Jack In the Box",
+                "href": "/objects/accounts-receivable/customer/13"
+               },
+               "vendor": {
+                "key": "357",
+                "id": "1605212096809",
+                "name": "GenLab",
+                "href": "/objects/accounts-payable/vendor/357"
+               },
+               "item": {
+                "key": "13",
+                "id": "Case 13",
+                "name": "Platform pack",
+                "href": "/objects/inventory-control/item/13"
+               },
+               "warehouse": {
+                "key": "6",
+                "id": "WH01",
+                "name": "WH01",
+                "href": "/objects/inventory-control/warehouse/6"
+               },
+               "class": {
+                "key": "731",
+                "id": "REST_CLS_001",
+                "name": "Enterprises",
+                "href": "/objects/company-config/class/731"
+               },
+               "task": {
+                "id": "1",
+                "key": "1",
+                "name": "Project Task",
+                "href": "/objects/projects/task/1"
+               },
+               "costType": {
+                "id": "2",
+                "key": "2",
+                "name": "Project Expense",
+                "href": "/objects/construction/cost-type/2"
+               },
+               "asset": {
+                "id": "A001",
+                "key": "1",
+                "name": "Laptop 1",
+                "href": "/objects/asset/1"
+               },
+               "contract": {
+                "id": "CON-0045-1",
+                "key": "12",
+                "name": "ACME Widgets - Service",
+                "href": "/objects/contracts/contract/12"
+               }
+              },
+              "audit": {
+               "createdDateTime": "2022-04-20T16:20:00Z",
+               "modifiedDateTime": "2022-04-20T16:20:00Z",
+               "createdBy": "1",
+               "modifiedBy": "95"
+              },
+              "entity": {
+               "key": "46",
+               "id": "Western Region",
+               "name": "Western Region",
+               "href": "/objects/company-config/entity/46"
+              }
+             }
+            ],
+            "audit": {
+             "createdDateTime": "2022-04-20T16:20:00Z",
+             "modifiedDateTime": "2022-04-20T16:20:00Z",
+             "createdBy": "1",
+             "modifiedBy": "95"
+            }
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/timesheet-approval-record": {
+   "get": {
+    "summary": "List timesheet approval records",
+    "description": "Returns a collection with a key, ID, and link for each timesheet approval record. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Time_Timesheet approval records"
+    ],
+    "operationId": "list-time-timesheet-approval-record",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of timesheet-approval-record objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List timesheet approval records": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "46",
+             "id": "46",
+             "href": "/objects/time/timesheet-approval-record/46"
+            },
+            {
+             "key": "44",
+             "id": "44",
+             "href": "/objects/time/timesheet-approval-record/44"
+            },
+            {
+             "key": "40",
+             "id": "40",
+             "href": "/objects/time/timesheet-approval-record/40"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 5,
+            "next": 0,
+            "previous": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/timesheet-approval-record/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the timesheet approval record.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string",
+      "example": "101"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a timesheet approval record",
+    "description": "Returns detailed information for a specified timesheet approval record.",
+    "tags": [
+     "Time_Timesheet approval records"
+    ],
+    "operationId": "get-time-timesheet-approval-record-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the timesheet-approval-record",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.time.timesheet-approval-record"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a timesheet approval record": {
+          "value": {
+           "ia::result": {
+            "key": "200",
+            "id": "200",
+            "href": "/objects/time/timesheet-approval-record/200",
+            "approvalStage": 1,
+            "approvalType": "Department Approval",
+            "approvalLevel": "2",
+            "comments": "Approved by Admin",
+            "recordDate": "2021-01-23",
+            "state": "submitted",
+            "timesheet": {
+             "key": "101",
+             "id": "101",
+             "href": "/objects/time/timesheet/101"
+            },
+            "timesheetLine": {
+             "key": "142",
+             "id": "142",
+             "lineNumber": 3,
+             "href": "/objects/time/timesheet-line/142"
+            },
+            "approvedBy": {
+             "key": "202",
+             "id": "cjackson",
+             "href": "/objects/company-config/user/202"
+            },
+            "approver": {
+             "key": "203",
+             "id": "jlee",
+             "href": "/objects/company-config/user/203"
+            },
+            "completedBy": {
+             "key": "204",
+             "id": "gadams",
+             "href": "/objects/company-config/user/204"
+            },
+            "initiatedBy": {
+             "key": "205",
+             "id": "vluce",
+             "href": "/objects/company-config/user/205"
+            }
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/timesheet-rule": {
+   "get": {
+    "summary": "List timersheet rules",
+    "description": "Returns a collection with a key, ID, and link for each timesheet rule. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Time_Timesheet rules"
+    ],
+    "operationId": "list-time-timesheet-rule",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of timesheet rule objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List timesheet rule": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "id": "1",
+             "href": "/objects/time/timesheet-rule/1"
+            },
+            {
+             "key": "2",
+             "id": "2",
+             "href": "/objects/time/timesheet-rule/2"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "totalSuccess": 2,
+            "totalError": 0,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a timesheet rule",
+    "description": "Creates a new timesheet rule.",
+    "tags": [
+     "Time_Timesheet rules"
+    ],
+    "operationId": "create-time-timesheet-rule",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.time.timesheet-rule"
+         },
+         {
+          "$ref": "#/components/schemas/time-timesheet-ruleRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a new timesheet rule": {
+         "value": {
+          "name": "Holiday schedule 2022",
+          "businessDays": [
+           "MONDAY",
+           "TUESDAY",
+           "WEDNESDAY",
+           "THURSDAY",
+           "FRIDAY"
+          ],
+          "weekends": [
+           "SATURDAY",
+           "SUNDAY"
+          ],
+          "startDate": "2022-01-01",
+          "endDate": "2022-12-31",
+          "requireNotes": false,
+          "doNotAllowOnHolidays": false,
+          "timesheetRuleEmployees": [
+           {
+            "key": "22"
+           },
+           {
+            "key": "27"
+           },
+           {
+            "id": "JSmith"
+           }
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New timesheet rule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to new timesheet rule": {
+          "value": {
+           "ia::result": {
+            "key": "3",
+            "id": "3",
+            "href": "/objects/time/timesheet-rule/3"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/time/timesheet-rule/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the timesheet rule.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a timesheet rule",
+    "description": "Returns detailed information for a specified timesheet rule.",
+    "tags": [
+     "Time_Timesheet rules"
+    ],
+    "operationId": "get-time-timesheet-rule-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the timesheet-rule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.time.timesheet-rule"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Details of the timesheet rule": {
+          "value": {
+           "ia::result": {
+            "key": "2",
+            "id": "2",
+            "name": "Time sheet of my company",
+            "businessDays": [
+             "MONDAY",
+             "TUESDAY",
+             "WEDNESDAY",
+             "THURSDAY",
+             "FRIDAY"
+            ],
+            "weekends": [
+             "SATURDAY",
+             "SUNDAY"
+            ],
+            "startDate": "2024-02-01",
+            "endDate": "2024-10-01",
+            "minHoursPerWorkDay": "2.5",
+            "maxHoursPerWorkDay": "8",
+            "minHoursForApproval": "1.5",
+            "maxHoursForApproval": "8",
+            "minHoursPerWeekend": "2",
+            "maxHoursPerWeekend": "4",
+            "requireNotes": false,
+            "doNotAllowOnHolidays": false,
+            "status": "active",
+            "href": "/objects/time/timesheet-rule/2",
+            "timesheetRuleEmployees": [
+             {
+              "key": "23",
+              "id": "jsmith",
+              "name": "Smith, John",
+              "href": "/objects/company-config/employee/23"
+             },
+             {
+              "key": "25",
+              "id": "abrown",
+              "name": "Brown, Angela",
+              "href": "/objects/company-config/employee/25"
+             }
+            ]
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a timesheet rule",
+    "description": "Updates an existing timesheet rule by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Time_Timesheet rules"
+    ],
+    "operationId": "update-time-timesheet-rule-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/objects.time.timesheet-rule"
+       },
+       "examples": {
+        "Update a timesheet rule": {
+         "value": {
+          "name": "Time Schedule for 2024",
+          "timesheetRuleEmployees": [
+           {
+            "key": "24"
+           },
+           {
+            "id": "MGR1"
+           }
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated timesheet-rule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated timesheet rule": {
+          "value": {
+           "ia::result": {
+            "key": "5",
+            "id": "5",
+            "href": "/objects/time/timesheet-rule/5"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a timesheet rule",
+    "description": "Deletes a timesheet rule.",
+    "tags": [
+     "Time_Timesheet rules"
+    ],
+    "operationId": "delete-time-timesheet-rule-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "object-reference": {
+    "type": "object",
+    "description": "Reference to created or updated object.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the object.",
+      "example": "12345"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the object.",
+      "example": "ID123"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL endpoint for the object.",
+      "example": "/objects/<application>/<name>/12345"
+     }
+    }
+   },
+   "metadata-pages": {
+    "description": "Metadata for collection response",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total number of members in the result set.",
+      "readOnly": true,
+      "example": 3
+     },
+     "start": {
+      "type": "integer",
+      "description": "First member of the result set included in the current response.",
+      "readOnly": true,
+      "example": 1
+     },
+     "pageSize": {
+      "type": "integer",
+      "description": "Maximum number of members included in the current response. The response may contain fewer members if the final page of the result set is smaller than the page size.",
+      "readOnly": true,
+      "example": 100
+     },
+     "next": {
+      "type": "integer",
+      "description": "First member number of the next page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": 101
+     },
+     "previous": {
+      "type": "integer",
+      "description": "First member number of the previous page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": null
+     }
+    }
+   },
+   "objects.time.timesheet": {
+    "type": "object",
+    "description": "Header information for timesheets. Includes employee name, period begin date, period end date, GL post date, description, and attachments.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the timesheet.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the timesheet. This value is same as the key for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL endpoint for the timesheet.",
+      "example": "/objects/time/timesheet/23"
+     },
+     "beginDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Begin date of the work period.",
+      "example": "2024-01-01",
+      "nullable": false
+     },
+     "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The calculated end date of the work period, based on the `beginDate`.",
+      "example": "2024-12-31",
+      "readOnly": true
+     },
+     "postingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Defaults to timesheet `endDate`. If `endDate` falls within a closed GL period, then `postingDate` automatically defaults to the first day of the next open GL period.",
+      "example": "2024-01-01"
+     },
+     "state": {
+      "type": "string",
+      "description": "State of the timesheet in the approval cycle, such as approved or declined.",
+      "example": "submitted",
+      "default": "draft",
+      "enum": [
+       "submitted",
+       "approved",
+       "partiallyApproved",
+       "declined",
+       "draft",
+       "partiallyDeclined",
+       "saved"
+      ]
+     },
+     "unitOfMeasure": {
+      "type": "string",
+      "description": "Unit of measure, such as hours or days, used in labor cost calculations. Maps to configuration set in Projects and cannot be changed.",
+      "readOnly": true,
+      "example": "hours"
+     },
+     "hoursInDay": {
+      "type": "number",
+      "description": "Hours in a day. Used to calculate labor cost.",
+      "readOnly": true,
+      "example": 8
+     },
+     "description": {
+      "type": "string",
+      "description": "Timesheet description, up to 400 characters.",
+      "example": "Week of 2024-01-01 to cover help desk"
+     },
+     "calculationMethod": {
+      "type": "string",
+      "description": "The calculation method used for pay and defined by `time-type.earningType`. Used in labor cost and billing calculations. When `null`, the labor amount does not calculate for the timesheet. For example, labor costs for certain roles, such as management or sales, might not need to be calculated.",
+      "example": "hourly",
+      "readOnly": true,
+      "nullable": true,
+      "default": null,
+      "enum": [
+       null,
+       "hourly",
+       "salary"
+      ]
+     },
+     "postActualLaborCost": {
+      "type": "boolean",
+      "description": "Only `true` when `employee.postActualCostWithVariance` is set to `true` to indicate that `calculationMethod` is `salary`. When `employee.postActualCostWithVariance` is set to false, `calculationMethod` is `hourly`, so `postActualLaborCost` is `false`.",
+      "example": false,
+      "readOnly": true
+     },
+     "employee": {
+      "type": "object",
+      "description": "The employee who performed the work and whose time is being tracked.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the employee.",
+        "example": "973"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the employee.",
+        "example": "E-001"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the employee.",
+        "example": "/objects/company-config/employee/973",
+        "readOnly": true
+       }
+      }
+     },
+     "employeeContact": {
+      "type": "object",
+      "description": "Employee contact.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the contact.",
+        "readOnly": true,
+        "example": "977"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the contact.",
+        "readOnly": true,
+        "example": "John Smith"
+       },
+       "firstName": {
+        "type": "string",
+        "description": "The first name of the contact.",
+        "readOnly": true,
+        "example": "John"
+       },
+       "lastName": {
+        "type": "string",
+        "description": "The last name of the contact.",
+        "readOnly": true,
+        "example": "Smith"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the contact.",
+        "example": "/objects/company-config/contact/973",
+        "readOnly": true
+       }
+      },
+      "readOnly": true
+     },
+     "attachment": {
+      "type": "object",
+      "description": "Supporting documentation for the timesheet.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the attachment.",
+        "example": "8420"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the attachment.",
+        "example": "Attach-01"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the attachment.",
+        "example": "/objects/company-config/attachment/8420",
+        "readOnly": true
+       }
+      }
+     },
+     "lines": {
+      "type": "array",
+      "description": "Time entries",
+      "items": {
+       "$ref": "#/components/schemas/objects.time.timesheet-line"
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     },
+     "entity": {
+      "$ref": "#/components/schemas/entity-ref"
+     }
+    }
+   },
+   "time-timesheetRequiredProperties": {
+    "type": "object",
+    "required": [
+     "beginDate"
+    ]
+   },
+   "metadata": {
+    "description": "Metadata for the response.",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total count.",
+      "readOnly": true,
+      "example": 3
+     },
+     "totalSuccess": {
+      "type": "integer",
+      "description": "Total success.",
+      "readOnly": true,
+      "example": 2
+     },
+     "totalError": {
+      "type": "integer",
+      "description": "Total errors.",
+      "readOnly": true,
+      "example": 1
+     }
+    }
+   },
+   "objects.time.timesheet-line": {
+    "type": "object",
+    "description": "Line items in a timesheet represent time details for specified periods captured in the timesheet.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the timesheet line.",
+      "readOnly": true,
+      "example": "1411"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the timesheet line. This value is the same as the 'key' for this object.",
+      "readOnly": true,
+      "example": "1411"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the timesheet line.",
+      "readOnly": true,
+      "example": "/objects/time/timesheet-line/1411"
+     },
+     "timesheet": {
+      "type": "object",
+      "description": "The timesheet to which the line belongs.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the timesheet.",
+        "example": "11"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the timesheet.",
+        "example": "11"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the timesheet.",
+        "example": "/objects/time/timesheet/11",
+        "readOnly": true
+       }
+      }
+     },
+     "entryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the timesheet line entry.",
+      "example": "2024-04-01"
+     },
+     "quantity": {
+      "type": "number",
+      "description": "Number of hours or quantity.",
+      "example": 6
+     },
+     "lineNumber": {
+      "type": "integer",
+      "description": "Line number of the timesheet line entry.",
+      "readOnly": true,
+      "example": 1
+     },
+     "description": {
+      "type": "string",
+      "description": "Description of the individual timesheet line.",
+      "example": "04/01/24: work on Project Z.",
+      "nullable": true
+     },
+     "notes": {
+      "type": "string",
+      "description": "Notes about the timesheet line.",
+      "example": "Talked to client regarding project",
+      "nullable": true
+     },
+     "state": {
+      "type": "string",
+      "description": "State of the timesheet line in the approval cycle, such as `approved` or `declined`.",
+      "readOnly": true,
+      "example": "approved",
+      "default": "draft",
+      "enum": [
+       "submitted",
+       "approved",
+       "partiallyApproved",
+       "declined",
+       "draft",
+       "saved",
+       "readyForApproval"
+      ]
+     },
+     "timeType": {
+      "type": "object",
+      "description": "Categorizes the time. Each company's time types can differ and can include salary, contract hours, overtime, vacation, travel time, and so on.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the time type.",
+        "example": "1",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the Time type.",
+        "example": "Salaries At Root",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the time type.",
+        "example": "/objects/time/time-type/1",
+        "readOnly": true,
+        "nullable": true
+       }
+      }
+     },
+     "isBillable": {
+      "type": "boolean",
+      "description": "Indicates whether the line can be billed. Set to `true` if the line can be billed to a customer.",
+      "example": true,
+      "default": false
+     },
+     "isBilled": {
+      "type": "string",
+      "description": "Indicates whether the line has been billed to a customer.",
+      "example": "false",
+      "enum": [
+       "true",
+       "false",
+       "partial"
+      ],
+      "default": false,
+      "readOnly": true
+     },
+     "statisticalJournal": {
+      "type": "object",
+      "description": "Statistical journal used for the timesheet line. Statistical account entries are non-monetary and simply increase or decrease a value.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the statistical journal.",
+        "example": "7483",
+        "readOnly": true,
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the statistical journal.",
+        "example": "TSSJ",
+        "readOnly": true,
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the statistical journal.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/statistical-journal/7483"
+       }
+      },
+      "readOnly": true
+     },
+     "billableUtilizedGLAccount": {
+      "type": "object",
+      "description": "General ledger account used for the billable utilized time recorded.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the GL account.",
+        "readOnly": true,
+        "example": "8293",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the GL account.",
+        "readOnly": true,
+        "example": "9293",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/statistical-account/8293"
+       }
+      },
+      "readOnly": true
+     },
+     "nonBillableUtilizedGLAccount": {
+      "type": "object",
+      "description": "General ledger account used for the non-billable utilized time recorded.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the GL account.",
+        "readOnly": true,
+        "example": "8294",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the GL account.",
+        "readOnly": true,
+        "example": "9294",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/statistical-account/8294"
+       }
+      },
+      "readOnly": true
+     },
+     "billableNonUtilizedGLAccount": {
+      "type": "object",
+      "description": "General ledger account used for the billable non-utilized time recorded.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the GL account.",
+        "readOnly": true,
+        "example": "8295",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the GL account.",
+        "readOnly": true,
+        "example": "9295",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/statistical-account/8295"
+       }
+      },
+      "readOnly": true
+     },
+     "nonBillableNonUtilizedGLAccount": {
+      "type": "object",
+      "description": "General ledger account used for the non-billable non-utilized time recorded.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the GL account.",
+        "readOnly": true,
+        "example": "8296",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the GL Account for Non-Billable Non-Utilized entry.",
+        "readOnly": true,
+        "example": "9296",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/statistical-account/8296"
+       }
+      },
+      "readOnly": true
+     },
+     "hours": {
+      "type": "object",
+      "description": "Details about the hours recorded on the timesheet line.",
+      "properties": {
+       "billable": {
+        "type": "number",
+        "description": "Number of billable hours.",
+        "example": 4,
+        "readOnly": true,
+        "nullable": true
+       },
+       "nonBillable": {
+        "type": "number",
+        "description": "Number of non-billable hours.",
+        "example": 4,
+        "readOnly": true,
+        "nullable": true
+       },
+       "approved": {
+        "type": "number",
+        "description": "Number of approved hours.",
+        "example": 8,
+        "readOnly": true,
+        "nullable": true
+       },
+       "approvedBillable": {
+        "type": "number",
+        "description": "Number of approved billable hours.",
+        "example": 4,
+        "readOnly": true,
+        "nullable": true
+       },
+       "approvedNonBillable": {
+        "type": "number",
+        "description": "Number of approved non-billable hours.",
+        "example": 4,
+        "readOnly": true,
+        "nullable": true
+       },
+       "utilized": {
+        "type": "number",
+        "description": "Utilized or actual hours worked against the budgeted hours.",
+        "example": 8,
+        "readOnly": true,
+        "nullable": true
+       },
+       "nonUtilized": {
+        "type": "number",
+        "description": "Non-utilized hours or hours not worked against the budgeted hours.",
+        "example": 4,
+        "readOnly": true,
+        "nullable": true
+       },
+       "approvedUtilized": {
+        "type": "number",
+        "description": "Approved utilized or actual hours worked against the budgeted hours.",
+        "example": 3,
+        "readOnly": true,
+        "nullable": true
+       },
+       "approvedNonUtilized": {
+        "type": "number",
+        "description": "Approved non-utilized hours or hours not worked against the budgeted hours.",
+        "example": 2,
+        "readOnly": true,
+        "nullable": true
+       }
+      },
+      "readOnly": true
+     },
+     "externalPayroll": {
+      "type": "object",
+      "description": "External payroll details, such as information from Sage Intacct Construction Payroll.",
+      "properties": {
+       "costRate": {
+        "type": "number",
+        "description": "External cost rate used.",
+        "example": 115,
+        "nullable": true
+       },
+       "billingRate": {
+        "type": "number",
+        "description": "External billing rate used.",
+        "example": 1,
+        "nullable": true
+       },
+       "amount": {
+        "type": "string",
+        "description": "Labor amount. (Construction subscription.)",
+        "example": "90",
+        "format": "decimal-precision-2",
+        "nullable": true
+       },
+       "employerTaxes": {
+        "type": "number",
+        "description": "Employer taxes. (Construction subscription.)",
+        "example": 15,
+        "nullable": true
+       },
+       "fringes": {
+        "type": "number",
+        "description": "Amount of the fringes cost. (Construction subscription.)",
+        "example": 10,
+        "nullable": true
+       },
+       "cashFringes": {
+        "type": "number",
+        "description": "Amount of the cash fringes cost. (Construction subscription.)",
+        "example": 2,
+        "nullable": true
+       }
+      }
+     },
+     "laborClass": {
+      "type": "object",
+      "description": "Labor class for the timesheet line. (Construction subscription.)",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the labor class.",
+        "example": "15",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the labor class.",
+        "example": "LC001",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Labor class name associated with the timesheet.",
+        "readOnly": true,
+        "example": "Journeyperson",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the class dimension.",
+        "readOnly": true,
+        "example": "/objects/construction/labor-class/15"
+       }
+      },
+      "readOnly": true
+     },
+     "laborShift": {
+      "type": "object",
+      "description": "Labor shift for the timesheet line. (Construction subscription.)",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the labor shift.",
+        "example": "18",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the labor shift.",
+        "example": "LS001",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Labor shift associated with the timesheet.",
+        "readOnly": true,
+        "example": "Swing shift",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the labor shift.",
+        "readOnly": true,
+        "example": "/objects/construction/labor-shift/18"
+       }
+      },
+      "readOnly": true
+     },
+     "laborUnion": {
+      "type": "object",
+      "description": "Labor union for the timesheet line. (Construction subscription.)",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the labor union.",
+        "example": "20",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the labor union.",
+        "example": "LU001",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Labor union associated with the timesheet.",
+        "readOnly": true,
+        "example": "Steamfitters Local 467",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the labor union.",
+        "readOnly": true,
+        "example": "/objects/construction/labor-union/20"
+       }
+      },
+      "readOnly": true
+     },
+     "employeePosition": {
+      "type": "object",
+      "description": "References the employee position, applies only to companies with a Construction subscription.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the employee position.",
+        "nullable": true,
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Identifier for the employee position.",
+        "nullable": true,
+        "example": "SV001"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name of the employee position.",
+        "nullable": true,
+        "readOnly": true,
+        "example": "permanent"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the employee position.",
+        "readOnly": true,
+        "example": "/objects/construction/employee-position/1"
+       }
+      }
+     },
+     "dimensions": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/dimension-ref"
+       },
+       {
+        "type": "object",
+        "properties": {
+         "location": {
+          "type": "object",
+          "description": "Company location.",
+          "properties": {
+           "key": {
+            "type": "string",
+            "description": "Unique key for the location.",
+            "example": "1",
+            "nullable": true
+           },
+           "id": {
+            "type": "string",
+            "description": "Unique identifier of the location.",
+            "example": "1",
+            "nullable": true
+           },
+           "name": {
+            "readOnly": true,
+            "type": "string",
+            "description": "Location name",
+            "example": "San Jose",
+            "nullable": true
+           },
+           "href": {
+            "type": "string",
+            "description": "URL endpoint for the location.",
+            "readOnly": true,
+            "example": "/objects/company-config/location/1"
+           }
+          }
+         },
+         "department": {
+          "type": "object",
+          "description": "Company department.",
+          "properties": {
+           "key": {
+            "type": "string",
+            "description": "Unique key for the department.",
+            "example": "1",
+            "nullable": true
+           },
+           "id": {
+            "type": "string",
+            "description": "Unique identifier of the department.",
+            "example": "1",
+            "nullable": true
+           },
+           "name": {
+            "type": "string",
+            "description": "Department name",
+            "readOnly": true,
+            "example": "IT",
+            "nullable": true
+           },
+           "href": {
+            "type": "string",
+            "description": "URL endpoint for the department.",
+            "readOnly": true,
+            "example": "/objects/company-config/department/1"
+           }
+          }
+         }
+        }
+       }
+      ]
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "time-timesheet-lineRequiredProperties": {
+    "type": "object",
+    "required": [
+     "entryDate",
+     "quantity"
+    ]
+   },
+   "objects.time.time-type": {
+    "type": "object",
+    "description": "Line items in time types capture and track categories of time.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the time-type.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the time type.",
+      "example": "Overtime"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the time type.",
+      "readOnly": true,
+      "example": "/objects/time/time-type/23"
+     },
+     "earningType": {
+      "type": "object",
+      "description": "Posts project labor costs to one or more GL journals. Optionally overrides a standard earning type for an employee.",
+      "properties": {
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the earning type.",
+        "readOnly": true,
+        "example": "/objects/company-config/earning-type/18"
+       },
+       "key": {
+        "type": "string",
+        "description": "Unique key for the earning type.",
+        "example": "18",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the earning type.",
+        "example": "Salary",
+        "nullable": true
+       }
+      }
+     },
+     "glAccount": {
+      "type": "object",
+      "description": "General ledger account to post the labor cost for any `time.timesheet-line` with the time type.",
+      "properties": {
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/account/12"
+       },
+       "key": {
+        "type": "string",
+        "description": "Unique key for the GL account.",
+        "example": "12",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the GL account.",
+        "example": "5001",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Time type GL account name.",
+        "example": "Labor",
+        "readOnly": true,
+        "nullable": true
+       }
+      }
+     },
+     "offsetGLAccount": {
+      "type": "object",
+      "description": "The liability account to use for the time type, such as accrued compensation.",
+      "properties": {
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the offset GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/account/13"
+       },
+       "key": {
+        "type": "string",
+        "description": "Unique key for the offset GL account.",
+        "example": "13",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the time type offset account.",
+        "example": "5002",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Time type Offset account name.",
+        "example": "Labor Offset",
+        "readOnly": true,
+        "nullable": true
+       }
+      }
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     },
+     "entity": {
+      "$ref": "#/components/schemas/entity-ref"
+     }
+    }
+   },
+   "time-typeRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.time.timesheet-to-approve": {
+    "type": "object",
+    "description": "Header information for a timesheet to approve.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the timesheet to approve.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the timesheet to approve. This value is same as the key for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL endpoint for the timesheet to approve.",
+      "example": "/objects/timesheet/23"
+     },
+     "beginDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Begin date of the work period on the timesheet to approve.",
+      "example": "2025-01-01",
+      "nullable": false
+     },
+     "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "End date of the work period on the timesheet to approve.",
+      "example": "2025-12-31",
+      "readOnly": true
+     },
+     "postingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date that the timesheet was posted to the General Ledger.",
+      "example": "2025-01-01"
+     },
+     "state": {
+      "type": "string",
+      "description": "State of the timesheet in the approval cycle, such as approved or declined.",
+      "example": "submitted",
+      "default": "draft",
+      "enum": [
+       "submitted",
+       "approved",
+       "partiallyApproved",
+       "declined",
+       "draft",
+       "partiallyDeclined",
+       "saved"
+      ]
+     },
+     "unitOfMeasure": {
+      "type": "string",
+      "description": "Unit of measure, such as hours or days, used in labor cost calculations. Maps to configuration set in Projects and cannot be changed.",
+      "readOnly": true,
+      "example": "Hours"
+     },
+     "hoursInDay": {
+      "type": "number",
+      "description": "Hours in a day. Used to calculate labor cost.",
+      "readOnly": true,
+      "example": 8
+     },
+     "billableQuantity": {
+      "type": "string",
+      "description": "Number of billable hours.",
+      "format": "decimal-precision-2",
+      "readOnly": true,
+      "example": "33.00"
+     },
+     "nonBillableQuantity": {
+      "type": "string",
+      "description": "Number of non-billable hours.",
+      "format": "decimal-precision-2",
+      "readOnly": true,
+      "example": "0.00"
+     },
+     "description": {
+      "type": "string",
+      "description": "Timesheet description, up to 400 characters.",
+      "example": "Week of 2025-01-01"
+     },
+     "calculationMethod": {
+      "type": "string",
+      "description": "The calculation method used for pay and defined by `time-type.earningType`. Used in labor cost and billing calculations. When `null`, the labor amount does not calculate for the timesheet. For example, labor costs for certain roles, such as management or sales, might not need to be calculated.",
+      "example": "hourly",
+      "readOnly": true,
+      "nullable": true,
+      "default": null,
+      "enum": [
+       null,
+       "hourly",
+       "salary"
+      ]
+     },
+     "postActualLaborCost": {
+      "type": "boolean",
+      "description": "Post actual labor cost.",
+      "example": false,
+      "default": false,
+      "readOnly": true
+     },
+     "employee": {
+      "type": "object",
+      "description": "The employee who performed the work and whose time is being tracked.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the employee.",
+        "example": "973"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the employee.",
+        "example": "E-001"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the employee.",
+        "example": "/objects/employee/973",
+        "readOnly": true
+       }
+      }
+     },
+     "employeeContact": {
+      "type": "object",
+      "description": "Employee contact.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the employee contact.",
+        "example": "973"
+       },
+       "name": {
+        "type": "string",
+        "description": "Employee contact Name.",
+        "readOnly": true,
+        "example": "John Smith"
+       },
+       "firstName": {
+        "type": "string",
+        "description": "The first name of the contact.",
+        "readOnly": true,
+        "example": "John"
+       },
+       "lastName": {
+        "type": "string",
+        "description": "The last name of the contact.",
+        "readOnly": true,
+        "example": "Smith"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the employee contact.",
+        "example": "/objects/company-config/contact/973",
+        "readOnly": true
+       }
+      }
+     },
+     "attachment": {
+      "type": "object",
+      "description": "Supporting documentation for the timesheet.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the attachment.",
+        "example": "8420"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the attachment.",
+        "example": "Attach-01"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the attachment.",
+        "readOnly": true,
+        "example": "/objects/company-config/attachment/8420"
+       }
+      }
+     },
+     "lines": {
+      "type": "array",
+      "description": "Time entries",
+      "items": {
+       "$ref": "#/components/schemas/objects.time.timesheet-to-approve-line"
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     },
+     "entity": {
+      "$ref": "#/components/schemas/entity-ref"
+     }
+    }
+   },
+   "objects.time.timesheet-approval-record": {
+    "type": "object",
+    "description": "Record of employee timesheet approvals.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the timesheet approval record.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier of the timesheet approval record. This value is the same as the key for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL endpoint for the timesheet approval record.",
+      "example": "/objects/time/timesheet-approval-record/23"
+     },
+     "approvalStage": {
+      "type": "integer",
+      "description": "The current stage of the approval cycle, from 1 to 5.",
+      "example": 1,
+      "readOnly": true
+     },
+     "approvalType": {
+      "type": "string",
+      "description": "The approval type used for this record, such as User Level or Department Approval.",
+      "example": "Department Approval",
+      "readOnly": true
+     },
+     "approvalLevel": {
+      "type": "string",
+      "description": "The configured approval level, from 1 - 5, required for this record. For example, a level 1 approval might simply require a department manager's approval. A level 2 approval might require a department manager's approval followed by a department director's approval. For more information about configuring time and approval levels, see [Configure time](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Configure_time).  \n",
+      "example": "2",
+      "readOnly": true
+     },
+     "comments": {
+      "type": "string",
+      "description": "Comments provided by the reviewer (approver) of this record.",
+      "example": "Approved by Admin in lieu of department manager.",
+      "nullable": true,
+      "readOnly": true
+     },
+     "recordDate": {
+      "type": "string",
+      "description": "Date when the approval or decline action occurs.",
+      "format": "date",
+      "example": "2021-01-23",
+      "readOnly": true
+     },
+     "state": {
+      "type": "string",
+      "description": "The state of the record in the approval cycle.",
+      "example": "submitted",
+      "enum": [
+       "submitted",
+       "pendingApproval",
+       "approved",
+       "declined"
+      ],
+      "readOnly": true
+     },
+     "timesheet": {
+      "type": "object",
+      "description": "The timesheet related to this approval record.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the timesheet.",
+        "example": "101",
+        "readOnly": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the timesheet.",
+        "example": "101",
+        "readOnly": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the timesheet.",
+        "example": "/objects/time/timesheet/101",
+        "readOnly": true
+       }
+      },
+      "readOnly": true
+     },
+     "timesheetLine": {
+      "type": "object",
+      "description": "Individual timesheet line entry.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the timesheet line entry.",
+        "example": "142",
+        "readOnly": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier of the timesheet line entry.",
+        "example": "142",
+        "readOnly": true
+       },
+       "lineNumber": {
+        "type": "integer",
+        "description": "The timesheet entry line number.",
+        "example": 3,
+        "readOnly": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the timesheet line entry.",
+        "example": "/objects/time/timesheet-line/142",
+        "readOnly": true
+       }
+      },
+      "readOnly": true
+     },
+     "approvedBy": {
+      "type": "object",
+      "description": "The user who approved or declined the timesheet line entry.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Unique key for the user.",
+        "example": "202"
+       },
+       "id": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Unique identifier for the user.",
+        "example": "cjackson"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/202"
+       }
+      },
+      "readOnly": true
+     },
+     "approver": {
+      "type": "object",
+      "description": "The user assigned to approve the timesheet line entry.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Unique key for the user.",
+        "example": "203"
+       },
+       "id": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Unique identifier of the user.",
+        "example": "jlee"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/203"
+       }
+      },
+      "readOnly": true
+     },
+     "completedBy": {
+      "type": "object",
+      "description": "The user who made the timesheet line entry change.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "readOnly": true,
+        "description": "System-assigned key for the user.",
+        "example": "204"
+       },
+       "id": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Unique identifier of the user.",
+        "example": "gadams"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/204"
+       }
+      },
+      "readOnly": true
+     },
+     "initiatedBy": {
+      "type": "object",
+      "description": "The user who created the timesheet approval request.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Unique key for the user.",
+        "example": "205"
+       },
+       "id": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Unique identifier for the user.",
+        "example": "vluce"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/205"
+       }
+      },
+      "readOnly": true
+     }
+    }
+   },
+   "objects.time.timesheet-rule": {
+    "type": "object",
+    "description": "List of timesheet rules.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the timesheet-rule.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the timesheet rule. This value is the same as the key for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the timesheet rule.",
+      "readOnly": true,
+      "example": "/objects/time/timesheet-rule/23"
+     },
+     "name": {
+      "type": "string",
+      "description": "Rule name.",
+      "example": "Weekend overtime limit"
+     },
+     "businessDays": {
+      "type": "array",
+      "description": "Days of the week defined as work days that apply to the timesheet rule.",
+      "example": [
+       "MONDAY",
+       "TUESDAY",
+       "WEDNESDAY",
+       "THURSDAY",
+       "FRIDAY"
+      ],
+      "default": [],
+      "items": {
+       "type": "string"
+      }
+     },
+     "weekends": {
+      "type": "array",
+      "description": "Days of the weekend defined as work days that apply to the timesheet rule.",
+      "example": [
+       "SATURDAY",
+       "SUNDAY"
+      ],
+      "default": [],
+      "items": {
+       "type": "string"
+      }
+     },
+     "startDate": {
+      "type": "string",
+      "description": "The timesheet rule start date.",
+      "format": "date",
+      "example": "2025-06-01"
+     },
+     "endDate": {
+      "type": "string",
+      "description": "The timesheet rule end date. The end date must occur after the start date.",
+      "format": "date",
+      "example": "2026-06-01"
+     },
+     "minHoursForApproval": {
+      "type": "string",
+      "description": "The minimum hours required for approval.",
+      "format": "decimal-precision-2",
+      "example": "0.2",
+      "nullable": true
+     },
+     "maxHoursForApproval": {
+      "type": "string",
+      "description": "The maximum hours allowed for approval.",
+      "format": "decimal-precision-2",
+      "example": "5",
+      "nullable": true
+     },
+     "minHoursPerWorkDay": {
+      "type": "string",
+      "description": "The minimum required non-weekend hours per work day.",
+      "format": "decimal-precision-2",
+      "example": "2.0",
+      "nullable": true
+     },
+     "maxHoursPerWorkDay": {
+      "type": "string",
+      "description": "The maximum allowed non-weekend hours per work day.",
+      "format": "decimal-precision-2",
+      "example": "10.0",
+      "nullable": true
+     },
+     "requireNotes": {
+      "type": "boolean",
+      "description": "Indicates whether notes are required (true) or not (false) for the timesheet.",
+      "default": false,
+      "example": false
+     },
+     "doNotAllowOnHolidays": {
+      "type": "boolean",
+      "description": "Indicates whether to reject timesheets submitted with work performed on a defined holiday (true) or not (false).",
+      "default": false,
+      "example": false
+     },
+     "minHoursPerWeekend": {
+      "type": "string",
+      "description": "The minimum weekend hours. Use '0' if no one works.",
+      "format": "decimal-precision-2",
+      "example": "0.2",
+      "nullable": true
+     },
+     "maxHoursPerWeekend": {
+      "type": "string",
+      "description": "The maximum weekend hours. Use '0' if no one works.",
+      "format": "decimal-precision-2",
+      "example": "5.0",
+      "nullable": true
+     },
+     "timesheetRuleEmployees": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "key": {
+         "type": "string",
+         "description": "Unique key for the employee to whom the timesheet rule applies.",
+         "example": "5606"
+        },
+        "id": {
+         "type": "string",
+         "description": "Unique identifier for the employee to whom the timesheet rule applies.",
+         "example": "EMP-1"
+        },
+        "name": {
+         "type": "string",
+         "description": "Name of the employee to whom the timesheet rule applies.",
+         "readOnly": true,
+         "example": "John Smith"
+        },
+        "href": {
+         "type": "string",
+         "description": "URL endpoint for the employee to whom the timesheet rule applies.",
+         "readOnly": true,
+         "example": "/objects/company-config/employee/5606"
+        }
+       }
+      }
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     }
+    }
+   },
+   "time-timesheet-ruleRequiredProperties": {
+    "type": "object",
+    "required": [
+     "name",
+     "startDate",
+     "endDate"
+    ]
+   },
+   "error-response": {
+    "type": "object",
+    "description": "Error response",
+    "properties": {
+     "ia::result": {
+      "type": "object",
+      "properties": {
+       "ia::error": {
+        "type": "object",
+        "properties": {
+         "code": {
+          "type": "string",
+          "example": "invalidRequest"
+         },
+         "message": {
+          "type": "string",
+          "example": "Payload contains errors"
+         },
+         "supportId": {
+          "type": "string",
+          "example": "sQrM9%7EYdh5oDEWVb80mrn9xuHjoAAAABBQ"
+         },
+         "errorId": {
+          "type": "string",
+          "example": "REST-1064"
+         },
+         "additionalInfo": {
+          "type": "object",
+          "properties": {
+           "messageId": {
+            "type": "string",
+            "example": "IA.PAYLOAD_CONTAINS_ERRORS"
+           },
+           "placeholders": {
+            "type": "object",
+            "example": {}
+           },
+           "propertySet": {
+            "type": "object",
+            "example": {}
+           }
+          }
+         },
+         "details": {
+          "type": "array",
+          "items": {
+           "type": "object",
+           "properties": {
+            "code": {
+             "type": "string",
+             "example": "invalidRequest"
+            },
+            "message": {
+             "type": "string",
+             "example": "/newDate is not a valid field"
+            },
+            "errorId": {
+             "type": "string",
+             "example": "REST-1043"
+            },
+            "target": {
+             "type": "string",
+             "example": "/newDate"
+            },
+            "additionalInfo": {
+             "type": "object",
+             "properties": {
+              "messageId": {
+               "type": "string",
+               "example": "IA.NOT_A_VALID_FIELD"
+              },
+              "placeholders": {
+               "type": "object",
+               "example": {}
+              },
+              "propertySet": {
+               "type": "object",
+               "example": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "ia::meta": {
+        "$ref": "#/components/schemas/metadata"
+       }
+      }
+     }
+    },
+    "example": {
+     "ia::result": {
+      "ia::error": {
+       "code": "invalidRequest",
+       "message": "A POST request requires a payload",
+       "errorId": "REST-1028",
+       "additionalInfo": {
+        "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+        "placeholders": {
+         "OPERATION": "POST"
+        },
+        "propertySet": {}
+       },
+       "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+      }
+     },
+     "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 0,
+      "totalError": 1
+     }
+    }
+   },
+   "audit.s1": {
+    "type": "object",
+    "readOnly": true,
+    "properties": {
+     "createdDateTime": {
+      "description": "Date and time when the record was created.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-05-16T15:34:35Z"
+     },
+     "modifiedDateTime": {
+      "description": "Date and time when the record was last modified.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-09-14T21:23:42Z"
+     },
+     "createdBy": {
+      "description": "This field has been deprecated. Use the `createdByUser` field instead.",
+      "type": "string",
+      "readOnly": true,
+      "nullable": true,
+      "deprecated": true
+     },
+     "modifiedBy": {
+      "description": "This field has been deprecated. Use the `modifiedByUser` field instead.",
+      "type": "string",
+      "readOnly": true,
+      "nullable": true,
+      "deprecated": true
+     },
+     "createdByUser": {
+      "type": "object",
+      "description": "The user who created the object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "436"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JohnDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/436"
+       }
+      }
+     },
+     "modifiedByUser": {
+      "type": "object",
+      "description": "The user who last modified this object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "3086"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JaneDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/3086"
+       }
+      }
+     }
+    }
+   },
+   "entity-ref": {
+    "type": "object",
+    "description": "The entity that the object is associated with. Objects created at the top level do not have an entity reference so the `key`, `id`, and `name` properties will be `null`.",
+    "readOnly": true,
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the entity.",
+      "readOnly": true,
+      "nullable": true,
+      "example": "46"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the entity.",
+      "readOnly": true,
+      "nullable": true,
+      "example": "CORP"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name for the entity.",
+      "readOnly": true,
+      "nullable": true,
+      "example": "Corp"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the entity.",
+      "readOnly": true,
+      "example": "/objects/company-config/entity/46"
+     }
+    }
+   },
+   "dimension-ref": {
+    "type": "object",
+    "properties": {
+     "location": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the location.",
+        "example": "22",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the location.",
+        "example": "LOC-22",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the location.",
+        "readOnly": true,
+        "example": "California",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the location.",
+        "readOnly": true,
+        "example": "/objects/company-config/location/22"
+       }
+      }
+     },
+     "department": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the department.",
+        "example": "11",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the department.",
+        "example": "DEP-11",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the department.",
+        "readOnly": true,
+        "example": "Sales and Marketing",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the department.",
+        "readOnly": true,
+        "example": "/objects/company-config/department/11"
+       }
+      }
+     },
+     "employee": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the employee.",
+        "example": "10",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the employee.",
+        "example": "EMP-10",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the employee.",
+        "readOnly": true,
+        "example": "Thomas, Glenn",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the employee.",
+        "example": "/objects/company-config/employee/10",
+        "readOnly": true
+       }
+      }
+     },
+     "project": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the project.",
+        "example": "2",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the project.",
+        "example": "NET-XML30-2",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the project.",
+        "readOnly": true,
+        "example": "Talcomp training",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the project.",
+        "readOnly": true,
+        "example": "/objects/projects/project/2"
+       }
+      }
+     },
+     "customer": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the customer.",
+        "example": "13",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the customer.",
+        "example": "CUST-13",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the customer.",
+        "readOnly": true,
+        "example": "Jack In the Box",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the customer.",
+        "readOnly": true,
+        "example": "/objects/accounts-receivable/customer/13"
+       }
+      }
+     },
+     "vendor": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the vendor.",
+        "example": "357",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the vendor.",
+        "example": "1605212096809",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the vendor.",
+        "readOnly": true,
+        "example": "GenLab",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the vendor.",
+        "readOnly": true,
+        "example": "/objects/accounts-payable/vendor/357"
+       }
+      }
+     },
+     "item": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the item.",
+        "example": "13",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the item.",
+        "example": "Case 13",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the item.",
+        "readOnly": true,
+        "example": "Platform pack",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the item.",
+        "readOnly": true,
+        "example": "/objects/inventory-control/item/13"
+       }
+      }
+     },
+     "warehouse": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the warehouse.",
+        "example": "6",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the warehouse.",
+        "example": "WH01",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the warehouse.",
+        "readOnly": true,
+        "example": "WH01",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the warehouse.",
+        "readOnly": true,
+        "example": "/objects/inventory-control/warehouse/6"
+       }
+      }
+     },
+     "class": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the class.",
+        "example": "731",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the class.",
+        "example": "REST_CLS_001",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the class.",
+        "readOnly": true,
+        "example": "Enterprises",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the class.",
+        "readOnly": true,
+        "example": "/objects/company-config/class/731"
+       }
+      }
+     },
+     "task": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the task.",
+        "example": "1",
+        "nullable": true
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the task.",
+        "example": "1",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the task.",
+        "readOnly": true,
+        "example": "Project Task",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the task.",
+        "readOnly": true,
+        "example": "/objects/projects/task/1"
+       }
+      }
+     },
+     "costType": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the cost type.",
+        "example": "2",
+        "nullable": true
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the cost type.",
+        "example": "2",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the cost type.",
+        "readOnly": true,
+        "example": "Project Expense",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the cost type.",
+        "readOnly": true,
+        "example": "/objects/construction/cost-type/2"
+       }
+      }
+     },
+     "asset": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the asset.",
+        "example": "A001",
+        "nullable": true
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the asset.",
+        "example": "1",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the asset.",
+        "readOnly": true,
+        "example": "Laptop",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the asset.",
+        "readOnly": true,
+        "example": "/objects/fixed-assets/asset/1"
+       }
+      }
+     },
+     "contract": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the contract.",
+        "example": "CON-0045-1",
+        "nullable": true
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the contract.",
+        "example": "12",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the contract.",
+        "readOnly": true,
+        "example": "ACME Widgets - Service",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the contract.",
+        "readOnly": true,
+        "example": "/objects/contracts/contract/12"
+       }
+      }
+     },
+     "affiliateEntity": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the affiliate entity.",
+        "example": "23",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the affiliate entity.",
+        "example": "AFF-23",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the affiliate entity.",
+        "readOnly": true,
+        "example": "/objects/affiliate-entity/23"
+       },
+       "name": {
+        "type": "string",
+        "readOnly": true,
+        "description": "Name for the affiliate entity.",
+        "example": "100-USA",
+        "nullable": true
+       }
+      }
+     },
+     "loanAccount": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the loan account.",
+        "example": "LN001",
+        "nullable": true
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the loan account.",
+        "example": "852",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the loan account.",
+        "readOnly": true,
+        "example": "Business Loan",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the loan account.",
+        "readOnly": true,
+        "example": "/objects/loan-management/loan-account/852"
+       }
+      }
+     },
+     "workOrder": {
+      "description": "Work order associated with the dimension.",
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the work order.",
+        "example": "18",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the work order.",
+        "example": "WO-0017",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the work order.",
+        "readOnly": true,
+        "example": "WO-India",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the work order.",
+        "readOnly": true,
+        "example": "/objects/construction/work-order/18"
+       }
+      }
+     }
+    }
+   },
+   "status": {
+    "type": "string",
+    "description": "Object status. Active objects are fully functional. Inactive objects are essentially hidden and cannot be used or referenced.",
+    "enum": [
+     "active",
+     "inactive"
+    ],
+    "default": "active",
+    "example": "active"
+   },
+   "objects.time.timesheet-to-approve-line": {
+    "type": "object",
+    "description": "A single timesheet entry, including customer, project, number of hours, billing rates, and cost rates.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the timesheet entry.",
+      "readOnly": true,
+      "example": "1411"
+     },
+     "id": {
+      "type": "string",
+      "description": "This value is the same as the 'key' value for this object.",
+      "readOnly": true,
+      "example": "1411"
+     },
+     "href": {
+      "type": "string",
+      "description": "Endpoint for the timesheet entry.",
+      "readOnly": true,
+      "example": "/objects/time/timesheet-to-approve-line/1411"
+     },
+     "timesheetToApprove": {
+      "type": "object",
+      "description": "The timesheet that the entry belongs to.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "The timesheet that the entry belongs to.",
+        "example": "11"
+       },
+       "id": {
+        "type": "string",
+        "description": "ID of Timesheet.",
+        "example": "11"
+       },
+       "href": {
+        "type": "string",
+        "description": "Endpoint of the timesheet",
+        "example": "/objects/timesheet-to-approve/11",
+        "readOnly": true
+       }
+      }
+     },
+     "entryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the timesheet entry.",
+      "example": "2023-04-01",
+      "nullable": false
+     },
+     "quantity": {
+      "type": "number",
+      "description": "Number of hours or quantity.",
+      "example": 6,
+      "nullable": false
+     },
+     "lineNumber": {
+      "type": "integer",
+      "description": "Line number to add entry to.",
+      "readOnly": true,
+      "example": 1
+     },
+     "description": {
+      "type": "string",
+      "description": "Description.",
+      "example": "Week of 04/01/23"
+     },
+     "notes": {
+      "type": "string",
+      "description": "Notes",
+      "example": "Talked to client regarding project"
+     },
+     "state": {
+      "type": "string",
+      "description": "State",
+      "readOnly": true,
+      "example": "approved",
+      "enum": [
+       "submitted",
+       "approved",
+       "partiallyApproved",
+       "declined",
+       "draft",
+       "saved",
+       "readyForApproval",
+       "pending",
+       "notApplicable"
+      ]
+     },
+     "timeType": {
+      "type": "object",
+      "description": "Time type",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Time type key",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Time type ID.",
+        "example": "Salaries At Root"
+       },
+       "name": {
+        "type": "string",
+        "description": "Time type name.",
+        "example": "Salaries At Root",
+        "readOnly": true
+       },
+       "href": {
+        "type": "string",
+        "example": "/objects/time-type/1",
+        "readOnly": true
+       }
+      }
+     },
+     "isBillable": {
+      "type": "boolean",
+      "description": "Set to 'true' if time can be billed to the customer.",
+      "example": true,
+      "default": false
+     },
+     "isBilled": {
+      "type": "string",
+      "description": "Billed.",
+      "example": "false",
+      "enum": [
+       "true",
+       "false",
+       "partial"
+      ],
+      "default": "false",
+      "readOnly": true
+     },
+     "statisticalJournal": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Statistical journal key.",
+        "example": "7483",
+        "readOnly": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Statistical journal ID.",
+        "example": "TSSJ",
+        "readOnly": true
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "example": "/objects/statistical-journal/7483"
+       }
+      },
+      "readOnly": true
+     },
+     "billableUtilizedGLAccount": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "GL Account Key for Billable Utilized entry.",
+        "readOnly": true,
+        "example": "8293"
+       },
+       "id": {
+        "type": "string",
+        "description": "GL Account ID for Billable Utilized entry",
+        "readOnly": true,
+        "example": "9293"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "example": "/objects/statistical-gl-account/8293"
+       }
+      },
+      "readOnly": true
+     },
+     "nonBillableUtilizedGLAccount": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "GL Account Key for Non-Billable Utilized entry.",
+        "readOnly": true,
+        "example": "8294"
+       },
+       "id": {
+        "type": "string",
+        "description": "GL Account ID for Non-Billable Utilized entry.",
+        "readOnly": true,
+        "example": "9294"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "example": "/objects/statistical-gl-account/8294"
+       }
+      },
+      "readOnly": true
+     },
+     "billableNonUtilizedGLAccount": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "GL Account Key for Billable Non-Utilized entry.",
+        "readOnly": true,
+        "example": "8295"
+       },
+       "id": {
+        "type": "string",
+        "description": "GL Account ID for Billable Non-Utilized entry.",
+        "readOnly": true,
+        "example": "9295"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "example": "/objects/statistical-gl-account/8295"
+       }
+      },
+      "readOnly": true
+     },
+     "nonBillableNonUtilizedGLAccount": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "GL Account Key for Non-Billable Non-Utilized entry.",
+        "readOnly": true,
+        "example": "8296"
+       },
+       "id": {
+        "type": "string",
+        "description": "GL Account ID for Non-Billable Non-Utilized entry.",
+        "readOnly": true,
+        "example": "9296"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "example": "/objects/statistical-gl-account/8296"
+       }
+      },
+      "readOnly": true
+     },
+     "hours": {
+      "type": "object",
+      "properties": {
+       "billable": {
+        "type": "number",
+        "description": "Billable hours.",
+        "example": 8,
+        "readOnly": true
+       },
+       "nonBillable": {
+        "type": "number",
+        "description": "Non-billable hours.",
+        "example": 2,
+        "readOnly": true
+       },
+       "approved": {
+        "type": "number",
+        "description": "Approved hours.",
+        "example": 10,
+        "readOnly": true
+       },
+       "approvedBillable": {
+        "type": "number",
+        "description": "Approved billable hours.",
+        "example": 8,
+        "readOnly": true
+       },
+       "approvedNonBillable": {
+        "type": "number",
+        "description": "Approved non-billable hours.",
+        "example": 2,
+        "readOnly": true
+       },
+       "utilized": {
+        "type": "number",
+        "description": "Utilized hours.",
+        "example": 10,
+        "readOnly": true
+       },
+       "nonUtilized": {
+        "type": "number",
+        "description": "Non-utilized hours.",
+        "example": 4,
+        "readOnly": true
+       },
+       "approvedUtilized": {
+        "type": "number",
+        "description": "Approved utilized hours",
+        "example": 3,
+        "readOnly": true
+       },
+       "approvedNonUtilized": {
+        "type": "number",
+        "description": "Approved non-utilized hours",
+        "example": 2,
+        "readOnly": true
+       }
+      }
+     },
+     "externalPayroll": {
+      "type": "object",
+      "properties": {
+       "costRate": {
+        "type": "number",
+        "description": "External cost rate",
+        "example": 1
+       },
+       "billingRate": {
+        "type": "number",
+        "description": "External billing rate",
+        "example": 1
+       },
+       "amount": {
+        "type": "string",
+        "description": "Labor Amount",
+        "example": "90"
+       },
+       "employerTaxes": {
+        "type": "number",
+        "description": "Employer taxes",
+        "example": 15
+       },
+       "fringes": {
+        "type": "number",
+        "description": "Fringes",
+        "example": 10
+       },
+       "cashFringes": {
+        "type": "number",
+        "description": "Cash fringes",
+        "example": 2
+       }
+      }
+     },
+     "laborClass": {
+      "type": "object",
+      "description": "Labor class used to track the timesheet.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for a class dimension associated with the timesheet.",
+        "readOnly": true,
+        "example": "15"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for a class dimension associated with the timesheet.",
+        "readOnly": true,
+        "example": "LC001"
+       },
+       "name": {
+        "type": "string",
+        "description": "Class name associated with the timesheet.",
+        "readOnly": true,
+        "example": "Labor Class"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "example": "/objects/labor-class/15"
+       }
+      },
+      "readOnly": true
+     },
+     "laborShift": {
+      "type": "object",
+      "description": "Labor shift to track the timesheet.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for a labor shift  associated with the timesheet.",
+        "readOnly": true,
+        "example": "18"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for a labor shift associated with the timesheet.",
+        "readOnly": true,
+        "example": "LS001"
+       },
+       "name": {
+        "type": "string",
+        "description": "Labor shift associated with the timesheet.",
+        "readOnly": true,
+        "example": "Labor Shift"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "example": "/objects/labor-shift/18"
+       }
+      },
+      "readOnly": true
+     },
+     "laborUnion": {
+      "type": "object",
+      "description": "Labor union to track the timesheet.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for a labor union associated with the timesheet.",
+        "readOnly": true,
+        "example": "20"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for a labor union associated with the timesheet.",
+        "readOnly": true,
+        "example": "LU001"
+       },
+       "name": {
+        "type": "string",
+        "description": "Labor union associated with the timesheet.",
+        "readOnly": true,
+        "example": "Labor Union"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "example": "/objects/labor-union/20"
+       }
+      },
+      "readOnly": true
+     },
+     "dimensions": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/dimension-ref"
+       },
+       {
+        "type": "object",
+        "properties": {
+         "location": {
+          "type": "object",
+          "properties": {
+           "key": {
+            "type": "string",
+            "description": "Location key",
+            "example": "1"
+           },
+           "id": {
+            "type": "string",
+            "description": "Location",
+            "example": "1"
+           },
+           "name": {
+            "readOnly": true,
+            "type": "string",
+            "description": "Location name",
+            "example": "USA"
+           }
+          }
+         },
+         "department": {
+          "type": "object",
+          "properties": {
+           "key": {
+            "type": "string",
+            "description": "Department key",
+            "example": "1"
+           },
+           "id": {
+            "type": "string",
+            "description": "Department",
+            "example": "1"
+           },
+           "name": {
+            "type": "string",
+            "description": "Department name",
+            "readOnly": true,
+            "example": "IT"
+           }
+          }
+         }
+        }
+       }
+      ]
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   }
+  },
+  "responses": {
+   "400error": {
+    "description": "Bad Request",
+    "content": {
+     "application/json": {
+      "schema": {
+       "$ref": "#/components/schemas/error-response"
+      },
+      "examples": {
+       "Response example": {
+        "value": {
+         "ia::result": {
+          "ia::error": {
+           "code": "invalidRequest",
+           "message": "A POST request requires a payload",
+           "errorId": "REST-1028",
+           "additionalInfo": {
+            "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+            "placeholders": {
+             "OPERATION": "POST"
+            },
+            "propertySet": {}
+           },
+           "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+          }
+         },
+         "ia::meta": {
+          "totalCount": 1,
+          "totalSuccess": 0,
+          "totalError": 1
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "securitySchemes": {
+   "OAuth2": {
+    "description": "Sage Intacct OAuth 2.0 authorization code flow",
+    "type": "oauth2",
+    "flows": {
+     "authorizationCode": {
+      "authorizationUrl": "https://api.intacct.com/ia/api/v1/oauth2/authorize",
+      "tokenUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "refreshUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "scopes": {}
+     }
+    }
+   }
+  }
+ }
+}

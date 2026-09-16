@@ -1,0 +1,96 @@
+{
+  "source": "https://developer.sage.com/intacct/apis/intacct/1/intacct-openapi/groups",
+  "fetchedAt": "2026-09-16T15:44:19.620Z",
+  "groups": {
+    "accounts-payable": {
+      "sha256": "7775738db5f884102bfb20433c6df6fd6654792a7c828cb2d32a514674f4e595",
+      "paths": 84,
+      "schemas": 109
+    },
+    "accounts-receivable": {
+      "sha256": "fafb1a1a8778a474548563a43f95a1ef526754c622dfc736dfa39d6b86294d57",
+      "paths": 107,
+      "schemas": 119
+    },
+    "cash-management": {
+      "sha256": "ede780ce90b7d5f99c4f16b43062ff69862fe0306460205846d0a9f9a085ac20",
+      "paths": 120,
+      "schemas": 115
+    },
+    "common-resources": {
+      "sha256": "b8ca934eb84cfbb59c7ef1b09a106cbbd5e12f0f0dae155b6cbb6c7e98121690",
+      "paths": 20,
+      "schemas": 30
+    },
+    "company-configuration": {
+      "sha256": "d06820bf47e20a6acccd0098b2e479c173350bbc855a3f4c547bd371bb30f367",
+      "paths": 111,
+      "schemas": 121
+    },
+    "consolidation": {
+      "sha256": "77f967b3ed9451e3c545d2da2acb73f28fb8a4e8ea919b0eaa415de556c8a670",
+      "paths": 24,
+      "schemas": 28
+    },
+    "construction": {
+      "sha256": "e3354d1d265ae6b5421e7aa43a666db099de7d94f2d3398294c50203b70aab22",
+      "paths": 129,
+      "schemas": 137
+    },
+    "contracts-and-revenue-management": {
+      "sha256": "5af13e80eea90edd801b05fe3d95a54465d3016478bf7f085d8a698a184e9959",
+      "paths": 95,
+      "schemas": 125
+    },
+    "expenses": {
+      "sha256": "fac6b80fe47aa4519e00a21813ef5b13927a147447cfd84483f6894e19807592",
+      "paths": 28,
+      "schemas": 31
+    },
+    "fixed-assets-management": {
+      "sha256": "8bc2853ada36b13c998dbad6d89374ed12bb565e5363c7504aa8ef899af799ad",
+      "paths": 26,
+      "schemas": 25
+    },
+    "general-ledger": {
+      "sha256": "655684a715e80dafc9fea44ac6435fc72bf7244bf239f8c68ba68660aff67508",
+      "paths": 106,
+      "schemas": 140
+    },
+    "inventory-control": {
+      "sha256": "20ae71bfaf190dbaa68bc938442d1bb2f5373f80eadd145d8050c78227286258",
+      "paths": 118,
+      "schemas": 119
+    },
+    "order-entry": {
+      "sha256": "8a5ab662589ad83aa8a98107150cc5aeb87b1925c3f07f9a5db8e51884c280f1",
+      "paths": 63,
+      "schemas": 61
+    },
+    "project-and-resource-management": {
+      "sha256": "0e847fa5e5e27cc5a200748357575fddcedfdf56fa34927fd781e185e046c204",
+      "paths": 40,
+      "schemas": 49
+    },
+    "purchasing": {
+      "sha256": "b9b1a0630239d20fa6fb031fa14f98330b4939a8b3d33e8643f92c73c29e377c",
+      "paths": 63,
+      "schemas": 61
+    },
+    "reports": {
+      "sha256": "b81aed90f434ef18b535d3e85388f18da6145b7b52a9a108858a68dff1a3618e",
+      "paths": 10,
+      "schemas": 16
+    },
+    "tax": {
+      "sha256": "f46495c3b00751a1af2bc4b409c3a4383321df0d5013bfabca239a77620db641",
+      "paths": 28,
+      "schemas": 29
+    },
+    "time": {
+      "sha256": "09f2f185cbe3213b30a9d11d458377d4eabe654243e0e4eac95814abe32108ff",
+      "paths": 12,
+      "schemas": 19
+    }
+  }
+}

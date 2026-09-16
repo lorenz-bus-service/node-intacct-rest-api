@@ -1,0 +1,2385 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "title": "Reports",
+  "version": "1",
+  "description": "The Reports objects and services let you create, run, and monitor reports."
+ },
+ "servers": [
+  {
+   "url": "https://api.intacct.com/ia/api/v1",
+   "x-try-it": "sage-intacct-api"
+  }
+ ],
+ "tags": [
+  {
+   "name": "Reports_Stored reports",
+   "x-displayName": "Stored reports",
+   "description": "Stored reports provide information about a user's reports stored in Intacct or the cloud."
+  },
+  {
+   "name": "Reports_Stored report error records",
+   "x-displayName": "Stored report error records",
+   "description": "Log of errors or warnings associated with a stored report."
+  },
+  {
+   "name": "Reports_Interactive custom reports",
+   "x-displayName": "Interactive custom reports",
+   "description": "Interactive custom reports enable you to build reports across a wide range of reporting areas. For more information, see [Welcome to Interactive Custom Report Writer](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=ICRW-welcome) in the Sage Intacct Help Center."
+  },
+  {
+   "name": "Reports_Report status",
+   "x-displayName": "Report status",
+   "description": "Provides status of a report job."
+  },
+  {
+   "name": "Reports_Download reports",
+   "x-displayName": "Download reports",
+   "description": "Download a report stored in Intacct."
+  },
+  {
+   "name": "Reports_Retrieve stored reports",
+   "x-displayName": "Retrieve stored reports",
+   "description": "Retrieve logged-in user's stored report in a new format (`outputType`) or request to send a report to a new location.\nIf a report is stored in the Intacct database, you can request to send it to the cloud (set `outputLocation` to `cloud`). You can request a report stored in `intacct` in a specified format (`outputType`) only if it has not been requested in that format already."
+  },
+  {
+   "name": "Reports_Cancel reports",
+   "x-displayName": "Cancel reports",
+   "description": "Cancel a queued report."
+  }
+ ],
+ "paths": {
+  "/objects/reports/stored-report": {
+   "get": {
+    "summary": "List stored reports",
+    "description": "Returns a collection with a key, ID, and link for each stored report. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Reports_Stored reports"
+    ],
+    "operationId": "list-reports-stored-report",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of reports-stored-report objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List stored reports": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "121",
+             "id": "121",
+             "href": "/objects/reports/stored-report/121"
+            },
+            {
+             "key": "122",
+             "id": "122",
+             "href": "/objects/reports/stored-report/122"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/reports/stored-report/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the stored report",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "124"
+    }
+   ],
+   "get": {
+    "summary": "Get a stored report",
+    "description": "Returns detailed information for a specified stored report.",
+    "tags": [
+     "Reports_Stored reports"
+    ],
+    "operationId": "get-reports-stored-report-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the reports-stored-report",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.reports.stored-report"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a stored report": {
+          "value": {
+           "ia::result": {
+            "id": "124",
+            "key": "124",
+            "reportType": "gl_tb",
+            "reportTitle": "TB Memorized",
+            "audit": {
+             "createdDateTime": "2025-03-04T06:28:48Z",
+             "modifiedDateTime": "2025-03-04T06:28:48Z"
+            },
+            "user": {
+             "key": "1",
+             "id": "Admin",
+             "href": "/objects/company-config/user/1"
+            },
+            "moduleKey": "2.GL",
+            "localStore": {
+             "html": {
+              "status": null
+             },
+             "pdf": {
+              "status": "success"
+             },
+             "csv": {
+              "status": null
+             },
+             "excel": {
+              "status": null
+             },
+             "text": {
+              "status": null
+             }
+            },
+            "cloudStore": {
+             "status": null
+            },
+            "href": "/objects/reports/stored-report/124"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a stored report",
+    "description": "Deletes a stored report.",
+    "tags": [
+     "Reports_Stored reports"
+    ],
+    "operationId": "delete-reports-stored-report-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/reports/stored-report-error-record": {
+   "get": {
+    "summary": "List stored report error records",
+    "description": "Returns a collection with a key, ID, and link for each stored report error record. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Reports_Stored report error records"
+    ],
+    "operationId": "list-reports-stored-report-error-record",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of report-store-error-record objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List stored report error records": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "id": "1",
+             "href": "/objects/reports/stored-report-error-record/1"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 1,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/reports/stored-report-error-record/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the stored report error record.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "2"
+    }
+   ],
+   "get": {
+    "summary": "Get a stored report error record",
+    "description": "Returns detailed information for a specified stored report error record.",
+    "tags": [
+     "Reports_Stored report error records"
+    ],
+    "operationId": "get-reports-stored-report-error-record-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the report-store-error",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.reports.stored-report-error-record"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a stored report error record": {
+          "value": {
+           "ia::result": {
+            "id": "2",
+            "key": "2",
+            "storedReport": {
+             "id": "128",
+             "key": "128",
+             "href": "/objects/reports/stored-report/128"
+            },
+            "reportType": "_csv",
+            "createdDateTime": "2025-03-19T00:00:00Z",
+            "errorCode": "BL03002028",
+            "errorDescription": "No Data Found",
+            "href": "/objects/reports/stored-report-error-record/2"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/reports/interactive-custom-report": {
+   "get": {
+    "summary": "List interactive custom reports",
+    "description": "Returns a collection with a key, ID, and link for each interactive custom report. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Reports_Interactive custom reports"
+    ],
+    "operationId": "list-reports-interactive-custom-report",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of interactive-custom-report objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List interactive custom reports": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1838",
+             "id": "1838",
+             "href": "/objects/reports/interactive-custom-report/1838"
+            },
+            {
+             "key": "1901",
+             "id": "1901",
+             "href": "/objects/reports/interactive-custom-report/1901"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "start": 1,
+            "pageSize": 100,
+            "next": 101,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an interactive custom report",
+    "description": "Creates a new interactive custom report.",
+    "tags": [
+     "Reports_Interactive custom reports"
+    ],
+    "operationId": "create-reports-interactive-custom-report",
+    "requestBody": {
+     "description": "Interactive Custom Report to create",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.reports.interactive-custom-report"
+         },
+         {
+          "$ref": "#/components/schemas/reports-interactive-custom-reportRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Creates a interactive custom report": {
+         "value": {
+          "createFromExistingReport": true,
+          "name": "GL Detail with PO No",
+          "isStandardPeriodIncluded": false,
+          "moduleName": "accountsPayable",
+          "reportType": "interactiveCustomReport",
+          "addReportToMenu": false,
+          "status": "active",
+          "fromLibrary": false,
+          "reportingAreas": [
+           "apPayments"
+          ],
+          "glReportType": {
+           "key": "1"
+          },
+          "glReportAudience": {
+           "key": "3"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New interactive-custom-report",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to new interactive custom report": {
+          "value": {
+           "ia::result": {
+            "id": "1771",
+            "key": "1771",
+            "href": "/objects/reports/interactive-custom-report/1771"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/reports/interactive-custom-report/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the interactive custom report.",
+     "in": "path",
+     "required": true,
+     "example": "24",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "summary": "Get an interactive custom report",
+    "description": "Returns detailed information for a specified interactive custom report.",
+    "tags": [
+     "Reports_Interactive custom reports"
+    ],
+    "operationId": "get-reports-interactive-custom-report-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the interactive-custom-report",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.reports.interactive-custom-report"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Details of the interactive custom report": {
+          "value": {
+           "ia::result": {
+            "id": "1838",
+            "key": "1838",
+            "moduleName": "accountsPayable",
+            "reportType": "interactiveCustomReport",
+            "reportPath": "shared/Traders/Contracts Expenses",
+            "addReportToMenu": false,
+            "status": "active",
+            "fromLibrary": false,
+            "audit": {
+             "createdDateTime": "2025-06-02T14:33:01Z",
+             "modifiedDateTime": "2025-06-02T14:36:05Z",
+             "createdByUser": {
+              "key": "1",
+              "id": "Jane Smith",
+              "href": "/objects/company-config/user/1"
+             },
+             "modifiedByUser": {
+              "key": "1",
+              "id": "Jane Smith",
+              "href": "/objects/company-config/user/1"
+             }
+            },
+            "reportingAreas": [
+             "apPayments"
+            ],
+            "glReportAudience": {
+             "id": "2",
+             "key": "2",
+             "name": "RA",
+             "href": "/objects/general-ledger/report-audience/2"
+            },
+            "glReportType": {
+             "id": "1",
+             "key": "1",
+             "name": "RT",
+             "href": "/objects/general-ledger/report-type/1"
+            },
+            "href": "/objects/reports/interactive-custom-report/1838"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an interactive custom report",
+    "description": "Updates an existing interactive custom report by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Reports_Interactive custom reports"
+    ],
+    "operationId": "update-reports-interactive-custom-report-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.reports.interactive-custom-report"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update an interactive custom report": {
+         "value": {
+          "status": "active",
+          "glReportType": {
+           "key": "2"
+          },
+          "glReportAudience": {
+           "key": "1"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated interactive-custom-report",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated interactive custom report": {
+          "value": {
+           "ia::result": {
+            "id": "1838",
+            "key": "1838",
+            "href": "/objects/reports/interactive-custom-report/1838"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an interactive custom report",
+    "description": "Deletes an interactive custom report.",
+    "tags": [
+     "Reports_Interactive custom reports"
+    ],
+    "operationId": "delete-reports-interactive-custom-report-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/reports/status": {
+   "get": {
+    "description": "Retrieve status for a specified report job.",
+    "summary": "Report status",
+    "tags": [
+     "Reports_Report status"
+    ],
+    "operationId": "get-services-report-status",
+    "parameters": [
+     {
+      "name": "reportId",
+      "in": "query",
+      "required": true,
+      "description": "Name for the report.",
+      "schema": {
+       "type": "string",
+       "nullable": false
+      },
+      "example": "1"
+     },
+     {
+      "name": "outputType",
+      "in": "query",
+      "required": true,
+      "description": "Format for the report output.",
+      "schema": {
+       "type": "string",
+       "enum": [
+        "html",
+        "pdf",
+        "csv",
+        "excel",
+        "text",
+        "fec",
+        "zip"
+       ]
+      },
+      "example": "pdf"
+     },
+     {
+      "name": "outputLocation",
+      "in": "query",
+      "required": true,
+      "description": "Location where the report output is stored.",
+      "schema": {
+       "type": "string",
+       "enum": [
+        "intacct",
+        "cloud"
+       ]
+      },
+      "example": "intacct"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Report Status",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/reports-status-response"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Completed cloud store report status": {
+          "value": {
+           "ia::result": {
+            "reportId": 1,
+            "status": "completed",
+            "outputType": "pdf",
+            "outputLocation": "cloud",
+            "cloudStore": {
+             "target": "s3",
+             "path": "/"
+            },
+            "name": "Customer Report",
+            "href": "/services/reports/status?reportId=1&outputType=pdf&outputLocation=cloud"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "303": {
+      "description": "See Other",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Report ready for download",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/reports-status-response"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Completed Intacct report status": {
+          "value": {
+           "ia::result": {
+            "reportId": 1,
+            "status": "completed",
+            "outputType": "pdf",
+            "outputLocation": "intacct",
+            "name": "Customer Report",
+            "downloadURL": "/services/reports/download?reportId=1&outputType=pdf"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/reports/download": {
+   "get": {
+    "description": "Download a report stored in Intacct.",
+    "summary": "Download a report",
+    "tags": [
+     "Reports_Download reports"
+    ],
+    "operationId": "report-download",
+    "parameters": [
+     {
+      "name": "reportId",
+      "in": "query",
+      "required": true,
+      "description": "Unique identifier for the report.",
+      "schema": {
+       "type": "string",
+       "nullable": false
+      },
+      "example": "1"
+     },
+     {
+      "name": "outputType",
+      "in": "query",
+      "required": true,
+      "description": "Format for the report output.",
+      "schema": {
+       "type": "string",
+       "enum": [
+        "html",
+        "pdf",
+        "csv",
+        "excel",
+        "text",
+        "fec",
+        "zip"
+       ]
+      },
+      "example": "pdf"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/pdf": {
+        "schema": {
+         "$ref": "#/components/schemas/outbound-binary"
+        },
+        "examples": {
+         "200 response example": {
+          "value": "string"
+         }
+        }
+       },
+       "application/octet-stream": {
+        "schema": {
+         "$ref": "#/components/schemas/outbound-binary"
+        },
+        "examples": {
+         "200 response example": {
+          "value": "string"
+         }
+        }
+       },
+       "application/vnd.ms-excel": {
+        "schema": {
+         "$ref": "#/components/schemas/outbound-binary"
+        },
+        "examples": {
+         "200 response example": {
+          "value": "string"
+         }
+        }
+       },
+       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+        "schema": {
+         "$ref": "#/components/schemas/outbound-binary"
+        },
+        "examples": {
+         "200 response example": {
+          "value": "string"
+         }
+        }
+       },
+       "application/zip": {
+        "schema": {
+         "$ref": "#/components/schemas/outbound-binary"
+        },
+        "examples": {
+         "200 response example": {
+          "value": "string"
+         }
+        }
+       },
+       "text/html": {
+        "schema": {
+         "$ref": "#/components/schemas/outbound-binary"
+        },
+        "examples": {
+         "200 response example": {
+          "value": "string"
+         }
+        }
+       },
+       "text/plain": {
+        "schema": {
+         "$ref": "#/components/schemas/outbound-binary"
+        },
+        "examples": {
+         "200 response example": {
+          "value": "string"
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/reports/stored-reports": {
+   "post": {
+    "description": "Retrieve a stored report in different format or location.",
+    "summary": "Retrieve a stored report",
+    "tags": [
+     "Reports_Retrieve stored reports"
+    ],
+    "operationId": "post-services-stored-reports",
+    "requestBody": {
+     "description": "Retrieve a report in a new output type.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/services.reports.stored-reports"
+       },
+       "examples": {
+        "Request a report in different format": {
+         "value": {
+          "reportId": "123",
+          "outputType": "pdf",
+          "outputLocation": "intacct"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Request Status",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/services.report.submitted-status"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Report request response": {
+          "value": {
+           "ia::result": {
+            "reportId": 1,
+            "status": "submitted",
+            "outputType": "pdf",
+            "outputLocation": "intacct",
+            "name": "Customer Report",
+            "href": "/services/reports/status?reportId=1&outputType=pdf&outputLocation=intacct"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/reports/cancel": {
+   "post": {
+    "description": "Cancel a queued report. The `status` of the report will change from `submitted` to `canceled`. In-progress reports cannot be canceled.",
+    "summary": "Cancel a report",
+    "tags": [
+     "Reports_Cancel reports"
+    ],
+    "operationId": "post-services-reports-cancel",
+    "requestBody": {
+     "description": "Cancel a report (only queued reports can be canceled).",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/services.reports.stored-reports"
+       },
+       "examples": {
+        "Cancel a queued report": {
+         "value": {
+          "reportId": "123",
+          "outputType": "pdf",
+          "outputLocation": "intacct"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Request Status",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/services.report.status-canceled"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Cancel report response": {
+          "value": {
+           "ia::result": {
+            "reportId": "1",
+            "status": "canceled",
+            "outputType": "pdf",
+            "outputLocation": "intacct",
+            "name": "Customer Report",
+            "href": "/services/reports/status?reportId=1&outputType=pdf&outputLocation=intacct"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "object-reference": {
+    "type": "object",
+    "description": "Reference to created or updated object.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the object.",
+      "example": "12345"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the object.",
+      "example": "ID123"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL endpoint for the object.",
+      "example": "/objects/<application>/<name>/12345"
+     }
+    }
+   },
+   "metadata-pages": {
+    "description": "Metadata for collection response",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total number of members in the result set.",
+      "readOnly": true,
+      "example": 3
+     },
+     "start": {
+      "type": "integer",
+      "description": "First member of the result set included in the current response.",
+      "readOnly": true,
+      "example": 1
+     },
+     "pageSize": {
+      "type": "integer",
+      "description": "Maximum number of members included in the current response. The response may contain fewer members if the final page of the result set is smaller than the page size.",
+      "readOnly": true,
+      "example": 100
+     },
+     "next": {
+      "type": "integer",
+      "description": "First member number of the next page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": 101
+     },
+     "previous": {
+      "type": "integer",
+      "description": "First member number of the previous page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": null
+     }
+    }
+   },
+   "objects.reports.stored-report": {
+    "type": "object",
+    "description": "Stored reports associated with the specified user.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the stored report.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the stored report. This value is the same as the `key` for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the stored report.",
+      "readOnly": true,
+      "example": "/objects/core/stored-report/23"
+     },
+     "reportType": {
+      "type": "string",
+      "description": "Report type.",
+      "example": "gl_glrep"
+     },
+     "reportTitle": {
+      "type": "string",
+      "description": "Report title.",
+      "example": "General Ledger Report"
+     },
+     "moduleKey": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The source module associated with the stored report.",
+      "example": "2.GL"
+     },
+     "localStore": {
+      "type": "object",
+      "description": "Details of the report output stored in Intacct.",
+      "readOnly": true,
+      "properties": {
+       "html": {
+        "type": "object",
+        "description": "HTML output for the report.",
+        "properties": {
+         "status": {
+          "description": "Status of the HTML output for the report.",
+          "type": "string",
+          "readOnly": true,
+          "example": "pending",
+          "nullable": true,
+          "enum": [
+           "pending",
+           "success",
+           "error",
+           "canceled",
+           "notAllowed",
+           null
+          ]
+         }
+        }
+       },
+       "pdf": {
+        "description": "PDF output for the report.",
+        "type": "object",
+        "properties": {
+         "status": {
+          "description": "Status of the PDF output for the report.",
+          "type": "string",
+          "readOnly": true,
+          "example": "pending",
+          "nullable": true,
+          "enum": [
+           "pending",
+           "success",
+           "error",
+           "canceled",
+           "notAllowed",
+           null
+          ]
+         }
+        }
+       },
+       "csv": {
+        "description": "CSV output for the report.",
+        "type": "object",
+        "properties": {
+         "status": {
+          "description": "Status of the CSV output for the report.",
+          "type": "string",
+          "readOnly": true,
+          "example": "pending",
+          "nullable": true,
+          "enum": [
+           "pending",
+           "success",
+           "error",
+           "canceled",
+           "notAllowed",
+           null
+          ]
+         }
+        }
+       },
+       "excel": {
+        "description": "Excel output for the report.",
+        "type": "object",
+        "properties": {
+         "status": {
+          "description": "Status of the Excel output for the report.",
+          "type": "string",
+          "readOnly": true,
+          "example": "pending",
+          "nullable": true,
+          "enum": [
+           "pending",
+           "success",
+           "error",
+           "canceled",
+           "notAllowed",
+           null
+          ]
+         }
+        }
+       },
+       "text": {
+        "description": "Text output for the report.",
+        "type": "object",
+        "properties": {
+         "status": {
+          "description": "Status of the Text output for the report.",
+          "type": "string",
+          "readOnly": true,
+          "example": "pending",
+          "nullable": true,
+          "enum": [
+           "pending",
+           "success",
+           "error",
+           "canceled",
+           "notAllowed",
+           null
+          ]
+         }
+        }
+       },
+       "fec": {
+        "description": "FEC output for the report.",
+        "type": "object",
+        "properties": {
+         "status": {
+          "description": "Status of the Text output for the report.",
+          "type": "string",
+          "readOnly": true,
+          "example": "pending",
+          "nullable": true,
+          "enum": [
+           "pending",
+           "success",
+           "error",
+           "canceled",
+           "notAllowed",
+           null
+          ]
+         }
+        }
+       },
+       "zip": {
+        "description": "ZIP output for the report.",
+        "type": "object",
+        "properties": {
+         "status": {
+          "description": "Status of the ZIP output for the report.",
+          "type": "string",
+          "readOnly": true,
+          "example": "pending",
+          "nullable": true,
+          "enum": [
+           "pending",
+           "success",
+           "error",
+           "canceled",
+           "notAllowed",
+           null
+          ]
+         }
+        }
+       }
+      }
+     },
+     "cloudStore": {
+      "type": "object",
+      "description": "Status for the delivery of the stored report to the cloud.",
+      "readOnly": true,
+      "properties": {
+       "status": {
+        "description": "Status for the delivery of the stored report to the cloud.",
+        "type": "string",
+        "readOnly": true,
+        "example": "pending",
+        "nullable": true,
+        "enum": [
+         "pending",
+         "success",
+         "error",
+         "canceled",
+         "notAllowed",
+         null
+        ]
+       }
+      }
+     },
+     "user": {
+      "type": "object",
+      "description": "The user associated with the stored report.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "example": "21"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the user.",
+        "readOnly": true,
+        "example": "intacct"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the user.",
+        "readOnly": true,
+        "example": "/objects/company-config/user/21"
+       }
+      }
+     },
+     "audit": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+       "createdDateTime": {
+        "description": "Date-time when this record was created.",
+        "type": "string",
+        "format": "date-time",
+        "readOnly": true,
+        "example": "2023-05-16T15:34:35Z"
+       },
+       "modifiedDateTime": {
+        "description": "Date-time when this record was modified.",
+        "type": "string",
+        "format": "date-time",
+        "readOnly": true,
+        "example": "2024-09-14T21:23:42Z"
+       }
+      }
+     }
+    }
+   },
+   "metadata": {
+    "description": "Metadata for the response.",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total count.",
+      "readOnly": true,
+      "example": 3
+     },
+     "totalSuccess": {
+      "type": "integer",
+      "description": "Total success.",
+      "readOnly": true,
+      "example": 2
+     },
+     "totalError": {
+      "type": "integer",
+      "description": "Total errors.",
+      "readOnly": true,
+      "example": 1
+     }
+    }
+   },
+   "objects.reports.stored-report-error-record": {
+    "type": "object",
+    "description": "Report store error log.",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the stored report error record. This value is the same as the `key` for this object.",
+      "readOnly": true,
+      "example": "1"
+     },
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the stored report error record.",
+      "readOnly": true,
+      "example": "1"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the stored report error record.",
+      "readOnly": true,
+      "example": "/objects/reports/stored-report-error-record/1"
+     },
+     "errorCode": {
+      "type": "string",
+      "description": "Sage Intacct code for the error.",
+      "example": "GL-2000"
+     },
+     "errorDescription": {
+      "type": "string",
+      "description": "Description or details of the error.",
+      "example": "Please select a suitable filter"
+     },
+     "reportType": {
+      "type": "string",
+      "description": "Report type.",
+      "example": "_pdf"
+     },
+     "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2024-01-23T11:28:12Z",
+      "description": "Date and time the stored report error record was created.",
+      "readOnly": true
+     },
+     "storedReport": {
+      "type": "object",
+      "description": "Stored report this error is associated with.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Key for the stored report.",
+        "readOnly": true,
+        "example": "22"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the stored report.",
+        "readOnly": true,
+        "example": "22"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the stored report.",
+        "readOnly": true,
+        "example": "/objects/reports/stored-report/22"
+       }
+      }
+     }
+    }
+   },
+   "objects.reports.interactive-custom-report": {
+    "type": "object",
+    "description": "Interactive custom reports enable you to build reports across a wide range of reporting areas.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the interactive custom report.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the interactive custom report. This value is the same as the `key` for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the interactive custom report.",
+      "readOnly": true,
+      "example": "/objects/reports/interactive-custom-report/23"
+     },
+     "reportPath": {
+      "type": "string",
+      "description": "The location where the report is stored.",
+      "readOnly": true,
+      "example": "shared/Traders/Contracts Expenses"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name for the interactive custom report.",
+      "example": "GL Detail with PO No"
+     },
+     "createFromExistingReport": {
+      "type": "boolean",
+      "description": "Specifies whether the report is created based on an existing report.",
+      "example": true,
+      "default": true
+     },
+     "existingReportName": {
+      "type": "string",
+      "description": "The name of an existing report the report is based on. Used when `createFromExistingReport` is set to `true`.",
+      "nullable": true,
+      "example": "R310-N1"
+     },
+     "moduleName": {
+      "type": "string",
+      "description": "The module or reporting area the report is associated with.",
+      "example": "accountsPayable",
+      "default": "accountsPayable",
+      "enum": [
+       "generalLedger",
+       "accountsPayable",
+       "accountsReceivable",
+       "cashManagement",
+       "expenses",
+       "inventoryControl",
+       "orderEntry",
+       "purchasing",
+       "projects",
+       "contracts",
+       "construction",
+       "taxes",
+       "saasMetrics",
+       "constructionPayroll",
+       "realEstate",
+       "consolidation",
+       "fixedAssets",
+       "time",
+       "company"
+      ]
+     },
+     "addReportToMenu": {
+      "type": "boolean",
+      "description": "Indicates whether the report is included in the UI menu.",
+      "example": false,
+      "default": false
+     },
+     "reportType": {
+      "type": "string",
+      "description": "The type for the report.",
+      "example": "interactiveCustomReportWriter",
+      "default": "interactiveCustomReportWriter",
+      "enum": [
+       "interactiveCustomReportWriter",
+       "interactiveVisualExplorer"
+      ]
+     },
+     "fromLibrary": {
+      "type": "string",
+      "description": "Indicates whether the report belongs to the [ICRW Reports Library](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Report_libraries).",
+      "example": false,
+      "enum": [
+       true,
+       false
+      ],
+      "default": false
+     },
+     "reportingAreas": {
+      "$ref": "#/components/schemas/reporting-areas"
+     },
+     "glReportAudience": {
+      "type": "object",
+      "description": "GL report audience for the interactive custom report.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the GL report audience.",
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the GL report audience.",
+        "example": "23"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the GL report audience.",
+        "readOnly": true,
+        "example": "RA"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL report audience.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/report-audience/23"
+       }
+      }
+     },
+     "glReportType": {
+      "type": "object",
+      "description": "GL report type for the interactive custom report.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the GL report type.",
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the GL report type.",
+        "example": "23"
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the GL report type.",
+        "readOnly": true,
+        "example": "RT"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL report type.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/report-type/23"
+       }
+      }
+     },
+     "isStandardPeriodIncluded": {
+      "type": "boolean",
+      "description": "Indicates whether standard periods are included in the report.",
+      "example": false,
+      "default": false
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s2"
+     }
+    }
+   },
+   "reports-interactive-custom-reportRequiredProperties": {
+    "type": "object",
+    "required": [
+     "name",
+     "reportingAreas"
+    ]
+   },
+   "reports-status-response": {
+    "description": "Report status response.",
+    "type": "object",
+    "properties": {
+     "reportId": {
+      "type": "string",
+      "description": "report ID",
+      "nullable": false,
+      "readOnly": true,
+      "example": "1"
+     },
+     "status": {
+      "type": "string",
+      "description": "Report status.",
+      "nullable": false,
+      "readOnly": true,
+      "example": "completed",
+      "enum": [
+       "pending",
+       "completed",
+       "failed",
+       "canceled"
+      ]
+     },
+     "name": {
+      "type": "string",
+      "description": "Name for the report.",
+      "readOnly": true,
+      "nullable": true,
+      "example": "Report 1"
+     },
+     "outputType": {
+      "type": "string",
+      "description": "Format for the report output.",
+      "enum": [
+       "html",
+       "pdf",
+       "csv",
+       "excel",
+       "text",
+       "fec",
+       "zip"
+      ],
+      "readOnly": true,
+      "example": "pdf"
+     },
+     "outputLocation": {
+      "type": "string",
+      "description": "Location where the report output is stored.",
+      "readOnly": true,
+      "example": "intacct",
+      "enum": [
+       "intacct",
+       "cloud"
+      ]
+     },
+     "cloudStore": {
+      "type": "object",
+      "description": "Cloud storage details, when `outputLocation` is set to `cloud`.",
+      "properties": {
+       "target": {
+        "type": "string",
+        "description": "Cloud store target.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "s3"
+       },
+       "path": {
+        "type": "string",
+        "description": "Cloud store path.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "/"
+       }
+      }
+     },
+     "downloadURL": {
+      "type": "string",
+      "description": "URL endpoint for the report download, when `outputLocation` is set to `intacct`.",
+      "nullable": true,
+      "readOnly": true,
+      "example": "/services/reports/download?reportId=1&outputType=pdf"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the report status.",
+      "nullable": true,
+      "readOnly": true,
+      "example": "/services/reports/status?reportId=1&outputType=pdf&outputLocation=intacct"
+     }
+    }
+   },
+   "outbound-binary": {
+    "type": "string",
+    "format": "outbound-binary"
+   },
+   "services.reports.stored-reports": {
+    "description": "Stored reports definition.",
+    "type": "object",
+    "properties": {
+     "reportId": {
+      "type": "string",
+      "example": "1",
+      "description": "Unique identifier for the stored report."
+     },
+     "outputType": {
+      "type": "string",
+      "enum": [
+       "html",
+       "pdf",
+       "csv",
+       "excel",
+       "text",
+       "fec",
+       "zip"
+      ],
+      "example": "html",
+      "description": "Format for the report output."
+     },
+     "outputLocation": {
+      "type": "string",
+      "enum": [
+       "intacct",
+       "cloud"
+      ],
+      "example": "intacct",
+      "description": "Location where the report is stored."
+     }
+    },
+    "required": [
+     "reportId",
+     "outputType",
+     "outputLocation"
+    ]
+   },
+   "services.report.submitted-status": {
+    "description": "Report status response.",
+    "type": "object",
+    "properties": {
+     "reportId": {
+      "type": "string",
+      "description": "Unique identifier for the report.",
+      "nullable": false,
+      "example": "1"
+     },
+     "status": {
+      "type": "string",
+      "description": "Status of the report execution.",
+      "nullable": false,
+      "enum": [
+       "submitted",
+       "failed"
+      ],
+      "example": "submitted"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name for the report.",
+      "readOnly": true,
+      "nullable": true,
+      "example": "Trial balance report"
+     },
+     "outputType": {
+      "type": "string",
+      "description": "Format for the report output.",
+      "readOnly": true,
+      "example": "pdf",
+      "enum": [
+       "html",
+       "pdf",
+       "csv",
+       "excel",
+       "text",
+       "fec",
+       "zip"
+      ]
+     },
+     "outputLocation": {
+      "type": "string",
+      "description": "Location where the report is stored.",
+      "readOnly": true,
+      "example": "intacct",
+      "enum": [
+       "intacct",
+       "cloud"
+      ]
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the report status.",
+      "nullable": true,
+      "example": "/services/reports/status?reportId=1&outputType=pdf&outputLocation=intacct"
+     }
+    }
+   },
+   "services.report.status-canceled": {
+    "description": "Report status response for cancel requests.",
+    "type": "object",
+    "properties": {
+     "reportId": {
+      "type": "string",
+      "description": "Unique identifier for the report.",
+      "nullable": false,
+      "example": "1"
+     },
+     "status": {
+      "type": "string",
+      "description": "Status of the report job.",
+      "nullable": false,
+      "enum": [
+       "failed",
+       "canceled"
+      ],
+      "example": "canceled"
+     },
+     "outputType": {
+      "type": "string",
+      "description": "Format for the report output.",
+      "readOnly": true,
+      "example": "pdf",
+      "enum": [
+       "html",
+       "pdf",
+       "csv",
+       "excel",
+       "text",
+       "fec",
+       "zip"
+      ]
+     },
+     "outputLocation": {
+      "type": "string",
+      "description": "Location where the report output is stored.",
+      "readOnly": true,
+      "example": "intacct",
+      "enum": [
+       "intacct",
+       "cloud"
+      ]
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the report status.",
+      "nullable": true,
+      "example": "/services/reports/status?reportId=1&outputType=pdf&outputLocation=intacct"
+     }
+    }
+   },
+   "error-response": {
+    "type": "object",
+    "description": "Error response",
+    "properties": {
+     "ia::result": {
+      "type": "object",
+      "properties": {
+       "ia::error": {
+        "type": "object",
+        "properties": {
+         "code": {
+          "type": "string",
+          "example": "invalidRequest"
+         },
+         "message": {
+          "type": "string",
+          "example": "Payload contains errors"
+         },
+         "supportId": {
+          "type": "string",
+          "example": "sQrM9%7EYdh5oDEWVb80mrn9xuHjoAAAABBQ"
+         },
+         "errorId": {
+          "type": "string",
+          "example": "REST-1064"
+         },
+         "additionalInfo": {
+          "type": "object",
+          "properties": {
+           "messageId": {
+            "type": "string",
+            "example": "IA.PAYLOAD_CONTAINS_ERRORS"
+           },
+           "placeholders": {
+            "type": "object",
+            "example": {}
+           },
+           "propertySet": {
+            "type": "object",
+            "example": {}
+           }
+          }
+         },
+         "details": {
+          "type": "array",
+          "items": {
+           "type": "object",
+           "properties": {
+            "code": {
+             "type": "string",
+             "example": "invalidRequest"
+            },
+            "message": {
+             "type": "string",
+             "example": "/newDate is not a valid field"
+            },
+            "errorId": {
+             "type": "string",
+             "example": "REST-1043"
+            },
+            "target": {
+             "type": "string",
+             "example": "/newDate"
+            },
+            "additionalInfo": {
+             "type": "object",
+             "properties": {
+              "messageId": {
+               "type": "string",
+               "example": "IA.NOT_A_VALID_FIELD"
+              },
+              "placeholders": {
+               "type": "object",
+               "example": {}
+              },
+              "propertySet": {
+               "type": "object",
+               "example": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "ia::meta": {
+        "$ref": "#/components/schemas/metadata"
+       }
+      }
+     }
+    },
+    "example": {
+     "ia::result": {
+      "ia::error": {
+       "code": "invalidRequest",
+       "message": "A POST request requires a payload",
+       "errorId": "REST-1028",
+       "additionalInfo": {
+        "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+        "placeholders": {
+         "OPERATION": "POST"
+        },
+        "propertySet": {}
+       },
+       "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+      }
+     },
+     "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 0,
+      "totalError": 1
+     }
+    }
+   },
+   "reporting-areas": {
+    "type": "array",
+    "description": "Reporting areas.",
+    "maxItems": 1,
+    "example": [
+     "apBills"
+    ],
+    "items": {
+     "type": "string",
+     "enum": [
+      "apAdjustments",
+      "apBills",
+      "apPaymentDetail",
+      "apPayments",
+      "apPaymentsLegacy",
+      "apRetainageRelease",
+      "apTransactions",
+      "arAdjustments",
+      "arInvoices",
+      "arPaymentDetail",
+      "arPayments",
+      "arRetainageRelease",
+      "arTransactions",
+      "assignment",
+      "assets",
+      "bankDeposits",
+      "bankReconciliationMatch",
+      "buildKits",
+      "chargeCard",
+      "changeRequests",
+      "checklist",
+      "constructionReporting",
+      "contractExpense",
+      "contractMEAAllocationDetail",
+      "contractMEABundle",
+      "contractUsage",
+      "contractBillingSchedules",
+      "contractBillingTemplates",
+      "contractExpenseSchedules",
+      "contractRevenueSchedules",
+      "contractRevenueTemplates",
+      "contractSubledgerLinks",
+      "contracts",
+      "costing",
+      "customer",
+      "department",
+      "depreciationSchedule",
+      "depreciationScheduleDetail",
+      "dropShipHistory",
+      "employeeExpense",
+      "employees",
+      "glAccount",
+      "glAccountGroup",
+      "glBudget",
+      "glBudgetVsActuals",
+      "glDetail",
+      "glDocumentDetail",
+      "glDynamicAllocations",
+      "glEntry",
+      "glTransaction",
+      "interEntityTransactions",
+      "inventory",
+      "inventoryDocumentEntryTracking",
+      "item",
+      "lienWaiverDetail",
+      "location",
+      "orderEntry",
+      "orderEntryDocumentEntryTracking",
+      "orderEntrySubtotals",
+      "payrollReportCheck",
+      "payrollReportCheckSummary",
+      "payrollReportGrossPay",
+      "payrollReportPTOActivity",
+      "payrollReportPayModifier",
+      "payrollReportTax",
+      "payrollReportTaxSetup",
+      "payrollReportTimecard",
+      "payrollReportTimecardSummary",
+      "projectChangeOrders",
+      "projectContract",
+      "projectContractBillingDetail",
+      "projectContractBillingSummary",
+      "projectContractLineDetail",
+      "projectContractRateTableAPEntry",
+      "projectContractRateTableCreditCardEntry",
+      "projectContractRateTableEmployeeExpenseEntry",
+      "projectContractRateTableGLEntry",
+      "projectContractRateTablePurchaseOrderEntry",
+      "projectContractRateTableTimesheetEntry",
+      "projectDetail",
+      "projectEstimates",
+      "projectSummaryBillingDetail",
+      "projects",
+      "projectsTransactions",
+      "purchaseDocumentEntryTracking",
+      "purchaseOrder",
+      "recurringOrderEntry",
+      "revenueRecognitionSchedule",
+      "saasMetrics",
+      "tasks",
+      "taskResources",
+      "timesheets",
+      "vatGSTTax",
+      "vatGSTTaxSubmissions",
+      "vendor",
+      "vendorCompliance",
+      "wellsFargoPaymentManager",
+      "wipSchedule",
+      "wipScheduleProject"
+     ]
+    }
+   },
+   "status": {
+    "type": "string",
+    "description": "Object status. Active objects are fully functional. Inactive objects are essentially hidden and cannot be used or referenced.",
+    "enum": [
+     "active",
+     "inactive"
+    ],
+    "default": "active",
+    "example": "active"
+   },
+   "audit.s2": {
+    "type": "object",
+    "readOnly": true,
+    "properties": {
+     "createdDateTime": {
+      "description": "Date and time when the record was created.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-05-16T15:34:35Z"
+     },
+     "modifiedDateTime": {
+      "description": "Date and time when the record was last modified.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-09-14T21:23:42Z"
+     },
+     "createdByUser": {
+      "type": "object",
+      "description": "The user who created the object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "436"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JohnDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/436"
+       }
+      }
+     },
+     "modifiedByUser": {
+      "type": "object",
+      "description": "The user who last modified this object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "3086"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JaneDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/3086"
+       }
+      }
+     }
+    }
+   }
+  },
+  "responses": {
+   "400error": {
+    "description": "Bad Request",
+    "content": {
+     "application/json": {
+      "schema": {
+       "$ref": "#/components/schemas/error-response"
+      },
+      "examples": {
+       "Response example": {
+        "value": {
+         "ia::result": {
+          "ia::error": {
+           "code": "invalidRequest",
+           "message": "A POST request requires a payload",
+           "errorId": "REST-1028",
+           "additionalInfo": {
+            "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+            "placeholders": {
+             "OPERATION": "POST"
+            },
+            "propertySet": {}
+           },
+           "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+          }
+         },
+         "ia::meta": {
+          "totalCount": 1,
+          "totalSuccess": 0,
+          "totalError": 1
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "securitySchemes": {
+   "OAuth2": {
+    "description": "Sage Intacct OAuth 2.0 authorization code flow",
+    "type": "oauth2",
+    "flows": {
+     "authorizationCode": {
+      "authorizationUrl": "https://api.intacct.com/ia/api/v1/oauth2/authorize",
+      "tokenUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "refreshUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "scopes": {}
+     }
+    }
+   }
+  }
+ }
+}

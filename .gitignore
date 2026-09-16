@@ -1,5 +1,9 @@
-# OSX
+node_modules/
+dist/
+coverage/
+*.tgz
 .DS_Store
 
-# Node modules
-node_modules/
+# local secrets
+.env
+.env.*

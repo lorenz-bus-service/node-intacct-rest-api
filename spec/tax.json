@@ -1,0 +1,6626 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "title": "Tax",
+  "version": "1",
+  "description": "Sage Intacct provides support for determining, capturing, and reporting on sales tax, VAT, and GST."
+ },
+ "servers": [
+  {
+   "url": "https://api.intacct.com/ia/api/v1",
+   "x-try-it": "sage-intacct-api"
+  }
+ ],
+ "tags": [
+  {
+   "name": "Tax_Order Entry tax details",
+   "x-displayName": "Order Entry tax details",
+   "description": "Order Entry tax details describe a specific type of tax that applies to lines in Accounts Receivable and Order Entry transactions. When Sage Intacct calculates taxes, the tax schedule map applies the tax details to the taxable lines. See [Tax details&mdash;Taxes application](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Setup/Tax_objects/tax-details.htm) for more information.\n"
+  },
+  {
+   "name": "Tax_Order Entry tax schedules",
+   "x-displayName": "Order Entry tax schedules",
+   "description": "An Order Entry tax schedule identifies the tax details that are applied when the schedule is referenced by an Order Entry tax schedule map. See [Tax schedules&mdash;Taxes application](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Setup/Tax_objects/tax-schedules.htm) for more information.\n"
+  },
+  {
+   "name": "Tax_Order Entry tax schedule details",
+   "x-displayName": "Order Entry tax schedule details",
+   "description": "Use Order Entry tax schedule detail to associate a tax detail to the date when it becomes effective."
+  },
+  {
+   "name": "Tax_Purchasing tax details",
+   "x-displayName": "Purchasing tax details",
+   "description": "Purchasing tax details describe a specific type of tax that applies to lines in Accounts Payable and Purchasing transactions. When Sage Intacct calculates taxes, the tax schedule map applies the tax details to the taxable lines. See [Tax details&mdash;Taxes application](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Setup/Tax_objects/tax-details.htm) for more information.\n"
+  },
+  {
+   "name": "Tax_Purchasing tax schedules",
+   "x-displayName": "Purchasing tax schedules",
+   "description": "A Purchasing tax schedule identifies the tax details that are applied when the schedule is referenced by a Purchasing tax schedule map. See [Tax schedules&mdash;Taxes application](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Setup/Tax_objects/tax-schedules.htm) for more information.\n"
+  },
+  {
+   "name": "Tax_Purchasing tax schedule details",
+   "x-displayName": "Purchasing tax schedule details",
+   "description": "Use Purchasing tax schedule detail to associate a tax detail to the date when it becomes effective."
+  },
+  {
+   "name": "Tax_Tax authorities",
+   "x-displayName": "Tax authorities",
+   "description": "Tax authorities are agencies for whom you collect sales tax or other taxes. For example, in the United States, you might report and pay any tax you owe to city, county, and state agencies. Tax authorities are shared across Accounts Payable, Accounts Receivable, Order Entry, and Purchasing. See [Tax authorities&mdash;Taxes application](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Setup/Tax_objects/tax-authorities.htm) for more information.\n"
+  },
+  {
+   "name": "Tax_Contact tax groups",
+   "x-displayName": "Contact tax groups",
+   "description": "Contact tax groups enable taxes to be applied to customers, vendors, and their contacts, according to their jurisdictions. Applicable only with Advanced Tax, for more information see [Contact Tax Groups-Advanced Tax](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/Sales_tax/Intacct_Advanced_Tax/Setup/advtax-contact-tax-groups.htm)."
+  },
+  {
+   "name": "Tax_Item tax groups",
+   "x-displayName": "Item tax groups",
+   "description": "Item tax groups enable taxes to be applied to items. Applicable only with Advanced Tax, for more information see [Item Tax Groups-Advanced Tax](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/Sales_tax/Intacct_Advanced_Tax/Setup/advtax-item-tax-groups.htm)."
+  },
+  {
+   "name": "Tax_Tax returns",
+   "x-displayName": "Tax returns",
+   "description": "You can submit a tax return through Sage Regulatory Reporting for Australia, Canada, South Africa, and the United Kingdom.\nMulti-entity companies typically submit taxes from the top level.\nYou can submit taxes for an individual entity only if the entity has a unique tax ID.\nFor more information, see [Submit taxes](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Use/Submit_taxes/submit-taxes.htm)."
+  },
+  {
+   "name": "Tax_Tax solutions",
+   "x-displayName": "Tax solutions",
+   "description": "A tax solution provides the underlying mechanism (tax engine) for capturing and reporting taxes. A tax solution also includes information about the GL accounts for input and output taxes as well as the start date of the first tax submission period. Pre-configured tax solutions are only available for AU, CAN, FR, GB, and ZA."
+  },
+  {
+   "name": "Tax_Account label tax groups",
+   "x-displayName": "Account label tax groups",
+   "description": "Account label tax groups organize account labels under one tax category. Along with tax schedule maps, they associate tax schedules with one or more combinations of contact tax groups and account label tax groups.\n\nApplicable when using Advanced Tax with the Accounts Receivable application without the Taxes application. For more information see [Item Tax Groups-Advanced Tax](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/Sales_tax/Intacct_Advanced_Tax/Setup/account-label-tax-groups.htm)."
+  },
+  {
+   "name": "Tax_Tax details",
+   "x-displayName": "Tax details",
+   "description": "Tax details describe a specific type of tax that applies to lines in a transaction. When Sage Intacct calculates taxes, the tax schedule map applies the tax details to the taxable lines. See [Tax details&mdash;Taxes application](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Setup/Tax_objects/tax-details.htm) for more information."
+  },
+  {
+   "name": "Tax_Tax records",
+   "x-displayName": "Tax records",
+   "description": "Tax records capture VAT or GST related tax entries for tax compliance and reporting."
+  }
+ ],
+ "paths": {
+  "/objects/tax/order-entry-tax-detail": {
+   "get": {
+    "summary": "List Order Entry tax details",
+    "description": "Returns a collection with a key, ID, and link for each Order Entry tax detail. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.\n",
+    "tags": [
+     "Tax_Order Entry tax details"
+    ],
+    "operationId": "list-tax-order-entry-tax-detail",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of order-entry-tax-detail objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List Order Entry tax details": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "82",
+             "id": "UK Sale Goods Exempt Rate",
+             "href": "/objects/tax/order-entry-tax-detail/82"
+            },
+            {
+             "key": "83",
+             "id": "UK Sale Goods Reduced Rate",
+             "href": "/objects/tax/order-entry-tax-detail/83"
+            },
+            {
+             "key": "84",
+             "id": "UK Sale Goods Standard Rate",
+             "href": "/objects/tax/order-entry-tax-detail/84"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an Order Entry tax detail",
+    "description": "Creates a new Order Entry tax detail.",
+    "tags": [
+     "Tax_Order Entry tax details"
+    ],
+    "operationId": "create-tax-order-entry-tax-detail",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.order-entry-tax-detail"
+         },
+         {
+          "$ref": "#/components/schemas/tax-order-entry-tax-detailRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create an Order Entry tax detail": {
+         "value": {
+          "id": "UK General Export Reduced Rate",
+          "taxUniqueId": "GB.ECOutput_GB.ExemptGB.VAT",
+          "description": "Reduced Rate for UK General Export",
+          "taxPercent": 10.02,
+          "taxLimit": {
+           "minTax": 10,
+           "maxTax": 150,
+           "minTaxable": 10,
+           "maxTaxable": 2000
+          },
+          "amountToTax": "fullAmount",
+          "salesGLAccount": {
+           "id": "1200.01"
+          },
+          "taxAuthority": {
+           "id": "California"
+          },
+          "taxSolution": {
+           "id": "United Kingdom - VAT"
+          },
+          "status": "active",
+          "taxRate": "standard",
+          "useExpenseAccount": false
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New order-entry-tax-detail",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "New Order Entry tax detail": {
+          "value": {
+           "ia::result": {
+            "key": "308",
+            "id": "UK General Export Reduced Rate",
+            "href": "/objects/tax/order-entry-tax-detail/308"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/order-entry-tax-detail/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the Order Entry tax detail.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "308"
+    }
+   ],
+   "get": {
+    "summary": "Get an Order Entry tax detail",
+    "description": "Returns detailed information for a specified Order Entry tax detail.",
+    "tags": [
+     "Tax_Order Entry tax details"
+    ],
+    "operationId": "get-tax-order-entry-tax-detail-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the order-entry-tax-detail",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.order-entry-tax-detail"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an Order Entry tax detail": {
+          "value": {
+           "ia::result": {
+            "key": "308",
+            "id": "UK General Export Reduced Rate",
+            "taxUniqueId": "GB.ECOutput_GB.ExemptGB.VAT",
+            "description": "Reduced Rate for UK General Export",
+            "taxPercent": 10.02,
+            "taxLimit": {
+             "minTax": 10,
+             "maxTax": 150,
+             "minTaxable": 10,
+             "maxTaxable": 2000
+            },
+            "amountToTax": "fullAmount",
+            "salesGLAccount": {
+             "id": "1200.01--Accounts Receivable - a/c label offset"
+            },
+            "accountLabel": {
+             "id": "Accounting Fees",
+             "key": "14"
+            },
+            "taxAuthority": {
+             "id": "California",
+             "key": "24",
+             "href": "/objects/tax/tax-authority/24"
+            },
+            "status": "active",
+            "isSystemGenerated": false,
+            "reverseCharge": false,
+            "germanTaxDetailKey": null,
+            "taxRate": "standard",
+            "taxSolution": {
+             "id": "United Kingdom - VAT",
+             "key": "1",
+             "href": "/objects/tax/tax-solution/1"
+            },
+            "useExpenseAccount": false,
+            "href": "/objects/tax/order-entry-tax-detail/308"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an Order Entry tax detail",
+    "description": "Updates an existing Order Entry tax detail by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Tax_Order Entry tax details"
+    ],
+    "operationId": "update-tax-order-entry-tax-detail-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.order-entry-tax-detail"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update an Order Entry tax detail": {
+         "value": {
+          "status": "inactive"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated order-entry-tax-detail",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated Order Entry tax detail": {
+          "value": {
+           "ia::result": {
+            "key": "308",
+            "id": "UK General Export Reduced Rate",
+            "href": "/objects/tax/order-entry-tax-detail/308"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an Order Entry tax detail",
+    "description": "Deletes an Order Entry tax detail. Deleted tax details are removed from the system and can't be recovered.",
+    "tags": [
+     "Tax_Order Entry tax details"
+    ],
+    "operationId": "delete-tax-order-entry-tax-detail-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/order-entry-tax-schedule": {
+   "get": {
+    "summary": "List Order Entry tax schedules",
+    "description": "Returns a collection with a key, ID, and link for each Order Entry tax schedule. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Order Entry tax schedules"
+    ],
+    "operationId": "list-tax-order-entry-tax-schedule",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of order-entry-tax-schedule objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List Order Entry tax schedules": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "8",
+             "id": "8",
+             "href": "/objects/tax/order-entry-tax-schedule/8"
+            },
+            {
+             "key": "9",
+             "id": "9",
+             "href": "/objects/tax/order-entry-tax-schedule/9"
+            },
+            {
+             "key": "10",
+             "id": "10",
+             "href": "/objects/tax/order-entry-tax-schedule/10"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an Order Entry tax schedule",
+    "description": "Creates a new Order Entry tax schedule.",
+    "tags": [
+     "Tax_Order Entry tax schedules"
+    ],
+    "operationId": "create-tax-order-entry-tax-schedule",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.order-entry-tax-schedule"
+         },
+         {
+          "$ref": "#/components/schemas/tax-order-entry-tax-scheduleRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create an Order Entry tax schedule": {
+         "value": {
+          "name": "TaxSched-00004",
+          "description": "Sales Tax for New York",
+          "taxSolution": {
+           "key": 10
+          },
+          "status": "active",
+          "lines": [
+           {
+            "taxDetail": {
+             "id": "New York Sales Tax"
+            },
+            "effectiveDate": "2022-02-26"
+           }
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New order-entry-tax-schedule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "New Order Entry tax schedule": {
+          "value": {
+           "ia::result": {
+            "key": "308",
+            "id": "308",
+            "href": "/objects/tax/order-entry-tax-schedule/308"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/order-entry-tax-schedule/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the Order Entry tax schedule.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string",
+      "example": "162"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get an Order Entry tax schedule",
+    "description": "Returns detailed information for a specified Order Entry tax schedule.",
+    "tags": [
+     "Tax_Order Entry tax schedules"
+    ],
+    "operationId": "get-tax-order-entry-tax-schedule-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the order-entry-tax-schedule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.order-entry-tax-schedule"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an Order Entry tax schedule": {
+          "value": {
+           "ia::result": {
+            "id": "162",
+            "name": "Sales Tax New York",
+            "key": "162",
+            "description": "Sales Tax for New York",
+            "status": "active",
+            "isSystemGenerated": false,
+            "taxSolution": {
+             "id": "Avalara Tax",
+             "key": "1",
+             "href": "/objects/tax/tax-solution/1"
+            },
+            "lines": [
+             {
+              "taxSchedule": {
+               "key": "162",
+               "id": "162",
+               "name": "Sales Tax New York",
+               "href": "/objects/tax/order-entry-tax-schedule/162"
+              },
+              "key": "44",
+              "id": "44",
+              "taxDetail": {
+               "id": "New York State Sales Tax",
+               "key": "22",
+               "href": "/objects/tax/order-entry-tax-detail/22"
+              },
+              "effectiveDate": "2022-02-03",
+              "href": "/objects/tax/order-entry-tax-schedule-detail/44"
+             }
+            ],
+            "href": "/objects/tax/order-entry-tax-schedule/162"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an Order Entry tax schedule",
+    "description": "Updates an existing Order Entry tax schedule by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Tax_Order Entry tax schedules"
+    ],
+    "operationId": "update-tax-order-entry-tax-schedule-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.order-entry-tax-schedule"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true,
+            "example": "162"
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a single value": {
+         "value": {
+          "status": "inactive"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated order-entry-tax-schedule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Updated order entry tax schedule": {
+          "value": {
+           "ia::result": {
+            "key": "162",
+            "href": "/objects/tax/order-entry-tax-schedule/162"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an Order Entry tax schedule",
+    "description": "Deletes an Order Entry tax schedule. Delete a tax schedule if it is no longer needed. Deleting a tax schedule removes it from the system so that it can't be recovered.",
+    "tags": [
+     "Tax_Order Entry tax schedules"
+    ],
+    "operationId": "delete-tax-order-entry-tax-schedule-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/order-entry-tax-schedule-detail": {
+   "get": {
+    "summary": "List Order Entry tax schedule details",
+    "description": "Returns a collection with a key, ID, and link for each Order Entry tax schedule detail. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Order Entry tax schedule details"
+    ],
+    "operationId": "list-tax-order-entry-tax-schedule-detail",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of order-entry-tax-schedule-detail objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List Order Entry tax schedule details": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "8",
+             "id": "8",
+             "href": "/objects/tax/order-entry-tax-schedule-detail/8"
+            },
+            {
+             "key": "9",
+             "id": "9",
+             "href": "/objects/tax/order-entry-tax-schedule-detail/9"
+            },
+            {
+             "key": "10",
+             "id": "10",
+             "href": "/objects/tax/order-entry-tax-schedule-detail/10"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/order-entry-tax-schedule-detail/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned key for the Order Entry tax schedule detail.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string",
+      "default": "162",
+      "example": "162"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get an Order Entry tax schedule detail",
+    "description": "Returns detailed information for a specified Order Entry tax schedule detail.",
+    "tags": [
+     "Tax_Order Entry tax schedule details"
+    ],
+    "operationId": "get-tax-order-entry-tax-schedule-detail-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the order-entry-tax-schedule-detail",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.order-entry-tax-schedule-detail"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an Order Entry tax schedule detail": {
+          "value": {
+           "ia::result": {
+            "taxSchedule": {
+             "key": "162",
+             "id": "162",
+             "name": "Tax Florida",
+             "href": "/objects/tax/order-entry-tax-schedule/162"
+            },
+            "key": "44",
+            "id": "44",
+            "taxDetail": {
+             "id": "Sales Tax California",
+             "key": "22",
+             "href": "/objects/tax/order-entry-tax-detail/22"
+            },
+            "effectiveDate": "2022-02-03",
+            "href": "/objects/tax/order-entry-tax-schedule-detail/44"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/purchasing-tax-detail": {
+   "get": {
+    "summary": "List Purchasing tax details",
+    "description": "Returns a collection with a key, ID, and link for each purchasing tax detail. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.\n",
+    "tags": [
+     "Tax_Purchasing tax details"
+    ],
+    "operationId": "list-tax-purchasing-tax-detail",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of purchasing-tax-detail objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List Purchasing tax details": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "4",
+             "id": "State Tax Arkansas",
+             "href": "/objects/tax/purchasing-tax-detail/4"
+            },
+            {
+             "key": "2",
+             "id": "State Tax Alaska",
+             "href": "/objects/tax/purchasing-tax-detail/2"
+            },
+            {
+             "key": "3",
+             "id": "State Tax Arizona",
+             "href": "/objects/tax/purchasing-tax-detail/3"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a Purchasing tax detail",
+    "description": "Creates a new Purchasing tax detail.",
+    "tags": [
+     "Tax_Purchasing tax details"
+    ],
+    "operationId": "create-tax-purchasing-tax-detail",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.purchasing-tax-detail"
+         },
+         {
+          "$ref": "#/components/schemas/tax-purchasing-tax-detailRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a new Purchasing tax detail": {
+         "value": {
+          "id": "UK Import Services Standard Rate",
+          "taxUniqueId": "GB.ECOutput_GB.ExemptGB.VAT",
+          "description": "Standard Rate for UK Import Services",
+          "taxPercent": 10.02,
+          "taxLimit": {
+           "minTax": 10,
+           "maxTax": 150,
+           "minTaxable": 10,
+           "maxTaxable": 2000
+          },
+          "amountToTax": "fullAmount",
+          "purchaseGLAccount": {
+           "id": "1200.01"
+          },
+          "taxAuthority": {
+           "id": "California"
+          },
+          "taxSolution": {
+           "id": "United Kingdom - VAT"
+          },
+          "status": "active",
+          "taxRate": "standard",
+          "useExpenseAccount": false
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New purchasing-tax-detail",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "New Purchasing tax detail": {
+          "value": {
+           "ia::result": {
+            "key": "304",
+            "id": "Purchasing Tax Detail New",
+            "href": "/objects/tax/purchasing-tax-detail/304"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/purchasing-tax-detail/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the Purchasing tax detail.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "304"
+    }
+   ],
+   "get": {
+    "summary": "Get a Purchasing tax detail",
+    "description": "Returns detailed information for a specified Purchasing tax detail.",
+    "tags": [
+     "Tax_Purchasing tax details"
+    ],
+    "operationId": "get-tax-purchasing-tax-detail-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the purchasing-tax-detail",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.purchasing-tax-detail"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a Purchasing tax detail": {
+          "value": {
+           "ia::result": {
+            "key": "304",
+            "id": "UK Import Services Standard Rate",
+            "taxUniqueId": "GB.ECOutput_GB.ExemptGB.VAT",
+            "description": "Standard Rate for UK Import Services",
+            "taxPercent": 10.02,
+            "taxLimit": {
+             "minTax": 10,
+             "maxTax": 150,
+             "minTaxable": 10,
+             "maxTaxable": 2000
+            },
+            "amountToTax": "fullAmount",
+            "purchaseGLAccount": {
+             "id": "1200.01--Accounts Receivable - a/c label offset",
+             "key": "57",
+             "href": "/objects/account/57"
+            },
+            "taxAuthority": {
+             "id": "California",
+             "key": "24",
+             "href": "/objects/tax/tax-authority/24"
+            },
+            "status": "active",
+            "isSystemGenerated": false,
+            "reverseCharge": false,
+            "germanTaxDetailKey": null,
+            "taxRate": "standard",
+            "taxSolution": {
+             "id": "United Kingdom - VAT",
+             "key": "1",
+             "href": "/objects/tax/tax-solution/1"
+            },
+            "useExpenseAccount": false,
+            "href": "/objects/tax/purchasing-tax-detail/304"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a Purchasing tax detail",
+    "description": "Updates an existing Purchasing tax detail by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Tax_Purchasing tax details"
+    ],
+    "operationId": "update-tax-purchasing-tax-detail-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.purchasing-tax-detail"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a Purchasing tax detail": {
+         "value": {
+          "status": "inactive"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated purchasing-tax-detail",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Updated Purchasing tax detail": {
+          "value": {
+           "ia::result": {
+            "key": "304",
+            "id": "UK Import Services Standard Rate",
+            "href": "/objects/tax/purchasing-tax-detail/304"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a Purchasing tax detail",
+    "description": "Deletes a Purchasing tax detail. Deleted tax details are removed from the system and can't be recovered.",
+    "tags": [
+     "Tax_Purchasing tax details"
+    ],
+    "operationId": "delete-tax-purchasing-tax-detail-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/purchasing-tax-schedule": {
+   "get": {
+    "summary": "List Purchasing tax schedules",
+    "description": "Returns a collection with a key, ID, and link for each Purchasing tax schedule. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Purchasing tax schedules"
+    ],
+    "operationId": "list-tax-purchasing-tax-schedule",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of purchasing-tax-schedule objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List Purchasing tax schedules": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "id": "1",
+             "href": "/objects/tax/purchasing-tax-schedule/1"
+            },
+            {
+             "key": "2",
+             "id": "2",
+             "href": "/objects/tax/purchasing-tax-schedule/2"
+            },
+            {
+             "key": "3",
+             "id": "3",
+             "href": "/objects/tax/purchasing-tax-schedule/3"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a Purchasing tax schedule",
+    "description": "Creates a new Purchasing tax schedule.",
+    "tags": [
+     "Tax_Purchasing tax schedules"
+    ],
+    "operationId": "create-tax-purchasing-tax-schedule",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.purchasing-tax-schedule"
+         },
+         {
+          "$ref": "#/components/schemas/tax-purchasing-tax-scheduleRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a Purchasing tax schedule": {
+         "value": {
+          "name": "TaxSched-00005",
+          "description": "Purchase Tax for New York City",
+          "taxSolution": {
+           "key": 10
+          },
+          "status": "active",
+          "lines": [
+           {
+            "taxDetail": {
+             "id": "New York City Sales Tax"
+            },
+            "effectiveDate": "2022-02-26"
+           }
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New purchasing-tax-schedule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "New Purchasing tax schedule": {
+          "value": {
+           "ia::result": {
+            "key": "308",
+            "id": "308",
+            "href": "/objects/tax/purchasing-tax-schedule/308"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/purchasing-tax-schedule/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the Purchasing tax schedule.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string",
+      "example": "162"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a Purchasing tax schedule",
+    "description": "Returns detailed information for a specified Purchasing tax schedule.",
+    "tags": [
+     "Tax_Purchasing tax schedules"
+    ],
+    "operationId": "get-tax-purchasing-tax-schedule-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the purchasing-tax-schedule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.purchasing-tax-schedule"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a Purchasing tax schedule": {
+          "value": {
+           "ia::result": {
+            "name": "Tax Florida",
+            "id": "165",
+            "key": "165",
+            "description": "Purchase tax for Florida",
+            "status": "active",
+            "isSystemGenerated": false,
+            "taxSolution": {
+             "id": "Avalara Tax",
+             "key": "1",
+             "href": "/objects/tax/tax-solution/1"
+            },
+            "lines": [
+             {
+              "taxSchedule": {
+               "key": "165",
+               "id": "165",
+               "name": "Tax Florida",
+               "href": "/objects/tax/purchasing-tax-schedule/165"
+              },
+              "key": "44",
+              "id": "44",
+              "taxDetail": {
+               "id": "Sales Tax Florida",
+               "key": "22",
+               "href": "/objects/tax/purchasing-tax-detail/22"
+              },
+              "effectiveDate": "2022-02-03",
+              "href": "/objects/tax/purchasing-tax-schedule-detail/44"
+             }
+            ],
+            "href": "/objects/tax/purchasing-tax-schedule/167"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a Purchasing tax schedule",
+    "description": "Updates an existing Purchasing tax schedule by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Tax_Purchasing tax schedules"
+    ],
+    "operationId": "update-tax-purchasing-tax-schedule-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.purchasing-tax-schedule"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true,
+            "example": "162"
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a single value": {
+         "value": {
+          "status": "inactive"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated purchasing-tax-schedule",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Updated Purchasing tax schedule": {
+          "value": {
+           "ia::result": {
+            "key": "162",
+            "href": "/objects/tax/purchasing-tax-schedule/162"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a Purchasing tax schedule",
+    "description": "Deletes a Purchasing tax schedule. Delete a tax schedule if it is no longer needed. Deleting a tax schedule removes it from the system so that it can't be recovered.",
+    "tags": [
+     "Tax_Purchasing tax schedules"
+    ],
+    "operationId": "delete-tax-purchasing-tax-schedule-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/purchasing-tax-schedule-detail": {
+   "get": {
+    "summary": "List Purchasing tax schedule details",
+    "description": "Returns a collection with a key, ID, and link for each Purchasing tax schedule detail. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Purchasing tax schedule details"
+    ],
+    "operationId": "list-tax-purchasing-tax-schedule-detail",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of purchasing-tax-schedule-detail objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List Purchasing tax schedule details": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "8",
+             "id": "8",
+             "href": "/objects/tax/purchasing-tax-schedule-detail/8"
+            },
+            {
+             "key": "9",
+             "id": "9",
+             "href": "/objects/tax/purchasing-tax-schedule-detail/9"
+            },
+            {
+             "key": "10",
+             "id": "10",
+             "href": "/objects/tax/purchasing-tax-schedule-detail/10"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/purchasing-tax-schedule-detail/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the Purchasing tax schedule detail.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string",
+      "example": "162",
+      "default": "162"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a Purchasing tax schedule detail",
+    "description": "Returns detailed information for a specified Purchasing tax schedule detail.",
+    "tags": [
+     "Tax_Purchasing tax schedule details"
+    ],
+    "operationId": "get-tax-purchasing-tax-schedule-detail-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the purchasing-tax-schedule-detail",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.purchasing-tax-schedule-detail"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a Purchasing tax schedule detail": {
+          "value": {
+           "ia::result": {
+            "taxSchedule": {
+             "key": "162",
+             "id": "162",
+             "name": "Tax Florida",
+             "href": "/objects/tax/purchasing-tax-schedule/162"
+            },
+            "key": "44",
+            "id": "44",
+            "taxDetail": {
+             "id": "Sales Tax California",
+             "key": "22",
+             "href": "/objects/tax/purchasing-tax-detail/22"
+            },
+            "effectiveDate": "2022-02-03",
+            "href": "/objects/tax/purchasing-tax-schedule-detail/44"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-authority": {
+   "get": {
+    "summary": "List tax authorities",
+    "description": "Returns a collection with a key, ID, and link for each tax authority. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.\n",
+    "tags": [
+     "Tax_Tax authorities"
+    ],
+    "operationId": "list-tax-tax-authority",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of tax-authority objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List tax authorities": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "2",
+             "id": "Alaska",
+             "href": "/objects/tax/tax-authority/2"
+            },
+            {
+             "key": "5",
+             "id": "California",
+             "href": "/objects/tax/tax-authority/5"
+            },
+            {
+             "key": "3",
+             "id": "Arizona",
+             "href": "/objects/tax/tax-authority/3"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a tax authority",
+    "description": "Creates a new tax authority.",
+    "tags": [
+     "Tax_Tax authorities"
+    ],
+    "operationId": "create-tax-tax-authority",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.tax-authority"
+         },
+         {
+          "$ref": "#/components/schemas/tax-tax-authorityRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a tax authority": {
+         "value": {
+          "id": "Texas",
+          "description": "Texas tax authority",
+          "vendor": {
+           "id": "Vendor_Visa_C"
+          },
+          "parent": {
+           "id": "5"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Create a tax-authority",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Create a tax authority": {
+          "value": {
+           "ia::result": {
+            "key": "105",
+            "id": "Texas",
+            "href": "/objects/tax/tax-authority/105"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-authority/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned key for the tax authority.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string",
+      "example": "105"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a tax authority",
+    "description": "Returns detailed information for a specified tax authority.",
+    "tags": [
+     "Tax_Tax authorities"
+    ],
+    "operationId": "get-tax-tax-authority-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the tax-authority",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.tax-authority"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a tax authority": {
+          "value": {
+           "ia::result": {
+            "key": "105",
+            "id": "Texas",
+            "description": "Texas tax authority",
+            "vendor": {
+             "id": "Vendor_Visa_C",
+             "key": "518",
+             "href": "/objects/accounts-payable/vendor/518"
+            },
+            "parent": {
+             "name": "California",
+             "href": "/objects/tax/tax-authority/24"
+            },
+            "href": "/objects/tax/tax-authority/105"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a tax authority",
+    "description": "Updates an existing tax authority by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Tax_Tax authorities"
+    ],
+    "operationId": "update-tax-tax-authority-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.tax-authority"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a tax authority": {
+         "value": {
+          "description": "Updated description"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated tax-authority",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Updated tax authority": {
+          "value": {
+           "ia::result": {
+            "key": "105",
+            "id": "Texas",
+            "href": "/objects/tax/tax-authority/105"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a tax authority",
+    "description": "Delete a tax authority that is no longer in use. After a tax authority is deleted, it can't be recovered.",
+    "tags": [
+     "Tax_Tax authorities"
+    ],
+    "operationId": "delete-tax-tax-authority-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/contact-tax-group": {
+   "get": {
+    "summary": "List contact tax groups",
+    "description": "Returns a collection with a key, ID, and link for each contact tax group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Contact tax groups"
+    ],
+    "operationId": "list-tax-contact-tax-group",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of contact-tax-group objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List contact tax groups": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "id": "Auto Contact Tax",
+             "href": "/objects/tax/contact-tax-group/1"
+            },
+            {
+             "key": "2",
+             "id": "Electronic Contact Tax",
+             "href": "/objects/tax/contact-tax-group/2"
+            },
+            {
+             "key": "3",
+             "id": "Gardening Contact Tax",
+             "href": "/objects/tax/contact-tax-group/3"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a contact tax group",
+    "description": "Creates a new contact tax group.",
+    "tags": [
+     "Tax_Contact tax groups"
+    ],
+    "operationId": "create-tax-contact-tax-group",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.contact-tax-group"
+         },
+         {
+          "$ref": "#/components/schemas/tax-contact-tax-groupRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a contact tax group": {
+         "value": {
+          "id": "Auto Contact Tax",
+          "taxSolution": {
+           "id": "1"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New contact-tax-group",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Create a contact tax group": {
+          "value": {
+           "ia::result": {
+            "key": "1",
+            "id": "Auto Contact Tax",
+            "href": "/objects/tax/contact-tax-group/1"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/contact-tax-group/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the contact tax group.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a contact tax group",
+    "description": "Returns detailed information for a specified contact tax group.",
+    "tags": [
+     "Tax_Contact tax groups"
+    ],
+    "operationId": "get-tax-contact-tax-group-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the contact-tax-group",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.contact-tax-group"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Details of the contact tax group": {
+          "value": {
+           "ia::result": {
+            "key": "126",
+            "id": "Australian Export Customers",
+            "isVATEnabled": true,
+            "href": "/objects/tax/contact-tax-group/126"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a contact tax group",
+    "description": "Updates an existing contact tax group by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Tax_Contact tax groups"
+    ],
+    "operationId": "update-tax-contact-tax-group-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.contact-tax-group"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a contact tax group": {
+         "value": {
+          "taxSolution": {
+           "id": "1"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated contact-tax-group",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Update a contact tax group": {
+          "value": {
+           "ia::result": {
+            "key": "1",
+            "id": "Auto Contact Tax",
+            "href": "/objects/tax/contact-tax-group/1"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a contact tax group",
+    "description": "Deletes a contact tax group.",
+    "tags": [
+     "Tax_Contact tax groups"
+    ],
+    "operationId": "delete-tax-contact-tax-group-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/item-tax-group": {
+   "get": {
+    "summary": "List item tax groups",
+    "description": "Returns a collection with a key, ID, and link for each item tax group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Item tax groups"
+    ],
+    "operationId": "list-tax-item-tax-group",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of item-tax-group objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List item tax groups": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "id": "Auto Item Tax",
+             "href": "/objects/tax/item-tax-group/1"
+            },
+            {
+             "key": "2",
+             "id": "Electronic Item Tax",
+             "href": "/objects/tax/item-tax-group/2"
+            },
+            {
+             "key": "3",
+             "id": "Gardening Item Tax",
+             "href": "/objects/tax/item-tax-group/3"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an item tax group",
+    "description": "Creates a new item tax group.",
+    "tags": [
+     "Tax_Item tax groups"
+    ],
+    "operationId": "create-tax-item-tax-group",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.item-tax-group"
+         },
+         {
+          "$ref": "#/components/schemas/tax-item-tax-groupRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create an item tax group": {
+         "value": {
+          "id": "Auto Item Tax",
+          "taxSolution": {
+           "id": "1"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New item-tax-group",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Create an item tax group": {
+          "value": {
+           "ia::result": {
+            "key": "1",
+            "id": "Auto Item Tax",
+            "href": "/objects/tax/item-tax-group/1"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/item-tax-group/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the item tax group.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get an item tax group",
+    "description": "Returns detailed information for a specified item tax group.",
+    "tags": [
+     "Tax_Item tax groups"
+    ],
+    "operationId": "get-tax-item-tax-group-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the item-tax-group",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.item-tax-group"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Details of the item tax group": {
+          "value": {
+           "ia::result": {
+            "key": "1",
+            "id": "Auto Item Tax",
+            "isVATEnabled": true,
+            "href": "/objects/tax/item-tax-group/1"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an item tax group",
+    "description": "Updates an existing item tax group by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Tax_Item tax groups"
+    ],
+    "operationId": "update-tax-item-tax-group-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.item-tax-group"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update an item tax group": {
+         "value": {
+          "taxSolution": {
+           "id": "1"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated item-tax-group",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Update an item tax group": {
+          "value": {
+           "ia::result": {
+            "key": "1",
+            "id": "Auto Item Tax",
+            "href": "/objects/tax/item-tax-group/1"
+           },
+           "ia-meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an item tax group",
+    "description": "Deletes an item tax group.",
+    "tags": [
+     "Tax_Item tax groups"
+    ],
+    "operationId": "delete-tax-item-tax-group-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-return": {
+   "get": {
+    "summary": "List tax returns",
+    "description": "Returns a collection with a key, ID, and link for each tax return. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Tax returns"
+    ],
+    "operationId": "list-tax-tax-return",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List tax returns",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List tax returns": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "9",
+             "id": "9",
+             "href": "/objects/tax/tax-return/9"
+            },
+            {
+             "key": "54",
+             "id": "54",
+             "href": "/objects/tax/tax-return/54"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a tax return",
+    "description": "Creates a new tax return.",
+    "tags": [
+     "Tax_Tax returns"
+    ],
+    "operationId": "create-tax-tax-return",
+    "requestBody": {
+     "description": "Tax return to be created",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.tax-return"
+         },
+         {
+          "$ref": "#/components/schemas/tax-tax-returnRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a tax return": {
+         "value": {
+          "name": "VAT_Sub",
+          "taxSolution": {
+           "key": "1"
+          },
+          "taxId": "445025391",
+          "recipientEmail": "apiuser@sage.com"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New tax-return",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to new tax return": {
+          "value": {
+           "ia::result": {
+            "id": "626",
+            "key": "626",
+            "href": "/objects/tax/tax-return/626"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-return/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the tax return.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get a tax return",
+    "description": "Returns detailed information for a specified tax return.",
+    "tags": [
+     "Tax_Tax returns"
+    ],
+    "operationId": "get-tax-tax-return-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the tax-return",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.tax-return"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a tax return": {
+          "value": {
+           "ia::result": {
+            "id": "9",
+            "key": "9",
+            "name": "Tax return ABCompany Q3",
+            "taxId": "30 616 935 623",
+            "recipientEmail": "first.last@abcompany.com",
+            "submissionPeriodStartDate": "2019-06-01",
+            "submissionPeriodEndDate": "2020-02-29",
+            "submissionDate": "2020-03-03",
+            "submittersEmail": "joe.smith@abcompany.com",
+            "legalCountryCode": "au",
+            "setEmailAddressAsDefault": true,
+            "currentStepStage": "submitToGovernment",
+            "currentStepStatus": "completed",
+            "adjustmentNotes": "Verified using tax solution",
+            "bundleNumber": "891204442498",
+            "receiptId": "4c907ee0-a76f-42a7-b582-1a3fb78ae4b8",
+            "reportingEntity": {
+             "key": "1",
+             "id": "1",
+             "href": "/objects/company-config/entity/1"
+            },
+            "taxSolution": {
+             "id": "Australia - GST",
+             "key": "2",
+             "href": "/objects/tax/tax-solution/2"
+            },
+            "submissionType": null,
+            "taxProcessingSteps": [
+             {
+              "stage": "prepareTaxData",
+              "status": "completed",
+              "description": "11 records eligible for submission.",
+              "recentActivityDate": "2020-04-02"
+             },
+             {
+              "stage": "transmitTaxData",
+              "status": "completed",
+              "description": "Source data successfully transmitted to Sage Regulatory Reporting. Ready to prepare tax return in Regulatory Reporting.",
+              "recentActivityDate": "2020-04-03"
+             },
+             {
+              "stage": "prepareTaxReturn",
+              "status": "completed",
+              "description": "The BAS report was generated. A PDF copy is available in the Related files section of this page.",
+              "recentActivityDate": "2020-04-04"
+             },
+             {
+              "stage": "submitToGovernment",
+              "status": "completed",
+              "description": "Submitted to Government",
+              "recentActivityDate": "2020-03-03"
+             },
+             {
+              "stage": "manualAdjustment",
+              "status": "notApplicable",
+              "description": "Manual Adjustment",
+              "recentActivityDate": "2020-03-03"
+             }
+            ],
+            "relatedFiles": [
+             {
+              "stage": "Prepare source tax data",
+              "fileName": "transactions.json",
+              "creationDate": "2020-03-03"
+             },
+             {
+              "stage": "Prepare source tax data",
+              "fileName": "business_info.json",
+              "creationDate": "2020-03-03"
+             },
+             {
+              "stage": "Prepare tax return in Sage Regulatory Reporting",
+              "fileName": "detailed_report.csv",
+              "creationDate": "2020-03-03"
+             },
+             {
+              "stage": "Prepare tax return in Sage Regulatory Reporting",
+              "fileName": "late_tax.csv",
+              "creationDate": "2020-03-03"
+             },
+             {
+              "stage": "Submit to government",
+              "fileName": "gst_BAS.pdf",
+              "creationDate": "2020-03-03"
+             },
+             {
+              "stage": "Submit to government",
+              "fileName": "gst_calculation.pdf",
+              "creationDate": "2020-03-03"
+             },
+             {
+              "stage": "Submit to government",
+              "fileName": "manual_adjustments.csv",
+              "creationDate": "2020-03-03"
+             },
+             {
+              "stage": "Submit to government",
+              "fileName": "submitted_source_entries",
+              "creationDate": "2020-03-03"
+             }
+            ],
+            "href": "/objects/tax/tax-return/9"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a tax return",
+    "description": "Updates an existing tax return by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Tax_Tax returns"
+    ],
+    "operationId": "update-tax-tax-return-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.tax-return"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update a tax return": {
+         "value": {
+          "adjustmentNotes": "Tax Submission notes"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated tax-return",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated tax return": {
+          "value": {
+           "ia::result": {
+            "key": "105",
+            "id": "105",
+            "href": "/objects/tax/tax-return/105"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a tax return",
+    "description": "Deletes a tax return.",
+    "tags": [
+     "Tax_Tax returns"
+    ],
+    "operationId": "delete-tax-tax-return-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-solution": {
+   "get": {
+    "summary": "List tax solutions",
+    "description": "Returns a collection with a key, ID, and link for each solution. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find tax solutions that meet certain criteria and specify the properties that are returned.",
+    "tags": [
+     "Tax_Tax solutions"
+    ],
+    "operationId": "list-tax-tax-solution",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of tax-solution objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List tax solutions": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "265",
+             "id": "Oregon",
+             "href": "/objects/tax/tax-solution/265"
+            },
+            {
+             "key": "263",
+             "id": "Alaska",
+             "href": "/objects/tax/tax-solution/263"
+            },
+            {
+             "key": "264",
+             "id": "Montana",
+             "href": "/objects/tax/tax-solution/264"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-solution/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned key for the tax solution.",
+     "in": "path",
+     "required": true,
+     "example": "43",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "summary": "Get a tax solution",
+    "description": "Returns detailed information for a specified tax solution.",
+    "tags": [
+     "Tax_Tax solutions"
+    ],
+    "operationId": "get-tax-tax-solution-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the tax solution",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.tax-solution"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "GET": {
+          "value": {
+           "key": "1",
+           "id": "Australia - GST",
+           "description": "Australian tax solution",
+           "taxCalculationMethod": "VAT",
+           "status": "active",
+           "taxSolutionType": "standard",
+           "taxSubmissionStartDate": "2019-05-01",
+           "enableMultilineTax": false,
+           "purchaseGLAccount": {
+            "key": "7",
+            "id": "6850.03",
+            "href": "/objects/general-ledger/account/23"
+           },
+           "salesGLAccount": {
+            "key": "9",
+            "id": "6500.05",
+            "href": "/objects/general-ledger/account/13"
+           },
+           "alternativeSetup": false,
+           "lastUpdatedTaxDate": null,
+           "href": "/objects/tax/tax-solution/1"
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a tax solution",
+    "description": "Deletes a tax solution. You must first delete any dependent objects such as tax schedules, tax groups, and tax \ndetails.  Deleted tax solutions are removed from the system and can't be recovered.",
+    "tags": [
+     "Tax_Tax solutions"
+    ],
+    "operationId": "delete-tax-tax-solution-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/account-label-tax-group": {
+   "get": {
+    "summary": "List account label tax groups",
+    "description": "Returns a collection with a key, ID, and link for each account label tax group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Account label tax groups"
+    ],
+    "operationId": "list-tax-account-label-tax-group",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of account-label-tax-group objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List account label tax groups": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "id": "Auto Account Label Tax",
+             "href": "/objects/tax/account-label-tax-group/1"
+            },
+            {
+             "key": "2",
+             "id": "Electronic Account Label Tax",
+             "href": "/objects/tax/account-label-tax-group/2"
+            },
+            {
+             "key": "3",
+             "id": "Gardening Account Label Tax",
+             "href": "/objects/tax/account-label-tax-group/3"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create an account label tax group",
+    "description": "Creates a new account label tax group.",
+    "tags": [
+     "Tax_Account label tax groups"
+    ],
+    "operationId": "create-tax-account-label-tax-group",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.account-label-tax-group"
+         },
+         {
+          "$ref": "#/components/schemas/tax-account-label-tax-groupRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create an account label tax group": {
+         "value": {
+          "id": "Auto Account Label Tax",
+          "taxSolution": {
+           "id": "1"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New account-label-tax-group",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to new account label tax group": {
+          "value": {
+           "ia::result": {
+            "key": "1",
+            "id": "Auto Account Label Tax",
+            "href": "/objects/tax/account-label-tax-group/1"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/account-label-tax-group/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the account label tax group.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "99"
+    }
+   ],
+   "get": {
+    "summary": "Get an account label tax group",
+    "description": "Returns detailed information for a specified account label tax group.",
+    "tags": [
+     "Tax_Account label tax groups"
+    ],
+    "operationId": "get-tax-account-label-tax-group-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the account-label-tax-group",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.account-label-tax-group"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an account label tax group": {
+          "value": {
+           "ia::result": {
+            "key": "1",
+            "id": "Auto Account Label Tax",
+            "href": "/objects/tax/account-label-tax-group/1"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update an account label tax group",
+    "description": "Updates an existing account label tax group by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Tax_Account label tax groups"
+    ],
+    "operationId": "update-tax-account-label-tax-group-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.tax.account-label-tax-group"
+         },
+         {
+          "type": "object",
+          "properties": {
+           "id": {
+            "readOnly": true
+           }
+          }
+         }
+        ]
+       },
+       "examples": {
+        "Update an account label tax group": {
+         "value": {
+          "taxSolution": {
+           "id": "1"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Updated account-label-tax-group",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated account label tax group": {
+          "value": {
+           "ia::result": {
+            "key": "1",
+            "id": "Auto Account Label Tax",
+            "href": "/objects/tax/account-label-tax-group/1"
+           },
+           "ia-meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete an account label tax group",
+    "description": "Deletes an account label tax group.",
+    "tags": [
+     "Tax_Account label tax groups"
+    ],
+    "operationId": "delete-tax-account-label-tax-group-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-detail": {
+   "get": {
+    "summary": "List tax details",
+    "description": "Returns a collection with a key, ID, and link for each tax detail. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Tax details"
+    ],
+    "operationId": "list-tax-tax-detail",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of tax-detail objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List tax details": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "id": "CGST",
+             "href": "/objects/tax/tax-detail/1"
+            },
+            {
+             "key": "2",
+             "id": "SGST",
+             "href": "/objects/tax/tax-detail/2"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-detail/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the tax detail.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "304"
+    }
+   ],
+   "get": {
+    "summary": "Get a tax detail",
+    "description": "Returns detailed information for a specified tax detail.",
+    "tags": [
+     "Tax_Tax details"
+    ],
+    "operationId": "get-tax-tax-detail-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the tax-detail",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.tax-detail"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a tax detail": {
+          "value": {
+           "ia::result": {
+            "key": "29",
+            "id": "SGST",
+            "taxUniqueId": "AU.InputCapitalPurchase.StandardAU.GST",
+            "description": "G10 Capital Acquisition SGST",
+            "taxType": "purchase",
+            "taxPercent": "10.00",
+            "taxLimit": {
+             "minTaxable": 10,
+             "maxTaxable": 2000,
+             "minTax": 10,
+             "maxTax": 150
+            },
+            "amountToTax": "fullAmount",
+            "glAccount": {
+             "id": "6850.03--Taxes"
+            },
+            "taxAuthority": {
+             "id": ""
+            },
+            "status": "active",
+            "isSystemGenerated": false,
+            "reverseCharge": false,
+            "germanTaxDetailKey": null,
+            "taxRate": null,
+            "taxSolution": {
+             "id": "Australia - GST",
+             "key": "3",
+             "href": "/objects/tax/tax-solution/3"
+            },
+            "useExpenseAccount": false,
+            "href": "/objects/tax/tax-detail/29"
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-record": {
+   "get": {
+    "summary": "List tax records",
+    "description": "Returns a collection with a key, ID, and link for each tax record. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Tax_Tax records"
+    ],
+    "operationId": "list-tax-tax-record",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of tax-record objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List tax records": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "id": "1",
+             "href": "/objects/tax/tax-record/1"
+            },
+            {
+             "key": "2",
+             "id": "2",
+             "href": "/objects/tax/tax-record/2"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 2,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/tax/tax-record/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the tax record.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "34"
+    }
+   ],
+   "get": {
+    "summary": "Get a tax record",
+    "description": "Returns detailed information for a specified tax record.",
+    "tags": [
+     "Tax_Tax records"
+    ],
+    "operationId": "get-tax-tax-record-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the tax-record",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.tax.tax-record"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Details of the tax record": {
+          "value": {
+           "ia::result": {
+            "key": "3",
+            "id": "3",
+            "txnInformation": {
+             "txnDate": "2024-08-26",
+             "label": "Demo_bill_1111",
+             "txnType": "apbill",
+             "currency": {
+              "txnCurrency": "AUD",
+              "baseCurrency": "AUD",
+              "exchangeRate": 1,
+              "exchangeRateDate": "2024-08-16",
+              "sourceAmount": "800.00",
+              "taxAmount": "80.00"
+             },
+             "txnId": "PR_2"
+            },
+            "taxPointDate": "2024-08-26",
+            "description": "demo bill",
+            "journalEntry": {
+             "key": "2",
+             "id": "2",
+             "href": "/objects/general-ledger/journal-entry/2"
+            },
+            "sourceJournalEntryLine": {
+             "id": "6",
+             "key": "6",
+             "href": "/objects/general-ledger/journal-entry-line/6"
+            },
+            "taxJournalEntryLine": {
+             "id": "8",
+             "key": "8",
+             "href": "/objects/general-ledger/journal-entry-line/8"
+            },
+            "taxDetail": {
+             "key": "28",
+             "id": "CGST",
+             "taxType": "purchase",
+             "taxFiling": "reporting",
+             "taxRate": "10.00",
+             "taxUniqueId": "AU.InputCapitalPurchase.StandardAU.GST",
+             "href": "/objects/tax/tax-detail/28"
+            },
+            "creditOrDebitTxn": "debit",
+            "taxType": "inputTax",
+            "sourceAmount": "800.00",
+            "taxAmount": "80.00",
+            "isFiled": false,
+            "isFromReverseTxn": false,
+            "state": "posted",
+            "customerOrVendorName": "1099 Int",
+            "dimensions": {
+             "contact": {
+              "key": "302",
+              "id": "1099 Int",
+              "tax": {
+               "taxId": "40071007326",
+               "isTaxable": true,
+               "group": {
+                "key": "43",
+                "id": "CONTACT_GRP_1",
+                "href": "/objects/tax/contact-tax-group/43"
+               }
+              },
+              "mailingAddress": {
+               "country": "Australia",
+               "isoCountryCode": "AU"
+              }
+             },
+             "department": {
+              "key": "3",
+              "id": "3",
+              "name": "Engineering",
+              "href": "/objects/company-config/department/3"
+             },
+             "location": {
+              "key": "24",
+              "id": "BB",
+              "name": "Brisbane",
+              "href": "/objects/company-config/location/24"
+             }
+            },
+            "taxId": "40071007326",
+            "isCredit": false,
+            "filingDate": "2024-08-26",
+            "taxReturn": {
+             "id": "61",
+             "key": "61",
+             "href": "/objects/tax/tax-return/61"
+            },
+            "isReclaimable": false,
+            "capturePaymentTax": false,
+            "href": "/objects/tax/tax-record/3",
+            "audit": {
+             "modifiedDateTime": "2024-08-26T11:14:22Z",
+             "createdDateTime": "2024-08-26T11:14:22Z",
+             "createdBy": "1",
+             "modifiedBy": "1"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "object-reference": {
+    "type": "object",
+    "description": "Reference to created or updated object.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the object.",
+      "example": "12345"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the object.",
+      "example": "ID123"
+     },
+     "href": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL endpoint for the object.",
+      "example": "/objects/<application>/<name>/12345"
+     }
+    }
+   },
+   "metadata-pages": {
+    "description": "Metadata for collection response",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total number of members in the result set.",
+      "readOnly": true,
+      "example": 3
+     },
+     "start": {
+      "type": "integer",
+      "description": "First member of the result set included in the current response.",
+      "readOnly": true,
+      "example": 1
+     },
+     "pageSize": {
+      "type": "integer",
+      "description": "Maximum number of members included in the current response. The response may contain fewer members if the final page of the result set is smaller than the page size.",
+      "readOnly": true,
+      "example": 100
+     },
+     "next": {
+      "type": "integer",
+      "description": "First member number of the next page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": 101
+     },
+     "previous": {
+      "type": "integer",
+      "description": "First member number of the previous page of results.",
+      "readOnly": true,
+      "nullable": true,
+      "example": null
+     }
+    }
+   },
+   "objects.tax.order-entry-tax-detail": {
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the Order Entry tax detail.",
+      "example": "3",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the Order Entry tax detail.",
+      "example": "State Tax Texas"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the Order Entry tax detail.",
+      "example": "/objects/tax/order-entry-tax-detail/3",
+      "readOnly": true
+     },
+     "status": {
+      "$ref": "#/components/schemas/status",
+      "description": "Indicates whether the tax detail is `active` or `inactive`. An `active` tax detail is used to calculate taxes for an order per the tax schedule map.",
+      "example": "inactive",
+      "default": "active"
+     },
+     "taxUniqueId": {
+      "type": "string",
+      "description": "A valid identifier for Australia GST, South Africa VAT, or United Kingdom VAT compliance. Valid identifiers are predetermined by internal Sage requirements.",
+      "example": "GB.ECOutput_GB.ExemptGB.VAT"
+     },
+     "taxRate": {
+      "type": "string",
+      "nullable": true,
+      "description": "The category for the tax detail.\n",
+      "enum": [
+       null,
+       "standard",
+       "reduced",
+       "exempt",
+       "zero",
+       "federal",
+       "provincial",
+       "reverseChargeVAT",
+       "intraCommunityDeliveryExemption",
+       "exportOutsideEUExemption",
+       "outsideVATScope"
+      ],
+      "example": "exempt"
+     },
+     "amountToTax": {
+      "type": "string",
+      "nullable": true,
+      "description": "Amount to include in taxable amount:\n\n  - `fullAmount` - Include the cost from zero up to the maximum taxable amount.\n  - `amountWithinRange` - Include the amount between the minimum and maximum taxable amount.\n",
+      "enum": [
+       null,
+       "fullAmount",
+       "amountWithinRange"
+      ],
+      "example": "fullAmount"
+     },
+     "description": {
+      "type": "string",
+      "description": "The description of the Order Entry tax detail, which appears in the transaction subtotals if configured.",
+      "example": "Standard Rate for AU Import Services"
+     },
+     "taxPercent": {
+      "type": "number",
+      "description": "The tax rate. For example, enter 10 to apply a tax of 10%.",
+      "example": 10
+     },
+     "taxLimit": {
+      "type": "object",
+      "properties": {
+       "minTaxable": {
+        "type": "number",
+        "example": 10,
+        "description": "Minimum taxable amount. If the amount of a line item is at or below this value, tax is not applied."
+       },
+       "maxTaxable": {
+        "type": "number",
+        "example": 2000,
+        "description": "Maximum taxable amount. Tax is applied to line item amounts up to this value, but not over."
+       },
+       "minTax": {
+        "type": "number",
+        "description": "The least amount of tax that will be applied. If the calculated tax is below this amount, this amount is applied.",
+        "example": 10
+       },
+       "maxTax": {
+        "type": "number",
+        "description": "The most amount of tax that will be applied. If the calculated tax exceeds this amount, this amount is applied.",
+        "example": 150
+       }
+      }
+     },
+     "reverseCharge": {
+      "type": "boolean",
+      "description": "Indicates if the tax detail is used to reclaim tax for a reverse-charge transaction. This field is most commonly used for VAT or GST tax solutions.",
+      "example": true,
+      "default": false
+     },
+     "germanTaxDetailKey": {
+      "type": "integer",
+      "description": "Tax detail key for German entities.",
+      "nullable": true,
+      "example": 7,
+      "default": null
+     },
+     "useExpenseAccount": {
+      "type": "boolean",
+      "description": "Set to `true` to override the GL account and assign taxes to the expense account.",
+      "example": true,
+      "default": false
+     },
+     "isSystemGenerated": {
+      "type": "boolean",
+      "description": "If `true`, this is a system-generated tax detail.",
+      "example": true,
+      "default": false,
+      "readOnly": true
+     },
+     "accountLabel": {
+      "type": "object",
+      "description": "AR account label.",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique ID for the account label.",
+        "example": "Accounting Fees"
+       },
+       "key": {
+        "type": "string",
+        "description": "System-generated key for the account label.",
+        "example": "14"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the account label.",
+        "example": "/objects/accounts-receivable/account-label/14",
+        "readOnly": true
+       }
+      }
+     },
+     "taxAuthority": {
+      "type": "object",
+      "description": "The tax authority for whom you are collecting taxes (such as the City of San Jose).",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax authority.",
+        "example": "California"
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax authority.",
+        "example": "24"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax authority.",
+        "example": "/objects/tax/tax-authority/24",
+        "readOnly": true
+       }
+      }
+     },
+     "salesGLAccount": {
+      "type": "object",
+      "description": "The general ledger account to which this tax is to be assigned.",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the GL account.",
+        "example": "00.01--Accounts Receivable - a/c label offset"
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the GL account.",
+        "example": "57"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "example": "/objects/general-ledger/account/57",
+        "readOnly": true
+       }
+      }
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "Tax solution to which this tax detail belongs.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax solution.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax solution.",
+        "example": "United Kingdom - VAT"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax solution.",
+        "example": "/objects/tax/tax-solution/1",
+        "readOnly": true
+       }
+      }
+     }
+    }
+   },
+   "tax-order-entry-tax-detailRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "metadata": {
+    "description": "Metadata for the response.",
+    "type": "object",
+    "properties": {
+     "totalCount": {
+      "type": "integer",
+      "description": "Total count.",
+      "readOnly": true,
+      "example": 3
+     },
+     "totalSuccess": {
+      "type": "integer",
+      "description": "Total success.",
+      "readOnly": true,
+      "example": 2
+     },
+     "totalError": {
+      "type": "integer",
+      "description": "Total errors.",
+      "readOnly": true,
+      "example": 1
+     }
+    }
+   },
+   "objects.tax.order-entry-tax-schedule": {
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the Order Entry tax schedule.",
+      "example": "7129",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the Order Entry tax schedule.",
+      "example": "7129",
+      "readOnly": true
+     },
+     "name": {
+      "type": "string",
+      "description": "Name or other unique identifier for the Order Entry tax schedule.",
+      "example": "TaxSched-00004"
+     },
+     "href": {
+      "type": "string",
+      "description": "Endpoint URL for the Order Entry tax schedule.",
+      "example": "/objects/tax/order-entry-tax-schedule/7129",
+      "readOnly": true
+     },
+     "status": {
+      "$ref": "#/components/schemas/status",
+      "description": "Indicates whether this tax schedule is `active` or `inactive`.",
+      "default": "active",
+      "example": "inactive"
+     },
+     "description": {
+      "type": "string",
+      "description": "Description of the Order Entry tax schedule or other additional information.",
+      "example": "Description of the Tax Schedule"
+     },
+     "isSystemGenerated": {
+      "type": "boolean",
+      "description": "If `true`, this is a system-generated object.",
+      "example": true,
+      "default": false,
+      "readOnly": true
+     },
+     "lines": {
+      "type": "array",
+      "description": "Order Entry tax schedule details for the tax schedule.",
+      "items": {
+       "$ref": "#/components/schemas/objects.tax.order-entry-tax-schedule-detail"
+      }
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "Different tax solutions are available for different countries. Examples include Australia GST, South  Africa VAT, and UK VAT.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax solution.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax solution.",
+        "example": "United Kingdom - VAT"
+       },
+       "href": {
+        "type": "string",
+        "description": "Endpoint URL for the tax solution.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-solution/1"
+       }
+      }
+     }
+    }
+   },
+   "tax-order-entry-tax-scheduleRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.tax.order-entry-tax-schedule-detail": {
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the Order Entry tax schedule detail.",
+      "example": "7149",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the Order Entry tax schedule detail.",
+      "example": "7149",
+      "readOnly": true
+     },
+     "effectiveDate": {
+      "type": "string",
+      "description": "Date when the Order Entry tax schedule detail becomes effective.",
+      "format": "date",
+      "example": "2022-01-08"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the Order Entry tax schedule detail.",
+      "example": "/objects/tax/order-entry-tax-schedule-detail/7149",
+      "readOnly": true
+     },
+     "taxSchedule": {
+      "type": "object",
+      "description": "Tax schedules identify the tax details that are applied when the schedule is referenced by a tax schedule map.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax schedule.",
+        "example": "1",
+        "readOnly": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax schedule.",
+        "example": "1",
+        "readOnly": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name or other unique identifier for the tax schedule.",
+        "example": "TaxSched-00002"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax schedule.",
+        "readOnly": true,
+        "example": "/objects/tax/order-entry-tax-schedule/1"
+       }
+      },
+      "readOnly": true
+     },
+     "taxDetail": {
+      "type": "object",
+      "description": "Order Entry tax details describe a specific type of tax that applies to lines in Accounts Receivable and Order Entry transactions.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax detail.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax detail.",
+        "example": "Alaska Tax Detail"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax detail.",
+        "readOnly": true,
+        "example": "/objects/tax/order-entry-tax-detail/1"
+       }
+      }
+     }
+    }
+   },
+   "objects.tax.purchasing-tax-detail": {
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the Purchasing tax detail.",
+      "example": "4",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the Purchasing tax detail.",
+      "example": "State Tax Arkansas"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the Purchasing tax detail.",
+      "example": "/objects/tax/purchasing-tax-detail/4",
+      "readOnly": true
+     },
+     "status": {
+      "$ref": "#/components/schemas/status",
+      "description": "Indicates whether the tax detail is `active` or `inactive`. An `active` tax detail is used to calculate taxes for a purchasing transaction per the tax schedule map.",
+      "example": "inactive",
+      "default": "active"
+     },
+     "taxUniqueId": {
+      "type": "string",
+      "description": "A valid identifier for Australia GST, South Africa VAT, or United Kingdom VAT compliance. Valid identifiers are predetermined by internal Sage requirements.",
+      "example": "GB.ECOutput_GB.ExemptGB.VAT"
+     },
+     "taxRate": {
+      "type": "string",
+      "nullable": true,
+      "description": "The category for the tax detail.\n",
+      "enum": [
+       null,
+       "standard",
+       "reduced",
+       "exempt",
+       "zero",
+       "federal",
+       "provincial",
+       "reverseChargeVAT",
+       "intraCommunityDeliveryExemption",
+       "exportOutsideEUExemption",
+       "outsideVATScope"
+      ],
+      "example": "exempt"
+     },
+     "amountToTax": {
+      "type": "string",
+      "nullable": true,
+      "description": "Amount to include in taxable amount:\n\n  - `fullAmount` - Include the cost from zero up to the maximum taxable amount.\n  - `amountWithinRange` - Include the amount between the minimum and maximum taxable amount.\n",
+      "enum": [
+       null,
+       "fullAmount",
+       "amountWithinRange"
+      ],
+      "example": "fullAmount"
+     },
+     "description": {
+      "type": "string",
+      "description": "The description of the Purchasing tax detail, which appears in the transaction subtotals if configured.",
+      "example": "Standard Rate for UK Import Services"
+     },
+     "taxPercent": {
+      "type": "number",
+      "description": "The tax rate. For example, enter 10 to apply a tax of 10%.",
+      "example": 10
+     },
+     "taxLimit": {
+      "type": "object",
+      "properties": {
+       "minTaxable": {
+        "type": "number",
+        "example": 10,
+        "description": "Minimum taxable amount. If the amount of a line item is at or below this value, tax is not applied."
+       },
+       "maxTaxable": {
+        "type": "number",
+        "example": 2000,
+        "description": "Maximum taxable amount. Tax is applied to line item amounts up to this value, but not over."
+       },
+       "minTax": {
+        "type": "number",
+        "description": "The least amount of tax that will be applied. If the calculated tax is below this amount, this amount is applied.",
+        "example": 10
+       },
+       "maxTax": {
+        "type": "number",
+        "description": "The most amount of tax that will be applied. If the calculated tax exceeds this amount, this amount is applied.",
+        "example": 150
+       }
+      }
+     },
+     "reverseCharge": {
+      "type": "boolean",
+      "description": "Indicates if the tax detail is used to reclaim tax for a reverse-charge transaction. This field is most commonly used for VAT or GST tax solutions.",
+      "example": true,
+      "default": false
+     },
+     "germanTaxDetailKey": {
+      "type": "integer",
+      "description": "Tax detail key for German entities.",
+      "nullable": true,
+      "example": 7,
+      "default": null
+     },
+     "useExpenseAccount": {
+      "type": "boolean",
+      "description": "Set to `true` to override the GL account and assign taxes to the expense account.",
+      "example": true,
+      "default": false
+     },
+     "isSystemGenerated": {
+      "type": "boolean",
+      "description": "If `true`, this is a system-generated tax detail.",
+      "example": true,
+      "default": false,
+      "readOnly": true
+     },
+     "taxAuthority": {
+      "type": "object",
+      "description": "The tax authority for whom you are collecting taxes (such as the City of San Jose).",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the legal tax authority. Useful for creating separate tax reports by jurisdictions.",
+        "example": "California"
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax authority.",
+        "example": "24"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax authority object.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-authority/24"
+       }
+      }
+     },
+     "purchaseGLAccount": {
+      "type": "object",
+      "description": "GL account to which this tax is to be assigned.",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the GL account.",
+        "example": "1200.01--Accounts Receivable - a/c label offset"
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the GL account.",
+        "example": "57"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/account/57"
+       }
+      }
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "Tax solution to which this tax detail belongs.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax solution.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax solution.",
+        "example": "United Kingdom - VAT"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax solution.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-solution/1"
+       }
+      }
+     }
+    }
+   },
+   "tax-purchasing-tax-detailRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.tax.purchasing-tax-schedule": {
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the Purchasing tax schedule.",
+      "example": "7155",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the Purchasing tax schedule.",
+      "example": "7155",
+      "readOnly": true
+     },
+     "name": {
+      "type": "string",
+      "description": "Name or other unique identifier for the Purchasing tax schedule.",
+      "example": "TaxSched-00003"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the Purchasing tax schedule.",
+      "example": "/objects/tax/purchasing-tax-schedule/7155",
+      "readOnly": true
+     },
+     "status": {
+      "$ref": "#/components/schemas/status",
+      "description": "Indicates whether the tax schedule is `active` or `inactive`.",
+      "example": "inactive",
+      "default": "active"
+     },
+     "description": {
+      "type": "string",
+      "description": "Description of the Purchasing tax schedule or other additional information.",
+      "example": "Description of the Tax Schedule"
+     },
+     "isSystemGenerated": {
+      "type": "boolean",
+      "description": "If `true`, this is a system-generated object.",
+      "example": true,
+      "default": false,
+      "readOnly": true
+     },
+     "lines": {
+      "type": "array",
+      "description": "Purchasing tax schedule details for the tax schedule.",
+      "items": {
+       "$ref": "#/components/schemas/objects.tax.purchasing-tax-schedule-detail"
+      }
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "Different tax solutions are available for different countries. Examples include Australia GST, South Africa VAT, and UK VAT.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax solution.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax solution.",
+        "example": "United Kingdom - VAT"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax solution.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-solution/1"
+       }
+      }
+     }
+    }
+   },
+   "tax-purchasing-tax-scheduleRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.tax.purchasing-tax-schedule-detail": {
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the Purchasing tax schedule detail.",
+      "example": "7149",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the Purchasing tax schedule detail.",
+      "example": "7149",
+      "readOnly": true
+     },
+     "effectiveDate": {
+      "type": "string",
+      "description": "Date when the Purchasing tax schedule detail becomes effective.",
+      "format": "date",
+      "example": "2022-01-08"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the Purchasing tax schedule detail.",
+      "example": "/objects/tax/purchasing-tax-schedule-detail/7149",
+      "readOnly": true
+     },
+     "taxSchedule": {
+      "type": "object",
+      "description": "Tax schedules identify the tax details that are applied when the schedule is referenced by a tax schedule map.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax schedule.",
+        "example": "1",
+        "readOnly": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax schedule.",
+        "example": "1",
+        "readOnly": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name or other unique identifier for the tax schedule.",
+        "example": "TaxSched-00002"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax schedule.",
+        "readOnly": true,
+        "example": "/objects/tax/purchasing-tax-schedule/1"
+       }
+      },
+      "readOnly": true
+     },
+     "taxDetail": {
+      "type": "object",
+      "description": "Purchasing tax details describe specific types of taxes that apply to lines in Purchasing transactions.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax detail.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax detail.",
+        "example": "Alaska Tax Detail"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax detail.",
+        "readOnly": true,
+        "example": "/objects/tax/purchasing-tax-detail/1"
+       }
+      }
+     }
+    }
+   },
+   "objects.tax.tax-authority": {
+    "type": "object",
+    "description": "Tax authority",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the tax authority.",
+      "readOnly": true,
+      "example": "105"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the tax authority.",
+      "example": "Texas"
+     },
+     "description": {
+      "type": "string",
+      "description": "Description of the tax authority or other additional information.",
+      "example": "Texas tax authority"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the tax authority.",
+      "readOnly": true,
+      "example": "/objects/tax/tax-authority/105"
+     },
+     "vendorId": {
+      "type": "string",
+      "description": "This field has been deprecated; use vendor.id instead.",
+      "example": "Vendor_Visa_C",
+      "deprecated": true
+     },
+     "vendor": {
+      "type": "object",
+      "description": "The vendor to whom you'll pay the taxes collected for this tax authority.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the vendor.",
+        "example": "518"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the vendor.",
+        "example": "V-00014"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the vendor.",
+        "readOnly": true,
+        "example": "/objects/accounts-payable/vendor/518"
+       }
+      }
+     },
+     "parent": {
+      "type": "object",
+      "description": "Parent tax authority.",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identified for the parent tax authority.",
+        "example": "California"
+       },
+       "key": {
+        "type": "string",
+        "description": "Key for the parent tax authority.",
+        "example": "24"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the parent tax authority.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-authority/24"
+       }
+      }
+     }
+    }
+   },
+   "tax-tax-authorityRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.tax.contact-tax-group": {
+    "type": "object",
+    "description": "Contact tax groups enable taxes to be applied to customers, vendors, and their contacts, according to their jurisdictions. Only applicable with Advanced Tax.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the contact tax group.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the contact tax group.",
+      "example": "Australian Export Customers"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the contact tax group.",
+      "readOnly": true,
+      "example": "/objects/tax/contact-tax-group/23"
+     },
+     "name": {
+      "type": "string",
+      "description": "Unique identifier for the contact tax group. This field is the same as `id` for this object.",
+      "example": "Australian Export Customers"
+     },
+     "groupType": {
+      "type": "string",
+      "description": "Group type.",
+      "example": "contact",
+      "default": "contact",
+      "readOnly": true
+     },
+     "isSystemGenerated": {
+      "type": "boolean",
+      "description": "If `true`, this is a system generated object.",
+      "example": "true",
+      "default": false,
+      "readOnly": true
+     },
+     "isVATEnabled": {
+      "type": "boolean",
+      "description": "If true, transactions for items in this tax group are VAT enabled.",
+      "example": true,
+      "default": false,
+      "readOnly": true
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "Tax solution associated with this contact tax group. Different tax solutions are available for different countries, for example, Australia GST, South Africa VAT, UK Vat. See [tax solutions](tax.tax-solution) for details.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax solution.",
+        "example": "23"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax solution.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-solution/23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique ID for the tax solution.",
+        "example": "Australia - GST"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "tax-contact-tax-groupRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.tax.item-tax-group": {
+    "type": "object",
+    "description": "Item tax groups apply different tax schedules to various items.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the item tax group.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier of the item tax group.",
+      "example": "Acme Company Customers"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the item tax group.",
+      "readOnly": true,
+      "example": "/objects/tax/item-tax-group/23"
+     },
+     "name": {
+      "type": "string",
+      "description": "Unique identifier for the item tax group. This field is the same as `id` for this object.",
+      "example": "Acme Company Customers"
+     },
+     "groupType": {
+      "type": "string",
+      "description": "Group type.",
+      "example": "item",
+      "default": "item",
+      "readOnly": true
+     },
+     "isSystemGenerated": {
+      "type": "boolean",
+      "description": "If `true`, this is a system generated object.",
+      "example": true,
+      "default": false,
+      "readOnly": true
+     },
+     "isVATEnabled": {
+      "type": "boolean",
+      "description": "If `true`, transactions for items in this tax group are VAT enabled.",
+      "example": true,
+      "default": false,
+      "readOnly": true
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "Tax solution associated with this item tax group. Different tax solutions are available for different countries, for example, Australia GST, South Africa VAT, UK Vat. See [Tax solutions](tax.tax-solution) for details.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax solution.",
+        "example": "23"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax solution.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-solution/23"
+       },
+       "id": {
+        "type": "string",
+        "description": "ID for the tax solution.",
+        "example": "Australia - GST"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "tax-item-tax-groupRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.tax.tax-return": {
+    "type": "object",
+    "description": "Tax return",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the tax return.",
+      "readOnly": true,
+      "example": "61"
+     },
+     "id": {
+      "type": "string",
+      "description": "System-assigned identifier for the tax return. The value is the same as the `key` for this object.",
+      "example": "61"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the tax return.",
+      "readOnly": true,
+      "example": "/objects/tax/tax-return/61"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name for the tax return.",
+      "example": "VAT Return Q1 2023"
+     },
+     "taxId": {
+      "type": "string",
+      "description": "Tax ID such as VAT registration number (VRN) or Australian Business Number (ABN) for the tax filing company or entity.",
+      "example": "4490232727"
+     },
+     "recipientEmail": {
+      "type": "string",
+      "description": "The email address of the recipient for the tax return.",
+      "example": "john.doe@abcompany.com"
+     },
+     "submissionPeriodStartDate": {
+      "type": "string",
+      "description": "The beginning date of the tax reporting period as returned by the government agency when filing.",
+      "readOnly": true,
+      "format": "date",
+      "example": "2021-01-23"
+     },
+     "submissionPeriodEndDate": {
+      "type": "string",
+      "description": "The ending date of the tax reporting period as returned by the government agency when filing.",
+      "readOnly": true,
+      "format": "date",
+      "example": "2021-01-23"
+     },
+     "submissionDate": {
+      "type": "string",
+      "description": "The date the tax return was submitted.",
+      "format": "date",
+      "example": "2021-01-23"
+     },
+     "submissionType": {
+      "type": "string",
+      "description": "The manner in which the tax return was submitted.",
+      "readOnly": true,
+      "example": "manual",
+      "nullable": true,
+      "default": null,
+      "enum": [
+       null,
+       "manual",
+       "electronic"
+      ]
+     },
+     "submittersEmail": {
+      "type": "string",
+      "description": "The email address of the person who submitted the tax return.",
+      "example": "john.doe@abcompany.com"
+     },
+     "legalCountryCode": {
+      "type": "string",
+      "description": "Country code for the tax return.",
+      "readOnly": true,
+      "example": "au",
+      "enum": [
+       "au",
+       "gb",
+       "za",
+       "ca"
+      ]
+     },
+     "setEmailAddressAsDefault": {
+      "type": "boolean",
+      "description": "Specifies whether the recipient's email should be used for the next submission for this tax ID.",
+      "example": true,
+      "default": true
+     },
+     "isAdjustingCompleted": {
+      "type": "boolean",
+      "description": "Specifies whether the entry in the adjusting journal is completed in Sage Intacct for the tax return.",
+      "example": true,
+      "default": false
+     },
+     "currentStepStage": {
+      "type": "string",
+      "description": "Current step in the Sage Intacct process used to submit the tax return. For details about each step, see [Processing steps section](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Use/Submit_taxes/submit-taxes.htm?#Fielddescriptions).",
+      "readOnly": true,
+      "example": "submitToGovernment",
+      "enum": [
+       null,
+       "prepareTaxData",
+       "transmitTaxData",
+       "prepareTaxReturn",
+       "submitToGovernment",
+       "transmitRrFilesToSage",
+       "manualAdjustment"
+      ]
+     },
+     "currentStepStatus": {
+      "type": "string",
+      "description": "Status of the current processing step, see the [Processing steps section](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Use/Submit_taxes/submit-taxes.htm?#Fielddescriptions) for details.",
+      "readOnly": true,
+      "example": "completed",
+      "enum": [
+       null,
+       "completed",
+       "started",
+       "notStarted",
+       "failed",
+       "inTransit",
+       "transitCompleted",
+       "transitFailed",
+       "processingStarted",
+       "processingCompleted",
+       "processingFailed",
+       "notApplicable"
+      ]
+     },
+     "bundleNumber": {
+      "type": "string",
+      "description": "Number of the bundle the tax return was part of when submitted (for UK only).",
+      "readOnly": true,
+      "example": "891204442498"
+     },
+     "receiptId": {
+      "type": "string",
+      "description": "Unique identifier that confirms receipt of the VAT return (for UK only).",
+      "readOnly": true,
+      "example": "4c907ee0-a76f-42a7-b582-1a3fb78ae4b8"
+     },
+     "adjustmentNotes": {
+      "type": "string",
+      "description": "Notes about an adjustment for the tax return.",
+      "example": "VAT return notes"
+     },
+     "taxProcessingSteps": {
+      "type": "array",
+      "description": "Processing steps that have been completed for the tax return.",
+      "readOnly": true,
+      "items": {
+       "type": "object",
+       "properties": {
+        "stage": {
+         "type": "string",
+         "example": "prepareTaxData",
+         "enum": [
+          null,
+          "prepareTaxData",
+          "transmitTaxData",
+          "prepareTaxReturn",
+          "submitToGovernment",
+          "transmitRrFilesToSage",
+          "manualAdjustment"
+         ]
+        },
+        "status": {
+         "type": "string",
+         "example": "completed",
+         "enum": [
+          null,
+          "completed",
+          "started",
+          "notStarted",
+          "failed",
+          "inTransit",
+          "transitCompleted",
+          "transitFailed",
+          "processingStarted",
+          "processingCompleted",
+          "processingFailed",
+          "notApplicable"
+         ]
+        },
+        "description": {
+         "type": "string",
+         "example": "11 records eligible for submission"
+        },
+        "recentActivityDate": {
+         "type": "string",
+         "format": "date",
+         "example": "03/03/2020"
+        }
+       }
+      }
+     },
+     "relatedFiles": {
+      "type": "array",
+      "description": "System-generated files related to the tax report.",
+      "readOnly": true,
+      "items": {
+       "type": "object",
+       "properties": {
+        "fileName": {
+         "type": "string",
+         "description": "Name for the file.",
+         "example": "transactions.json"
+        },
+        "stage": {
+         "type": "string",
+         "description": "The processing step in which the file was generated.",
+         "example": "Prepare source tax data"
+        },
+        "creationDate": {
+         "type": "string",
+         "description": "The date the file was created.",
+         "format": "date",
+         "example": "03/03/2020"
+        }
+       }
+      }
+     },
+     "reportingEntity": {
+      "type": "object",
+      "description": "The entity that the tax return is filed under.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned unique key for the reporting entity.",
+        "example": "3"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the reporting entity.",
+        "example": "LOC-USA-0778"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the reporting entity.",
+        "readOnly": true,
+        "example": "/objects/company-config/entity/3"
+       }
+      }
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "The tax solution used for this tax return.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned unique key for the tax solution.",
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax solution.",
+        "example": "United Kingdom - VAT"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax solution.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-solution/1"
+       }
+      }
+     }
+    }
+   },
+   "tax-tax-returnRequiredProperties": {
+    "type": "object",
+    "required": [
+     "name",
+     "taxId",
+     "recipientEmail",
+     "taxSolution"
+    ]
+   },
+   "objects.tax.tax-solution": {
+    "type": "object",
+    "description": "Definition for how taxes should be captured and reported.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the tax solution.",
+      "readOnly": true,
+      "example": "200"
+     },
+     "id": {
+      "type": "string",
+      "description": "Name for the tax solution.",
+      "example": "Australia - GST"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the tax solution.",
+      "readOnly": true,
+      "example": "/objects/tax/tax-solution/200"
+     },
+     "description": {
+      "type": "string",
+      "description": "Description of the tax solution.",
+      "example": "Oregon sales tax"
+     },
+     "status": {
+      "type": "string",
+      "description": "Tax solution status.",
+      "enum": [
+       "active",
+       "inactive",
+       "notConfigured"
+      ],
+      "default": "active",
+      "example": "active"
+     },
+     "taxSolutionType": {
+      "type": "string",
+      "description": "Tax solution type.",
+      "example": "standard",
+      "enum": [
+       "custom",
+       "standard"
+      ]
+     },
+     "enableMultilineTax": {
+      "type": "boolean",
+      "description": "Enable multiple taxes per line. Turning this option on is permanent.",
+      "example": false,
+      "default": false
+     },
+     "taxSubmissionStartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date of the first tax submission period.",
+      "example": "2023-01-01"
+     },
+     "taxCalculationMethod": {
+      "type": "string",
+      "description": "Tax calculation method.",
+      "enum": [
+       "noTax",
+       "simpleTax",
+       "advancedTax",
+       "avaTax",
+       "VAT"
+      ],
+      "example": "simpleTax"
+     },
+     "alternativeSetup": {
+      "type": "boolean",
+      "description": "Sets where returns to vendors and credits to customers are reported. Only for South Africa VAT. Turning this option on is permanent.\n\n* `false` - reported in the adjustment fields\n* `true` - reported as offsets in the input and output VAT fields on the VAT201 Declaration",
+      "example": false,
+      "default": false
+     },
+     "lastUpdatedTaxDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date an update was last installed for all tax objects for this tax solution.",
+      "example": "2023-01-31",
+      "readOnly": true
+     },
+     "arAdvanceOffsetGLAccount": {
+      "type": "object",
+      "description": "The general ledger (GL) account to which output tax in Accounts Receivable and Order Entry will be assigned.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned unique key for the offset GL account.",
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique ID for the offset GL account.",
+        "example": "Automobile Repairs"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the offset GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/account/23"
+       }
+      }
+     },
+     "purchaseGLAccount": {
+      "type": "object",
+      "description": "The general ledger (GL) account to which input tax in Accounts Payable and Purchasing will be assigned.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned unique key for the purchase GL account.",
+        "example": "12"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique ID for the purchase GL account.",
+        "example": "Automobile Repairs"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the purchase GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/account/12"
+       }
+      }
+     },
+     "salesGLAccount": {
+      "type": "object",
+      "description": "The default general ledger account to which tax in Accounts Receivable and Order Entry will be assigned.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned unique key for the sales GL account.",
+        "example": "34"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique ID for the sales GL account.",
+        "example": "Time Type - Coding"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the sales GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/account/34"
+       }
+      }
+     }
+    }
+   },
+   "objects.tax.account-label-tax-group": {
+    "type": "object",
+    "description": "Account label tax groups organize account labels under one tax category. They are part of the glue in tax schedule maps, which associate tax schedules with one or more combinations of contact tax groups and account label tax groups.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the account label tax group.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the account label tax group.",
+      "example": "Acme Company Customers"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the account label tax group.",
+      "readOnly": true,
+      "example": "/objects/tax/account-label-tax-group/23"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name or other unique identifier for the account label tax group.",
+      "example": "Acme Company Customers"
+     },
+     "groupType": {
+      "type": "string",
+      "description": "Group type.",
+      "example": "accountLabel",
+      "default": "accountLabel",
+      "readOnly": true
+     },
+     "isSystemGenerated": {
+      "type": "boolean",
+      "description": "If `true`, this is a system generated object.",
+      "example": true,
+      "default": false,
+      "readOnly": true
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "Tax solution associated with the account label tax group.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax solution.",
+        "example": "23"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax solution.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-solution/23"
+       },
+       "id": {
+        "type": "string",
+        "description": "ID for the tax solution.",
+        "example": "Australia - GST"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "tax-account-label-tax-groupRequiredProperties": {
+    "type": "object",
+    "required": [
+     "id"
+    ]
+   },
+   "objects.tax.tax-detail": {
+    "type": "object",
+    "description": "List of the tax details.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the tax detail.",
+      "example": "4",
+      "readOnly": true
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the tax detail.",
+      "example": "State Tax Arkansas"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the tax detail.",
+      "example": "/objects/tax/tax-detail/4",
+      "readOnly": true
+     },
+     "status": {
+      "$ref": "#/components/schemas/status"
+     },
+     "taxUniqueId": {
+      "type": "string",
+      "description": "A valid identifier for Australia GST, South Africa VAT, or United Kingdom VAT compliance. Valid identifiers are predetermined by internal Sage requirements.",
+      "example": "GB.ECOutput_GB.ExemptGB.VAT"
+     },
+     "taxRate": {
+      "type": "string",
+      "nullable": true,
+      "description": "The category for the tax detail.\n",
+      "enum": [
+       null,
+       "standard",
+       "reduced",
+       "exempt",
+       "zero",
+       "federal",
+       "provincial",
+       "reverseChargeVAT",
+       "intraCommunityDeliveryExemption",
+       "exportOutsideEUExemption",
+       "outsideVATScope"
+      ],
+      "example": "exempt",
+      "default": null
+     },
+     "taxType": {
+      "type": "string",
+      "description": "Tax type.",
+      "enum": [
+       "sale",
+       "purchase"
+      ],
+      "example": "sale",
+      "default": "sale",
+      "readOnly": true
+     },
+     "amountToTax": {
+      "type": "string",
+      "nullable": true,
+      "description": "Amount to include in taxable amount.\n\n** Valid values **\n  - `fullAmount` - Include the cost from zero up to the maximum taxable amount.\n  - `amountWithinRange` - Include the amount between the minimum and maximum taxable amount.\n",
+      "enum": [
+       null,
+       "fullAmount",
+       "amountWithinRange"
+      ],
+      "example": "fullAmount",
+      "default": null
+     },
+     "description": {
+      "type": "string",
+      "description": "The description of the tax detail, which appears in the transaction subtotals if configured.",
+      "example": "Standard Rate for UK Import Services"
+     },
+     "taxPercent": {
+      "type": "string",
+      "format": "percent-precision-8",
+      "description": "The tax rate. For example, enter 10 to apply a tax of 10%.",
+      "example": "10.00000000"
+     },
+     "taxLimit": {
+      "type": "object",
+      "properties": {
+       "minTaxable": {
+        "type": "number",
+        "example": 10,
+        "description": "Minimum taxable amount. If the amount of a line item is at or below this value, tax is not applied."
+       },
+       "maxTaxable": {
+        "type": "number",
+        "example": 2000,
+        "description": "Maximum taxable amount. Tax is applied to line item amounts up to this value, but not over."
+       },
+       "minTax": {
+        "type": "number",
+        "description": "The least amount of tax that will be applied. If the calculated tax is below this amount, this amount is applied.",
+        "example": 10
+       },
+       "maxTax": {
+        "type": "number",
+        "description": "The most amount of tax that will be applied. If the calculated tax exceeds this amount, this amount is applied.",
+        "example": 150
+       }
+      }
+     },
+     "reverseCharge": {
+      "type": "boolean",
+      "description": "Indicates if the tax detail is used to reclaim tax for a reverse-charge transaction. This field is most commonly used for VAT or GST tax solutions.",
+      "example": true,
+      "default": false
+     },
+     "germanTaxDetailKey": {
+      "type": "integer",
+      "description": "Tax detail key for German entities.",
+      "nullable": true,
+      "example": 7,
+      "default": null
+     },
+     "useExpenseAccount": {
+      "type": "boolean",
+      "description": "Set to `true` to override the GL account and assign taxes to the expense account.",
+      "example": true,
+      "default": false
+     },
+     "isSystemGenerated": {
+      "type": "boolean",
+      "description": "If `true`, this is a system-generated tax detail.",
+      "example": true,
+      "default": false,
+      "readOnly": true
+     },
+     "taxAuthority": {
+      "type": "object",
+      "description": "The tax authority for whom you are collecting taxes (such as the City of San Jose).",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the legal tax authority. Useful for creating separate tax reports by jurisdictions.",
+        "example": "California"
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax authority.",
+        "example": "24"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax authority.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-authority/24"
+       }
+      }
+     },
+     "glAccount": {
+      "type": "object",
+      "description": "GL account to which this tax is to be assigned.",
+      "properties": {
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the GL account.",
+        "example": "1200.01--Accounts Receivable - a/c label offset"
+       },
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the GL account.",
+        "example": "57"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the GL account.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/account/57"
+       }
+      }
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "Different tax solutions are available for different countries. Examples include Australia GST, South Africa VAT, and UK VAT.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax solution.",
+        "example": "200"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax solution.",
+        "example": "Australia - GST"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax solution.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-solution/200"
+       }
+      }
+     }
+    }
+   },
+   "objects.tax.tax-record": {
+    "type": "object",
+    "description": "Tax records capture VAT or GST related tax entries for tax compliance and reporting.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the tax record.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the tax record. This value is the same as the `key` for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the tax record.",
+      "readOnly": true,
+      "example": "/objects/tax/tax-record/23"
+     },
+     "txnInformation": {
+      "type": "object",
+      "description": "Information about the transaction related to the tax record.",
+      "properties": {
+       "txnId": {
+        "type": "string",
+        "description": "Identifier for the transaction.",
+        "example": "DOC_1"
+       },
+       "txnDate": {
+        "type": "string",
+        "format": "date",
+        "description": "Transaction date.",
+        "example": "2023-01-01"
+       },
+       "label": {
+        "type": "string",
+        "description": "The label for the transaction.",
+        "example": "VI#0008#doc"
+       },
+       "txnType": {
+        "type": "string",
+        "description": "The type of transaction such as AP bill, sales invoice, or general journal.",
+        "example": "Vendor Invoice"
+       },
+       "currency": {
+        "type": "object",
+        "description": "Currency details for the transaction.",
+        "properties": {
+         "baseCurrency": {
+          "type": "string",
+          "description": "Base currency of the entity for multi-currency companies.",
+          "example": "AUD"
+         },
+         "txnCurrency": {
+          "type": "string",
+          "description": "The currency used in the transaction, may be different from the base currency.",
+          "example": "AUD"
+         },
+         "exchangeRate": {
+          "type": "number",
+          "description": "Exchange rate.",
+          "example": 1.0789,
+          "nullable": true
+         },
+         "exchangeRateDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the exchange rate.",
+          "example": "2023-01-01",
+          "nullable": true
+         },
+         "sourceAmount": {
+          "type": "string",
+          "format": "decimal-precision-2",
+          "description": "Transaction amount of source line.",
+          "example": "800.00",
+          "nullable": true
+         },
+         "taxAmount": {
+          "type": "string",
+          "format": "decimal-precision-2",
+          "description": "Transaction amount of the tax line.",
+          "example": "80.00",
+          "nullable": true
+         }
+        }
+       }
+      }
+     },
+     "taxPointDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date used to determine if the tax record should be part of a specified tax reporting period.",
+      "example": "2024-08-24"
+     },
+     "description": {
+      "type": "string",
+      "description": "A description for the tax record.",
+      "example": "G10 Capital Acquisition"
+     },
+     "taxType": {
+      "type": "string",
+      "description": "Use `inputTax` for purchase tax or `outputTax` for sales tax.",
+      "enum": [
+       null,
+       "inputTax",
+       "outputTax"
+      ],
+      "example": "inputTax",
+      "default": null,
+      "nullable": true
+     },
+     "state": {
+      "type": "string",
+      "description": "Processing state of the tax record.",
+      "enum": [
+       null,
+       "submitted",
+       "posted",
+       "locked",
+       "ignored",
+       "filed"
+      ],
+      "example": "submitted",
+      "default": null,
+      "nullable": true
+     },
+     "sourceAmount": {
+      "type": "string",
+      "format": "decimal-precision-2",
+      "description": "Source amount in the base currency.",
+      "nullable": true,
+      "example": "800.00"
+     },
+     "taxAmount": {
+      "type": "string",
+      "format": "decimal-precision-2",
+      "description": "Tax amount in the base currency.",
+      "example": "80.00",
+      "nullable": true
+     },
+     "taxId": {
+      "type": "string",
+      "description": "The VAT or GST registration number of the entity or company.",
+      "example": "40071007326"
+     },
+     "isCredit": {
+      "type": "boolean",
+      "description": "True if the tax record is from a sales credit memo or a purchase debit memo.",
+      "example": false,
+      "default": false
+     },
+     "isFiled": {
+      "type": "boolean",
+      "description": "This value is set to `true` if the tax record has been filed and reported to the tax authority.",
+      "example": false,
+      "default": false
+     },
+     "isFromReverseTxn": {
+      "type": "boolean",
+      "description": "This value is set to `true` if the tax record is from a reversed invoice or bill.",
+      "example": false,
+      "default": false
+     },
+     "isReclaimable": {
+      "type": "boolean",
+      "description": "This value is set to `true` if the tax record is eligible for Icome Tax Credit.",
+      "example": false,
+      "default": false
+     },
+     "filingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date this tax record was reported to the government.",
+      "example": "2024-08-24",
+      "nullable": true
+     },
+     "creditOrDebitTxn": {
+      "type": "string",
+      "description": "Transaction type.",
+      "enum": [
+       null,
+       "debit",
+       "credit"
+      ],
+      "default": null,
+      "nullable": true,
+      "example": "debit"
+     },
+     "customerOrVendorName": {
+      "type": "string",
+      "description": "Name of the customer or vendor associated with the tax record.",
+      "example": "1099 Int"
+     },
+     "capturePaymentTax": {
+      "type": "boolean",
+      "description": "This value is set to `true` if the tax record is for a capture payment tax.",
+      "example": false,
+      "default": false
+     },
+     "dimensions": {
+      "type": "object",
+      "description": "Dimensions associated with the tax record.",
+      "properties": {
+       "department": {
+        "type": "object",
+        "description": "Department for the tax record.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "System-assigned key for the department.",
+          "example": "28"
+         },
+         "id": {
+          "type": "string",
+          "description": "Unique identifier for the department.",
+          "example": "SW"
+         },
+         "name": {
+          "type": "string",
+          "description": "Name for the department.",
+          "readOnly": true,
+          "example": "Software Dev"
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the department.",
+          "readOnly": true,
+          "example": "/objects/company-config/department/23"
+         }
+        }
+       },
+       "location": {
+        "type": "object",
+        "description": "Location for the tax record.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "System-assigned key for the location.",
+          "example": "3345"
+         },
+         "id": {
+          "type": "string",
+          "description": "Unique identifier for the location.",
+          "example": "1-Lyon"
+         },
+         "name": {
+          "type": "string",
+          "description": "Name for the location.",
+          "example": "Lyon-France",
+          "readOnly": true
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the location.",
+          "readOnly": true,
+          "example": "/objects/company-config/location/23"
+         }
+        }
+       },
+       "contact": {
+        "type": "object",
+        "description": "Ship-to or pay-to contact.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "System-assigned key for the contact.",
+          "example": "21"
+         },
+         "id": {
+          "type": "string",
+          "description": "Identifier for the contact.",
+          "example": "rkincaid"
+         },
+         "tax": {
+          "type": "object",
+          "title": "tax",
+          "description": "Tax settings needed for Intacct to calculate taxes on transactions for the contact.",
+          "properties": {
+           "taxId": {
+            "type": "string",
+            "description": "State tax ID or VAT registration number for the contact.",
+            "example": "US2333"
+           },
+           "isTaxable": {
+            "type": "boolean",
+            "description": "Set to `true` to enable tax calculation.",
+            "default": true,
+            "example": true
+           },
+           "group": {
+            "type": "object",
+            "description": "The contact tax group used with this contact.",
+            "properties": {
+             "key": {
+              "type": "string",
+              "description": "System-assigned key for the contact tax group.",
+              "example": "7"
+             },
+             "id": {
+              "type": "string",
+              "description": "Identifier for the contact tax group.",
+              "example": "Taxes-for-residents"
+             },
+             "href": {
+              "type": "string",
+              "description": "URL endpoint for the contact tax group.",
+              "readOnly": true,
+              "example": "/objects/tax/contact-tax-group/7"
+             }
+            }
+           }
+          }
+         },
+         "mailingAddress": {
+          "type": "object",
+          "title": "mailingAddress",
+          "description": "The mailing address associated with the contact.",
+          "readOnly": true,
+          "properties": {
+           "country": {
+            "type": "string",
+            "description": "Country for the contact.",
+            "example": "unitedStates",
+            "readOnly": true
+           },
+           "isoCountryCode": {
+            "type": "string",
+            "description": "ISO country code. When ISO country codes are enabled in a company, both COUNTRY and ISOCOUNTRYCODE must be provided.",
+            "example": "US",
+            "readOnly": true
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "taxReturn": {
+      "type": "object",
+      "description": "Tax return associated with the tax record.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax return.",
+        "example": "61"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax return.",
+        "example": "61"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax return.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-return/61"
+       }
+      }
+     },
+     "journalEntry": {
+      "type": "object",
+      "description": "The journal entry associated with the source transaction.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the journal entry.",
+        "example": "132"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the journal entry.",
+        "example": "132"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for this journal entry.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/journal-entry/132"
+       }
+      }
+     },
+     "sourceJournalEntryLine": {
+      "type": "object",
+      "description": "The source journal entry for the tax calculation.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System assigned key for the journal entry line.",
+        "example": "1981"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for journal entry line.",
+        "example": "1981"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the journal entry line.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/journal-entry-line/1981"
+       }
+      }
+     },
+     "taxJournalEntryLine": {
+      "type": "object",
+      "description": "The tax journal entry line associates with the tax record.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System assigned key for the journal entry line.",
+        "example": "1981"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for journal entry line.",
+        "example": "1981"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the journal entry line.",
+        "readOnly": true,
+        "example": "/objects/general-ledger/journal-entry-line/1981"
+       }
+      }
+     },
+     "taxDetail": {
+      "type": "object",
+      "description": "A tax detail defines a specific type of tax that can be applied to a line item.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax detail.",
+        "example": "4"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax detail.",
+        "example": "State Tax Arkansas"
+       },
+       "taxUniqueId": {
+        "type": "string",
+        "description": "A valid identifier for Australia GST, South Africa VAT, or United Kingdom VAT compliance. Valid identifiers are predetermined by internal Sage requirements.",
+        "example": "GB.ECOutput_GB.ExemptGB.VAT",
+        "readOnly": true
+       },
+       "taxRate": {
+        "type": "string",
+        "format": "percent-precision-2",
+        "description": "Tax rate percentage used to calculate tax. For example, a value of 5.00 applies a tax of 5.00%.",
+        "example": "10.00",
+        "readOnly": true
+       },
+       "taxType": {
+        "type": "string",
+        "description": "Tax type.",
+        "enum": [
+         "sale",
+         "purchase"
+        ],
+        "example": "sale",
+        "default": "sale",
+        "readOnly": true
+       },
+       "taxFiling": {
+        "type": "string",
+        "description": "Tax filing. `notReporting` tax details will not be included in tax submissions.",
+        "enum": [
+         "reporting",
+         "notReporting"
+        ],
+        "example": "reporting",
+        "default": "reporting",
+        "readOnly": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax detail.",
+        "example": "/objects/tax/tax-detail/4",
+        "readOnly": true
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "error-response": {
+    "type": "object",
+    "description": "Error response",
+    "properties": {
+     "ia::result": {
+      "type": "object",
+      "properties": {
+       "ia::error": {
+        "type": "object",
+        "properties": {
+         "code": {
+          "type": "string",
+          "example": "invalidRequest"
+         },
+         "message": {
+          "type": "string",
+          "example": "Payload contains errors"
+         },
+         "supportId": {
+          "type": "string",
+          "example": "sQrM9%7EYdh5oDEWVb80mrn9xuHjoAAAABBQ"
+         },
+         "errorId": {
+          "type": "string",
+          "example": "REST-1064"
+         },
+         "additionalInfo": {
+          "type": "object",
+          "properties": {
+           "messageId": {
+            "type": "string",
+            "example": "IA.PAYLOAD_CONTAINS_ERRORS"
+           },
+           "placeholders": {
+            "type": "object",
+            "example": {}
+           },
+           "propertySet": {
+            "type": "object",
+            "example": {}
+           }
+          }
+         },
+         "details": {
+          "type": "array",
+          "items": {
+           "type": "object",
+           "properties": {
+            "code": {
+             "type": "string",
+             "example": "invalidRequest"
+            },
+            "message": {
+             "type": "string",
+             "example": "/newDate is not a valid field"
+            },
+            "errorId": {
+             "type": "string",
+             "example": "REST-1043"
+            },
+            "target": {
+             "type": "string",
+             "example": "/newDate"
+            },
+            "additionalInfo": {
+             "type": "object",
+             "properties": {
+              "messageId": {
+               "type": "string",
+               "example": "IA.NOT_A_VALID_FIELD"
+              },
+              "placeholders": {
+               "type": "object",
+               "example": {}
+              },
+              "propertySet": {
+               "type": "object",
+               "example": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "ia::meta": {
+        "$ref": "#/components/schemas/metadata"
+       }
+      }
+     }
+    },
+    "example": {
+     "ia::result": {
+      "ia::error": {
+       "code": "invalidRequest",
+       "message": "A POST request requires a payload",
+       "errorId": "REST-1028",
+       "additionalInfo": {
+        "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+        "placeholders": {
+         "OPERATION": "POST"
+        },
+        "propertySet": {}
+       },
+       "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+      }
+     },
+     "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 0,
+      "totalError": 1
+     }
+    }
+   },
+   "status": {
+    "type": "string",
+    "description": "Object status. Active objects are fully functional. Inactive objects are essentially hidden and cannot be used or referenced.",
+    "enum": [
+     "active",
+     "inactive"
+    ],
+    "default": "active",
+    "example": "active"
+   },
+   "audit.s1": {
+    "type": "object",
+    "readOnly": true,
+    "properties": {
+     "createdDateTime": {
+      "description": "Date and time when the record was created.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-05-16T15:34:35Z"
+     },
+     "modifiedDateTime": {
+      "description": "Date and time when the record was last modified.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-09-14T21:23:42Z"
+     },
+     "createdBy": {
+      "description": "This field has been deprecated. Use the `createdByUser` field instead.",
+      "type": "string",
+      "readOnly": true,
+      "nullable": true,
+      "deprecated": true
+     },
+     "modifiedBy": {
+      "description": "This field has been deprecated. Use the `modifiedByUser` field instead.",
+      "type": "string",
+      "readOnly": true,
+      "nullable": true,
+      "deprecated": true
+     },
+     "createdByUser": {
+      "type": "object",
+      "description": "The user who created the object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "436"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JohnDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/436"
+       }
+      }
+     },
+     "modifiedByUser": {
+      "type": "object",
+      "description": "The user who last modified this object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "3086"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JaneDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/3086"
+       }
+      }
+     }
+    }
+   }
+  },
+  "responses": {
+   "400error": {
+    "description": "Bad Request",
+    "content": {
+     "application/json": {
+      "schema": {
+       "$ref": "#/components/schemas/error-response"
+      },
+      "examples": {
+       "Response example": {
+        "value": {
+         "ia::result": {
+          "ia::error": {
+           "code": "invalidRequest",
+           "message": "A POST request requires a payload",
+           "errorId": "REST-1028",
+           "additionalInfo": {
+            "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+            "placeholders": {
+             "OPERATION": "POST"
+            },
+            "propertySet": {}
+           },
+           "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+          }
+         },
+         "ia::meta": {
+          "totalCount": 1,
+          "totalSuccess": 0,
+          "totalError": 1
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "securitySchemes": {
+   "OAuth2": {
+    "description": "Sage Intacct OAuth 2.0 authorization code flow",
+    "type": "oauth2",
+    "flows": {
+     "authorizationCode": {
+      "authorizationUrl": "https://api.intacct.com/ia/api/v1/oauth2/authorize",
+      "tokenUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "refreshUrl": "https://api.intacct.com/ia/api/v1/oauth2/token",
+      "scopes": {}
+     }
+    }
+   }
+  }
+ }
+}

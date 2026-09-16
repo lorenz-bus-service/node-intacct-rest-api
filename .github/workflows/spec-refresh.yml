@@ -1,0 +1,38 @@
+name: Refresh Intacct OpenAPI spec
+
+# Sage ships quarterly. Re-download the per-Application specs weekly and open a
+# PR when anything changed so the regenerated types can be reviewed.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run spec:fetch
+      - run: npm run generate
+      - run: npm run typecheck
+      - run: npm test
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/spec-refresh
+          title: "chore: refresh Intacct OpenAPI spec"
+          commit-message: "chore: refresh Intacct OpenAPI spec and regenerate"
+          body: |
+            Automated weekly refresh of Sage Intacct's REST API OpenAPI documents.
+
+            Review the `spec/manifest.json` and `src/generated/**` diffs for new Objects,
+            renamed fields or removed operations before merging.
+          labels: dependencies
