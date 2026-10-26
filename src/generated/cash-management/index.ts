@@ -232,6 +232,12 @@ export const cashManagement = defineApplication({
         generate: service<RequestBody<operations["generate-bank-file"]>, ResponseResult<operations["generate-bank-file"]>>("services/cash-management/bank-file/generate", "POST"),
       }),
     }),
+    reports: group({
+      cashManagement: group({
+        bankRegister: service<RequestBody<operations["cm-report-bank-register"]>, ResponseResult<operations["cm-report-bank-register"]>>("services/reports/cash-management/bank-register", "POST"),
+        checkRegister: service<RequestBody<operations["cm-report-check-register"]>, ResponseResult<operations["cm-report-check-register"]>>("services/reports/cash-management/check-register", "POST"),
+      }),
+    }),
   }),
 });
 

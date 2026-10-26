@@ -20,12 +20,12 @@
   {
    "name": "Purchasing_Document lines",
    "x-displayName": "Document lines",
-   "description": "Line items in a purchasing document represent purchasing transactions. Create and maintain document lines from the owning [document object](purchasing.document)."
+   "description": "Line items in a purchasing document represent purchasing transactions. Create and maintain document lines from the owning [document object](/intacct/apis/intacct/1/intacct-openapi/groups/purchasing/groups/documents/tags/purchasing_documents)."
   },
   {
    "name": "Purchasing_Document line details",
    "x-displayName": "Document line details",
-   "description": "Inventory tracking details including serial number, aisle, bin, and row per line item.\n\nCreate and maintain document line details by creating and updating the `trackingDetail` in the owning [document line objects](order-entry.document-line).\n"
+   "description": "Inventory tracking details including serial number, aisle, bin, and row per line item.\n\nCreate and maintain document line details by creating and updating the `trackingDetail` in the owning [document line objects](/intacct/apis/intacct/1/intacct-openapi/groups/order-entry/groups/documents/tags/order_entry_document-lines).\n"
   },
   {
    "name": "Purchasing_Document line subtotals",
@@ -294,6 +294,8 @@
             "txnDefinition": {
              "id": "PO Receiver Invoice",
              "key": "258",
+             "uiCategory": "invoice",
+             "templateClass": "invoice",
              "href": "/objects/purchasing/txn-definition::PO%20Receiver%20Invoice/258"
             },
             "paymentTerm": {
@@ -645,6 +647,7 @@
               "enableTax": null,
               "isBillable": null,
               "isBilled": null,
+              "taxType": "Purchase Tax",
               "taxRate": null,
               "taxInBaseCurrency": null,
               "discountPercentage": null,
@@ -896,7 +899,7 @@
    },
    "post": {
     "summary": "Create a purchasing document",
-    "description": "Creates a new purchasing document. To create a new purchasing document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. \n\nWhen creating a new document, the field `state` must be set to one of these values: pending, draft, or submitted. \nIf no value is specified for the `state` field, it defaults to pending.\n\nTo access a list of available transaction definitions, use the list operation of the [transaction definition](purchasing.txn-definition) object. For example, to create a new purchasing document that uses the Purchase Requisition transaction definition as a template, specify `Purchase Requisition` for the `documentName` in the request URL.\n",
+    "description": "Creates a new purchasing document. To create a new purchasing document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. \n\nWhen creating a new document, the field `state` must be set to one of these values: pending, draft, or submitted. \nIf no value is specified for the `state` field, it defaults to pending.\n\nTo access a list of available transaction definitions, use the list operation of the [transaction definition](/intacct/apis/intacct/1/intacct-openapi/groups/purchasing/groups/transaction-definitions/tags/purchasing_transaction-definitions) object. For example, to create a new purchasing document that uses the Purchase Requisition transaction definition as a template, specify `Purchase Requisition` for the `documentName` in the request URL.\n",
     "tags": [
      "Purchasing_Documents"
     ],
@@ -1163,6 +1166,8 @@
             "txnDefinition": {
              "id": "PO Receiver Invoice",
              "key": "258",
+             "uiCategory": "invoice",
+             "templateClass": "invoice",
              "href": "/objects/purchasing/txn-definition::PO%20Receiver%20Invoice/258"
             },
             "paymentTerm": {
@@ -1514,6 +1519,7 @@
               "enableTax": null,
               "isBillable": null,
               "isBilled": null,
+              "taxType": "Purchase Tax",
               "taxRate": null,
               "taxInBaseCurrency": null,
               "discountPercentage": null,
@@ -2268,6 +2274,7 @@
             "enableTax": null,
             "isBillable": true,
             "isBilled": null,
+            "taxType": "Purchase Tax",
             "taxRate": null,
             "taxInBaseCurrency": "0.00",
             "discount": null,
@@ -2739,6 +2746,7 @@
             "enableTax": null,
             "isBillable": true,
             "isBilled": null,
+            "taxType": "Purchase Tax",
             "taxRate": null,
             "taxInBaseCurrency": "0.00",
             "discount": null,
@@ -10220,7 +10228,7 @@
    },
    "post": {
     "summary": "Create a recurring document",
-    "description": "Creates a new recurring document. To create a new recurring document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. \n\nTo access a list of available transaction definitions, use the list operation of the [transaction definition](purchasing.txn-definition) object. For example, to create a new recurring document that uses the Purchase Requisition transaction definition as a template, specify `Purchase Requisition` for the `documentName` in the request URL.\n",
+    "description": "Creates a new recurring document. To create a new recurring document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. \n\nTo access a list of available transaction definitions, use the list operation of the [transaction definition](/intacct/apis/intacct/1/intacct-openapi/groups/purchasing/groups/transaction-definitions/tags/purchasing_transaction-definitions) object. For example, to create a new recurring document that uses the Purchase Requisition transaction definition as a template, specify `Purchase Requisition` for the `documentName` in the request URL.\n",
     "tags": [
      "Purchasing_Recurring documents"
     ],
@@ -10929,99 +10937,6 @@
             "totalCount": 3,
             "start": 1,
             "pageSize": 100
-           }
-          }
-         }
-        }
-       }
-      }
-     },
-     "400": {
-      "$ref": "#/components/responses/400error"
-     }
-    },
-    "security": [
-     {
-      "OAuth2": []
-     }
-    ]
-   },
-   "post": {
-    "summary": "Create a recurring document line",
-    "description": "Creates a new recurring document line.",
-    "tags": [
-     "Purchasing_Recurring document lines"
-    ],
-    "operationId": "create-purchasing-recurring-document-line",
-    "requestBody": {
-     "description": "",
-     "required": true,
-     "content": {
-      "application/json": {
-       "schema": {
-        "allOf": [
-         {
-          "$ref": "#/components/schemas/objects.purchasing.recurring-document-line"
-         },
-         {
-          "$ref": "#/components/schemas/purchasing-recurring-document-lineRequiredProperties"
-         }
-        ]
-       },
-       "examples": {
-        "Create a recurring document line": {
-         "value": {
-          "recurringDocumentHeader": {
-           "key": "469"
-          },
-          "dimensions": {
-           "item": {
-            "id": "1357--Miscellaneous Services - Customization"
-           },
-           "warehouse": {
-            "id": "WH10003"
-           },
-           "location": {
-            "id": "1"
-           }
-          },
-          "unit": "Each",
-          "unitQuantity": "1",
-          "unitPrice": "650"
-         }
-        }
-       }
-      }
-     }
-    },
-    "responses": {
-     "201": {
-      "description": "Created",
-      "content": {
-       "application/json": {
-        "schema": {
-         "type": "object",
-         "title": "New recurring-document-line",
-         "properties": {
-          "ia::result": {
-           "$ref": "#/components/schemas/object-reference"
-          },
-          "ia::meta": {
-           "$ref": "#/components/schemas/metadata"
-          }
-         }
-        },
-        "examples": {
-         "Reference to new recurring document line": {
-          "value": {
-           "ia::result": {
-            "key": "112",
-            "href": "/objects/purchasing/recurring-document-line::Purchase%20Order/807"
-           },
-           "ia::meta": {
-            "totalCount": 1,
-            "totalSuccess": 1,
-            "totalError": 0
            }
           }
          }
@@ -11829,6 +11744,33 @@
         "description": "Name of the transaction definition.",
         "example": "Purchase Invoice"
        },
+       "uiCategory": {
+        "type": "string",
+        "readOnly": true,
+        "description": "UI category of the transaction definition associated with this purchasing document.",
+        "example": "invoice",
+        "enum": [
+         "quote",
+         "order",
+         "shipping",
+         "invoice",
+         "return"
+        ]
+       },
+       "templateClass": {
+        "type": "string",
+        "description": "Template type of the transaction definition associated with the purchasing document.",
+        "example": "invoice",
+        "enum": [
+         "quote",
+         "order",
+         "list",
+         "invoice",
+         "adjustment",
+         "other"
+        ],
+        "readOnly": true
+       },
        "href": {
         "type": "string",
         "description": "URL endpoint for the transaction definition.",
@@ -12017,27 +11959,28 @@
      },
      "invoiceType": {
       "type": "string",
-      "description": "Specifies whether the transaction is a regular invoice (invoice) or an electronic invoice (eInvoice).",
+      "description": "Specifies whether the transaction is a regular invoice (invoice), an electronic invoice (eInvoice), or an invoice reported to the tax agency because it is not eligible for e-invoicing (eReporting).\n\nThe eInvoice value is retained for backward compatibility. PO E-Invoices cannot be created directly.\n",
       "enum": [
        null,
        "invoice",
-       "eInvoice"
+       "eInvoice",
+       "eReporting"
       ],
       "example": "invoice",
-      "nullable": true,
-      "readOnly": true
+      "nullable": true
      },
      "invoiceMode": {
       "type": "string",
-      "description": "Invoice mode for France e-invoicing workflows; applicable only for France e-invoice enabled entities.\nSpecifies the invoice mode based on invoiceType. For eInvoice, specify b1 or s1.\nSupported values:\n\n\n\n\n\n  - `b1` - Submission of an e-invoice for goods.\n  - `s1` - Submission of an e-invoice for services.\n\nLeave this field blank when `invoiceType` is `invoice`.\n",
+      "description": "Invoice mode for France e-invoicing workflows; applicable only for France e-invoice enabled entities.\nSupported values:\n\n\n\n\n\n  - `b1` - Submission of an e-invoice for goods. Retained for backward compatibility.\n  - `s1` - Submission of an e-invoice for services. Retained for backward compatibility.\n  - `tlb1` - E-Reporting mode for goods.\n  - `tps1` - E-Reporting mode for services.\n\nLeave this field blank when `invoiceType` is `invoice`.\n",
       "enum": [
        null,
        "b1",
-       "s1"
+       "s1",
+       "tlb1",
+       "tps1"
       ],
-      "example": "b1",
-      "nullable": true,
-      "readOnly": true
+      "example": "tlb1",
+      "nullable": true
      },
      "eInvoiceStatus": {
       "type": "string",
@@ -12567,6 +12510,29 @@
        }
       }
      },
+     "retainageHoldMethod": {
+      "type": "string",
+      "description": "Specifies whether the purchasing document uses simple retainage or advanced (step) retainage.",
+      "enum": [
+       null,
+       "simple",
+       "advanced"
+      ],
+      "example": "simple",
+      "readOnly": false
+     },
+     "advancedRetainageCalculationMethod": {
+      "type": "string",
+      "description": "For purchasing document using advanced (step) retainage, specifies whether the calculation method is Retainage held, Amount invoiced, or Percent of contract.",
+      "enum": [
+       null,
+       "retainageHeld",
+       "amountInvoiced",
+       "percentOfContract"
+      ],
+      "example": "amountInvoiced",
+      "readOnly": false
+     },
      "lines": {
       "type": "array",
       "description": "Lines of the purchasing document.",
@@ -12586,6 +12552,13 @@
       "description": "Lines of the purchasing document history.",
       "items": {
        "$ref": "#/components/schemas/objects.purchasing.document-history"
+      }
+     },
+     "advancedRetainageSteps": {
+      "type": "array",
+      "description": "Advanced retainage steps for the purchasing document. (Construction subscription).",
+      "items": {
+       "$ref": "#/components/schemas/objects.construction.advanced-retainage-step"
       }
      }
     }
@@ -12938,7 +12911,24 @@
       "example": "22.10"
      },
      "audit": {
-      "$ref": "#/components/schemas/audit.s1"
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/audit.s1"
+       },
+       {
+        "type": "object",
+        "properties": {
+         "createdDateTime": {
+          "type": "string",
+          "description": "Date and time when the document line was created.",
+          "format": "date-time",
+          "example": "2026-01-08T11:28:12Z",
+          "readOnly": true
+         }
+        }
+       }
+      ]
      },
      "status": {
       "$ref": "#/components/schemas/status"
@@ -13044,6 +13034,11 @@
       "readOnly": true,
       "example": true,
       "default": true
+     },
+     "taxType": {
+      "type": "string",
+      "description": "Tax subtotal type to apply to the line when line-level simple tax is enabled. Specify the description of a tax subtotal configured for the document type. If omitted, the default configured tax subtotal is used.",
+      "example": "Purchase Tax"
      },
      "taxRate": {
       "type": "string",
@@ -13293,7 +13288,7 @@
       "enum": [
        null,
        "submitted",
-       "pendingApproval",
+       "partiallyApproved",
        "approved",
        "declined"
       ],
@@ -13425,6 +13420,17 @@
         "example": "1000.0000000000"
        }
       }
+     },
+     "retainageHoldMethod": {
+      "type": "string",
+      "description": "Specifies whether the purchasing document line uses simple retainage or advanced (step) retainage.",
+      "enum": [
+       null,
+       "simple",
+       "advanced"
+      ],
+      "example": "simple",
+      "readOnly": false
      },
      "relatedDocument": {
       "type": "object",
@@ -18306,30 +18312,6 @@
      }
     }
    },
-   "purchasing-recurring-document-lineRequiredProperties": {
-    "type": "object",
-    "required": [
-     "unit",
-     "unitQuantity",
-     "unitPrice"
-    ],
-    "properties": {
-     "dimensions": {
-      "required": [
-       "item",
-       "warehouse",
-       "location"
-      ],
-      "example": "{ \"item\": { \"id\": \"1\" }, \"warehouse\": { \"id\": \"1\" }, \"location\": { \"id\": \"1\" }}"
-     },
-     "recurringDocumentHeader": {
-      "required": [
-       "key"
-      ],
-      "example": "44"
-     }
-    }
-   },
    "objects.purchasing.recurring-document-subtotal": {
     "type": "object",
     "description": "Details of subtotals, taxes, discounts, charges, and more for recurring transactions.",
@@ -18995,6 +18977,190 @@
      }
     }
    },
+   "objects.construction.advanced-retainage-step": {
+    "type": "object",
+    "description": "Advanced retainage step defines a single step in a multi-step advanced retainage schedule applied to a purchasing document or project contract.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "Unique key for the advanced retainage step.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique ID for the advanced retainage step. This value is the same as the `key` for this object.",
+      "readOnly": true,
+      "example": "23"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the advanced retainage step.",
+      "readOnly": true,
+      "example": "/objects/construction/advanced-retainage-step/23"
+     },
+     "purchasingDocument": {
+      "type": "object",
+      "description": "For `documentHeader` record types, purchasing document associated with the advanced retainage step. Can be null if the `recordType` is `projectContract`.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the purchasing document.",
+        "example": "101"
+       },
+       "id": {
+        "type": "string",
+        "description": "ID for the purchasing document.",
+        "example": "PO-001"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the purchasing document.",
+        "readOnly": true,
+        "example": "/objects/purchasing/document/101"
+       }
+      }
+     },
+     "projectContract": {
+      "type": "object",
+      "description": "For `projectContract` record types, project contract associated with the advanced retainage step. Can be null if the `recordType` is `documentHeader`.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the project contract.",
+        "example": "202"
+       },
+       "id": {
+        "type": "string",
+        "description": "ID for the project contract.",
+        "example": "PC-001"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the project contract.",
+        "readOnly": true,
+        "example": "/objects/construction/project-contract/202"
+       }
+      }
+     },
+     "recordType": {
+      "type": "string",
+      "description": "Type of record for the retainage step.",
+      "enum": [
+       "documentHeader",
+       "projectContract"
+      ],
+      "example": "documentHeader"
+     },
+     "lineNumber": {
+      "type": "integer",
+      "description": "Line number (step number) for the advanced retainage step.",
+      "readOnly": true,
+      "example": 2
+     },
+     "retainagePercentage": {
+      "type": "string",
+      "description": "Retainage percentage for the advanced retainage step.",
+      "format": "decimal-precision-2",
+      "example": "10.5"
+     },
+     "retainageHeld": {
+      "type": "string",
+      "description": "Amount of retainage held.",
+      "format": "decimal-precision-2",
+      "example": "5000.00"
+     },
+     "amountInvoiced": {
+      "type": "string",
+      "description": "Amount of retainage invoiced.",
+      "format": "decimal-precision-2",
+      "example": "2500.00"
+     },
+     "percentOfContract": {
+      "type": "string",
+      "description": "Percent of contract for the advanced retainage step.",
+      "format": "decimal-precision-2",
+      "example": "25.0"
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s2"
+     }
+    }
+   },
+   "audit.s2": {
+    "type": "object",
+    "readOnly": true,
+    "properties": {
+     "createdDateTime": {
+      "description": "Date and time when the record was created.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-05-16T15:34:35Z"
+     },
+     "modifiedDateTime": {
+      "description": "Date and time when the record was last modified.",
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "example": "2025-09-14T21:23:42Z"
+     },
+     "createdByUser": {
+      "type": "object",
+      "description": "The user who created the object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "436"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JohnDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/436"
+       }
+      }
+     },
+     "modifiedByUser": {
+      "type": "object",
+      "description": "The user who last modified this object.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the user.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "3086"
+       },
+       "id": {
+        "type": "string",
+        "description": "User login ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "JaneDoe"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/3086"
+       }
+      }
+     }
+    }
+   },
    "dimension-ref": {
     "type": "object",
     "properties": {
@@ -19478,78 +19644,35 @@
         "example": "/objects/construction/work-order/18"
        }
       }
-     }
-    }
-   },
-   "audit.s2": {
-    "type": "object",
-    "readOnly": true,
-    "properties": {
-     "createdDateTime": {
-      "description": "Date and time when the record was created.",
-      "type": "string",
-      "format": "date-time",
-      "readOnly": true,
-      "example": "2025-05-16T15:34:35Z"
      },
-     "modifiedDateTime": {
-      "description": "Date and time when the record was last modified.",
-      "type": "string",
-      "format": "date-time",
-      "readOnly": true,
-      "example": "2025-09-14T21:23:42Z"
-     },
-     "createdByUser": {
+     "propertyLease": {
+      "description": "Property lease associated with the dimension.",
       "type": "object",
-      "description": "The user who created the object.",
-      "readOnly": true,
       "properties": {
        "key": {
         "type": "string",
-        "description": "System-assigned key for the user.",
-        "readOnly": true,
-        "nullable": true,
-        "example": "436"
+        "description": "System-assigned key for the property lease.",
+        "example": "1",
+        "nullable": true
        },
        "id": {
         "type": "string",
-        "description": "User login ID.",
+        "description": "Unique identifier for the property lease.",
+        "example": "PL-01",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the property lease.",
         "readOnly": true,
-        "nullable": true,
-        "example": "JohnDoe"
+        "example": "Lease for 123 Main St.",
+        "nullable": true
        },
        "href": {
         "type": "string",
+        "description": "URL endpoint for the property lease.",
         "readOnly": true,
-        "description": "URL endpoint for the user.",
-        "example": "/objects/company-config/user/436"
-       }
-      }
-     },
-     "modifiedByUser": {
-      "type": "object",
-      "description": "The user who last modified this object.",
-      "readOnly": true,
-      "properties": {
-       "key": {
-        "type": "string",
-        "description": "System-assigned key for the user.",
-        "readOnly": true,
-        "nullable": true,
-        "example": "3086"
-       },
-       "id": {
-        "type": "string",
-        "description": "User login ID.",
-        "readOnly": true,
-        "nullable": true,
-        "example": "JaneDoe"
-       },
-       "href": {
-        "type": "string",
-        "readOnly": true,
-        "description": "URL endpoint for the user.",
-        "example": "/objects/company-config/user/3086"
+        "example": "/objects/construction/property-lease/1"
        }
       }
      }

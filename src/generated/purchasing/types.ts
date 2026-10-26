@@ -69,7 +69,7 @@ export interface paths {
          *     When creating a new document, the field `state` must be set to one of these values: pending, draft, or submitted.
          *     If no value is specified for the `state` field, it defaults to pending.
          *
-         *     To access a list of available transaction definitions, use the list operation of the [transaction definition](purchasing.txn-definition) object. For example, to create a new purchasing document that uses the Purchase Requisition transaction definition as a template, specify `Purchase Requisition` for the `documentName` in the request URL.
+         *     To access a list of available transaction definitions, use the list operation of the [transaction definition](/intacct/apis/intacct/1/intacct-openapi/groups/purchasing/groups/transaction-definitions/tags/purchasing_transaction-definitions) object. For example, to create a new purchasing document that uses the Purchase Requisition transaction definition as a template, specify `Purchase Requisition` for the `documentName` in the request URL.
          */
         post: operations["create-purchasing-named-document"];
         delete?: never;
@@ -1564,7 +1564,7 @@ export interface paths {
          * Create a recurring document
          * @description Creates a new recurring document. To create a new recurring document, specify the transaction definition that is the template for the new document as `documentName` in the request URL.
          *
-         *     To access a list of available transaction definitions, use the list operation of the [transaction definition](purchasing.txn-definition) object. For example, to create a new recurring document that uses the Purchase Requisition transaction definition as a template, specify `Purchase Requisition` for the `documentName` in the request URL.
+         *     To access a list of available transaction definitions, use the list operation of the [transaction definition](/intacct/apis/intacct/1/intacct-openapi/groups/purchasing/groups/transaction-definitions/tags/purchasing_transaction-definitions) object. For example, to create a new recurring document that uses the Purchase Requisition transaction definition as a template, specify `Purchase Requisition` for the `documentName` in the request URL.
          */
         post: operations["create-purchasing-named-recurring-document"];
         delete?: never;
@@ -1625,11 +1625,7 @@ export interface paths {
          */
         get: operations["list-purchasing-recurring-document-line"];
         put?: never;
-        /**
-         * Create a recurring document line
-         * @description Creates a new recurring document line.
-         */
-        post: operations["create-purchasing-recurring-document-line"];
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -2095,6 +2091,18 @@ export interface components {
                  */
                 id?: string;
                 /**
+                 * @description UI category of the transaction definition associated with this purchasing document.
+                 * @example invoice
+                 * @enum {string}
+                 */
+                readonly uiCategory?: "quote" | "order" | "shipping" | "invoice" | "return";
+                /**
+                 * @description Template type of the transaction definition associated with the purchasing document.
+                 * @example invoice
+                 * @enum {string}
+                 */
+                readonly templateClass?: "quote" | "order" | "list" | "invoice" | "adjustment" | "other";
+                /**
                  * @description URL endpoint for the transaction definition.
                  * @example /objects/purchasing/txn-definition/11
                  */
@@ -2226,28 +2234,31 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
             status?: components["schemas"]["status"];
             /**
-             * @description Specifies whether the transaction is a regular invoice (invoice) or an electronic invoice (eInvoice).
+             * @description Specifies whether the transaction is a regular invoice (invoice), an electronic invoice (eInvoice), or an invoice reported to the tax agency because it is not eligible for e-invoicing (eReporting).
+             *
+             *     The eInvoice value is retained for backward compatibility. PO E-Invoices cannot be created directly.
              * @example invoice
              * @enum {string|null}
              */
-            readonly invoiceType?: null | "invoice" | "eInvoice";
+            invoiceType?: null | "invoice" | "eInvoice" | "eReporting";
             /**
              * @description Invoice mode for France e-invoicing workflows; applicable only for France e-invoice enabled entities.
-             *     Specifies the invoice mode based on invoiceType. For eInvoice, specify b1 or s1.
              *     Supported values:
              *
              *
              *
              *
              *
-             *       - `b1` - Submission of an e-invoice for goods.
-             *       - `s1` - Submission of an e-invoice for services.
+             *       - `b1` - Submission of an e-invoice for goods. Retained for backward compatibility.
+             *       - `s1` - Submission of an e-invoice for services. Retained for backward compatibility.
+             *       - `tlb1` - E-Reporting mode for goods.
+             *       - `tps1` - E-Reporting mode for services.
              *
              *     Leave this field blank when `invoiceType` is `invoice`.
-             * @example b1
+             * @example tlb1
              * @enum {string|null}
              */
-            readonly invoiceMode?: null | "b1" | "s1";
+            invoiceMode?: null | "b1" | "s1" | "tlb1" | "tps1";
             /**
              * @description Current status of an e-invoice; applicable only when selected invoice type is eInvoice.
              *
@@ -2643,12 +2654,26 @@ export interface components {
                  */
                 readonly href?: string | null;
             };
+            /**
+             * @description Specifies whether the purchasing document uses simple retainage or advanced (step) retainage.
+             * @example simple
+             * @enum {string}
+             */
+            retainageHoldMethod?: null | "simple" | "advanced";
+            /**
+             * @description For purchasing document using advanced (step) retainage, specifies whether the calculation method is Retainage held, Amount invoiced, or Percent of contract.
+             * @example amountInvoiced
+             * @enum {string}
+             */
+            advancedRetainageCalculationMethod?: null | "retainageHeld" | "amountInvoiced" | "percentOfContract";
             /** @description Lines of the purchasing document. */
             lines?: components["schemas"]["objects.purchasing.document-line"][];
             /** @description Lines of the purchasing document subtotal. */
             subtotals?: components["schemas"]["objects.purchasing.document-subtotal"][];
             /** @description Lines of the purchasing document history. */
             history?: components["schemas"]["objects.purchasing.document-history"][];
+            /** @description Advanced retainage steps for the purchasing document. (Construction subscription). */
+            advancedRetainageSteps?: components["schemas"]["objects.construction.advanced-retainage-step"][];
         };
         /** @description Metadata for the response. */
         metadata: {
@@ -2906,7 +2931,14 @@ export interface components {
              * @example 22.10
              */
             readonly priceToleranceVariance?: string;
-            audit?: components["schemas"]["audit.s1"];
+            audit?: components["schemas"]["audit.s1"] & {
+                /**
+                 * Format: date-time
+                 * @description Date and time when the document line was created.
+                 * @example 2026-01-08T11:28:12Z
+                 */
+                readonly createdDateTime?: string;
+            };
             status?: components["schemas"]["status"];
             /**
              * @description Cost method associated with the document line item.
@@ -2989,6 +3021,11 @@ export interface components {
              * @example true
              */
             readonly isBilled?: boolean;
+            /**
+             * @description Tax subtotal type to apply to the line when line-level simple tax is enabled. Specify the description of a tax subtotal configured for the document type. If omitted, the default configured tax subtotal is used.
+             * @example Purchase Tax
+             */
+            taxType?: string;
             /**
              * Format: decimal-precision-3
              * @description Tax rate for the document line item.
@@ -3204,7 +3241,7 @@ export interface components {
              * @example approved
              * @enum {string}
              */
-            readonly approvalState?: null | "submitted" | "pendingApproval" | "approved" | "declined";
+            readonly approvalState?: null | "submitted" | "partiallyApproved" | "approved" | "declined";
             /** @description Transaction allocation template for the line item, which distributes the amount across specified dimensions. */
             allocation?: {
                 /**
@@ -3299,6 +3336,12 @@ export interface components {
                  */
                 readonly extendedBasePriceNetAmount?: string | null;
             };
+            /**
+             * @description Specifies whether the purchasing document line uses simple retainage or advanced (step) retainage.
+             * @example simple
+             * @enum {string}
+             */
+            retainageHoldMethod?: null | "simple" | "advanced";
             /** @description Reference to the source transaction when creating a change order. (Construction subscription) */
             relatedDocument?: {
                 /**
@@ -6964,12 +7007,6 @@ export interface components {
                 readonly href?: string;
             };
         };
-        "purchasing-recurring-document-lineRequiredProperties": {
-            /** @example { "item": { "id": "1" }, "warehouse": { "id": "1" }, "location": { "id": "1" }} */
-            dimensions?: unknown;
-            /** @example 44 */
-            recurringDocumentHeader?: unknown;
-        };
         /** @description Details of subtotals, taxes, discounts, charges, and more for recurring transactions. */
         "objects.purchasing.recurring-document-subtotal": {
             /**
@@ -7469,6 +7506,146 @@ export interface components {
              */
             signedOnDate?: string;
         };
+        /** @description Advanced retainage step defines a single step in a multi-step advanced retainage schedule applied to a purchasing document or project contract. */
+        "objects.construction.advanced-retainage-step": {
+            /**
+             * @description Unique key for the advanced retainage step.
+             * @example 23
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the advanced retainage step. This value is the same as the `key` for this object.
+             * @example 23
+             */
+            readonly id?: string;
+            /**
+             * @description URL endpoint for the advanced retainage step.
+             * @example /objects/construction/advanced-retainage-step/23
+             */
+            readonly href?: string;
+            /** @description For `documentHeader` record types, purchasing document associated with the advanced retainage step. Can be null if the `recordType` is `projectContract`. */
+            purchasingDocument?: {
+                /**
+                 * @description Unique key for the purchasing document.
+                 * @example 101
+                 */
+                key?: string;
+                /**
+                 * @description ID for the purchasing document.
+                 * @example PO-001
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the purchasing document.
+                 * @example /objects/purchasing/document/101
+                 */
+                readonly href?: string;
+            };
+            /** @description For `projectContract` record types, project contract associated with the advanced retainage step. Can be null if the `recordType` is `documentHeader`. */
+            projectContract?: {
+                /**
+                 * @description Unique key for the project contract.
+                 * @example 202
+                 */
+                key?: string;
+                /**
+                 * @description ID for the project contract.
+                 * @example PC-001
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the project contract.
+                 * @example /objects/construction/project-contract/202
+                 */
+                readonly href?: string;
+            };
+            /**
+             * @description Type of record for the retainage step.
+             * @example documentHeader
+             * @enum {string}
+             */
+            recordType?: "documentHeader" | "projectContract";
+            /**
+             * @description Line number (step number) for the advanced retainage step.
+             * @example 2
+             */
+            readonly lineNumber?: number;
+            /**
+             * Format: decimal-precision-2
+             * @description Retainage percentage for the advanced retainage step.
+             * @example 10.5
+             */
+            retainagePercentage?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Amount of retainage held.
+             * @example 5000.00
+             */
+            retainageHeld?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Amount of retainage invoiced.
+             * @example 2500.00
+             */
+            amountInvoiced?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Percent of contract for the advanced retainage step.
+             * @example 25.0
+             */
+            percentOfContract?: string;
+            audit?: components["schemas"]["audit.s2"];
+        };
+        "audit.s2": {
+            /**
+             * Format: date-time
+             * @description Date and time when the record was created.
+             * @example 2025-05-16T15:34:35Z
+             */
+            readonly createdDateTime?: string;
+            /**
+             * Format: date-time
+             * @description Date and time when the record was last modified.
+             * @example 2025-09-14T21:23:42Z
+             */
+            readonly modifiedDateTime?: string;
+            /** @description The user who created the object. */
+            readonly createdByUser?: {
+                /**
+                 * @description System-assigned key for the user.
+                 * @example 436
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description User login ID.
+                 * @example JohnDoe
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the user.
+                 * @example /objects/company-config/user/436
+                 */
+                readonly href?: string;
+            };
+            /** @description The user who last modified this object. */
+            readonly modifiedByUser?: {
+                /**
+                 * @description System-assigned key for the user.
+                 * @example 3086
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description User login ID.
+                 * @example JaneDoe
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the user.
+                 * @example /objects/company-config/user/3086
+                 */
+                readonly href?: string;
+            };
+        };
         "dimension-ref": {
             location?: {
                 /**
@@ -7823,53 +8000,26 @@ export interface components {
                  */
                 readonly href?: string;
             };
-        };
-        "audit.s2": {
-            /**
-             * Format: date-time
-             * @description Date and time when the record was created.
-             * @example 2025-05-16T15:34:35Z
-             */
-            readonly createdDateTime?: string;
-            /**
-             * Format: date-time
-             * @description Date and time when the record was last modified.
-             * @example 2025-09-14T21:23:42Z
-             */
-            readonly modifiedDateTime?: string;
-            /** @description The user who created the object. */
-            readonly createdByUser?: {
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
                 /**
-                 * @description System-assigned key for the user.
-                 * @example 436
+                 * @description System-assigned key for the property lease.
+                 * @example 1
                  */
-                readonly key?: string | null;
+                key?: string | null;
                 /**
-                 * @description User login ID.
-                 * @example JohnDoe
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
                  */
-                readonly id?: string | null;
+                id?: string | null;
                 /**
-                 * @description URL endpoint for the user.
-                 * @example /objects/company-config/user/436
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
                  */
-                readonly href?: string;
-            };
-            /** @description The user who last modified this object. */
-            readonly modifiedByUser?: {
+                readonly name?: string | null;
                 /**
-                 * @description System-assigned key for the user.
-                 * @example 3086
-                 */
-                readonly key?: string | null;
-                /**
-                 * @description User login ID.
-                 * @example JaneDoe
-                 */
-                readonly id?: string | null;
-                /**
-                 * @description URL endpoint for the user.
-                 * @example /objects/company-config/user/3086
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
                  */
                 readonly href?: string;
             };
@@ -11209,34 +11359,6 @@ export interface operations {
                     "application/json": {
                         "ia::result"?: components["schemas"]["object-reference"][];
                         "ia::meta"?: components["schemas"]["metadata-pages"];
-                    };
-                };
-            };
-            400: components["responses"]["400error"];
-        };
-    };
-    "create-purchasing-recurring-document-line": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["objects.purchasing.recurring-document-line"] & components["schemas"]["purchasing-recurring-document-lineRequiredProperties"];
-            };
-        };
-        responses: {
-            /** @description Created */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        "ia::result"?: components["schemas"]["object-reference"];
-                        "ia::meta"?: components["schemas"]["metadata"];
                     };
                 };
             };

@@ -9,7 +9,7 @@ export interface paths {
         };
         /**
          * List account labels
-         * @description Returns up to 100 object references from the collection with a key, ID, and link for each label. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each account label. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-payable-account-label"];
         put?: never;
@@ -31,7 +31,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned key for the account label.
-                 * @example 99
+                 * @example 8
                  */
                 key: string;
             };
@@ -292,7 +292,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned key for the adjustment summary.
-                 * @example 99
+                 * @example 13
                  */
                 key: string;
             };
@@ -320,7 +320,8 @@ export interface paths {
         };
         /**
          * List advances
-         * @description Returns a collection with a key, ID, and link for each advance. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each advance.
+         *     This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-payable-advance"];
         put?: never;
@@ -342,7 +343,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the advance.
-                 * @example 99
+                 * @example 20
                  */
                 key: string;
             };
@@ -357,14 +358,16 @@ export interface paths {
         post?: never;
         /**
          * Delete an advance
-         * @description Deletes an advance. Only draft advances can be deleted.
+         * @description Deletes an advance.
+         *     Only draft advances can be deleted.
          */
         delete: operations["delete-accounts-payable-advance-key"];
         options?: never;
         head?: never;
         /**
          * Update an advance
-         * @description Updates an existing advance by setting field values. Any fields not provided remain unchanged. You can only update advances in a draft state or advances that were declined during the approval process.
+         * @description Updates an existing advance by setting field values. Any fields not provided remain unchanged.
+         *     You can only update advances in a draft state or advances that were declined during the approval process.
          */
         patch: operations["update-accounts-payable-advance-key"];
         trace?: never;
@@ -422,11 +425,16 @@ export interface paths {
         };
         /**
          * List advance lines
-         * @description Returns a collection with a key, ID, and link for each advance line. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each advance line.
+         *     This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-payable-advance-line"];
         put?: never;
-        post?: never;
+        /**
+         * Create an advance line
+         * @description Creates a new advance line.
+         */
+        post: operations["create-accounts-payable-advance-line"];
         delete?: never;
         options?: never;
         head?: never;
@@ -440,7 +448,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the advance line.
-                 * @example 99
+                 * @example 39
                  */
                 key: string;
             };
@@ -452,23 +460,19 @@ export interface paths {
          */
         get: operations["get-accounts-payable-advance-line-key"];
         put?: never;
+        post?: never;
         /**
-         * Creates advance lines
-         * @description Creates new advance lines
-         */
-        post: operations["create-accounts-payable-advance-line"];
-        /**
-         * Delete advance lines
-         * @description Delete advance lines
+         * Delete an advance line
+         * @description Deletes an advance line.
          */
         delete: operations["delete-accounts-payable-advance-line"];
         options?: never;
         head?: never;
         /**
-         * Update advance lines
-         * @description Updates advance lines
+         * Update an advance line
+         * @description Updates an existing advance line by setting field values. Any fields not provided remain unchanged.
          */
-        patch: operations["update-accounts-payable-advance-line"];
+        patch: operations["update-accounts-payable-advance-line-key"];
         trace?: never;
     };
     "/objects/accounts-payable/bill": {
@@ -524,7 +528,7 @@ export interface paths {
         head?: never;
         /**
          * Update a bill
-         * @description Updates an existing bill by setting field values. Any fields not provided remain unchanged. Several factors, such as a bill's workflow state, determine whether a bill can be updated and, if so, which fields can be edited. For more information, see [Edit bills](https://www.intacct.com/ia/docs/en_US/help_action/Accounts_Payable/Bills/Edit_bills/ab-TOC-edit-bills.htm?tocpath=Applications%7CAccounts%20Payable%7CBills%7CEdit%20bills%7C_____0) in the Sage Intacct Help Center.
+         * @description Updates an existing bill by setting field values. Any fields not provided remain unchanged. Several factors, such as a bill's workflow state, determine whether a bill can be updated and, if so, which fields can be edited. For more information, see [Edit bills](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=TOC_edit_bills) in the Sage Intacct Help Center.
          */
         patch: operations["update-accounts-payable-bill-key"];
         trace?: never;
@@ -800,7 +804,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned key for the bill summary.
-                 * @example 99
+                 * @example 98
                  */
                 key: string;
             };
@@ -886,7 +890,7 @@ export interface paths {
         };
         /**
          * List joint payees
-         * @description Returns up to 100 object references from the collection with a key, ID, and link for each joint payee. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each joint payee. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-payable-joint-payee"];
         put?: never;
@@ -901,14 +905,14 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/objects/acounts-payable/joint-payee/{key}": {
+    "/objects/accounts-payable/joint-payee/{key}": {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 /**
                  * @description System-assigned unique key for a joint payee.
-                 * @example 99
+                 * @example 1
                  */
                 key: string;
             };
@@ -923,14 +927,14 @@ export interface paths {
         post?: never;
         /**
          * Delete a joint payee
-         * @description Deletes a joint payee. A joint payee object cannot be deleted if it has been used on an AP payment.
+         * @description Deletes a joint payee. A joint payee cannot be deleted if it has been used on an AP payment.
          */
         delete: operations["delete-accounts-payable-joint-payee-key"];
         options?: never;
         head?: never;
         /**
          * Update a joint payee
-         * @description Updates an existing joint payee by setting field values. Any fields not provided remain unchanged. The `printAs` value cannot be updated if it has been used on an AP Payment.
+         * @description Updates an existing joint payee by setting field values. Any fields not provided remain unchanged. The `printAs` value cannot be updated if it has been used on an AP payment.
          */
         patch: operations["update-accounts-payable-joint-payee"];
         trace?: never;
@@ -1228,7 +1232,7 @@ export interface paths {
         put?: never;
         /**
          * Create a recurring bill
-         * @description Creates a new recurring bill. Recurring bills automate the billing process for regularly-recurring, fixed-amount bills, such as monthly rent. Sage Intacct supports non-standard recurring transaction schedules and automatically enters and posts bills based on the defined schedule. The transaction and GL posting date for an automatically generated bill are the same, but you can change either.
+         * @description Creates a new recurring bill. Sage Intacct supports non-standard recurring transaction schedules and automatically enters and posts bills based on the defined schedule. The transaction and GL posting date for an automatically generated bill are the same, but you can change either.
          *
          *     If your organization uses multiple base currencies, create recurring bills at the entity level.
          *
@@ -1263,7 +1267,7 @@ export interface paths {
         post?: never;
         /**
          * Delete a recurring bill
-         * @description Deletes a recurring bill specified by the given key.
+         * @description Deletes a recurring bill.
          */
         delete: operations["delete-accounts-payable-recurring-bill-key"];
         options?: never;
@@ -1320,7 +1324,7 @@ export interface paths {
         put?: never;
         post?: never;
         /**
-         * Delete recurring bill lines
+         * Delete a recurring bill line
          * @description Deletes a recurring bill line.
          */
         delete: operations["delete-accounts-payable-recurring-bill-line"];
@@ -1328,7 +1332,7 @@ export interface paths {
         head?: never;
         /**
          * Update a recurring bill line
-         * @description Updates a recurring bill line.
+         * @description Updates an existing recurring bill line by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-accounts-payable-recurring-bill-line"];
         trace?: never;
@@ -1342,7 +1346,7 @@ export interface paths {
         };
         /**
          * List recurring bill tax entries
-         * @description Returns a collection with a key, ID, and link for each recurring bill tax entry. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find accounts that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each recurring bill tax entry. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-payable-recurring-bill-tax-entry"];
         put?: never;
@@ -1410,7 +1414,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the summary.
-                 * @example 99
+                 * @example 36
                  */
                 key: string;
             };
@@ -1448,7 +1452,7 @@ export interface paths {
         };
         /**
          * List terms
-         * @description Returns up to 100 object references from the collection with a key, ID, and link for each term. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each term. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-payable-term"];
         put?: never;
@@ -1469,8 +1473,8 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the term.
-                 * @example 99
+                 * @description System-assigned unique key for the term.
+                 * @example 27
                  */
                 key: string;
             };
@@ -1571,7 +1575,7 @@ export interface paths {
         put?: never;
         /**
          * Create a vendor
-         * @description Creates a new vendor. When you add a new vendor, you can provide key descriptive information about that vendor and establish how you want to pay them.
+         * @description Creates a new vendor. When adding a new vendor, you can provide key descriptive information about that vendor and establish how you want to pay them.
          */
         post: operations["create-accounts-payable-vendor"];
         delete?: never;
@@ -1673,7 +1677,7 @@ export interface paths {
         put?: never;
         /**
          * Create a vendor account number
-         * @description Creates a new vendor account number. Associate an entity's location with a vendor and assign an account number for that vendor and entity location pair.
+         * @description Creates a new vendor account number.
          */
         post: operations["create-accounts-payable-vendor-account-number"];
         delete?: never;
@@ -1706,14 +1710,14 @@ export interface paths {
          * Delete a vendor account number
          * @description Deletes a vendor account number.
          */
-        delete: operations["delete-accounts-payable-vendor-account-number"];
+        delete: operations["delete-accounts-payable-vendor-account-number-key"];
         options?: never;
         head?: never;
         /**
          * Update a vendor account number
          * @description Updates an existing vendor account number by setting field values. Any fields not provided remain unchanged.
          */
-        patch: operations["update-accounts-payable-vendor-account-number"];
+        patch: operations["update-accounts-payable-vendor-account-number-key"];
         trace?: never;
     };
     "/objects/accounts-payable/vendor-bank-file-setup": {
@@ -1724,8 +1728,8 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * List vendor bank file setup objects
-         * @description Returns a collection with a key, ID, and link for each vendor bank file setup object. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * List vendor bank file setups
+         * @description Returns a collection with a key, ID, and link for each vendor bank file setup. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-payable-vendor-bank-file-setup"];
         put?: never;
@@ -1742,7 +1746,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the vendor bank file setup object.
+                 * @description System-assigned unique key for the vendor bank file setup.
                  * @example 99
                  */
                 key: string;
@@ -1750,8 +1754,8 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get a vendor bank file setup object
-         * @description Returns detailed information for a specified vendor bank file setup object.
+         * Get a vendor bank file setup
+         * @description Returns detailed information for a specified vendor bank file setup.
          */
         get: operations["get-accounts-payable-vendor-bank-file-setup-key"];
         put?: never;
@@ -1887,7 +1891,7 @@ export interface paths {
         };
         /**
          * List vendor payment providers
-         * @description Returns up to 100 object references from the collection with a key, ID, and link for each vendor payment provider. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each vendor payment provider. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-payable-vendor-payment-provider"];
         put?: never;
@@ -1908,7 +1912,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the vendor payment provider.
+                 * @description System-assigned unique key for the vendor payment provider.
                  * @example 1
                  */
                 key: string;
@@ -2112,7 +2116,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System assigned unique key for the vendor group.
+                 * @description System-assigned unique key for the vendor group.
                  * @example 16
                  */
                 key: string;
@@ -2257,12 +2261,12 @@ export interface components {
         /** @description AP account labels provide more descriptive names for accounts. */
         "objects.accounts-payable.account-label": {
             /**
-             * @description System-assigned key for the AP account label.
+             * @description System-assigned unique key for the AP account label.
              * @example 12
              */
             readonly key?: string;
             /**
-             * @description Name or other unique identifier for the account label.
+             * @description Unique ID for the account label.
              * @example Benefits: Health
              */
             id?: string;
@@ -2272,39 +2276,51 @@ export interface components {
              */
             description?: string;
             /**
-             * @description URL for the AP account label.
+             * @description URL endpoint for the AP account label.
              * @example /objects/accounts-payable/account-label/12
              */
             readonly href?: string;
             status?: components["schemas"]["status"];
-            /** @description The general ledger account to assign to the label. This is typically a revenue account. */
+            /**
+             * @description GL account associated with the account label.
+             *     This account is typically a revenue account.
+             */
             glAccount?: {
                 /**
-                 * @description System-assigned key for the general ledger account.
+                 * @description Unique key for the GL account.
                  * @example 19
                  */
                 key?: string;
                 /**
-                 * @description General ledger account number.
+                 * @description ID for the GL account.
                  * @example 1210--Equipment
                  */
                 id?: string;
-                /** @example /objects/general-ledger/account/19 */
+                /**
+                 * @description URL endpoint for the GL account.
+                 * @example /objects/general-ledger/account/19
+                 */
                 readonly href?: string;
             };
-            /** @description The general ledger account where the system posts offsets to items posted to this label. This is typically a receivables account. */
+            /**
+             * @description Offset GL account associated with the account label.
+             *     This account is typically a receivables account.
+             */
             offsetGLAccount?: {
                 /**
-                 * @description System-assigned key for the offset general ledger account.
+                 * @description Unique key for the offset GL account.
                  * @example 2
                  */
                 key?: string;
                 /**
-                 * @description Account number for the offset general ledger account.
+                 * @description ID for the offset GL account.
                  * @example 1215--EquipmentOffset
                  */
                 id?: string;
-                /** @example /objects/general-ledger/account/2 */
+                /**
+                 * @description URL endpoint for the offset GL account.
+                 * @example /objects/general-ledger/account/2
+                 */
                 readonly href?: string;
             };
             /** @description Form 1099 information. */
@@ -2835,10 +2851,18 @@ export interface components {
              */
             readonly lineNumber?: string;
             /**
-             * @description Includes the line item amount on the vendor 1099 form when set to `true`.
-             * @example false
+             * @description Controls and reports Form 1099 treatment for the line item.
+             *
+             *     In create and update requests:
+             *     - Set this property to `true` to include the line item in 1099 reporting. The effective form type and box are determined from `form1099` and the applicable vendor or account label configuration.
+             *     - Set this property to `false` to exclude the line item from 1099 reporting and clear its associated form type and box.
+             *     - Set this property to `null` to let the system determine 1099 treatment from the applicable configuration.
+             *     - If omitted from an update request, the existing value remains unchanged.
+             *
+             *     In responses, this property contains the persisted value: `null`, `false`, or the effective form type and box in the format `FORMTYPE@BOX` (for example, `NEC@1A`). When a form/box value is returned, its components are also available in `form1099.type` and `form1099.box`.
+             * @example NEC@1A
              */
-            hasForm1099?: string;
+            hasForm1099?: string | null;
             /** @description 1099 form details for the line item. */
             form1099?: {
                 /**
@@ -3130,27 +3154,30 @@ export interface components {
         /** @description Adjustment summaries are collections of the same type of transactions, grouped together for processing. */
         "objects.accounts-payable.adjustment-summary": {
             /**
-             * @description System-assigned key for the adjustment summary.
+             * @description System-assigned unique key for the adjustment summary.
              * @example 1
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the adjustment summary. This value is the same as the `key` for this object.
+             * @description Unique ID for the adjustment summary. This value is the same as the `key` for this object.
              * @example 1
              */
             readonly id?: string;
             /**
-             * @description URL endpoint of the adjustment summary.
+             * @description URL endpoint for the adjustment summary.
              * @example /objects/accounts-payable/adjustment-summary/1
              */
             readonly href?: string;
             /**
-             * @description Name of the adjustment summary. This name is used to identify the summary throughout the Accounts Payable application.
+             * @description Name of the adjustment summary.
+             *     This name is used to identify the summary throughout the Accounts Payable application.
              * @example Adjustment Batch Jan 2021
              */
             name?: string;
             /**
-             * @description Indicates how the summary was created. If set to `manual`, the summary was created by a user. If set to `system`, the summary was automatically created by Intacct based on the summary frequency.
+             * @description Indicates how the summary was created.
+             *     If set to `manual`, the summary was created by a user.
+             *     If set to `system`, the summary was automatically created by Sage Intacct based on the summary frequency.
              * @default manual
              * @example manual
              * @enum {string}
@@ -3171,60 +3198,62 @@ export interface components {
             /** @description Parent adjustment summary. */
             parent?: {
                 /**
-                 * @description System-assigned key for the parent adjustment summary.
+                 * @description Unique key for the parent summary.
                  * @example 22
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the parent adjustment summary. This value is the same as the `key` for this object.
+                 * @description ID for the parent summary.
                  * @example 22
                  */
                 id?: string | null;
                 /**
-                 * @description URL endpoint of the adjustment summary.
+                 * @description URL endpoint for the parent summary.
                  * @example /objects/accounts-payable/summary/22
                  */
                 readonly href?: string;
             };
             /**
-             * @description Specifies whether to allow posting to the general ledger (GL).
+             * @description Indicates whether the adjustment summary is prevented from posting to the General Ledger (GL).
              * @default false
              * @example false
              */
             readonly preventGLPosting?: boolean;
-            /** @description Bank account ID. */
+            /** @description Bank account associated with the adjustment summary. */
             bankAccountId?: {
                 /**
-                 * @description System-assigned key for the bank account.
-                 * @example 1
+                 * @description Unique key for the bank account.
+                 * @example 14
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the bank account. This value is the same as the `key` for this object.
-                 * @example 1
+                 * @description ID for the bank account.
+                 * @example 14
                  */
                 id?: string | null;
                 /**
-                 * @description URL endpoint of the bank account.
-                 * @example /objects/cash-management/bank-account/23
+                 * @description URL endpoint for the bank account.
+                 * @example /objects/cash-management/bank-account/14
                  */
                 readonly href?: string;
             };
             /**
              * Format: date
-             * @description The date that the items in the adjustment summary should post to the general ledger.
-             * @example 2022-08-02
+             * @description The date that the items in the adjustment summary should post to the General Ledger.
+             * @example 2026-08-02
              */
             glPostingDate?: string;
             /**
-             * @description State of the adjustment summary, which can be `open` or `closed`. An open adjustment summary can have items added to it.
+             * @description State of the adjustment summary, which can be `open` or `closed`.
+             *     An open adjustment summary can have items added to it.
              * @default open
              * @example open
              * @enum {string}
              */
             state?: "open" | "closed";
             /**
-             * @description This field is set to `true` only for manual and quick payment summaries. It is set to `false` for transactions of the type `bill/adjustment`.
+             * @description Indicates whether the summary is a quick payment summary.
+             *     This field is set to `true` only for manual and quick payment summaries. It is set to `false` for transactions of type `bill/adjustment`.
              * @default false
              * @example false
              */
@@ -3239,12 +3268,13 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the AP advance. This value is the same as the `key` for this object.
+             * @description Unique ID for the AP advance. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
             /**
-             * @description Record type to identify the type of transaction. AP advances have a record type of `pa`.
+             * @description Record type to identify the type of transaction.
+             *     AP advances have a record type of `pa`.
              * @example pa
              */
             readonly recordType?: string;
@@ -3254,13 +3284,15 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Payment method for the AP advance. A payment method for AP advances defines how funds are transferred to a vendor, which determines the approval process and workflow steps needed to complete the advance payment.
+             * @description Payment method for the AP advance.
+             *     A payment method for AP advances defines how funds are transferred to a vendor, which determines the approval process and workflow steps needed to complete the advance payment.
              * @example printedCheck
              * @enum {string}
              */
             paymentMethod?: "printedCheck" | "creditCard" | "eft" | "cash" | "ach";
             /**
-             * @description A number, such as a purchase order or account number, useful for searches or reports. This number appears on the GL Details report and is printed on checks and vendor stubs.
+             * @description A number, such as a purchase order or account number, useful for searches or reports.
+             *     This number appears on the GL Details report and is printed on checks and vendor stubs.
              * @example INV-902852
              */
             referenceNumber?: string | null;
@@ -3270,24 +3302,28 @@ export interface components {
              */
             description?: string | null;
             /**
-             * @description If document sequencing is enabled, specifies the auto-generated document sequence number for the advance. If document sequencing is not enabled, this field is null.
+             * @description For document sequencing-enabled companies, the auto-generated document sequence number for the advance.
+             *     For companies without document sequencing, this field is null.
              * @example Advance-001
              */
             readonly advanceNumber?: string | null;
-            /** @description Summary details for this advance. Summaries are collections of the same types of transactions grouped together for processing. */
+            /**
+             * @description Summary details for this advance.
+             *     Summaries are collections of the same types of transactions grouped together for processing.
+             */
             readonly advanceSummary?: {
                 /**
-                 * @description System-assigned key for the summary.
+                 * @description Unique key for the summary.
                  * @example 399
                  */
                 readonly key?: string;
                 /**
-                 * @description Identifier for the summary.
+                 * @description ID for the summary.
                  * @example 399
                  */
                 readonly id?: string;
                 /**
-                 * @description URL endpoint of the adjustment summary.
+                 * @description URL endpoint for the summary.
                  * @example /objects/accounts-payable/summary/399
                  */
                 readonly href?: string;
@@ -3315,7 +3351,7 @@ export interface components {
             /**
              * Format: date
              * @description Date the advance payment was made.
-             * @example 2021-01-23
+             * @example 2026-01-23
              */
             advanceDate?: string;
             /** @description Payment information for the AP advance. */
@@ -3323,13 +3359,13 @@ export interface components {
                 /**
                  * Format: date
                  * @description Date the AP advance was paid.
-                 * @example 2021-01-23
+                 * @example 2026-01-23
                  */
                 readonly paidDate?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total amount paid for the AP advance.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalPaid?: string;
                 /**
@@ -3360,22 +3396,21 @@ export interface components {
             /**
              * Format: decimal-precision-2
              * @description Total transaction amount due for the AP advance.
-             * @example 10
+             * @example 10.00
              */
             readonly txnTotalDue?: string;
             location?: components["schemas"]["location-ref"];
             /**
              * Format: date
              * @description Due date for the AP advance.
-             * @example 2021-01-23
+             * @example 2026-01-23
              */
             dueDate?: string;
             /** @description Financial account from which the reconciliation is done. */
             financialEntity?: {
                 /**
                  * @deprecated
-                 * @description This field has been deprecated. Use the `entityId` field instead.
-                 * @example BOA
+                 * @description Deprecated. Use the `entityId` field instead.
                  */
                 id?: string;
                 /**
@@ -3406,11 +3441,13 @@ export interface components {
                  */
                 readonly baseCurrency?: string;
             };
+            /** @description Reconciliation information for the AP advance. */
             reconciliationGroup?: {
                 /**
                  * Format: date
-                 * @description The date when reconciliation is completed. This value is automatically populated.
-                 * @example 2021-01-23
+                 * @description The date when reconciliation is completed.
+                 *     This value is automatically populated.
+                 * @example 2026-01-23
                  */
                 clearingDate?: string | null;
                 /**
@@ -3422,7 +3459,8 @@ export interface components {
                 cleared?: "true" | "false" | "matched";
             };
             /**
-             * @description Indicates whether the advance record is created by the system. A value of `true` means it is system-generated and not based on user input.
+             * @description Indicates whether the AP advance is system-generated.
+             *     A value of `true` means it is system-generated and not based on user input.
              * @default false
              * @example true
              * @enum {string}
@@ -3436,7 +3474,8 @@ export interface components {
                  */
                 baseCurrency?: string;
                 /**
-                 * @description The transaction currency to use for this advance. If this currency is different from the base currency, provide an exchange rate.
+                 * @description The transaction currency to use for this advance.
+                 *     If this currency is different from the base currency, provide an exchange rate.
                  * @example USD
                  */
                 txnCurrency?: string;
@@ -3447,8 +3486,9 @@ export interface components {
                 exchangeRate?: {
                     /**
                      * Format: date
-                     * @description Exchange rate date for this transaction. Can be the current date, the date the transaction was issued, or the date the transaction will be paid.
-                     * @example 2021-01-23
+                     * @description Exchange rate date for this transaction.
+                     *     Can be the current date, the date the transaction was issued, or the date the transaction will be paid.
+                     * @example 2026-01-23
                      */
                     date?: string | null;
                     /**
@@ -3463,24 +3503,33 @@ export interface components {
                     typeId?: string | null;
                 };
             };
-            /** @description Supporting document ID for this attachment. */
+            /** @description Supporting document attached to the AP advance. */
             attachment?: {
-                /** @example 21 */
+                /**
+                 * @description Unique key for the attachment.
+                 * @example 21
+                 */
                 key?: string | null;
-                /** @example Sales01 */
+                /**
+                 * @description ID for the attachment.
+                 * @example Sales01
+                 */
                 id?: string | null;
-                /** @example /objects/company-config/attachment/21 */
+                /**
+                 * @description URL endpoint for the attachment.
+                 * @example /objects/company-config/attachment/21
+                 */
                 readonly href?: string;
             };
             /** @description Vendor associated with the AP advance. */
             vendor?: {
                 /**
-                 * @description Unique identifier for the vendor.
+                 * @description ID for the vendor.
                  * @example Vendor_01
                  */
                 id?: string;
                 /**
-                 * @description System-assigned unique key for the vendor.
+                 * @description Unique key for the vendor.
                  * @example 15
                  */
                 key?: string;
@@ -3492,7 +3541,7 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description Total amount due to the vendor for the transaction.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalDue?: string;
                 /**
@@ -3501,13 +3550,13 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Line items of the advance. */
+            /** @description Lines for the AP advance. */
             lines?: components["schemas"]["objects.accounts-payable.advance-line"][];
             readonly audit?: components["schemas"]["audit.s1"] & {
                 /**
                  * Format: date-time
                  * @description Time of the submission.
-                 * @example 2024-01-23T11:28:12Z
+                 * @example 2026-01-23T11:28:12Z
                  */
                 readonly createdDateTime?: string;
             };
@@ -3590,12 +3639,12 @@ export interface components {
         /** @description Line items in an AP advance represent transactions captured in that advance. */
         "objects.accounts-payable.advance-line": {
             /**
-             * @description System-assigned key for the AP advance line.
+             * @description System-assigned unique key for the AP advance line.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the AP advance line. This value is the same as the `key` for this object.
+             * @description Unique ID for the AP advance line. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -3613,24 +3662,24 @@ export interface components {
             /**
              * Format: decimal-precision-2
              * @description The transaction amount for the AP advance line item in the currency specified for the transaction.
-             * @example 100
+             * @example 100.00
              */
             txnAmount?: string;
             dimensions?: components["schemas"]["dimension-ref"] & {
-                /** @description Department to assign the expense to. */
+                /** @description Department for the AP advance line. */
                 department?: {
                     /**
-                     * @description System-assigned key for the department.
+                     * @description Unique key for the department.
                      * @example 1
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the department. This value is the same as the `key` for this object.
+                     * @description ID for the department.
                      * @example 1
                      */
                     id?: string | null;
                     /**
-                     * @description The name of the department assigned to the transaction.
+                     * @description Name of the department.
                      * @example Accounting
                      */
                     readonly name?: string | null;
@@ -3640,20 +3689,20 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Location to assign the expense to. */
+                /** @description Location for the AP advance line. */
                 location?: {
                     /**
-                     * @description System-assigned key for the location.
+                     * @description Unique key for the location.
                      * @example 10
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the location.
+                     * @description ID for the location.
                      * @example 1
                      */
                     id?: string | null;
                     /**
-                     * @description The name of the location assigned to the transaction.
+                     * @description Name of the location.
                      * @example India
                      */
                     readonly name?: string | null;
@@ -3688,7 +3737,8 @@ export interface components {
                 readonly exchangeRate?: {
                     /**
                      * Format: date
-                     * @description Exchange rate date for this transaction. Can be the current date, the date the transaction was issued, or the date the transaction will be paid.
+                     * @description Exchange rate date for this transaction.
+                     *     Can be the current date, the date the transaction was issued, or the date the transaction will be paid.
                      * @example 2025-01-23
                      */
                     readonly date?: string | null;
@@ -3705,7 +3755,7 @@ export interface components {
                 };
             };
             /**
-             * @description Line number
+             * @description Line number.
              * @example 1
              */
             readonly lineNumber?: number;
@@ -3714,37 +3764,37 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description The total amount paid in the base currency for the line item.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalPaid?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description The total amount paid for the line item in the transaction currency.
-                 * @example 200
+                 * @example 200.00
                  */
                 readonly txnTotalPaid?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description The total amount selected in the base currency for the line item.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalSelected?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description The total amount selected in the transaction currency for the line item.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly txnTotalSelected?: string;
             };
             /** @description Base location for the line item. */
             baseLocation?: components["schemas"]["location-ref"] & {
                 /**
-                 * @description Base location key.
+                 * @description Unique key for the base location.
                  * @example 4
                  */
                 readonly key?: string;
                 /**
-                 * @description Location ID
+                 * @description ID for the base location.
                  * @example US
                  */
                 readonly id?: string;
@@ -3754,19 +3804,22 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Meaningful name of the account. */
+            /** @description Account label for the AP advance line. */
             accountLabel?: {
                 /**
-                 * @description System-assigned key for the account label.
+                 * @description Unique key for the account label.
                  * @example 14
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the account label.
+                 * @description ID for the account label.
                  * @example Accounting Fees
                  */
                 id?: string | null;
-                /** @example /objects/accounts-payable/account-label/14 */
+                /**
+                 * @description URL endpoint for the account label.
+                 * @example /objects/accounts-payable/account-label/14
+                 */
                 readonly href?: string;
             };
             /**
@@ -3777,13 +3830,13 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description For multi-currency companies, the amount of the line item in the bank's base currency.
-                 * @example 10
+                 * @example 10.00
                  */
                 readonly amount?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description For payment involving multi-currency, the amount of the item in the currency of the bank.
-                 * @example 10
+                 * @description For multi-currency transactions, the amount of the line item in the bank's currency.
+                 * @example 10.00
                  */
                 readonly txnAmount?: string;
                 /**
@@ -3796,7 +3849,7 @@ export interface components {
                  * @example USD
                  */
                 readonly baseCurrency?: string;
-                /** @description For two and three-way currency conversions, Bank exchange rate details used to calculate the base amount for the line item. */
+                /** @description For two and three-way currency conversions, bank exchange rate details used to calculate the base amount for the line item. */
                 readonly bankExchangeRate?: {
                     /**
                      * Format: date
@@ -3816,25 +3869,26 @@ export interface components {
                     readonly typeId?: string;
                 };
             };
-            /** @description Header level details for the AP advance's line items. */
+            /** @description Header level details for the AP advance. */
             readonly apAdvance?: {
                 /**
                  * @description URL endpoint for the AP advance.
-                 * @example /objects/apadvance/23
+                 * @example /objects/accounts-payable/advance/23
                  */
                 readonly href?: string;
                 /**
-                 * @description Unique identifier for the AP advance.
+                 * @description ID for the AP advance.
                  * @example 1
                  */
                 readonly id?: string;
                 /**
-                 * @description System-assigned key for the AP advance. This value is the same as the `key` for this object.
+                 * @description Unique key for the AP advance.
                  * @example 1
                  */
                 key?: string;
                 /**
-                 * @description Record type. AP advances have a record type of `pa`.
+                 * @description Record type for the AP advance.
+                 *     AP advances have a record type of `pa`.
                  * @example pa
                  */
                 readonly recordType?: string;
@@ -3874,7 +3928,7 @@ export interface components {
              * @example accountsPayable
              * @enum {string}
              */
-            readonly moduleName?: "accountsPayable" | "purchaseOrder";
+            readonly moduleName?: "accountsPayable" | "purchaseOrder" | "employeeExpense";
             /**
              * @description A bill's state shows the current status of the bill within the workflow. For details about each state, see [Bill state descriptions](https://www.intacct.com/ia/docs/en_US/help_action/Accounts_Payable/Bills/bill-state-descriptions.htm).
              *     The state can be modified through workflow operations like Submit and Reverse, but cannot be changed using the PATCH operation.
@@ -4251,12 +4305,16 @@ export interface components {
              *     Supported values:
              *     - `tlb1` - E-Reporting mode for goods.
              *     - `tps1` - E-Reporting mode for services.
+             *     - `b1` - E-Invoice mode for goods.
+             *     - `s1` - E-Invoice mode for services.
              *
-             *     Leave this field blank unless `invoiceType` is `eReporting`.
+             *     For AP bills with `invoiceType` set to `eReporting`, this value is required and can be set or changed through the API.
+             *
+             *     For AP bills with `invoiceType` set to `eInvoice`, this value is populated by the bill upload flow and cannot be set, changed, or cleared through the API.
              * @example tlb1
              * @enum {string|null}
              */
-            invoiceMode?: null | "tlb1" | "tps1";
+            invoiceMode?: null | "tlb1" | "tps1" | "b1" | "s1";
             /**
              * @description Current status of an e-invoice; applicable only when selected invoice type is eInvoice.
              *
@@ -4310,11 +4368,11 @@ export interface components {
              */
             readonly anomalyCode?: null | "email" | "amount" | "multiple";
             /**
-             * @description Source of the bill document if the bill is imported via automation (billUpload or email). If the bill is generated by Sage Intacct, this value is null.
+             * @description Source of the bill document. Valid values are `billUpload`, `email`, `refund`, `expense`, and `eInvoice`. If the bill is generated by Sage Intacct, this value is null.
              * @example email
              * @enum {string|null}
              */
-            readonly documentSource?: "billUpload" | "email" | "refund" | null;
+            readonly documentSource?: "billUpload" | "email" | "refund" | "expense" | "eInvoice" | null;
             /** @description Summary details for this bill. Summaries are collections of the same types of transactions grouped together for processing. */
             billSummary?: {
                 /**
@@ -4355,7 +4413,7 @@ export interface components {
              * @example purchasing
              * @enum {string}
              */
-            readonly sourceModule?: "accountsPayable" | "purchasing";
+            readonly sourceModule?: "accountsPayable" | "purchasing" | "employeeExpense";
             /** @description Payment information for the bill. */
             paymentInformation?: {
                 /**
@@ -4473,6 +4531,42 @@ export interface components {
                 /**
                  * @description URL endpoint for the customer refund.
                  * @example /objects/accounts-receivable/customer-refund/15
+                 */
+                readonly href?: string;
+            };
+            /** @description Employee expense report that generated this bill. This field is null for bills generated from other sources. */
+            readonly expenseReport?: {
+                /**
+                 * @description System-assigned key for the employee expense report.
+                 * @example 124
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description ID for the employee expense report.
+                 * @example EXP-00001
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the employee expense report.
+                 * @example /objects/expenses/employee-expense/124
+                 */
+                readonly href?: string;
+            };
+            /** @description Employee expense adjustment that generated this bill. This field is null for bills generated from other sources. */
+            readonly expenseAdjustment?: {
+                /**
+                 * @description System-assigned key for the employee expense adjustment.
+                 * @example 124
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description ID for the employee expense adjustment.
+                 * @example ADJ-00001
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the employee expense adjustment.
+                 * @example /objects/expenses/employee-expense-adjustment/124
                  */
                 readonly href?: string;
             };
@@ -4764,12 +4858,18 @@ export interface components {
              */
             readonly lineNumber?: string;
             /**
-             * @description If the vendor is set up for 1099 tracking and enabled for 1099 flag override, you can set this value to `true` to enable individual line items for 1099 treatment.
-             *     If `false`, this line item does not have associated 1099 form type and box values.
-             * @example true
-             * @enum {string|null}
+             * @description Controls and reports Form 1099 treatment for the line item.
+             *
+             *     In create and update requests:
+             *     - Set this property to `true` to include the line item in 1099 reporting. The effective form type and box are determined from `form1099` and the applicable vendor or account label configuration.
+             *     - Set this property to `false` to exclude the line item from 1099 reporting and clear its associated form type and box.
+             *     - Set this property to `null` to let the system determine 1099 treatment from the applicable configuration.
+             *     - If omitted from an update request, the existing value remains unchanged.
+             *
+             *     In responses, this property contains the persisted value: `null`, `false`, or the effective form type and box in the format `FORMTYPE@BOX` (for example, `NEC@1A`). When a form/box value is returned, its components are also available in `form1099.type` and `form1099.box`.
+             * @example NEC@1A
              */
-            hasForm1099?: "true" | "false" | null;
+            hasForm1099?: string | null;
             /** @description Form 1099 information for the line item. */
             form1099?: {
                 /**
@@ -5408,15 +5508,15 @@ export interface components {
              */
             isPartialExemption?: boolean;
         };
-        /** @description Accounts Payable (AP) summaries are collections of the same type of transactions, grouped together for processing. */
+        /** @description Bill summaries are collections of the same type of transactions, grouped together for processing. */
         "objects.accounts-payable.bill-summary": {
             /**
-             * @description System-assigned key for the bill summary.
+             * @description System-assigned unique key for the bill summary.
              * @example 1
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the bill summary. This value is the same as the `key` for this object.
+             * @description Unique ID for the bill summary. This value is the same as the `key` for this object.
              * @example 1
              */
             readonly id?: string;
@@ -5426,12 +5526,15 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Name of the bill summary. This name is used to identify the summary throughout the Accounts Payable application.
+             * @description Name of the bill summary.
+             *     This name is used to identify the summary throughout the Accounts Payable application.
              * @example Bill Batch Jan 2021
              */
             name?: string;
             /**
-             * @description Specifies the creation type of the bill summary. If set to `manual`, the summary was created by a user. If set to `system`, the summary was automatically created by Intacct based on the specified summary frequency.
+             * @description Indicates how the bill summary was created.
+             *     If set to `manual`, the summary was created by a user.
+             *     If set to `system`, the summary was automatically created by Sage Intacct based on the summary frequency.
              * @default manual
              * @example manual
              * @enum {string}
@@ -5445,43 +5548,43 @@ export interface components {
             readonly recordType?: components["schemas"]["record-type"];
             /**
              * Format: decimal-precision-2
-             * @description The bill summary total amount.
+             * @description Total amount of all bills included in the bill summary.
              * @example 656.82
              */
             readonly totalAmount?: string;
             /** @description Parent bill summary. */
             parent?: {
                 /**
-                 * @description System-assigned key for the parent bill summary.
+                 * @description Unique key for the parent summary.
                  * @example 22
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the parent bill summary. This value is the same as the `key` for this object.
+                 * @description ID for the parent summary.
                  * @example 22
                  */
                 id?: string | null;
                 /**
-                 * @description URL endpoint for the bill summary.
+                 * @description URL endpoint for the parent summary.
                  * @example /objects/accounts-payable/summary/22
                  */
                 readonly href?: string;
             };
             /**
-             * @description Specifies whether to allow posting to the general ledger (GL).
+             * @description Indicates whether posting to the general ledger is prevented for the bill summary.
              * @default false
              * @example true
              */
             readonly preventGLPosting?: boolean;
-            /** @description Bank account. */
+            /** @description Bank account associated with the bill summary. */
             bankAccount?: {
                 /**
-                 * @description System-assigned key for the bank account.
+                 * @description Unique key for the bank account.
                  * @example BOA
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the bank account. This value is the same as the `key` for this object.
+                 * @description ID for the bank account.
                  * @example BOA
                  */
                 id?: string | null;
@@ -5494,30 +5597,32 @@ export interface components {
             /**
              * Format: date
              * @description The date that the items in the bill summary should post to the general ledger.
-             * @example 2022-08-02
+             * @example 2026-08-02
              */
             readonly glPostingDate?: string;
             /**
-             * @description State of the bill summary, which can be `open` or `closed`. An open bill summary can have items added to it.
+             * @description State of the bill summary, which can be `open` or `closed`.
+             *     An open bill summary can have items added to it.
              * @example open
              * @enum {string}
              */
             state?: "open" | "closed";
             /**
-             * @description This field is set to `true` only for manual and quick payment summaries. It is set to `false` for transactions of type bill/adjustment.
+             * @description Indicates whether the summary is a quick payment summary. This field is set to `true` only for manual and quick payment summaries and is set to `false` for transactions of type `bill/adjustment`.
              * @default false
              * @example false
              */
             isQuickPaymentSummary?: boolean;
             /**
-             * @description A summary can be open or closed. Items, such as invoices, can be added to open summaries.
+             * @description A summary can be `open` or `closed`.
+             *     Items, such as invoices, can be added to `open` summaries.
              * @default open
              * @example open
              * @enum {string}
              */
             readonly isSummaryOpen?: "open" | "closed";
             /**
-             * @description If `true`, the summary has been posted to the General Ledger.
+             * @description Indicates whether the summary has been posted to the general ledger.
              * @example false
              */
             readonly isSummaryPosted?: boolean;
@@ -5629,15 +5734,15 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "accounts-payable-amortization-templateRequiredProperties": Record<string, never>;
-        /** @description Information about each joint payee for AP Bill */
+        /** @description Information about a joint payee for an AP bill. */
         "objects.accounts-payable.joint-payee": {
             /**
-             * @description System-assigned key for the joint payee.
+             * @description System-assigned unique key for the joint payee.
              * @example 1
              */
             readonly key?: string;
             /**
-             * @description Unique ID for the joint payee. This value is the same as `key` for this object.
+             * @description Unique ID for the joint payee. This value is the same as the `key` for this object.
              * @example 1
              */
             readonly id?: string;
@@ -5652,20 +5757,20 @@ export interface components {
              */
             name?: string;
             /**
-             * @description Name that will print on the check. Usually, this value is the vendor's pay-to contact name and the joint payee name.
+             * @description Name that prints on the check. Usually, this value is the vendor's pay-to contact name and the joint payee name.
              *     This value must be unique per bill. This value cannot be changed after a payment has been made.
              * @example Orchard Supply Hardware & John Smith
              */
             printAs?: string;
-            /** @description The bill associated with this joint payee. */
+            /** @description Bill associated with the joint payee. */
             bill?: {
                 /**
-                 * @description Bill key.
+                 * @description Unique key for the bill.
                  * @example 1
                  */
                 key?: string;
                 /**
-                 * @description Bill ID.
+                 * @description ID for the bill.
                  * @example INV-1285
                  */
                 id?: string;
@@ -5702,6 +5807,11 @@ export interface components {
             /** @description Financial account from which the payment is made. */
             financialEntity?: {
                 /**
+                 * @description Unique key for the financial entity.
+                 * @example 100
+                 */
+                key?: string;
+                /**
                  * @deprecated
                  * @description This field has been deprecated. Use the `entityId` field instead.
                  */
@@ -5733,6 +5843,11 @@ export interface components {
                  * @example USD
                  */
                 readonly baseCurrency?: string;
+                /**
+                 * @description URL endpoint for the financial entity.
+                 * @example /objects/cash-management/bank-account/100
+                 */
+                readonly href?: string;
             };
             /**
              * @deprecated
@@ -6927,12 +7042,12 @@ export interface components {
         /** @description Header information for recurring bills. */
         "objects.accounts-payable.recurring-bill": {
             /**
-             * @description System-assigned key for the recurring bill.
+             * @description System-assigned unique key for the recurring bill.
              * @example 56
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the recurring bill. This value is the same as the `key` for this object.
+             * @description Unique ID for the recurring bill. This value is the same as the `key` for this object.
              * @example 56
              */
             readonly id?: string | null;
@@ -6956,7 +7071,7 @@ export interface components {
              * @example 3.AP
              */
             readonly moduleKey?: string;
-            /** @description Represents a contract associated with the recurring bill. */
+            /** @description Contract associated with the recurring bill. */
             contract?: {
                 /**
                  * @description Unique key for the contract.
@@ -6964,7 +7079,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the contract.
+                 * @description ID for the contract.
                  * @example CON-2
                  */
                 id?: string | null;
@@ -6986,20 +7101,20 @@ export interface components {
              */
             billNumber?: string;
             /**
-             * @description Specify the initial value for the bill number, which will be incremented for each bill based on the sequence type defined in Company Setup - Document Sequence. For example, if you specify AP-ADJ in this field, the number for each recurring bill will start with AP-ADJ and will be incremented based on the sequence type. For example, AP-ADJ001, APAP-ADJ002, APAP-ADJ003, etc.
+             * @description Initial value for the bill number sequence, incremented for each bill based on the sequence type defined in Company Setup - Document Sequence. For example, if the initial value is `AP-ADJ`, bills are numbered `AP-ADJ001`, `AP-ADJ002`, `AP-ADJ003`, and so on.
              * @example AP-ADJ
              */
             billSequenceNumber?: string;
             /**
              * Format: decimal-precision-2
              * @description Total amount of the recurring bill.
-             * @example 100
+             * @example 1250.00
              */
             readonly totalEntered?: string;
             /**
              * Format: decimal-precision-2
              * @description Total transaction amount.
-             * @example 100
+             * @example 1250.00
              */
             readonly txnTotalEntered?: string;
             /** @description Currency details for this recurring bill. */
@@ -7010,7 +7125,7 @@ export interface components {
                  */
                 baseCurrency?: string;
                 /**
-                 * @description The transaction currency to use for the recurring bill. If this currency is different from the base currency, provide an exchange rate.
+                 * @description Transaction currency for the recurring bill. If different from the base currency, provide an exchange rate.
                  * @example USD
                  */
                 txnCurrency?: string;
@@ -7021,8 +7136,8 @@ export interface components {
                 exchangeRate?: {
                     /**
                      * Format: date
-                     * @description Exchange rate date for this transaction. Can be the current date, the date the transaction was issued, or the date the transaction will be paid.
-                     * @example 2025-01-23
+                     * @description Exchange rate date for the transaction. Can be the current date, the date the transaction was issued, or the date the transaction will be paid.
+                     * @example 2026-01-23
                      */
                     date?: string | null;
                     /**
@@ -7038,7 +7153,7 @@ export interface components {
                 };
             };
             /**
-             * @description Set to `true` if bill amounts already include taxes.
+             * @description Indicates whether the bill amounts already include taxes.
              * @default false
              * @example false
              */
@@ -7046,12 +7161,12 @@ export interface components {
             /** @description Supporting document attached to the bill. */
             attachment?: {
                 /**
-                 * @description System-assigned key for the supporting document.
+                 * @description Unique key for the attachment.
                  * @example 18
                  */
                 key?: string | null;
                 /**
-                 * @description System-assigned ID for the supporting document.
+                 * @description ID for the attachment.
                  * @example 18
                  */
                 id?: string | null;
@@ -7069,12 +7184,12 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the tax solution.
+                 * @description ID for the tax solution.
                  * @example Australia GST
                  */
                 id?: string | null;
                 /**
-                 * @description If set to `true`, enables multiple taxes per line to be shown.
+                 * @description Indicates whether multiple taxes per line are shown.
                  * @example true
                  */
                 readonly showMultiLineTax?: string | null;
@@ -7102,13 +7217,13 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Unique ID for the contact.
+                     * @description ID for the contact.
                      * @example Power Aerospace Materials(C1)
                      */
                     id?: string;
                     /**
                      * tax
-                     * @description Tax related information for the pay-to contact.
+                     * @description Tax-related information for the pay-to contact.
                      */
                     readonly tax?: {
                         /**
@@ -7119,12 +7234,12 @@ export interface components {
                         /** @description Contact tax group associated with the pay-to contact. */
                         group?: {
                             /**
-                             * @description Unique key for the group.
+                             * @description Unique key for the contact tax group.
                              * @example 288
                              */
                             key?: string | null;
                             /**
-                             * @description Unique ID for the group.
+                             * @description ID for the group.
                              * @example Goods Zero Rate - CA
                              */
                             id?: string | null;
@@ -7152,7 +7267,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Unique ID for the contact.
+                     * @description ID for the contact.
                      * @example Power Aerospace Materials(C1)
                      */
                     id?: string;
@@ -7163,69 +7278,69 @@ export interface components {
                     readonly href?: string;
                 };
             };
-            /** @description Defines the scheduling details for the recurring bill, including start date, frequency, next execution date, and end conditions. The schedule provides a comprehensive view of when and how often the recurring bill will be generated. */
+            /** @description Scheduling details for the recurring bill, including start date, frequency, and end conditions. */
             schedule?: {
                 /**
                  * Format: date
-                 * @description Specifies the initial date for generating the recurring bill. This date remains editable until the first bill is processed.
+                 * @description Initial date for generating the recurring bill. This date remains editable until the first bill is processed.
                  * @example 2025-01-01
                  */
                 startDate?: string;
                 /**
                  * Format: date
-                 * @description Specify the end date for generating the recurring bill. A repeatCount can be specified instead of an endDate, but not both.
+                 * @description End date for the recurring bill. Either this field or `repeatCount` must be provided to define the end condition, but not both.
                  * @example 2026-01-01
                  */
                 endDate?: string;
                 /**
                  * Format: date
-                 * @description Shows the next date for the scheduled execution of the recurring bill.
+                 * @description Next scheduled execution date for the recurring bill.
                  * @example 2025-02-01
                  */
                 readonly nextExecutionDate?: string;
                 /**
                  * Format: date
-                 * @description Shows the last date for the scheduled execution of the recurring bill.
+                 * @description Last scheduled execution date for the recurring bill.
                  * @example 2025-12-01
                  */
                 readonly lastExecutionDate?: string;
                 /**
-                 * @description Shows the result of the last execution attempt for the recurring bill, such as Success or Failed.
+                 * @description Result of the last execution attempt for the recurring bill.
                  * @example success
                  * @enum {string|null}
                  */
                 readonly lastExecutionStatus?: null | "inTransit" | "scheduleError" | "failed" | "success";
                 /**
                  * Format: date
-                 * @description Shows the recurring due date for the scheduled execution of the recurring bill.
+                 * @description Recurring due date for the scheduled execution of the recurring bill.
                  * @example 2025-06-01
                  */
                 readonly recurringDueDate?: string;
                 /**
-                 * @description Shows the number of attempts to generate the recurring bill. This value reflects the number of times the system has tried to create the bill, which may differ from the number of successful transactions due to potential errors during execution.
+                 * @description Number of attempts to generate the recurring bill. This count may differ from the number of successful bills if any attempts resulted in errors.
                  * @example 100
                  */
                 readonly executionCount?: string;
                 /**
-                 * @description Specifies the number of times the recurring bill should be generated. Either this field or the `endDate` field must be specified to define the end condition for the recurring bill, not both.
+                 * @description Number of times to generate the recurring bill. Either this field or `endDate` must be provided to define the end condition, but not both.
                  * @example 50
                  */
                 repeatCount?: string;
                 /**
-                 * @description Specifies the regular interval at which the recurring bill should repeat. This field works in conjunction with the `repeatInterval` field, where you specify the number of intervals. For example, if you set `repeatBy` to `months` and set the `repeatInterval` to `3`, the schedule will run every 3 months.
+                 * @description Interval unit for the recurring bill schedule, used with `repeatInterval` to define the recurrence frequency. For example, if `repeatBy` is `months` and `repeatInterval` is `3`, the schedule runs every 3 months.
                  * @default days
                  * @example days
                  * @enum {string}
                  */
                 repeatBy?: "none" | "days" | "weeks" | "months" | "years" | "endOfMonth";
                 /**
-                 * @description Specifies the interval at which the bill repeats. This field works in conjunction with the `repeatBy` field, where you specify the regular interval at which the recurring bill should repeat. For example, if you set `repeatBy` to `months` and set the `repeatInterval` to `3`, the schedule will run every 3 months.
+                 * @description Number of interval units between each recurring bill, used with `repeatBy` to define the recurrence frequency. For example, if `repeatBy` is `months` and `repeatInterval` is `3`, the schedule runs every 3 months.
                  * @default 1
                  * @example 1
                  */
                 repeatInterval?: string;
                 /**
-                 * @description Comma separated email addresses to which schedule notifications are sent in case of failures.
+                 * @description Comma-separated email addresses to receive schedule notifications in case of failures.
                  * @example joe.smith@mycompany.com
                  */
                 emailNotifications?: string | null;
@@ -7238,7 +7353,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the recurring schedule.
+                 * @description ID for the recurring schedule.
                  * @example 20
                  */
                 readonly id?: string;
@@ -7248,7 +7363,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Payment terms, which are used to calculate due date, discounts, and penalties associated with this bill. */
+            /** @description Payment terms for the recurring bill, used to calculate the due date, discounts, and penalties. */
             term?: {
                 /**
                  * @description Unique key for the payment term.
@@ -7256,7 +7371,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Name or other unique identifier for the payment term.
+                 * @description Name of the payment term.
                  * @example N15
                  */
                 id?: string | null;
@@ -7269,7 +7384,7 @@ export interface components {
             /** @description Vendor associated with the recurring bill. */
             vendor?: {
                 /**
-                 * @description Unique ID for the vendor.
+                 * @description ID for the vendor.
                  * @example Vendor_01
                  */
                 id?: string;
@@ -7289,12 +7404,12 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Line items of the recurring bill. */
+            /** @description Line items for the recurring bill. */
             lines?: components["schemas"]["objects.accounts-payable.recurring-bill-line"][];
             readonly audit?: components["schemas"]["audit.s1"] & {
                 /**
                  * Format: date-time
-                 * @description Time of the submission.
+                 * @description Date and time the recurring bill was created.
                  * @example 2024-01-23T11:28:12Z
                  */
                 readonly createdDateTime?: string;
@@ -7309,20 +7424,20 @@ export interface components {
             term?: Record<string, never>;
             lines?: unknown[];
         };
-        /** @description Line items in a recurring bill represent transactions captured in that recurring bill. */
+        /** @description A recurring bill line represents an individual line item within a recurring bill, defining the GL account, amount, and transaction details. */
         "objects.accounts-payable.recurring-bill-line": {
             /**
-             * @description System-assigned key for the line item.
+             * @description System-assigned unique key for the recurring bill line.
              * @example 34
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the line item. This value is the same as the `key` for this object.
+             * @description Unique ID for the recurring bill line. This value is the same as the `key` for this object.
              * @example 34
              */
             readonly id?: string;
             /**
-             * @description URL endpoint for the line item.
+             * @description URL endpoint for the recurring bill line.
              * @example /objects/accounts-payable/recurring-bill-line/34
              */
             readonly href?: string;
@@ -7334,20 +7449,28 @@ export interface components {
             /**
              * Format: decimal-precision-2
              * @description For multi-currency companies, the transaction amount in the base currency.
-             * @example 100
+             * @example 250.00
              */
             readonly baseAmount?: string;
             /**
-             * @description Line number of the line item.
+             * @description Line number of the recurring bill line.
              * @example 15
              */
             readonly lineNumber?: number;
             /**
-             * @description Set to `true` to add the line item amount to the vendor 1099 form.
-             * @example false
+             * @description Controls and reports Form 1099 treatment for the line item.
+             *
+             *     In create and update requests:
+             *     - Set this property to `true` to include the line item in 1099 reporting. The effective form type and box are determined from `form1099` and the applicable vendor or account label configuration.
+             *     - Set this property to `false` to exclude the line item from 1099 reporting and clear its associated form type and box.
+             *     - Set this property to `null` to let the system determine 1099 treatment from the applicable configuration.
+             *     - If omitted from an update request, the existing value remains unchanged.
+             *
+             *     In responses, this property contains the persisted value: `null`, `false`, or the effective form type and box in the format `FORMTYPE@BOX` (for example, `NEC@1A`). When a form/box value is returned, its components are also available in `form1099.type` and `form1099.box`.
+             * @example NEC@1A
              */
-            hasForm1099?: string;
-            /** @description Details related to the 1099 form for the line item. */
+            hasForm1099?: string | null;
+            /** @description Form 1099 details for the line item. */
             form1099?: {
                 /**
                  * @description Type of 1099 form.
@@ -7363,7 +7486,7 @@ export interface components {
             /**
              * Format: decimal-precision-2
              * @description Amount of the line item in the transaction currency.
-             * @example 100
+             * @example 250.00
              */
             txnAmount?: string;
             /**
@@ -7373,7 +7496,7 @@ export interface components {
              */
             totalTxnAmount?: string;
             /**
-             * @description Set to `true` if the line item will be billed to the customer.
+             * @description Indicates whether the line item is billable to the customer.
              * @default false
              * @example true
              */
@@ -7386,12 +7509,12 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the GL account.
+                 * @description ID for the GL account.
                  * @example 1501.04
                  */
                 id?: string;
                 /**
-                 * @description Name or title of the GL account.
+                 * @description Name of the GL account.
                  * @example Entertainment
                  */
                 readonly name?: string;
@@ -7409,13 +7532,13 @@ export interface components {
                  */
                 baseCurrency?: string;
                 /**
-                 * @description Transaction currency for the recurring bill.
+                 * @description Transaction currency for the line item.
                  * @example USD
                  */
                 txnCurrency?: string;
                 /**
                  * exchangeRate
-                 * @description For multi-currency companies, the exchange rate for this line item.
+                 * @description For multi-currency companies, the exchange rate for the line item.
                  */
                 exchangeRate?: {
                     /**
@@ -7425,18 +7548,18 @@ export interface components {
                      */
                     date?: string;
                     /**
-                     * @description Exchange rate to use.
+                     * @description Exchange rate used to calculate the base amount from the transaction amount.
                      * @example 1.0789
                      */
                     rate?: number;
                     /**
-                     * @description Exchange rate type to use, such as the Intacct Daily Rate.
+                     * @description Exchange rate type used to calculate the base amount from the transaction amount, such as the Intacct Daily Rate.
                      * @example INR-Rate
                      */
                     typeId?: string;
                 };
             };
-            /** @description Transaction allocation template for the line item, which distributes the bill amount across specified dimensions. When creating a recurring bill line, you must include either an `allocation` in the request, or `dimensions`. */
+            /** @description Transaction allocation template for the line item, which distributes the bill amount across specified dimensions. When creating a recurring bill line, provide either `allocation` or `dimensions`. */
             allocation?: {
                 /**
                  * @description Unique key for the allocation template.
@@ -7444,7 +7567,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the allocation template.
+                 * @description ID for the allocation template.
                  * @example 16
                  */
                 id?: string | null;
@@ -7459,7 +7582,7 @@ export interface components {
                  */
                 readonly name?: string | null;
             };
-            /** @description Label of the AP account to assign the expense to. */
+            /** @description AP account label for the line item. */
             accountLabel?: {
                 /**
                  * @description Unique key for the account label.
@@ -7467,7 +7590,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the account label.
+                 * @description ID for the account label.
                  * @example Accounting Fees
                  */
                 id?: string | null;
@@ -7477,9 +7600,9 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Dimensions associated with the line item. When creating a recurring bill line, you must include either an `allocation` in the request, or `dimensions`. A `location` is required if you include dimensions in the request. */
+            /** @description Dimensions for the line item. When creating a recurring bill line, provide either `allocation` or `dimensions`. A `location` is required when `dimensions` are included. */
             dimensions?: components["schemas"]["dimension-ref"] & {
-                /** @description Department to assign the expense to. */
+                /** @description Department associated with the expense. */
                 department?: {
                     /**
                      * @description Unique key for the department.
@@ -7487,12 +7610,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique ID for the department.
+                     * @description ID for the department.
                      * @example 21
                      */
                     id?: string | null;
                     /**
-                     * @description The name of the department.
+                     * @description Name of the department.
                      * @example Accounting
                      */
                     readonly name?: string | null;
@@ -7502,7 +7625,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Location to assign the expense to. */
+                /** @description Location associated with the expense. */
                 location?: {
                     /**
                      * @description Unique key for the location.
@@ -7510,7 +7633,7 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique ID for the location.
+                     * @description ID for the location.
                      * @example 9
                      */
                     id?: string | null;
@@ -7520,13 +7643,13 @@ export interface components {
                      */
                     readonly name?: string | null;
                     /**
-                     * @description URL endpoint of the location.
+                     * @description URL endpoint for the location.
                      * @example /objects/company-config/location/9
                      */
                     readonly href?: string;
                 };
             };
-            /** @description An alternative account to override the default GL account for the bill. */
+            /** @description Alternative GL account that overrides the default offset GL account for the line item. */
             overrideOffsetGLAccount?: {
                 /**
                  * @description Unique key for the GL account.
@@ -7534,7 +7657,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the GL account.
+                 * @description ID for the GL account.
                  * @example 1234.36
                  */
                 id?: string;
@@ -7551,10 +7674,10 @@ export interface components {
             };
             /** @description For companies subscribed to the Taxes application, tax entries for the recurring bill line. */
             taxEntries?: components["schemas"]["objects.accounts-payable.recurring-bill-tax-entry"][];
-            /** @description Header level details for the recurring bill's line entries. */
+            /** @description Header level details for the recurring bill. */
             readonly recurringBill?: {
                 /**
-                 * @description Unique ID for the recurring bill.
+                 * @description ID for the recurring bill.
                  * @example 199
                  */
                 id?: string;
@@ -7575,7 +7698,7 @@ export interface components {
         "accounts-payable-recurring-bill-lineRequiredProperties": Record<string, never> | {
             dimensions: Record<string, never>;
         };
-        /** @description Tax entries for an AP recurring bill line. */
+        /** @description Tax entry for a line on an AP recurring bill. */
         "objects.accounts-payable.recurring-bill-tax-entry": {
             /**
              * @description System-assigned key for the tax entry.
@@ -7605,31 +7728,31 @@ export interface components {
              */
             taxRate?: number;
         } & {
-            /** @description Purchasing entry tax details describe a specific type of tax that applies to lines in Accounts Payable transactions. */
+            /** @description Purchasing tax detail for the recurring bill line. */
             purchasingTaxDetail?: {
                 /**
-                 * @description System-assigned key for the tax detail object.
+                 * @description Unique key for the purchasing tax detail.
                  * @example 19
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the tax detail object.
+                 * @description ID for the purchasing tax detail.
                  * @example Alaska Tax Detail
                  */
                 id?: string;
                 /**
-                 * @description URL endpoint for the tax detail object.
+                 * @description URL endpoint for the purchasing tax detail.
                  * @example /objects/tax/purchasing-tax-detail/19
                  */
                 readonly href?: string;
             };
             /**
              * recurring-bill-line
-             * @description The recurring bill line associated with the tax entries.
+             * @description Header level details for the recurring bill line.
              */
             readonly recurringBillLine?: {
                 /**
-                 * @description Unique ID for the recurring bill line.
+                 * @description ID for the recurring bill line.
                  * @example 100
                  */
                 readonly id?: string;
@@ -7645,15 +7768,15 @@ export interface components {
                 readonly href?: string;
             };
         };
-        /** @description Summaries are collections of the same types of transactions grouped together for processing. */
+        /** @description Summaries are collections of the same type of transactions grouped together for processing. */
         "objects.accounts-payable.summary": {
             /**
-             * @description System-assigned key for the summary.
+             * @description System-assigned unique key for the summary.
              * @example 12
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the summary.
+             * @description Unique ID for the summary. This value is the same as the `key` for this object.
              * @example 12
              */
             readonly id?: string;
@@ -7663,12 +7786,15 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Name for the AP summary. The system uses this name to identify the summary throughout the Accounts Payable application.
-             * @example Jan 2024 Bill Summary
+             * @description Name for the AP summary.
+             *     The system uses this name to identify the summary throughout the Accounts Payable application.
+             * @example Jan 2026 Bill Summary
              */
             name?: string;
             /**
-             * @description If set to 'manual', then the summary was created by a user and if set to 'system', then the summary was created by Sage Intacct based on the summary frequency.
+             * @description Indicates how the summary was created.
+             *     If set to `manual`, the summary was created by a user.
+             *     If set to `system`, the summary was automatically created by Sage Intacct based on the summary frequency.
              * @default manual
              * @example manual
              * @enum {string}
@@ -7677,11 +7803,11 @@ export interface components {
             /**
              * Format: date
              * @description The date that items in the summary should post to the general ledger.
-             * @example 2024-06-02
+             * @example 2026-06-02
              */
             glPostingDate?: string;
             /**
-             * @description Record type for AP summary
+             * @description Record type for the AP summary.
              * @default apBill
              * @example apBill
              * @enum {string}
@@ -7694,21 +7820,22 @@ export interface components {
              */
             readonly totalAmount?: string;
             /**
-             * @description State of the summary, which can be `open` or `closed`. An open summary can have items added to it.
+             * @description State of the summary, which can be `open` or `closed`.
+             *     An `open` summary can have items added to it.
              * @default open
              * @example open
              * @enum {string}
              */
             readonly state?: "open" | "closed";
-            /** @description Parent summary */
+            /** @description Parent summary. */
             parent?: {
                 /**
-                 * @description System-assigned key for the parent summary.
+                 * @description Unique key for the parent summary.
                  * @example 23
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the parent summary.
+                 * @description ID for the parent summary.
                  * @example 23
                  */
                 id?: string | null;
@@ -7719,12 +7846,12 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Set to 'true' to prevent summary items from posting to the general ledger.
+             * @description Indicates whether posting to the general ledger is prevented for the summary.
              * @example false
              */
             readonly preventGLPosting?: boolean;
             /**
-             * @description Set to 'true' for manual and quick payment summary types. Set to 'false' for bill and adjustment summary types.
+             * @description Indicates whether the summary is a quick payment summary. This field is set to `true` for manual and quick payment summaries and set to `false` for bill and adjustment summaries.
              * @default false
              * @example false
              */
@@ -7737,17 +7864,17 @@ export interface components {
         /** @description An Accounts Payable (AP) term is a rule that a vendor establishes for extending credit to your company. */
         "objects.accounts-payable.term": {
             /**
-             * @description System-assigned key for the AP term.
+             * @description System-assigned unique key for the AP term.
              * @example 1
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the AP term.
+             * @description Unique ID for the AP term.
              * @example Net 60
              */
             id?: string;
             /**
-             * @description Endpoint for the AP term.
+             * @description URL endpoint for the AP term.
              * @example /objects/accounts-payable/term/6
              */
             readonly href?: string;
@@ -7758,7 +7885,7 @@ export interface components {
              */
             description?: string;
             audit?: components["schemas"]["audit.s1"];
-            /** @description Define the calculation for the due date by specifying the number of days and either the date or month to reference. */
+            /** @description Defines the calculation for the due date by specifying the number of days and either the date or month to reference. */
             due?: {
                 /**
                  * @description The number of days used to calculate the due date.
@@ -7783,7 +7910,7 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description Amount of the discount.
-                 * @example 4
+                 * @example 4.00
                  */
                 amount?: string;
                 /**
@@ -7825,7 +7952,7 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description The penalty amount.
-                 * @example 10
+                 * @example 10.00
                  */
                 amount?: string;
                 /**
@@ -7843,7 +7970,7 @@ export interface components {
             };
         };
         "accounts-payable-termRequiredProperties": Record<string, never>;
-        /** @description Use a check run to process up to 1,000 checks at a time in an offline process. */
+        /** @description A check run processes up to 1,000 checks at a time in an offline batch process. */
         "objects.accounts-payable.check-run": {
             /**
              * @description System-assigned unique key for the check run.
@@ -7899,7 +8026,7 @@ export interface components {
              */
             printVendorStubDetail?: boolean;
             /**
-             * @description Check stock used for printing. With the `blankCheckStockMicr` (blank check stock with MICR) option, checks can be printed from more that one checking account. With the `prePrintedCheckStock` (preprinted check stock) option, checks are printed from a single checking account.
+             * @description Check stock used for printing. With the `blankCheckStockMicr` (blank check stock with MICR) option, checks can be printed from more than one checking account. With the `prePrintedCheckStock` (preprinted check stock) option, checks are printed from a single checking account.
              * @default blankCheckStockMicr
              * @example blankCheckStockMicr
              * @enum {string}
@@ -7918,7 +8045,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Checking account ID.
+                 * @description ID for the checking account.
                  * @example CITI
                  */
                 id?: string;
@@ -7926,13 +8053,13 @@ export interface components {
             /**
              * Format: date
              * @description Date that the check run was created.
-             * @example 2025-01-04
+             * @example 2026-01-04
              */
             readonly whenCreated?: string;
             status?: components["schemas"]["status"];
         };
         "accounts-payable-check-runRequiredProperties": Record<string, never>;
-        /** @description Vendors */
+        /** @description A vendor represents a company or individual from whom goods or services are purchased. */
         "objects.accounts-payable.vendor": {
             /**
              * @description System-assigned unique key for the vendor.
@@ -7950,7 +8077,7 @@ export interface components {
              */
             name?: string;
             /**
-             * @description Set to `true` if this is a one-time or occasional use vendor that you do not want to include in standard vendor lists.
+             * @description Indicates whether the vendor is designated for one-time or occasional use and is excluded from standard vendor lists.
              * @default false
              * @example true
              */
@@ -7962,7 +8089,7 @@ export interface components {
             readonly href?: string;
             status?: components["schemas"]["dimension-status"];
             /**
-             * @description Approval state when vendor approval is enabled.
+             * @description For vendors with approval enabled, the approval state.
              *     * `s` - submitted - The vendor record is new or was updated and is now awaiting approval. Accounts Payable and Purchasing transactions for the vendor can be saved as drafts but cannot be posted.
              *     * `a` - approved - The vendor has been approved. You can post Accounts Payable and Purchasing transactions for the vendor.
              *     * `r` - declined - The vendor was declined during the approval process. Until the vendor is approved, you cannot post Accounts Payable or Purchasing transactions for the vendor.
@@ -7977,7 +8104,7 @@ export interface components {
              * @example true
              */
             readonly isSystemGenerated?: boolean;
-            /** @description The customer associated with the vendor, if any. Used to link the vendor to a customer record in the Accounts Receivable module. */
+            /** @description Customer associated with the vendor. */
             readonly customer?: {
                 /**
                  * @description Unique key for the customer.
@@ -7985,7 +8112,7 @@ export interface components {
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique ID for the customer.
+                 * @description ID for the customer.
                  * @example C-00014
                  */
                 readonly id?: string | null;
@@ -8003,7 +8130,7 @@ export interface components {
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique ID for the employee.
+                 * @description ID for the employee.
                  * @example E-00014
                  */
                 readonly id?: string | null;
@@ -8013,7 +8140,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Optional vendor type, which is a category of vendors used for reporting purposes. Valid values include any vendor type ID defined by the company. */
+            /** @description Vendor type for categorizing the vendor for reporting purposes. Valid values include any vendor type ID defined by the company. */
             vendorType?: {
                 /**
                  * @description Unique key for the vendor type.
@@ -8021,7 +8148,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the vendor type.
+                 * @description ID for the vendor type.
                  * @example Wholesaler
                  */
                 id?: string | null;
@@ -8031,7 +8158,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description If the vendor is a subsidiary of another vendor, parent vendor of the subsidiary vendor. */
+            /** @description Parent vendor for this vendor, if the vendor is a subsidiary. */
             parent?: {
                 /**
                  * @description Unique key for the vendor.
@@ -8039,7 +8166,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the vendor.
+                 * @description ID for the vendor.
                  * @example 202
                  */
                 id?: string | null;
@@ -8062,7 +8189,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the vendor account group.
+                 * @description ID for the vendor account group.
                  * @example OR151
                  */
                 id?: string | null;
@@ -8074,19 +8201,17 @@ export interface components {
             };
             /**
              * @deprecated
-             * @description This field has been deprecated; use accountLabel instead.
+             * @description Deprecated. Use `accountLabel` instead.
              */
             accountlabel?: {
                 /**
                  * @deprecated
-                 * @description Unique key for the account label.
-                 * @example 10
+                 * @description Deprecated. Use `accountLabel.key` instead.
                  */
                 key?: string | null;
                 /**
                  * @deprecated
-                 * @description Name or other unique ID for the account label.
-                 * @example Equipment
+                 * @description Deprecated. Use `accountLabel.id` instead.
                  */
                 id?: string | null;
                 /**
@@ -8103,7 +8228,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Name or other unique ID for the account label.
+                 * @description Name of the account label.
                  * @example Equipment
                  */
                 id?: string | null;
@@ -8114,7 +8239,7 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Lead time default (days) for inventory replenishment. This field applies only if replenishment is enabled on the Configure Inventory Control page in Sage Intacct.
+             * @description For inventory replenishment, the default lead time in days. Applicable only when replenishment is enabled on the Configure Inventory Control page in Sage Intacct.
              * @example 5
              */
             defaultLeadTime?: number | null;
@@ -8125,7 +8250,7 @@ export interface components {
              * @enum {string}
              */
             filePaymentService?: "ach" | "bankFile" | "none";
-            /** @description Required when `filePaymentService` is set to `bankFile`. */
+            /** @description Bank file payment details for the vendor. Required when `filePaymentService` is set to `bankFile`. */
             bankFiles?: {
                 /**
                  * @description Bank file payment country code.
@@ -8146,13 +8271,13 @@ export interface components {
             /** @description Tax payments annual report settings for Australian companies and entities. */
             tpar?: {
                 /**
-                 * @description Set to `true` to include vendor payments in the Taxable payments annual report (TPAR).
+                 * @description Indicates whether vendor payments are included in the Taxable payments annual report (TPAR).
                  * @default false
                  * @example false
                  */
                 isTparEnabled?: boolean;
                 /**
-                 * @description To report vendor payments using a name other than the print as name, specify that name in this field.
+                 * @description For TPAR reporting, an alternate vendor name to use instead of the print-as name.
                  * @example TPAR 1
                  */
                 name?: string;
@@ -8160,7 +8285,7 @@ export interface components {
             /** @description T5018 report settings for Canadian companies and entities. */
             t5018?: {
                 /**
-                 * @description Set to `true` to include vendor payments in the T5018 report.
+                 * @description Indicates whether vendor payments are included in the T5018 report.
                  * @default false
                  * @example false
                  */
@@ -8171,9 +8296,10 @@ export interface components {
                  */
                 t5018Number?: string;
             };
+            /** @description Form 1099 settings for the vendor. */
             form1099?: {
                 /**
-                 * @description Set to `true` if the vendor is 1099 eligible.
+                 * @description Indicates whether the vendor is 1099 eligible.
                  * @default false
                  * @example true
                  */
@@ -8202,7 +8328,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the attachment.
+                 * @description ID for the attachment.
                  * @example Sales01
                  */
                 id?: string | null;
@@ -8213,19 +8339,19 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Set to `true` to prevent anyone from entering transactions against the vendor.
+             * @description Indicates whether the vendor is on hold. When `true`, transactions cannot be entered against the vendor.
              * @default false
              * @example true
              */
             isOnHold?: boolean;
             /**
-             * @description Set to `true` to prevent anyone from paying bills from the vendor.
+             * @description Indicates whether the vendor is marked as do not pay. When `true`, bills from the vendor cannot be paid.
              * @default false
              * @example true
              */
             doNotPay?: boolean;
             /**
-             * @description If automated transaction matching for Purchasing workflows is enabled, set this field to `true` to have Sage Intacct create all future transactions for a vendor as AP bills.
+             * @description Indicates whether all future transactions for the vendor are automatically created as AP bills. Applicable only when automated transaction matching for Purchasing workflows is enabled.
              * @default false
              * @example true
              */
@@ -8236,12 +8362,12 @@ export interface components {
              */
             creditLimit?: number;
             /**
-             * @description The percentage of retainage to withhold for the vendor. (For Construction subscriptions only.)
+             * @description For Construction subscriptions, the percentage of retainage to withhold for the vendor.
              * @example 20
              */
             retainagePercentage?: number | null;
             /**
-             * @description Specifies whether the vendor is an individual person. If set to true, personal identifying information (PII) is masked for security purposes when using Vendor Payments powered by CSI.
+             * @description Indicates whether the vendor is an individual person. When `true`, personal identifying information (PII) is masked for security purposes when using Vendor Payments powered by CSI.
              * @default false
              * @example false
              */
@@ -8259,7 +8385,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the price list.
+                 * @description ID for the price list.
                  * @example Acme Price List
                  */
                 id?: string | null;
@@ -8277,7 +8403,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the price schedule.
+                 * @description ID for the price schedule.
                  * @example PREF
                  */
                 id?: string | null;
@@ -8295,7 +8421,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the account.
+                 * @description ID for the account.
                  * @example 1
                  */
                 id?: string | null;
@@ -8318,7 +8444,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the account.
+                 * @description ID for the account.
                  * @example 1210
                  */
                 id?: string | null;
@@ -8334,15 +8460,16 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Discount percentage for the vendor. Specify the percentage as a whole number, for example, specify 10 for 10%.
+             * @description Discount percentage for the vendor. Specify the percentage as a whole number; for example, specify 10 for 10%.
              * @example 10
              */
             discountPercent?: number | null;
+            /** @description Contact details for the vendor. */
             contacts?: {
-                /** @description Default contact for the vendor. Used as the default vendor in the vendor's contact list. */
+                /** @description Default contact for the vendor. Serves as the primary contact in the vendor's contact list. */
                 default?: components["schemas"]["contact-ref"] & {
                     /**
-                     * @description Set to `true` to exclude the contact from the company contact list.
+                     * @description Indicates whether the contact is excluded from the company contact list.
                      * @default false
                      * @example false
                      */
@@ -8353,7 +8480,7 @@ export interface components {
                      */
                     tax?: {
                         /**
-                         * @description Defines whether the contact is taxable.
+                         * @description Indicates whether the contact is taxable.
                          * @default false
                          * @example false
                          */
@@ -8366,7 +8493,7 @@ export interface components {
                              */
                             key?: string;
                             /**
-                             * @description Unique ID for the tax group.
+                             * @description ID for the tax group.
                              * @example New York
                              */
                             id?: string;
@@ -8396,7 +8523,7 @@ export interface components {
                         typeOfCompany?: string;
                         /**
                          * @description Represents the total capital invested by shareholders upon the company's formation.
-                         * @example 37 000
+                         * @example 37000
                          */
                         registeredCapital?: number;
                         /**
@@ -8407,7 +8534,7 @@ export interface components {
                     };
                     /**
                      * @description Business identification number for EU companies.
-                     * @example 123
+                     * @example FR76123456789
                      */
                     internationalTaxId?: string;
                 };
@@ -8489,13 +8616,13 @@ export interface components {
             };
             /** @description Contact list for the vendor. */
             contactList?: components["schemas"]["objects.accounts-payable.vendor-contact"][];
-            /** @description Templates used to automate standard messages sent to multiple vendors. */
+            /** @description Email templates for automated standard messages sent to the vendor. */
             vendorEmailTemplates?: components["schemas"]["objects.accounts-payable.vendor-email-template"][] | null;
             /** @description Payment providers for the vendor. */
             vendorPaymentProviders?: components["schemas"]["objects.accounts-payable.vendor-payment-provider"][];
-            /** @description Enable electronic payments to be made to vendors using a local bank file format. */
+            /** @description Bank file setup for enabling electronic payments to the vendor using a local bank file format. */
             vendorBankFileSetup?: components["schemas"]["objects.accounts-payable.vendor-bank-file-setup"][];
-            /** @description In a multi-entity company, the vendor account number associated with entity locations. */
+            /** @description For multi-entity companies, vendor account numbers associated with entity locations. */
             vendorAccountNumberList?: components["schemas"]["objects.accounts-payable.vendor-account-number"][];
             /**
              * @description Preferred payment method when you select a bill to pay for the vendor.
@@ -8505,20 +8632,20 @@ export interface components {
              */
             preferredPaymentMethod?: "printedCheck" | "chargeCard" | "EFT" | "cash" | "ACH" | "wellsFargoCheck" | "wellsFargoUSDWire" | "wellsFargoDomesticACH" | null;
             /**
-             * @description If `true`, merge multiple selected bills into one payment request for the vendor. If `false`, have one payment request created for each bill.
+             * @description Indicates whether multiple selected bills are merged into one payment request for the vendor. When `false`, one payment request is created for each bill.
              * @default true
              * @example true
              */
             mergePaymentRequests?: boolean;
             /**
-             * @description If `true`, automatically send payment notifications to the email address for the `payTo` contact.
+             * @description Indicates whether payment notifications are automatically sent to the email address for the `payTo` contact.
              * @default false
              * @example true
              */
             sendPaymentNotification?: boolean;
             /**
              * @description Billing type to use on vendor statements.
-             *     - `openItem` - Shows all bills, adjustments, and payments as line items on a statements.
+             *     - `openItem` - Shows all bills, adjustments, and payments as line items on statements.
              *     - `balanceForward` - Consolidates previous months bills, adjustments, and payments to a single line item.
              * @default null
              * @example openItem
@@ -8526,7 +8653,7 @@ export interface components {
              */
             billingType?: null | "openItem" | "balanceForward";
             /**
-             * @description Optional default payment priority to assign new bills from the vendor.
+             * @description Default payment priority to assign to new bills from the vendor.
              * @default null
              * @example low
              * @enum {string|null}
@@ -8538,7 +8665,7 @@ export interface components {
              */
             currency?: string | null;
             /**
-             * @description If `true`, include any associated term discount on check stubs.
+             * @description Indicates whether any associated term discount is included on check stubs.
              * @default true
              * @example true
              */
@@ -8561,16 +8688,21 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description Bill payment date settings for the vendor. */
             billPayment?: {
                 /**
-                 * @description The Default bill payment date defines how the Recommended to pay on date is calculated for vendor bills. * `none`- Leaves the default unset, which allows you to choose the value from a different date field. * `dueDate` - Calculates the due date based on the selected `term`, then adjusts based on the number of days specified as an offset. * `billDate` - Uses the date entered for the bill, adjusted for the number of days specified as an offset. Does not require that a `term` be defined. * `discountDate` - Uses the discount details in the specified `term` to calculate the discount date. No offset is used.
+                 * @description The default bill payment date defines how the recommended pay-on date is calculated for vendor bills.
+                 *     * `none` - Leaves the default unset, which allows you to choose the value from a different date field.
+                 *     * `dueDate` - Calculates the due date based on the selected `term`, then adjusts based on the number of days specified as an offset.
+                 *     * `billDate` - Uses the date entered for the bill, adjusted for the number of days specified as an offset. Does not require that a `term` be defined.
+                 *     * `discountDate` - Uses the discount details in the specified `term` to calculate the discount date. No offset is used.
                  * @default null
                  * @example none
                  * @enum {string|null}
                  */
                 defaultDateOptions?: "none" | "dueDate" | "billDate" | "discountDate" | null;
                 /**
-                 * @description Specify whether to add (`+`) or subtract (`-`) days for the offset.
+                 * @description Direction of the offset, either add (`+`) or subtract (`-`) days.
                  * @example +
                  * @enum {string|null}
                  */
@@ -8587,12 +8719,12 @@ export interface components {
                 billNumberOfDays?: number | null;
             };
             /**
-             * @description The account number that the vendor has assigned to the company or the top level of a multi-entity company. Account numbers help match payment information to bills being paid.
+             * @description Account number that the vendor has assigned to the company or the top level of a multi-entity company. Account numbers help match payment information to bills being paid.
              * @example 203
              */
             vendorAccountNumber?: string | null;
             /**
-             * @description Set to `true` to display the vendor-assigned account number, per entity, on check stubs.
+             * @description Indicates whether the vendor-assigned account number is displayed on check stubs, per entity.
              * @default false
              * @example false
              */
@@ -8606,18 +8738,19 @@ export interface components {
             /**
              * Format: date
              * @description Date the last bill was created.
-             * @example 2022-07-31
+             * @example 2026-07-31
              */
             readonly lastBillCreatedDate?: string | null;
             /**
              * Format: date
              * @description Date the last payment was made.
-             * @example 2002-08-31
+             * @example 2026-08-31
              */
             readonly lastPaymentMadeDate?: string | null;
+            /** @description ACH payment details for the vendor. */
             ach?: {
                 /**
-                 * @description Set to `true` to enable ACH payments for the vendor.
+                 * @description Indicates whether ACH payments are enabled for the vendor.
                  * @default false
                  * @example false
                  */
@@ -8719,7 +8852,7 @@ export interface components {
              */
             readonly state?: "declined";
         };
-        /** @description In a multi-entity company, the vendor account number associated with each entity location, which helps match payments with bills being paid. */
+        /** @description For multi-entity companies, a vendor account number is the account number assigned to a specific entity location, used to match payments with bills being paid. */
         "objects.accounts-payable.vendor-account-number": {
             /**
              * @description System-assigned unique key for the vendor account number.
@@ -8727,11 +8860,11 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the vendor account number. This value is the same as the `key` value for this object.
+             * @description Unique ID for the vendor account number. This value is the same as the `key` for this object.
              * @example 12
              */
             id?: string;
-            /** @description Location associated with the entity. */
+            /** @description Location associated with the vendor account number. */
             location?: {
                 /**
                  * @description Unique key for the location.
@@ -8739,7 +8872,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the location.
+                 * @description ID for the location.
                  * @example 1
                  */
                 id?: string;
@@ -8772,7 +8905,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the vendor.
+                 * @description ID for the vendor.
                  * @example 9
                  */
                 id?: string;
@@ -8784,15 +8917,15 @@ export interface components {
             };
         };
         "accounts-payable-vendor-account-numberRequiredProperties": Record<string, never>;
-        /** @description A bank file enables electronic payments to be made to vendors using a local bank file format. Bank files are standard files used by banks to make multiple payments. */
+        /** @description Vendor bank file setup contains the bank account details required to deliver electronic payments to a vendor using a local bank file format. */
         "objects.accounts-payable.vendor-bank-file-setup": {
             /**
-             * @description System-assigned key for the vendor bank file setup.
+             * @description System-assigned unique key for the vendor bank file setup.
              * @example 1
              */
             readonly key?: string;
             /**
-             * @description ID for the vendor bank file setup. This value is the same as the `key` for this object.
+             * @description Unique ID for the vendor bank file setup. This value is the same as the `key` for this object.
              * @example 1
              */
             readonly id?: string;
@@ -8807,27 +8940,27 @@ export interface components {
              */
             bankAccountName?: string;
             /**
-             * @description Six-digit number that identifies a particular branch of a bank. Supported countries - Australia (AU).
+             * @description For Australian bank file payments, the six-digit number that identifies the specific branch of a bank.
              * @example 047-359
              */
             bsbNumber?: string;
             /**
-             * @description Six-digit sort code for the bank and branch where the account is held. Supported countries - United Kingdom (GB).
+             * @description For United Kingdom bank file payments, the six-digit sort code for the bank and branch where the account is held.
              * @example 204718
              */
             sortCode?: string;
             /**
-             * @description Payment reference number to connect the bank file and the bills to be paid. Supported countries - Australia (AU) and South Africa (ZA).
+             * @description For Australian and South African bank file payments, the payment reference number used to connect the bank file with the bills to be paid.
              * @example EB32131016
              */
             paymentReference?: string;
             /**
-             * @description Branch code for the vendor bank account to which payments are made. Supported countries - South Africa (ZA).
+             * @description For South African bank file payments, the branch code for the vendor bank account to which payments are made.
              * @example 213456
              */
             branchCode?: string;
             /**
-             * @description Account type for the vendor bank account to which payments are made. Value must be 1, 2, 3, or 4. Supported countries - South Africa (ZA).
+             * @description For South African bank file payments, the account type for the vendor bank account to which payments are made. Accepted values are 1, 2, 3, or 4.
              * @example 4
              */
             bankAccountType?: string;
@@ -8837,29 +8970,29 @@ export interface components {
              */
             bankAccountCode?: string;
             /**
-             * @description Specify whether to print the proof of payment when the bank file payment batch is authorized. Supported countries - South Africa (ZA).
+             * @description For South African bank file payments, whether to print proof of payment when the bank file payment batch is authorized.
              * @example true
              */
             printPaymentProof?: string | null;
             /**
-             * @description Creditor bank identifier code for the bank account. Supported countries - All European countries where Generic-SEPA file format is supported.
+             * @description For European countries where the Generic-SEPA file format is supported, the creditor bank identifier code for the bank account.
              * @example AIBKIE2D491
              */
             businessIdCode?: string;
             /**
-             * @description Creditor code for the bank account. Supported countries - Canada (CA).
+             * @description For Canadian bank file payments, the creditor code for the bank account.
              * @example 1234567891234567
              */
             creditorCode?: string;
             /**
-             * @description Bank number, as assigned by the account CAD financial institution.  Supported countries - Canada (CA).
+             * @description For Canadian bank file payments, the bank number as assigned by the CAD financial institution.
              * @example 00710423598
              */
             secondaryIdentifier?: string;
             /**
-             * @description (This field applies only to companies in the United States.) Specifies the account classification for ACH transactions.
-             *     Use PPD (Prearranged Payment and Deposit) for transactions with individual or consumer accounts.
-             *     Use CCD (Corporate Credit or Debit) for transactions with business or corporate accounts.
+             * @description For US companies, the account classification for ACH transactions.
+             *     - `ppd` - Prearranged Payment and Deposit, for transactions with individual or consumer accounts.
+             *     - `ccd` - Corporate Credit or Debit, for transactions with business or corporate accounts.
              * @default ccd
              * @example ccd
              * @enum {string|null}
@@ -8901,7 +9034,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the vendor.
+                 * @description ID for the vendor.
                  * @example V-00014
                  */
                 id?: string;
@@ -8925,7 +9058,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the vendor contact. This value is the same as the `key` for this object.
+             * @description Unique ID for the vendor contact. This value is the same as the `key` for this object.
              * @example 17
              */
             readonly id?: string;
@@ -8939,7 +9072,7 @@ export interface components {
              * @example Main Office
              */
             categoryName?: string;
-            /** @description Contact to associate with the vendor. */
+            /** @description Contact associated with the vendor. */
             contact?: {
                 /**
                  * @description Unique key for the contact.
@@ -8947,7 +9080,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Name or other unique ID for the contact.
+                 * @description Name of the contact.
                  * @example Jeffrey Post
                  */
                 id?: string;
@@ -8958,7 +9091,7 @@ export interface components {
                 readonly href?: string;
             };
             audit?: components["schemas"]["audit.s1"];
-            /** @description Vendor the contact is associated with. */
+            /** @description Vendor associated with the contact. */
             vendor?: {
                 /**
                  * @description Unique key for the vendor.
@@ -8966,7 +9099,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the vendor.
+                 * @description ID for the vendor.
                  * @example 15
                  */
                 id?: string;
@@ -8981,7 +9114,7 @@ export interface components {
             contact?: Record<string, never>;
             vendor?: Record<string, never>;
         };
-        /** @description Vendor email templates can be used to automate standard messages sent to multiple vendors. */
+        /** @description A vendor email template associates an email template with a vendor and a specific transaction type to automate standard messages sent to the vendor. */
         "objects.accounts-payable.vendor-email-template": {
             /**
              * @description System-assigned unique key for the vendor email template.
@@ -8989,7 +9122,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description ID for the vendor email template. This value is the same as the `key` for this object.
+             * @description Unique ID for the vendor email template. This value is the same as the `key` for this object.
              * @example 10
              */
             readonly id?: string;
@@ -8998,7 +9131,7 @@ export interface components {
              * @example /objects/accounts-payable/vendor-email-template/10
              */
             readonly href?: string;
-            /** @description Vendor associated with this email template. */
+            /** @description Vendor associated with the vendor email template. */
             vendor?: {
                 /**
                  * @description Unique key for the vendor.
@@ -9006,7 +9139,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the vendor.
+                 * @description ID for the vendor.
                  * @example 014
                  */
                 id?: string;
@@ -9017,7 +9150,7 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Type of transaction that will use the email template.
+             * @description Transaction type associated with the email template.
              * @example Vendor Invoice
              */
             txnDefinitionName?: string;
@@ -9029,7 +9162,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the email template.
+                 * @description ID for the email template.
                  * @example 15
                  */
                 id?: string;
@@ -9046,28 +9179,32 @@ export interface components {
             };
         };
         "accounts-payable-vendor-email-templateRequiredProperties": Record<string, never>;
-        /** @description Object that links a payment provider to a vendor. */
+        /** @description A vendor payment provider links a payment provider to a vendor for electronic payment processing. */
         "objects.accounts-payable.vendor-payment-provider": {
             /**
-             * @description System-assigned key for the vendor payment provider.
+             * @description System-assigned unique key for the vendor payment provider.
              * @example 1
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the vendor payment provider.
+             * @description Unique ID for the vendor payment provider. This value is the same as the `key` for this object.
              * @example 1
              */
             id?: string;
-            /** @example /objects/accounts-payable/vendor-payment-provider/1 */
+            /**
+             * @description URL endpoint for the vendor payment provider.
+             * @example /objects/accounts-payable/vendor-payment-provider/1
+             */
             readonly href?: string;
+            /** @description Payment provider associated with the vendor payment provider. */
             paymentProvider?: {
                 /**
-                 * @description System-assigned key for the payment provider.
+                 * @description Unique key for the payment provider.
                  * @example 3
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the payment provider.
+                 * @description ID for the payment provider.
                  * @example CSI
                  */
                 id?: string;
@@ -9076,17 +9213,21 @@ export interface components {
                  * @example CSI
                  */
                 name?: string;
-                /** @example /objects/cash-management/payment-provider/3 */
+                /**
+                 * @description URL endpoint for the payment provider.
+                 * @example /objects/cash-management/payment-provider/3
+                 */
                 readonly href?: string;
             };
+            /** @description Vendor associated with the vendor payment provider. */
             vendor?: {
                 /**
-                 * @description System-assigned key for the vendor.
+                 * @description Unique key for the vendor.
                  * @example 351
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the vendor.
+                 * @description ID for the vendor.
                  * @example VEN016
                  */
                 id?: string;
@@ -9096,7 +9237,7 @@ export interface components {
                  */
                 name?: string;
                 /**
-                 * @description URL of the vendor
+                 * @description URL endpoint for the vendor.
                  * @example /objects/accounts-payable/vendor/351
                  */
                 readonly href?: string;
@@ -9107,14 +9248,15 @@ export interface components {
              * @enum {string}
              */
             readonly state?: "requestInitiated" | "inProgress" | "requestReceived" | "requestFailed" | "awaitingAuthorization" | "subscribed" | "canceled" | "suspended";
+            /** @description Preferred payment method for the vendor. */
             preferredPaymentMethod?: {
                 /**
-                 * @description System-assigned key for the preferred payment method.
+                 * @description Unique key for the preferred payment method.
                  * @example 454
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the preferred payment method.
+                 * @description ID for the preferred payment method.
                  * @example 454
                  */
                 id?: string;
@@ -9123,7 +9265,10 @@ export interface components {
                  * @example Check
                  */
                 name?: string;
-                /** @example /objects/cash-management/provider-payment-method/454 */
+                /**
+                 * @description URL endpoint for the preferred payment method.
+                 * @example /objects/cash-management/provider-payment-method/454
+                 */
                 readonly href?: string;
             };
             /**
@@ -9135,15 +9280,15 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "accounts-payable-vendor-payment-providerRequiredProperties": Record<string, never>;
-        /** @description In shared multi-entity companies, vendors can be restricted to specific departments or department groups to prevent the vendor from being used in the wrong entity. */
+        /** @description A vendor restricted department limits a vendor to specific departments or department groups in a shared multi-entity company, preventing the vendor from being used outside those restrictions. */
         "objects.accounts-payable.vendor-restricted-department": {
             /**
-             * @description System-assigned key for the vendor restricted department.
+             * @description System-assigned unique key for the vendor restricted department.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description ID for the vendor restricted department. This value is the same as the `key` for this object.
+             * @description Unique ID for the vendor restricted department. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -9160,7 +9305,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description User-defined ID for the department.
+                 * @description ID for the department.
                  * @example Eng
                  */
                 id?: string;
@@ -9178,7 +9323,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the department group.
+                 * @description ID for the department group.
                  * @example SW
                  */
                 id?: string;
@@ -9188,7 +9333,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Vendor that is restricted. */
+            /** @description Vendor associated with the vendor restricted department. */
             vendor?: {
                 /**
                  * @description Unique key for the vendor.
@@ -9196,7 +9341,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the vendor.
+                 * @description ID for the vendor.
                  * @example V23
                  */
                 readonly id?: string;
@@ -9207,10 +9352,10 @@ export interface components {
                 readonly href?: string;
             };
         };
-        /** @description In shared multi-entity companies, vendors can be restricted to specific locations or location groups to prevent the vendor from being used in the wrong entity. */
+        /** @description A vendor restricted location limits a vendor to specific locations or location groups in a shared multi-entity company, preventing the vendor from being used outside those restrictions. */
         "objects.accounts-payable.vendor-restricted-location": {
             /**
-             * @description System-assigned key for the vendor restricted location.
+             * @description System-assigned unique key for the vendor restricted location.
              * @example 32
              */
             readonly key?: string;
@@ -9232,7 +9377,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the location.
+                 * @description ID for the location.
                  * @example NW
                  */
                 id?: string;
@@ -9250,7 +9395,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the location group.
+                 * @description ID for the location group.
                  * @example USA
                  */
                 id?: string;
@@ -9260,7 +9405,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Vendor that is restricted. */
+            /** @description Vendor associated with the vendor restricted location. */
             vendor?: {
                 /**
                  * @description Unique key for the vendor.
@@ -9268,7 +9413,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the vendor.
+                 * @description ID for the vendor.
                  * @example V32
                  */
                 readonly id?: string;
@@ -9282,17 +9427,17 @@ export interface components {
         /** @description Vendor types organize vendors into categories that are used for reporting. */
         "objects.accounts-payable.vendor-type": {
             /**
-             * @description System-assigned key for the vendor type.
+             * @description System-assigned unique key for the vendor type.
              * @example 14
              */
             readonly key?: string;
             /**
-             * @description Name or other unique identifier for the vendor type.
+             * @description Unique ID for the vendor type.
              * @example Retail
              */
             id?: string;
             /**
-             * @description URL for the vendor type.
+             * @description URL endpoint for the vendor type.
              * @example /objects/accounts-payable/vendor-type/14
              */
             readonly href?: string;
@@ -9311,20 +9456,20 @@ export interface components {
                  */
                 box?: string;
             };
-            /** @description Assign a parent to make this vendor type subordinate to another vendor type. */
+            /** @description Parent vendor type associated with the vendor type. */
             parent?: {
                 /**
-                 * @description System-assigned key for the parent vendor type.
+                 * @description Unique key for the parent vendor type.
                  * @example 1
                  */
                 key?: string;
                 /**
-                 * @description Name or other unique identifier for the parent vendor type.
+                 * @description ID for the parent vendor type.
                  * @example Wholesaler
                  */
                 id?: string;
                 /**
-                 * @description URL for the parent vendor type.
+                 * @description URL endpoint for the parent vendor type.
                  * @example /objects/accounts-payable/vendor-type/1
                  */
                 readonly href?: string;
@@ -9333,15 +9478,15 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "accounts-payable-vendor-typeRequiredProperties": Record<string, never>;
-        /** @description A vendor group categorizes vendor dimension records, mainly for the purpose of structuring financial reports. */
+        /** @description A vendor group categorizes vendor dimension records for structuring financial reports. */
         "objects.accounts-payable.vendor-group": {
             /**
-             * @description System assigned unique key for the vendor group.
+             * @description System-assigned unique key for the vendor group.
              * @example 25
              */
             readonly key?: string;
             /**
-             * @description Vendor group ID.
+             * @description Unique ID for the vendor group.
              * @example 1
              */
             id?: string;
@@ -9380,7 +9525,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the vendor.
+                 * @description ID for the vendor.
                  * @example 12
                  */
                 id?: string;
@@ -9401,7 +9546,7 @@ export interface components {
                  */
                 readonly status?: "active" | "activeNonPosting" | "inactive";
                 /**
-                 * @description Sort order.
+                 * @description Sort order of the vendor within the group.
                  * @example 0
                  */
                 readonly sortOrder?: string;
@@ -9439,7 +9584,7 @@ export interface components {
              * @example 1353.01
              */
             totalDue?: string;
-            /** @description The vendor who owes the amount due. */
+            /** @description Vendor associated with the vendor total. */
             vendor?: {
                 /**
                  * @description Unique key for the vendor.
@@ -9447,13 +9592,13 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Name or other unique ID for the vendor.
-                 * @example Pac Bell
+                 * @description ID for the vendor.
+                 * @example V-00014
                  */
                 id?: string;
                 /**
                  * @description Name of the vendor.
-                 * @example Pac Bell
+                 * @example Acme Supplies
                  */
                 name?: string;
                 /**
@@ -9462,7 +9607,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Location of the entity associated with the vendor total. */
+            /** @description Entity associated with the vendor total. */
             entity?: components["schemas"]["entity-ref"] & {
                 /**
                  * @description ID for the entity.
@@ -10036,6 +10181,29 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
+                 */
+                readonly href?: string;
+            };
         };
         /**
          * @description Record type
@@ -10154,91 +10322,76 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @deprecated
              * @description Last name.
              * @example Smith
              */
             lastName?: string | null;
             /**
-             * @deprecated
              * @description First name.
              * @example John
              */
             firstName?: string | null;
             /**
-             * @deprecated
              * @description Middle name.
              * @example Archibald
              */
             middleName?: string | null;
             /**
-             * @deprecated
              * @description Prefix, such as Mr., Mrs., or Ms.
              * @example Mr
              */
             prefix?: string | null;
             /**
-             * @deprecated
              * @description The contact's name as it will appear on documents.
              * @example John Smith
              */
             printAs?: string;
             /**
-             * @deprecated
              * @description Primary email address.
              * @example jsmith@company.com
              */
             email1?: string | null;
             /**
-             * @deprecated
              * @description Secondary email address.
              * @example john@aol.com
              */
             email2?: string | null;
             /**
-             * @deprecated
              * @description Primary phone number.
              * @example 14085551212
              */
             phone1?: string | null;
             /**
-             * @deprecated
              * @description Secondary phone number.
              * @example 14085559876
              */
             phone2?: string | null;
             /**
-             * @deprecated
              * @description Mobile phone number.
              * @example 14085554420
              */
             mobile?: string | null;
             /**
-             * @deprecated
              * @description Pager number.
              * @example 14085559987
              */
             pager?: string | null;
             /**
-             * @deprecated
              * @description Fax number.
              * @example 14085555309
              */
             fax?: string | null;
             /**
-             * @deprecated
              * @description Web page address for this contact.
              * @example https://mycompany.com
              */
             URL1?: string | null;
             /**
-             * @deprecated
              * @description Secondary web page address.
              * @example https://anothercompany.com
              */
             URL2?: string | null;
             /**
-             * @deprecated
              * @description Name of the company.
              * @example AlcoSoft Inc
              */
@@ -10246,37 +10399,31 @@ export interface components {
             /** @description Mailing address. */
             mailingAddress?: {
                 /**
-                 * @deprecated
                  * @description The first address line for shipping, billing, etc.
                  * @example 300 Park Avenue
                  */
                 addressLine1?: string | null;
                 /**
-                 * @deprecated
                  * @description The second address line for shipping, billing, etc.
                  * @example Suite 1400
                  */
                 addressLine2?: string | null;
                 /**
-                 * @deprecated
                  * @description The third address line for shipping, billing, etc. which provides additional geographical information.
                  * @example Western industrial area
                  */
                 addressLine3?: string | null;
                 /**
-                 * @deprecated
                  * @description City.
                  * @example San Jose
                  */
                 city?: string | null;
                 /**
-                 * @deprecated
                  * @description State.
                  * @example California
                  */
                 state?: string | null;
                 /**
-                 * @deprecated
                  * @description Zip or Postal Code.
                  * @example 95110
                  */
@@ -10289,7 +10436,6 @@ export interface components {
                  */
                 country?: string | null;
                 /**
-                 * @deprecated
                  * @description ISO country code. This field takes prevalence over `country` which is now deprecated.
                  * @default US
                  * @example US
@@ -10500,7 +10646,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the account label.
-                 * @example 99
+                 * @example 8
                  */
                 key: string;
             };
@@ -10530,7 +10676,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the account label.
-                 * @example 99
+                 * @example 8
                  */
                 key: string;
             };
@@ -10555,7 +10701,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the account label.
-                 * @example 99
+                 * @example 8
                  */
                 key: string;
             };
@@ -11010,7 +11156,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the adjustment summary.
-                 * @example 99
+                 * @example 13
                  */
                 key: string;
             };
@@ -11092,7 +11238,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the advance.
-                 * @example 99
+                 * @example 20
                  */
                 key: string;
             };
@@ -11122,7 +11268,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the advance.
-                 * @example 99
+                 * @example 20
                  */
                 key: string;
             };
@@ -11147,7 +11293,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the advance.
-                 * @example 99
+                 * @example 20
                  */
                 key: string;
             };
@@ -11255,47 +11401,11 @@ export interface operations {
             400: components["responses"]["400error"];
         };
     };
-    "get-accounts-payable-advance-line-key": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /**
-                 * @description System-assigned unique key for the advance line.
-                 * @example 99
-                 */
-                key: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        "ia::result"?: components["schemas"]["objects.accounts-payable.advance-line"];
-                        "ia::meta"?: components["schemas"]["metadata"];
-                    };
-                };
-            };
-            400: components["responses"]["400error"];
-        };
-    };
     "create-accounts-payable-advance-line": {
         parameters: {
             query?: never;
             header?: never;
-            path: {
-                /**
-                 * @description System-assigned unique key for the advance line.
-                 * @example 99
-                 */
-                key: string;
-            };
+            path?: never;
             cookie?: never;
         };
         requestBody: {
@@ -11319,6 +11429,36 @@ export interface operations {
             400: components["responses"]["400error"];
         };
     };
+    "get-accounts-payable-advance-line-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the advance line.
+                 * @example 39
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.accounts-payable.advance-line"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
     "delete-accounts-payable-advance-line": {
         parameters: {
             query?: never;
@@ -11326,7 +11466,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the advance line.
-                 * @example 99
+                 * @example 39
                  */
                 key: string;
             };
@@ -11344,14 +11484,14 @@ export interface operations {
             400: components["responses"]["400error"];
         };
     };
-    "update-accounts-payable-advance-line": {
+    "update-accounts-payable-advance-line-key": {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 /**
                  * @description System-assigned unique key for the advance line.
-                 * @example 99
+                 * @example 39
                  */
                 key: string;
             };
@@ -11363,8 +11503,8 @@ export interface operations {
             };
         };
         responses: {
-            /** @description Created */
-            201: {
+            /** @description OK */
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -11916,7 +12056,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the bill summary.
-                 * @example 99
+                 * @example 98
                  */
                 key: string;
             };
@@ -12142,7 +12282,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for a joint payee.
-                 * @example 99
+                 * @example 1
                  */
                 key: string;
             };
@@ -12172,7 +12312,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for a joint payee.
-                 * @example 99
+                 * @example 1
                  */
                 key: string;
             };
@@ -12197,7 +12337,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for a joint payee.
-                 * @example 99
+                 * @example 1
                  */
                 key: string;
             };
@@ -13059,7 +13199,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the summary.
-                 * @example 99
+                 * @example 36
                  */
                 key: string;
             };
@@ -13089,7 +13229,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the summary.
-                 * @example 99
+                 * @example 36
                  */
                 key: string;
             };
@@ -13114,7 +13254,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the summary.
-                 * @example 99
+                 * @example 36
                  */
                 key: string;
             };
@@ -13201,8 +13341,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the term.
-                 * @example 99
+                 * @description System-assigned unique key for the term.
+                 * @example 27
                  */
                 key: string;
             };
@@ -13231,8 +13371,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the term.
-                 * @example 99
+                 * @description System-assigned unique key for the term.
+                 * @example 27
                  */
                 key: string;
             };
@@ -13256,8 +13396,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the term.
-                 * @example 99
+                 * @description System-assigned unique key for the term.
+                 * @example 27
                  */
                 key: string;
             };
@@ -13710,7 +13850,7 @@ export interface operations {
             400: components["responses"]["400error"];
         };
     };
-    "delete-accounts-payable-vendor-account-number": {
+    "delete-accounts-payable-vendor-account-number-key": {
         parameters: {
             query?: never;
             header?: never;
@@ -13735,7 +13875,7 @@ export interface operations {
             400: components["responses"]["400error"];
         };
     };
-    "update-accounts-payable-vendor-account-number": {
+    "update-accounts-payable-vendor-account-number-key": {
         parameters: {
             query?: never;
             header?: never;
@@ -13801,7 +13941,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the vendor bank file setup object.
+                 * @description System-assigned unique key for the vendor bank file setup.
                  * @example 99
                  */
                 key: string;
@@ -14168,7 +14308,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the vendor payment provider.
+                 * @description System-assigned unique key for the vendor payment provider.
                  * @example 1
                  */
                 key: string;
@@ -14198,7 +14338,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the vendor payment provider.
+                 * @description System-assigned unique key for the vendor payment provider.
                  * @example 1
                  */
                 key: string;
@@ -14510,7 +14650,7 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Creates a new Vendor group. */
+        /** @description Creates a new vendor group. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.accounts-payable.vendor-group"] & components["schemas"]["accounts-payable-vendor-groupRequiredProperties"];
@@ -14538,7 +14678,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System assigned unique key for the vendor group.
+                 * @description System-assigned unique key for the vendor group.
                  * @example 16
                  */
                 key: string;
@@ -14568,7 +14708,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System assigned unique key for the vendor group.
+                 * @description System-assigned unique key for the vendor group.
                  * @example 16
                  */
                 key: string;
@@ -14593,7 +14733,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System assigned unique key for the vendor group.
+                 * @description System-assigned unique key for the vendor group.
                  * @example 16
                  */
                 key: string;

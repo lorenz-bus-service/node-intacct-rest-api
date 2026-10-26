@@ -77,6 +77,10 @@ export type TaskObservedPercentCompletedUpdate = RequestBody<operations["update-
 export type TaskResource = components["schemas"]["objects.projects.task-resource"];
 export type TaskResourceCreate = RequestBody<operations["create-projects-task-resource"]>;
 export type TaskResourceUpdate = RequestBody<operations["update-projects-task-resource-key"]>;
+/** projects/txn-rule */
+export type TxnRule = components["schemas"]["objects.projects.txn-rule"];
+/** projects/txn-rule-detail */
+export type TxnRuleDetail = components["schemas"]["objects.projects.txn-rule-detail"];
 
 export const projectAndResourceManagement = defineApplication({
   costType: object(shape<{ record: CostType; create: CostTypeCreate; update: CostTypeUpdate }>(), "construction/cost-type", ["create","delete","get","update"]),
@@ -99,6 +103,8 @@ export const projectAndResourceManagement = defineApplication({
   taskGroup: object(shape<{ record: TaskGroup; create: TaskGroupCreate; update: TaskGroupUpdate }>(), "projects/task-group", ["create","delete","get","update"]),
   taskObservedPercentCompleted: object(shape<{ record: TaskObservedPercentCompleted; create: TaskObservedPercentCompletedCreate; update: TaskObservedPercentCompletedUpdate }>(), "projects/task-observed-percent-completed", ["create","delete","get","update"]),
   taskResource: object(shape<{ record: TaskResource; create: TaskResourceCreate; update: TaskResourceUpdate }>(), "projects/task-resource", ["create","delete","get","update"]),
+  txnRule: object(shape<{ record: TxnRule }>(), "projects/txn-rule", ["delete","get"]),
+  txnRuleDetail: object(shape<{ record: TxnRuleDetail }>(), "projects/txn-rule-detail", ["get"]),
 });
 
 export default projectAndResourceManagement;

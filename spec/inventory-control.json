@@ -55,7 +55,7 @@
   {
    "name": "Inventory_Control_Inventory document lines",
    "x-displayName": "Inventory document lines",
-   "description": "Line information for inventory transactions, including opening balances and adjustments. Create and maintain document lines from the owning [document object](inventory-control.document)."
+   "description": "Line information for inventory transactions, including opening balances and adjustments. Create and maintain document lines from the owning [document object](/intacct/apis/intacct/1/intacct-openapi/groups/inventory-control/groups/documents/tags/inventory_control_inventory-documents)."
   },
   {
    "name": "Inventory_Control_Inventory document line details",
@@ -100,12 +100,12 @@
   {
    "name": "Inventory_Control_Item landed costs",
    "x-displayName": "Item landed costs",
-   "description": "A landed cost item is a non-inventory item that represents a landed cost expense, such as freight, insurance, customs duties, or handling fees.\n\nThis object is valid when Inventory Control is configured to enable landed costs.\nFor more information, see [Landed costs overview](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Landed_costs_overview) in the Sage Intacct Help Center.\n\nCreate and maintain landed costs from the owning [item object](inventory-control.item).\n"
+   "description": "A landed cost item is a non-inventory item that represents a landed cost expense, such as freight, insurance, customs duties, or handling fees.\n\nThis object is valid when Inventory Control is configured to enable landed costs.\nFor more information, see [Landed costs overview](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Landed_costs_overview) in the Sage Intacct Help Center.\n\nCreate and maintain landed costs from the owning [item object](/intacct/apis/intacct/1/intacct-openapi/groups/inventory-control/groups/items/tags/inventory_control_items).\n"
   },
   {
    "name": "Inventory_Control_Item vendors",
    "x-displayName": "Item vendors",
-   "description": "This object provides details about an item that can be purchased from a particular vendor. Create and maintain item vendors from the owning [item object](inventory-control.item)."
+   "description": "This object provides details about an item that can be purchased from a particular vendor. Create and maintain item vendors from the owning [item object](/intacct/apis/intacct/1/intacct-openapi/groups/inventory-control/groups/items/tags/inventory_control_items)."
   },
   {
    "name": "Inventory_Control_Item warehouse inventory information",
@@ -175,7 +175,7 @@
   {
    "name": "Inventory_Control_Stockable kit document lines",
    "x-displayName": "Stockable kit document lines",
-   "description": "Each stockable kit document line object lists the stockable kits that were built or disassembled and the component items that were included in the kits. These transactions are recorded for inventory management and tracking purposes.\n\nYou can create or update document line items by creating or modifying the [stockable kit document](inventory-control.stockable-kit-document).\n"
+   "description": "Each stockable kit document line object lists the stockable kits that were built or disassembled and the component items that were included in the kits. These transactions are recorded for inventory management and tracking purposes.\n\nYou can create or update document line items by creating or modifying the [stockable kit document](/intacct/apis/intacct/1/intacct-openapi/groups/inventory-control/tags/inventory_control_stockable-kit-documents).\n"
   },
   {
    "name": "Inventory_Control_Posting summaries",
@@ -280,7 +280,7 @@
   {
    "name": "Inventory_Control_Warehouse transfer lines",
    "x-displayName": "Warehouse transfer lines",
-   "description": "Lines in a warehouse transfer represent items included in the transfer and details about those items. You can create or update warehouse transfer lines by creating or modifying the [warehouse transfer](inventory-control.warehouse-transfer).\n"
+   "description": "Lines in a warehouse transfer represent items included in the transfer and details about those items. You can create or update warehouse transfer lines by creating or modifying the [warehouse transfer](/intacct/apis/intacct/1/intacct-openapi/groups/inventory-control/tags/inventory_control_warehouse-transfers).\n"
   },
   {
    "name": "Inventory_Control_Warehouse groups",
@@ -2775,7 +2775,13 @@
   "/objects/inventory-control/document::{documentName}": {
    "parameters": [
     {
-     "$ref": "#/components/parameters/documentName"
+     "name": "documentName",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "description": "Document name"
     }
    ],
    "get": {
@@ -2850,7 +2856,7 @@
    },
    "post": {
     "summary": "Create an inventory document",
-    "description": "Creates a new Inventory Control document. To create a new inventory document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. To access a list of available transaction definitions, use the list operation of the [transaction definition](inventory-control.txn-definition) object. For example, to create a new inventory document that uses the Beginning Balance transaction definition as a template, specify `Beginning Balance` for the `documentName` in the request URL.\n\nYou can create a document if the **Create policy** for the associated transaction definition is not set to \"Convert only\".  If the transaction type that you want to create has a **Create policy** that's set to \"Convert only\", you have to convert an existing transaction into the desired transaction. \n",
+    "description": "Creates a new Inventory Control document. To create a new inventory document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. To access a list of available transaction definitions, use the list operation of the [transaction definition](/intacct/apis/intacct/1/intacct-openapi/groups/inventory-control/groups/transaction-definitions/tags/inventory_control_inventory-transaction-definitions) object. For example, to create a new inventory document that uses the Beginning Balance transaction definition as a template, specify `Beginning Balance` for the `documentName` in the request URL.\n\nYou can create a document if the **Create policy** for the associated transaction definition is not set to \"Convert only\".  If the transaction type that you want to create has a **Create policy** that's set to \"Convert only\", you have to convert an existing transaction into the desired transaction. \n",
     "tags": [
      "Inventory_Control_Inventory documents"
     ],
@@ -2874,7 +2880,7 @@
         "Create an inventory document": {
          "value": {
           "state": "pending",
-          "transactionDate": "2024-02-14",
+          "txnDate": "2026-02-14",
           "referenceNumber": "HAMMER16 starting quantity",
           "memo": "Hammers already on hand",
           "baseCurrency": "USD",
@@ -2912,7 +2918,7 @@
         "Create an inventory document to issue supplies": {
          "value": {
           "state": "pending",
-          "transactionDate": "2025-12-12",
+          "txnDate": "2026-02-12",
           "referenceNumber": "Issue supplies for requisition 2232",
           "documentNumber": "SUP-ISSUE-0001",
           "baseCurrency": "USD",
@@ -2953,7 +2959,7 @@
         "Create an inventory document to adjust and issue supplies": {
          "value": {
           "state": "pending",
-          "transactionDate": "2025-12-12",
+          "txnDate": "2026-02-12",
           "referenceNumber": "Adjust and issue supplies for requisition 2232",
           "documentNumber": "SUP-ADJISS-0001",
           "adjustAndIssue": true,
@@ -3088,13 +3094,13 @@
              "id": "SYS-Warehouse Transfer Out-WHXFER-000033-doc-Out"
             },
             "state": "closed",
-            "transactionDate": "2024-02-14",
+            "txnDate": "2026-02-14",
             "status": "active",
             "audit": {
-             "createdDateTime": "2024-02-14T21:43:07Z",
+             "createdDateTime": "2026-02-14T21:43:07Z",
              "createdBy": "1",
              "modifiedBy": "1",
-             "modifiedDateTime": "2024-02-14T21:43:08Z"
+             "modifiedDateTime": "2026-02-14T21:43:08Z"
             },
             "referenceNumber": "HAMMER16 weekly transfer",
             "documentType": "SYS-Warehouse Transfer In",
@@ -3122,7 +3128,7 @@
             "total": "0.00",
             "txnCurrency": "USD",
             "exchangeRate": {
-             "date": "2024-02-14",
+             "date": "2026-02-14",
              "rate": "1.0000",
              "typeId": null,
              "typeName": null
@@ -3195,8 +3201,8 @@
               "cost": "0.0000000000",
               "totalCost": "0",
               "audit": {
-               "modifiedDateTime": "2024-02-14T21:43:07Z",
-               "createdDateTime": "2024-02-14T21:43:07Z",
+               "modifiedDateTime": "2026-02-14T21:43:07Z",
+               "createdDateTime": "2026-02-14T21:43:07Z",
                "createdBy": "1",
                "modifiedBy": "1"
               },
@@ -3256,8 +3262,8 @@
                 },
                 "expirationDate": null,
                 "audit": {
-                 "createdDateTime": "2024-02-14T21:43:07Z",
-                 "modifiedDateTime": "2024-02-14T21:43:07Z",
+                 "createdDateTime": "2026-02-14T21:43:07Z",
+                 "modifiedDateTime": "2026-02-14T21:43:07Z",
                  "createdBy": "1",
                  "modifiedBy": "1"
                 },
@@ -3351,7 +3357,7 @@
              "key": null
             },
             "state": "pending",
-            "transactionDate": "2025-12-12",
+            "txnDate": "2026-02-12",
             "audit": {
              "createdDateTime": "2025-11-29T23:23:06Z",
              "createdByUser": {
@@ -3629,7 +3635,13 @@
      "example": "99"
     },
     {
-     "$ref": "#/components/parameters/documentName"
+     "name": "documentName",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "description": "Name of the transaction definition template used for the inventory document."
     }
    ],
    "get": {
@@ -3668,7 +3680,7 @@
              "key": null
             },
             "state": "pending",
-            "transactionDate": "2015-12-18",
+            "txnDate": "2026-02-18",
             "audit": {
              "createdDateTime": null,
              "createdBy": null,
@@ -5503,7 +5515,7 @@
              "key": null
             },
             "quantityRemaining": "3.0000000000",
-            "deliveryMethod": {
+            "shippingMethod": {
              "key": "2",
              "id": "Air",
              "href": "/objects/accounts-receivable/shipping-method/2"
@@ -5895,7 +5907,7 @@
            "inventoryPrecision": 10,
            "purchasingPrecision": 10,
            "salesPrecision": 10,
-           "upc": "23342"
+           "upcPrecision": "23342"
           },
           "tracking": {
            "enableSerialNo": true,
@@ -5949,8 +5961,8 @@
            "density": 22
           },
           "itemDetails": {
-           "universalProductCode": 123456789123,
-           "internationalArticleNumber": 1234567891234,
+           "upc": "123456789123",
+           "articleNumber": "1234567891234",
            "isSafetyItem": true,
            "isRestrictedItem": false,
            "isCompliantItem": false,
@@ -6178,7 +6190,7 @@
              "inventoryPrecision": 10,
              "purchasingPrecision": 10,
              "salesPrecision": 10,
-             "upc": "2"
+             "upcPrecision": "2"
             },
             "itemType": "inventory",
             "tracking": {
@@ -6277,8 +6289,8 @@
              "density": 22
             },
             "itemDetails": {
-             "universalProductCode": 123456789123,
-             "internationalArticleNumber": 1234567891234,
+             "upc": "123456789123",
+             "articleNumber": "1234567891234",
              "isSafetyItem": true,
              "isRestrictedItem": false,
              "isCompliantItem": false,
@@ -21350,7 +21362,8 @@
      "documentType": {
       "type": "string",
       "description": "The type of transaction document.",
-      "example": "Beginning Balance"
+      "example": "Beginning Balance",
+      "readOnly": true
      },
      "isPrinted": {
       "type": "boolean",
@@ -21361,16 +21374,16 @@
      },
      "subTotal": {
       "type": "string",
-      "format": "decimal-precision-2",
+      "format": "decimal-precision-14",
       "description": "Subtotal of the document in the base currency.",
-      "example": "51.00",
+      "example": "1.20000000000000",
       "readOnly": true
      },
      "total": {
       "type": "string",
-      "format": "decimal-precision-2",
+      "format": "decimal-precision-14",
       "description": "The sum of values across all lines in the document.",
-      "example": "1.00",
+      "example": "1.20000000000000",
       "readOnly": true
      },
      "subtotalInTxnCurrency": {
@@ -21445,6 +21458,12 @@
      "transactionDate": {
       "type": "string",
       "format": "date",
+      "description": "This field has been deprecated. Use the `txnDate` field instead.",
+      "deprecated": true
+     },
+     "txnDate": {
+      "type": "string",
+      "format": "date",
       "description": "Date that the transaction occurred.",
       "example": "2023-01-01"
      },
@@ -21481,6 +21500,7 @@
      "txnDefinition": {
       "type": "object",
       "description": "Transaction definition for the inventory document.",
+      "readOnly": true,
       "properties": {
        "href": {
         "type": "string",
@@ -21491,17 +21511,20 @@
        "key": {
         "type": "string",
         "description": "Unique key for the transaction definition.",
+        "readOnly": true,
         "example": "23"
        },
        "id": {
         "type": "string",
         "description": "Name of the transaction definition.",
+        "readOnly": true,
         "example": "Beginning Balance"
        },
        "documentType": {
         "type": "string",
         "description": "Document type of the transaction definition.",
-        "example": "Beginning Balance"
+        "example": "Beginning Balance",
+        "readOnly": true
        },
        "txnDefinitionTemplateClass": {
         "type": "string",
@@ -21513,6 +21536,7 @@
         "type": "string",
         "description": "For transactions that update inventory, indicates whether quantity, value, or both are updated.",
         "example": "quantityAndValue",
+        "readOnly": true,
         "enum": [
          "no",
          "quantity",
@@ -21524,6 +21548,7 @@
         "type": "string",
         "description": "For transactions that update inventory, indicates whether it increases or decreases inventory.",
         "example": "increase",
+        "readOnly": true,
         "enum": [
          "increase",
          "decrease"
@@ -21534,16 +21559,19 @@
      "sourceDocument": {
       "type": "object",
       "description": "The source transaction from which the inventory document was created.",
+      "readOnly": true,
       "properties": {
        "key": {
         "type": "string",
         "description": "Unique key for the source document.",
-        "example": "23"
+        "example": "23",
+        "readOnly": true
        },
        "id": {
         "type": "string",
         "description": "ID for the source document.",
-        "example": "Beginning Balance-Doc0001"
+        "example": "Beginning Balance-Doc0001",
+        "readOnly": true
        },
        "href": {
         "type": "string",
@@ -21614,7 +21642,7 @@
        "defaultWarehouse": {
         "type": "string",
         "description": "Geographical location of the warehouse.",
-        "example": "DF-WH-0001"
+        "deprecated": true
        },
        "href": {
         "type": "string",
@@ -21668,6 +21696,7 @@
      "history": {
       "type": "array",
       "description": "History lines for the inventory document.",
+      "readOnly": true,
       "items": {
        "$ref": "#/components/schemas/objects.inventory-control.document-history"
       }
@@ -21675,6 +21704,7 @@
      "subtotals": {
       "type": "array",
       "description": "Subtotal lines for the inventory document.",
+      "readOnly": true,
       "items": {
        "$ref": "#/components/schemas/objects.inventory-control.document-subtotal"
       }
@@ -21730,8 +21760,17 @@
    },
    "inventory-control-documentRequiredProperties": {
     "type": "object",
-    "required": [
-     "transactionDate"
+    "anyOf": [
+     {
+      "required": [
+       "txnDate"
+      ]
+     },
+     {
+      "required": [
+       "transactionDate"
+      ]
+     }
     ],
     "properties": {
      "lines": {
@@ -23368,6 +23407,7 @@
      "deliveryMethod": {
       "type": "object",
       "description": "Shipping method for delivery from the purchasing requisition line.",
+      "deprecated": true,
       "properties": {
        "href": {
         "type": "string",
@@ -23378,12 +23418,34 @@
        "key": {
         "type": "string",
         "description": "Unique key for the shipping method.",
-        "example": "11"
+        "deprecated": true
        },
        "id": {
         "type": "string",
         "description": "Name of the shipping method.",
-        "example": "FedEx"
+        "deprecated": true
+       }
+      }
+     },
+     "shippingMethod": {
+      "type": "object",
+      "description": "How goods are shipped to the customer.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the shipping method.",
+        "example": "3"
+       },
+       "id": {
+        "type": "string",
+        "description": "ID of the shipping method.",
+        "example": "Fedex"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL of the shipping method.",
+        "readOnly": true,
+        "example": "/objects/accounts-receivable/shipping-method/3"
        }
       }
      },
@@ -23879,7 +23941,13 @@
       "properties": {
        "upc": {
         "type": "string",
-        "description": "Universal Product Code (UPC) for the item.",
+        "description": "This field has been deprecated. Use the `upcPrecision` field instead.",
+        "maxLength": 40,
+        "deprecated": true
+       },
+       "upcPrecision": {
+        "type": "string",
+        "description": "Universal Product Code (UPC) precision.",
         "example": "23342",
         "maxLength": 40
        },
@@ -24028,15 +24096,31 @@
        },
        "universalProductCode": {
         "type": "integer",
+        "description": "This field has been deprecated. Use the `upc` field instead.",
+        "maxLength": 12,
+        "deprecated": true
+       },
+       "upc": {
+        "type": "string",
         "description": "UPC-12, the 12-digit Universal Product Code of the item.",
-        "example": 123456789123,
-        "maxLength": 12
+        "example": "123456789123",
+        "maxLength": 12,
+        "minLength": 12,
+        "pattern": "^[0-9]{12}$"
        },
        "internationalArticleNumber": {
         "type": "integer",
+        "description": "This field has been deprecated. Use the `articleNumber` field instead.",
+        "maxLength": 13,
+        "deprecated": true
+       },
+       "articleNumber": {
+        "type": "string",
         "description": "EAN-13, the 13-digit International Article Number of the item.",
-        "example": 1234567891234,
-        "maxLength": 13
+        "example": "1234567891234",
+        "maxLength": 13,
+        "minLength": 13,
+        "pattern": "^[0-9]{13}$"
        },
        "isSafetyItem": {
         "type": "boolean",
@@ -32253,6 +32337,37 @@
         "description": "URL endpoint for the work order.",
         "readOnly": true,
         "example": "/objects/construction/work-order/18"
+       }
+      }
+     },
+     "propertyLease": {
+      "description": "Property lease associated with the dimension.",
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the property lease.",
+        "example": "1",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the property lease.",
+        "example": "PL-01",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the property lease.",
+        "readOnly": true,
+        "example": "Lease for 123 Main St.",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the property lease.",
+        "readOnly": true,
+        "example": "/objects/construction/property-lease/1"
        }
       }
      }

@@ -70,7 +70,7 @@ export interface paths {
          *
          *     When creating a new document, the field `state` must be set to one of these values: `pending`, `draft`, or `submitted`. If no value is specified for the `state` field, it defaults to `pending`.
          *
-         *     To access a list of available transaction definitions, use the [list transaction definitions](order-entry.txn-definition:list-order-entry-txn-definition) operation. For example, to create a new order entry document that uses the Sales Invoice transaction definition as a template, specify `Sales Invoice` for the `documentName` in the request URL.
+         *     To access a list of available transaction definitions, use the [list transaction definitions](/intacct/apis/intacct/1/intacct-openapi/groups/order-entry/groups/transaction-definitions/tags/order_entry_transaction-definitions/paths/list-order-entry-txn-definition) operation. For example, to create a new order entry document that uses the Sales Invoice transaction definition as a template, specify `Sales Invoice` for the `documentName` in the request URL.
          */
         post: operations["create-order-entry-named-document"];
         delete?: never;
@@ -613,6 +613,64 @@ export interface paths {
         patch: operations["update-order-entry-price-list-entry-key"];
         trace?: never;
     };
+    "/objects/order-entry/price-list-entry-tier": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List price list entry tiers
+         * @description Returns a collection with a key, ID, and link for each price list entry tier. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-order-entry-price-list-entry-tier"];
+        put?: never;
+        /**
+         * Create a price list entry tier
+         * @description Creates a new price list entry tier.
+         */
+        post: operations["create-order-entry-price-list-entry-tier"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/order-entry/price-list-entry-tier/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the price list entry tier.
+                 * @example 12
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a price list entry tier
+         * @description Returns detailed information for a specified price list entry tier.
+         */
+        get: operations["get-order-entry-price-list-entry-tier-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a price list entry tier
+         * @description Deletes a price list entry tier.
+         */
+        delete: operations["delete-order-entry-price-list-entry-tier-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a price list entry tier
+         * @description Updates an existing price list entry tier by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["update-order-entry-price-list-entry-tier-key"];
+        trace?: never;
+    };
     "/objects/order-entry/price-schedule": {
         parameters: {
             query?: never;
@@ -978,7 +1036,7 @@ export interface paths {
          * Create a recurring document
          * @description Creates a new recurring document. To create a new recurring document, specify the transaction definition that is the template for the new document as `documentName` in the request URL.
          *
-         *     To access a list of available transaction definitions, use the list operation of the [transaction definition](order-entry.txn-definition) object. For example, to create a new recurring document that uses the Sales Invoice transaction definition as a template, specify `Sales Invoice` for the `documentName` in the request URL.
+         *     To access a list of available transaction definitions, use the list operation of the [transaction definition](/intacct/apis/intacct/1/intacct-openapi/groups/order-entry/groups/transaction-definitions/tags/order_entry_transaction-definitions) object. For example, to create a new recurring document that uses the Sales Invoice transaction definition as a template, specify `Sales Invoice` for the `documentName` in the request URL.
          */
         post: operations["create-order-entry-named-recurring-document"];
         delete?: never;
@@ -1039,11 +1097,7 @@ export interface paths {
          */
         get: operations["list-order-entry-recurring-document-line"];
         put?: never;
-        /**
-         * Create a recurring document line
-         * @description Creates a new recurring document line.
-         */
-        post: operations["create-order-entry-recurring-document-line"];
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -2614,6 +2668,18 @@ export interface components {
                  */
                 id?: string;
                 /**
+                 * @description UI category of the transaction definition associated with this Order Entry document.
+                 * @example invoice
+                 * @enum {string}
+                 */
+                readonly uiCategory?: "quote" | "order" | "shipping" | "invoice" | "return" | "loan";
+                /**
+                 * @description Template type of the transaction definition associated with the Order Entry document.
+                 * @example invoice
+                 * @enum {string}
+                 */
+                readonly templateClass?: "quote" | "order" | "list" | "invoice" | "adjustment" | "other";
+                /**
                  * @description URL endpoint for the transaction definition.
                  * @example /objects/order-entry/txn-definition/11
                  */
@@ -2805,6 +2871,17 @@ export interface components {
              * @enum {string}
              */
             invoiceType?: null | "invoice" | "eInvoice" | "eReporting";
+            /**
+             * @description Identifies the project invoice classification for the document. Applicable only for companies subscribed to Construction and Projects.
+             *
+             *     **Valid values**
+             *     - `projectContract` - Project contract invoice.
+             *     - `project` - Project invoice.
+             *     - `false` - Not a project invoice.
+             * @example projectContract
+             * @enum {string}
+             */
+            readonly projectInvoice?: "projectContract" | "project" | "false";
             /**
              * @description Invoice mode for France e-invoicing workflows; applicable only for France e-invoice enabled entities.
              *
@@ -3148,6 +3225,11 @@ export interface components {
              * @example true
              */
             readonly isBilled?: boolean;
+            /**
+             * @description Tax subtotal type to apply to the line when line-level simple tax is enabled. Specify the description of a tax subtotal configured for the document type. If omitted, the default configured tax subtotal is used.
+             * @example Freight
+             */
+            taxType?: string;
             /**
              * Format: decimal-precision-3
              * @description Tax rate for the document line item.
@@ -4764,7 +4846,7 @@ export interface components {
             maximumQuantity?: string;
             /**
              * Format: decimal-precision-10
-             * @description The value specified in this field depends on the type that you set in the `valueType` field.
+             * @description The value specified in this field depends on the type that you set in the `valueType` field. Not used when `enableTieredBilling` is `true`; pricing is determined by the `tiers` collection instead.
              *     * `actual` - Specify the price of the item. For example, specify `500.00` if the item price is $500.00.
              *     * `dollarMarkup` - Specify the amount to mark up the price. For example, specify `10.00` to mark up the price by $10.00.
              *     * `dollarDiscount`- Specify the amount to subtract from the price. For example, specify `10.00` to discount the price by $10.00.
@@ -4772,7 +4854,7 @@ export interface components {
              *     * `discountPercent` - Specify the percentage that you want to subtract from the price. For example, specify `5` to discount the price by 5%.
              * @example 60.56
              */
-            value?: string;
+            value?: string | null;
             /**
              * @description Value type for the price list entry.
              *     * `actual` - The straight-forward price for the item, item and employee combination, or product line.
@@ -4856,8 +4938,82 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s1"];
             status?: components["schemas"]["status"];
+            /**
+             * @description Indicates whether tiered billing is enabled for this price list entry. When `true`, pricing is determined by evaluating the applicable quantity range across the `tiers` collection, and the `value` and `valueType` fields on the entry itself are ignored. Tiered billing is only available for items of type `Non-Inventory` or `Non-Inventory (Sales only)`.
+             * @default false
+             * @example false
+             */
+            enableTieredBilling?: boolean;
+            /**
+             * @description Specifies how the rate from the matching tier is applied to the transaction quantity when `enableTieredBilling` is `true`.
+             *     * `volume` - The rate for the tier that contains the total transaction quantity is applied to the **entire** quantity.
+             *     * `step` - Each unit of quantity is priced at the rate of the tier in which it falls, so different portions of the total quantity may be billed at different rates.
+             *     * `absolute` - The rate of the matching tier is applied as a flat fee regardless of the quantity.
+             * @example volume
+             * @enum {string|null}
+             */
+            tierCalculationType?: null | "volume" | "step" | "absolute";
+            /**
+             * @description Ordered list of quantity tiers that define pricing breakpoints when `enableTieredBilling` is `true`. Each tier specifies a starting quantity and the rate applied from that quantity up to the next tier's starting quantity.
+             *
+             *     Rules:
+             *     * `beginQuantity` and `rate` are both required for every tier.
+             *     * `beginQuantity` must be 0 or greater.
+             *     * The tier with the lowest `beginQuantity` must have `beginQuantity` equal to `0`.
+             */
+            tiers?: components["schemas"]["objects.order-entry.price-list-entry-tier"][];
         };
         "order-entry-price-list-entryRequiredProperties": unknown | unknown;
+        /** @description A price list entry tier defines a starting quantity and rate for a single pricing band within a tiered billing price list entry. */
+        "objects.order-entry.price-list-entry-tier": {
+            /**
+             * @description System-assigned unique key for the price list entry tier.
+             * @example 12
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the price list entry tier. This value is the same as the `key` for this object.
+             * @example 12
+             */
+            readonly id?: string;
+            /**
+             * @description URL endpoint for the price list entry tier.
+             * @example /objects/order-entry/price-list-entry-tier/12
+             */
+            readonly href?: string;
+            /**
+             * Format: decimal-precision-6
+             * @description The starting quantity for this pricing tier. The first tier must have `beginQuantity` equal to `0`. Negative values are not allowed.
+             * @example 100.000000
+             */
+            beginQuantity?: string;
+            /**
+             * Format: decimal-precision-10
+             * @description The rate applied to transactions whose quantity falls within this tier's range. The interpretation depends on the `tierCalculationType` of the parent price list entry.
+             * @example 9.9900000000
+             */
+            tierRangeRate?: string;
+            /** @description References the price list entry to which this tier belongs. */
+            priceListEntry?: {
+                /**
+                 * @description Unique key for the price list entry.
+                 * @example 38
+                 */
+                key?: string;
+                /**
+                 * @description ID for the price list entry.
+                 * @example 38
+                 */
+                readonly id?: string;
+                /**
+                 * @description URL endpoint for the price list entry.
+                 * @example /objects/order-entry/price-list-entry/38
+                 */
+                readonly href?: string;
+            };
+            audit?: components["schemas"]["audit.s1"];
+        };
+        "order-entry-price-list-entry-tierRequiredProperties": Record<string, never>;
         /** @description Price schedules are pricing groups that you can assign to one or more customers. */
         "objects.order-entry.price-schedule": {
             /**
@@ -5520,6 +5676,17 @@ export interface components {
              */
             referenceNumber?: string;
             /**
+             * @description Indicates whether invoices created from this recurring document are enabled for online payment through a Payment Acceptance Services (PAS) provider.
+             * @default false
+             * @example true
+             */
+            enableOnlinePayment?: boolean;
+            /**
+             * @description System-generated reference shared with the Payment Acceptance Services (PAS) provider for all invoices created from this recurring document.
+             * @example 3fa85f64-5717-4562-b3fc-2c963f66afa6
+             */
+            readonly recurringReferenceUUID?: string | null;
+            /**
              * @description Sales contract ID associated with the transaction.
              * @example CN100123
              */
@@ -6007,12 +6174,6 @@ export interface components {
                  */
                 readonly href?: string;
             };
-        };
-        "order-entry-recurring-document-lineRequiredProperties": {
-            /** @example { "item": { "id": "1" }, "warehouse": { "id": "1" }, "location": { "id": "1" }} */
-            dimensions?: unknown;
-            /** @example 22 */
-            recurringDocumentHeader?: unknown;
         };
         /** @description Details of Subtotals, taxes, discounts, charges etc for the recurring transaction. */
         "objects.order-entry.recurring-document-subtotal": {
@@ -8416,26 +8577,70 @@ export interface components {
                  */
                 readonly totalEarnedLessAmount?: string | null;
             };
-            /**
-             * @description Accounts Receivable invoice number.
-             * @example INV1
-             */
-            readonly accountsReceivableInvoiceNumber?: string | null;
-            /**
-             * @description Order Entry document ID.
-             * @example SO-AIA-Invoice01-Ord#0011#doc
-             */
-            readonly orderEntryDocumentId?: string | null;
-            /**
-             * @description Project ID.
-             * @example DIM - HCS
-             */
-            readonly projectId?: string | null;
-            /**
-             * @description Project name.
-             * @example Dimensions - Hands Computer Systems
-             */
-            readonly projectName?: string | null;
+            /** @description Order Entry document associated with the project contract billing invoice summary. */
+            readonly orderEntryDocument?: {
+                /**
+                 * @description Order Entry document key.
+                 * @example 44
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Order Entry document ID.
+                 * @example SO-AIA-Invoice01-Ord#0011#doc
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the Order Entry document.
+                 * @example /objects/order-entry/document::SO-AIA-Invoice01/44
+                 */
+                readonly href?: string;
+            };
+            /** @description Accounts Receivable invoice associated with the project contract billing invoice summary. */
+            readonly accountsReceivableInvoice?: {
+                /**
+                 * @description Accounts Receivable invoice key.
+                 * @example 23
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Accounts Receivable invoice ID.
+                 * @example 23
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description Accounts Receivable invoice number.
+                 * @example INV1
+                 */
+                readonly invoiceNumber?: string | null;
+                /**
+                 * @description URL endpoint for the Accounts Receivable invoice.
+                 * @example /objects/accounts-receivable/invoice/23
+                 */
+                readonly href?: string;
+            };
+            /** @description Project associated with the project contract for the project contract billing invoice summary. */
+            readonly project?: {
+                /**
+                 * @description Project key.
+                 * @example 1
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Project ID.
+                 * @example DIM - HCS
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description Project name.
+                 * @example Dimensions - Hands Computer Systems
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the project.
+                 * @example /objects/projects/project/1
+                 */
+                readonly href?: string;
+            };
         };
         "audit.s1": {
             /**
@@ -8878,6 +9083,29 @@ export interface components {
                 /**
                  * @description URL endpoint for the work order.
                  * @example /objects/construction/work-order/18
+                 */
+                readonly href?: string;
+            };
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
                  */
                 readonly href?: string;
             };
@@ -10034,6 +10262,147 @@ export interface operations {
             400: components["responses"]["400error"];
         };
     };
+    "list-order-entry-price-list-entry-tier": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "create-order-entry-price-list-entry-tier": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.order-entry.price-list-entry-tier"] & components["schemas"]["order-entry-price-list-entry-tierRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-order-entry-price-list-entry-tier-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the price list entry tier.
+                 * @example 12
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.order-entry.price-list-entry-tier"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-order-entry-price-list-entry-tier-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the price list entry tier.
+                 * @example 12
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "update-order-entry-price-list-entry-tier-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the price list entry tier.
+                 * @example 12
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["objects.order-entry.price-list-entry-tier"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
     "list-order-entry-price-schedule": {
         parameters: {
             query?: never;
@@ -10996,34 +11365,6 @@ export interface operations {
                     "application/json": {
                         "ia::result"?: components["schemas"]["object-reference"][];
                         "ia::meta"?: components["schemas"]["metadata-pages"];
-                    };
-                };
-            };
-            400: components["responses"]["400error"];
-        };
-    };
-    "create-order-entry-recurring-document-line": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["objects.order-entry.recurring-document-line"] & components["schemas"]["order-entry-recurring-document-lineRequiredProperties"];
-            };
-        };
-        responses: {
-            /** @description Created */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        "ia::result"?: components["schemas"]["object-reference"];
-                        "ia::meta"?: components["schemas"]["metadata"];
                     };
                 };
             };

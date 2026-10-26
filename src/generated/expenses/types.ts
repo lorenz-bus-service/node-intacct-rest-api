@@ -9,13 +9,20 @@ export interface paths {
         };
         /**
          * List employee expenses
-         * @description Returns up to 100 employee expense objects from the collection with a key, ID, and link for each expense. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find expense objects that meet certain criteria and to specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each employee expense. This operation
+         *     is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and
+         *     to specify properties that are returned.
          */
         get: operations["list-expenses-employee-expense"];
         put?: never;
         /**
          * Create an employee expense
-         * @description Creates a new employee expense. You must specify a unique employee expense ID when creating an employee expense unless document sequencing is configured, in which case the ID is auto-generated.
+         * @description Creates a new employee expense. You must specify a unique employee expense ID when creating
+         *     an employee expense unless document sequencing is configured, in which case the ID is
+         *     auto-generated. Allowed values for the `state` field are `draft` and `submitted`.
+         *     Inclusive tax is not supported through the REST API. Omit the read-only `isTaxInclusive`
+         *     field from the request. REST-created expenses return `false`; existing expenses created
+         *     through the UI may return `true`.
          */
         post: operations["create-expenses-employee-expense"];
         delete?: never;
@@ -30,8 +37,8 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the employee-expense.
-                 * @example 99
+                 * @description System-assigned key for the employee expense.
+                 * @example 124
                  */
                 key: string;
             };
@@ -53,7 +60,9 @@ export interface paths {
         head?: never;
         /**
          * Update an employee expense
-         * @description Updates an existing employee expense by setting field values. Any fields not provided remain unchanged. Allowed values for the `state` field are `draft`, and `submitted`.
+         * @description Updates an existing employee expense by setting field values. Any fields not provided
+         *     remain unchanged. Allowed values for the `state` field are `draft` and `submitted`.
+         *     Use the workflow actions for other state changes.
          */
         patch: operations["update-expenses-employee-expense-key"];
         trace?: never;
@@ -107,13 +116,19 @@ export interface paths {
         };
         /**
          * List employee expense lines
-         * @description Returns a collection with a key, ID, and link for each employee expense line.
+         * @description Returns a collection with a key, ID, and link for each employee expense line. This
+         *     operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain
+         *     criteria and to specify properties that are returned.
          */
         get: operations["list-expenses-employee-expense-line"];
         put?: never;
         /**
          * Create an employee expense line
          * @description Creates a new employee expense line.
+         *
+         *     Note that Sage Intacct doesn't calculate VAT/GST amounts for REST-created tax entries.
+         *     The tax values you provide, such as `baseTaxAmount`, `txnTaxAmount`, and `taxRate`, are
+         *     accepted as given.
          */
         post: operations["create-expenses-employee-expense-line"];
         delete?: never;
@@ -129,7 +144,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned key for the employee expense line.
-                 * @example 99
+                 * @example 312
                  */
                 key: string;
             };
@@ -154,6 +169,54 @@ export interface paths {
          * @description Updates an existing employee expense line by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-expenses-employee-expense-line-key"];
+        trace?: never;
+    };
+    "/objects/expenses/employee-expense-tax-entry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List employee expense tax entries
+         * @description Returns a collection with a key, ID, and link for each employee expense tax entry. This
+         *     operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain
+         *     criteria and to specify properties that are returned.
+         */
+        get: operations["list-expenses-employee-expense-tax-entry"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/expenses/employee-expense-tax-entry/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned key for the employee expense tax entry.
+                 * @example 15
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get an employee expense tax entry
+         * @description Returns detailed information for a specified employee expense tax entry.
+         */
+        get: operations["get-expenses-employee-expense-tax-entry-key"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/objects/expenses/employee-expense-summary": {
@@ -386,6 +449,7 @@ export interface paths {
         /**
          * Update an employee expense adjustment
          * @description Updates an existing employee expense adjustment by setting field values. Any fields not provided remain unchanged.
+         *     Allowed values for the `state` field are `draft` and `submitted`. Use the `remit` workflow action to move an `approved` expense adjustment to `remitted`, and the `reverse-remit` workflow action to move a `remitted` expense adjustment back to `approved`.
          */
         patch: operations["update-expenses-employee-expense-adjustment-key"];
         trace?: never;
@@ -786,22 +850,22 @@ export interface components {
              */
             readonly previous?: number | null;
         };
-        /** @description Expense report for an employee. This is the header object for employee expense lines. */
+        /** @description Expense report for an employee, serving as the header object for employee expense lines. */
         "objects.expenses.employee-expense": {
             /**
-             * @description System-assigned key for the employee expense.
+             * @description System-assigned unique key for the employee expense.
              * @example 124
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the employee expense. This value is the same as the key for this object.
+             * @description Unique ID for the employee expense. This value is the same as the `key` for this object.
              * @example 124
              */
             readonly id?: string;
             /**
              * Format: date
              * @description Date the employee expense was created.
-             * @example 2024-11-11
+             * @example 2026-10-01
              */
             createdDate?: string;
             /** @description Employee that incurred the expense. */
@@ -812,7 +876,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the employee.
+                 * @description ID for the employee.
                  * @example EMP-025
                  */
                 id?: string;
@@ -822,7 +886,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description The contact for the employee. */
+            /** @description Contact for the employee. */
             readonly employeeContact?: {
                 /**
                  * @description Unique key for the employee contact.
@@ -830,7 +894,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique identifier for the employee contact.
+                 * @description Name of the employee contact.
                  * @example Thomas, Glenn
                  */
                 readonly id?: string;
@@ -851,23 +915,47 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Status of the employee expense in its life cycle. Expenses are posted to the general ledger when approved.
+             * @description AP bill associated with the employee expense. This field is populated only when the
+             *     company is configured to use the AP payment option for employee expense reimbursement.
+             *     This field is null when the company uses other payment options such as Classic or Remit
+             *     to payroll.
+             */
+            readonly apBill?: {
+                /**
+                 * @description Unique key for the AP bill.
+                 * @example 986
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description ID for the AP bill.
+                 * @example 986
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the AP bill.
+                 * @example /objects/accounts-payable/bill/986
+                 */
+                readonly href?: string;
+            };
+            /**
+             * @description Status of the employee expense in its life cycle. Expenses are posted to the general
+             *     ledger when approved.
              * @default submitted
              * @example draft
              * @enum {string}
              */
-            state?: "draft" | "submitted" | "partiallyApproved" | "partiallyDeclined" | "approved" | "posted" | "declined" | "reversalPending" | "reversed" | "reversal" | "paid" | "confirmed" | "voided" | "partiallyPaid" | "selected";
+            state?: "draft" | "submitted" | "partiallyApproved" | "partiallyDeclined" | "approved" | "posted" | "declined" | "reversalPending" | "reversed" | "reversal" | "paid" | "confirmed" | "voided" | "partiallyPaid" | "selected" | "remitted";
             /** @description Base payment details for the employee expense report. */
             basePayment?: {
                 /**
-                 * @description Base currency used for the expense report and determined by company currency used for reporting.
+                 * @description Base currency for the expense report, determined by the company's reporting currency. For VAT transactions, this currency must match the currency specified in the `reimbursement.reimbursementCurrency` field, or the tax amounts may be incorrect.
                  * @example USD
                  */
                 baseCurrency?: string;
                 /**
                  * Format: date
                  * @description Date the employee expense was fully paid.
-                 * @example 2024-11-12
+                 * @example 2026-10-01
                  */
                 readonly paidDate?: string;
                 /**
@@ -898,7 +986,7 @@ export interface components {
             /** @description Reimbursement details. */
             reimbursement?: {
                 /**
-                 * @description The currency used to pay for the expense. For multi-currency companies.
+                 * @description For multi-currency companies, the currency used to pay the expense. For VAT transactions, this currency must match the currency specified in the `basePayment.baseCurrency` field, or the tax amounts may be incorrect.
                  * @example EUR
                  */
                 reimbursementCurrency?: string;
@@ -940,7 +1028,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the expense summary.
+                 * @description ID for the expense summary.
                  * @example 334
                  */
                 id?: string;
@@ -952,7 +1040,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description GL posting date.
-                 * @example 2024-01-23
+                 * @example 2026-01-23
                  */
                 postingDate?: string;
                 /**
@@ -963,7 +1051,7 @@ export interface components {
                  */
                 readonly state?: "open" | "closed";
                 /**
-                 * @description Not for GL posting.
+                 * @description Indicates whether the expense summary is excluded from GL posting.
                  * @default false
                  * @example false
                  */
@@ -974,7 +1062,11 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Non-reimbursable portion of the expense. An expense report line is considered non-reimbursable when `employee-expense-line.isBillable` is `false` and `employee-expense-line.paymentType.isNonReimbursable` is `true`. */
+            /**
+             * @description Non-reimbursable portion of the expense. An expense report line is considered non-reimbursable
+             *     when `employee-expense-line.isBillable` is `false` and
+             *     `employee-expense-line.paymentType.isNonReimbursable` is `true`.
+             */
             readonly nonReimbursable?: {
                 /**
                  * Format: decimal-precision-2
@@ -990,7 +1082,7 @@ export interface components {
                 readonly reimbursementTotalEntered?: string;
             };
             /**
-             * @description Memo.
+             * @description Memo for the employee expense.
              * @example Paid to employee
              */
             memo?: string;
@@ -1000,11 +1092,14 @@ export interface components {
              */
             description?: string;
             /**
-             * @description If an expense is reclassified, reason for the reclassification.
+             * @description For a reclassified expense, reason for the reclassification.
              * @example Classified as supplies, not travel expense
              */
             reclassificationNotes?: string;
-            /** @description An attachment for employee expenses.(Company subscription with permissions to Add and Edit Attachments.) */
+            /**
+             * @description An attachment for the employee expense. Requires a company subscription with permissions
+             *     to add and edit attachments.
+             */
             attachment?: {
                 /**
                  * @description Unique key for the attachment.
@@ -1012,7 +1107,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the attachment.
+                 * @description ID for the attachment.
                  * @example 1
                  */
                 id?: string;
@@ -1025,12 +1120,43 @@ export interface components {
             audit?: components["schemas"]["audit.s1"] & {
                 /**
                  * Format: date-time
-                 * @description Time of the submission.
-                 * @example 2014-01-08T11:28:12Z
+                 * @description Date and time the employee expense was submitted.
+                 * @example 2026-01-08T11:28:12Z
                  */
                 readonly createdDateTime?: string;
             };
-            /** @description Line items of the employee expense. */
+            /**
+             * @description Indicates whether expense amounts include taxes. This field is read-only in the REST API;
+             *     creating inclusive-tax expense transactions through the REST API is not supported.
+             *     Expenses created through the UI may return `true`, while REST-created expenses return
+             *     `false`.
+             * @default false
+             * @example false
+             */
+            readonly isTaxInclusive?: boolean;
+            /**
+             * @description Tax solution used for this expense report. For VAT transactions,
+             *     `basePayment.baseCurrency` and `reimbursement.reimbursementCurrency` must be the same
+             *     currency, or the tax amounts may be incorrect.
+             */
+            taxSolution?: {
+                /**
+                 * @description Unique key for the tax solution.
+                 * @example 4
+                 */
+                key?: string | null;
+                /**
+                 * @description Name of the tax solution.
+                 * @example Australia GST
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the tax solution.
+                 * @example /objects/tax/tax-solution/4
+                 */
+                readonly href?: string;
+            };
+            /** @description Lines for the employee expense. */
             lines?: components["schemas"]["objects.expenses.employee-expense-line"][];
             entity?: components["schemas"]["entity-ref"];
         };
@@ -1132,7 +1258,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the employee expense line. This value is the same as key for this object.
+             * @description Unique ID for the employee expense line. This value is the same as the `key` for this object.
              * @example 312
              */
             readonly id?: string;
@@ -1144,11 +1270,11 @@ export interface components {
             /**
              * Format: date
              * @description Date that the expense was incurred.
-             * @example 2021-01-23
+             * @example 2026-01-23
              */
             entryDate?: string | null;
             /**
-             * @description Base currency used for the expense report and determined by company currency used for reporting.
+             * @description Base currency for the expense report, determined by the company's reporting currency.
              * @example USD
              */
             readonly baseCurrency?: string;
@@ -1159,7 +1285,7 @@ export interface components {
              */
             readonly baseAmount?: string;
             /**
-             * @description The currency used to pay for the expense. For multi-currency companies.
+             * @description For multi-currency companies, the currency used to pay the expense.
              * @example CAD
              */
             readonly reimbursementCurrency?: string;
@@ -1170,13 +1296,13 @@ export interface components {
              */
             readonly reimbursementAmount?: string;
             /**
-             * @description Transaction currency. For multi-currency companies.
+             * @description For multi-currency companies, the currency used for the transaction.
              * @example INR
              */
             txnCurrency?: string | null;
             /**
              * Format: decimal-precision-2
-             * @description Transaction amount. For multi-currency companies.
+             * @description For multi-currency companies, the transaction amount.
              * @example 123.45
              */
             txnAmount?: string;
@@ -1205,16 +1331,19 @@ export interface components {
              */
             unitRate?: string | null;
             /**
-             * @description Notes regarding to whom the amount was paid.
+             * @description Notes about who the amount was paid to.
              * @example Hotel Westin
              */
             paidTo?: string | null;
             /**
-             * @description Notes regarding what the expense was for.
+             * @description Notes about what the expense was for.
              * @example 2024 Hawaii Conference
              */
             paidFor?: string | null;
-            /** @description General ledger account associated with the line item. Used when no expense type is assigned. */
+            /**
+             * @description General ledger account associated with the line item. Used when no expense type is
+             *     assigned.
+             */
             glAccount?: {
                 /**
                  * @description Unique key for the GL account.
@@ -1222,7 +1351,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the GL account.
+                 * @description ID for the GL account.
                  * @example 6775.30
                  */
                 id?: string;
@@ -1245,13 +1374,13 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the expense type.
+                 * @description Name of the expense type.
                  * @example Meals
                  */
                 id?: string;
                 /**
                  * @description URL endpoint for the expense type.
-                 * @example /objects/expense-type/6000
+                 * @example /objects/expenses/employee-expense-type/6000
                  */
                 readonly href?: string;
             };
@@ -1260,12 +1389,12 @@ export interface components {
              * @example 1
              */
             readonly lineNumber?: number;
-            /** @description Details of reimbursement currency to base currency conversion. For multi-currency companies. */
+            /** @description For multi-currency companies, details of the reimbursement currency to base currency conversion. */
             readonly reimburseToBaseConversion?: {
                 /**
                  * Format: date
                  * @description Date the exchange rate conversion was applied.
-                 * @example 2021-01-23
+                 * @example 2026-01-23
                  */
                 readonly exchangeRateDate?: string;
                 /**
@@ -1280,28 +1409,28 @@ export interface components {
                  */
                 readonly exchangeRate?: string;
             };
-            /** @description Details of the conversion to base currency. For multi-currency companies. */
+            /** @description For multi-currency companies, details of the conversion to base currency. */
             transactionToReimburseConversion?: {
                 /**
                  * Format: decimal-precision-5
                  * @description Exchange rate for the transaction.
-                 * @example 65.095
+                 * @example 65.09500
                  */
                 exchangeRate?: string | null;
                 /**
                  * Format: date
                  * @description Date for the exchange rate.
-                 * @example 2021-01-23
+                 * @example 2026-01-23
                  */
                 exchangeRateDate?: string | null;
                 /**
                  * @deprecated
-                 * @description Exchange rate type. This field is deprecated,  please use `exchangeRateType` instead.
+                 * @description Deprecated. Use `exchangeRateType` instead.
                  */
                 exchangeRateTypeId?: string | null;
                 exchangeRateType?: {
                     /**
-                     * @description Unique identifier for the exchange rate type.
+                     * @description ID for the exchange rate type.
                      * @example 124
                      */
                     id?: string;
@@ -1325,13 +1454,13 @@ export interface components {
              */
             readonly state?: "draft" | "submitted" | "partiallyApproved" | "partiallyDeclined" | "approved" | "posted" | "declined" | "reversalPending" | "reversed" | "reversal" | "paid" | "confirmed" | "voided" | "partiallyPaid" | "saved" | null;
             /**
-             * @description Indicates whether a line item is billable.
+             * @description Indicates whether the employee expense line is billable.
              * @default false
              * @example false
              */
             isBillable?: boolean;
             /**
-             * @description Indicates whether a line item is billed.
+             * @description Indicates whether the employee expense line is billed.
              * @default false
              * @example false
              */
@@ -1354,7 +1483,7 @@ export interface components {
                  */
                 box?: string | null;
             };
-            /** @description The payment type defined in `employee-expense-payment-type`. */
+            /** @description Payment type for the employee expense line, as defined in `employee-expense-payment-type`. */
             paymentType?: {
                 /**
                  * @description Unique key for the expense payment type.
@@ -1362,12 +1491,12 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the payment type.
+                 * @description Name of the payment type.
                  * @example Non-reimburse
                  */
                 id?: string | null;
                 /**
-                 * @description Non-reimbursable expense as defined in `employee-expense-payment-type.isNonReimbursable`.
+                 * @description Indicates whether the expense is non-reimbursable, as defined in `employee-expense-payment-type.isNonReimbursable`.
                  * @default false
                  * @example false
                  */
@@ -1378,10 +1507,13 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Credit card transaction associated with the employee expense. Available if "Enable electronic receipt inbounding" is enabled for the company. */
+            /**
+             * @description Credit card transaction associated with the employee expense. Available when "Enable
+             *     electronic receipt inbounding" is enabled for the company.
+             */
             readonly creditCardTxn?: {
                 /**
-                 * @description Unique identifier for the credit card transaction.
+                 * @description ID for the credit card transaction.
                  * @example 124
                  */
                 readonly id?: string;
@@ -1396,10 +1528,14 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Credit card transaction associated with the employee expense line. When linked to an electronic receipt, if the electronic receipt amount differs from the credit card transaction amount, the credit card transaction amount takes precedence. */
+            /**
+             * @description Credit card transaction associated with the employee expense line. When linked to an
+             *     electronic receipt, if the electronic receipt amount differs from the credit card
+             *     transaction amount, the credit card transaction amount takes precedence.
+             */
             creditCardTxnLine?: {
                 /**
-                 * @description Unique identifier for the credit card transaction line.
+                 * @description ID for the credit card transaction line.
                  * @example 128
                  */
                 id?: string;
@@ -1414,10 +1550,13 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Electronic receipt associated with the employee expense. Available if "Enable electronic receipt inbounding" is enabled for the company. */
+            /**
+             * @description Electronic receipt associated with the employee expense. Available when "Enable
+             *     electronic receipt inbounding" is enabled for the company.
+             */
             electronicReceipt?: {
                 /**
-                 * @description Unique identifier for the electronic receipt.
+                 * @description ID for the electronic receipt.
                  * @example 124
                  */
                 id?: string;
@@ -1432,10 +1571,14 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Electronic receipt line associated with the employee expense. When linked to a credit card transaction, if the electronic receipt amount differs from the credit card transaction amount, the credit card transaction amount takes precedence. */
+            /**
+             * @description Electronic receipt line associated with the employee expense. When linked to a credit
+             *     card transaction, if the electronic receipt amount differs from the credit card
+             *     transaction amount, the credit card transaction amount takes precedence.
+             */
             electronicReceiptLine?: {
                 /**
-                 * @description Unique identifier for the electronic receipt line.
+                 * @description ID for the electronic receipt line.
                  * @example 128
                  */
                 id?: string;
@@ -1445,11 +1588,13 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description URL endpoint for the electronic receipt.
+                 * @description URL endpoint for the electronic receipt line.
                  * @example /objects/expenses/electronic-receipt-line/128
                  */
                 readonly href?: string;
             };
+            /** @description Tax entries for the employee expense line. */
+            taxEntries?: components["schemas"]["objects.expenses.employee-expense-tax-entry"][];
             audit?: components["schemas"]["audit.s1"];
             dimensions?: components["schemas"]["dimension-ref"] & {
                 location?: {
@@ -1459,12 +1604,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the location.
+                     * @description ID for the location.
                      * @example 1
                      */
                     id?: string | null;
                     /**
-                     * @description Location name
+                     * @description Name of the location.
                      * @example USA
                      */
                     readonly name?: string | null;
@@ -1481,12 +1626,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the department.
+                     * @description ID for the department.
                      * @example 12
                      */
                     id?: string | null;
                     /**
-                     * @description Department name
+                     * @description Name of the department.
                      * @example IT
                      */
                     readonly name?: string | null;
@@ -1497,9 +1642,10 @@ export interface components {
                     readonly href?: string;
                 };
             };
+            /** @description Header level details for the employee expense. */
             employeeExpense?: {
                 /**
-                 * @description Unique identifier for the employee expense.
+                 * @description ID for the employee expense.
                  * @example 124
                  */
                 id?: string;
@@ -1516,6 +1662,75 @@ export interface components {
             };
         };
         "expenses-employee-expense-lineRequiredProperties": Record<string, never>;
+        "objects.expenses.employee-expense-tax-entry": {
+            /**
+             * @description System-assigned key for the tax entry.
+             * @example 7149
+             */
+            readonly key?: string;
+            /**
+             * @description Unique identifier for the tax entry.
+             * @example 7149
+             */
+            readonly id?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Base tax amount.
+             * @example 100.00
+             */
+            baseTaxAmount?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Transaction tax amount. For a PATCH request, set to `null` if you want Sage Intacct to recalculate the amount, or set to the value you want if you don't want the system to recalculate.
+             * @example 100.00
+             */
+            txnTaxAmount?: string;
+            /**
+             * @description Tax rate.
+             * @example 1.0299
+             */
+            taxRate?: number;
+        } & {
+            /** @description Purchasing tax detail associated with the employee expense tax entry. */
+            purchasingTaxDetail?: {
+                /**
+                 * @description Unique key for the tax detail.
+                 * @example 1
+                 */
+                key?: string;
+                /**
+                 * @description ID for the tax detail.
+                 * @example Alaska Tax Detail
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the tax detail.
+                 * @example /objects/tax/purchasing-tax-detail/1
+                 */
+                readonly href?: string;
+            };
+            /**
+             * employeeExpenseLine
+             * @description Employee expense line associated with the employee expense tax entry.
+             */
+            readonly employeeExpenseLine?: {
+                /**
+                 * @description Unique key for the employee expense line.
+                 * @example 312
+                 */
+                readonly key?: string;
+                /**
+                 * @description ID for the employee expense line.
+                 * @example 312
+                 */
+                readonly id?: string;
+                /**
+                 * @description URL endpoint for the employee expense line.
+                 * @example /objects/expenses/employee-expense-line/312
+                 */
+                readonly href?: string;
+            };
+        };
         /** @description Collection of expense transactions, grouped together for processing. */
         "objects.expenses.employee-expense-summary": {
             /**
@@ -1618,6 +1833,13 @@ export interface components {
              * @example Non-reimbursable expense for travel
              */
             description?: string;
+            /**
+             * @description Indicates whether the expense type is designated for regular expenses or employee advance requests. Only relevant when paying expenses through AP bills.
+             * @default expense
+             * @example expense
+             * @enum {string|null}
+             */
+            purpose?: "advance" | "expense" | null;
             /**
              * @description URL endpoint for the expense type.
              * @example /objects/expenses/employee-expense-type/47
@@ -1871,13 +2093,31 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description AP bill associated with the employee expense adjustment.  This field is populated only when the company is configured to use the AP payment option for employee expense reimbursement. This field is null when the company uses other payment options such as Classic or Remit to payroll. */
+            readonly apBill?: {
+                /**
+                 * @description Unique key for the AP bill.
+                 * @example 986
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Unique identifier for the AP bill.
+                 * @example 986
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the AP bill.
+                 * @example /objects/accounts-payable/bill/986
+                 */
+                readonly href?: string;
+            };
             /**
              * @description Status of the employee expense adjustment. Expense adjustments are posted to the general ledger when approved.
              * @default submitted
              * @example draft
              * @enum {string|null}
              */
-            state?: "draft" | "approved" | "partiallyApproved" | "submitted" | "declined" | "partiallyDeclined" | "resubmitted" | "selected" | "paid" | "partiallyPaid" | null;
+            state?: "draft" | "approved" | "partiallyApproved" | "submitted" | "declined" | "partiallyDeclined" | "resubmitted" | "selected" | "paid" | "partiallyPaid" | "remitted" | null;
             /** @description Base payment details for the employee expense adjustment report. */
             basePayment?: {
                 /**
@@ -3980,6 +4220,29 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
+                 */
+                readonly href?: string;
+            };
         };
         /**
          * @description Object status. Active objects are fully functional. Inactive objects are essentially hidden and cannot be used or referenced.
@@ -4038,7 +4301,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Creates an employee expense. Allowed values for the `state` field are `draft`, `submitted`. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.expenses.employee-expense"] & components["schemas"]["expenses-employee-expenseRequiredProperties"];
@@ -4066,8 +4328,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the employee-expense.
-                 * @example 99
+                 * @description System-assigned key for the employee expense.
+                 * @example 124
                  */
                 key: string;
             };
@@ -4096,8 +4358,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the employee-expense.
-                 * @example 99
+                 * @description System-assigned key for the employee expense.
+                 * @example 124
                  */
                 key: string;
             };
@@ -4121,8 +4383,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the employee-expense.
-                 * @example 99
+                 * @description System-assigned key for the employee expense.
+                 * @example 124
                  */
                 key: string;
             };
@@ -4131,6 +4393,8 @@ export interface operations {
         requestBody?: {
             content: {
                 "application/json": components["schemas"]["objects.expenses.employee-expense"] & {
+                    /** @enum {string} */
+                    state?: "draft" | "submitted";
                     reimbursement?: {
                         readonly reimbursementCurrency?: unknown;
                     };
@@ -4240,7 +4504,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Creates an employee expense line */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.expenses.employee-expense-line"] & components["schemas"]["expenses-employee-expense-lineRequiredProperties"];
@@ -4269,7 +4532,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the employee expense line.
-                 * @example 99
+                 * @example 312
                  */
                 key: string;
             };
@@ -4299,7 +4562,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the employee expense line.
-                 * @example 99
+                 * @example 312
                  */
                 key: string;
             };
@@ -4324,7 +4587,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the employee expense line.
-                 * @example 99
+                 * @example 312
                  */
                 key: string;
             };
@@ -4344,6 +4607,60 @@ export interface operations {
                 content: {
                     "application/json": {
                         "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-expenses-employee-expense-tax-entry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-expenses-employee-expense-tax-entry-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned key for the employee expense tax entry.
+                 * @example 15
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.expenses.employee-expense-tax-entry"];
                         "ia::meta"?: components["schemas"]["metadata"];
                     };
                 };

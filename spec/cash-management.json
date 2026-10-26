@@ -200,12 +200,12 @@
   {
    "name": "Cash_Management_Deposit lines",
    "x-displayName": "Deposit lines",
-   "description": "Deposit lines represent individual customer payments included in a deposit transaction, including information needed to apply the payment to Accounts Receivable (AR). Create and maintain deposit lines in the owning [deposit](cash-management.deposit) object.\n\nFor more information, read [about deposits](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_ar_deposits) in the Sage Intacct Help Center.\n"
+   "description": "Deposit lines represent individual customer payments included in a deposit transaction, including information needed to apply the payment to Accounts Receivable (AR). Create and maintain deposit lines in the owning [deposit](/intacct/apis/intacct/1/intacct-openapi/groups/cash-management/groups/deposits/tags/cash_management_deposits) object.\n\nFor more information, read [about deposits](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_ar_deposits) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Cash_Management_Deposit details",
    "x-displayName": "Deposit details",
-   "description": "Deposit details represent additional deposit information for individual customer payments included in a deposit transaction. Create and maintain deposit details in the owning [deposit](cash-management.deposit) object.\n\nFor more information, read [about deposits](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_ar_deposits) in the Sage Intacct Help Center.\n"
+   "description": "Deposit details represent additional deposit information for individual customer payments included in a deposit transaction. Create and maintain deposit details in the owning [deposit](/intacct/apis/intacct/1/intacct-openapi/groups/cash-management/groups/deposits/tags/cash_management_deposits) object.\n\nFor more information, read [about deposits](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_ar_deposits) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Cash_Management_Undeposited funds",
@@ -220,7 +220,7 @@
   {
    "name": "Cash_Management_Funds transfer lines",
    "x-displayName": "Funds transfer lines",
-   "description": "Funds transfer lines are automatically generated when a funds transfer is created. Each line item is posted to the general ledger when the transaction is created. Create and maintain funds transfer lines in the owning [funds transfer](cash-management.funds-transfer) object.\n\nFor more information, read [about funds transfers](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Funds_transfers_overview) in the Sage Intacct Help Center.\n"
+   "description": "Funds transfer lines are automatically generated when a funds transfer is created. Each line item is posted to the general ledger when the transaction is created. Create and maintain funds transfer lines in the owning [funds transfer](/intacct/apis/intacct/1/intacct-openapi/groups/cash-management/groups/funds-transfers/tags/cash_management_funds-transfers) object.\n\nFor more information, read [about funds transfers](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Funds_transfers_overview) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Cash_Management_Other receipts",
@@ -230,12 +230,12 @@
   {
    "name": "Cash_Management_Other receipt lines",
    "x-displayName": "Other receipt lines",
-   "description": "Other receipt lines represent the individual postings in an other receipt object. Each line includes details like amount, account and dimensions, such as location or department, along with information about the associated General Ledger (GL) posting. Create and maintain other receipt lines in the owning [other-receipt](cash-management.other-receipt) object.\n\nFor more information, see [other receipts](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=TOC_other_receipts) in the Sage Intacct Help Center.\n"
+   "description": "Other receipt lines represent the individual postings in an other receipt object. Each line includes details like amount, account and dimensions, such as location or department, along with information about the associated General Ledger (GL) posting. Create and maintain other receipt lines in the owning [other-receipt](/intacct/apis/intacct/1/intacct-openapi/groups/cash-management/groups/other-receipts/tags/cash_management_other-receipts) object.\n\nFor more information, see [other receipts](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=TOC_other_receipts) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Cash_Management_Other receipt tax entries",
    "x-displayName": "Other receipt tax entries",
-   "description": "Other receipt tax entries contain tax details for the associated order entry and other receipt line. Create and maintain other receipt tax entries in the owning [other-receipt-line](cash-management.other-receipt-line) object.\n\nFor more information, see [tax details](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Tax_details_vat) in the Sage Intacct Help Center.\n"
+   "description": "Other receipt tax entries contain tax details for the associated order entry and other receipt line. Create and maintain other receipt tax entries in the owning [other-receipt-line](/intacct/apis/intacct/1/intacct-openapi/groups/cash-management/groups/other-receipts/tags/cash_management_other-receipt-lines) object.\n\nFor more information, see [tax details](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Tax_details_vat) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Cash_Management_Received payments",
@@ -280,7 +280,17 @@
   {
    "name": "Cash_Management_Provider payment methods",
    "x-displayName": "Provider payment methods",
-   "description": "Provides relevant information for a subscribed payment provider's supported payment methods. After confirming a payment provider's information, you can associate a vendor and a bank account with that payment provider. See [Payment provider bank accounts](cash-management.payment-provider-bank-account) and [Vendor payment providers](accounts-payable.vendor-payment-provider) to learn more. \nPayment provider services, like Vendor Payments powered by CSI, are only for US vendors accepting USD. See [Compare payment methods](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=HDI_Select_Payment_Method) for more information.\n"
+   "description": "Provides relevant information for a subscribed payment provider's supported payment methods. After confirming a payment provider's information, you can associate a vendor and a bank account with that payment provider. See [Payment provider bank accounts](/intacct/apis/intacct/1/intacct-openapi/groups/cash-management/groups/payment-providers/tags/cash_management_payment-provider-bank-accounts) and [Vendor payment providers](/intacct/apis/intacct/1/intacct-openapi/groups/accounts-payable/groups/vendors/tags/accounts_payable_vendor-payment-providers) to learn more. \nPayment provider services, like Vendor Payments powered by CSI, are only for US vendors accepting USD. See [Compare payment methods](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=HDI_Select_Payment_Method) for more information.\n"
+  },
+  {
+   "name": "Cash_Management_Check register reports",
+   "x-displayName": "Check register reports",
+   "description": "The check register report shows check and payment transactions for a bank account over a specified date range.\n\n**When to use:** Use to review check activity, reconcile payments, and analyze cash movement for a bank account during the reporting and close process.\n\n**Relationships:** Uses the selected bank account and date range to return check and payment details for reconciliation, cash reporting, and account-level analysis.\n\n**Lifecycle context:** Supports the reconciliation and reporting steps of the cash management workflow by summarizing payment activity for a defined reporting period."
+  },
+  {
+   "name": "Cash_Management_Bank register reports",
+   "x-displayName": "Bank register reports",
+   "description": "The bank register report shows transactions for a bank account (debits, credits, and reconciliation status) over a specified date range.\n\n**When to use:** Use to review cash activity for a bank account, reconcile posted transactions, and analyze account activity by date and reconciliation status.\n\n**Relationships:** Uses the selected bank account and date range to return transaction details for cash movement, reconciliation, and account-level reporting.\n\n**Lifecycle context:** Helps finance teams reconcile bank activity during the reporting and close process by summarizing transaction activity for a defined period."
   }
  ],
  "paths": {
@@ -1059,6 +1069,32 @@
            "id": "1-United States of America"
           }
          }
+        },
+        "Create a checking account with cloud delivery": {
+         "value": {
+          "id": "BANKFILE-CLOUD-DELIVERY",
+          "bankAccountDetails": {
+           "bankName": "Bank of America",
+           "currency": "USD"
+          },
+          "accounting": {
+           "glAccount": {
+            "id": "9090.09.90-RestNextGenGL"
+           }
+          },
+          "bankFile": {
+           "enableBankFile": true,
+           "cloudDelivery": {
+            "mode": "cloudAndDownload",
+            "cloudStorage": {
+             "key": "44"
+            }
+           }
+          },
+          "location": {
+           "key": "1"
+          }
+         }
         }
        }
       }
@@ -1702,6 +1738,14 @@
               "postCode": "94536",
               "county": "North Yorkshire",
               "country": "GB"
+             },
+             "cloudDelivery": {
+              "mode": "cloudAndDownload",
+              "cloudStorage": {
+               "key": "44",
+               "id": "Amazon Storage Plan",
+               "href": "/objects/company-config/cloud-storage/44"
+              }
              }
             },
             "financialInstitution": {
@@ -1782,6 +1826,14 @@
            },
            "useMatchSequenceForAutoMatch": true,
            "useMatchSequenceForManualMatch": true
+          },
+          "bankFile": {
+           "cloudDelivery": {
+            "mode": "cloudOnly",
+            "cloudStorage": {
+             "key": "44"
+            }
+           }
           }
          }
         }
@@ -7136,6 +7188,10 @@
              "modifiedBy": "1"
             },
             "state": "failed",
+            "cloudDelivery": {
+             "status": "delivered",
+             "connectionState": "signedIn"
+            },
             "bankFileDetails": [
              {
               "key": "792",
@@ -7431,15 +7487,7 @@
       "content": {
        "application/json": {
         "schema": {
-         "type": "object",
-         "properties": {
-          "ia::result": {
-           "$ref": "#/components/schemas/cash-management-generate-bank-file-generate-response"
-          },
-          "ia::meta": {
-           "$ref": "#/components/schemas/metadata"
-          }
-         }
+         "$ref": "#/components/schemas/cash-management-generate-bank-file-generate-response"
         },
         "examples": {
          "Generate a bank file": {
@@ -13818,7 +13866,7 @@
           "$ref": "#/components/schemas/objects.cash-management.funds-transfer"
          },
          {
-          "$ref": "#/components/schemas/funds-transferRequiredProperties"
+          "$ref": "#/components/schemas/cash-management-funds-transferRequiredProperties"
          }
         ]
        },
@@ -14384,7 +14432,8 @@
          "value": {
           "key": "39",
           "reversedDate": "2025-05-07",
-          "memo": "Reversed the fund transfer transaction to correct a duplicate entry."
+          "memo": "string",
+          "notes": "Reversed the fund transfer transaction to correct a duplicate entry."
          },
          "isAutoGenerated": true
         }
@@ -14412,6 +14461,9 @@
         }
        }
       }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
      }
     },
     "security": [
@@ -17975,6 +18027,213 @@
      }
     ]
    }
+  },
+  "/services/reports/cash-management/check-register": {
+   "post": {
+    "description": "Run the check register report.",
+    "summary": "Run the check register report",
+    "tags": [
+     "Cash_Management_Check register reports"
+    ],
+    "operationId": "cm-report-check-register",
+    "requestBody": {
+     "description": "Report definition and runtime parameters used to submit the check register report for processing.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/services.reports.cash-management-check-register"
+         },
+         {
+          "$ref": "#/components/schemas/cash-management-reports.check-registerRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Run the check register report": {
+         "value": {
+          "title1": "Check Register Report - March 2026",
+          "title2": "NexCom Corporation | USD",
+          "reportName": "Check Register Report - March 2026",
+          "outputType": "html",
+          "outputLocation": "intacct",
+          "parameters": {
+           "timePeriod": {
+            "dateRange": {
+             "startDate": "2026-03-01",
+             "endDate": "2026-03-31"
+            }
+           },
+           "bankAccount": {
+            "id": "BOA-CHK"
+           },
+           "showDetails": true,
+           "reconciliationState": "all",
+           "sortBy": "date",
+           "reportGrouping": "bank",
+           "pageOrientation": "portrait"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "202": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New check register report",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/services.report.submitted-status"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to the check register report": {
+          "value": {
+           "ia::result": {
+            "reportId": "120",
+            "status": "submitted",
+            "outputType": "html",
+            "name": "Check Register Report - March 2026",
+            "href": "/services/reports/status?reportId=120&outputType=html&outputLocation=intacct"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/services/reports/cash-management/bank-register": {
+   "post": {
+    "description": "Run the bank register report.",
+    "summary": "Run the bank register report",
+    "tags": [
+     "Cash_Management_Bank register reports"
+    ],
+    "operationId": "cm-report-bank-register",
+    "requestBody": {
+     "description": "Report definition and runtime parameters used to submit the bank register report for processing.",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/services.reports.cash-management-bank-register"
+         },
+         {
+          "$ref": "#/components/schemas/cash-management-reports.bank-registerRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Run the bank register report": {
+         "value": {
+          "title1": "Bank Register Report - March 2026",
+          "title2": "NexCom Corporation | USD",
+          "reportName": "Bank Register Report - March 2026",
+          "outputType": "html",
+          "outputLocation": "intacct",
+          "parameters": {
+           "timePeriod": {
+            "dateRange": {
+             "startDate": "2026-03-01",
+             "endDate": "2026-03-31"
+            }
+           },
+           "bankAccount": {
+            "id": "BOA-CHK"
+           },
+           "showDetails": true,
+           "reconciliationState": "all",
+           "reportBy": "transactionDate",
+           "sortBy": [
+            "date",
+            "description"
+           ],
+           "pageOrientation": "portrait"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "202": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "New bank register report",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/services.report.submitted-status"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to the bank register report": {
+          "value": {
+           "ia::result": {
+            "reportId": "120",
+            "status": "submitted",
+            "outputType": "html",
+            "name": "Bank Register Report - March 2026",
+            "href": "/services/reports/status?reportId=120&outputType=html&outputLocation=intacct"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
   }
  },
  "components": {
@@ -19454,6 +19713,50 @@
           "readOnly": true,
           "example": "US",
           "nullable": true
+         }
+        }
+       },
+       "cloudDelivery": {
+        "type": "object",
+        "description": "Specifies how generated bank files are delivered to cloud storage.",
+        "properties": {
+         "mode": {
+          "type": "string",
+          "description": "Delivery mode for generated bank files.",
+          "enum": [
+           null,
+           "downloadOnly",
+           "cloudOnly",
+           "cloudAndDownload"
+          ],
+          "default": "downloadOnly",
+          "example": "downloadOnly",
+          "nullable": true
+         },
+         "cloudStorage": {
+          "type": "object",
+          "properties": {
+           "key": {
+            "type": "string",
+            "description": "System-assigned key for the cloud storage.",
+            "nullable": true,
+            "example": "44"
+           },
+           "id": {
+            "type": "string",
+            "description": "Name for the cloud storage.",
+            "readOnly": true,
+            "nullable": true,
+            "example": "Amazon Storage Plan"
+           },
+           "href": {
+            "type": "string",
+            "description": "Endpoint URL for the cloud storage.",
+            "readOnly": true,
+            "nullable": true,
+            "example": "/objects/company-config/cloud-storage/44"
+           }
+          }
          }
         }
        }
@@ -23427,6 +23730,37 @@
        "$ref": "#/components/schemas/objects.cash-management.bank-file-detail"
       }
      },
+     "cloudDelivery": {
+      "type": "object",
+      "readOnly": true,
+      "description": "Status of delivery through the Upload to cloud action and its configured cloud storage connection.",
+      "properties": {
+       "status": {
+        "type": "string",
+        "description": "Current cloud delivery status for this bank file.",
+        "example": "none",
+        "enum": [
+         "none",
+         "awaitingUpload",
+         "delivered",
+         "error"
+        ]
+       },
+       "connectionState": {
+        "type": "string",
+        "description": "Current state of the cloud storage connection configured for the associated checking account.",
+        "example": "signedIn",
+        "enum": [
+         "notApplicable",
+         "notConfigured",
+         "inactive",
+         "active",
+         "signedIn",
+         "signInRequired"
+        ]
+       }
+      }
+     },
      "audit": {
       "$ref": "#/components/schemas/audit.s1"
      }
@@ -23808,6 +24142,7 @@
        "partiallyDeleted",
        "deleted",
        "canceled",
+       "error",
        null
       ]
      },
@@ -24753,7 +25088,7 @@
      },
      "state": {
       "type": "string",
-      "description": "Current state of the credit card transaction.\nWhen a credit card transaction has been issued and is in a `posted` state, it can be reversed. When a credit card transaction is reversed, the original `posted` transaction immediately enters the `reversal` state and transitions to the `reversed` state once the reversal date is reached.\nA reversal transaction is also created in the `reversal` state when you reverse a credit card transaction. The state of the reversal transaction does not change.",
+      "description": "Current state of the credit card transaction.\n\nWhen a credit card transaction has been issued and is in a `posted` state, it can be reversed. When a credit card transaction is reversed, the original `posted` transaction immediately enters the `reversal` state and transitions to the `reversed` state once the reversal date is reached.\n\nA reversal transaction is also created in the `reversal` state when you reverse a credit card transaction. The state of the reversal transaction does not change. ",
       "enum": [
        "reversed",
        "reversal",
@@ -24782,7 +25117,7 @@
       "format": "date",
       "description": "Date when the transaction was cleared as part of the reconciliation process.",
       "readOnly": true,
-      "example": "2024-01-23",
+      "example": "2026-01-23",
       "nullable": true
      },
      "totalDue": {
@@ -24852,7 +25187,7 @@
         "type": "string",
         "format": "date",
         "readOnly": true,
-        "example": "2021-01-23",
+        "example": "2026-01-23",
         "description": "Date the transaction was reversed."
        },
        "href": {
@@ -24884,7 +25219,7 @@
         "type": "string",
         "format": "date",
         "readOnly": true,
-        "example": "2021-10-22",
+        "example": "2026-10-22",
         "description": "Date of the reversed transaction."
        },
        "href": {
@@ -24939,7 +25274,7 @@
           "readOnly": true,
           "description": "Date and time when the credit card transaction was created.",
           "format": "date-time",
-          "example": "2025-10-01T11:28:12Z"
+          "example": "2026-09-01T11:28:12Z"
          }
         }
        }
@@ -27716,12 +28051,14 @@
        "key": {
         "type": "string",
         "description": "Unique key for the attachment",
-        "example": "1"
+        "example": "1",
+        "nullable": true
        },
        "id": {
         "type": "string",
         "description": "Identifier for the attachment.",
-        "example": "1"
+        "example": "1",
+        "nullable": true
        },
        "href": {
         "type": "string",
@@ -27953,20 +28290,23 @@
         "type": "string",
         "description": "Unique key for the reversing transaction.",
         "readOnly": true,
-        "example": "221"
+        "example": "221",
+        "nullable": true
        },
        "id": {
         "type": "string",
         "description": "Identifier of the reversing transaction.",
         "readOnly": true,
-        "example": "221"
+        "example": "221",
+        "nullable": true
        },
        "reversalDate": {
         "type": "string",
         "format": "date",
         "readOnly": true,
         "example": "2021-01-23",
-        "description": "Date of the reversing transaction. This is usually the original transaction date or a later date."
+        "description": "Date of the reversing transaction. This is usually the original transaction date or a later date.",
+        "nullable": true
        },
        "href": {
         "type": "string",
@@ -27985,20 +28325,23 @@
         "type": "string",
         "description": "Unique key for the reversed transaction.",
         "readOnly": true,
-        "example": "125"
+        "example": "125",
+        "nullable": true
        },
        "id": {
         "type": "string",
         "description": "Identifier of the reversed transaction.",
         "readOnly": true,
-        "example": "125"
+        "example": "125",
+        "nullable": true
        },
        "txnDate": {
         "type": "string",
         "format": "date",
         "readOnly": true,
         "example": "2021-10-22",
-        "description": "Transaction date of the reversed transaction."
+        "description": "Transaction date of the reversed transaction.",
+        "nullable": true
        },
        "href": {
         "type": "string",
@@ -28041,15 +28384,18 @@
      }
     }
    },
-   "funds-transferRequiredProperties": {
+   "cash-management-funds-transferRequiredProperties": {
     "type": "object",
     "required": [
-     "sendDate"
+     "sendDate",
+     "transferFromAccount",
+     "transferToAccount"
     ],
     "properties": {
      "transferFromAccount": {
       "type": "object",
       "required": [
+       "bankAccount",
        "transferAmount"
       ],
       "properties": {
@@ -28058,12 +28404,19 @@
         "required": [
          "id"
         ]
+       },
+       "transferAmount": {
+        "type": "string",
+        "format": "decimal-precision-2",
+        "description": "Specifies the amount of the funds transfer in the currency of the originating bank account. Applies to multi-currency companies.",
+        "example": "2500.10"
        }
       }
      },
      "transferToAccount": {
       "type": "object",
       "required": [
+       "bankAccount",
        "receivedAmount"
       ],
       "properties": {
@@ -28072,6 +28425,9 @@
         "required": [
          "id"
         ]
+       },
+       "receivedAmount": {
+        "type": "string"
        }
       }
      }
@@ -28252,10 +28608,19 @@
      },
      "memo": {
       "type": "string",
+      "description": "Deprecated. Use the `notes` field instead.",
+      "deprecated": true
+     },
+     "notes": {
+      "type": "string",
       "description": "Provides brief descriptive notes about the reason for the reversal.",
       "example": "Reversed the fund transfer transaction to correct a duplicate entry."
      }
-    }
+    },
+    "required": [
+     "key",
+     "reversedDate"
+    ]
    },
    "cash-management-funds-transfer-actions-reverse-response": {
     "type": "object",
@@ -30244,6 +30609,543 @@
      }
     }
    },
+   "services.reports.cash-management-check-register": {
+    "description": "The check register report shows check and payment transactions for a bank account over a specified date range.",
+    "type": "object",
+    "properties": {
+     "title1": {
+      "type": "string",
+      "example": "Check Register Report - March 2026",
+      "description": "Specifies the primary title displayed at the top of the check register report."
+     },
+     "title2": {
+      "type": "string",
+      "example": "NexCom Corporation | USD",
+      "description": "Specifies the secondary title displayed below the primary title."
+     },
+     "footerText": {
+      "type": "string",
+      "example": "Confidential - For Internal Use Only",
+      "description": "Specifies the text to display in the report footer."
+     },
+     "scheduledReportDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-03-31",
+      "description": "Indicates the date the report is scheduled to run. If not provided, the report runs immediately."
+     },
+     "reportName": {
+      "type": "string",
+      "example": "Check Register Report - March 2026",
+      "description": "Specifies the name assigned to the check register report, used for identification and reference."
+     },
+     "outputType": {
+      "type": "string",
+      "enum": [
+       "html",
+       "pdf",
+       "csv",
+       "excel",
+       "text"
+      ],
+      "example": "html",
+      "default": "html",
+      "description": "Indicates the output format for the check register report."
+     },
+     "outputLocation": {
+      "type": "string",
+      "enum": [
+       "intacct",
+       "cloud"
+      ],
+      "default": "intacct",
+      "example": "intacct",
+      "description": "Indicates where to store the check register report."
+     },
+     "cloudStoreParameters": {
+      "$ref": "#/components/schemas/report.cloud-store-options"
+     },
+     "parameters": {
+      "type": "object",
+      "description": "Defines the input parameters for the check register report, including time range, account, payees, dimensions, and display options.",
+      "properties": {
+       "timePeriod": {
+        "$ref": "#/components/schemas/report-time-period-filter-ref"
+       },
+       "bankAccount": {
+        "type": "object",
+        "description": "Checking account to filter the report by. If omitted, all checking accounts are included.",
+        "properties": {
+         "id": {
+          "type": "string",
+          "example": "BOA-CHK",
+          "description": "Checking account ID."
+         }
+        }
+       },
+       "payee": {
+        "type": "object",
+        "description": "Payee (vendor or employee) ID range to filter transactions by.",
+        "properties": {
+         "fromId": {
+          "type": "string",
+          "example": "V-1001",
+          "description": "Starting payee ID in the range."
+         },
+         "toId": {
+          "type": "string",
+          "example": "V-2000",
+          "description": "Ending payee ID in the range."
+         }
+        }
+       },
+       "checkNumber": {
+        "type": "object",
+        "description": "Check (document) number range to filter transactions by.",
+        "properties": {
+         "from": {
+          "type": "string",
+          "example": "1000",
+          "description": "Starting check number in the range."
+         },
+         "to": {
+          "type": "string",
+          "example": "2000",
+          "description": "Ending check number in the range."
+         }
+        }
+       },
+       "location": {
+        "type": "array",
+        "description": "Location dimension values to filter transactions by.",
+        "items": {
+         "type": "string",
+         "example": [
+          "USA"
+         ]
+        }
+       },
+       "filterTransactions": {
+        "type": "string",
+        "enum": [
+         "self",
+         "children",
+         "all"
+        ],
+        "example": "all",
+        "default": "all",
+        "description": "Indicates how to filter transactions by the selected locations."
+       },
+       "department": {
+        "type": "array",
+        "description": "Department dimension values to filter transactions by.",
+        "items": {
+         "type": "string",
+         "example": [
+          "Marketing"
+         ]
+        }
+       },
+       "showDetails": {
+        "type": "boolean",
+        "example": true,
+        "default": true,
+        "description": "Show transaction details (true) or summary only (false)."
+       },
+       "glAccount": {
+        "type": "object",
+        "description": "GL account range or GL account group to filter detail transactions by. Applies only when `showDetails` is true.",
+        "properties": {
+         "from": {
+          "type": "string",
+          "example": "1000",
+          "description": "Starting GL account in the range."
+         },
+         "to": {
+          "type": "string",
+          "example": "1999",
+          "description": "Ending GL account in the range."
+         },
+         "group": {
+          "type": "string",
+          "example": "Cash Accounts",
+          "description": "GL account group. Use instead of a GL account range."
+         }
+        }
+       },
+       "showOnlyVoided": {
+        "type": "boolean",
+        "example": false,
+        "default": false,
+        "description": "Show only voided or reversed transactions."
+       },
+       "showOnlyCheckTransactions": {
+        "type": "boolean",
+        "example": false,
+        "default": false,
+        "description": "Show only check transactions and exclude other payment types."
+       },
+       "showReconciliationStatus": {
+        "type": "boolean",
+        "example": true,
+        "default": true,
+        "description": "Display the reconciliation status column in the report."
+       },
+       "reconciliationState": {
+        "type": "string",
+        "enum": [
+         "all",
+         "inTransit",
+         "cleared"
+        ],
+        "example": "all",
+        "default": "all",
+        "description": "Filter transactions by reconciliation state."
+       },
+       "pageOrientation": {
+        "type": "string",
+        "enum": [
+         "portrait",
+         "landscape"
+        ],
+        "example": "portrait",
+        "default": "portrait",
+        "description": "Page orientation for printable output."
+       },
+       "sortBy": {
+        "type": "string",
+        "description": "Indicates the field used to sort transactions in the report.",
+        "enum": [
+         "date",
+         "check",
+         "payee",
+         "payeeId",
+         "amount",
+         "glAccount"
+        ],
+        "example": "date",
+        "default": "date"
+       },
+       "reportGrouping": {
+        "type": "string",
+        "enum": [
+         "bank",
+         "payee",
+         "date",
+         "glAccount"
+        ],
+        "example": "bank",
+        "default": "bank",
+        "description": "Indicates how to group transactions in the report."
+       },
+       "individualReport": {
+        "type": "object",
+        "description": "Provides options for generating individual reports based on location or department. If enabled, the system generates separate reports for each unique value within the specified dimension.",
+        "properties": {
+         "includeLocation": {
+          "type": "boolean",
+          "description": "Indicates whether to create a separate report for individual locations or location groups. Set to `true` to create a separate report for each location. For location groups, this creates a separate report for the individual locations within the group.",
+          "example": true,
+          "default": false
+         },
+         "includeDepartment": {
+          "type": "boolean",
+          "description": "Indicates whether to create a separate report for individual departments or department groups. Set to `true` to create a separate report for each department. For department groups, this creates a separate report for the individual departments within the group.",
+          "example": true,
+          "default": false
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "cash-management-reports.check-registerRequiredProperties": {
+    "type": "object",
+    "required": [
+     "reportName"
+    ]
+   },
+   "services.report.submitted-status": {
+    "description": "Report status response.",
+    "type": "object",
+    "properties": {
+     "reportId": {
+      "type": "string",
+      "description": "Unique identifier for the report.",
+      "nullable": false,
+      "example": "1"
+     },
+     "status": {
+      "type": "string",
+      "description": "Status of the report execution.",
+      "nullable": false,
+      "enum": [
+       "submitted",
+       "failed"
+      ],
+      "example": "submitted"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name for the report.",
+      "readOnly": true,
+      "nullable": true,
+      "example": "Trial balance report"
+     },
+     "outputType": {
+      "type": "string",
+      "description": "Format for the report output.",
+      "readOnly": true,
+      "example": "pdf",
+      "enum": [
+       "html",
+       "pdf",
+       "csv",
+       "excel",
+       "text",
+       "fec",
+       "zip"
+      ]
+     },
+     "outputLocation": {
+      "type": "string",
+      "description": "Location where the report is stored.",
+      "readOnly": true,
+      "example": "intacct",
+      "enum": [
+       "intacct",
+       "cloud"
+      ]
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the report status.",
+      "nullable": true,
+      "example": "/services/reports/status?reportId=1&outputType=pdf&outputLocation=intacct"
+     }
+    }
+   },
+   "services.reports.cash-management-bank-register": {
+    "description": "The bank register report shows transactions for a bank account over a specified date range.",
+    "type": "object",
+    "properties": {
+     "title1": {
+      "type": "string",
+      "example": "Bank Register Report - March 2026",
+      "description": "Specifies the primary title displayed at the top of the bank register report."
+     },
+     "title2": {
+      "type": "string",
+      "example": "NexCom Corporation | USD",
+      "description": "Specifies the secondary title displayed below the primary title."
+     },
+     "footerText": {
+      "type": "string",
+      "example": "Confidential - For Internal Use Only",
+      "description": "Specifies the text to display in the report footer."
+     },
+     "scheduledReportDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-03-31",
+      "description": "Indicates the date the report is scheduled to run. If not provided, the report runs immediately."
+     },
+     "reportName": {
+      "type": "string",
+      "example": "Bank Register Report - March 2026",
+      "description": "Specifies the name assigned to the bank register report for identification and later retrieval."
+     },
+     "outputType": {
+      "type": "string",
+      "enum": [
+       "html",
+       "pdf",
+       "csv",
+       "excel",
+       "text"
+      ],
+      "example": "html",
+      "default": "html",
+      "description": "Indicates the output format for the bank register report."
+     },
+     "outputLocation": {
+      "type": "string",
+      "enum": [
+       "intacct",
+       "cloud"
+      ],
+      "default": "intacct",
+      "example": "intacct",
+      "description": "Indicates where to store the generated bank register report."
+     },
+     "cloudStoreParameters": {
+      "$ref": "#/components/schemas/report.cloud-store-options"
+     },
+     "parameters": {
+      "type": "object",
+      "description": "Defines the input parameters for the bank register report, including time range, account, dimensions, and display options.",
+      "properties": {
+       "timePeriod": {
+        "$ref": "#/components/schemas/report-time-period-filter-ref"
+       },
+       "bankAccount": {
+        "type": "object",
+        "description": "Bank account to filter the report by. If omitted, all bank accounts are included.",
+        "properties": {
+         "id": {
+          "type": "string",
+          "example": "BOA-CHK",
+          "description": "ID for the bank account."
+         }
+        }
+       },
+       "location": {
+        "type": "array",
+        "description": "Location dimension values to filter transactions by.",
+        "items": {
+         "type": "string",
+         "example": [
+          "USA"
+         ]
+        }
+       },
+       "filterTransactions": {
+        "type": "string",
+        "enum": [
+         "self",
+         "children",
+         "all"
+        ],
+        "example": "children",
+        "default": "all",
+        "description": "Indicates how to filter transactions by the selected locations."
+       },
+       "department": {
+        "type": "array",
+        "description": "Department dimension values to filter transactions by.",
+        "items": {
+         "type": "string",
+         "example": [
+          "Marketing"
+         ]
+        }
+       },
+       "showDetails": {
+        "type": "boolean",
+        "example": true,
+        "default": true,
+        "description": "Show transaction details (true) or summary only (false)."
+       },
+       "showOnlyVoided": {
+        "type": "boolean",
+        "example": false,
+        "default": false,
+        "description": "Show only voided or reversed transactions."
+       },
+       "showReconciliationStatus": {
+        "type": "boolean",
+        "example": true,
+        "default": true,
+        "description": "Display the reconciliation status column in the report."
+       },
+       "reconciliationState": {
+        "type": "string",
+        "enum": [
+         "all",
+         "inTransit",
+         "cleared"
+        ],
+        "example": "all",
+        "default": "all",
+        "description": "Filter transactions by reconciliation state."
+       },
+       "hideAccountsWithNoTransactions": {
+        "type": "boolean",
+        "example": false,
+        "default": false,
+        "description": "Hide bank accounts that have no transactions in the selected period."
+       },
+       "reportBy": {
+        "type": "string",
+        "enum": [
+         "transactionDate",
+         "glPostingDate"
+        ],
+        "example": "transactionDate",
+        "default": "transactionDate",
+        "description": "Indicates whether to report by transaction date or GL posting date."
+       },
+       "sortByBankField": {
+        "type": "string",
+        "enum": [
+         "bankAccountId",
+         "bankName"
+        ],
+        "example": "bankAccountId",
+        "default": "bankAccountId",
+        "description": "Field used to sort bank accounts in the report."
+       },
+       "sortBy": {
+        "type": "array",
+        "description": "Indicates the fields used to sort transactions in the report.",
+        "items": {
+         "type": "string",
+         "enum": [
+          "date",
+          "description",
+          "txnNumber",
+          "debitAmount",
+          "creditAmount",
+          "reconciliationState"
+         ],
+         "example": [
+          "date",
+          "description"
+         ],
+         "default": [
+          "date"
+         ]
+        }
+       },
+       "pageOrientation": {
+        "type": "string",
+        "enum": [
+         "portrait",
+         "landscape"
+        ],
+        "example": "portrait",
+        "default": "portrait",
+        "description": "Page orientation for printable output."
+       },
+       "individualReport": {
+        "type": "object",
+        "description": "Provides options for generating individual reports based on location or department. If enabled, the system generates separate reports for each unique value within the specified dimension.",
+        "properties": {
+         "includeLocation": {
+          "type": "boolean",
+          "description": "Indicates whether to create a separate report for individual locations or location groups. Set to `true` to create a separate report for each location. For location groups, this creates a separate report for the individual locations within the group.",
+          "example": true,
+          "default": false
+         },
+         "includeDepartment": {
+          "type": "boolean",
+          "description": "Indicates whether to create a separate report for individual departments or department groups. Set to `true` to create a separate report for each department. For department groups, this creates a separate report for the individual departments within the group.",
+          "example": true,
+          "default": false
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "cash-management-reports.bank-registerRequiredProperties": {
+    "type": "object",
+    "required": [
+     "reportName"
+    ]
+   },
    "audit.s1": {
     "type": "object",
     "readOnly": true,
@@ -31103,6 +32005,37 @@
         "example": "/objects/construction/work-order/18"
        }
       }
+     },
+     "propertyLease": {
+      "description": "Property lease associated with the dimension.",
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the property lease.",
+        "example": "1",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the property lease.",
+        "example": "PL-01",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the property lease.",
+        "readOnly": true,
+        "example": "Lease for 123 Main St.",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the property lease.",
+        "readOnly": true,
+        "example": "/objects/construction/property-lease/1"
+       }
+      }
      }
     }
    },
@@ -31249,6 +32182,102 @@
       "type": "string",
       "description": "Transaction currency.",
       "example": "GBP"
+     }
+    }
+   },
+   "report.cloud-store-options": {
+    "description": "Report cloud store options",
+    "type": "object",
+    "properties": {
+     "cloudStore": {
+      "type": "string",
+      "description": "Predefined cloud store name. Required when the `outputLocation` is set to `cloud`.",
+      "example": "CloudStore"
+     },
+     "cloudStorage": {
+      "type": "object",
+      "description": "Predefined cloud store. Required when the `outputLocation` is set to `cloud`.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the cloud storage.",
+        "example": "44"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique ID for the cloud storage.",
+        "example": "Amazon Storage Plan"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the cloud storage.",
+        "example": "/objects/company-config/cloud-storage/44"
+       }
+      }
+     },
+     "path": {
+      "type": "string",
+      "description": "Cloud store path. Used when the `outputLocation` is set to `cloud`.",
+      "example": "2025 Reports"
+     }
+    }
+   },
+   "report-time-period-filter-ref": {
+    "type": "object",
+    "properties": {
+     "periodToDate": {
+      "type": "object",
+      "properties": {
+       "reportingPeriod": {
+        "$ref": "#/components/schemas/reporting-period-ref"
+       },
+       "asOfDate": {
+        "type": "string",
+        "format": "date",
+        "example": "2014-01-08",
+        "description": "The \"as of\" date to use with any relative date comparisons in selected filters. The current date is used if `asOfDate` is not set."
+       }
+      }
+     },
+     "dateRange": {
+      "type": "object",
+      "description": "Date range.",
+      "properties": {
+       "startDate": {
+        "type": "string",
+        "format": "date",
+        "example": "2025-01-02",
+        "description": "Start of the date range."
+       },
+       "endDate": {
+        "type": "string",
+        "format": "date",
+        "example": "2025-12-31",
+        "description": "End of the date range."
+       }
+      }
+     }
+    }
+   },
+   "reporting-period-ref": {
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned key for the reporting period.",
+      "example": "79"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique identifier for the reporting period (case sensitive).",
+      "example": "January 2021"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the reporting period.",
+      "readOnly": true,
+      "example": "/objects/general-ledger/reporting-period/45"
      }
     }
    }

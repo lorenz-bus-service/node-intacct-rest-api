@@ -39,6 +39,10 @@ export type WipTargetProjectUpdate = RequestBody<operations["update-construction
 export type AccumulationType = components["schemas"]["objects.construction.accumulation-type"];
 export type AccumulationTypeCreate = RequestBody<operations["create-construction-accumulation-type"]>;
 export type AccumulationTypeUpdate = RequestBody<operations["update-construction-accumulation-type-key"]>;
+/** construction/advanced-retainage-step */
+export type AdvancedRetainageStep = components["schemas"]["objects.construction.advanced-retainage-step"];
+export type AdvancedRetainageStepCreate = RequestBody<operations["post-objects-advanced-retainage-step"]>;
+export type AdvancedRetainageStepUpdate = RequestBody<operations["patch-objects-advanced-retainage-step-key"]>;
 /** construction/ap-releasable-retainage */
 export type ApReleasableRetainage = components["schemas"]["objects.construction.ap-releasable-retainage"];
 /** construction/ap-retainage-release */
@@ -113,6 +117,10 @@ export type PrimaryDocumentDetail = components["schemas"]["objects.construction.
 export type PrimaryDocumentRetainageRelease = components["schemas"]["objects.construction.primary-document-retainage-release"];
 /** construction/primary-document-summary */
 export type PrimaryDocumentSummary = components["schemas"]["objects.construction.primary-document-summary"];
+/** construction/project-billable-expense */
+export type ProjectBillableExpense = components["schemas"]["objects.construction.project-billable-expense"];
+export type ProjectBillableExpenseCreate = RequestBody<operations["create-construction-project-billable-expense"]>;
+export type ProjectBillableExpenseUpdate = RequestBody<operations["update-construction-project-billable-expense-key"]>;
 /** construction/project-change-order */
 export type ProjectChangeOrder = components["schemas"]["objects.construction.project-change-order"];
 export type ProjectChangeOrderCreate = RequestBody<operations["create-construction-project-change-order"]>;
@@ -148,6 +156,32 @@ export type ProjectEstimateLine = components["schemas"]["objects.construction.pr
 export type ProjectEstimateType = components["schemas"]["objects.construction.project-estimate-type"];
 export type ProjectEstimateTypeCreate = RequestBody<operations["create-construction-project-estimate-type"]>;
 export type ProjectEstimateTypeUpdate = RequestBody<operations["update-construction-project-estimate-type-key"]>;
+/** construction/project-expense */
+export type ProjectExpense = components["schemas"]["objects.construction.project-expense"];
+/** construction/property-lease */
+export type PropertyLease = components["schemas"]["objects.construction.property-lease"];
+export type PropertyLeaseCreate = RequestBody<operations["create-construction-property-lease"]>;
+export type PropertyLeaseUpdate = RequestBody<operations["update-construction-property-lease-key"]>;
+/** construction/property-lease-business-category */
+export type PropertyLeaseBusinessCategory = components["schemas"]["objects.construction.property-lease-business-category"];
+export type PropertyLeaseBusinessCategoryCreate = RequestBody<operations["create-construction-property-lease-business-category"]>;
+export type PropertyLeaseBusinessCategoryUpdate = RequestBody<operations["update-construction-property-lease-business-category-key"]>;
+/** construction/property-lease-state */
+export type PropertyLeaseState = components["schemas"]["objects.construction.property-lease-state"];
+export type PropertyLeaseStateCreate = RequestBody<operations["create-construction-property-lease-state"]>;
+export type PropertyLeaseStateUpdate = RequestBody<operations["update-construction-property-lease-state-key"]>;
+/** construction/property-lease-tenant */
+export type PropertyLeaseTenant = components["schemas"]["objects.construction.property-lease-tenant"];
+/** construction/property-lease-termination-reason */
+export type PropertyLeaseTerminationReason = components["schemas"]["objects.construction.property-lease-termination-reason"];
+export type PropertyLeaseTerminationReasonCreate = RequestBody<operations["create-construction-property-lease-termination-reason"]>;
+export type PropertyLeaseTerminationReasonUpdate = RequestBody<operations["update-construction-property-lease-termination-reason-key"]>;
+/** construction/property-lease-type */
+export type PropertyLeaseType = components["schemas"]["objects.construction.property-lease-type"];
+export type PropertyLeaseTypeCreate = RequestBody<operations["create-construction-property-lease-type"]>;
+export type PropertyLeaseTypeUpdate = RequestBody<operations["update-construction-property-lease-type-key"]>;
+/** construction/property-lease-unit */
+export type PropertyLeaseUnit = components["schemas"]["objects.construction.property-lease-unit"];
 /** construction/rate-table */
 export type RateTable = components["schemas"]["objects.construction.rate-table"];
 export type RateTableCreate = RequestBody<operations["create-construction-rate-table"]>;
@@ -195,6 +229,7 @@ export const construction = defineApplication({
   wipSetupAccount: object(shape<{ record: WipSetupAccount; create: WipSetupAccountCreate; update: WipSetupAccountUpdate }>(), "construction-forecasting/wip-setup-account", ["create","delete","get","update"]),
   wipTargetProject: object(shape<{ record: WipTargetProject; update: WipTargetProjectUpdate }>(), "construction-forecasting/wip-target-project", ["get","update"]),
   accumulationType: object(shape<{ record: AccumulationType; create: AccumulationTypeCreate; update: AccumulationTypeUpdate }>(), "construction/accumulation-type", ["create","delete","get","update"]),
+  advancedRetainageStep: object(shape<{ record: AdvancedRetainageStep; create: AdvancedRetainageStepCreate; update: AdvancedRetainageStepUpdate }>(), "construction/advanced-retainage-step", ["create","delete","get","update"]),
   apReleasableRetainage: object(shape<{ record: ApReleasableRetainage }>(), "construction/ap-releasable-retainage", ["get"]),
   apRetainageRelease: object(shape<{ record: ApRetainageRelease; create: ApRetainageReleaseCreate; update: ApRetainageReleaseUpdate }>(), "construction/ap-retainage-release", ["create","delete","get","update"]),
   apRetainageReleaseLine: object(shape<{ record: ApRetainageReleaseLine }>(), "construction/ap-retainage-release-line", ["get"]),
@@ -219,6 +254,7 @@ export const construction = defineApplication({
   primaryDocumentDetail: object(shape<{ record: PrimaryDocumentDetail }>(), "construction/primary-document-detail", ["get"]),
   primaryDocumentRetainageRelease: object(shape<{ record: PrimaryDocumentRetainageRelease }>(), "construction/primary-document-retainage-release", ["get"]),
   primaryDocumentSummary: object(shape<{ record: PrimaryDocumentSummary }>(), "construction/primary-document-summary", ["get"]),
+  projectBillableExpense: object(shape<{ record: ProjectBillableExpense; create: ProjectBillableExpenseCreate; update: ProjectBillableExpenseUpdate }>(), "construction/project-billable-expense", ["create","delete","get","update"]),
   projectChangeOrder: object(shape<{ record: ProjectChangeOrder; create: ProjectChangeOrderCreate; update: ProjectChangeOrderUpdate }>(), "construction/project-change-order", ["create","delete","get","update"]),
   projectContract: object(shape<{ record: ProjectContract; create: ProjectContractCreate; update: ProjectContractUpdate }>(), "construction/project-contract", ["create","delete","get","update"]),
   projectContractBillingInvoiceDetail: object(shape<{ record: ProjectContractBillingInvoiceDetail }>(), "construction/project-contract-billing-invoice-detail", ["get"]),
@@ -230,6 +266,14 @@ export const construction = defineApplication({
   projectEstimate: object(shape<{ record: ProjectEstimate; create: ProjectEstimateCreate; update: ProjectEstimateUpdate }>(), "construction/project-estimate", ["create","delete","get","update"]),
   projectEstimateLine: object(shape<{ record: ProjectEstimateLine }>(), "construction/project-estimate-line", ["get"]),
   projectEstimateType: object(shape<{ record: ProjectEstimateType; create: ProjectEstimateTypeCreate; update: ProjectEstimateTypeUpdate }>(), "construction/project-estimate-type", ["create","delete","get","update"]),
+  projectExpense: object(shape<{ record: ProjectExpense }>(), "construction/project-expense", ["get"]),
+  propertyLease: object(shape<{ record: PropertyLease; create: PropertyLeaseCreate; update: PropertyLeaseUpdate }>(), "construction/property-lease", ["create","delete","get","update"]),
+  propertyLeaseBusinessCategory: object(shape<{ record: PropertyLeaseBusinessCategory; create: PropertyLeaseBusinessCategoryCreate; update: PropertyLeaseBusinessCategoryUpdate }>(), "construction/property-lease-business-category", ["create","delete","get","update"]),
+  propertyLeaseState: object(shape<{ record: PropertyLeaseState; create: PropertyLeaseStateCreate; update: PropertyLeaseStateUpdate }>(), "construction/property-lease-state", ["create","delete","get","update"]),
+  propertyLeaseTenant: object(shape<{ record: PropertyLeaseTenant }>(), "construction/property-lease-tenant", ["get"]),
+  propertyLeaseTerminationReason: object(shape<{ record: PropertyLeaseTerminationReason; create: PropertyLeaseTerminationReasonCreate; update: PropertyLeaseTerminationReasonUpdate }>(), "construction/property-lease-termination-reason", ["create","delete","get","update"]),
+  propertyLeaseType: object(shape<{ record: PropertyLeaseType; create: PropertyLeaseTypeCreate; update: PropertyLeaseTypeUpdate }>(), "construction/property-lease-type", ["create","delete","get","update"]),
+  propertyLeaseUnit: object(shape<{ record: PropertyLeaseUnit }>(), "construction/property-lease-unit", ["get"]),
   rateTable: object(shape<{ record: RateTable; create: RateTableCreate; update: RateTableUpdate }>(), "construction/rate-table", ["create","delete","get","update"]),
   rateTableAccountsPayableLine: object(shape<{ record: RateTableAccountsPayableLine }>(), "construction/rate-table-accounts-payable-line", ["get"]),
   rateTableCreditCardLine: object(shape<{ record: RateTableCreditCardLine }>(), "construction/rate-table-credit-card-line", ["get"]),

@@ -15,17 +15,22 @@
   {
    "name": "Expenses_Employee expenses",
    "x-displayName": "Employee expenses",
-   "description": "Expense report header for employee expense lines. Employees create and submit expense reports, consisting of individual line items, to receive reimbursement for approved out-of-pocket costs related to their jobs. \n\nThe employees' managers must then approve the expenses. After approval, the expense reports become reimbursement request candidates for the accounting department to process into pending reimbursements, from which checks are printed.\n"
+   "description": "An employee expense represents an expense report submitted by an employee, consisting of\nindividual expense lines for reimbursement of approved out-of-pocket costs related to\ntheir job.\n\n**When to use:** Use when submitting expense reports, retrieving expense report details,\nor tracking reimbursement status throughout the approval process.\n\n**Relationships:** Contains employee expense lines, each with its own tax entries, and is\nlinked to the employee, expense summary, and the AP bill when AP payment is configured\nfor reimbursement.\n\n**Lifecycle context:** After an employee submits an expense report, it moves through\nmanager approval. Once approved, the expense report becomes a reimbursement candidate for\nthe accounting department to process into a pending reimbursement for payment.\n\nFor more information, see [Employee expense reports](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Aa_TOC_staff_expense_reports) in the Sage Intacct Help Center."
   },
   {
    "name": "Expenses_Employee expense lines",
    "x-displayName": "Employee expense lines",
-   "description": "Details for each expense line on the employee expense report. Employees create and submit expense reports, consisting of individual line items, to receive reimbursement for approved out-of-pocket costs related to their jobs."
+   "description": "An employee expense line represents an individual expense item within an employee expense\nreport, recording a portion of the report's costs and how it is reimbursed.\n\n**When to use:** Use to retrieve or analyze individual expense entries that make up an\nemployee expense report.\n\n**Relationships:** Owned by the employee expense and associated with a GL account or\nexpense type, payment type, and tax entries.\n\n**Lifecycle context:** Created when an employee adds a line to an expense report and\nretained as part of the final expense record for reimbursement processing and reporting."
+  },
+  {
+   "name": "Expenses_Employee expense tax entries",
+   "x-displayName": "Employee expense tax entries",
+   "description": "An employee expense tax entry represents tax information for an employee expense line,\nused for VAT/GST-enabled transactions. \n\n**When to use:** Use to retrieve tax details recorded against an expense line. Create and\nmaintain tax entries from the owning employee expense line.\n\n**Relationships:** Owned by the employee expense line and associated with a purchasing\ntax detail that defines the applicable tax rate.\n\n**Lifecycle context:** Created when a tax amount is applied to an expense line during\nline creation, and retained with the line for VAT/GST reporting and audit purposes."
   },
   {
    "name": "Expenses_Employee expense summaries",
    "x-displayName": "Employee expense summaries",
-   "description": "Expense summaries are collections of the same type of transactions, grouped together for processing. Expense summaries are referenced by [employee expense](expenses.employee-expense) objects. For more information, see [Add, edit, or delete expense summaries](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Adding_Editing_and_Viewing_Expense_Batch_Information) in the Sage Intacct Help Center."
+   "description": "Expense summaries are collections of the same type of transactions, grouped together for processing. Expense summaries are referenced by [employee expense](/intacct/apis/intacct/1/intacct-openapi/groups/expenses/tags/expenses_employee-expenses) objects. For more information, see [Add, edit, or delete expense summaries](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Adding_Editing_and_Viewing_Expense_Batch_Information) in the Sage Intacct Help Center."
   },
   {
    "name": "Expenses_Employee expense types",
@@ -55,7 +60,7 @@
   {
    "name": "Expenses_Unit rates",
    "x-displayName": "Unit rates",
-   "description": "When an employee enters a quantity for reimbursement, it's multiplied by the unit rate to\nproduce the reimbursement amount. An employee start date determines when the unit rate takes\neffect. \n\nThe rate applies only to the expense line items that have an expense date on or after the start date. See [Field description, Create expense reports](https://www.intacct.com/ia/docs/en_US/help_action/Time_and_Expenses/Employee_expenses/fbf-create-expense-reports.htm) in the Sage Intacct Help Center for more information. \n"
+   "description": "When an employee enters a quantity for reimbursement, it's multiplied by the unit rate to\nproduce the reimbursement amount. An employee start date determines when the unit rate takes\neffect. \n\nThe rate applies only to the expense line items that have an expense date on or after the start date. See [Field description, Create expense reports](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Creating_employee_expense_report_staff) in the Sage Intacct Help Center for more information. \n"
   },
   {
    "name": "Expenses_Electronic receipts",
@@ -82,7 +87,7 @@
   "/objects/expenses/employee-expense": {
    "get": {
     "summary": "List employee expenses",
-    "description": "Returns up to 100 employee expense objects from the collection with a key, ID, and link for each expense. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find expense objects that meet certain criteria and to specify the properties that are returned.\n",
+    "description": "Returns a collection with a key, ID, and link for each employee expense. This operation\nis mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and\nto specify properties that are returned.",
     "tags": [
      "Expenses_Employee expenses"
     ],
@@ -154,13 +159,13 @@
    },
    "post": {
     "summary": "Create an employee expense",
-    "description": "Creates a new employee expense. You must specify a unique employee expense ID when creating an employee expense unless document sequencing is configured, in which case the ID is auto-generated.",
+    "description": "Creates a new employee expense. You must specify a unique employee expense ID when creating\nan employee expense unless document sequencing is configured, in which case the ID is\nauto-generated. Allowed values for the `state` field are `draft` and `submitted`.\nInclusive tax is not supported through the REST API. Omit the read-only `isTaxInclusive`\nfield from the request. REST-created expenses return `false`; existing expenses created\nthrough the UI may return `true`.",
     "tags": [
      "Expenses_Employee expenses"
     ],
     "operationId": "create-expenses-employee-expense",
     "requestBody": {
-     "description": "Creates an employee expense. Allowed values for the `state` field are `draft`, `submitted`.",
+     "description": "",
      "required": true,
      "content": {
       "application/json": {
@@ -182,23 +187,28 @@
           "employee": {
            "id": "10"
           },
-          "createdDate": "2021-03-11",
+          "createdDate": "2026-03-11",
           "expenseSummary": {
-           "postingDate": "2021-01-31",
+           "postingDate": "2026-01-31",
            "title": "Expenses - Q1 batch"
           },
-          "basePaymentInformation": {
-           "baseCurrency": "USD"
+          "basePayment": {
+           "baseCurrency": "GBP"
           },
-          "reimbursementInformation": {
-           "reimbursementCurrency": "EUR"
+          "reimbursement": {
+           "reimbursementCurrency": "GBP"
           },
           "description": "Travel expense",
           "memo": "Paid to employee",
+          "taxSolution": {
+           "key": "1",
+           "id": "United Kingdom - VAT"
+          },
           "lines": [
            {
-            "account": null,
-            "id": "6775.30",
+            "glAccount": {
+             "id": "6775.30"
+            },
             "paidTo": "paid To",
             "paidFor": "paid For",
             "isBillable": false,
@@ -209,17 +219,27 @@
             },
             "paymentType": {
              "key": "1",
-             "name": "Non-reimburse",
-             "isNonreimbursable": false
+             "id": "Non-reimburse"
             },
             "quantity": "10",
-            "unitrate": "20",
-            "txnCurrency": "INR",
+            "unitRate": "20",
+            "txnCurrency": "GBP",
             "txnAmount": "100",
             "transactionToReimburseConversion": {
-             "exchangeRateDate": "2021-03-11",
-             "exchangeRateTypeId": "Intacct Daily Rate"
+             "exchangeRateDate": "2026-03-11",
+             "exchangeRateType": {
+              "id": "Intacct Daily Rate"
+             }
             },
+            "taxEntries": [
+             {
+              "txnTaxAmount": "19.87",
+              "purchasingTaxDetail": {
+               "key": "304",
+               "id": "UK Import Services Standard Rate"
+              }
+             }
+            ],
             "dimensions": {
              "location": {
               "id": "1"
@@ -309,13 +329,13 @@
    "parameters": [
     {
      "name": "key",
-     "description": "System-assigned key for the employee-expense.",
+     "description": "System-assigned key for the employee expense.",
      "in": "path",
      "required": true,
      "schema": {
       "type": "string"
      },
-     "example": "99"
+     "example": "124"
     }
    ],
    "get": {
@@ -359,11 +379,16 @@
              "lastName": "Glenn",
              "href": "/objects/company-config/contact/977"
             },
+            "apBill": {
+             "key": "986",
+             "id": "986",
+             "href": "/objects/accounts-payable/bill/986"
+            },
             "key": "124",
             "id": "124",
-            "createdDate": "2021-03-11",
+            "createdDate": "2026-03-11",
             "expenseSummary": {
-             "postingDate": "2021-01-31",
+             "postingDate": "2026-01-31",
              "title": "Expenses - Q1 batch",
              "key": "3",
              "id": "3",
@@ -371,7 +396,7 @@
              "preventGLPosting": false,
              "href": "/objects/expenses/employee-expense-summary/3"
             },
-            "basePaymentInformation": {
+            "basePayment": {
              "totalEntered": "1.38",
              "totalPaid": "0",
              "totalSelected": "0",
@@ -379,7 +404,7 @@
              "baseCurrency": "USD"
             },
             "state": "approved",
-            "reimbursementInformation": {
+            "reimbursement": {
              "totalEntered": "1.16",
              "totalSelected": "0",
              "totalPaid": "0",
@@ -387,6 +412,12 @@
              "reimbursementCurrency": "EUR"
             },
             "description": "Supplies for customer training",
+            "isTaxInclusive": false,
+            "taxSolution": {
+             "key": "4",
+             "id": "Australia GST",
+             "href": "/objects/tax/tax-solution/4"
+            },
             "nonReimbursable": {
              "baseTotalEntered": "0",
              "reimbursementTotalEntered": "0"
@@ -395,7 +426,7 @@
              {
               "key": "288",
               "id": "288",
-              "employee-expense": {
+              "employeeExpense": {
                "id": "124",
                "key": "124",
                "href": "/objects/expenses/employee-expense/124"
@@ -405,26 +436,24 @@
                "key": "158",
                "id": "6775.30",
                "name": "Travel",
-               "href": "/objects/account/158"
+               "href": "/objects/general-ledger/account/158"
               },
-              "entryDate": "2021-03-11",
+              "entryDate": "2026-03-11",
               "paidTo": "paid To",
               "paidFor": "paid For",
               "baseAmount": "1.38",
-              "reimburseToBase": {
-               "exchangeRateDate": "2021-03-11",
+              "reimburseToBaseConversion": {
+               "exchangeRateDate": "2026-03-11",
                "exchangeRateTypeId": "-1",
-               "exchangeRate": "1.1899"
+               "exchangeRate": "1.18990"
               },
               "expenseType": {
-               "key": "Meals",
-               "id": "6000"
+               "key": "6000",
+               "id": "Meals"
               },
-              "reimbursementInformation": {
-               "reimbursementAmount": "1.16",
-               "totalSelected": "0",
-               "totalPaid": "0"
-              },
+              "reimbursementAmount": "1.16",
+              "totalSelected": "0",
+              "totalPaid": "0",
               "isBillable": false,
               "isBilled": false,
               "state": "approved",
@@ -434,17 +463,29 @@
                "box": "3"
               },
               "paymentType": {
-               "isNonreimbursable": false
+               "key": "1",
+               "id": "Non-reimburse",
+               "isNonReimbursable": false
               },
-              "unitrate": "10",
+              "unitRate": "10",
               "lineNumber": 1,
-              "currency": {
-               "txnCurrency": "INR",
-               "txnAmount": "100",
-               "exchangeRateDate": "2021-03-11",
-               "exchangeRateTypeId": "Intacct Daily Rate",
-               "exchangeRate": "1"
-              },
+              "taxEntries": [
+               {
+                "key": "15",
+                "id": "15",
+                "txnTaxAmount": "9.00",
+                "baseTaxAmount": "9.00",
+                "taxRate": 9,
+                "purchasingTaxDetail": {
+                 "key": "1",
+                 "id": "Alaska Tax Detail",
+                 "href": "/objects/tax/purchasing-tax-detail/1"
+                },
+                "href": "/objects/expenses/employee-expense-tax-entry/15"
+               }
+              ],
+              "txnCurrency": "INR",
+              "txnAmount": "100",
               "attachment": {
                "key": "1",
                "id": "1"
@@ -545,7 +586,7 @@
    },
    "patch": {
     "summary": "Update an employee expense",
-    "description": "Updates an existing employee expense by setting field values. Any fields not provided remain unchanged. Allowed values for the `state` field are `draft`, and `submitted`.",
+    "description": "Updates an existing employee expense by setting field values. Any fields not provided\nremain unchanged. Allowed values for the `state` field are `draft` and `submitted`.\nUse the workflow actions for other state changes.",
     "tags": [
      "Expenses_Employee expenses"
     ],
@@ -561,6 +602,13 @@
          {
           "type": "object",
           "properties": {
+           "state": {
+            "type": "string",
+            "enum": [
+             "draft",
+             "submitted"
+            ]
+           },
            "reimbursement": {
             "properties": {
              "reimbursementCurrency": {
@@ -573,9 +621,12 @@
         ]
        },
        "examples": {
-        "Updates an employee expense": {
+        "Update an employee expense": {
          "value": {
-          "memo": "Covered by customer"
+          "memo": "Covered by customer",
+          "taxSolution": {
+           "key": "4"
+          }
          }
         }
        }
@@ -799,7 +850,7 @@
   "/objects/expenses/employee-expense-line": {
    "get": {
     "summary": "List employee expense lines",
-    "description": "Returns a collection with a key, ID, and link for each employee expense line.",
+    "description": "Returns a collection with a key, ID, and link for each employee expense line. This\noperation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain\ncriteria and to specify properties that are returned.",
     "tags": [
      "Expenses_Employee expense lines"
     ],
@@ -869,13 +920,13 @@
    },
    "post": {
     "summary": "Create an employee expense line",
-    "description": "Creates a new employee expense line.",
+    "description": "Creates a new employee expense line.\n\nNote that Sage Intacct doesn't calculate VAT/GST amounts for REST-created tax entries.\nThe tax values you provide, such as `baseTaxAmount`, `txnTaxAmount`, and `taxRate`, are\naccepted as given.",
     "tags": [
      "Expenses_Employee expense lines"
     ],
     "operationId": "create-expenses-employee-expense-line",
     "requestBody": {
-     "description": "Creates an employee expense line",
+     "description": "",
      "required": true,
      "content": {
       "application/json": {
@@ -892,7 +943,7 @@
        "examples": {
         "Create an employee expense line": {
          "value": {
-          "account": {
+          "glAccount": {
            "id": "6775.3"
           },
           "paidTo": "Stella Johnson",
@@ -905,22 +956,30 @@
           },
           "paymentType": {
            "key": "1",
-           "id": "Non-reimburse",
-           "isNonreimbursable": false
+           "id": "Non-reimburse"
           },
           "quantity": "10",
-          "unitrate": "20",
-          "txnCurrency": "INR",
+          "unitRate": "20",
+          "txnCurrency": "GBP",
           "txnAmount": "100",
           "transactionToReimburseConversion": {
-           "exchangeRateDate": "2021-03-11",
+           "exchangeRateDate": "2026-03-11",
            "exchangeRateType": {
             "id": "Intacct Daily Rate"
-           },
-           "creditCardTxnLine": {
-            "key": "128"
            }
           },
+          "creditCardTxnLine": {
+           "key": "128"
+          },
+          "taxEntries": [
+           {
+            "txnTaxAmount": "19.87",
+            "purchasingTaxDetail": {
+             "key": "304",
+             "id": "UK Import Services Standard Rate"
+            }
+           }
+          ],
           "dimensions": {
            "location": {
             "id": "1"
@@ -1014,7 +1073,7 @@
      "schema": {
       "type": "string"
      },
-     "example": "99"
+     "example": "312"
     }
    ],
    "get": {
@@ -1056,16 +1115,16 @@
              "key": "158",
              "id": "6775.30",
              "name": "Travel",
-             "href": "/objects/account/158"
+             "href": "/objects/general-ledger/account/158"
             },
-            "entryDate": "2021-03-11",
+            "entryDate": "2026-03-11",
             "paidTo": "Stella Johnson",
             "paidFor": "Hotel stay",
-            "reimburseToBase": {
-             "baseAmount": "1.38",
-             "exchangeRateDate": "2021-03-11",
+            "baseAmount": "1.38",
+            "reimburseToBaseConversion": {
+             "exchangeRateDate": "2026-03-11",
              "exchangeRateTypeId": "-1",
-             "exchangeRate": "1.1899"
+             "exchangeRate": "1.18990"
             },
             "dimensions": {
              "location": {
@@ -1131,14 +1190,12 @@
             },
             "lineNumber": 1,
             "expenseType": {
-             "key": "Meals",
-             "id": "6000"
+             "key": "6000",
+             "id": "Meals"
             },
-            "reimbursement": {
-             "reimbursementAmount": "1.16",
-             "totalSelected": "0",
-             "totalPaid": "0"
-            },
+            "reimbursementAmount": "1.16",
+            "totalSelected": "0",
+            "totalPaid": "0",
             "isBillable": false,
             "isBilled": false,
             "state": "approved",
@@ -1150,18 +1207,32 @@
             "paymentType": {
              "key": "1",
              "id": "Non-reimburse",
-             "isNonreimbursable": false
+             "isNonReimbursable": false
             },
             "quantity": "5",
             "unitRate": "20",
-            "currency": {
-             "txnCurrency": "INR",
-             "txnAmount": "4444",
-             "exchangeRateDate": "2021-03-11",
+            "txnCurrency": "INR",
+            "txnAmount": "4444",
+            "transactionToReimburseConversion": {
+             "exchangeRateDate": "2026-03-11",
              "exchangeRateTypeId": "-1",
-             "exchangeRate": "65",
-             "userExchangeRate": "5"
+             "exchangeRate": "65.00000"
             },
+            "taxEntries": [
+             {
+              "key": "15",
+              "id": "15",
+              "txnTaxAmount": "9.00",
+              "baseTaxAmount": "9.00",
+              "taxRate": 9,
+              "purchasingTaxDetail": {
+               "key": "1",
+               "id": "Alaska Tax Detail",
+               "href": "/objects/tax/purchasing-tax-detail/1"
+              },
+              "href": "/objects/expenses/employee-expense-tax-entry/15"
+             }
+            ],
             "creditCardTxnLine": {
              "id": "128",
              "key": "128",
@@ -1170,7 +1241,7 @@
             "creditCardTxn": {
              "id": "124",
              "key": "124",
-             "href": "/objects/cash-management/credit-card-txn/128"
+             "href": "/objects/cash-management/credit-card-txn/124"
             },
             "href": "/objects/expenses/employee-expense-line/312"
            },
@@ -1272,6 +1343,156 @@
     "responses": {
      "204": {
       "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/expenses/employee-expense-tax-entry": {
+   "get": {
+    "summary": "List employee expense tax entries",
+    "description": "Returns a collection with a key, ID, and link for each employee expense tax entry. This\noperation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain\ncriteria and to specify properties that are returned.",
+    "tags": [
+     "Expenses_Employee expense tax entries"
+    ],
+    "operationId": "list-expenses-employee-expense-tax-entry",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List of employee expense tax entry objects",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List employee expense tax entries": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "8",
+             "id": "8",
+             "href": "/objects/expenses/employee-expense-tax-entry/8"
+            },
+            {
+             "key": "9",
+             "id": "9",
+             "href": "/objects/expenses/employee-expense-tax-entry/9"
+            },
+            {
+             "key": "10",
+             "id": "10",
+             "href": "/objects/expenses/employee-expense-tax-entry/10"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/expenses/employee-expense-tax-entry/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned key for the employee expense tax entry.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "15"
+    }
+   ],
+   "get": {
+    "summary": "Get an employee expense tax entry",
+    "description": "Returns detailed information for a specified employee expense tax entry.",
+    "tags": [
+     "Expenses_Employee expense tax entries"
+    ],
+    "operationId": "get-expenses-employee-expense-tax-entry-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Details of the employee expense tax entry",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.expenses.employee-expense-tax-entry"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get an employee expense tax entry": {
+          "value": {
+           "ia::result": {
+            "key": "15",
+            "id": "15",
+            "baseTaxAmount": "9.00",
+            "txnTaxAmount": "9.00",
+            "taxRate": 9,
+            "purchasingTaxDetail": {
+             "key": "1",
+             "id": "Alaska Tax Detail",
+             "href": "/objects/tax/purchasing-tax-detail/1"
+            },
+            "employeeExpenseLine": {
+             "key": "312",
+             "id": "312",
+             "href": "/objects/expenses/employee-expense-line/312"
+            },
+            "href": "/objects/expenses/employee-expense-tax-entry/15"
+           },
+           "ia::meta": {
+            "totalCount": 1
+           }
+          }
+         }
+        }
+       }
+      }
      },
      "400": {
       "$ref": "#/components/responses/400error"
@@ -1711,6 +1932,7 @@
           "id": "Travel",
           "status": "active",
           "description": "Travel fare",
+          "purpose": "expense",
           "unitCurrency": "USD",
           "glAccount": {
            "id": "Travel expenses"
@@ -1838,6 +2060,7 @@
             },
             "id": "Travel",
             "description": "Travel fare",
+            "purpose": "expense",
             "glAccount": {
              "key": "5500",
              "id": "Travel expenses",
@@ -2871,7 +3094,7 @@
    },
    "patch": {
     "summary": "Update an employee expense adjustment",
-    "description": "Updates an existing employee expense adjustment by setting field values. Any fields not provided remain unchanged.",
+    "description": "Updates an existing employee expense adjustment by setting field values. Any fields not provided remain unchanged.\nAllowed values for the `state` field are `draft` and `submitted`. Use the `remit` workflow action to move an `approved` expense adjustment to `remitted`, and the `reverse-remit` workflow action to move a `remitted` expense adjustment back to `approved`.",
     "tags": [
      "Expenses_Employee expense adjustments"
     ],
@@ -5203,24 +5426,24 @@
    },
    "objects.expenses.employee-expense": {
     "type": "object",
-    "description": "Expense report for an employee. This is the header object for employee expense lines.",
+    "description": "Expense report for an employee, serving as the header object for employee expense lines.",
     "properties": {
      "key": {
       "type": "string",
-      "description": "System-assigned key for the employee expense.",
+      "description": "System-assigned unique key for the employee expense.",
       "readOnly": true,
       "example": "124"
      },
      "id": {
       "type": "string",
-      "description": "Unique identifier for the employee expense. This value is the same as the key for this object.",
+      "description": "Unique ID for the employee expense. This value is the same as the `key` for this object.",
       "readOnly": true,
       "example": "124"
      },
      "createdDate": {
       "type": "string",
       "format": "date",
-      "example": "2024-11-11",
+      "example": "2026-10-01",
       "description": "Date the employee expense was created.",
       "nullable": false
      },
@@ -5235,7 +5458,7 @@
        },
        "id": {
         "type": "string",
-        "description": "Unique identifier for the employee.",
+        "description": "ID for the employee.",
         "example": "EMP-025"
        },
        "href": {
@@ -5248,7 +5471,7 @@
      },
      "employeeContact": {
       "type": "object",
-      "description": "The contact for the employee.",
+      "description": "Contact for the employee.",
       "properties": {
        "key": {
         "type": "string",
@@ -5258,7 +5481,7 @@
        },
        "id": {
         "type": "string",
-        "description": "Unique identifier for the employee contact.",
+        "description": "Name of the employee contact.",
         "readOnly": true,
         "example": "Thomas, Glenn"
        },
@@ -5283,9 +5506,36 @@
       },
       "readOnly": true
      },
+     "apBill": {
+      "type": "object",
+      "description": "AP bill associated with the employee expense. This field is populated only when the\ncompany is configured to use the AP payment option for employee expense reimbursement.\nThis field is null when the company uses other payment options such as Classic or Remit\nto payroll.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the AP bill.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "986"
+       },
+       "id": {
+        "type": "string",
+        "description": "ID for the AP bill.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "986"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the AP bill.",
+        "readOnly": true,
+        "example": "/objects/accounts-payable/bill/986"
+       }
+      }
+     },
      "state": {
       "type": "string",
-      "description": "Status of the employee expense in its life cycle. Expenses are posted to the general ledger when approved.",
+      "description": "Status of the employee expense in its life cycle. Expenses are posted to the general\nledger when approved.",
       "enum": [
        "draft",
        "submitted",
@@ -5301,7 +5551,8 @@
        "confirmed",
        "voided",
        "partiallyPaid",
-       "selected"
+       "selected",
+       "remitted"
       ],
       "default": "submitted",
       "example": "draft"
@@ -5312,13 +5563,13 @@
       "properties": {
        "baseCurrency": {
         "type": "string",
-        "description": "Base currency used for the expense report and determined by company currency used for reporting.",
+        "description": "Base currency for the expense report, determined by the company's reporting currency. For VAT transactions, this currency must match the currency specified in the `reimbursement.reimbursementCurrency` field, or the tax amounts may be incorrect.",
         "example": "USD"
        },
        "paidDate": {
         "type": "string",
         "format": "date",
-        "example": "2024-11-12",
+        "example": "2026-10-01",
         "description": "Date the employee expense was fully paid.",
         "readOnly": true
        },
@@ -5358,7 +5609,7 @@
       "properties": {
        "reimbursementCurrency": {
         "type": "string",
-        "description": "The currency used to pay for the expense. For multi-currency companies.",
+        "description": "For multi-currency companies, the currency used to pay the expense. For VAT transactions, this currency must match the currency specified in the `basePayment.baseCurrency` field, or the tax amounts may be incorrect.",
         "example": "EUR"
        },
        "totalEntered": {
@@ -5407,7 +5658,7 @@
        },
        "id": {
         "type": "string",
-        "description": "Unique identifier for the expense summary.",
+        "description": "ID for the expense summary.",
         "example": "334"
        },
        "title": {
@@ -5419,7 +5670,7 @@
        "postingDate": {
         "type": "string",
         "format": "date",
-        "example": "2024-01-23",
+        "example": "2026-01-23",
         "description": "GL posting date."
        },
        "state": {
@@ -5436,7 +5687,7 @@
        "preventGLPosting": {
         "type": "boolean",
         "default": false,
-        "description": "Not for GL posting.",
+        "description": "Indicates whether the expense summary is excluded from GL posting.",
         "readOnly": true,
         "example": false
        },
@@ -5450,7 +5701,7 @@
      },
      "nonReimbursable": {
       "type": "object",
-      "description": "Non-reimbursable portion of the expense. An expense report line is considered non-reimbursable when `employee-expense-line.isBillable` is `false` and `employee-expense-line.paymentType.isNonReimbursable` is `true`.",
+      "description": "Non-reimbursable portion of the expense. An expense report line is considered non-reimbursable\nwhen `employee-expense-line.isBillable` is `false` and\n`employee-expense-line.paymentType.isNonReimbursable` is `true`.",
       "readOnly": true,
       "properties": {
        "baseTotalEntered": {
@@ -5471,7 +5722,7 @@
      },
      "memo": {
       "type": "string",
-      "description": "Memo.",
+      "description": "Memo for the employee expense.",
       "example": "Paid to employee"
      },
      "description": {
@@ -5481,12 +5732,12 @@
      },
      "reclassificationNotes": {
       "type": "string",
-      "description": "If an expense is reclassified, reason for the reclassification.",
+      "description": "For a reclassified expense, reason for the reclassification.",
       "example": "Classified as supplies, not travel expense"
      },
      "attachment": {
       "type": "object",
-      "description": "An attachment for employee expenses.(Company subscription with permissions to Add and Edit Attachments.)",
+      "description": "An attachment for the employee expense. Requires a company subscription with permissions\nto add and edit attachments.",
       "properties": {
        "key": {
         "type": "string",
@@ -5495,7 +5746,7 @@
        },
        "id": {
         "type": "string",
-        "description": "Unique identifier for the attachment.",
+        "description": "ID for the attachment.",
         "example": "1"
        },
        "href": {
@@ -5517,18 +5768,49 @@
         "properties": {
          "createdDateTime": {
           "type": "string",
-          "description": "Time of the submission.",
+          "description": "Date and time the employee expense was submitted.",
           "format": "date-time",
-          "example": "2014-01-08T11:28:12Z",
+          "example": "2026-01-08T11:28:12Z",
           "readOnly": true
          }
         }
        }
       ]
      },
+     "isTaxInclusive": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates whether expense amounts include taxes. This field is read-only in the REST API;\ncreating inclusive-tax expense transactions through the REST API is not supported.\nExpenses created through the UI may return `true`, while REST-created expenses return\n`false`.",
+      "readOnly": true,
+      "example": false
+     },
+     "taxSolution": {
+      "type": "object",
+      "description": "Tax solution used for this expense report. For VAT transactions,\n`basePayment.baseCurrency` and `reimbursement.reimbursementCurrency` must be the same\ncurrency, or the tax amounts may be incorrect.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the tax solution.",
+        "example": "4",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Name of the tax solution.",
+        "example": "Australia GST",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the tax solution.",
+        "readOnly": true,
+        "example": "/objects/tax/tax-solution/4"
+       }
+      }
+     },
      "lines": {
       "type": "array",
-      "description": "Line items of the employee expense.",
+      "description": "Lines for the employee expense.",
       "items": {
        "$ref": "#/components/schemas/objects.expenses.employee-expense-line"
       }
@@ -5676,7 +5958,7 @@
      },
      "id": {
       "type": "string",
-      "description": "Unique identifier for the employee expense line. This value is the same as key for this object.",
+      "description": "Unique ID for the employee expense line. This value is the same as the `key` for this object.",
       "readOnly": true,
       "example": "312"
      },
@@ -5690,12 +5972,12 @@
       "type": "string",
       "format": "date",
       "description": "Date that the expense was incurred.",
-      "example": "2021-01-23",
+      "example": "2026-01-23",
       "nullable": true
      },
      "baseCurrency": {
       "type": "string",
-      "description": "Base currency used for the expense report and determined by company currency used for reporting.",
+      "description": "Base currency for the expense report, determined by the company's reporting currency.",
       "readOnly": true,
       "example": "USD"
      },
@@ -5708,7 +5990,7 @@
      },
      "reimbursementCurrency": {
       "type": "string",
-      "description": "The currency used to pay for the expense. For multi-currency companies.",
+      "description": "For multi-currency companies, the currency used to pay the expense.",
       "readOnly": true,
       "example": "CAD"
      },
@@ -5721,13 +6003,13 @@
      },
      "txnCurrency": {
       "type": "string",
-      "description": "Transaction currency. For multi-currency companies.",
+      "description": "For multi-currency companies, the currency used for the transaction.",
       "example": "INR",
       "nullable": true
      },
      "txnAmount": {
       "type": "string",
-      "description": "Transaction amount. For multi-currency companies.",
+      "description": "For multi-currency companies, the transaction amount.",
       "format": "decimal-precision-2",
       "example": "123.45"
      },
@@ -5761,19 +6043,19 @@
      },
      "paidTo": {
       "type": "string",
-      "description": "Notes regarding to whom the amount was paid.",
+      "description": "Notes about who the amount was paid to.",
       "example": "Hotel Westin",
       "nullable": true
      },
      "paidFor": {
       "type": "string",
-      "description": "Notes regarding what the expense was for.",
+      "description": "Notes about what the expense was for.",
       "example": "2024 Hawaii Conference",
       "nullable": true
      },
      "glAccount": {
       "type": "object",
-      "description": "General ledger account associated with the line item. Used when no expense type is assigned.",
+      "description": "General ledger account associated with the line item. Used when no expense type is\nassigned.",
       "properties": {
        "key": {
         "type": "string",
@@ -5782,7 +6064,7 @@
        },
        "id": {
         "type": "string",
-        "description": "Unique identifier for the GL account.",
+        "description": "ID for the GL account.",
         "example": "6775.30"
        },
        "name": {
@@ -5810,14 +6092,14 @@
        },
        "id": {
         "type": "string",
-        "description": "Unique identifier for the expense type.",
+        "description": "Name of the expense type.",
         "example": "Meals"
        },
        "href": {
         "type": "string",
         "description": "URL endpoint for the expense type.",
         "readOnly": true,
-        "example": "/objects/expense-type/6000"
+        "example": "/objects/expenses/employee-expense-type/6000"
        }
       }
      },
@@ -5829,14 +6111,14 @@
      },
      "reimburseToBaseConversion": {
       "type": "object",
-      "description": "Details of reimbursement currency to base currency conversion. For multi-currency companies.",
+      "description": "For multi-currency companies, details of the reimbursement currency to base currency conversion.",
       "readOnly": true,
       "properties": {
        "exchangeRateDate": {
         "type": "string",
         "format": "date",
         "description": "Date the exchange rate conversion was applied.",
-        "example": "2021-01-23",
+        "example": "2026-01-23",
         "readOnly": true
        },
        "exchangeRateTypeId": {
@@ -5856,25 +6138,25 @@
      },
      "transactionToReimburseConversion": {
       "type": "object",
-      "description": "Details of the conversion to base currency. For multi-currency companies.",
+      "description": "For multi-currency companies, details of the conversion to base currency.",
       "properties": {
        "exchangeRate": {
         "type": "string",
         "description": "Exchange rate for the transaction.",
         "format": "decimal-precision-5",
-        "example": "65.095",
+        "example": "65.09500",
         "nullable": true
        },
        "exchangeRateDate": {
         "type": "string",
         "format": "date",
-        "example": "2021-01-23",
+        "example": "2026-01-23",
         "description": "Date for the exchange rate.",
         "nullable": true
        },
        "exchangeRateTypeId": {
         "type": "string",
-        "description": "Exchange rate type. This field is deprecated,  please use `exchangeRateType` instead.",
+        "description": "Deprecated. Use `exchangeRateType` instead.",
         "nullable": true,
         "deprecated": true
        },
@@ -5883,7 +6165,7 @@
         "properties": {
          "id": {
           "type": "string",
-          "description": "Unique identifier for the exchange rate type.",
+          "description": "ID for the exchange rate type.",
           "example": "124"
          },
          "key": {
@@ -5930,13 +6212,13 @@
      "isBillable": {
       "type": "boolean",
       "default": false,
-      "description": "Indicates whether a line item is billable.",
+      "description": "Indicates whether the employee expense line is billable.",
       "example": false
      },
      "isBilled": {
       "type": "boolean",
       "default": false,
-      "description": "Indicates whether a line item is billed.",
+      "description": "Indicates whether the employee expense line is billed.",
       "readOnly": true,
       "example": false
      },
@@ -5947,7 +6229,7 @@
        "isForm1099": {
         "type": "string",
         "description": "If set to true, the line item amount is added to the form 1099.",
-        "example": true,
+        "example": "true",
         "nullable": true
        },
        "type": {
@@ -5966,7 +6248,7 @@
      },
      "paymentType": {
       "type": "object",
-      "description": "The payment type defined in `employee-expense-payment-type`.",
+      "description": "Payment type for the employee expense line, as defined in `employee-expense-payment-type`.",
       "properties": {
        "key": {
         "type": "string",
@@ -5976,14 +6258,14 @@
        },
        "id": {
         "type": "string",
-        "description": "Unique identifier for the payment type.",
+        "description": "Name of the payment type.",
         "example": "Non-reimburse",
         "nullable": true
        },
        "isNonReimbursable": {
         "type": "boolean",
         "default": false,
-        "description": "Non-reimbursable expense as defined in `employee-expense-payment-type.isNonReimbursable`.",
+        "description": "Indicates whether the expense is non-reimbursable, as defined in `employee-expense-payment-type.isNonReimbursable`.",
         "readOnly": true,
         "example": false
        },
@@ -5997,12 +6279,12 @@
      },
      "creditCardTxn": {
       "type": "object",
-      "description": "Credit card transaction associated with the employee expense. Available if \"Enable electronic receipt inbounding\" is enabled for the company.",
+      "description": "Credit card transaction associated with the employee expense. Available when \"Enable\nelectronic receipt inbounding\" is enabled for the company.",
       "readOnly": true,
       "properties": {
        "id": {
         "type": "string",
-        "description": "Unique identifier for the credit card transaction.",
+        "description": "ID for the credit card transaction.",
         "example": "124",
         "readOnly": true
        },
@@ -6022,11 +6304,11 @@
      },
      "creditCardTxnLine": {
       "type": "object",
-      "description": "Credit card transaction associated with the employee expense line. When linked to an electronic receipt, if the electronic receipt amount differs from the credit card transaction amount, the credit card transaction amount takes precedence.",
+      "description": "Credit card transaction associated with the employee expense line. When linked to an\nelectronic receipt, if the electronic receipt amount differs from the credit card\ntransaction amount, the credit card transaction amount takes precedence.",
       "properties": {
        "id": {
         "type": "string",
-        "description": "Unique identifier for the credit card transaction line.",
+        "description": "ID for the credit card transaction line.",
         "example": "128"
        },
        "key": {
@@ -6044,11 +6326,11 @@
      },
      "electronicReceipt": {
       "type": "object",
-      "description": "Electronic receipt associated with the employee expense. Available if \"Enable electronic receipt inbounding\" is enabled for the company.",
+      "description": "Electronic receipt associated with the employee expense. Available when \"Enable\nelectronic receipt inbounding\" is enabled for the company.",
       "properties": {
        "id": {
         "type": "string",
-        "description": "Unique identifier for the electronic receipt.",
+        "description": "ID for the electronic receipt.",
         "example": "124"
        },
        "key": {
@@ -6066,11 +6348,11 @@
      },
      "electronicReceiptLine": {
       "type": "object",
-      "description": "Electronic receipt line associated with the employee expense. When linked to a credit card transaction, if the electronic receipt amount differs from the credit card transaction amount, the credit card transaction amount takes precedence.",
+      "description": "Electronic receipt line associated with the employee expense. When linked to a credit\ncard transaction, if the electronic receipt amount differs from the credit card\ntransaction amount, the credit card transaction amount takes precedence.",
       "properties": {
        "id": {
         "type": "string",
-        "description": "Unique identifier for the electronic receipt line.",
+        "description": "ID for the electronic receipt line.",
         "example": "128"
        },
        "key": {
@@ -6080,10 +6362,17 @@
        },
        "href": {
         "type": "string",
-        "description": "URL endpoint for the electronic receipt.",
+        "description": "URL endpoint for the electronic receipt line.",
         "readOnly": true,
         "example": "/objects/expenses/electronic-receipt-line/128"
        }
+      }
+     },
+     "taxEntries": {
+      "type": "array",
+      "description": "Tax entries for the employee expense line.",
+      "items": {
+       "$ref": "#/components/schemas/objects.expenses.employee-expense-tax-entry"
       }
      },
      "audit": {
@@ -6109,14 +6398,14 @@
            },
            "id": {
             "type": "string",
-            "description": "Unique identifier for the location.",
+            "description": "ID for the location.",
             "example": "1",
             "nullable": true
            },
            "name": {
             "readOnly": true,
             "type": "string",
-            "description": "Location name",
+            "description": "Name of the location.",
             "example": "USA",
             "nullable": true
            },
@@ -6139,13 +6428,13 @@
            },
            "id": {
             "type": "string",
-            "description": "Unique identifier for the department.",
+            "description": "ID for the department.",
             "example": "12",
             "nullable": true
            },
            "name": {
             "type": "string",
-            "description": "Department name",
+            "description": "Name of the department.",
             "readOnly": true,
             "example": "IT",
             "nullable": true
@@ -6164,10 +6453,11 @@
      },
      "employeeExpense": {
       "type": "object",
+      "description": "Header level details for the employee expense.",
       "properties": {
        "id": {
         "type": "string",
-        "description": "Unique identifier for the employee expense.",
+        "description": "ID for the employee expense.",
         "example": "124"
        },
        "key": {
@@ -6189,6 +6479,100 @@
     "type": "object",
     "required": [
      "txnAmount"
+    ]
+   },
+   "objects.expenses.employee-expense-tax-entry": {
+    "type": "object",
+    "allOf": [
+     {
+      "title": "Tax entries",
+      "description": "Tax entries for line items.",
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the tax entry.",
+        "example": "7149",
+        "readOnly": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the tax entry.",
+        "example": "7149",
+        "readOnly": true
+       },
+       "baseTaxAmount": {
+        "type": "string",
+        "description": "Base tax amount.",
+        "format": "decimal-precision-2",
+        "example": "100.00"
+       },
+       "txnTaxAmount": {
+        "type": "string",
+        "description": "Transaction tax amount. For a PATCH request, set to `null` if you want Sage Intacct to recalculate the amount, or set to the value you want if you don't want the system to recalculate.",
+        "format": "decimal-precision-2",
+        "example": "100.00"
+       },
+       "taxRate": {
+        "type": "number",
+        "description": "Tax rate.",
+        "example": 1.0299
+       }
+      }
+     },
+     {
+      "type": "object",
+      "properties": {
+       "purchasingTaxDetail": {
+        "type": "object",
+        "description": "Purchasing tax detail associated with the employee expense tax entry.",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "Unique key for the tax detail.",
+          "example": "1"
+         },
+         "id": {
+          "type": "string",
+          "description": "ID for the tax detail.",
+          "example": "Alaska Tax Detail"
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the tax detail.",
+          "readOnly": true,
+          "example": "/objects/tax/purchasing-tax-detail/1"
+         }
+        }
+       },
+       "employeeExpenseLine": {
+        "title": "employeeExpenseLine",
+        "type": "object",
+        "description": "Employee expense line associated with the employee expense tax entry.",
+        "readOnly": true,
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "Unique key for the employee expense line.",
+          "example": "312",
+          "readOnly": true
+         },
+         "id": {
+          "type": "string",
+          "description": "ID for the employee expense line.",
+          "example": "312",
+          "readOnly": true
+         },
+         "href": {
+          "type": "string",
+          "description": "URL endpoint for the employee expense line.",
+          "readOnly": true,
+          "example": "/objects/expenses/employee-expense-line/312"
+         }
+        }
+       }
+      }
+     }
     ]
    },
    "objects.expenses.employee-expense-summary": {
@@ -6335,6 +6719,18 @@
       "type": "string",
       "description": "Description of the employee expense type.",
       "example": "Non-reimbursable expense for travel"
+     },
+     "purpose": {
+      "type": "string",
+      "description": "Indicates whether the expense type is designated for regular expenses or employee advance requests. Only relevant when paying expenses through AP bills.\n",
+      "nullable": true,
+      "default": "expense",
+      "example": "expense",
+      "enum": [
+       "advance",
+       "expense",
+       null
+      ]
      },
      "href": {
       "type": "string",
@@ -6688,6 +7084,33 @@
        }
       }
      },
+     "apBill": {
+      "type": "object",
+      "description": "AP bill associated with the employee expense adjustment.  This field is populated only when the company is configured to use the AP payment option for employee expense reimbursement. This field is null when the company uses other payment options such as Classic or Remit to payroll.",
+      "readOnly": true,
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the AP bill.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "986"
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the AP bill.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "986"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the AP bill.",
+        "readOnly": true,
+        "example": "/objects/accounts-payable/bill/986"
+       }
+      }
+     },
      "state": {
       "type": "string",
       "description": "Status of the employee expense adjustment. Expense adjustments are posted to the general ledger when approved.",
@@ -6703,6 +7126,7 @@
        "selected",
        "paid",
        "partiallyPaid",
+       "remitted",
        null
       ],
       "default": "submitted",
@@ -9578,6 +10002,37 @@
         "description": "URL endpoint for the work order.",
         "readOnly": true,
         "example": "/objects/construction/work-order/18"
+       }
+      }
+     },
+     "propertyLease": {
+      "description": "Property lease associated with the dimension.",
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the property lease.",
+        "example": "1",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the property lease.",
+        "example": "PL-01",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the property lease.",
+        "readOnly": true,
+        "example": "Lease for 123 Main St.",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the property lease.",
+        "readOnly": true,
+        "example": "/objects/construction/property-lease/1"
        }
       }
      }

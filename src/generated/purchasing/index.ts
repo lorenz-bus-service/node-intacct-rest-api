@@ -44,7 +44,6 @@ export type PriceScheduleUpdate = RequestBody<operations["update-purchasing-pric
 export type RecurringDocument = components["schemas"]["objects.purchasing.recurring-document"];
 /** purchasing/recurring-document-line */
 export type RecurringDocumentLine = components["schemas"]["objects.purchasing.recurring-document-line"];
-export type RecurringDocumentLineCreate = RequestBody<operations["create-purchasing-recurring-document-line"]>;
 /** purchasing/recurring-document-subtotal */
 export type RecurringDocumentSubtotal = components["schemas"]["objects.purchasing.recurring-document-subtotal"];
 /** purchasing/recurring-document::{documentName} */
@@ -121,7 +120,7 @@ export const purchasing = defineApplication({
   priceListEntry: object(shape<{ record: PriceListEntry; create: PriceListEntryCreate; update: PriceListEntryUpdate }>(), "purchasing/price-list-entry", ["create","delete","get","update"]),
   priceSchedule: object(shape<{ record: PriceSchedule; create: PriceScheduleCreate; update: PriceScheduleUpdate }>(), "purchasing/price-schedule", ["create","delete","get","update"]),
   recurringDocument: object(shape<{ record: RecurringDocument }>(), "purchasing/recurring-document", ["get"]),
-  recurringDocumentLine: object(shape<{ record: RecurringDocumentLine; create: RecurringDocumentLineCreate }>(), "purchasing/recurring-document-line", ["create","delete","get"]),
+  recurringDocumentLine: object(shape<{ record: RecurringDocumentLine }>(), "purchasing/recurring-document-line", ["delete","get"]),
   recurringDocumentSubtotal: object(shape<{ record: RecurringDocumentSubtotal }>(), "purchasing/recurring-document-subtotal", ["get"]),
   recurringDocumentByDocumentName: parameterizedObject(shape<{ record: RecurringDocumentByDocumentName; create: RecurringDocumentByDocumentNameCreate; update: RecurringDocumentByDocumentNameUpdate }>(), "purchasing/recurring-document::{documentName}", ["create","delete","get","update"]),
   secondaryVendor: object(shape<{ record: SecondaryVendor; create: SecondaryVendorCreate; update: SecondaryVendorUpdate }>(), "purchasing/secondary-vendor", ["create","delete","get","update"]),

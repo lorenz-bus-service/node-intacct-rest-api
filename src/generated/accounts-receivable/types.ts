@@ -9,13 +9,13 @@ export interface paths {
         };
         /**
          * List account labels
-         * @description Returns up to 100 object references from the collection with a key, ID, and link for each label. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each account label. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-receivable-account-label"];
         put?: never;
         /**
          * Create an account label
-         * @description Creates a new AR account label.
+         * @description Creates a new account label.
          */
         post: operations["create-accounts-receivable-account-label"];
         delete?: never;
@@ -39,21 +39,21 @@ export interface paths {
         };
         /**
          * Get an account label
-         * @description Returns detailed information for a specified AR account label.
+         * @description Returns detailed information for a specified account label.
          */
         get: operations["get-accounts-receivable-account-label-key"];
         put?: never;
         post?: never;
         /**
          * Delete an account label
-         * @description Deletes an AR account label.
+         * @description Deletes an account label.
          */
         delete: operations["delete-accounts-receivable-account-label-key"];
         options?: never;
         head?: never;
         /**
          * Update an account label
-         * @description Updates an existing AR account label by setting field values. Any fields not provided remain unchanged.
+         * @description Updates an existing account label by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-accounts-receivable-account-label-key"];
         trace?: never;
@@ -89,7 +89,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the adjustment.
-                 * @example 99
+                 * @example 15
                  */
                 key: string;
             };
@@ -127,7 +127,7 @@ export interface paths {
         put?: never;
         /**
          * Submit an adjustment
-         * @description You can submit a draft adjustment to post it. Draft adjustments are adjustments that have been created, but were not yet ready to post. For more information, see [Save an adjustment as draft](https://www.intacct.com/ia/docs/en_US/help_action/Accounts_Receivable/Adjustments/How_Do_I/create-an-adjustment-htm?tocpath=Applications%7CAccounts%20Receivable%7CCredits%20and%20refunds%20%7C_____2#Saveanadjustmentasadraft).
+         * @description You can submit a draft adjustment to post it. Draft adjustments are adjustments that have been created, but were not yet ready to post. For more information, see [Save an adjustment as draft](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=HDI_AR_credit_create_customer).
          *
          *     When you submit a `draft` adjustment, the state changes to `posted`, indicating that the adjustment has been posted to the General Ledger.
          */
@@ -213,7 +213,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned key for the adjustment line.
-                 * @example 99
+                 * @example 125
                  */
                 key: string;
             };
@@ -227,7 +227,7 @@ export interface paths {
         put?: never;
         post?: never;
         /**
-         * Delete an adjustment line.
+         * Delete an adjustment line
          * @description Deletes an adjustment line.
          */
         delete: operations["delete-accounts-receivable-adjustment-line"];
@@ -437,7 +437,7 @@ export interface paths {
         head?: never;
         /**
          * Update an advance line
-         * @description Updates an advance line.
+         * @description Updates an existing advance line by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-accounts-receivable-advance-line"];
         trace?: never;
@@ -514,8 +514,8 @@ export interface paths {
         get: operations["list-accounts-receivable-billback-template-line"];
         put?: never;
         /**
-         * Create a billback template line
-         * @description Creates a new billback template line.
+         * Create a bill back template line
+         * @description Creates a new bill back template line.
          */
         post: operations["create-accounts-receivable-billback-template-line"];
         delete?: never;
@@ -545,15 +545,15 @@ export interface paths {
         put?: never;
         post?: never;
         /**
-         * Delete a billback template line
-         * @description Deletes a billback template line.
+         * Delete a bill back template line
+         * @description Deletes a bill back template line.
          */
         delete: operations["delete-accounts-receivable-billback-template-line"];
         options?: never;
         head?: never;
         /**
-         * Update a billback template line
-         * @description Updates an existing billback template line by setting field values. Any fields not provided remain unchanged.
+         * Update a bill back template line
+         * @description Updates an existing bill back template line by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-accounts-receivable-billback-template-line"];
         trace?: never;
@@ -729,7 +729,7 @@ export interface paths {
         };
         /**
          * List customer item cross references
-         * @description Returns a collection with a key, ID, and link for each customer item cross reference.
+         * @description Returns a collection with a key, ID, and link for each customer item cross reference. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-receivable-customer-item-cross-reference"];
         put?: never;
@@ -751,7 +751,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the customer item cross reference.
-                 * @example 99
+                 * @example 905
                  */
                 key: string;
             };
@@ -879,7 +879,7 @@ export interface paths {
         };
         /**
          * List customer messages
-         * @description Returns a collection with a key, ID, and link for each customer message.
+         * @description Returns a collection with a key, ID, and link for each customer message. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-receivable-customer-message"];
         put?: never;
@@ -954,7 +954,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the customer type.
+                 * @description System-assigned unique key for the customer type.
                  * @example 4
                  */
                 key: string;
@@ -1247,7 +1247,7 @@ export interface paths {
         put?: never;
         /**
          * Submit an invoice
-         * @description You can submit a draft invoice to post it. Draft invoices are invoices that have been created, but were not yet ready to post. For more information, see [Save an invoice as draft](https://www.intacct.com/ia/docs/en_US/help_action/Accounts_Receivable/Invoices/Tasks/create-invoice-htm#Saveaninvoiceasadraft) in the Sage Intacct Help Center.
+         * @description You can submit a draft invoice to post it. Draft invoices are invoices that have been created, but were not yet ready to post. For more information, see [Save an invoice as draft](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Create_ar_invoice) in the Sage Intacct Help Center.
          *
          *     When you submit a `draft` invoice, the invoice state changes to `posted`, indicating that the invoice has been posted to the General Ledger.
          */
@@ -1367,7 +1367,7 @@ export interface paths {
         put?: never;
         post?: never;
         /**
-         * Delete an invoice line.
+         * Delete an invoice line
          * @description Deletes an invoice line.
          */
         delete: operations["delete-accounts-receivable-invoice-line"];
@@ -1579,7 +1579,7 @@ export interface paths {
         };
         /**
          * List payment details
-         * @description Returns a collection with a key, ID, and link for each payment detail object. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each payment detail. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-receivable-payment-detail"];
         put?: never;
@@ -1596,7 +1596,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the payment details.
+                 * @description System-assigned unique key for the payment detail.
                  * @example 119
                  */
                 key: string;
@@ -1604,8 +1604,8 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get payment details
-         * @description Returns detailed information for a specified payment detail object.
+         * Get a payment detail
+         * @description Returns detailed information for a specified payment detail.
          */
         get: operations["get-accounts-receivable-payment-detail-key"];
         put?: never;
@@ -1750,8 +1750,8 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice.
-                 * @example 99
+                 * @description System-assigned unique key for the recurring invoice.
+                 * @example 24
                  */
                 key: string;
             };
@@ -1808,8 +1808,8 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice line.
-                 * @example 99
+                 * @description System-assigned unique key for the recurring invoice line.
+                 * @example 51
                  */
                 key: string;
             };
@@ -1817,13 +1817,13 @@ export interface paths {
         };
         /**
          * Get a recurring invoice line
-         * @description Returns detailed information for a specified line item in a recurring invoice.
+         * @description Returns detailed information for a specified recurring invoice line.
          */
         get: operations["get-accounts-receivable-recurring-invoice-line-key"];
         put?: never;
         post?: never;
         /**
-         * Delete a recurring invoice line.
+         * Delete a recurring invoice line
          * @description Deletes a recurring invoice line.
          */
         delete: operations["delete-accounts-receivable-recurring-invoice-line"];
@@ -1831,7 +1831,7 @@ export interface paths {
         head?: never;
         /**
          * Update a recurring invoice line
-         * @description Updates a existing recurring invoice line by setting field values. Any fields not provided remain unchanged.
+         * @description Updates an existing recurring invoice line by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-accounts-receivable-recurring-invoice-line"];
         trace?: never;
@@ -1862,7 +1862,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice tax entry.
+                 * @description System-assigned unique key for the recurring invoice tax entry.
                  * @example 36
                  */
                 key: string;
@@ -1937,7 +1937,7 @@ export interface paths {
          * Update a revenue recognition template
          * @description Updates an existing revenue recognition template by setting field values. Any fields not provided remain unchanged.
          *
-         *     Changes made to a revenue recognition template will apply to schedules created after the change was made. Template changes will not apply to a schedule that's in progress.
+         *     Changes made to a revenue recognition template apply to schedules created after the change is made. Template changes do not apply to a schedule that's already in progress.
          */
         patch: operations["update-accounts-receivable-revenue-recognition-template-key"];
         trace?: never;
@@ -2009,13 +2009,13 @@ export interface paths {
         };
         /**
          * List terms
-         * @description Returns a collection with a key, ID, and link for each AR term. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each term. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-receivable-term"];
         put?: never;
         /**
          * Create a term
-         * @description Creates a new AR term.
+         * @description Creates a new term.
          */
         post: operations["create-accounts-receivable-term"];
         delete?: never;
@@ -2031,7 +2031,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the term.
-                 * @example 99
+                 * @example 18
                  */
                 key: string;
             };
@@ -2046,14 +2046,15 @@ export interface paths {
         post?: never;
         /**
          * Delete a term
-         * @description Deletes a term. Delete terms that are no longer in use to avoid cluttering the list of active terms.
+         * @description Deletes a term. Delete terms that are no longer in use to avoid cluttering the list of
+         *     active terms.
          */
         delete: operations["delete-accounts-receivable-term-key"];
         options?: never;
         head?: never;
         /**
          * Update a term
-         * @description Updates an existing AR term by setting field values. Any fields not provided remain unchanged.
+         * @description Updates an existing term by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-accounts-receivable-term-key"];
         trace?: never;
@@ -2067,7 +2068,7 @@ export interface paths {
         };
         /**
          * List territories
-         * @description Returns up to 100 object references from the collection with a key, ID, and link for each territory. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each territory. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-receivable-territory"];
         put?: never;
@@ -2104,7 +2105,8 @@ export interface paths {
         post?: never;
         /**
          * Delete a territory
-         * @description Deletes a territory. A territory can be deleted if it hasn't been associated with a customer, transaction, or other record.
+         * @description Deletes a territory. A territory can be deleted if it hasn't been associated with a
+         *     customer, transaction, or other record.
          */
         delete: operations["delete-accounts-receivable-territory-key"];
         options?: never;
@@ -2147,7 +2149,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the territory group.
-                 * @example 99
+                 * @example 8
                  */
                 key: string;
             };
@@ -2162,7 +2164,9 @@ export interface paths {
         post?: never;
         /**
          * Delete a territory group
-         * @description Deletes a territory group. Territory groups used in transactions cannot be deleted. For more information, see [Territory groups](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Territory_Group_Information) in the Sage Intacct Help Center.
+         * @description Deletes a territory group. Territory groups used in transactions cannot be deleted.
+         *
+         *     For more information, see [Territory groups](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Territory_Group_Information) in the Sage Intacct Help Center.
          */
         delete: operations["delete-accounts-receivable-territory-group-key"];
         options?: never;
@@ -2189,7 +2193,7 @@ export interface paths {
         put?: never;
         /**
          * Create a shipping method
-         * @description Creates a new shipping method object.
+         * @description Creates a new shipping method.
          */
         post: operations["create-accounts-receivable-shipping-method"];
         delete?: never;
@@ -2583,7 +2587,7 @@ export interface paths {
         };
         /**
          * List customer refunds
-         * @description Returns a collection with a key, ID, and link for each customer refund.
+         * @description Returns a collection with a key, ID, and link for each customer refund. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-receivable-customer-refund"];
         put?: never;
@@ -2605,7 +2609,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the customer refund.
-                 * @example 99
+                 * @example 2346
                  */
                 key: string;
             };
@@ -2685,7 +2689,7 @@ export interface paths {
         };
         /**
          * List customer refund lines
-         * @description Returns a collection with a key, ID, and link for each accounts receivable customer refund line.
+         * @description Returns a collection with a key, ID, and link for each customer refund line. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-receivable-customer-refund-line"];
         put?: never;
@@ -2703,7 +2707,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the customer refund line.
-                 * @example 99
+                 * @example 375
                  */
                 key: string;
             };
@@ -2731,7 +2735,7 @@ export interface paths {
         };
         /**
          * List customer refund details
-         * @description Returns a collection with a key, ID, and link for each customer refund detail object.
+         * @description Returns a collection with a key, ID, and link for each customer refund detail. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-accounts-receivable-customer-refund-detail"];
         put?: never;
@@ -2748,16 +2752,16 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the customer refund detail object.
-                 * @example 99
+                 * @description System-assigned unique key for the customer refund detail.
+                 * @example 773
                  */
                 key: string;
             };
             cookie?: never;
         };
         /**
-         * Get customer refund details
-         * @description Returns detailed information for a specified customer refund detail object.
+         * Get a customer refund detail
+         * @description Returns detailed information for a specified customer refund detail.
          */
         get: operations["get-accounts-receivable-customer-refund-detail-key"];
         put?: never;
@@ -2821,7 +2825,7 @@ export interface components {
         /** @description AR account labels provide more descriptive names for accounts. */
         "objects.accounts-receivable.account-label": {
             /**
-             * @description System-assigned key for the AR account label.
+             * @description System-assigned unique key for the AR account label.
              * @example 8
              */
             readonly key?: string;
@@ -2831,7 +2835,7 @@ export interface components {
              */
             id?: string;
             /**
-             * @description Endpoint for the AR account label.
+             * @description URL endpoint for the AR account label.
              * @example /objects/accounts-receivable/account-label/23
              */
             readonly href?: string;
@@ -2847,44 +2851,44 @@ export interface components {
              */
             isTaxable?: boolean;
             /**
-             * @description Set to true if the account label is for a subtotal type. This field is applicable only for entities that use the Avalara AvaTax solution. By default, Accounts Receivable is automatically configured to display tax and subtotal fields for invoices.
+             * @description Indicates whether the account label is for a subtotal type. This field applies only to entities that use the Avalara AvaTax solution. By default, Accounts Receivable is configured to display tax and subtotal fields for invoices.
              * @default false
              * @example false
              */
             isSubtotal?: boolean;
             /**
-             * @description Set to true only if the account label is for a subtotal and the subtotal is for a tax, such as sales tax or excise tax. Do not enable for other subtotals, such as discounts, shipping, or handling charges. This field is applicable only for entities that use the Avalara AvaTax.
+             * @description Indicates whether the account label is for a tax subtotal, such as sales tax or excise tax. Do not enable this field for other subtotals, such as discounts, shipping, or handling charges. This field applies only to entities that use Avalara AvaTax.
              * @default false
              * @example true
              */
             isTax?: boolean;
-            /** @description Tax group to which the label is assigned. Account label tax groups organize taxable account labels under one tax category. Relevant only for companies configured to use Advanced Tax, and only if this account label is not a subtotal. */
+            /** @description Tax group to which the label is assigned. Account label tax groups organize taxable account labels under one tax category. Relevant only for companies configured to use Advanced Tax and only if this account label is not a subtotal. */
             taxGroup?: {
                 /**
-                 * @description System-assigned key for the tax group.
+                 * @description Unique key for the tax group.
                  * @example 23
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the tax group.
+                 * @description ID for the tax group.
                  * @example Goods Exempt Rate - CA
                  */
                 id?: string | null;
                 /**
-                 * @description Endpoint URL for the tax group.
+                 * @description URL endpoint for the tax group.
                  * @example /objects/tax/account-label-tax-group/23
                  */
                 readonly href?: string;
             };
             /**
-             * @description AR account labels Tax Code.
+             * @description Avalara tax code assigned to the AR account label. This field is applicable when Avalara tax calculation is enabled.
              * @example CST
              */
             taxCode?: string | null;
-            /** @description The general ledger account where the system posts offsets to items posted to this label. This is typically a receivables account. */
+            /** @description General ledger account where the system posts offsets to items posted to this label. This is typically a receivables account. */
             offsetGLAccount?: {
                 /**
-                 * @description System-assigned key for the offset general ledger account.
+                 * @description Unique key for the offset general ledger account.
                  * @example 2
                  */
                 key?: string | null;
@@ -2893,13 +2897,16 @@ export interface components {
                  * @example 1215--EquipmentOffset
                  */
                 id?: string | null;
-                /** @example /objects/general-ledger/account/2 */
+                /**
+                 * @description URL endpoint for the offset general ledger account.
+                 * @example /objects/general-ledger/account/2
+                 */
                 readonly href?: string;
             };
             /** @description General ledger account this AR account label is assigned to. */
             glAccount?: {
                 /**
-                 * @description Endpoint for the glaccount.
+                 * @description URL endpoint for the general ledger account.
                  * @example /objects/general-ledger/account/356
                  */
                 readonly href?: string;
@@ -2909,41 +2916,41 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description System-assigned key for the general ledger account.
+                 * @description Unique key for the general ledger account.
                  * @example 356
                  */
                 key?: string;
             };
             revenueRecognitionTemplate?: {
                 /**
-                 * @description System-assigned key for the revenue recognition template.
+                 * @description Unique key for the revenue recognition template.
                  * @example 1
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the revenue recognition template.
+                 * @description ID for the revenue recognition template.
                  * @example Straight Line
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the revenue recognition template.
+                 * @description URL endpoint for the revenue recognition template.
                  * @example /objects/accounts-receivable/revenue-recognition-template/1
                  */
                 readonly href?: string;
             };
             deferredRevenueGLAccount?: {
                 /**
-                 * @description System-assigned key for the revenue gl account.
+                 * @description Unique key for the deferred revenue GL account.
                  * @example 1
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the revenue gl account.
+                 * @description ID for the deferred revenue GL account.
                  * @example 1001
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the deffer revenue gl account template.
+                 * @description URL endpoint for the deferred revenue GL account.
                  * @example /objects/general-ledger/account/356
                  */
                 readonly href?: string;
@@ -2979,7 +2986,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description ID for the AR adjustment. This value is the same as key for this object.
+             * @description Unique ID for the AR adjustment. This value is the same as the `key` for this object.
              * @example 15
              */
             readonly id?: string;
@@ -3006,7 +3013,7 @@ export interface components {
                  */
                 billTo?: {
                     /**
-                     * @description System-assigned key for the contact.
+                     * @description Unique key for the contact.
                      * @example 916
                      */
                     key?: string;
@@ -3027,13 +3034,13 @@ export interface components {
                  */
                 shipTo?: {
                     /**
-                     * @description System-assigned key for the contact.
+                     * @description Unique key for the ship-to contact.
                      * @example 312
                      */
                     key?: string;
                     /**
                      * @description Name of the ship-to contact.
-                     * @example Power Aerospace Materials(C1)
+                     * @example Power Aerospace Materials (C1)
                      */
                     id?: string;
                     /**
@@ -3043,7 +3050,7 @@ export interface components {
                     readonly href?: string;
                     /**
                      * tax
-                     * @description Tax related information for the ship-to contact.
+                     * @description Tax-related information for the ship-to contact.
                      */
                     tax?: {
                         /**
@@ -3054,12 +3061,12 @@ export interface components {
                         /** @description Contact tax group associated with the ship-to contact. */
                         group?: {
                             /**
-                             * @description System-assigned key for the group.
+                             * @description Unique key for the contact tax group.
                              * @example 288
                              */
                             key?: string | null;
                             /**
-                             * @description Unique identifier for the group.
+                             * @description ID for the contact tax group.
                              * @example Goods Zero Rate - CA
                              */
                             id?: string | null;
@@ -3079,7 +3086,7 @@ export interface components {
              * @example paid
              * @enum {string}
              */
-            state?: "reversed" | "reversal" | "draft" | "noValue" | "posted" | "paid" | "partiallyPaid" | "selected";
+            state?: "reversed" | "reversal" | "draft" | "submitted" | "partiallyApproved" | "declined" | "noValue" | "posted" | "paid" | "partiallyPaid" | "selected";
             /**
              * @description Description of the AR adjustment.
              * @example Computer Hardware & Software Expenses 03/01/20 - 08/31/21 Subscription charges.
@@ -3093,14 +3100,14 @@ export interface components {
             /** @description For multi-currency companies, the base currency for the adjustment. */
             baseCurrency?: {
                 /**
-                 * @description Base currency
+                 * @description Base currency.
                  * @example USD
                  */
                 currency?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total paid amount.
-                 * @example 1117.8
+                 * @example 1117.80
                  */
                 readonly totalPaid?: string;
                 /**
@@ -3117,21 +3124,21 @@ export interface components {
                 totalDue?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total entered
+                 * @description Total amount entered.
                  * @example 100.20
                  */
                 readonly totalAmountEntered?: string;
                 /**
                  * Format: date
-                 * @description Payment date
-                 * @example 2022-11-01
+                 * @description Payment date.
+                 * @example 2026-09-09
                  */
                 paidDate?: string | null;
             };
             /** @description For multi-currency companies, the transaction currency for the adjustment. */
             txnCurrency?: {
                 /**
-                 * @description Transaction currency
+                 * @description Transaction currency.
                  * @example INR
                  */
                 currency?: string;
@@ -3165,7 +3172,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description Exchange rate date for this transaction. Can be the current date, the date the transaction was issued, or the date the transaction will be paid.
-                 * @example 2021-01-23
+                 * @example 2026-09-09
                  */
                 date?: string;
                 /**
@@ -3187,12 +3194,12 @@ export interface components {
             /** @description The customer who is the target of the AR adjustment. */
             customer?: {
                 /**
-                 * @description System-assigned key for the customer.
+                 * @description Unique key for the customer.
                  * @example 16
                  */
                 key?: string;
                 /**
-                 * @description ID of the customer.
+                 * @description ID for the customer.
                  * @example Customer_01
                  */
                 id?: string;
@@ -3216,19 +3223,19 @@ export interface components {
             /**
              * Format: date
              * @description Date the adjustment was created.
-             * @example 2021-01-23
+             * @example 2026-09-09
              */
             createdDate?: string;
             /**
              * Format: date
              * @description GL posting date.
-             * @example 2023-03-24
+             * @example 2026-09-09
              */
             glPostingDate?: string;
             /** @description Tax solution details for this adjustment. */
             taxSolution?: {
                 /**
-                 * @description System-assigned key to uniquely identify the tax solution.
+                 * @description Unique key for the tax solution.
                  * @example 4
                  */
                 key?: string | null;
@@ -3244,7 +3251,7 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Specifies whether the transaction is a regular invoice (`invoice`) or an electronic invoice (eInvoice).
+             * @description Specifies whether the transaction is a regular invoice (`invoice`) or an electronic invoice (`eInvoice`).
              * @example invoice
              * @enum {string}
              */
@@ -3267,7 +3274,7 @@ export interface components {
              */
             readonly invoiceMode?: null | "b1" | "s1";
             /**
-             * @description Current status of an e-invoice; applicable only when selected invoice type is eInvoice.
+             * @description For transactions with an `eInvoice` invoice type, the current status of the e-invoice.
              *
              *     Supported statuses:
              *     - `submitted` - The supplier submits its invoice or credit note to the public invoicing portal or its registered private platform.
@@ -3294,7 +3301,7 @@ export interface components {
             /** @description Supporting document for the adjustment. */
             attachment?: {
                 /**
-                 * @description System-assigned key for the supporting document.
+                 * @description Unique key for the supporting document.
                  * @example 1
                  */
                 key?: string;
@@ -3309,7 +3316,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description The payment summary details for this adjustment. Summaries are collections of the same types of transactions grouped together for processing. */
+            /** @description Payment summary details for this adjustment. Summaries are collections of the same types of transactions grouped together for processing. */
             adjustmentSummary?: {
                 /**
                  * @description URL endpoint for the summary.
@@ -3317,13 +3324,13 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description System-assigned key to uniquely identify the summary.
+                 * @description Unique key for the AR summary.
                  * @example 280
                  */
                 key?: number;
                 /**
                  * @description Name for the AR summary. The system uses this name to identify the summary throughout the Accounts Receivable application.
-                 * @example AR Summary: 2022/01/01 Batch
+                 * @example AR Summary: 2026/09/09 Batch
                  */
                 id?: string;
             };
@@ -3344,7 +3351,7 @@ export interface components {
             customer?: unknown;
             /** @example USD */
             txnCurrency?: unknown;
-            /** @example AR Summary: 2022/01/01 Batch */
+            /** @example AR Summary: 2026/09/09 Batch */
             adjustmentSummary?: unknown;
             lines?: {
                 /** @example 2995 */
@@ -3510,12 +3517,12 @@ export interface components {
         /** @description Line items in an AR adjustment represent debits or credits to modify the amount owed by a customer. */
         "objects.accounts-receivable.adjustment-line": {
             /**
-             * @description ID for the AR adjustment line item.
+             * @description Unique ID for the AR adjustment line item.
              * @example 125
              */
             readonly id?: string;
             /**
-             * @description System-assigned key for the AR adjustment line item.
+             * @description System-assigned unique key for the AR adjustment line item.
              * @example 125
              */
             readonly key?: string;
@@ -3532,13 +3539,13 @@ export interface components {
             /** @description Base currency for the line item. */
             readonly baseCurrency?: {
                 /**
-                 * @description Base currency
+                 * @description Base currency.
                  * @example USD
                  */
                 readonly currency?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Base amount
+                 * @description Base amount.
                  * @example 120.20
                  */
                 readonly amount?: string;
@@ -3546,14 +3553,14 @@ export interface components {
             /** @description Transaction currency for the line item. */
             txnCurrency?: {
                 /**
-                 * @description Transaction currency
+                 * @description Transaction currency.
                  * @example INR
                  */
                 currency?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Transaction amount
-                 * @example 145
+                 * @description Transaction amount.
+                 * @example 145.00
                  */
                 amount?: string;
             };
@@ -3562,7 +3569,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description Exchange rate date for this transaction. Can be the current date, the date the transaction was issued, or the date the transaction will be paid.
-                 * @example 2021-01-23
+                 * @example 2026-09-09
                  */
                 date?: string;
                 /**
@@ -3577,7 +3584,7 @@ export interface components {
                 typeId?: string;
             };
             /**
-             * @description Record type
+             * @description Record type.
              * @example ra
              */
             readonly adjustmentType?: string;
@@ -3590,7 +3597,7 @@ export interface components {
             /** @description Label for the AR account. */
             accountLabel?: {
                 /**
-                 * @description System-assigned key for the AR account label.
+                 * @description Unique key for the AR account label.
                  * @example 1
                  */
                 key?: string;
@@ -3600,27 +3607,27 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description Endpoint for the AR account label.
+                 * @description URL endpoint for the AR account label.
                  * @example /objects/accounts-receivable/account-label/9
                  */
                 readonly href?: string;
             };
-            /** @description Tax Entries of the AR adjustment */
+            /** @description Tax entries for the adjustment line. */
             taxEntries?: components["schemas"]["objects.accounts-receivable.adjustment-tax-entry"][];
-            /** @description Header level details for the AR adjustment's line entries. */
+            /** @description Header-level details for the adjustment that owns this adjustment line. */
             arAdjustment?: {
                 /**
-                 * @description System-assigned key for the AR adjustment.
+                 * @description Unique key for the AR adjustment.
                  * @example 10
                  */
                 key?: string;
                 /**
-                 * @description ID of the AR adjustment.
+                 * @description ID for the AR adjustment.
                  * @example 10
                  */
                 id?: string;
                 /**
-                 * @description Endpoint for the AR adjustment.
+                 * @description URL endpoint for the AR adjustment.
                  * @example /objects/accounts-receivable/adjustment/1
                  */
                 readonly href?: string;
@@ -3629,7 +3636,7 @@ export interface components {
                 /** @description Department to assign the expense amount to. */
                 department?: {
                     /**
-                     * @description System-assigned key for the department.
+                     * @description Unique key for the department.
                      * @example 1
                      */
                     key?: string;
@@ -3644,7 +3651,7 @@ export interface components {
                      */
                     readonly name?: string;
                     /**
-                     * @description Endpoint for the department.
+                     * @description URL endpoint for the department.
                      * @example /objects/company-config/department/1
                      */
                     readonly href?: string;
@@ -3652,7 +3659,7 @@ export interface components {
                 /** @description Location to assign the expense amount to. */
                 location?: {
                     /**
-                     * @description System-assigned key for the location.
+                     * @description Unique key for the location.
                      * @example 1
                      */
                     key?: string;
@@ -3667,14 +3674,14 @@ export interface components {
                      */
                     readonly name?: string;
                     /**
-                     * @description Endpoint of the location.
+                     * @description URL endpoint for the location.
                      * @example /objects/company-config/location/1
                      */
                     readonly href?: string;
                 };
             };
             glAccount?: components["schemas"]["gl-account-ref"];
-            /** @description An alternative AR offset account to override the default offset GL account for the adjustment line item. */
+            /** @description An alternative AR offset account that overrides the default offset GL account for the adjustment line item. */
             overrideOffsetGLAccount?: {
                 /**
                  * @description Unique key for the GL account.
@@ -3682,7 +3689,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the GL account.
+                 * @description ID for the GL account.
                  * @example 1200
                  */
                 id?: string;
@@ -3702,7 +3709,7 @@ export interface components {
         "accounts-receivable-adjustment-lineRequiredProperties": {
             txnCurrency?: Record<string, never>;
         };
-        /** @description For VAT enabled transactions, adjustment line items will have tax entries. */
+        /** @description For VAT-enabled transactions, adjustment line items have tax entries. */
         "objects.accounts-receivable.adjustment-tax-entry": {
             /**
              * @description System-assigned key for the tax entry.
@@ -3732,7 +3739,7 @@ export interface components {
              */
             taxRate?: number;
         } & {
-            /** @description Order Entry tax details associated with the adjustment tax entry. */
+            /** @description Order entry tax details associated with the adjustment tax entry. */
             orderEntryTaxDetail?: {
                 /**
                  * @description Unique key for the tax detail.
@@ -3740,12 +3747,12 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the tax detail.
+                 * @description ID for the tax detail.
                  * @example Alaska Tax Detail
                  */
                 id?: string;
                 /**
-                 * @description URL endpoint of the tax detail.
+                 * @description URL endpoint for the tax detail.
                  * @example /objects/tax/order-entry-tax-detail/1
                  */
                 readonly href?: string;
@@ -3756,7 +3763,7 @@ export interface components {
              */
             readonly adjustmentLine?: {
                 /**
-                 * @description Unique identifier for the adjustment line. This value is the same as the `key` for this object.
+                 * @description ID for the adjustment line. This value is the same as the `key` for this line.
                  * @example 100
                  */
                 readonly id?: string;
@@ -3772,7 +3779,7 @@ export interface components {
                 readonly href?: string;
             };
         };
-        /** @description Advances record an advance payment from a customer. This object provides header information for an Accounts Receivable advance transaction. */
+        /** @description An AR advance records an advance payment from a customer and provides header information for the transaction. */
         "objects.accounts-receivable.advance": {
             /**
              * @description System-assigned unique key for the advance.
@@ -3780,7 +3787,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description AR advance ID. This value is the same as the key for this object.
+             * @description Unique ID for the advance. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -3795,7 +3802,7 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description This is a number that might be useful in searches or reports, such as a transaction number from the bank, a purchase order number, or an account number. This number is listed in the GL Details report.
+             * @description Number used in searches or reports, such as a transaction number from the bank, a purchase order number, or an account number. This number is listed in the GL Details report.
              * @example INV-902852
              */
             referenceNumber?: string;
@@ -3805,7 +3812,7 @@ export interface components {
              */
             description?: string;
             /**
-             * @description If document sequencing is enabled, specifies the auto-generated document sequence number for the advance. If  document sequencing is not enabled, this field is null.
+             * @description Auto-generated document sequence number for the advance when document sequencing is enabled. Null when document sequencing is not enabled.
              * @example Advance-001
              */
             readonly advanceNumber?: string | null;
@@ -3833,13 +3840,13 @@ export interface components {
                 /**
                  * Format: date
                  * @description Date the advance was paid.
-                 * @example 2021-01-23
+                 * @example 2026-09-09
                  */
                 paymentDate?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total amount paid for the advance.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalPaid?: string;
                 /**
@@ -3869,7 +3876,7 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description Total transaction amount due for the advance.
-                 * @example 10
+                 * @example 10.00
                  */
                 readonly totalTxnAmountDue?: string;
                 /**
@@ -3881,7 +3888,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description The date on which the check, cash, credit card, or bank transfer for the advance was received.
-                 * @example 2024-01-25
+                 * @example 2026-09-09
                  */
                 receiptDate?: string;
                 /** @description Financial account from which the reconciliation is done. */
@@ -3892,13 +3899,13 @@ export interface components {
                      */
                     readonly key?: string;
                     /**
-                     * @deprecated
-                     * @description This field has been deprecated. Use the `entityId` field instead.
+                     * @description Account number or other unique identifier for the bank account.
                      * @example BOA
                      */
                     id?: string;
                     /**
-                     * @description Account number or other unique identifier for the bank account.
+                     * @deprecated
+                     * @description This field has been deprecated. Use the `id` field instead.
                      * @example BOA
                      */
                     entityId?: string;
@@ -3937,7 +3944,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description Automatically added when reconciliation is complete.
-                 * @example 2021-01-23
+                 * @example 2026-09-09
                  */
                 readonly clearingDate?: string;
                 /**
@@ -3957,7 +3964,7 @@ export interface components {
             /**
              * Format: date
              * @description Date the advance was created.
-             * @example 2024-02-06
+             * @example 2026-09-09
              */
             readonly createdDate?: string;
             /** @description Deposit associated with the advance. */
@@ -3978,7 +3985,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description The payment summary details for this advance. Summaries are collections of the same types of transactions grouped together for processing. */
+            /** @description Payment summary details for this advance. Summaries are collections of the same types of transactions grouped together for processing. */
             advanceSummary?: {
                 /**
                  * @description URL endpoint for the summary.
@@ -4004,7 +4011,7 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description ID of the customer.
+                 * @description ID for the customer.
                  * @example Customer_01
                  */
                 id?: string;
@@ -4045,7 +4052,7 @@ export interface components {
             /** @description Supporting document for the advance. */
             attachment?: {
                 /**
-                 * @description System-assigned key for the attachment.
+                 * @description Unique key for the attachment.
                  * @example 21
                  */
                 key?: string;
@@ -4067,7 +4074,7 @@ export interface components {
                 /**
                  * Format: date-time
                  * @description Time of the submission.
-                 * @example 2024-01-23T11:28:12Z
+                 * @example 2026-09-09T11:28:12Z
                  */
                 readonly createdDateTime?: string;
             };
@@ -4147,15 +4154,15 @@ export interface components {
              */
             state?: string;
         };
-        /** @description Detail and header information for AR advance transactions. */
+        /** @description An AR advance line records the detail of an advance transaction. */
         "objects.accounts-receivable.advance-line": {
             /**
-             * @description System-assigned key for the AR advance line.
+             * @description System-assigned unique key for the AR advance line.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description ID for the AR advance line. This value is the same as the `key` for this object.
+             * @description Unique ID for the AR advance line. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -4173,7 +4180,7 @@ export interface components {
             /**
              * Format: decimal-precision-2
              * @description Amount for the AR advance line item in the transaction currency.
-             * @example 100
+             * @example 100.00
              */
             txnAmount?: string;
             /**
@@ -4201,7 +4208,7 @@ export interface components {
                     /**
                      * Format: date
                      * @description Exchange rate date used to calculate the base amount from the transaction amount.
-                     * @example 2025-01-23
+                     * @example 2026-09-09
                      */
                     readonly date?: string;
                     /**
@@ -4226,25 +4233,25 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description Total paid for the line item.
-                 * @example 200
+                 * @example 200.00
                  */
                 readonly totalPaid?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Transaction total paid for the line item.
-                 * @example 200
+                 * @example 200.00
                  */
                 readonly txnTotalPaid?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total selected for the line item.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalSelected?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total transaction selected for the line item.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly txnTotalSelected?: string;
             };
@@ -4255,7 +4262,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the base location.
+                 * @description ID for the base location.
                  * @example 4
                  */
                 id?: string;
@@ -4273,13 +4280,13 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description For multi-currency companies, the amount of the line item in the bank's base currency.
-                 * @example 10
+                 * @example 10.00
                  */
                 readonly amount?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description For payment involving multi-currency, the amount of the item in the currency of the bank.
-                 * @example 10
+                 * @example 10.00
                  */
                 readonly txnAmount?: string;
                 /**
@@ -4297,7 +4304,7 @@ export interface components {
                     /**
                      * Format: date
                      * @description Exchange rate date used to calculate the bank base amount from the transaction amount.
-                     * @example 2025-01-23
+                     * @example 2026-09-09
                      */
                     readonly date?: string;
                     /**
@@ -4319,7 +4326,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Name or other unique ID for the account label.
+                 * @description Name of the account label.
                  * @example Accounting Fees
                  */
                 id?: string;
@@ -4347,7 +4354,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Unique ID for the location.
+                     * @description ID for the location.
                      * @example AU
                      */
                     id?: string;
@@ -4373,7 +4380,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Unique ID for the department.
+                     * @description ID for the department.
                      * @example 01
                      */
                     id?: string;
@@ -4392,7 +4399,7 @@ export interface components {
             /** @description Header level details for the AR advance's line items. */
             readonly arAdvance?: {
                 /**
-                 * @description Unique ID for the AR advance.
+                 * @description ID for the AR advance.
                  * @example 23
                  */
                 readonly id?: string;
@@ -4418,7 +4425,7 @@ export interface components {
         /** @description Bill back templates are used in multi-entity companies to generate an invoice and corresponding bill when one entity provides goods or services to another entity. */
         "objects.accounts-receivable.billback-template": {
             /**
-             * @description System-assigned key for the bill back template.
+             * @description System-assigned unique key for the bill back template.
              * @example 23
              */
             readonly key?: string;
@@ -4438,14 +4445,14 @@ export interface components {
              */
             description?: string;
             /**
-             * @description Set to `true` to post directly to the mapped inter-entity offset accounts instead of the Accounts Receivable and Accounts Payable offset accounts.
+             * @description Indicates whether to post directly to the mapped inter-entity offset accounts instead of the Accounts Receivable and Accounts Payable offset accounts.
              * @default false
              * @example true
              */
             enableInterEntityPostings?: boolean;
             status?: components["schemas"]["status"];
             entity?: components["schemas"]["entity-ref"];
-            /** @description Line items in the bill back template. */
+            /** @description Lines for the bill back template. */
             lines?: components["schemas"]["objects.accounts-receivable.billback-template-line"][];
         };
         "accounts-receivable-billback-templateRequiredProperties": {
@@ -4457,7 +4464,7 @@ export interface components {
         /** @description Line items in a bill back template provide the GL accounts and department to use for line items in corresponding invoices and bills. */
         "objects.accounts-receivable.billback-template-line": {
             /**
-             * @description System-assigned key for the bill back template line.
+             * @description System-assigned unique key for the bill back template line.
              * @example 5
              */
             readonly key?: string;
@@ -4481,7 +4488,7 @@ export interface components {
              * @example Line number 2
              */
             memo?: string;
-            /** @description The GL account to use for associated invoice line items. */
+            /** @description GL account for the associated invoice line. */
             invoiceGLAccount?: {
                 /**
                  * @description Unique key for the GL account.
@@ -4489,7 +4496,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the GL account.
+                 * @description ID for the GL account.
                  * @example 4000
                  */
                 id?: string;
@@ -4504,7 +4511,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description The GL account to use for associated bill line items. */
+            /** @description GL account for the associated bill line. */
             billGLAccount?: {
                 /**
                  * @description Unique key for the GL account.
@@ -4512,7 +4519,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the GL account.
+                 * @description ID for the GL account.
                  * @example 2000
                  */
                 id?: string;
@@ -4527,7 +4534,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Department to include on associated invoices. */
+            /** @description Department to include on associated invoices and bills. */
             department?: {
                 /**
                  * @description Unique key for the department.
@@ -4535,7 +4542,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the department.
+                 * @description ID for the department.
                  * @example 11
                  */
                 id?: string;
@@ -4545,15 +4552,15 @@ export interface components {
                  */
                 name?: string;
                 /**
-                 * @description URL endpoint for department.
+                 * @description URL endpoint for the department.
                  * @example /objects/company-config/department/9
                  */
                 readonly href?: string;
             };
-            /** @description Header level details for the template line items. */
+            /** @description Header level details for the billback template lines. */
             billbackTemplate?: {
                 /**
-                 * @description Unique ID for the bill back template.
+                 * @description ID for the bill back template.
                  * @example 5
                  */
                 readonly id?: string;
@@ -4573,12 +4580,12 @@ export interface components {
         /** @description A customer is any company to which you sell goods and services. */
         "objects.accounts-receivable.customer": {
             /**
-             * @description System-assigned key for the customer.
+             * @description System-assigned unique key for the customer.
              * @example 24
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the customer.
+             * @description Unique ID for the customer.
              * @example C-00003
              */
             id?: string;
@@ -4588,7 +4595,7 @@ export interface components {
              */
             name?: string;
             /**
-             * @description URL for the customer.
+             * @description URL endpoint for the customer.
              * @example /objects/accounts-receivable/customer/24
              */
             readonly href?: string;
@@ -4596,7 +4603,7 @@ export interface components {
             /** @description The category assigned to the customer (for example, Consultants, Subcontractors, or Equipment). */
             customerType?: {
                 /**
-                 * @description System-assigned key for the customer type.
+                 * @description Unique key for the customer type.
                  * @example 1
                  */
                 key?: string;
@@ -4606,7 +4613,7 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description URL for the customer type.
+                 * @description URL endpoint for the customer type.
                  * @example /objects/accounts-receivable/customer-type/1
                  */
                 readonly href?: string;
@@ -4614,12 +4621,12 @@ export interface components {
             /** @description Parent customer, which creates a customer hierarchy. */
             parent?: {
                 /**
-                 * @description System-assigned key for the parent customer.
+                 * @description Unique key for the parent customer.
                  * @example 10
                  */
                 key?: string;
                 /**
-                 * @description ID of the parent customer.
+                 * @description ID for the parent customer.
                  * @example C-00014
                  */
                 id?: string;
@@ -4629,7 +4636,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL for the parent customer.
+                 * @description URL endpoint for the parent customer.
                  * @example /objects/accounts-receivable/customer/10
                  */
                 readonly href?: string;
@@ -4637,22 +4644,22 @@ export interface components {
             /** @description Name of the employee responsible for this customer account. */
             salesRepresentative?: {
                 /**
-                 * @description System-assigned key for the employee.
+                 * @description Unique key for the sales representative.
                  * @example 39
                  */
                 key?: string;
                 /**
-                 * @description ID of the employee.
+                 * @description ID for the sales representative.
                  * @example awong
                  */
                 id?: string;
                 /**
-                 * @description Name of the employee.
+                 * @description Name of the sales representative.
                  * @example Anna Wong
                  */
                 readonly name?: string;
                 /**
-                 * @description URL for the employee.
+                 * @description URL endpoint for the sales representative.
                  * @example /objects/company-config/employee/39
                  */
                 readonly href?: string;
@@ -4664,19 +4671,18 @@ export interface components {
             taxId?: string;
             /**
              * @deprecated
-             * @description Electronic address is used for E-invoicing. This field is required for customers in France to comply with local E-invoicing regulations.
-             * @example 123456789-Emp_001-Dept_001
+             * @description Deprecated. Use `contacts.default.electronicAddress` instead.
              */
             electronicAddress?: string;
             /** @description GL account for customer revenue. */
             defaultRevenueGLAccount?: {
                 /**
-                 * @description System-assigned key for the GL account.
+                 * @description Unique key for the GL account.
                  * @example 41
                  */
                 key?: string;
                 /**
-                 * @description ID of the GL account.
+                 * @description ID for the GL account.
                  * @example 1001
                  */
                 id?: string;
@@ -4686,7 +4692,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL of the GL account.
+                 * @description URL endpoint for the GL account.
                  * @example /objects/general-ledger/account/41
                  */
                 readonly href?: string;
@@ -4694,17 +4700,17 @@ export interface components {
             /** @description How goods are shipped to the customer. */
             shippingMethod?: {
                 /**
-                 * @description System-assigned key for the shipping method.
+                 * @description Unique key for the shipping method.
                  * @example 3
                  */
                 key?: string;
                 /**
-                 * @description ID of the shipping method.
+                 * @description ID for the shipping method.
                  * @example Fedex
                  */
                 id?: string;
                 /**
-                 * @description URL of the shipping method.
+                 * @description URL endpoint for the shipping method.
                  * @example /objects/accounts-receivable/shipping-method/3
                  */
                 readonly href?: string;
@@ -4715,7 +4721,7 @@ export interface components {
              */
             creditLimit?: number;
             /**
-             * @description Indicates whether customer is on credit hold.
+             * @description Indicates whether the customer is on credit hold.
              * @default false
              * @example true
              */
@@ -4744,17 +4750,17 @@ export interface components {
                         /** @description Tax group the contact belongs to. */
                         group?: {
                             /**
-                             * @description System-assigned key for the tax group.
+                             * @description Unique key for the tax group.
                              * @example 90
                              */
                             key?: string;
                             /**
-                             * @description Identifier for the tax group.
+                             * @description ID for the tax group.
                              * @example Los Angeles
                              */
                             id?: string;
                             /**
-                             * @description URL for the tax group.
+                             * @description URL endpoint for the tax group.
                              * @example /objects/tax/contact-tax-group/90
                              */
                             readonly href?: string;
@@ -4762,17 +4768,17 @@ export interface components {
                         /** @description Tax solution for this customer. */
                         solution?: {
                             /**
-                             * @description System-assigned key for the tax solution.
+                             * @description Unique key for the tax solution.
                              * @example 90
                              */
                             key?: string;
                             /**
-                             * @description Identifier for the tax solution.
+                             * @description ID for the tax solution.
                              * @example Los Angeles
                              */
                             id?: string;
                             /**
-                             * @description URL for the tax solution.
+                             * @description URL endpoint for the tax solution.
                              * @example /objects/tax/tax-solution/90
                              */
                             readonly href?: string;
@@ -4823,17 +4829,17 @@ export interface components {
                  */
                 primary?: {
                     /**
-                     * @description System-assigned key for the contact.
+                     * @description Unique key for the contact.
                      * @example 87
                      */
                     key?: string;
                     /**
-                     * @description ID of the contact.
+                     * @description Name of the contact.
                      * @example Ben Jones
                      */
                     id?: string;
                     /**
-                     * @description URL for the contact.
+                     * @description URL endpoint for the contact.
                      * @example /objects/company-config/contact/87
                      */
                     readonly href?: string;
@@ -4844,17 +4850,17 @@ export interface components {
                  */
                 billTo?: {
                     /**
-                     * @description System-assigned key for the contact.
+                     * @description Unique key for the contact.
                      * @example 63
                      */
                     key?: string;
                     /**
-                     * @description ID of the contact.
+                     * @description Name of the contact.
                      * @example Rose Garcia
                      */
                     id?: string;
                     /**
-                     * @description URL for the contact.
+                     * @description URL endpoint for the contact.
                      * @example /objects/company-config/contact/63
                      */
                     readonly href?: string;
@@ -4865,17 +4871,17 @@ export interface components {
                  */
                 shipTo?: {
                     /**
-                     * @description System-assigned key for the contact.
+                     * @description Unique key for the contact.
                      * @example 29
                      */
                     key?: string;
                     /**
-                     * @description ID of the contact.
+                     * @description Name of the contact.
                      * @example Veronica Clark
                      */
                     id?: string;
                     /**
-                     * @description URL for the contact.
+                     * @description URL endpoint for the contact.
                      * @example /objects/company-config/contact/29
                      */
                     readonly href?: string;
@@ -4911,7 +4917,7 @@ export interface components {
             /** @description AR term for the customer, which are the rules for extending credit to the customer. */
             term?: {
                 /**
-                 * @description System-assigned key for the term.
+                 * @description Unique key for the term.
                  * @example 20
                  */
                 key?: string;
@@ -4921,7 +4927,7 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description URL for the term.
+                 * @description URL endpoint for the term.
                  * @example /objects/accounts-receivable/term/20
                  */
                 readonly href?: string;
@@ -4946,19 +4952,18 @@ export interface components {
             /**
              * Format: date
              * @description Date the most recent invoice was created.
-             * @example 2023-05-15
+             * @example 2026-05-15
              */
             readonly lastInvoiceCreatedDate?: string;
             /**
              * Format: date
              * @description Date the most recent statement was generated.
-             * @example 2023-01-01
+             * @example 2026-01-01
              */
             readonly lastStatementGeneratedDate?: string;
             /**
              * @deprecated
-             * @description This field has been deprecated. Use the customerResaleNumber field instead.
-             * @example 1534
+             * @description Deprecated. Use the `customerResaleNumber` field instead.
              */
             resaleNumber?: number;
             /**
@@ -4983,7 +4988,7 @@ export interface components {
             /** @description Message to include on the customer's invoice. */
             customerMessage?: {
                 /**
-                 * @description System-assigned key for the customer message.
+                 * @description Unique key for the customer message.
                  * @example 10
                  */
                 key?: string;
@@ -5017,61 +5022,58 @@ export interface components {
             /**
              * Format: date
              * @deprecated
-             * @description Monthly recurring revenue activation date.
-             * @example 2022-04-03
+             * @description Deprecated. This field is no longer supported.
              */
             readonly activationDate?: string;
             /**
              * Format: date
              * @description Monthly recurring revenue end date.
-             * @example 2023-03-31
+             * @example 2026-03-31
              */
             readonly subscriptionEndDate?: string;
             /** @description The sales territory to which the customer is assigned. */
             territory?: {
                 /**
-                 * @description Territory key.
+                 * @description Unique key for the territory.
                  * @example 6
                  */
                 key?: string;
                 /**
-                 * @description Territory ID.
+                 * @description ID for the territory.
                  * @example NE
                  */
                 id?: string;
                 /**
-                 * @description Territory name.
+                 * @description Name of the territory.
                  * @example Northeast
                  */
                 name?: string;
                 /**
-                 * @description URL for the territory.
+                 * @description URL endpoint for the territory.
                  * @example /objects/accounts-receivable/territory/6
                  */
                 readonly href?: string;
             };
             /**
              * @deprecated
-             * @description Set to `true` to enable automation of customer payments using ACH.
+             * @description Deprecated. This field is no longer supported.
              * @default true
-             * @example true
              */
             enableOnlineACHPayment?: boolean;
             /**
              * @deprecated
-             * @description Set to `true` to automate customer payments using a credit card.
+             * @description Deprecated. This field is no longer supported.
              * @default true
-             * @example true
              */
             enableOnlineCardPayment?: boolean;
             /**
-             * @description Set to `true` to designate the customer as a one-time use customer that should not be included in standard look-up lists.
+             * @description Indicates whether the customer is designated as a one-time customer not included in standard lookup lists.
              * @default false
              * @example false
              */
             isOneTimeUse?: boolean;
             /**
-             * @description Set to `true` to disable refunds for the customer.
+             * @description Indicates whether refunds are disabled for the customer.
              * @default false
              * @example false
              */
@@ -5079,23 +5081,23 @@ export interface components {
             /** @description Vendor associated with the customer. */
             vendor?: {
                 /**
-                 * @description System-assigned key of the associated vendor.
+                 * @description Unique key for the vendor.
                  * @example 10
                  */
                 key?: string;
                 /**
-                 * @description ID of the associated vendor.
+                 * @description ID for the vendor.
                  * @example 10
                  */
                 id?: string;
                 /**
-                 * @description Indicates whether the vendor was autogenerated.
+                 * @description Indicates whether the vendor is system-generated.
                  * @default false
                  * @example false
                  */
                 isSystemGenerated?: boolean;
                 /**
-                 * @description URL for the vendor.
+                 * @description URL endpoint for the vendor.
                  * @example /objects/accounts-payable/vendor/10
                  */
                 readonly href?: string;
@@ -5103,7 +5105,7 @@ export interface components {
             /** @description Customer GL group to control the GL account that transactions with the customer should post to. */
             accountGroup?: {
                 /**
-                 * @description System-assigned key for the customer GL group.
+                 * @description Unique key for the customer GL group.
                  * @example 41
                  */
                 key?: string;
@@ -5113,7 +5115,7 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description URL for the customer GL group.
+                 * @description URL endpoint for the customer GL group.
                  * @example /objects/order-entry/customer-gl-group/41
                  */
                 readonly href?: string;
@@ -5121,7 +5123,7 @@ export interface components {
             /** @description Label for the AR account associated with the customer. */
             accountLabel?: {
                 /**
-                 * @description System-assigned key for the AR account label.
+                 * @description Unique key for the AR account label.
                  * @example 38
                  */
                 key?: string;
@@ -5131,7 +5133,7 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description URL for the account label.
+                 * @description URL endpoint for the account label.
                  * @example /objects/accounts-receivable/account-label/38
                  */
                 readonly href?: string;
@@ -5139,7 +5141,7 @@ export interface components {
             /** @description Attachment that serves as a supporting document for the customer. */
             attachment?: {
                 /**
-                 * @description System-assigned key for the attachment.
+                 * @description Unique key for the attachment.
                  * @example 51
                  */
                 key?: string | null;
@@ -5149,7 +5151,7 @@ export interface components {
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the attachment.
+                 * @description URL endpoint for the attachment.
                  * @example /objects/company-config/attachment/51
                  */
                 readonly href?: string;
@@ -5167,7 +5169,7 @@ export interface components {
             /** @description Price list associated with the customer. */
             priceList?: {
                 /**
-                 * @description System-assigned key for the price list.
+                 * @description Unique key for the price list.
                  * @example 7
                  */
                 key?: string;
@@ -5177,7 +5179,7 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description URL for the price list.
+                 * @description URL endpoint for the price list.
                  * @example /objects/order-entry/price-list/7
                  */
                 readonly href?: string;
@@ -5185,7 +5187,7 @@ export interface components {
             /** @description Price schedule associated with the customer. */
             priceSchedule?: {
                 /**
-                 * @description System-assigned key for the price schedule.
+                 * @description Unique key for the price schedule.
                  * @example 4
                  */
                 key?: string;
@@ -5195,7 +5197,7 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description URL for the price schedule.
+                 * @description URL endpoint for the price schedule.
                  * @example /objects/purchasing/price-schedule/4
                  */
                 readonly href?: string;
@@ -5203,7 +5205,7 @@ export interface components {
             /** @description Default AR override offset account for this customer. */
             overrideOffsetGLAccount?: {
                 /**
-                 * @description System-assigned key for the GL account.
+                 * @description Unique key for the GL account.
                  * @example 12
                  */
                 key?: string;
@@ -5218,7 +5220,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL for the GL account.
+                 * @description URL endpoint for the GL account.
                  * @example /objects/general-ledger/account/12
                  */
                 readonly href?: string;
@@ -5387,7 +5389,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description ID for the customer contact. This value is the same as the `key` for this object.
+             * @description Unique ID for the customer contact. This value is the same as the `key` for this object.
              * @example 21
              */
             readonly id?: string;
@@ -5409,7 +5411,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the contact.
+                 * @description Name of the contact.
                  * @example Jeffrey Palms
                  */
                 id?: string;
@@ -5447,7 +5449,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Identifier for the customer email template. This value is the same as `key` for this object.
+             * @description Unique ID for the customer email template. This value is the same as the `key` for this object.
              * @example 1
              */
             readonly id?: string;
@@ -5456,15 +5458,15 @@ export interface components {
              * @example /objects/accounts-receivable/customer-email-template/1
              */
             readonly href?: string;
-            /** @description [Customer](accounts-receivable.customer) associated with the email template. */
+            /** @description [Customer](/intacct/apis/intacct/1/intacct-openapi/groups/accounts-receivable/groups/customers/tags/accounts_receivable_customers) associated with the email template. */
             customer?: {
                 /**
-                 * @description System-assigned key for the customer.
+                 * @description Unique key for the customer.
                  * @example 127
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the customer.
+                 * @description ID for the customer.
                  * @example 014
                  */
                 id?: string;
@@ -5503,12 +5505,12 @@ export interface components {
             /** @description Associated email template. */
             emailTemplate?: {
                 /**
-                 * @description System-assigned key for the email template.
+                 * @description Unique key for the email template.
                  * @example 1
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the email template.
+                 * @description ID for the email template.
                  * @example 1
                  */
                 id?: string;
@@ -5518,76 +5520,108 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description Specify the type of transaction that will use the email template.
+                 * @description Type of transaction that uses the email template.
                  * @default arInvoice
                  * @example arInvoice
                  * @enum {string|null}
                  */
                 readonly templateType?: null | "arInvoice" | "arStatement" | "contract" | "orderEntryTxn" | "purchasingTxn";
                 /**
-                 * @description URL of the email template.
+                 * @description URL endpoint for the email template.
                  * @example /objects/company-config/email-template/1
                  */
                 readonly href?: string;
             };
         };
         "accounts-receivable-customer-email-templateRequiredProperties": Record<string, never>;
-        /** @description list of customer item cross references */
+        /** @description A customer item cross reference associates a customer item identifier with an inventory item. */
         "objects.accounts-receivable.customer-item-cross-reference": {
-            /** @description Customer Item Cross Reference Key */
+            /**
+             * @description System-assigned unique key for the customer item cross reference.
+             * @example 905
+             */
             readonly key?: string;
-            /** @description Customer Item Cross Reference id */
+            /**
+             * @description Unique ID for the customer item cross reference. This value is the same as the `key` for this object.
+             * @example 905
+             */
             readonly id?: string;
-            /** @description URL of the customer-item-cross-reference. */
+            /**
+             * @description URL endpoint for the customer item cross reference.
+             * @example /objects/accounts-receivable/customer-item-cross-reference/905
+             */
             readonly href?: string;
-            /** @description Customer. */
+            /** @description Customer associated with the customer item cross reference. */
             customer?: {
-                /** @description Customer key */
-                key?: string;
-                /** @description Customer ID */
-                id?: string;
-                name?: string;
-                /** @description URL of the customer. */
-                readonly href?: string;
-            };
-            item?: {
-                /** @description Item key */
+                /**
+                 * @description Unique key for the customer.
+                 * @example 406
+                 */
                 key?: string;
                 /**
-                 * @description Item ID
-                 * @example null
+                 * @description ID for the customer.
+                 * @example C-1052
                  */
                 id?: string;
-                /** @example null */
-                name?: string;
-                /** @description URL of the item. */
+                /**
+                 * @description Name of the customer.
+                 * @example North Valley Market
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the customer.
+                 * @example /objects/accounts-receivable/customer/406
+                 */
+                readonly href?: string;
+            };
+            /** @description Item associated with the customer item cross reference. */
+            item?: {
+                /**
+                 * @description Unique key for the item.
+                 * @example 275
+                 */
+                key?: string;
+                /**
+                 * @description ID for the item.
+                 * @example SKU-10045
+                 */
+                id?: string;
+                /**
+                 * @description Name of the item.
+                 * @example Wireless Keyboard
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the item.
+                 * @example /objects/inventory-control/item/275
+                 */
                 readonly href?: string;
             };
             /**
-             * @description Reference type
+             * @description Reference type for the customer item cross reference.
              * @default customer
              * @example customer
              * @enum {string}
              */
             referenceType?: "customer";
             /**
-             * @description Cross-reference item ID
-             * @example null
+             * @description Cross-reference item ID used by the customer for this item.
+             * @example CUST-SKU-8821
              */
             itemAliasId?: string;
             /**
-             * @description Cross-reference item description
-             * @example null
+             * @description Description of the customer item alias.
+             * @example Wireless Keyboard - Customer Catalog
              */
             itemAliasDescription?: string;
             /**
-             * @description Unit
-             * @example null
+             * @description Unit of measure for the customer item cross reference.
+             * @example Each
              */
             unit?: string;
             /**
-             * @description Reference type Context
-             * @example null
+             * @description Reference type context for the customer item cross reference.
+             * @example external
              * @enum {string}
              */
             referenceTypeContext?: "internal" | "external";
@@ -5597,12 +5631,12 @@ export interface components {
         /** @description In shared multi-entity companies, customers can be restricted to specific departments or department groups to prevent the customer from being used in the wrong entity. */
         "objects.accounts-receivable.customer-restricted-department": {
             /**
-             * @description System-assigned key for the customer restricted department.
+             * @description System-assigned unique key for the customer restricted department.
              * @example 31
              */
             readonly key?: string;
             /**
-             * @description Unique ID for the customer restricted department.
+             * @description Unique ID for the customer restricted department. This value is the same as the `key` for this object.
              * @example 31
              */
             readonly id?: string;
@@ -5619,7 +5653,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description User-defined ID for the department.
+                 * @description ID for the department.
                  * @example Eng
                  */
                 id?: string;
@@ -5637,7 +5671,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the department group.
+                 * @description ID for the department group.
                  * @example SW
                  */
                 id?: string;
@@ -5655,7 +5689,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the customer.
+                 * @description ID for the customer.
                  * @example C23
                  */
                 readonly id?: string;
@@ -5669,12 +5703,12 @@ export interface components {
         /** @description In shared multi-entity companies, customers can be restricted to specific locations or location groups to prevent the customer from being used in the wrong entity. */
         "objects.accounts-receivable.customer-restricted-location": {
             /**
-             * @description System-assigned key for the customer restricted location.
+             * @description System-assigned unique key for the customer restricted location.
              * @example 51
              */
             readonly key?: string;
             /**
-             * @description ID for the customer restricted location.
+             * @description Unique ID for the customer restricted location. This value is the same as the `key` for this object.
              * @example 51
              */
             readonly id?: string;
@@ -5691,7 +5725,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the location.
+                 * @description ID for the location.
                  * @example 14
                  */
                 id?: string;
@@ -5704,17 +5738,17 @@ export interface components {
             /** @description Location group to which the customer is restricted. */
             locationGroup?: {
                 /**
-                 * @description System-assigned key for the location group.
+                 * @description Unique key for the location group.
                  * @example 66
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the location group.
+                 * @description ID for the location group.
                  * @example 66
                  */
                 id?: string;
                 /**
-                 * @description Endpoint for the location group.
+                 * @description URL endpoint for the location group.
                  * @example /objects/company-config/location-group/66
                  */
                 readonly href?: string;
@@ -5722,12 +5756,12 @@ export interface components {
             /** @description Customer that is restricted. */
             customer?: {
                 /**
-                 * @description System-assigned key for the customer.
+                 * @description Unique key for the customer.
                  * @example 89
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the customer.
+                 * @description ID for the customer.
                  * @example C89
                  */
                 readonly id?: string;
@@ -5738,10 +5772,10 @@ export interface components {
                 readonly href?: string;
             };
         };
-        /** @description This object represents a message associated with a customer. */
+        /** @description A customer message is a predefined text message that can be associated with a customer. */
         "objects.accounts-receivable.customer-message": {
             /**
-             * @description System-assigned key for the customer message.
+             * @description System-assigned unique key for the customer message.
              * @example 23
              */
             readonly key?: string;
@@ -5756,7 +5790,7 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Message text.
+             * @description Text content of the customer message.
              * @example Express shipping now available!
              */
             message?: string;
@@ -5767,35 +5801,35 @@ export interface components {
         /** @description Customer types provide a way to group customers into categories, such as reseller and end user. */
         "objects.accounts-receivable.customer-type": {
             /**
-             * @description System-assigned key for the customer type.
+             * @description System-assigned unique key for the customer type.
              * @example 16
              */
             readonly key?: string;
             /**
-             * @description Name of the customer type.
+             * @description Unique ID for the customer type.
              * @example Top Level Customer
              */
             id?: string;
             /**
-             * @description URL for the customer type.
+             * @description URL endpoint for the customer type.
              * @example /objects/accounts-receivable/customer-type/16
              */
             readonly href?: string;
             status?: components["schemas"]["status"];
-            /** @description Parent of a subordinate customer type. */
+            /** @description Parent customer type in the hierarchy. */
             parent?: {
                 /**
-                 * @description System-assigned key for the parent customer type.
+                 * @description Unique key for the parent customer type.
                  * @example 5
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the parent customer type.
+                 * @description Name of the parent customer type.
                  * @example Level 1 Customer
                  */
                 id?: string;
                 /**
-                 * @description URL for the parent customer type.
+                 * @description URL endpoint for the parent customer type.
                  * @example /objects/accounts-receivable/customer-type/5
                  */
                 readonly href?: string;
@@ -5807,7 +5841,7 @@ export interface components {
         /** @description Provides information about the total amount due from a customer. */
         "objects.accounts-receivable.customer-total": {
             /**
-             * @description System-assigned key for the customer total.
+             * @description System-assigned unique key for the customer total.
              * @example 1
              */
             readonly key?: string;
@@ -5835,13 +5869,13 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the customer.
+                 * @description ID for the customer.
                  * @example cust_id_531214
                  */
                 readonly id?: string;
                 /**
                  * @description Name of the customer.
-                 * @example cnxt
+                 * @example Pacific Electronics
                  */
                 readonly name?: string;
                 /**
@@ -5863,7 +5897,7 @@ export interface components {
                 name?: string;
             };
         };
-        /** @description Customer payments made electronically, including online payments made by credit card or ACH wire transfer. These payments are processed by PayPal or Authorize.Net. */
+        /** @description Customer payments made electronically, including online payments made by credit card or ACH wire transfer, processed by PayPal or Authorize.Net. */
         "objects.accounts-receivable.customer-electronic-payment": {
             /**
              * @description System-assigned unique key for the customer electronic payment.
@@ -5871,7 +5905,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique ID for the customer electronic payment. This value is the same as the key for this object.
+             * @description Unique ID for the customer electronic payment. This value is the same as the `key` for this object.
              * @example 28
              */
             readonly id?: string;
@@ -5882,12 +5916,12 @@ export interface components {
             readonly href?: string;
             /**
              * Format: decimal-precision-2
-             * @description Payment amount.
+             * @description Amount of the customer electronic payment.
              * @example 100.20
              */
             readonly paymentAmount?: string;
             /**
-             * @description Payment method.
+             * @description Method used to process the electronic payment.
              * @default onlineChargeCard
              * @example onlineAchDebit
              * @enum {string}
@@ -5900,21 +5934,21 @@ export interface components {
              */
             paymentDate?: string;
             /**
-             * @description Payment processor.
+             * @description Third-party payment processor used to handle the electronic payment.
              * @default authorizeDotNet
              * @example authorizeDotNet
              * @enum {string}
              */
             paymentProcessor?: "payPalPayflowPro" | "authorizeDotNet";
             /**
-             * @description Payment state.
+             * @description Result of the payment processing attempt.
              * @default success
              * @example success
              * @enum {string}
              */
             paymentState?: "success" | "failure";
             /**
-             * @description The description of the payment failure.
+             * @description Explanation of why the payment failed.
              * @example Invalid account number
              */
             paymentFailureDescription?: string | null;
@@ -5929,11 +5963,11 @@ export interface components {
              */
             txnCurrency?: string;
             /**
-             * @description This is a combination of `Bank account--account` or `Bank account--card (last 4 digits only)` details.
+             * @description A combination of bank account and account number, or bank account and card number (last 4 digits only).
              * @example SBI--6011000000000010
              */
             accountCardName?: string;
-            /** @description Reference to the AR payment associated with the customer electronic payment. */
+            /** @description AR payment associated with the customer electronic payment. */
             arPayment?: {
                 /**
                  * @description Unique key for the AR payment.
@@ -5941,12 +5975,12 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the AR payment.
+                 * @description ID for the AR payment.
                  * @example 2709
                  */
                 readonly id?: string;
                 /**
-                 * @description Payment reconciliation status.
+                 * @description Bank reconciliation status of the AR payment.
                  * @default null
                  * @example cleared
                  * @enum {string}
@@ -5982,7 +6016,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Reference to the customer associated with the customer electronic payment. */
+            /** @description Customer associated with the electronic payment. */
             customer?: {
                 /**
                  * @description Unique key for the customer.
@@ -5990,7 +6024,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the customer.
+                 * @description ID for the customer.
                  * @example Customer003
                  */
                 readonly id?: string;
@@ -6000,7 +6034,7 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description Customer name.
+                 * @description Name of the customer.
                  * @example Gomez Manufacturers
                  */
                 readonly name?: string;
@@ -6030,12 +6064,12 @@ export interface components {
              */
             name?: string;
             /**
-             * @description Description of the customer group.
+             * @description Additional information about the customer group.
              * @example Charity service customers
              */
             description?: string;
             /**
-             * @description Specifies the group membership type. The group type and related fields determine which customers are included in the group.
+             * @description Type of group membership that determines which customers are included in the group.
              *     * `specific` - Specify the customers to include and their order in the `groupMembers` array.
              *     * `all` - All customers that match the `memberFilter` criteria.
              * @default all
@@ -6053,7 +6087,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the customer.
+                 * @description ID for the customer.
                  * @example 23
                  */
                 id?: string;
@@ -6078,7 +6112,7 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "accounts-receivable-customer-groupRequiredProperties": Record<string, never>;
-        /** @description History of invoices delivered by print or email. */
+        /** @description A delivery history record tracks each time an invoice or other transaction was delivered to a customer by print, email, or online delivery. */
         "objects.accounts-receivable.delivery-history": {
             /**
              * @description System-assigned unique key for the delivery history.
@@ -6086,7 +6120,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Delivery history ID. This value is the same as the `key` for this object.
+             * @description Unique ID for the delivery history. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -6096,35 +6130,35 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Object that was delivered.
+             * @description Type of record that was delivered.
              * @example invoice
              */
             readonly object?: string;
             /**
              * @deprecated
-             * @description This field has been deprecated. Use the `module` field instead.
+             * @description Deprecated. Use `module` instead.
              */
             description?: string;
             /**
-             * @description The Sage Intacct application module the invoice was delivered from.
+             * @description Sage Intacct application module the invoice was delivered from.
              * @example AR
              */
             readonly module?: string;
             /**
              * Format: date
-             * @description The date of the invoice.
-             * @example 2025-02-19
+             * @description Date of the invoice.
+             * @example 2026-02-19
              */
             readonly documentDate?: string;
             /**
              * Format: date
-             * @description The date the invoice was delivered.
-             * @example 2025-02-20
+             * @description Date the invoice was delivered.
+             * @example 2026-02-20
              */
             readonly deliveryDate?: string;
             /**
              * @deprecated
-             * @description This field has been deprecated. Use the `deliveryMethod` field instead.
+             * @description Deprecated. Use `deliveryMethod` instead.
              * @default print
              * @enum {string}
              */
@@ -6137,7 +6171,7 @@ export interface components {
              */
             readonly deliveryMethod?: "print" | "email" | "onlineDelivery" | "printEmail";
             /**
-             * @description The data that makes up the invoice.
+             * @description Data that makes up the invoice.
              * @example Blob data
              */
             readonly data?: string;
@@ -6160,23 +6194,22 @@ export interface components {
                 readonly id?: string;
             };
         };
-        /** @description An AR invoice object represents an invoice sent to a customer for goods or services provided. */
+        /** @description An AR invoice represents an invoice sent to a customer for goods or services provided. */
         "objects.accounts-receivable.invoice": {
             /**
-             * @description System-assigned key for the AR invoice.
+             * @description System-assigned unique key for the AR invoice.
              * @example 11
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the AR invoice.
+             * @description Unique ID for the AR invoice. This value is the same as the `key` for this object.
              * @example 11
              */
             readonly id?: string;
             /**
              * @deprecated
-             * @description This field has been deprecated. Use the `state` field instead.
+             * @description Deprecated. Use the `state` field instead.
              * @default submit
-             * @example submit
              * @enum {string}
              */
             action?: "submit" | "draft";
@@ -6193,7 +6226,7 @@ export interface components {
              */
             readonly moduleKey?: "accountsReceivable" | "orderEntry";
             /**
-             * @description Specify a unique invoice number while creating an invoice unless document sequencing is configured, in which case the number is auto-generated.
+             * @description Invoice number. If document sequencing is configured, the number is auto-generated.
              * @example INV-001
              */
             invoiceNumber?: string;
@@ -6204,7 +6237,7 @@ export interface components {
              * @example posted
              * @enum {string}
              */
-            state?: "reversed" | "reversal" | "draft" | "noValue" | "posted" | "paid" | "partiallyPaid" | "selected";
+            state?: "reversed" | "reversal" | "draft" | "submitted" | "partiallyApproved" | "declined" | "noValue" | "posted" | "paid" | "partiallyPaid" | "selected";
             /**
              * @description Number of days until the invoice is due.
              * @example 108
@@ -6222,22 +6255,23 @@ export interface components {
             description?: string;
             /**
              * @deprecated
-             * @description This field is deprecated, please use `salesDocument` field instead.
+             * @description Deprecated. Use the `salesDocument` field instead.
              */
             documentId?: string;
+            /** @description Order entry document associated with this invoice. */
             readonly salesDocument?: {
                 /**
-                 * @description Document ID of the sales invoice.
+                 * @description ID for the sales document.
                  * @example Sales Invoice-SI-00188
                  */
                 readonly id?: string;
                 /**
-                 * @description System-assigned key to uniquely identify the order entry document.
+                 * @description Unique key for the sales document.
                  * @example 511
                  */
                 readonly key?: string;
                 /**
-                 * @description URL endpoint for the order entry document.
+                 * @description URL endpoint for the sales document.
                  * @example /objects/order-entry/document/511
                  */
                 readonly href?: string;
@@ -6245,19 +6279,19 @@ export interface components {
             /**
              * Format: date
              * @description Date of the discount.
-             * @example 2022-12-13
+             * @example 2026-08-31
              */
             readonly discountCutOffDate?: string;
             /**
              * Format: date
              * @description Date the invoice was created.
-             * @example 2022-12-06
+             * @example 2026-08-31
              */
             invoiceDate?: string;
             /**
              * Format: date
              * @description Date the invoice is due.
-             * @example 2022-12-31
+             * @example 2026-08-31
              */
             dueDate?: string;
             /** @description Currency details for this invoice. */
@@ -6280,7 +6314,7 @@ export interface components {
                     /**
                      * Format: date
                      * @description Exchange rate date for this transaction. Can be the current date, the date the transaction was issued, or the date the transaction will be paid.
-                     * @example 2021-01-23
+                     * @example 2026-01-23
                      */
                     date?: string;
                     /**
@@ -6298,25 +6332,25 @@ export interface components {
             /**
              * Format: decimal-precision-2
              * @description For multi-currency companies, total entered in the base currency of the company.
-             * @example 700000
+             * @example 700000.00
              */
             readonly totalBaseAmount?: string;
             /**
              * Format: decimal-precision-2
              * @description For multi-currency companies, total due in the base currency of the company.
-             * @example 700000
+             * @example 700000.00
              */
             readonly totalBaseAmountDue?: string;
             /**
              * Format: decimal-precision-2
              * @description Total transaction amount in the currency of the invoice.
-             * @example 700000
+             * @example 700000.00
              */
             readonly totalTxnAmount?: string;
             /**
              * Format: decimal-precision-2
              * @description Total transaction amount due in the currency of the invoice.
-             * @example 700000
+             * @example 700000.00
              */
             readonly totalTxnAmountDue?: string;
             /**
@@ -6327,7 +6361,7 @@ export interface components {
             /** @description Message to include on the customer's invoice. */
             customerMessage?: {
                 /**
-                 * @description System-assigned key for the customer message.
+                 * @description Unique key for the customer message.
                  * @example 10
                  */
                 key?: string;
@@ -6350,7 +6384,7 @@ export interface components {
             /** @description Recurring schedule used to automate the billing process. */
             readonly recurringSchedule?: {
                 /**
-                 * @description System-assigned key to uniquely identify the recurring schedule.
+                 * @description Unique key for the recurring schedule.
                  * @example 20
                  */
                 readonly key?: string;
@@ -6360,7 +6394,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description Date the invoice was paid.
-                 * @example 2021-01-23
+                 * @example 2026-01-23
                  */
                 readonly fullyPaidDate?: string | null;
                 /**
@@ -6376,29 +6410,29 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description Total paid in the company's base currency.
-                 * @example 500
+                 * @example 500.00
                  */
                 readonly totalBaseAmountPaid?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total selected for payment in the company's base currency.
-                 * @example 500
+                 * @example 500.00
                  */
                 readonly totalBaseAmountSelectedForPayment?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total amount selected for payment in the invoice currency.
-                 * @example 500
+                 * @example 500.00
                  */
                 readonly totalTxnAmountSelectedForPayment?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total amount paid in the invoice currency.
-                 * @example 500
+                 * @example 500.00
                  */
                 readonly totalTxnAmountPaid?: string;
             };
-            /** @description Associated contacts */
+            /** @description Contacts associated with the invoice. */
             contacts?: {
                 /**
                  * payTo
@@ -6406,7 +6440,7 @@ export interface components {
                  */
                 payTo?: {
                     /**
-                     * @description System-assigned key to uniquely identify the contact.
+                     * @description Unique key for the contact.
                      * @example 176
                      */
                     key?: string;
@@ -6427,12 +6461,12 @@ export interface components {
                  */
                 returnTo?: {
                     /**
-                     * @description System-assigned key to uniquely identify the contact.
+                     * @description Unique key for the contact.
                      * @example 176
                      */
                     key?: string;
                     /**
-                     * @description Name of the contact
+                     * @description Name of the contact.
                      * @example Power Aerospace Materials(C1)
                      */
                     id?: string;
@@ -6454,12 +6488,12 @@ export interface components {
                         /** @description Contact tax group associated with the ship-to contact. */
                         group?: {
                             /**
-                             * @description System-assigned key for the group.
+                             * @description Unique key for the contact tax group.
                              * @example 288
                              */
                             key?: string | null;
                             /**
-                             * @description Unique identifier for the group.
+                             * @description ID for the contact tax group.
                              * @example Goods Zero Rate - CA
                              */
                             id?: string | null;
@@ -6473,20 +6507,20 @@ export interface components {
                 };
             };
             /**
-             * @description If `true`, this invoice record is created by the system internally and not created based on user input.
+             * @description Indicates whether the invoice is created by the system internally and not based on user input.
              * @default false
              * @example true
              */
             readonly isSystemGeneratedDocument?: boolean;
-            /** @description If AR is configured for inter-entity bill back, the template to use to create a matching bill. */
+            /** @description For AR inter-entity bill back configurations, the template used to create a matching bill. */
             billbackTemplate?: {
                 /**
-                 * @description System-assigned key for the template.
+                 * @description Unique key for the billback template.
                  * @example 18
                  */
                 key?: string;
                 /**
-                 * @description ID for the template.
+                 * @description ID for the billback template.
                  * @example BBT-error5
                  */
                 id?: string;
@@ -6501,18 +6535,17 @@ export interface components {
              * @description **Deprecated.** This field is no longer required and will be ignored.
              *     The matching bill is now created automatically when `billbackTemplate` is provided, if AR is configured for inter-entity bill back.
              * @default false
-             * @example true
              */
             createAPBill?: boolean;
             /** @description Supporting document attached to the invoice. */
             attachment?: {
                 /**
-                 * @description System-assigned key for the supporting document.
+                 * @description Unique key for the attachment.
                  * @example 11
                  */
                 key?: string;
                 /**
-                 * @description System-assigned ID for the supporting document.
+                 * @description ID for the attachment.
                  * @example 11
                  */
                 id?: string;
@@ -6525,12 +6558,12 @@ export interface components {
             /** @description Customer to receive the invoice. */
             customer?: {
                 /**
-                 * @description System-assigned key for the customer.
+                 * @description Unique key for the customer.
                  * @example 14
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier of the customer.
+                 * @description ID for the customer.
                  * @example C-00019
                  */
                 id?: string;
@@ -6567,7 +6600,7 @@ export interface components {
             /** @description Term details for the invoice. */
             term?: {
                 /**
-                 * @description System-assigned key for the term.
+                 * @description Unique key for the term.
                  * @example 16
                  */
                 key?: string;
@@ -6585,12 +6618,12 @@ export interface components {
             /** @description Tax solution details for this invoice. */
             taxSolution?: {
                 /**
-                 * @description System-assigned key to uniquely identify the tax solution.
+                 * @description Unique key for the tax solution.
                  * @example 4
                  */
                 key?: string | null;
                 /**
-                 * @description Name or other unique identifier for the tax solution.
+                 * @description ID for the tax solution.
                  * @example Australia GST
                  */
                 id?: string | null;
@@ -6601,14 +6634,15 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Specifies whether the transaction is a regular invoice (invoice), an electronic invoice (eInvoice), or an invoice reported to the tax agency because it is not eligible for e-invoicing (eReporting).
+             * @description Invoice type indicating whether the invoice is a regular invoice (`invoice`), an electronic invoice (`eInvoice`),
+             *     or an invoice reported to the tax agency because it is not eligible for e-invoicing (`eReporting`).
              * @example invoice
              * @enum {string}
              */
             invoiceType?: null | "invoice" | "eInvoice" | "eReporting";
             /**
              * @description Invoice mode for France e-invoicing workflows; applicable only for France e-invoice enabled entities.
-             *     Specifies the invoice mode based on invoiceType. For eReporting, specify tlb1 (goods) or tps1 (services). For eInvoice, specify b1 or s1.
+             *     The invoice mode is based on the `invoiceType` value. For `eReporting`, specify `tlb1` (goods) or `tps1` (services). For `eInvoice`, specify `b1` or `s1`.
              *
              *     Supported values:
              *     - `tlb1` - E-Reporting mode for goods.
@@ -6622,7 +6656,7 @@ export interface components {
              */
             invoiceMode?: null | "tlb1" | "tps1" | "b1" | "s1";
             /**
-             * @description Current status of an e-invoice; applicable only when selected invoice type is eInvoice.
+             * @description Current status of an e-invoice; applicable only when the selected invoice type is `eInvoice`.
              *
              *     Supported statuses:
              *     - `submitted` - The supplier submits its invoice or credit note to the public invoicing portal or its registered private platform.
@@ -6646,32 +6680,30 @@ export interface components {
              * @enum {string}
              */
             readonly eInvoiceStatus?: null | "submitted" | "issuedByPlatform" | "fileUploaded" | "madeAvailable" | "inHand" | "refused" | "paymentSent" | "paymentReceived" | "disputed" | "notSent" | "inTransit" | "approved" | "receivedByPlatform" | "rejectedByPlatform" | "suspended" | "completed" | "partiallyApproved";
-            /** @description France E-invoicing dispute information. */
+            /** @description France e-invoicing dispute information. */
             dispute?: {
                 /**
-                 * @description Dispute reason (France E-invoicing only).
+                 * @description For France e-invoicing, the dispute reason.
                  * @example recipientNotConnected
                  * @enum {string}
                  */
                 readonly reason?: null | "recipientNotConnected" | "other" | "bankDetailsError" | "incorrectVATRate" | "incorrectTotalAmount" | "invoiceCalculationError" | "legalNoticeMissing" | "duplicateInvoice" | "errorInRecipientInformation" | "unknownTransaction" | "issuerUnknown" | "contractCompleted" | "doubleInvoice" | "orderNumberIncorrectOrMissing" | "incorrectEmailBillingAddress" | "incorrectOrMissingSiretNumber" | "routingCodeMissingOrIncorrect" | "contractualReferenceRequired" | "incorrectReference" | "incorrectUnitPrices" | "incorrectDiscount" | "incorrectQuantityBilled" | "itemBilledIncorrectly" | "incorrectPaymentMethod" | "incorrectQualityOfItemDelivered" | "deliveryProblem";
                 /**
-                 * @description Additional information for disputing the bill which is supported only for France E-invoicing.
-                 *     Use this field to provide the detail that explains why the bill was disputed.
+                 * @description For France e-invoicing, additional details explaining why the invoice was disputed.
                  * @example Does not have an active invoice receiving address
                  */
                 readonly notes?: string;
             };
-            /** @description France E-invoicing refusal information. */
+            /** @description France e-invoicing refusal information. */
             refuse?: {
                 /**
-                 * @description Refusal reason (France E-invoicing only).
+                 * @description For France e-invoicing, the refusal reason.
                  * @example incorrectVATRate
                  * @enum {string}
                  */
                 readonly reason?: null | "incorrectVATRate" | "incorrectTotalAmount" | "invoiceCalculationError" | "legalNoticeMissing" | "duplicateInvoice" | "errorInRecipientInformation" | "unknownTransaction" | "issuerUnknown" | "contractCompleted" | "doubleInvoice" | "orderNumberIncorrectOrMissing" | "incorrectEmailBillingAddress" | "contractualReferenceRequired";
                 /**
-                 * @description Additional information for refusing the bill which is supported only for France E-invoicing.
-                 *     Use this field to provide the detail that explains why the bill was refused.
+                 * @description For France e-invoicing, additional details explaining why the invoice was refused.
                  * @example The VAT rate used is not the one that should have been
                  */
                 readonly notes?: string;
@@ -6679,7 +6711,7 @@ export interface components {
             /** @description Summary details for this invoice. Summaries are collections of the same types of transactions grouped together for processing. */
             invoiceSummary?: {
                 /**
-                 * @description System-assigned key to uniquely identify the summary.
+                 * @description Unique key for the invoice summary.
                  * @example 33
                  */
                 key?: string;
@@ -6691,7 +6723,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description GL posting date for the summary.
-                 * @example 2023-02-06
+                 * @example 2026-02-06
                  */
                 glPostingDate?: string;
                 /**
@@ -6706,14 +6738,14 @@ export interface components {
                  */
                 readonly isSummaryPosted?: string;
                 /**
-                 * @description URL for the term.
+                 * @description URL endpoint for the invoice summary.
                  * @example /objects/accounts-receivable/summary/33
                  */
                 readonly href?: string;
             };
             /**
              * Format: outbound-binary
-             * @description Contains download link for an invoice.
+             * @description Download link for the invoice.
              * @example /services/core/content/download?key=106&resource=objects/accounts-receivable/invoice&field=/downloadURL
              */
             readonly downloadURL?: string;
@@ -6731,7 +6763,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the provider payment.
+                 * @description ID for the provider payment.
                  * @example 4
                  */
                 readonly id?: string;
@@ -6746,9 +6778,9 @@ export interface components {
                  * @example processingCompleted
                  * @enum {string}
                  */
-                readonly state?: null | "inProgress" | "pending" | "unauthorized" | "arrived" | "rejected" | "paidOffline" | "cancelled" | "processing" | "processingCompleted" | "processingFailed" | "refunded" | "partiallyPaid" | "partiallyRefunded" | "paid" | "requestFailed";
+                readonly state?: null | "inProgress" | "pending" | "unauthorized" | "arrived" | "rejected" | "paidOffline" | "cancelled" | "processing" | "processingCompleted" | "processingFailed" | "disputed" | "refunded" | "partiallyPaid" | "partiallyRefunded" | "paid" | "requestFailed" | "paymentScheduled";
             };
-            /** @description Retainage information for the invoice. Retainage is a portion of the agreed-upon contract price withheld until the work is substantially complete. (Construction subscription) */
+            /** @description For Construction subscriptions, retainage information for the invoice. Retainage is a portion of the agreed-upon contract price withheld until the work is substantially complete. */
             readonly retainage?: {
                 /**
                  * Format: percent-precision-2
@@ -6781,20 +6813,20 @@ export interface components {
                  */
                 readonly isReleased?: boolean;
             };
-            /** @description Reference to the project contract. (Construction subscription) */
+            /** @description For Construction subscriptions, the associated project contract. */
             readonly projectContract?: components["schemas"]["project-contract-ref"] & {
                 /**
-                 * @description Project contract key
+                 * @description Unique key for the project contract.
                  * @example 1
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Project contract ID
+                 * @description ID for the project contract.
                  * @example BTI-01
                  */
                 readonly id?: string | null;
             };
-            /** @description Project contract billing details for the invoice. (Construction subscription) */
+            /** @description For Construction subscriptions, project contract billing details for the invoice. */
             readonly projectContractBilling?: {
                 /**
                  * @description External reference number for the project contract.
@@ -6808,31 +6840,31 @@ export interface components {
                 readonly description?: string | null;
                 /**
                  * Format: date
-                 * @description Date of the project contract in the yyyy-mm-dd format.
+                 * @description Date of the project contract in yyyy-mm-dd format.
                  * @example 2026-01-08
                  */
                 readonly contractDate?: string | null;
                 /**
                  * Format: date
-                 * @description Billing through date for the Account Receivable Invoice in the yyyy-mm-dd format.
+                 * @description Billing through date for the invoice in yyyy-mm-dd format.
                  * @example 2026-01-30
                  */
                 readonly billingThroughDate?: string | null;
                 /**
-                 * @description Billing application number for the Account Receivable Invoice.
+                 * @description Billing application number for the invoice.
                  * @example IA-89115
                  */
                 readonly billingApplicationNumber?: string | null;
             };
-            /** @description Reference to a project contract architect contact. (Construction subscription) */
+            /** @description For Construction subscriptions, the project contract architect contact. */
             readonly architect?: {
                 /**
-                 * @description System-assigned key for the contact.
+                 * @description Unique key for the contact.
                  * @example 12
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique identifier for the contact.
+                 * @description ID for the contact.
                  * @example Eberhardt
                  */
                 readonly id?: string | null;
@@ -6846,13 +6878,13 @@ export interface components {
             /** @description Line items of the invoice. */
             lines?: components["schemas"]["objects.accounts-receivable.invoice-line"][];
             entity?: components["schemas"]["entity-ref"];
-            /** @description RecordURL of the invoice. */
+            /** @description Record URL for the invoice. */
             readonly webURL?: string;
             audit?: components["schemas"]["audit.s1"] & {
                 /**
                  * Format: date-time
                  * @description Time of the submission.
-                 * @example 2014-01-08T11:28:12Z
+                 * @example 2026-01-08T11:28:12Z
                  */
                 readonly createdDateTime?: string;
             };
@@ -7065,24 +7097,24 @@ export interface components {
         /** @description Line items in an AR invoice represent transactions captured in that invoice. */
         "objects.accounts-receivable.invoice-line": {
             /**
-             * @description System-assigned key for the AR invoice line item.
+             * @description System-assigned unique key for the AR invoice line item.
              * @example 103
              */
             readonly key?: string;
             /**
-             * @description Identifier for the AR invoice line item.
+             * @description Unique ID for the AR invoice line item. This value is the same as the `key` for this object.
              * @example 103
              */
             readonly id?: string;
             /** @description General Ledger (GL) account associated with the line item. */
             glAccount?: {
                 /**
-                 * @description System-assigned key for the GL account.
+                 * @description Unique key for the GL account.
                  * @example 163
                  */
                 key?: string;
                 /**
-                 * @description User-assigned number for the GL account.
+                 * @description ID for the GL account.
                  * @example 4010
                  */
                 id?: string;
@@ -7091,18 +7123,21 @@ export interface components {
                  * @example Sales Revenue Licensing
                  */
                 readonly name?: string;
-                /** @example /objects/general-ledger/account/163 */
+                /**
+                 * @description URL endpoint for the GL account.
+                 * @example /objects/general-ledger/account/163
+                 */
                 readonly href?: string;
             };
             /** @description An alternative AR account to override the default GL AR account for the invoice line item. */
             overrideOffsetGLAccount?: {
                 /**
-                 * @description System-assigned key for the GL account.
+                 * @description Unique key for the GL account.
                  * @example 263
                  */
                 key?: string;
                 /**
-                 * @description GL account number.
+                 * @description ID for the GL account.
                  * @example 1103
                  */
                 id?: string;
@@ -7112,14 +7147,14 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL for the GL account.
+                 * @description URL endpoint for the GL account.
                  * @example /objects/general-ledger/account/263
                  */
                 readonly href?: string;
             };
             /**
              * Format: decimal-precision-2
-             * @description For multi-currency companies, Sage Intacct calculates the base amount by applying the exchange rate from the header to the transaction amount.
+             * @description For multi-currency companies, the base amount calculated by applying the exchange rate from the invoice header to the transaction amount.
              * @example 24115.65
              */
             readonly baseAmount?: string;
@@ -7154,7 +7189,7 @@ export interface components {
                     /**
                      * Format: date
                      * @description Exchange rate date used to calculate the base amount from the transaction amount.
-                     * @example 2021-01-23
+                     * @example 2026-01-23
                      */
                     readonly date?: string;
                     /**
@@ -7199,25 +7234,28 @@ export interface components {
             /** @description Transaction allocation template for the line item, which distributes the invoice amount across specified dimensions. */
             allocation?: {
                 /**
-                 * @description System-assigned key for the allocation.
+                 * @description Unique key for the allocation.
                  * @example 22
                  */
                 key?: string | null;
                 /**
-                 * @description System-assigned ID for the allocation.
+                 * @description ID for the allocation.
                  * @example Premium Allocation
                  */
                 id?: string | null;
-                /** @example /objects/general-ledger/txn-allocation-template/21 */
+                /**
+                 * @description URL endpoint for the allocation.
+                 * @example /objects/general-ledger/txn-allocation-template/21
+                 */
                 readonly href?: string;
             };
             /**
-             * @description Line number
+             * @description Line number.
              * @example 1
              */
             readonly lineNumber?: number;
             /**
-             * @description Indicates if the line item is a subtotal, tax item, or neither.
+             * @description Indicates whether the line item is a subtotal, tax item, or neither.
              * @default null
              * @example subtotal
              * @enum {string|null}
@@ -7225,7 +7263,7 @@ export interface components {
             readonly isSubtotal?: null | "subtotal" | "tax";
             readonly baseLocation?: components["schemas"]["location-ref"] & {
                 /**
-                 * @description Base location key.
+                 * @description Unique key for the base location.
                  * @example 4
                  */
                 key?: string;
@@ -7233,18 +7271,18 @@ export interface components {
             /**
              * Format: date
              * @description Entry date for the line item.
-             * @example 2021-01-23
+             * @example 2026-01-23
              */
             readonly createdDate?: string;
-            /** @description Meaningful name of AR account. */
+            /** @description Account label for the invoice line item. */
             accountLabel?: {
                 /**
-                 * @description System-assigned key for the account label.
+                 * @description Unique key for the account label.
                  * @example 14
                  */
                 key?: string;
                 /**
-                 * @description Meaningful name of the account.
+                 * @description ID for the account label.
                  * @example Accounts Receivable - Microcomputer
                  */
                 id?: string;
@@ -7254,21 +7292,21 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL for the account label.
+                 * @description URL endpoint for the account label.
                  * @example /objects/accounts-receivable/account-label/14
                  */
                 readonly href?: string;
             };
             /**
-             * @description Indicates whether the entry is summarized. (Construction subscription)
+             * @description For Construction subscriptions, indicates whether the entry is summarized.
              * @default false
              * @example false
              */
             readonly isSummarized?: boolean;
-            /** @description Retainage information for the line item. Retainage is a portion of the agreed upon contract price withheld until the work is substantially complete. (Construction subscription) */
+            /** @description For Construction subscriptions, retainage information for the line item. Retainage is a portion of the agreed-upon contract price withheld until the work is substantially complete. */
             readonly retainage?: {
                 /**
-                 * @description If `true`, retainage applies to the line item.
+                 * @description Indicates whether retainage applies to the line item.
                  * @default false
                  * @example true
                  */
@@ -7311,16 +7349,16 @@ export interface components {
                 readonly isReleaseLine?: boolean;
                 /**
                  * offsetGLAccount
-                 * @description The GL account where the system posts retainage offsets to this line item.
+                 * @description GL account where the system posts retainage offsets for this line item.
                  */
                 readonly offsetGLAccount?: {
                     /**
-                     * @description System-assigned key for the GL account.
+                     * @description Unique key for the GL account.
                      * @example 263
                      */
                     readonly key?: string | null;
                     /**
-                     * @description GL account number.
+                     * @description ID for the GL account.
                      * @example 1103
                      */
                     readonly id?: string | null;
@@ -7336,28 +7374,28 @@ export interface components {
                     readonly href?: string | null;
                 };
             };
-            /** @description Reference to the project contract. (Construction subscription) */
+            /** @description For Construction subscriptions, the associated project contract. */
             readonly projectContract?: components["schemas"]["project-contract-ref"] & {
                 /**
-                 * @description Project contract key
+                 * @description Unique key for the project contract.
                  * @example 1
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Project contract ID
+                 * @description ID for the project contract.
                  * @example BTI-01
                  */
                 readonly id?: string | null;
             };
-            /** @description Reference to a specific project contract line. (Construction subscription) */
+            /** @description For Construction subscriptions, the associated project contract line. */
             readonly projectContractLine?: components["schemas"]["project-contract-line-ref"] & {
                 /**
-                 * @description Project contract line key
+                 * @description Unique key for the project contract line.
                  * @example 4
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Project contract line ID
+                 * @description ID for the project contract line.
                  * @example Project-Contract-Line-04
                  */
                 readonly id?: string | null;
@@ -7371,12 +7409,12 @@ export interface components {
                  */
                 location?: {
                     /**
-                     * @description System-assigned key for the location.
+                     * @description Unique key for the location.
                      * @example 4
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier of the location.
+                     * @description ID for the location.
                      * @example AU
                      */
                     id?: string;
@@ -7385,7 +7423,10 @@ export interface components {
                      * @example Australia
                      */
                     readonly name?: string;
-                    /** @example /objects/company-config/location/4 */
+                    /**
+                     * @description URL endpoint for the location.
+                     * @example /objects/company-config/location/4
+                     */
                     readonly href?: string;
                 };
                 /**
@@ -7394,12 +7435,12 @@ export interface components {
                  */
                 department?: {
                     /**
-                     * @description System-assigned key for the department.
+                     * @description Unique key for the department.
                      * @example 9
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier of the department.
+                     * @description ID for the department.
                      * @example 01
                      */
                     id?: string;
@@ -7408,24 +7449,27 @@ export interface components {
                      * @example Sales
                      */
                     readonly name?: string;
-                    /** @example /objects/company-config/department/9 */
+                    /**
+                     * @description URL endpoint for the department.
+                     * @example /objects/company-config/department/9
+                     */
                     readonly href?: string;
                 };
             };
-            /** @description Header level details for the AR invoice's line items. */
+            /** @description Header level details for the AR invoice. */
             invoice?: {
                 /**
-                 * @description Identifier for the AR invoice.
+                 * @description ID for the AR invoice.
                  * @example 6
                  */
                 readonly id?: string;
                 /**
-                 * @description System-assigned key for the AR invoice.
+                 * @description Unique key for the AR invoice.
                  * @example 6
                  */
                 key?: string;
                 /**
-                 * @description URL for the AR invoice.
+                 * @description URL endpoint for the AR invoice.
                  * @example /objects/accounts-receivable/invoice/6
                  */
                 readonly href?: string;
@@ -7433,7 +7477,7 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "accounts-receivable-invoice-lineRequiredProperties": Record<string, never>;
-        /** @description For VAT enabled transactions, invoice line items will have tax entries. */
+        /** @description An AR invoice tax entry represents the VAT tax details associated with an invoice line item. */
         "objects.accounts-receivable.invoice-tax-entry": {
             /**
              * @description System-assigned key for the tax entry.
@@ -7471,7 +7515,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the Order Entry tax detail.
+                 * @description ID for the Order Entry tax detail.
                  * @example Alaska Tax Detail
                  */
                 id?: string;
@@ -7483,16 +7527,16 @@ export interface components {
             };
             /**
              * invoice-line
-             * @description Invoice line item that the invoice tax entry is associated with.
+             * @description Invoice line item associated with this invoice tax entry.
              */
             readonly invoiceLine?: {
                 /**
-                 * @description Unique identifier for the invoice line.
+                 * @description ID for the invoice line.
                  * @example 100
                  */
                 readonly id?: string;
                 /**
-                 * @description Unique key for the invoice line. This value is the same as the `key` for this object.
+                 * @description Unique key for the invoice line.
                  * @example 100
                  */
                 readonly key?: string;
@@ -7506,12 +7550,12 @@ export interface components {
         /** @description Collection of invoices grouped together for processing. */
         "objects.accounts-receivable.invoice-summary": {
             /**
-             * @description System-assigned key for the invoice summary.
+             * @description System-assigned unique key for the invoice summary.
              * @example 13
              */
             readonly key?: string;
             /**
-             * @description ID for the invoice summary. This value is the same as key for this object.
+             * @description Unique ID for the invoice summary. This value is the same as the `key` for this object.
              * @example 13
              */
             readonly id?: string;
@@ -7535,11 +7579,11 @@ export interface components {
             /**
              * Format: date
              * @description The date that the items included in the summary should post to the general ledger.
-             * @example 2023-05-06
+             * @example 2026-05-06
              */
             glPostingDate?: string;
             /**
-             * @description The record type determines the type of items the summary should contain. Record type ri (invoices)
+             * @description Record type indicating the type of items in the summary. For AR invoice summaries, the record type is `invoice`.
              * @default invoice
              * @example invoice
              * @enum {string}
@@ -7561,12 +7605,12 @@ export interface components {
             /** @description Parent of the invoice summary. */
             parent?: {
                 /**
-                 * @description System-assigned key for the parent summary.
+                 * @description Unique key for the parent summary.
                  * @example 13
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the parent summary.
+                 * @description ID for the parent summary.
                  * @example 13
                  */
                 id?: string;
@@ -7577,13 +7621,13 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Set to `true` to prevent posting the summary items to the general ledger.
+             * @description Indicates whether the summary items are prevented from posting to the general ledger.
              * @default false
              * @example false
              */
             preventGLPosting?: boolean;
             /**
-             * @description This field is set to `true` only for manual and quick payment summaries.
+             * @description Indicates whether this is a manual or quick payment summary.
              * @default false
              * @example false
              */
@@ -7599,7 +7643,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description ID for the AR payment. This value is the same as the `key` for this object.
+             * @description Unique ID for the AR payment. This value is the same as the `key` for this object.
              * @example 310
              */
             readonly id?: string;
@@ -7621,7 +7665,23 @@ export interface components {
             /** @description Financial account from which the payment will be made. */
             financialEntity?: {
                 /**
+                 * @description Unique key for the financial entity.
+                 * @example 1002
+                 */
+                key?: string;
+                /**
                  * @description Financial entity ID, such as a checking account ID.
+                 * @example CHK002
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the financial entity.
+                 * @example /objects/cash-management/bank-account/1002
+                 */
+                readonly href?: string;
+                /**
+                 * @deprecated
+                 * @description This field has been deprecated. Use the `id` field instead.
                  * @example CHK002
                  */
                 entityId?: string;
@@ -7636,7 +7696,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description Bank currency
+                 * @description Bank currency.
                  * @example USD
                  */
                 readonly currency?: string;
@@ -7666,7 +7726,7 @@ export interface components {
              * @enum {string}
              */
             state?: "complete" | "reconciled" | "draft" | "reversed" | "reversal";
-            /** @description Multi-entity payment details. */
+            /** @description Multi-entity payment associated with the AR payment. */
             multiEntityPayment?: {
                 /**
                  * @description Unique key for the multi-entity payment.
@@ -7685,7 +7745,7 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Payment Method
+             * @description Payment method.
              * @example printedCheck
              * @enum {string|null}
              */
@@ -7801,7 +7861,7 @@ export interface components {
              * @example 1234
              */
             referenceNumber?: string | null;
-            /** @description AR summary the payment is part of. Summaries are collections of transactions grouped together for processing. */
+            /** @description Payment summary associated with the AR payment. Payment summaries are collections of transactions grouped together for processing. */
             paymentSummary?: {
                 /**
                  * @description Unique key for the AR summary.
@@ -7809,7 +7869,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description ID for the AR summary.
+                 * @description ID for the payment summary.
                  * @example 1259
                  */
                 id?: string;
@@ -7830,7 +7890,7 @@ export interface components {
                  */
                 name?: string;
                 /**
-                 * @description URL endpoint for the AR summary.
+                 * @description URL endpoint for the payment summary.
                  * @example /objects/accounts-receivable/summary/1259
                  */
                 readonly href?: string;
@@ -7862,8 +7922,7 @@ export interface components {
                 key?: string;
                 /**
                  * @deprecated
-                 * @description This field has been deprecated.
-                 * @example C100
+                 * @description This field has been deprecated. Use the 'customer.id' field instead.
                  */
                 readonly entity?: string;
                 /**
@@ -7882,7 +7941,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Supporting document for the payment. */
+            /** @description Attachment associated with the AR payment. */
             attachment?: {
                 /**
                  * @description Unique key for the attachment.
@@ -8169,7 +8228,7 @@ export interface components {
                  */
                 negativeInvoiceAmount?: string | null;
             };
-            /** @description Inline transaction record details. */
+            /** @description Inline transaction associated with the AR payment detail object. */
             inlineTxn?: {
                 /**
                  * @description Unique key for the inline transaction.
@@ -8187,7 +8246,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Inline transaction line item record. */
+            /** @description Inline transaction line item associated with the AR payment detail object. */
             inlineTxnLine?: {
                 /**
                  * @description Unique key for the inline transaction line item.
@@ -8205,7 +8264,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Posted advance record. */
+            /** @description Posted advance associated with the AR payment detail object. */
             readonly postedAdvance?: {
                 /**
                  * @description Unique key for the posted advance.
@@ -8223,7 +8282,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Posted advance line item record. */
+            /** @description Posted advance line associated with the AR payment detail object. */
             readonly postedAdvanceLine?: {
                 /**
                  * @description Unique key for the posted advance line item.
@@ -8241,7 +8300,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Posted overpayment record. */
+            /** @description Posted overpayment associated with the AR payment detail object. */
             readonly postedOverPayment?: {
                 /**
                  * @description Unique key for the posted overpayment record.
@@ -8259,7 +8318,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Posted overpayment line item record. */
+            /** @description Posted overpayment line associated with the AR payment detail object. */
             readonly postedOverPaymentLine?: {
                 /**
                  * @description Unique key for the posted overpayment line item.
@@ -8277,7 +8336,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Negative invoice transaction record. */
+            /** @description Negative invoice transaction associated with the AR payment detail object. */
             negativeInvoice?: {
                 /**
                  * @description Unique key for the negative invoice transaction.
@@ -8295,7 +8354,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Negative invoice transaction line item record. */
+            /** @description Negative invoice transaction line associated with the AR payment detail object. */
             negativeInvoiceLine?: {
                 /**
                  * @description Unique key for the negative invoice transaction line item.
@@ -8313,7 +8372,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR adjustment transaction record. */
+            /** @description Adjustment associated with the AR payment detail object. */
             arAdjustment?: {
                 /**
                  * @description Unique key for the AR adjustment.
@@ -8331,7 +8390,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR adjustment transaction line item record. */
+            /** @description Adjustment line associated with the AR payment detail object. */
             arAdjustmentLine?: {
                 /**
                  * @description Unique key for the adjustment line item.
@@ -8349,7 +8408,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR invoice record. */
+            /** @description Invoice associated with the AR payment detail object. */
             arInvoice?: {
                 /**
                  * @description Unique key for the AR invoice.
@@ -8367,7 +8426,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR invoice line item record. */
+            /** @description Invoice line associated with the AR payment detail object. */
             arInvoiceLine?: {
                 /**
                  * @description Unique key for the AR invoice line item.
@@ -8385,7 +8444,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR advance record. */
+            /** @description Advance associated with the AR payment detail object. */
             arAdvance?: {
                 /**
                  * @description Unique key for the AR advance.
@@ -8403,7 +8462,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR advance line item record. */
+            /** @description Advance line associated with the AR payment detail object. */
             arAdvanceLine?: {
                 /**
                  * @description Unique key for the AR advance line item.
@@ -8421,7 +8480,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR posted overpayment record. */
+            /** @description Posted overpayment associated with the AR payment detail object. */
             arPostedOverPayment?: {
                 /**
                  * @description Unique key for the posted overpayment.
@@ -8439,7 +8498,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR posted overpayment line item record. */
+            /** @description Posted overpayment line associated with the AR payment detail object. */
             arPostedOverPaymentLine?: {
                 /**
                  * @description Unique key for the posted overpayment line item.
@@ -8457,7 +8516,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR payment record. */
+            /** @description Payment associated with the AR payment detail object. */
             readonly arPayment?: {
                 /**
                  * @description Unique key for the AR payment.
@@ -8475,7 +8534,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR payment line item record. */
+            /** @description Payment line associated with the AR payment detail object. */
             readonly arPaymentLine?: {
                 /**
                  * @description Unique key for the AR payment line.
@@ -8493,7 +8552,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Positive adjustment record. */
+            /** @description Positive adjustment associated with the AR payment detail object. */
             positiveAdjustment?: {
                 /**
                  * @description Unique key for the positive adjustment.
@@ -8511,7 +8570,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Positive adjustment line item record. */
+            /** @description Positive adjustment line associated with the AR payment detail object. */
             positiveAdjustmentLine?: {
                 /**
                  * @description Unique key for the positive adjustment line item.
@@ -8717,7 +8776,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description General Ledger (GL) account associated with the line item. */
+            /** @description GL account associated with the AR payment line item. */
             glAccount?: {
                 /**
                  * @description Unique key for the GL account.
@@ -8740,7 +8799,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description The GL account where the system posts offsets to this line item. */
+            /** @description Offset GL account associated with the AR payment line item. */
             offsetGLAccount?: {
                 /**
                  * @description Unique key for the GL account.
@@ -8869,7 +8928,7 @@ export interface components {
              * @enum {string}
              */
             state?: "open" | "closed";
-            /** @description Parent summary. */
+            /** @description Parent summary associated with the payment summary. */
             parent?: {
                 /**
                  * @description Unique key for the parent summary.
@@ -8893,7 +8952,7 @@ export interface components {
              * @example false
              */
             preventGLPosting?: boolean | null;
-            /** @description Bank account to use when accumulating payment summary. */
+            /** @description Bank account associated with the payment summary. */
             bankAccount?: {
                 /**
                  * @description Unique key for the bank account.
@@ -8916,7 +8975,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description The General Ledger undeposited funds account to use when accumulating payment summary. This account is required if a `bankAccount` is not specified. */
+            /** @description Undeposited funds account associated with the payment summary. Required when `bankAccount` is not specified. */
             undepositedGLAccount?: {
                 /**
                  * @description Unique key for the undeposited funds account.
@@ -8948,12 +9007,12 @@ export interface components {
         /** @description Recurring invoices are invoices that repeat at periods and durations defined in a recurrence schedule. */
         "objects.accounts-receivable.recurring-invoice": {
             /**
-             * @description System-assigned key for the recurring invoice.
+             * @description System-assigned unique key for the recurring invoice.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description ID for the recurring invoice. This value is the same as the key for this object.
+             * @description Unique ID for the recurring invoice. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -8973,15 +9032,15 @@ export interface components {
              * @example 100.00
              */
             readonly totalEntered?: string;
-            /** @description Tax solution details for this invoice. */
+            /** @description Tax solution associated with the invoice. */
             taxSolution?: {
                 /**
-                 * @description System-assigned key to uniquely identify the tax solution.
+                 * @description Unique key for the tax solution.
                  * @example 4
                  */
                 key?: string | null;
                 /**
-                 * @description Name or other unique identifier for the tax solution.
+                 * @description ID for the tax solution.
                  * @example Australia GST
                  */
                 id?: string | null;
@@ -9001,20 +9060,31 @@ export interface components {
              * @example PO1223
              */
             referenceNumber?: string;
-            /** @description Settings that establish the recurrence schedule. */
+            /**
+             * @description Indicates whether invoices created from this recurring invoice are enabled for online payment through a Payment Acceptance Services (PAS) provider.
+             * @default false
+             * @example true
+             */
+            enableOnlinePayment?: boolean;
+            /**
+             * @description System-generated reference shared with the Payment Acceptance Services (PAS) provider for all invoices created from this recurring invoice.
+             * @example 3fa85f64-5717-4562-b3fc-2c963f66afa6
+             */
+            readonly recurringReferenceUUID?: string | null;
+            /** @description Scheduled operation associated with the recurring invoice. */
             scheduledOperation?: {
                 /**
-                 * @description System-specified key for scheduled operation
+                 * @description Unique key for the scheduled operation.
                  * @example 234
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique identifier for the schedule operation. This value is the same as the `key` for this object
+                 * @description ID for the scheduled operation.
                  * @example 234
                  */
                 readonly id?: string;
                 /**
-                 * @description URL endpoint for the Scheduled Operation.
+                 * @description URL endpoint for the scheduled operation.
                  * @example /objects/core/scheduled-operation/234
                  */
                 readonly href?: string;
@@ -9023,18 +9093,18 @@ export interface components {
             schedule?: {
                 /**
                  * Format: date
-                 * @description The first date on which the invoice is generated.
-                 * @example 2024-01-01
+                 * @description First date on which the invoice is generated.
+                 * @example 2026-01-01
                  */
                 startDate?: string;
                 /**
                  * Format: date
-                 * @description If the `scheduleEnd` is set to `endDate`, this establishes the final date on which the invoice will be generated.
-                 * @example 2025-01-01
+                 * @description For recurring invoices where `scheduleEnd` is set to `endDate`, the final date on which the invoice is generated.
+                 * @example 2026-01-01
                  */
                 endDate?: string | null;
                 /**
-                 * @description If `scheduleEnd` is set to `numberOfOccurrences`, this establishes the number of times the invoice is generated.
+                 * @description For recurring invoices where `scheduleEnd` is set to `numberOfOccurrences`, the number of times the invoice is generated.
                  * @example 1
                  */
                 repeatCount?: string | null;
@@ -9047,7 +9117,7 @@ export interface components {
                 /**
                  * @description Indicates the regular interval at which the invoice is generated. To have the invoice occur at regular intervals, set to `day`, `week`, `month` or `year`. Set to `none` to have the invoice occur only once.
                  *
-                 *     If set to `day`, `week`, `month` or `year`, the invoice will recur at the next interval on the same date as the start date. To make an invoice with a monthly interval generate at the end of the month, set to `endOfMonth`.
+                 *     If set to `day`, `week`, `month` or `year`, the invoice recurs at the next interval on the same date as the start date. To make an invoice with a monthly interval generate at the end of the month, set to `endOfMonth`.
                  * @default day
                  * @example day
                  * @enum {string}
@@ -9062,13 +9132,13 @@ export interface components {
                 /**
                  * Format: date
                  * @description The date on which the next invoice will be generated.
-                 * @example 2021-01-01
+                 * @example 2026-01-01
                  */
                 readonly nextExecutionDate?: string;
                 /**
                  * Format: date
                  * @description The last date on which the invoice was generated.
-                 * @example 2021-01-01
+                 * @example 2026-01-01
                  */
                 readonly lastExecutionDate?: string | null;
                 /**
@@ -9077,20 +9147,20 @@ export interface components {
                  */
                 readonly txnCount?: number;
                 /**
-                 * @description Comma separated email addresses to which schedule notifications are sent in case of failures. If email address are not provided, schedule failure notifications will be sent to the user who created the schedule.
+                 * @description Comma-separated email addresses to which schedule failure notifications are sent. If no email addresses are provided, notifications are sent to the user who created the schedule.
                  * @example joe.smith@mycompany.com
                  */
                 emailNotifications?: string | null;
             };
-            /** @description Payment terms, which are used to calculate due date, discounts, and penalties associated with this invoice. */
+            /** @description Payment term used to calculate the due date, discounts, and penalties for the invoice. */
             term?: {
                 /**
-                 * @description System-assigned key for the payment term.
+                 * @description Unique key for the payment term.
                  * @example 16
                  */
                 key?: string;
                 /**
-                 * @description Name or other unique identifier for the payment term.
+                 * @description Name of the payment term.
                  * @example N15
                  */
                 id?: string;
@@ -9102,7 +9172,7 @@ export interface components {
             };
             contract?: {
                 /**
-                 * @description Unique identifier for the contract.
+                 * @description ID for the contract.
                  * @example CON-2
                  */
                 id?: string | null;
@@ -9124,12 +9194,12 @@ export interface components {
                  */
                 txnCurrency?: string;
                 /**
-                 * @description Exchange rate
+                 * @description Exchange rate between the transaction currency and the base currency.
                  * @example 1.0789
                  */
                 exchangeRate?: number | null;
                 /**
-                 * @description Exchange rate type
+                 * @description Type of exchange rate used for the currency conversion.
                  * @example Intacct Daily Rate
                  */
                 exchangeRateTypeId?: string | null;
@@ -9137,7 +9207,7 @@ export interface components {
             /** @description Message to include on the customer's invoice. */
             customerMessage?: {
                 /**
-                 * @description System-assigned key for the customer message.
+                 * @description Unique key for the customer message.
                  * @example 10
                  */
                 key?: string;
@@ -9160,7 +9230,7 @@ export interface components {
             /**
              * Format: decimal-precision-2
              * @description Total transaction amount entered.
-             * @example 100
+             * @example 100.00
              */
             txnTotalEntered?: string;
             /** @description Contacts for the invoice. */
@@ -9171,7 +9241,7 @@ export interface components {
                  */
                 billTo?: {
                     /**
-                     * @description System-assigned key for the contact.
+                     * @description Unique key for the contact.
                      * @example 15
                      */
                     key?: string;
@@ -9192,7 +9262,7 @@ export interface components {
                  */
                 shipTo?: {
                     /**
-                     * @description System-assigned key for the contact.
+                     * @description Unique key for the contact.
                      * @example 15
                      */
                     key?: string;
@@ -9214,17 +9284,17 @@ export interface components {
                         /** @description Contact tax group associated with the ship-to contact. */
                         group?: {
                             /**
-                             * @description System-assigned key for the group.
+                             * @description Unique key for the contact tax group.
                              * @example 288
                              */
                             key?: string | null;
                             /**
-                             * @description Unique identifier for the group.
+                             * @description Name of the contact tax group.
                              * @example Goods Zero Rate - CA
                              */
                             id?: string | null;
                             /**
-                             * @description URL endpoint for the group.
+                             * @description URL endpoint for the contact tax group.
                              * @example /objects/tax/contact-tax-group/288
                              */
                             readonly href?: string;
@@ -9240,7 +9310,7 @@ export interface components {
             /** @description Customer to receive the invoice. */
             customer?: {
                 /**
-                 * @description System-assigned key for the customer.
+                 * @description Unique key for the customer.
                  * @example 10
                  */
                 key?: string;
@@ -9260,14 +9330,14 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description List of payments on the recurring AR invoice. */
+            /** @description Payment details for invoices generated from this recurring invoice. */
             payment?: {
                 /**
                  * @description Payment method.
                  * @example creditCard
                  * @enum {string}
                  */
-                paymentMethod?: "none" | "printedCheck" | "creditCard" | "eft" | "cash" | "onlineChargeCard" | "onlineAchDebit";
+                paymentMethod?: "none" | "printedCheck" | "creditCard" | "eft" | "cash" | "onlineChargeCard" | "onlineAchDebit" | "onlinePayment";
                 /**
                  * Format: decimal-precision-2
                  * @description Recurring invoice payment amount.
@@ -9275,48 +9345,48 @@ export interface components {
                  */
                 paymentAmount?: string | null;
                 /**
-                 * @description Card type.
+                 * @description Type of credit card used for the payment.
                  * @example visa
                  * @enum {string|null}
                  */
                 creditCardType?: null | "visa" | "mc" | "discover" | "amex" | "diners" | "other";
                 /**
-                 * @description Type of account to which the payment will be deposited.
+                 * @description Type of account to which the payment is deposited.
                  * @default null
                  * @example bank
                  * @enum {string|null}
                  */
                 accountType?: null | "bank" | "undepositedFundsAccount";
                 /**
-                 * @description Indicates whether to pay the invoice in full.
+                 * @description Indicates whether the invoice is paid in full.
                  * @default true
                  * @example true
                  */
                 payInFull?: boolean;
                 /**
-                 * @description Bank account record number.
+                 * @description ID for the bank account used for the payment.
                  * @example SBME
                  */
                 bankAccountId?: string | null;
                 /**
                  * @deprecated
-                 * @description This field is deprecated, please use bankAccountId.
-                 * @example SBME
+                 * @description Deprecated. Use `bankAccountId` instead.
                  */
                 bankAccountID?: string | null;
                 /**
-                 * @description Undeposited funds account number.
+                 * @description GL account used for undeposited funds.
                  * @example 1070
                  */
                 undepositedFundsAccountId?: string | null;
+                /** @description Credit card used for the payment. */
                 customerCreditCard?: {
                     /**
-                     * @description Customer credit card key.
+                     * @description Unique key for the customer credit card.
                      * @example 10
                      */
                     key?: string | null;
                     /**
-                     * @description Customer credit card id.
+                     * @description ID for the customer credit card.
                      * @example Card101
                      */
                     id?: string | null;
@@ -9325,12 +9395,12 @@ export interface components {
             /** @description Supporting document for the invoice. */
             attachment?: {
                 /**
-                 * @description System-assigned key for the attachment.
+                 * @description Unique key for the attachment.
                  * @example 6
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID of the attachment.
+                 * @description ID for the attachment.
                  * @example Doc6331
                  */
                 id?: string | null;
@@ -9345,8 +9415,8 @@ export interface components {
             readonly audit?: components["schemas"]["audit.s1"] & {
                 /**
                  * Format: date-time
-                 * @description Time of the submission.
-                 * @example 2024-01-23T11:28:12Z
+                 * @description Date and time the recurring invoice was created.
+                 * @example 2026-01-23T11:28:12Z
                  */
                 readonly createdDateTime?: string;
             };
@@ -9365,12 +9435,12 @@ export interface components {
         /** @description Line items in a recurring invoice represent transactions captured in that recurring invoice. */
         "objects.accounts-receivable.recurring-invoice-line": {
             /**
-             * @description System-assigned key for the line item.
+             * @description System-assigned unique key for the line item.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description ID for the line item. This value is the same as the key for this object.
+             * @description Unique ID for the line item. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -9380,14 +9450,14 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Provides information about the line item that may be of use in the future.
+             * @description Additional details about the line item.
              * @example Service charges
              */
             description?: string | null;
             /**
              * Format: decimal-precision-2
              * @description Base amount of the line item.
-             * @example 100
+             * @example 100.00
              */
             amount?: string;
             /**
@@ -9403,7 +9473,7 @@ export interface components {
             txnAmount?: string;
             /**
              * Format: decimal-precision-2
-             * @description For tax inclusive recurring invoices, provide a total transaction amount.
+             * @description For tax-inclusive recurring invoices, the total transaction amount.
              * @example 100.00
              */
             totalTxnAmount?: string;
@@ -9416,28 +9486,28 @@ export interface components {
             /** @description Currency information for the line item. */
             currency?: {
                 /**
-                 * @description Base currency
+                 * @description Base currency for the line item.
                  * @example USD
                  */
                 readonly baseCurrency?: string;
                 /**
-                 * @description Transaction currency
+                 * @description Transaction currency for the line item.
                  * @example USD
                  */
                 readonly txnCurrency?: string;
                 /**
                  * Format: date
-                 * @description Exchange rate date
-                 * @example 2024-01-23
+                 * @description Date of the exchange rate for the line item.
+                 * @example 2026-01-23
                  */
                 readonly exchangeRateDate?: string | null;
                 /**
-                 * @description Exchange rate
+                 * @description Exchange rate between the transaction currency and the base currency.
                  * @example 1.0789
                  */
                 readonly exchangeRate?: number;
                 /**
-                 * @description Exchange rate type
+                 * @description Type of exchange rate used for the currency conversion.
                  * @example INR-Rate
                  */
                 readonly exchangeRateTypeId?: string | null;
@@ -9454,10 +9524,10 @@ export interface components {
              * @example true
              */
             isSubTotal?: boolean;
-            /** @description Type of transaction allocation for the line item. */
+            /** @description Transaction allocation for the line item. */
             allocation?: {
                 /**
-                 * @description System-assigned key for the allocation.
+                 * @description Unique key for the allocation.
                  * @example 14
                  */
                 key?: string;
@@ -9475,12 +9545,12 @@ export interface components {
             /** @description Account label for the account that the line item is assigned to. */
             accountLabel?: {
                 /**
-                 * @description Account label key
+                 * @description Unique key for the account label.
                  * @example 14
                  */
                 key?: string;
                 /**
-                 * @description Account label ID
+                 * @description ID for the account label.
                  * @example Accounting Fees
                  */
                 id?: string;
@@ -9493,22 +9563,22 @@ export interface components {
             /** @description For companies subscribed to the Taxes application, the tax category for the line item. */
             taxDetail?: {
                 /**
-                 * @description Tax detail key
+                 * @description Unique key for the tax detail.
                  * @example 12
                  */
                 key?: string | null;
                 /**
-                 * @description Tax detail ID
+                 * @description ID for the tax detail.
                  * @example 12
                  */
                 id?: string | null;
                 /**
                  * @deprecated
-                 * @description This field is deprecated, please use taxPercent.
+                 * @description Deprecated. Use `taxPercent` instead.
                  */
                 readonly taxRate?: string | null;
                 /**
-                 * @description The tax rate used to calculate the tax amount. For example, this field contains a value of 10 if the tax rate is 10%.
+                 * @description Tax rate used to calculate the tax amount. For example, this field contains a value of 10 if the tax rate is 10%.
                  * @example 10
                  */
                 readonly taxPercent?: string | null;
@@ -9521,29 +9591,29 @@ export interface components {
             /**
              * Format: date
              * @description Revenue recognition start date.
-             * @example 2024-01-23
+             * @example 2026-01-23
              */
             startDate?: string | null;
             /**
              * Format: date
              * @description Revenue recognition end date.
-             * @example 2024-01-23
+             * @example 2026-01-23
              */
             endDate?: string | null;
-            /** @description GL account for deferred revenue for the line item. */
+            /** @description GL account for deferred revenue on the line item. */
             deferredRevenueGLAccount?: {
                 /**
-                 * @description Deferred revenue GL account key.
+                 * @description Unique key for the deferred revenue GL account.
                  * @example 384
                  */
                 key?: string;
                 /**
-                 * @description Deferred revenue GL account number.
+                 * @description ID for the deferred revenue GL account.
                  * @example 384
                  */
                 id?: string;
                 /**
-                 * @description Deferred revenue GL account name.
+                 * @description Name or title of the deferred revenue GL account.
                  * @example AR ACCOUNT
                  */
                 readonly name?: string;
@@ -9556,7 +9626,7 @@ export interface components {
             /** @description GL account the line item is assigned to. */
             glAccount?: {
                 /**
-                 * @description System-assigned key for the GL account.
+                 * @description Unique key for the GL account.
                  * @example 35
                  */
                 key?: string;
@@ -9577,10 +9647,10 @@ export interface components {
                 readonly href?: string;
             };
             dimensions?: components["schemas"]["dimension-ref"] & {
-                /** @description Where multiple locations exist, the location to which the system should assign the expense. */
+                /** @description For companies with multiple locations, the location assigned to the line item. */
                 location?: {
                     /**
-                     * @description System-assigned key for the location.
+                     * @description Unique key for the location.
                      * @example 10
                      */
                     key?: string;
@@ -9603,17 +9673,17 @@ export interface components {
                 /** @description Department the line item is assigned to. */
                 department?: {
                     /**
-                     * @description Department key
+                     * @description Unique key for the department.
                      * @example 14
                      */
                     key?: string;
                     /**
-                     * @description Department ID
+                     * @description ID for the department.
                      * @example 14
                      */
                     id?: string;
                     /**
-                     * @description Department name
+                     * @description Name of the department.
                      * @example Accounting
                      */
                     readonly name?: string;
@@ -9627,7 +9697,7 @@ export interface components {
             /** @description GL account for discounts and penalties. */
             offsetGLAccount?: {
                 /**
-                 * @description System-assigned key for the offset GL account.
+                 * @description Unique key for the offset GL account.
                  * @example 384
                  */
                 key?: string | null;
@@ -9647,22 +9717,22 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Tax Entries of the AR recurring invoice */
+            /** @description Tax entries for the line item. */
             taxEntries?: components["schemas"]["objects.accounts-receivable.recurring-invoice-tax-entry"][];
-            /** @description Header level details for the AR recurring invoice line entries. */
+            /** @description Header level details for the recurring invoice lines. */
             recurringInvoice?: {
                 /**
-                 * @description ID for the AR recurring invoice.
+                 * @description ID for the recurring invoice.
                  * @example 23
                  */
                 id?: string;
                 /**
-                 * @description System-assigned key for the AR recurring invoice.
+                 * @description Unique key for the recurring invoice.
                  * @example 23
                  */
                 key?: string;
                 /**
-                 * @description URL for the AR recurring invoice.
+                 * @description URL endpoint for the recurring invoice.
                  * @example /objects/accounts-receivable/recurring-invoice/23
                  */
                 readonly href?: string;
@@ -9671,7 +9741,7 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "accounts-receivable-recurring-invoice-lineRequiredProperties": Record<string, never>;
-        /** @description For VAT enabled transactions, recurring invoice line items will have tax entries. */
+        /** @description For VAT-enabled transactions, a tax entry captures the tax details for a recurring invoice line item. */
         "objects.accounts-receivable.recurring-invoice-tax-entry": {
             /**
              * @description System-assigned key for the tax entry.
@@ -9701,36 +9771,36 @@ export interface components {
              */
             taxRate?: number;
         } & {
-            /** @description Order Entry tax details associated with the recurring invoice tax entry. */
+            /** @description Order entry tax detail associated with the recurring invoice tax entry. */
             orderEntryTaxDetail?: {
                 /**
-                 * @description Unique key for the Order Entry tax detail.
+                 * @description Unique key for the order entry tax detail.
                  * @example 1
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the Order Entry tax detail.
+                 * @description ID for the order entry tax detail.
                  * @example Alaska Tax Detail
                  */
                 id?: string;
                 /**
-                 * @description URL endpoint for the Order Entry tax detail.
+                 * @description URL endpoint for the order entry tax detail.
                  * @example /objects/tax/order-entry-tax-detail/1
                  */
                 readonly href?: string;
             };
             /**
              * recurring-invoice-line
-             * @description Recurring invoice line item that the recurring invoice tax entry is associated with.
+             * @description Recurring invoice line associated with the tax entry.
              */
             readonly recurringInvoiceLine?: {
                 /**
-                 * @description Unique identifier for the recurring invoice line.
+                 * @description ID for the recurring invoice line.
                  * @example 100
                  */
                 readonly id?: string;
                 /**
-                 * @description Unique key for the recurring invoice line. This value is the same as the `key` for this object.
+                 * @description Unique key for the recurring invoice line.
                  * @example 100
                  */
                 readonly key?: string;
@@ -9741,7 +9811,7 @@ export interface components {
                 readonly href?: string;
             };
         };
-        /** @description Revenue recognition templates define how to amortize deferred revenue. Each template is associated with an Accounts Receivable label or Order Entry Item GL group. */
+        /** @description A revenue recognition template defines how to amortize deferred revenue for an Accounts Receivable label or Order Entry Item GL group. */
         "objects.accounts-receivable.revenue-recognition-template": {
             /**
              * @description System-assigned unique key for the revenue recognition template.
@@ -9760,7 +9830,7 @@ export interface components {
             readonly href?: string;
             /**
              * @description Description of the revenue recognition template.
-             * @example null
+             * @example Standard monthly revenue recognition
              */
             description?: string;
             /**
@@ -9770,14 +9840,14 @@ export interface components {
              */
             useStandard?: boolean;
             /**
-             * @description The intervals at which Sage Intacct should schedule the journal entries to post.
+             * @description Interval at which Sage Intacct schedules the journal entries to post.
              * @default monthly
              * @example daily
              * @enum {string}
              */
             schedulePeriod?: "daily" | "monthly" | "quarterly" | "semiAnnually" | "annually";
             /**
-             * @description The day of the month the revenue should post.
+             * @description Day of the month on which the revenue posts.
              * @default 1
              * @example endOfPeriod
              * @enum {string}
@@ -9794,16 +9864,16 @@ export interface components {
              */
             recognitionTerm?: "fixedPeriod" | "contractTerm" | "project";
             /**
-             * @description System resume option. Options are:
+             * @description Option for resuming a paused revenue recognition schedule. Options are:
              *     * `catchUp` - Users are allowed to post revenue recognition journal entries that were scheduled but not posted prior to delivery to catch up to the period of the resume date.
-             *     * `walkForward` - Sage Intacct will regenerate the schedule as of the resume date and push the end date out the same number of days as the new begin date was pushed forward. This keeps the overall revenue schedule the same length.
+             *     * `walkforward` - Sage Intacct regenerates the schedule as of the resume date and pushes the end date out the same number of days that the new begin date was pushed forward. This keeps the overall revenue schedule the same length.
              * @default walkforward
              * @example catchUp
              * @enum {string}
              */
             resumeOption?: "catchUp" | "walkforward";
             /**
-             * @description Number of periods. If `recognitionTerm` is set to `fixedPeriod`, Sage Intacct uses this value to generate the schedule.
+             * @description For revenue recognition templates where `recognitionTerm` is set to `fixedPeriod`, the number of periods used to generate the schedule.
              * @example 3
              */
             totalPeriods?: string;
@@ -9823,15 +9893,15 @@ export interface components {
             recognitionStartDate?: "transactionDate" | "userSpecified";
             /**
              * @description Specifies the posting method. Options are:
-             *     * `automatic` - Sage Intacct will automatically post scheduled revenue recognition journal entries on each scheduled posting date.
-             *     * `manual` - The user will manually post the scheduled revenue recognition journal entries when desired.
+             *     * `automatic` - Sage Intacct automatically posts scheduled revenue recognition journal entries on each scheduled posting date.
+             *     * `manual` - The user manually posts the scheduled revenue recognition journal entries when desired.
              * @default manual
              * @example manual
              * @enum {string}
              */
             postingMethod?: "automatic" | "manual";
             /**
-             * @description Latest version key.
+             * @description Key for the latest version of the revenue recognition template.
              * @example 12
              */
             latestVersion?: string;
@@ -9842,16 +9912,17 @@ export interface components {
              * @enum {string}
              */
             milestoneSource?: "manual" | "project";
+            /** @description Settings used to calculate revenue recognition for the percent-completed method. */
             calculation?: {
                 /**
-                 * @description For a percent completed template, specify whether to calculate at the project or task level.
+                 * @description For a percent-completed template, level at which to calculate the percentage completed.
                  * @default null
                  * @example project
                  * @enum {string|null}
                  */
                 source?: null | "project" | "task";
                 /**
-                 * @description Method to use to calculate the completion percentage.
+                 * @description Method used to calculate the completion percentage.
                  * @default null
                  * @example estimatedHours
                  * @enum {string|null}
@@ -9866,27 +9937,27 @@ export interface components {
         /** @description Summaries are collections of the same type of transactions, grouped together for processing. */
         "objects.accounts-receivable.summary": {
             /**
-             * @description System-assigned unique key for the summary.
+             * @description System-assigned unique key for the AR summary.
              * @example 14
              */
             readonly key?: string;
             /**
-             * @description ID for the AR summary. This value is the same as `key` for this object.
+             * @description Unique ID for the AR summary. This value is the same as the `key` for this object.
              * @example 14
              */
             readonly id?: string;
             /**
-             * @description URL endpoint for the summary.
+             * @description URL endpoint for the AR summary.
              * @example /objects/accounts-receivable/summary/14
              */
             readonly href?: string;
             /**
              * @description Name for the summary. The system uses this name to identify the summary throughout the Accounts Receivable application.
-             * @example Invoices: 2025/12/01 Batch
+             * @example Invoices: 2026/03/01 Batch
              */
             name?: string;
             /**
-             * @description Specifies how the summary was created. If set to `manual`, the summary was created by a user. If set to `system`, the summary was created by Sage Intacct based on the summary frequency.
+             * @description Method used to create the summary. A value of `manual` indicates that a user created the summary. A value of `system` indicates that Sage Intacct created the summary based on the summary frequency.
              * @default manual
              * @example manual
              * @enum {string}
@@ -9894,12 +9965,12 @@ export interface components {
             readonly summaryCreationType?: "system" | "manual";
             /**
              * Format: date
-             * @description The date that items within the summary post to the general ledger.
-             * @example 2025-05-10
+             * @description Date that items in the summary post to the general ledger.
+             * @example 2026-05-10
              */
             glPostingDate?: string;
             /**
-             * @description Specifies the type of transactions that the summary contains.
+             * @description Type of transactions that the summary contains.
              * @default invoice
              * @example invoice
              * @enum {string}
@@ -9918,7 +9989,7 @@ export interface components {
              * @enum {string}
              */
             state?: "open" | "closed";
-            /** @description Parent summary. */
+            /** @description Parent summary of the AR summary. */
             parent?: {
                 /**
                  * @description Unique key for the parent summary.
@@ -9937,13 +10008,13 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Set to `true` to prevent posting summary items to the general ledger.
+             * @description Indicates whether posting of summary items to the general ledger is prevented. Set to `true` to prevent posting.
              * @default false
              * @example false
              */
             preventGLPosting?: boolean;
             /**
-             * @description Specifies whether the summary includes quick payments. Set to `true` only for manual and quick-payment summaries. Set to `false` for invoice and adjustment transactions.
+             * @description Indicates whether the summary includes quick payments. Set to `true` only for manual and quick-payment summaries. Set to `false` for invoice and adjustment transactions.
              * @default false
              * @example false
              */
@@ -9956,18 +10027,18 @@ export interface components {
         /** @description Accounts Receivable (AR) terms are the rules a company establishes for extending credit to customers. */
         "objects.accounts-receivable.term": {
             /**
-             * @description System-assigned key for the term.
+             * @description System-assigned unique key for the term.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Name or other unique identifier for the term.
+             * @description Unique ID for the term.
              * @example 2% 10 Net 30
              */
             id?: string;
             /**
-             * @description Endpoint for the accounts-receivable-term.
-             * @example /objects/accounts-receivable-term/23
+             * @description URL endpoint for the term.
+             * @example /objects/accounts-receivable/term/23
              */
             readonly href?: string;
             status?: components["schemas"]["status"];
@@ -9977,7 +10048,7 @@ export interface components {
              */
             description?: string;
             audit?: components["schemas"]["audit.s1"];
-            /** @description The due date is a combination of a number of days and a reference point. For example, to set terms that reference the number of days from the invoice date, set the number of days in `day`, and set `fromInvoiceDate` in `from`. */
+            /** @description The due date is a combination of a number of days and a reference point. For example, to set terms that reference the number of days from the invoice date, set the number of days in `days`, and set `fromInvoiceDate` in `from`. */
             due?: {
                 /**
                  * @description Number of days until the term is due.
@@ -10024,7 +10095,7 @@ export interface components {
                  */
                 graceDays?: number | null;
                 /**
-                 * @description Contains encoding of Term Properties.
+                 * @description Encoded value of the term's properties.
                  * @example 20:12:3#30#5%:D:2
                  */
                 readonly value?: string | null;
@@ -10068,17 +10139,17 @@ export interface components {
         /** @description Territories are optionally included in customer records and are used with Accounts Receivable reports. */
         "objects.accounts-receivable.territory": {
             /**
-             * @description System-assigned key for the territory.
+             * @description System-assigned unique key for the territory.
              * @example 1
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the territory. After an ID is created, it cannot be modified.
+             * @description Unique ID for the territory. After the ID is created, it cannot be modified.
              * @example T1
              */
             id?: string;
             /**
-             * @description Endpoint of the territory.
+             * @description URL endpoint for the territory.
              * @example /objects/accounts-receivable/territory/1
              */
             readonly href?: string;
@@ -10088,15 +10159,15 @@ export interface components {
              */
             name?: string;
             status?: components["schemas"]["status"];
-            /** @description Parent territory if territories are organized in a hierarchy. */
+            /** @description For territories organized in a hierarchy, the parent territory. */
             parent?: {
                 /**
-                 * @description System-assigned key for the parent territory.
+                 * @description Unique key for the parent territory.
                  * @example 2
                  */
                 key?: string;
                 /**
-                 * @description ID of the parent territory.
+                 * @description ID for the parent territory.
                  * @example 1-North
                  */
                 id?: string;
@@ -10106,7 +10177,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description Endpoint of the parent territory.
+                 * @description URL endpoint for the parent territory.
                  * @example /objects/accounts-receivable/territory/21
                  */
                 readonly href?: string;
@@ -10114,12 +10185,12 @@ export interface components {
             /** @description Employee who manages the territory. Used for informational purposes only. */
             manager?: {
                 /**
-                 * @description System-assigned key for the employee.
+                 * @description Unique key for the employee.
                  * @example 81
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier of the territory manager. When creating a territory, this must be the `id` of an existing employee.
+                 * @description ID for the territory manager. When creating a territory, this must be the `id` of an existing employee.
                  * @example dwilson
                  */
                 id?: string;
@@ -10129,22 +10200,22 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description Endpoint of the territory manager.
+                 * @description URL endpoint for the territory manager.
                  * @example /objects/company-config/employee/81
                  */
                 readonly href?: string;
             };
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Territory groups */
+        /** @description A territory group is a named collection of territories used for reporting and categorization. */
         "objects.accounts-receivable.territory-group": {
             /**
-             * @description System-assigned key for the territory group.
+             * @description System-assigned unique key for the territory group.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Territory group ID.
+             * @description Unique ID for the territory group.
              * @example T1
              */
             id?: string;
@@ -10171,7 +10242,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Territory ID.
+                 * @description ID for the territory.
                  * @example T1
                  */
                 id?: string;
@@ -10190,15 +10261,15 @@ export interface components {
             audit?: components["schemas"]["audit.s2"];
         };
         "accounts-receivable-territory-groupRequiredProperties": Record<string, never>;
-        /** @description A shipping method is the specific way that you transport goods, such as UPS, FedEx, or hand deliver. */
+        /** @description A shipping method represents the specific way goods are transported, such as UPS, FedEx, or hand delivery. */
         "objects.accounts-receivable.shipping-method": {
             /**
-             * @description System-assigned key for the shipping method.
+             * @description System-assigned unique key for the shipping method.
              * @example 2
              */
             readonly key?: string;
             /**
-             * @description Name or other unique ID for the shipping method.
+             * @description Unique ID for the shipping method.
              * @example Air
              */
             id?: string;
@@ -10216,7 +10287,7 @@ export interface components {
             daysInTransit?: number;
         };
         "accounts-receivable-shipping-methodRequiredProperties": Record<string, never>;
-        /** @description Manual deposits can be used to record receipt of money that's not related to an invoice (for example, an over-the-counter cash sale). */
+        /** @description A manual deposit records the receipt of money that isn't related to an invoice, such as an over-the-counter cash sale. */
         "objects.accounts-receivable.manual-deposit": {
             /**
              * @description System-assigned unique key for the manual deposit.
@@ -10224,7 +10295,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description ID for the manual deposit. This value is the same as the `key` for this object.
+             * @description Unique ID for the manual deposit. This value is the same as the `key` for this object.
              * @example 20
              */
             readonly id?: string;
@@ -10235,8 +10306,8 @@ export interface components {
             readonly href?: string;
             /**
              * Format: date
-             * @description Specifies the date that the manual deposit was created.
-             * @example 2025-06-08
+             * @description Date the manual deposit was created.
+             * @example 2026-06-08
              */
             createdDate?: string;
             /**
@@ -10249,11 +10320,10 @@ export interface components {
                 /**
                  * @deprecated
                  * @description This field has been deprecated. Use the `id` field instead.
-                 * @example BOA
                  */
                 entityId?: string;
                 /**
-                 * @description Account number or other unique ID used in creating the manual deposit.
+                 * @description Account number or other unique identifier for the bank account.
                  * @example BOA
                  */
                 id?: string;
@@ -10263,7 +10333,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Bank name for the manual deposit.
+                 * @description Bank or other financial institution name.
                  * @example Bank of America
                  */
                 name?: string;
@@ -10274,7 +10344,9 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description The deposit ID correlates the manual deposit with the actual deposit slip from the bank. For example, the deposit ID can be the transaction number from the bank or a note such as `Deposit Slip of MM/DD/YYYY`.
+             * @description The deposit ID correlates the manual deposit with the actual deposit slip from the bank.
+             *     For example, the deposit ID can be the transaction number from the bank or a note such
+             *     as `Deposit Slip of MM/DD/YYYY`.
              * @example BOA-0001
              */
             depositId?: string | null;
@@ -10336,7 +10408,6 @@ export interface components {
             /**
              * @deprecated
              * @description This field has been deprecated. Use the `financialEntity.name` field instead.
-             * @example Bank of America
              */
             bankName?: string;
             /**
@@ -10349,17 +10420,17 @@ export interface components {
             /** @description Specifies the summary the deposit is added to. This field is applicable only if your company has configured AR to use manually created summaries (the summary frequency for manual deposits is set to `user-specified`). */
             manualDepositSummary?: {
                 /**
-                 * @description Unique key for the summary.
+                 * @description Unique key for the manual deposit summary.
                  * @example 280
                  */
                 key?: string;
                 /**
-                 * @description Name of the summary. The system uses this name to identify the summary throughout the Accounts Receivable application.
+                 * @description Name of the manual deposit summary. The system uses this name to identify the manual deposit summary throughout the Accounts Receivable application.
                  * @example Manual deposit Summary: 2024/01/01 Batch
                  */
                 id?: string;
                 /**
-                 * @description URL endpoint for the summary.
+                 * @description URL endpoint for the manual deposit summary.
                  * @example /objects/accounts-receivable/manual-deposit-summary/280
                  */
                 readonly href?: string;
@@ -10369,7 +10440,7 @@ export interface components {
                 /**
                  * Format: decimal-precision-2
                  * @description Total amount of the manual deposit.
-                 * @example 1117.8
+                 * @example 1117.80
                  */
                 readonly totalAmountEntered?: string;
                 /**
@@ -10381,7 +10452,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description Payment date.
-                 * @example 2025-06-01
+                 * @example 2026-06-01
                  */
                 readonly paidDate?: string;
                 /**
@@ -10405,7 +10476,7 @@ export interface components {
                  */
                 baseCurrency?: string;
                 /**
-                 * @description Transaction currency for the deposit
+                 * @description Transaction currency for the deposit.
                  * @example USD
                  */
                 txnCurrency?: string;
@@ -10433,13 +10504,13 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Line items included in the manual deposit. */
+            /** @description Lines for the manual deposit. */
             lines?: components["schemas"]["objects.accounts-receivable.manual-deposit-line"][];
             readonly audit?: components["schemas"]["audit.s1"] & {
                 /**
                  * Format: date-time
                  * @description Time of the submission.
-                 * @example 2025-01-23T11:28:12Z
+                 * @example 2026-01-23T11:28:12Z
                  */
                 readonly createdDateTime?: string;
             };
@@ -10472,7 +10543,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique ID for the manual deposit line item. This value is the same as the `key` for this object.
+             * @description Unique ID for the manual deposit line. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -10482,44 +10553,44 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Memo or notes about the manual deposit line item.
+             * @description Memo or notes about the manual deposit line.
              * @example BOA manual deposit slip 01/08/2025
              */
             memo?: string | null;
             /**
-             * @description Line number of the manual deposit line item.
+             * @description Line number of the manual deposit line.
              * @example 10
              */
             readonly lineNumber?: number;
-            /** @description Currency details for the deposit line item. */
+            /** @description Currency details for the manual deposit line. */
             currency?: {
                 /**
-                 * @description Base currency for the deposit line item.
+                 * @description Base currency for the manual deposit line.
                  * @example USD
                  */
                 readonly baseCurrency?: string;
                 /**
-                 * @description Transaction currency for the deposit line item
+                 * @description Transaction currency for the manual deposit line.
                  * @example USD
                  */
                 readonly txnCurrency?: string;
             };
-            /** @description Payment information for the deposit line item. */
+            /** @description Payment information for the manual deposit line. */
             readonly paymentInformation?: {
                 /**
                  * Format: decimal-precision-2
-                 * @description The amount of the line item in the company's base currency.
-                 * @example 1117.8
+                 * @description Amount for the manual deposit line in the company's base currency.
+                 * @example 1117.80
                  */
                 readonly baseAmount?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description The transaction amount for the manual deposit line item in the currency specified for the transaction.
-                 * @example 100
+                 * @description Amount for the manual deposit line in the transaction currency.
+                 * @example 100.00
                  */
                 txnAmount?: string;
             };
-            /** @description General Ledger (GL) account associated with the line item. */
+            /** @description GL account associated with the manual deposit line. */
             glAccount?: {
                 /**
                  * @description Unique key for the GL account.
@@ -10558,7 +10629,7 @@ export interface components {
             dimensions?: components["schemas"]["dimension-ref"] & {
                 /**
                  * location
-                 * @description Location associated with the deposit.
+                 * @description Location associated with the manual deposit line.
                  */
                 location?: {
                     /**
@@ -10579,7 +10650,7 @@ export interface components {
                 };
                 /**
                  * department
-                 * @description Department associated with the deposit.
+                 * @description Department associated with the manual deposit line.
                  */
                 department?: {
                     /**
@@ -10599,7 +10670,7 @@ export interface components {
                     readonly href?: string;
                 };
             };
-            /** @description Header level details for the manual deposit line entries. */
+            /** @description Header level details for the manual deposit. */
             readonly manualDeposit?: {
                 /**
                  * @description ID for the manual deposit.
@@ -10619,7 +10690,7 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description A manual deposit summary is a collection of payments received from customers, such as quick or manual deposit payments, grouped together for processing. */
+        /** @description A manual deposit summary groups payments received from customers, such as quick or manual deposit payments, for processing. */
         "objects.accounts-receivable.manual-deposit-summary": {
             /**
              * @description System-assigned unique key for the manual deposit summary.
@@ -10627,7 +10698,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description ID for the manual deposit summary. This value is the same as the `key` for this object.
+             * @description Unique ID for the manual deposit summary. This value is the same as the `key` for this object.
              * @example 11
              */
             readonly id?: string;
@@ -10642,7 +10713,9 @@ export interface components {
              */
             name?: string;
             /**
-             * @description Specifies how the summary was created. If set to `manual`, the summary was created by a user. If set to `system`, the summary was created by Sage Intacct based on the specified summary frequency.
+             * @description Method used to create the summary. A value of `manual` indicates the summary was
+             *     created by a user. A value of `system` indicates the summary was created by Sage
+             *     Intacct based on the specified summary frequency.
              * @default manual
              * @example manual
              * @enum {string}
@@ -10650,12 +10723,12 @@ export interface components {
             readonly summaryCreationType?: "system" | "manual";
             /**
              * Format: date
-             * @description The date that summary items post to the general ledger.
-             * @example 2025-05-03
+             * @description Date that summary items post to the general ledger.
+             * @example 2026-05-03
              */
             glPostingDate?: string;
             /**
-             * @description Specifies the type of transactions included in the manual deposit summary.
+             * @description Type of transactions included in the manual deposit summary.
              * @default invoice
              * @example invoice
              * @enum {string}
@@ -10664,11 +10737,11 @@ export interface components {
             /**
              * Format: decimal-precision-2
              * @description Total amount of transactions in the summary.
-             * @example 110
+             * @example 110.00
              */
             readonly totalAmount?: string;
             /**
-             * @description State of the summary, which can be `open` or `closed`. An open summary can have items added to it.
+             * @description State of the manual deposit summary, which can be `open` or `closed`. An open summary can have items added to it.
              * @default open
              * @example open
              * @enum {string}
@@ -10693,13 +10766,13 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Set to `true` to prevent posting summary items to the general ledger.
+             * @description Indicates whether the summary is prevented from posting items to the general ledger.
              * @default true
              * @example true
              */
             preventGLPosting?: boolean;
             /**
-             * @description Specifies whether this is a quick payment summary.
+             * @description Indicates whether the manual deposit summary is a quick payment summary.
              * @default true
              * @example true
              */
@@ -10707,7 +10780,7 @@ export interface components {
             status?: components["schemas"]["status"];
             audit?: components["schemas"]["audit.s2"];
         };
-        /** @description Dunning levels define the levels of notices that are sent during the collection process. */
+        /** @description A dunning level defines the overdue-invoice criteria and notice settings used to generate dunning notices during the collection process. */
         "objects.accounts-receivable.dunning-level": {
             /**
              * @description System-assigned unique key for the dunning level.
@@ -10715,7 +10788,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Name or other unique identifier for the dunning level.
+             * @description Unique ID for the dunning level.
              * @example L1 Dunning level
              */
             id?: string;
@@ -10726,49 +10799,48 @@ export interface components {
             readonly href?: string;
             /**
              * @deprecated
-             * @description This field has been deprecated. Use the printTemplateName field instead.
+             * @description Deprecated. Use `printTemplateName` instead.
              */
             printTemplate?: {
                 /**
                  * @deprecated
-                 * @description This field has been deprecated. Use the printTemplateName field instead.
-                 * @example 24
+                 * @description Deprecated. Use `printTemplateName` instead.
                  */
                 readonly key?: string;
                 /**
                  * @deprecated
-                 * @description This field has been deprecated. Use the printTemplateName field instead.
-                 * @example Level 1 Document Template
+                 * @description Deprecated. Use `printTemplateName` instead.
                  */
                 id?: string;
             };
             /**
-             * @description Unique ID for the printed document template assigned to the dunning level.
+             * @description Name of the printed document template assigned to the dunning level.
              * @example Level 1 Document Template
              */
             printTemplateName?: string;
+            /** @description Overdue days and amount thresholds for the dunning level. */
             dunningThreshold?: {
                 /**
-                 * @description Minimum days overdue. This is the lower value for the days overdue range of the dunning level.
+                 * @description Minimum number of days overdue for the dunning level's overdue range.
                  * @default 0
                  * @example 10
                  */
                 minDays?: number;
                 /**
-                 * @description Maximum days overdue. This is the higher value for the days overdue range of the dunning level.
+                 * @description Maximum number of days overdue for the dunning level's overdue range.
                  * @example 100
                  */
                 maxDays?: number;
                 /**
                  * Format: decimal-precision-2
-                 * @description Minimum invoice amount. This is the lower value for the invoice amount overdue range of the dunning level.
-                 * @example 100
+                 * @description Minimum overdue invoice amount for the dunning level's amount range.
+                 * @example 100.00
                  */
                 minAmount?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Maximum invoice amount. This is the higher value for the invoice amount overdue range of the dunning level.
-                 * @example 5000
+                 * @description Maximum overdue invoice amount for the dunning level's amount range.
+                 * @example 5000.00
                  */
                 maxAmount?: string;
                 /**
@@ -10784,34 +10856,31 @@ export interface components {
             };
             /**
              * @deprecated
-             * @description This field has been deprecated. Use the noticeSequenceName field instead.
+             * @description Deprecated. Use `noticeSequenceName` instead.
              */
             noticeSequence?: {
                 /**
                  * @deprecated
-                 * @description This field has been deprecated. Use the noticeSequenceName field instead.
-                 * @example 2
+                 * @description Deprecated. Use `noticeSequenceName` instead.
                  */
                 readonly key?: string;
                 /**
                  * @deprecated
-                 * @description This field has been deprecated. Use the noticeSequenceName field instead.
-                 * @example L1 Dunning Sequence
+                 * @description Deprecated. Use `noticeSequenceName` instead.
                  */
                 id?: string;
                 /**
                  * @deprecated
-                 * @description This field has been deprecated. Use the noticeSequenceName field instead.
-                 * @example /objects/company-config/document-sequence/2
+                 * @description Deprecated. Use `noticeSequenceName` instead.
                  */
                 readonly href?: string;
             };
             /**
-             * @description Name or other unique ID for the numbering sequence.
+             * @description Name of the numbering sequence assigned to the dunning level.
              * @example L1 Dunning Sequence
              */
             noticeSequenceName?: string;
-            /** @description The email template assigned to the dunning level. */
+            /** @description Email template assigned to the dunning level. */
             emailTemplate?: {
                 /**
                  * @description Unique key for the email template.
@@ -10854,16 +10923,16 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description System generated ID for a dunning notice generated for a customer.
+             * @description System-generated ID for the dunning notice created for the customer.
              * @example DUN1
              */
             readonly dunningNoticeCustomerId?: string;
-            /** @description Dunning notice email details. */
+            /** @description Email details for the dunning notice. */
             noticeEmail?: {
                 /**
                  * Format: date-time
-                 * @description Date of the email notification.
-                 * @example 2025-07-27T19:45:17Z
+                 * @description Date the email notification was sent.
+                 * @example 2026-07-27T19:45:17Z
                  */
                 date?: string;
                 /**
@@ -10913,7 +10982,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique ID for the dunning notice.
+                 * @description ID for the dunning notice.
                  * @example 23
                  */
                 readonly id?: string;
@@ -10927,7 +10996,7 @@ export interface components {
             /** @description Dunning level associated with the dunning notice. */
             readonly dunningLevel?: {
                 /**
-                 * @description Name or other unique ID for the dunning level.
+                 * @description ID for the dunning level.
                  * @example L1
                  */
                 readonly id?: string;
@@ -10955,14 +11024,14 @@ export interface components {
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Name or other unique ID for the email template.
+                 * @description Name of the email template.
                  * @example L1 DL template
                  */
                 readonly id?: string | null;
             };
             /**
              * Format: base64zip
-             * @description Generated dunning notice PDF data.
+             * @description Generated PDF data for the dunning notice.
              * @example PDF data
              */
             readonly dunningNoticeAttachment?: string;
@@ -10974,7 +11043,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the customer.
+                 * @description ID for the customer.
                  * @example CUST1
                  */
                 id?: string;
@@ -10990,18 +11059,18 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Specifies whether to print a dunning notice for the customer.
+             * @description Indicates whether the dunning notice is printed for the customer.
              * @default true
              * @example true
              */
             sendPrintedNotice?: boolean;
             /**
-             * @description Specifies whether to send a dunning email notification to the email addresses listed in `noticeEmail`.
+             * @description Indicates whether a dunning email notification is sent to the email addresses listed in `noticeEmail`.
              * @default true
              * @example true
              */
             sendEmailNotice?: boolean;
-            /** @description List of invoices included in the dunning notice. */
+            /** @description Invoices included in the dunning notice. */
             invoices?: components["schemas"]["objects.accounts-receivable.dunning-invoice"][];
             audit?: components["schemas"]["audit.s2"];
             entity?: components["schemas"]["entity-ref"] & {
@@ -11012,7 +11081,7 @@ export interface components {
                 key?: string;
             };
         };
-        /** @description Dunning invoices are part of a generated dunning notice when a customer fails to pay an invoice by the due date. */
+        /** @description An overdue invoice included in a dunning notice sent to a customer. */
         "objects.accounts-receivable.dunning-invoice": {
             /**
              * @description System-assigned unique key for the dunning invoice.
@@ -11020,7 +11089,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description ID for the dunning invoice. This value is the same as the key for this object.
+             * @description Unique ID for the dunning invoice. This value is the same as the `key` for this object.
              * @example 32
              */
             readonly id?: string;
@@ -11029,7 +11098,7 @@ export interface components {
              * @example /objects/accounts-receivable/dunning-invoice/32
              */
             readonly href?: string;
-            /** @description Customer associated with the dunning invoice. */
+            /** @description Dunning customer associated with the dunning invoice. */
             dunningCustomer?: {
                 /**
                  * @description Unique key for the dunning customer.
@@ -11065,45 +11134,45 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description User-defined unique ID for invoice.
+                 * @description User-defined unique ID for the invoice.
                  * @default
                  * @example INV1
                  */
                 readonly invoiceNumber?: string | null;
                 /**
                  * Format: date
-                 * @description Date the invoice was created.
-                 * @example 2025-01-01
+                 * @description Date of the invoice.
+                 * @example 2026-01-01
                  */
                 readonly invoiceDate?: string;
                 /**
                  * Format: date
                  * @description Date the invoice is due.
-                 * @example 2025-01-11
+                 * @example 2026-01-11
                  */
                 readonly dueDate?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description For multi-currency companies, total entered in the base currency of the company.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalBaseAmount?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description For multi-currency companies, total due in the base currency of the company.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalBaseAmountDue?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total transaction amount in the currency of the invoice.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalTxnAmount?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total transaction amount due in the currency of the invoice.
-                 * @example 100
+                 * @example 100.00
                  */
                 readonly totalTxnAmountDue?: string;
                 /**
@@ -11114,7 +11183,7 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Dunning notice. */
+        /** @description A reminder notice sent to a customer about overdue invoices. */
         "objects.accounts-receivable.dunning-notice": {
             /**
              * @description System-assigned unique key for the dunning notice.
@@ -11122,7 +11191,7 @@ export interface components {
              */
             key?: string;
             /**
-             * @description ID for the dunning notice. This value is the same as the `key` for this object.
+             * @description Unique ID for the dunning notice. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -11132,24 +11201,24 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Specifies how to filter due invoices, either by the invoice date or the due date.
+             * @description Method used to filter due invoices, based on the invoice date or due date.
              * @example dueDate
              * @enum {string}
              */
             basedOn?: "invoiceDate" | "dueDate";
             /**
              * Format: date
-             * @description Specifies the date to use to determine when invoices are filtered. For example, if you set an `asOfDate` of 2025-06-15 and you set the `basedOnDate` to `dueDate`, notices are sent to customers who have invoices due by 2025-06-15.
-             * @example 2025-01-01
+             * @description Date used to determine which invoices are included in the dunning notice. For example, if `asOfDate` is set to 2026-06-15 and `basedOn` is set to `dueDate`, notices are sent to customers who have invoices due by 2026-06-15.
+             * @example 2026-01-01
              */
             asOfDate?: string;
             /**
-             * @description The transaction currency for the dunning notice.
+             * @description Transaction currency for the dunning notice.
              * @example USD
              */
             readonly currency?: string;
             /**
-             * @description The base currency for the dunning notice.
+             * @description Base currency for the dunning notice.
              * @example USD
              */
             readonly baseCurrency?: string;
@@ -11158,30 +11227,31 @@ export interface components {
              * @example L1 DL Doc Template
              */
             printTemplateName?: string;
-            /** @description Information about the user who is the sender. */
+            /** @description Information about the sender of the dunning notice. */
             sender?: {
                 /**
-                 * @description Sender email address.
+                 * @description Email address of the sender.
                  * @example john.bow@mycompany.com
                  */
                 email?: string;
                 /**
-                 * @description Sender name.
+                 * @description Name of the sender.
                  * @example John Bow
                  */
                 name?: string;
                 /**
-                 * @description Sender phone number.
+                 * @description Phone number of the sender.
                  * @example 123-456-7890
                  */
                 phone?: string;
             };
             /**
-             * @description Specifies whether invoices are attached to the dunning notice.
+             * @description Indicates whether invoices are attached to the dunning notice.
              * @default false
              * @example false
              */
             attachInvoice?: boolean;
+            /** @description Dunning level for the dunning notice. */
             dunningLevel?: {
                 /**
                  * @description URL endpoint for the dunning level.
@@ -11194,7 +11264,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Name or other unique ID for the dunning level.
+                 * @description ID for the dunning level.
                  * @example L1
                  */
                 id?: string;
@@ -11212,12 +11282,12 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Name or other unique ID for the email template.
+                 * @description Name of the email template.
                  * @example L1 DL template
                  */
                 id?: string | null;
             };
-            /** @description List of customers included in the dunning notice. */
+            /** @description Customers included in the dunning notice. */
             dunningCustomers?: components["schemas"]["objects.accounts-receivable.dunning-customer"][];
             audit?: components["schemas"]["audit.s1"];
         };
@@ -11225,25 +11295,25 @@ export interface components {
             sender?: Record<string, never>;
             dunningCustomers?: Record<string, never>[];
         };
-        /** @description Accounts receivable customer refund object. */
+        /** @description Customer refund that returns funds to a customer in Accounts Receivable. */
         "objects.accounts-receivable.customer-refund": {
             /**
-             * @description System-assigned key for the customer refund.
+             * @description System-assigned unique key for the customer refund.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Sequence number for the customer refund. Generated based on the sequnce configuration.
+             * @description Unique ID for the customer refund. The system generates this value based on the sequence configuration.
              * @example REF23
              */
             readonly id?: string;
             /**
-             * @description Endpoint for the customer refund.
+             * @description URL endpoint for the customer refund.
              * @example /objects/accounts-receivable/customer-refund/23
              */
             readonly href?: string;
             /**
-             * @description State of customer refund.
+             * @description Current state of the customer refund.
              * @example draft
              * @enum {string}
              */
@@ -11254,7 +11324,7 @@ export interface components {
              * @enum {string}
              */
             paymentMethod?: "eft" | "processInAP" | "electronicPayment";
-            /** @description Payment servicer for the customer refund when payment method is `electronicPayment`. */
+            /** @description For electronic payment refunds, the payment provider used to process the customer refund. Applies when the payment method is `electronicPayment`. */
             paymentProvider?: {
                 /**
                  * @description Unique key for the payment provider.
@@ -11262,7 +11332,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique ID for the payment provider.
+                 * @description ID for the payment provider.
                  * @example STRIPE
                  */
                 id?: string;
@@ -11273,24 +11343,24 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Document number of the original payment transaction when payment method is `electronicPayment`.
+             * @description For electronic payment refunds, the document number of the original payment transaction. Applies when the payment method is `electronicPayment`.
              * @example REF23
              */
             providerDocumentNumber?: string | null;
             /**
-             * @description Indicates if this is a refund for an electronic payment.
+             * @description Indicates whether the customer refund is a refund for an electronic payment.
              * @example false
              * @enum {string|null}
              */
             readonly isElectronicPaymentRefund?: null | true | false;
             /**
-             * @description Status of the electronic payment refund.
+             * @description Current status of the electronic payment refund.
              * @example pending
              * @enum {string|null}
              */
-            readonly electronicPaymentRefundStatus?: null | "inProgress" | "pending" | "refunded" | "failed" | "cancelled" | "unknown" | "unauthorised" | "paid" | "arrived" | "paidOffline" | "rejected" | "partialPayment" | "partialRefund";
+            readonly electronicPaymentRefundStatus?: null | "inProgress" | "pending" | "refunded" | "failed" | "cancelled" | "unknown" | "unauthorised" | "paid" | "arrived" | "paidOffline" | "rejected" | "partialPayment" | "partialRefund" | "processing";
             /**
-             * @description Document number for customer refund.
+             * @description Document number for the customer refund.
              * @example REF23
              */
             documentNumber?: string;
@@ -11301,76 +11371,76 @@ export interface components {
             description?: string;
             /**
              * Format: date
-             * @description Date when customer refund was done.
-             * @example 2024-09-30
+             * @description Date the customer refund was paid.
+             * @example 2026-09-30
              */
             paymentDate?: string;
             /**
              * Format: date
-             * @description Date when customer refund was created.
-             * @example 2024-09-30
+             * @description Date the customer refund was created.
+             * @example 2026-09-30
              */
             refundDate?: string;
-            /** @description For multi-currency companies, the company's base currency. */
+            /** @description For multi-currency companies, base currency details for the refund. */
             baseCurrency?: {
                 /**
-                 * @description The company's base currency.
+                 * @description Base currency for the company.
                  * @example USD
                  */
                 currency?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total base amount.
-                 * @example 500
+                 * @description Total refund amount in the base currency.
+                 * @example 500.00
                  */
                 refundAmount?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total base amount paid.
-                 * @example 500
+                 * @description Total amount paid in the base currency.
+                 * @example 500.00
                  */
                 readonly totalPaid?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total base amount due.
-                 * @example 0
+                 * @description Total amount due in the base currency.
+                 * @example 0.00
                  */
                 readonly totalDue?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total base amount selected.
-                 * @example 500
+                 * @description Total amount selected in the base currency.
+                 * @example 500.00
                  */
                 readonly totalSelected?: string;
             };
-            /** @description Transaction currency for the refund. */
+            /** @description Transaction currency details for the refund. */
             txnCurrency?: {
                 /**
-                 * @description The currency in which the refund was made.
+                 * @description Currency in which the refund was made.
                  * @example USD
                  */
                 currency?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total refund amount
+                 * @description Total refund amount in the transaction currency.
                  * @example 100.00
                  */
                 refundAmount?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total transaction amount paid.
+                 * @description Total amount paid in the transaction currency.
                  * @example 100.00
                  */
                 readonly totalPaid?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total transaction amount due.
-                 * @example 0
+                 * @description Total amount due in the transaction currency.
+                 * @example 0.00
                  */
                 readonly totalDue?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total transaction amount selected.
+                 * @description Total amount selected in the transaction currency.
                  * @example 100.00
                  */
                 readonly totalSelected?: string;
@@ -11380,7 +11450,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description Exchange rate date used to calculate the base refund amount.
-                 * @example 2021-01-23
+                 * @example 2026-01-23
                  */
                 readonly date?: string;
                 /**
@@ -11395,7 +11465,7 @@ export interface components {
                 readonly typeId?: string | null;
             };
             /**
-             * @description If set to `true`, the customer refund has been reconciled.
+             * @description Bank reconciliation status of the customer refund. A value of `cleared` indicates that the refund has been reconciled. A value of `inTransit` indicates that it has not.
              * @default inTransit
              * @example null
              * @enum {string}
@@ -11403,19 +11473,19 @@ export interface components {
             bankReconciliationStatus?: "cleared" | "inTransit" | "";
             /**
              * Format: date
-             * @description Reconciliation date for the customer refund.
-             * @example 2024-09-30
+             * @description Date the customer refund was reconciled.
+             * @example 2026-09-30
              */
             bankReconciliationDate?: string;
             /** @description AP bill associated with the customer refund, if any. */
             readonly apBill?: {
                 /**
-                 * @description System-assigned key for the AP bill.
+                 * @description Unique key for the AP bill.
                  * @example 23
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique identifier for the AP bill.
+                 * @description ID for the AP bill.
                  * @example 23
                  */
                 readonly id?: string | null;
@@ -11425,15 +11495,15 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description AR summary the customer refund is part of. Summaries are collections of transactions grouped together for processing. */
+            /** @description AR summary that the customer refund belongs to. A summary is a collection of transactions grouped together for processing. */
             refundSummary?: {
                 /**
-                 * @description System-assigned key for the AR summary.
+                 * @description Unique key for the AR summary.
                  * @example 1259
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the AR summary.
+                 * @description ID for the AR summary.
                  * @example 1259
                  */
                 id?: string;
@@ -11448,15 +11518,15 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Customer associated with the refund. */
+            /** @description Customer associated with the customer refund. */
             customer?: {
                 /**
-                 * @description System-assigned key for the customer.
+                 * @description Unique key for the customer.
                  * @example 45
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the customer.
+                 * @description ID for the customer.
                  * @example Cust-00064
                  */
                 id?: string;
@@ -11471,7 +11541,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Details of the bank through which refund was made. */
+            /** @description Details of the bank through which the refund was made. */
             bankCurrency?: {
                 /**
                  * @description Bank currency for the refund.
@@ -11480,13 +11550,13 @@ export interface components {
                 readonly currency?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total bank base amount.
-                 * @example 500
+                 * @description Total amount in the bank base currency.
+                 * @example 500.00
                  */
                 readonly amount?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total bank transaction amount.
+                 * @description Total amount in the bank transaction currency.
                  * @example 100.00
                  */
                 txnAmount?: string;
@@ -11494,35 +11564,35 @@ export interface components {
             /** @description Financial account from which the refund payment will be made. */
             financialEntity?: {
                 /**
-                 * @description Endpoint for the financial account.
+                 * @description URL endpoint for the financial account.
                  * @example /objects/cash-management/bank-account/23
                  */
                 readonly href?: string;
                 /**
-                 * @description Financial account key.
+                 * @description Unique key for the financial account.
                  * @example 23
                  */
                 key?: string;
                 /**
-                 * @description Financial account ID.
+                 * @description ID for the financial account.
                  * @example 23
                  */
                 id?: string;
                 /**
-                 * @description The bank currency in which the refund was made.
+                 * @description Bank currency in which the refund was made.
                  * @example USD
                  */
                 readonly currency?: string;
             };
-            /** @description Pay to contact details for the AR refund. */
+            /** @description Pay-to contact for the customer refund. */
             payTo?: {
                 /**
-                 * @description System-assigned key for the contact.
+                 * @description Unique key for the contact.
                  * @example 45
                  */
                 key?: string;
                 /**
-                 * @description User defined unique identifier for the contact.
+                 * @description ID for the contact.
                  * @example Cust-00064
                  */
                 id?: string;
@@ -11535,7 +11605,7 @@ export interface components {
             /** @description Supporting document for the customer refund. */
             attachment?: {
                 /**
-                 * @description System-assigned key for the attachment.
+                 * @description Unique key for the attachment.
                  * @example 21
                  */
                 key?: string;
@@ -11550,22 +11620,22 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Details for the refund. */
+            /** @description Details of the advances, adjustments, negative invoices, and overpayments that the customer refund applies to. */
             refundDetails?: components["schemas"]["objects.accounts-receivable.customer-refund-detail"][];
-            /** @description Line items of the refund. */
+            /** @description Lines for the customer refund. */
             lines?: components["schemas"]["objects.accounts-receivable.customer-refund-line"][];
             audit?: components["schemas"]["audit.s2"] & {
                 /**
                  * Format: date-time
-                 * @description Time of the customer-refund submission.
-                 * @example 2014-01-08T11:28:12Z
+                 * @description Date and time when the record was created.
+                 * @example 2026-01-08T11:28:12Z
                  */
                 readonly createdDateTime?: string;
             };
             entity?: components["schemas"]["entity-ref"];
         };
         "accounts-receivable-customer-refundRequiredProperties": {
-            refundDetails?: unknown[];
+            refundDetails?: (unknown | unknown | unknown | unknown)[];
         };
         "accounts-receivable-customer-refund-actions-submit-request": {
             /**
@@ -11637,72 +11707,72 @@ export interface components {
              */
             state?: string;
         };
-        /** @description Accounts receivable customer refund line object. */
+        /** @description Line of a customer refund that records the amount refunded for a GL account. */
         "objects.accounts-receivable.customer-refund-line": {
             /**
-             * @description System-assigned key for the customer refund line.
+             * @description System-assigned unique key for the customer refund line.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description System-assigned key for the customer refund line.
+             * @description Unique ID for the customer refund line. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
             /**
-             * @description Endpoint for the customer refund line.
+             * @description URL endpoint for the customer refund line.
              * @example /objects/accounts-receivable/customer-refund-line/23
              */
             readonly href?: string;
             /** @description For multi-currency companies, base currency information for the line item. */
             readonly baseCurrency?: {
                 /**
-                 * @description Base currency of the company.
+                 * @description Base currency for the company.
                  * @example USD
                  */
                 readonly currency?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description For multi-currency companies, the amount of the line item in the company's base currency.
-                 * @example 10
+                 * @example 10.00
                  */
                 readonly amount?: string;
                 /**
                  * Format: decimal-precision-2
                  * @description Total amount paid for the line item.
-                 * @example 10
+                 * @example 10.00
                  */
                 readonly totalPaid?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total selected for the line item.
-                 * @example 0
+                 * @description Total amount selected for the line item.
+                 * @example 0.00
                  */
                 readonly totalSelected?: string;
             };
             /** @description Transaction currency information for the line item. */
             readonly txnCurrency?: {
                 /**
-                 * @description Transaction currency.
+                 * @description Transaction currency for the line item.
                  * @example USD
                  */
                 readonly currency?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description For payment involving multi-currency, the amount of the item in the currency for the invoice.
-                 * @example 10
+                 * @description For multi-currency payments, the amount of the line item in the invoice currency.
+                 * @example 10.00
                  */
                 readonly amount?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Transaction total paid for the line item.
-                 * @example 10
+                 * @description Total amount paid for the line item in the transaction currency.
+                 * @example 10.00
                  */
                 readonly totalPaid?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description Total transaction selected for the line item.
-                 * @example 0
+                 * @description Total amount selected for the line item in the transaction currency.
+                 * @example 0.00
                  */
                 readonly totalSelected?: string;
             };
@@ -11711,7 +11781,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description Exchange rate date used to calculate the base amount from the transaction amount.
-                 * @example 2021-01-23
+                 * @example 2026-01-23
                  */
                 readonly date?: string;
                 /**
@@ -11725,26 +11795,26 @@ export interface components {
                  */
                 readonly typeId?: string;
             };
-            /** @description Details of the bank through which refund was made. */
+            /** @description Details of the bank through which the refund was made. */
             readonly bank?: {
                 /**
                  * Format: decimal-precision-2
                  * @description For multi-currency companies, the amount of the line item in the bank's base currency.
-                 * @example 10
+                 * @example 10.00
                  */
                 readonly amount?: string;
                 /**
                  * Format: decimal-precision-2
-                 * @description For payment involving multi-currency, the amount of the item in the currency of the bank.
-                 * @example 10
+                 * @description For multi-currency payments, the amount of the line item in the bank's currency.
+                 * @example 10.00
                  */
                 readonly txnAmount?: string;
-                /** @description For two and three-way currency conversions, Bank exchange rate details used to calculate the base amount for the line item. */
+                /** @description For two-way and three-way currency conversions, bank exchange rate details used to calculate the base amount for the line item. */
                 readonly bankExchangeRate?: {
                     /**
                      * Format: date
                      * @description Exchange rate date used to calculate the bank base amount from the transaction amount.
-                     * @example 2021-01-23
+                     * @example 2026-01-23
                      */
                     readonly date?: string;
                     /**
@@ -11760,29 +11830,29 @@ export interface components {
                 };
             };
             /**
-             * @description Memo or brief description of the AR refund line item.
+             * @description Memo or brief description of the customer refund line.
              * @example Annual service charge
              */
             memo?: string;
             /**
-             * @description Line number of the AR refund line item.
+             * @description Line number of the customer refund line.
              * @example 1
              */
             readonly lineNumber?: number;
-            /** @description Customer refund record. */
+            /** @description Customer refund that the line belongs to. */
             readonly customerRefund?: {
                 /**
-                 * @description Endpoint for the customer refund.
+                 * @description URL endpoint for the customer refund.
                  * @example /objects/accounts-receivable/customer-refund/23
                  */
                 readonly href?: string;
                 /**
-                 * @description System-assigned key for the customer refund.
+                 * @description Unique key for the customer refund.
                  * @example 23
                  */
                 readonly key?: string;
                 /**
-                 * @description System-assigned key for the customer refund.
+                 * @description ID for the customer refund.
                  * @example 23
                  */
                 readonly id?: string;
@@ -11790,22 +11860,22 @@ export interface components {
             /** @description GL account associated with the line item. */
             glAccount?: {
                 /**
-                 * @description Account key
+                 * @description Unique key for the GL account.
                  * @example 87
                  */
                 key?: string;
                 /**
-                 * @description Account number
+                 * @description ID for the GL account.
                  * @example 1100
                  */
                 id?: string;
                 /**
-                 * @description GL account title
+                 * @description Name of the GL account.
                  * @example Sales
                  */
                 name?: string;
                 /**
-                 * @description GL account URL
+                 * @description URL endpoint for the GL account.
                  * @example /objects/general-ledger/account/87
                  */
                 readonly href?: string;
@@ -11818,22 +11888,22 @@ export interface components {
                  */
                 location?: {
                     /**
-                     * @description Location key.
+                     * @description Unique key for the location.
                      * @example 4
                      */
                     key?: string;
                     /**
-                     * @description Location ID.
+                     * @description ID for the location.
                      * @example US
                      */
                     id?: string;
                     /**
-                     * @description Location name.
+                     * @description Name of the location.
                      * @example United States
                      */
                     name?: string;
                     /**
-                     * @description Location URL.
+                     * @description URL endpoint for the location.
                      * @example /objects/company-config/location/4
                      */
                     readonly href?: string;
@@ -11844,60 +11914,60 @@ export interface components {
                  */
                 department?: {
                     /**
-                     * @description Department key.
+                     * @description Unique key for the department.
                      * @example 9
                      */
                     key?: string;
                     /**
-                     * @description Department ID.
+                     * @description ID for the department.
                      * @example ENG
                      */
                     id?: string;
                     /**
-                     * @description Department name.
+                     * @description Name of the department.
                      * @example Engineering
                      */
                     name?: string;
                     /**
-                     * @description Department URL.
+                     * @description URL endpoint for the department.
                      * @example /objects/company-config/department/9
                      */
                     readonly href?: string;
                 };
             };
         };
-        /** @description Customer refund detail object. */
+        /** @description Detail that records how much of a customer refund applies to an underlying AR transaction. */
         "objects.accounts-receivable.customer-refund-detail": {
             /**
-             * @description System-assigned key for the customer refund detail.
+             * @description System-assigned unique key for the customer refund detail.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description System-assigned key for the customer refund detail.
+             * @description Unique ID for the customer refund detail. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
             /**
-             * @description Endpoint for the customer refund detail.
+             * @description URL endpoint for the customer refund detail.
              * @example /objects/accounts-receivable/customer-refund-detail/23
              */
             readonly href?: string;
             /**
              * Format: date
              * @description Date the refund was made.
-             * @example 2023-04-30
+             * @example 2026-04-30
              */
             readonly paymentDate?: string;
             /**
              * Format: decimal-precision-2
-             * @description The amount of the payment in the company's base currency.
-             * @example 10
+             * @description Refund amount in the company's base currency.
+             * @example 10.00
              */
             baseRefundAmount?: string | null;
             /**
              * Format: decimal-precision-2
-             * @description The amount of the transaction in the payment currency.
+             * @description Refund amount in the transaction currency.
              * @example 243.00
              */
             txnRefundAmount?: string | null;
@@ -11906,198 +11976,206 @@ export interface components {
              * @example USD
              */
             readonly bankCurrency?: string;
-            /** @description Overpayment record. */
+            /** @description Overpayment associated with the customer refund detail. */
             overPayment?: {
                 /**
-                 * @description System generated key for the overpayment.
+                 * @description Unique key for the overpayment.
                  * @example 56
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the overpayment.
+                 * @description ID for the overpayment.
                  * @example 56
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the overpayment.
+                 * @description URL endpoint for the overpayment.
                  * @example /objects/accounts-receivable/payment/56
                  */
                 readonly href?: string;
             };
-            /** @description Overpayment line item record. */
+            /** @description Overpayment line associated with the customer refund detail. */
             overPaymentLine?: {
                 /**
-                 * @description System generated key for the overpayment line item.
+                 * @description Unique key for the overpayment line.
                  * @example 56
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the overpayment line item.
+                 * @description ID for the overpayment line.
                  * @example 56
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the overpayment line item.
+                 * @description URL endpoint for the overpayment line.
                  * @example /objects/accounts-receivable/payment-line/56
                  */
                 readonly href?: string;
             };
-            /** @description Negative invoice transaction record */
+            /** @description Negative invoice associated with the customer refund detail. */
             negativeInvoice?: {
                 /**
-                 * @description System-generated key for the negative invoice transaction.
+                 * @description Unique key for the negative invoice.
                  * @example 33
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the negative invoice transaction.
+                 * @description ID for the negative invoice.
                  * @example 33
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the negative invoice transaction.
+                 * @description URL endpoint for the negative invoice.
                  * @example /objects/accounts-receivable/invoice/33
                  */
                 readonly href?: string;
             };
-            /** @description Negative invoice transaction line item record. */
+            /** @description Negative invoice line associated with the customer refund detail. */
             negativeInvoiceLine?: {
                 /**
-                 * @description System-generated key for the negative invoice transaction line item.
+                 * @description Unique key for the negative invoice line.
                  * @example 4
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the negative invoice transaction line item.
+                 * @description ID for the negative invoice line.
                  * @example 4
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the invoice transaction line item.
+                 * @description URL endpoint for the negative invoice line.
                  * @example /objects/accounts-receivable/invoice-line/4
                  */
                 readonly href?: string;
             };
-            /** @description Parent payment record. */
+            /** @description Parent payment associated with the customer refund detail. */
             arPayment?: {
                 /**
-                 * @description System-generated key for the parent payment record.
+                 * @description Unique key for the parent payment.
                  * @example 23
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the parent payment record.
+                 * @description ID for the parent payment.
                  * @example 23
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the parent payment record.
+                 * @description URL endpoint for the parent payment.
                  * @example /objects/accounts-receivable/payment/23
                  */
                 readonly href?: string;
             };
             /**
-             * @description State of customer refund.
+             * @description Current state of the customer refund detail.
              * @example complete
              * @enum {string}
              */
             readonly state?: "complete" | "voided" | "draft";
-            /** @description AR adjustment transaction record. */
+            /** @description AR adjustment associated with the customer refund detail. */
             arAdjustment?: {
                 /**
-                 * @description System-generated key for the AR adjustment.
+                 * @description Unique key for the AR adjustment.
                  * @example 41
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the AR adjustment.
+                 * @description ID for the AR adjustment.
                  * @example 41
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the AR adjustment.
+                 * @description URL endpoint for the AR adjustment.
                  * @example /objects/accounts-receivable/adjustment/41
                  */
                 readonly href?: string;
             };
-            /** @description AR adjustment transaction line item record. */
+            /** @description AR adjustment line associated with the customer refund detail. */
             arAdjustmentLine?: {
                 /**
-                 * @description System-generated key for the adjustment line item.
+                 * @description Unique key for the AR adjustment line.
                  * @example 86
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the adjustment line item.
+                 * @description ID for the AR adjustment line.
                  * @example 86
                  */
                 id?: string | null;
                 /**
-                 * @description URL for the adjustment line item.
+                 * @description URL endpoint for the AR adjustment line.
                  * @example /objects/accounts-receivable/adjustment-line/86
                  */
                 readonly href?: string;
             };
-            /** @description AR advance record. */
+            /** @description AR advance associated with the customer refund detail. */
             arAdvance?: {
                 /**
-                 * @description System-generated key for the AR advance.
+                 * @description Unique key for the AR advance.
                  * @example 999
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the AR advance.
+                 * @description ID for the AR advance.
                  * @example 999
                  */
                 id?: string | null;
-                /** @example /objects/accounts-receivable/advance/999 */
+                /**
+                 * @description URL endpoint for the AR advance.
+                 * @example /objects/accounts-receivable/advance/999
+                 */
                 readonly href?: string;
             };
-            /** @description AR advance line item record. */
+            /** @description AR advance line associated with the customer refund detail. */
             arAdvanceLine?: {
                 /**
-                 * @description System-generated key for the AR advance line item.
+                 * @description Unique key for the AR advance line.
                  * @example 59
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the AR advance line item.
+                 * @description ID for the AR advance line.
                  * @example 59
                  */
                 id?: string | null;
-                /** @example /objects/accounts-receivable/advance-line/59 */
+                /**
+                 * @description URL endpoint for the AR advance line.
+                 * @example /objects/accounts-receivable/advance-line/59
+                 */
                 readonly href?: string;
             };
+            /** @description Customer refund that the detail belongs to. */
             readonly customerRefund?: {
                 /**
-                 * @description Endpoint for the customer refund.
+                 * @description URL endpoint for the customer refund.
                  * @example /objects/accounts-receivable/customer-refund/23
                  */
                 readonly href?: string;
                 /**
-                 * @description System generated key for accounts receivalbe customer refund.
+                 * @description Unique key for the customer refund.
                  * @example 23
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the accounts receivable customer refund.
+                 * @description ID for the customer refund.
                  * @example 23
                  */
                 id?: string;
             };
+            /** @description Customer refund line associated with the customer refund detail. */
             customerRefundLine?: {
                 /**
-                 * @description Endpoint for the customer refund entry.
+                 * @description URL endpoint for the customer refund line.
                  * @example /objects/accounts-receivable/customer-refund-line/23
                  */
                 readonly href?: string;
                 /**
-                 * @description System-assigned key for the Customer refund line.
+                 * @description Unique key for the customer refund line.
                  * @example 6663
                  */
                 readonly key?: string;
                 /**
-                 * @description Identifier for the customer refund line.
+                 * @description ID for the customer refund line.
                  * @example 6663
                  */
                 readonly id?: string;
@@ -12614,6 +12692,29 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
+                 */
+                readonly href?: string;
+            };
         };
         "gl-account-ref": {
             /**
@@ -12715,91 +12816,76 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @deprecated
              * @description Last name.
              * @example Smith
              */
             lastName?: string | null;
             /**
-             * @deprecated
              * @description First name.
              * @example John
              */
             firstName?: string | null;
             /**
-             * @deprecated
              * @description Middle name.
              * @example Archibald
              */
             middleName?: string | null;
             /**
-             * @deprecated
              * @description Prefix, such as Mr., Mrs., or Ms.
              * @example Mr
              */
             prefix?: string | null;
             /**
-             * @deprecated
              * @description The contact's name as it will appear on documents.
              * @example John Smith
              */
             printAs?: string;
             /**
-             * @deprecated
              * @description Primary email address.
              * @example jsmith@company.com
              */
             email1?: string | null;
             /**
-             * @deprecated
              * @description Secondary email address.
              * @example john@aol.com
              */
             email2?: string | null;
             /**
-             * @deprecated
              * @description Primary phone number.
              * @example 14085551212
              */
             phone1?: string | null;
             /**
-             * @deprecated
              * @description Secondary phone number.
              * @example 14085559876
              */
             phone2?: string | null;
             /**
-             * @deprecated
              * @description Mobile phone number.
              * @example 14085554420
              */
             mobile?: string | null;
             /**
-             * @deprecated
              * @description Pager number.
              * @example 14085559987
              */
             pager?: string | null;
             /**
-             * @deprecated
              * @description Fax number.
              * @example 14085555309
              */
             fax?: string | null;
             /**
-             * @deprecated
              * @description Web page address for this contact.
              * @example https://mycompany.com
              */
             URL1?: string | null;
             /**
-             * @deprecated
              * @description Secondary web page address.
              * @example https://anothercompany.com
              */
             URL2?: string | null;
             /**
-             * @deprecated
              * @description Name of the company.
              * @example AlcoSoft Inc
              */
@@ -12807,37 +12893,31 @@ export interface components {
             /** @description Mailing address. */
             mailingAddress?: {
                 /**
-                 * @deprecated
                  * @description The first address line for shipping, billing, etc.
                  * @example 300 Park Avenue
                  */
                 addressLine1?: string | null;
                 /**
-                 * @deprecated
                  * @description The second address line for shipping, billing, etc.
                  * @example Suite 1400
                  */
                 addressLine2?: string | null;
                 /**
-                 * @deprecated
                  * @description The third address line for shipping, billing, etc. which provides additional geographical information.
                  * @example Western industrial area
                  */
                 addressLine3?: string | null;
                 /**
-                 * @deprecated
                  * @description City.
                  * @example San Jose
                  */
                 city?: string | null;
                 /**
-                 * @deprecated
                  * @description State.
                  * @example California
                  */
                 state?: string | null;
                 /**
-                 * @deprecated
                  * @description Zip or Postal Code.
                  * @example 95110
                  */
@@ -12850,7 +12930,6 @@ export interface components {
                  */
                 country?: string | null;
                 /**
-                 * @deprecated
                  * @description ISO country code. This field takes prevalence over `country` which is now deprecated.
                  * @default US
                  * @example US
@@ -13155,26 +13234,70 @@ export interface components {
                  */
                 readonly totalEarnedLessAmount?: string | null;
             };
-            /**
-             * @description Accounts Receivable invoice number.
-             * @example INV1
-             */
-            readonly accountsReceivableInvoiceNumber?: string | null;
-            /**
-             * @description Order Entry document ID.
-             * @example SO-AIA-Invoice01-Ord#0011#doc
-             */
-            readonly orderEntryDocumentId?: string | null;
-            /**
-             * @description Project ID.
-             * @example DIM - HCS
-             */
-            readonly projectId?: string | null;
-            /**
-             * @description Project name.
-             * @example Dimensions - Hands Computer Systems
-             */
-            readonly projectName?: string | null;
+            /** @description Order Entry document associated with the project contract billing invoice summary. */
+            readonly orderEntryDocument?: {
+                /**
+                 * @description Order Entry document key.
+                 * @example 44
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Order Entry document ID.
+                 * @example SO-AIA-Invoice01-Ord#0011#doc
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the Order Entry document.
+                 * @example /objects/order-entry/document::SO-AIA-Invoice01/44
+                 */
+                readonly href?: string;
+            };
+            /** @description Accounts Receivable invoice associated with the project contract billing invoice summary. */
+            readonly accountsReceivableInvoice?: {
+                /**
+                 * @description Accounts Receivable invoice key.
+                 * @example 23
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Accounts Receivable invoice ID.
+                 * @example 23
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description Accounts Receivable invoice number.
+                 * @example INV1
+                 */
+                readonly invoiceNumber?: string | null;
+                /**
+                 * @description URL endpoint for the Accounts Receivable invoice.
+                 * @example /objects/accounts-receivable/invoice/23
+                 */
+                readonly href?: string;
+            };
+            /** @description Project associated with the project contract for the project contract billing invoice summary. */
+            readonly project?: {
+                /**
+                 * @description Project key.
+                 * @example 1
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Project ID.
+                 * @example DIM - HCS
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description Project name.
+                 * @example Dimensions - Hands Computer Systems
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the project.
+                 * @example /objects/projects/project/1
+                 */
+                readonly href?: string;
+            };
         };
         /** @description Reference to a project contract line */
         "project-contract-line-ref": {
@@ -13470,7 +13593,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the adjustment.
-                 * @example 99
+                 * @example 15
                  */
                 key: string;
             };
@@ -13500,7 +13623,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the adjustment.
-                 * @example 99
+                 * @example 15
                  */
                 key: string;
             };
@@ -13525,7 +13648,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the adjustment.
-                 * @example 99
+                 * @example 15
                  */
                 key: string;
             };
@@ -13697,7 +13820,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the adjustment line.
-                 * @example 99
+                 * @example 125
                  */
                 key: string;
             };
@@ -13727,7 +13850,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the adjustment line.
-                 * @example 99
+                 * @example 125
                  */
                 key: string;
             };
@@ -13752,7 +13875,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the adjustment line.
-                 * @example 99
+                 * @example 125
                  */
                 key: string;
             };
@@ -14827,7 +14950,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the customer item cross reference.
-                 * @example 99
+                 * @example 905
                  */
                 key: string;
             };
@@ -14857,7 +14980,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the customer item cross reference.
-                 * @example 99
+                 * @example 905
                  */
                 key: string;
             };
@@ -14882,7 +15005,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the customer item cross reference.
-                 * @example 99
+                 * @example 905
                  */
                 key: string;
             };
@@ -15050,7 +15173,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Creates a new customer message. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.accounts-receivable.customer-message"] & components["schemas"]["accounts-receivable-customer-messageRequiredProperties"];
@@ -15196,7 +15318,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the customer type.
+                 * @description System-assigned unique key for the customer type.
                  * @example 4
                  */
                 key: string;
@@ -15226,7 +15348,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the customer type.
+                 * @description System-assigned unique key for the customer type.
                  * @example 4
                  */
                 key: string;
@@ -15251,7 +15373,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the customer type.
+                 * @description System-assigned unique key for the customer type.
                  * @example 4
                  */
                 key: string;
@@ -15420,7 +15542,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Creates a new customer group. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.accounts-receivable.customer-group"] & components["schemas"]["accounts-receivable-customer-groupRequiredProperties"];
@@ -16294,7 +16415,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the payment details.
+                 * @description System-assigned unique key for the payment detail.
                  * @example 119
                  */
                 key: string;
@@ -16573,8 +16694,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice.
-                 * @example 99
+                 * @description System-assigned unique key for the recurring invoice.
+                 * @example 24
                  */
                 key: string;
             };
@@ -16603,8 +16724,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice.
-                 * @example 99
+                 * @description System-assigned unique key for the recurring invoice.
+                 * @example 24
                  */
                 key: string;
             };
@@ -16628,8 +16749,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice.
-                 * @example 99
+                 * @description System-assigned unique key for the recurring invoice.
+                 * @example 24
                  */
                 key: string;
             };
@@ -16716,8 +16837,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice line.
-                 * @example 99
+                 * @description System-assigned unique key for the recurring invoice line.
+                 * @example 51
                  */
                 key: string;
             };
@@ -16746,8 +16867,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice line.
-                 * @example 99
+                 * @description System-assigned unique key for the recurring invoice line.
+                 * @example 51
                  */
                 key: string;
             };
@@ -16771,8 +16892,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice line.
-                 * @example 99
+                 * @description System-assigned unique key for the recurring invoice line.
+                 * @example 51
                  */
                 key: string;
             };
@@ -16829,7 +16950,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the recurring invoice tax entry.
+                 * @description System-assigned unique key for the recurring invoice tax entry.
                  * @example 36
                  */
                 key: string;
@@ -16884,7 +17005,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Revenue recognition template creation. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.accounts-receivable.revenue-recognition-template"] & components["schemas"]["accounts-receivable-revenue-recognition-templateRequiredProperties"];
@@ -17199,7 +17319,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the term.
-                 * @example 99
+                 * @example 18
                  */
                 key: string;
             };
@@ -17229,7 +17349,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the term.
-                 * @example 99
+                 * @example 18
                  */
                 key: string;
             };
@@ -17254,7 +17374,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the term.
-                 * @example 99
+                 * @example 18
                  */
                 key: string;
             };
@@ -17485,7 +17605,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the territory group.
-                 * @example 99
+                 * @example 8
                  */
                 key: string;
             };
@@ -17515,7 +17635,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the territory group.
-                 * @example 99
+                 * @example 8
                  */
                 key: string;
             };
@@ -17540,7 +17660,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the territory group.
-                 * @example 99
+                 * @example 8
                  */
                 key: string;
             };
@@ -18294,7 +18414,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the customer refund.
-                 * @example 99
+                 * @example 2346
                  */
                 key: string;
             };
@@ -18324,7 +18444,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the customer refund.
-                 * @example 99
+                 * @example 2346
                  */
                 key: string;
             };
@@ -18349,7 +18469,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the customer refund.
-                 * @example 99
+                 * @example 2346
                  */
                 key: string;
             };
@@ -18465,7 +18585,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the customer refund line.
-                 * @example 99
+                 * @example 375
                  */
                 key: string;
             };
@@ -18518,8 +18638,8 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the customer refund detail object.
-                 * @example 99
+                 * @description System-assigned unique key for the customer refund detail.
+                 * @example 773
                  */
                 key: string;
             };
