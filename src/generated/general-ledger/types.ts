@@ -9,13 +9,13 @@ export interface paths {
         };
         /**
          * List accounts
-         * @description Returns a collection with a key, ID, and link for each account. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find accounts that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each account. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify the properties that are returned.
          */
         get: operations["list-general-ledger-account"];
         put?: never;
         /**
          * Create an account
-         * @description Creates a new General Ledger account.
+         * @description Creates a new account.
          */
         post: operations["create-general-ledger-account"];
         delete?: never;
@@ -69,7 +69,7 @@ export interface paths {
         };
         /**
          * List account categories
-         * @description Returns a collection with a key, ID, and link for each account category.
+         * @description Returns a collection with a key, ID, and link for each account category. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-category"];
         put?: never;
@@ -115,7 +115,7 @@ export interface paths {
         };
         /**
          * List account ranges
-         * @description Returns a collection with a key, ID, and link for each account range.
+         * @description Returns a collection with a key, ID, and link for each account range. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-range"];
         put?: never;
@@ -132,7 +132,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account range.
+                 * @description System-assigned unique key for the account range.
                  * @example 178
                  */
                 key: string;
@@ -277,7 +277,7 @@ export interface paths {
         };
         /**
          * List account allocation groups
-         * @description Returns a collection with a key, ID, and link for each account allocation group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find allocation groups that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each account allocation group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-allocation-group"];
         put?: never;
@@ -298,7 +298,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account allocation group.
+                 * @description System-assigned unique key for the account allocation group.
                  * @example 178
                  */
                 key: string;
@@ -335,7 +335,7 @@ export interface paths {
         };
         /**
          * List account allocation group members
-         * @description Returns a collection with a key, ID, and link for each group member. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find allocation group members that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each account allocation group member. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-allocation-group-member"];
         put?: never;
@@ -352,7 +352,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account allocation group member.
+                 * @description System-assigned unique key for the account allocation group member.
                  * @example 99
                  */
                 key: string;
@@ -435,7 +435,7 @@ export interface paths {
         };
         /**
          * List account allocation sources
-         * @description Returns a collection with a key, ID, and link for each account allocation source.
+         * @description Returns a collection with a key, ID, and link for each account allocation source. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-allocation-source"];
         put?: never;
@@ -485,7 +485,7 @@ export interface paths {
         };
         /**
          * List account allocation basis objects
-         * @description Returns a collection with a key, ID, and link for each account allocation basis.
+         * @description Returns a collection with a key, ID, and link for each account allocation basis. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-allocation-basis"];
         put?: never;
@@ -521,7 +521,7 @@ export interface paths {
         head?: never;
         /**
          * Update an account allocation basis
-         * @description Updates an existing account allocation basis object by setting field values. Any fields not provided remain unchanged.
+         * @description Updates an existing account allocation basis by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-general-ledger-account-allocation-basis-key"];
         trace?: never;
@@ -535,7 +535,7 @@ export interface paths {
         };
         /**
          * List account allocation targets
-         * @description Returns a collection with a key, ID, and link for each account allocation target.
+         * @description Returns a collection with a key, ID, and link for each account allocation target. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-allocation-target"];
         put?: never;
@@ -585,7 +585,7 @@ export interface paths {
         };
         /**
          * List account allocation reversals
-         * @description Returns a collection with a key, ID, and link for each account allocation reversal.
+         * @description Returns a collection with a key, ID, and link for each account allocation reversal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-allocation-reverse"];
         put?: never;
@@ -713,7 +713,7 @@ export interface paths {
         };
         /**
          * List account groups
-         * @description Returns a collection with a key, ID, and link for each account group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account groups that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each account group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-group"];
         put?: never;
@@ -735,7 +735,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned key for the account group.
-                 * @example 99
+                 * @example 719
                  */
                 key: string;
             };
@@ -771,7 +771,7 @@ export interface paths {
         };
         /**
          * List account group purposes
-         * @description Returns a collection with a key, ID, and link for each purpose. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account group purposes that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each account group purpose. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify the properties that are returned.
          */
         get: operations["list-general-ledger-account-group-purpose"];
         put?: never;
@@ -792,7 +792,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account group purpose.
+                 * @description System-assigned unique key for the account group purpose.
                  * @example 3906
                  */
                 key: string;
@@ -829,7 +829,7 @@ export interface paths {
         };
         /**
          * List account group members
-         * @description Returns a collection with a key, ID, and link for each account group member.
+         * @description Returns a collection with a key, ID, and link for each account group member. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-group-member"];
         put?: never;
@@ -875,7 +875,8 @@ export interface paths {
         };
         /**
          * List account group category members
-         * @description Returns a collection with a key, ID, and link for each account group category member.
+         * @description Returns a collection with a key, ID, and link for each account group category member. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria
+         *     and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-group-category-member"];
         put?: never;
@@ -921,7 +922,7 @@ export interface paths {
         };
         /**
          * List computation account groups
-         * @description Returns a collection with a key, ID, and link for each computation account group.
+         * @description Returns a collection with a key, ID, and link for each computation account group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-group-computation"];
         put?: never;
@@ -967,7 +968,7 @@ export interface paths {
         };
         /**
          * List account group maps
-         * @description Returns a collection with a key, ID, and link for each account group map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find account group maps that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each account group map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-account-group-map"];
         put?: never;
@@ -996,6 +997,52 @@ export interface paths {
          * @description Returns detailed information for a specified account group map.
          */
         get: operations["get-general-ledger-account-group-map-key"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/general-ledger/account-group-hierarchy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List account group hierarchies
+         * @description Returns a collection with a key, ID, and link for each account group hierarchy. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-general-ledger-account-group-hierarchy"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/general-ledger/account-group-hierarchy/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the account group hierarchy.
+                 * @example MjYtMTM3
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get an account group hierarchy
+         * @description Returns detailed information for a specified account group hierarchy.
+         */
+        get: operations["get-general-ledger-account-group-hierarchy-key"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1129,7 +1176,7 @@ export interface paths {
         };
         /**
          * List budgets
-         * @description Returns a collection with a key, ID, and link for each budget. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find budgets that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each budget. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify the properties that are returned.
          */
         get: operations["list-general-ledger-budget"];
         put?: never;
@@ -1150,7 +1197,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the budget.
+                 * @description System-assigned unique key for the budget.
                  * @example 291
                  */
                 key: string;
@@ -1165,7 +1212,7 @@ export interface paths {
         put?: never;
         post?: never;
         /**
-         * Delete budget
+         * Delete a budget
          * @description Deletes a budget. You cannot delete the default budget or any budget that is being used by a financial report.
          *
          *     Carefully consider the implications before you delete a budget. After you delete a budget, you will no longer be able to use its data to create future budgets. Deleted budgets can no longer be used in financial reports.
@@ -1175,7 +1222,7 @@ export interface paths {
         head?: never;
         /**
          * Update a budget
-         * @description Updates an existing budget and its associated budget details by setting field values. Any fields not provided remain unchanged.
+         * @description Updates an existing budget by setting field values. Any fields not provided remain unchanged. You can also update or add associated budget details:
          *
          *     * To update an existing budget detail, provide the `key` value for the object.
          *     * To add new details to a budget, do not include a `key` value for the budget detail object.
@@ -1192,7 +1239,7 @@ export interface paths {
         };
         /**
          * List budget details
-         * @description Returns a collection with a key, ID, and link for each budget detail object. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find budget details that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each budget detail. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify the properties that are returned.
          */
         get: operations["list-general-ledger-budget-detail"];
         put?: never;
@@ -1217,7 +1264,7 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get budget details
+         * Get a budget detail
          * @description Returns detailed information for a specified budget detail.
          */
         get: operations["get-general-ledger-budget-detail-key"];
@@ -1238,13 +1285,13 @@ export interface paths {
         };
         /**
          * List journals
-         * @description Returns up to 100 journals from the collection with a key, ID, and link for each journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journals that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify the properties that are returned.
          */
         get: operations["list-general-ledger-journal"];
         put?: never;
         /**
          * Create a journal
-         * @description Creates a new journal object. New journals are immediately available for users to enter journal entries through the General Ledger. They are also available to be used in the configuration of other applications. For example, you might create a Labor Cost journal to be used by the Projects application.
+         * @description Creates a new journal. New journals are immediately available for users to enter journal entries through the General Ledger and to configure other applications. For example, you can create a Labor Cost journal for the Projects application.
          */
         post: operations["create-general-ledger-journal"];
         delete?: never;
@@ -1259,7 +1306,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the journal.
+                 * @description System-assigned unique key for the journal.
                  * @example 411
                  */
                 key: string;
@@ -1275,7 +1322,7 @@ export interface paths {
         post?: never;
         /**
          * Delete a journal
-         * @description Deletes a journal. You can only delete a journal if it does not have any transactions in it.  Deleted journals cannot be recovered.
+         * @description Deletes a journal. You can delete a journal only if it has no transactions. Deleted journals cannot be recovered.
          */
         delete: operations["delete-general-ledger-journal-key"];
         options?: never;
@@ -1296,7 +1343,7 @@ export interface paths {
         };
         /**
          * List user-defined books
-         * @description Returns a collection with a key, ID, and link for each user-defined book. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find books that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each user-defined book. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify the properties that are returned.
          */
         get: operations["list-general-ledger-user-defined-book"];
         put?: never;
@@ -1317,7 +1364,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the user-defined book
+                 * @description System-assigned unique key for the user-defined book.
                  * @example 23
                  */
                 key: string;
@@ -1326,7 +1373,7 @@ export interface paths {
         };
         /**
          * Get a user-defined book
-         * @description Returns complete details for a specified user-defined book.
+         * @description Returns detailed information for a specified user-defined book.
          */
         get: operations["get-general-ledger-user-defined-book-key"];
         put?: never;
@@ -1354,13 +1401,13 @@ export interface paths {
         };
         /**
          * List user-defined journals
-         * @description Returns a collection of user-defined journals with a key, ID, and link for each journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journals that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each user-defined journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify the properties that are returned.
          */
         get: operations["list-general-ledger-user-defined-journal"];
         put?: never;
         /**
          * Create a user-defined journal
-         * @description Creates a new user-defined journal
+         * @description Creates a new user-defined journal.
          */
         post: operations["create-general-ledger-user-defined-journal"];
         delete?: never;
@@ -1391,7 +1438,7 @@ export interface paths {
         post?: never;
         /**
          * Delete a user-defined journal
-         * @description Deletes a user-defined journal. You can only delete a journal if there are no transactions in it.
+         * @description Deletes a user-defined journal. You can delete a user-defined journal only if it has no transactions.
          */
         delete: operations["delete-general-ledger-user-defined-journal-key"];
         options?: never;
@@ -1412,15 +1459,15 @@ export interface paths {
         };
         /**
          * List journal entries
-         * @description Returns a collection of journal entries with a key, ID, and link for each entry. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journal entries that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each journal entry. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-journal-entry"];
         put?: never;
         /**
          * Create a journal entry
-         * @description Creates a new journal entry. When creating a journal entry, you can either post it immediately or save it as a draft for review. Draft entries can be updated before posting, but all required information must be provided. To post a journal entry, debits and credits must balance, and all required details must be entered.
+         * @description Creates a new journal entry. When creating a journal entry, you can either post it immediately or save it as a draft for review.
          *
-         *     Note: The only valid values when creating a new entry are `posted` (default, system-defined state), and `draft`. Only populate the state field when creating a `draft` entry.
+         *     Draft entries can be updated before posting, but all required information must be provided. To post a journal entry, debits and credits must balance, and all required details must be entered. The only valid values when creating a new entry are `posted` (default, system-defined state), and `draft`. Only populate the state field when creating a `draft` entry.
          */
         post: operations["create-general-ledger-journal-entry"];
         delete?: never;
@@ -1443,7 +1490,7 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get journal entry
+         * Get a journal entry
          * @description Returns detailed information for a specified journal entry.
          */
         get: operations["get-general-ledger-journal-entry-key"];
@@ -1460,7 +1507,7 @@ export interface paths {
          * Update a journal entry
          * @description Updates an existing journal entry by setting field values. Any fields not provided remain unchanged.
          *
-         *     Note: When updating an existing journal entry, you cannot use this operation to change the `state` field.
+         *     When updating an existing journal entry, you cannot use this operation to change the `state` field.
          */
         patch: operations["update-general-ledger-journal-entry-key"];
         trace?: never;
@@ -1474,7 +1521,7 @@ export interface paths {
         };
         /**
          * List journal entry lines
-         * @description Returns a collection of journal entry lines with a key, ID, and link for each entry line. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journal entry lines that meet certain criteria and to specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each journal entry line. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-journal-entry-line"];
         put?: never;
@@ -1506,7 +1553,7 @@ export interface paths {
         put?: never;
         post?: never;
         /**
-         * Delete a Journal entry line
+         * Delete a journal entry line
          * @description Deletes a journal entry line.
          */
         delete: operations["delete-general-ledger-journal-entry-line-key"];
@@ -1524,7 +1571,7 @@ export interface paths {
         };
         /**
          * List journal entry tax entries
-         * @description Returns a collection of journal entry tax entries with a key, ID, and link for each account.
+         * @description Returns a collection with a key, ID, and link for each journal entry tax entry. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-journal-entry-tax-entry"];
         put?: never;
@@ -1645,7 +1692,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the GL journal entry transaction template line.
+                 * @description System-assigned unique key for the journal entry transaction template line.
                  * @example 22
                  */
                 key: string;
@@ -1654,7 +1701,7 @@ export interface paths {
         };
         /**
          * Get a journal entry transaction template line
-         * @description Returns detailed information for a specified journal entry transaction template line. To create, update, or delete lines, use the PATCH operation on the GL journal entry transaction template.
+         * @description Returns detailed information for a specified journal entry transaction template line.
          */
         get: operations["get-general-ledger-journal-entry-txn-template-line-key"];
         put?: never;
@@ -1669,6 +1716,118 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/objects/general-ledger/recurring-journal-entry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List recurring journal entries
+         * @description Returns a collection with a key, ID, and link for each recurring journal entry. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-general-ledger-recurring-journal-entry"];
+        put?: never;
+        /**
+         * Create a recurring journal entry
+         * @description Creates a new recurring journal entry.
+         */
+        post: operations["create-general-ledger-recurring-journal-entry"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/general-ledger/recurring-journal-entry/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the recurring journal entry.
+                 * @example 132
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a recurring journal entry
+         * @description Returns detailed information for a specified recurring journal entry.
+         */
+        get: operations["get-general-ledger-recurring-journal-entry-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a recurring journal entry
+         * @description Deletes a recurring journal entry.
+         */
+        delete: operations["delete-general-ledger-recurring-journal-entry-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a recurring journal entry
+         * @description Updates an existing recurring journal entry by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["update-general-ledger-recurring-journal-entry-key"];
+        trace?: never;
+    };
+    "/objects/general-ledger/recurring-journal-entry-line": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List recurring journal entry lines
+         * @description Returns a collection with a key, ID, and link for each recurring journal entry line. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-general-ledger-recurring-journal-entry-line"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/general-ledger/recurring-journal-entry-line/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned key for the recurring journal entry line.
+                 * @example 132
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a recurring journal entry line
+         * @description Returns detailed information for a specified recurring journal entry line.
+         */
+        get: operations["get-general-ledger-recurring-journal-entry-line-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a recurring journal entry line
+         * @description Deletes a recurring journal entry line.
+         */
+        delete: operations["delete-general-ledger-recurring-journal-entry-line-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a recurring journal entry line
+         * @description Updates an existing recurring journal entry line by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["update-general-ledger-recurring-journal-entry-line-key"];
+        trace?: never;
+    };
     "/objects/general-ledger/reporting-period": {
         parameters: {
             query?: never;
@@ -1678,7 +1837,7 @@ export interface paths {
         };
         /**
          * List reporting periods
-         * @description Returns a collection with a key, ID, and link for each period. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find reporting periods that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each reporting period. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-reporting-period"];
         put?: never;
@@ -1736,13 +1895,13 @@ export interface paths {
         };
         /**
          * List adjustment journals
-         * @description Returns a collection of adjustment journals with a key, ID, and link for each journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journals that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each adjustment journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-adjustment-journal"];
         put?: never;
         /**
          * Create an adjustment journal
-         * @description Creates a new adjustment journal
+         * @description Creates a new adjustment journal.
          */
         post: operations["create-general-ledger-adjustment-journal"];
         delete?: never;
@@ -1780,7 +1939,7 @@ export interface paths {
         head?: never;
         /**
          * Update an adjustment journal
-         * @description Updates an existing adjustment journal by setting field values. Any field values not provided remain unchanged.
+         * @description Updates an existing adjustment journal by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-general-ledger-adjustment-journal-key"];
         trace?: never;
@@ -1794,13 +1953,13 @@ export interface paths {
         };
         /**
          * List GAAP adjustment journals
-         * @description Returns a collection of GAAP adjustment journals with a key, ID, and link for each journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journals that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each GAAP adjustment journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-gaap-adjustment-journal"];
         put?: never;
         /**
          * Create a GAAP adjustment journal
-         * @description Create a new GAAP adjustment journal.
+         * @description Creates a new GAAP adjustment journal.
          */
         post: operations["create-general-ledger-gaap-adjustment-journal"];
         delete?: never;
@@ -1815,7 +1974,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for a specified GAAP adjustment journal.
+                 * @description System-assigned unique key for the GAAP adjustment journal.
                  * @example 89
                  */
                 key: string;
@@ -1823,8 +1982,8 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get GAAP adjustment journal
-         * @description Returns detailed information about a GAAP adjustment journal.
+         * Get a GAAP adjustment journal
+         * @description Returns detailed information for a specified GAAP adjustment journal.
          */
         get: operations["get-general-ledger-gaap-adjustment-journal-key"];
         put?: never;
@@ -1852,7 +2011,7 @@ export interface paths {
         };
         /**
          * List tax adjustment journals
-         * @description Returns a collection of tax adjustment journals with a key, ID, and link for each journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journals that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each tax adjustment journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-tax-adjustment-journal"];
         put?: never;
@@ -1873,7 +2032,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the tax adjustment journal
+                 * @description System-assigned unique key for the tax adjustment journal.
                  * @example 44
                  */
                 key: string;
@@ -1882,7 +2041,7 @@ export interface paths {
         };
         /**
          * Get a tax adjustment journal
-         * @description Returns details for a specified tax adjustment journal.
+         * @description Returns detailed information for a specified tax adjustment journal.
          */
         get: operations["get-general-ledger-tax-adjustment-journal-key"];
         put?: never;
@@ -1910,13 +2069,13 @@ export interface paths {
         };
         /**
          * List statistical accounts
-         * @description Returns a collection with a key, ID, and link for each account. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find statistical GL accounts that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each statistical account. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-statistical-account"];
         put?: never;
         /**
          * Create a statistical account
-         * @description Creates a new statistical account. You should assign a different account range to statistical accounts so that they are not inadvertently grouped with general ledger accounts. Statistical accounts can be consolidated similarly to general ledger accounts, if you have a consolidated structure of companies with subsidiaries.
+         * @description Creates a new statistical account. Assign a different account range to statistical accounts to prevent them from being grouped with General Ledger accounts inadvertently. Statistical accounts can be consolidated similarly to General Ledger accounts when the company structure includes subsidiaries.
          *
          *     Individual statistical accounts are typically rolled up into account groups for use in reports.
          */
@@ -1933,7 +2092,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the statistical account.
+                 * @description System-assigned unique key for the statistical account.
                  * @example 439
                  */
                 key: string;
@@ -1949,7 +2108,7 @@ export interface paths {
         post?: never;
         /**
          * Delete a statistical account
-         * @description Deletes a statistical account. Accounts used in a book transaction cannot be deleted.  Deleted accounts cannot be recovered.
+         * @description Deletes a statistical account. Accounts used in a book transaction cannot be deleted. Deleted accounts cannot be recovered.
          */
         delete: operations["delete-statistical-account-key"];
         options?: never;
@@ -1970,7 +2129,7 @@ export interface paths {
         };
         /**
          * List statistical journals
-         * @description Returns a collection with a key, ID, and link for each statistical journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journals that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each statistical journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-statistical-journal"];
         put?: never;
@@ -1999,7 +2158,7 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get a statistical Journal
+         * Get a statistical journal
          * @description Returns detailed information for a specified statistical journal.
          */
         get: operations["get-general-ledger-statistical-journal-key"];
@@ -2028,13 +2187,13 @@ export interface paths {
         };
         /**
          * List statistical journal entries
-         * @description Returns up to 100 statistical journal entries from the collection with a key, ID, and link for each entry. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find statistical journal entries that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each statistical journal entry. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-statistical-journal-entry"];
         put?: never;
         /**
          * Create a statistical journal entry
-         * @description Creates a new statistical journal entry, you can either post the entry immediately or save as a draft for review. Draft journal entries can be updated before posting, but all required information must be provided to post.
+         * @description Creates a new statistical journal entry. You can post the entry immediately or save it as a draft for review. Draft entries can be updated before posting, but all required information must be provided to post.
          */
         post: operations["create-general-ledger-statistical-journal-entry"];
         delete?: never;
@@ -2049,7 +2208,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the statistical journal entry.
+                 * @description System-assigned unique key for the statistical journal entry.
                  * @example 132
                  */
                 key: string;
@@ -2086,7 +2245,7 @@ export interface paths {
         };
         /**
          * List statistical journal entry lines
-         * @description Returns up to 100 statistical journal entry lines from the collection with a key, ID, and link for each entry. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journal entry lines that meet certain criteria and to specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each statistical journal entry line. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["get-objects-statistical-journal-entry-line"];
         put?: never;
@@ -2103,7 +2262,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the statistical journal entry line item.
+                 * @description System-assigned unique key for the statistical journal entry line.
                  * @example 2647
                  */
                 key: string;
@@ -2111,8 +2270,8 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get a statistical journal entry line item
-         * @description Returns detailed information for a specified statistical journal entry line item.
+         * Get a statistical journal entry line
+         * @description Returns detailed information for a specified statistical journal entry line.
          */
         get: operations["get-objects-statistical-journal-entry-line-key"];
         put?: never;
@@ -2132,7 +2291,7 @@ export interface paths {
         };
         /**
          * List statistical adjustment journals
-         * @description Returns a collection with a key, ID, and link for each statistical adjustment journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find journals that meet certain criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each statistical adjustment journal. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-statistical-adjustment-journal"];
         put?: never;
@@ -2190,13 +2349,13 @@ export interface paths {
         };
         /**
          * List transaction allocation templates
-         * @description Returns up to 100 transaction allocation templates from the collection with a key, ID, and link for each one. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find allocation templates that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each transaction allocation template. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-txn-allocation-template"];
         put?: never;
         /**
          * Create a transaction allocation template
-         * @description Creates a new transaction allocation template, optionally including allocation template lines.
+         * @description Creates a new transaction allocation template. You can include transaction allocation template lines.
          */
         post: operations["create-general-ledger-txn-allocation-template"];
         delete?: never;
@@ -2234,7 +2393,7 @@ export interface paths {
         head?: never;
         /**
          * Update a transaction allocation template
-         * @description Updates an existing allocation template and template lines by setting field values. Any fields not provided remain unchanged.
+         * @description Updates an existing transaction allocation template by setting field values. Any fields not provided remain unchanged. This operation can also update transaction allocation template lines.
          */
         patch: operations["update-general-ledger-txn-allocation-template-key"];
         trace?: never;
@@ -2248,7 +2407,7 @@ export interface paths {
         };
         /**
          * List transaction allocation template lines
-         * @description Returns up to 100 transaction allocation template lines from the collection with a key, ID, and link for each one. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find allocation template lines that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each transaction allocation template line. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-txn-allocation-template-line"];
         put?: never;
@@ -2498,7 +2657,7 @@ export interface paths {
         };
         /**
          * List reporting account set permissions
-         * @description Returns a collection with a key, ID, and link for each reporting account set permission object. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each reporting account set permission. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-reporting-account-set-permission"];
         put?: never;
@@ -2664,7 +2823,7 @@ export interface paths {
         };
         /**
          * List reporting categories
-         * @description Returns a collection with a key, ID, and link for each reporting category.
+         * @description Returns a collection with a key, ID, and link for each reporting category. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-general-ledger-reporting-category"];
         put?: never;
@@ -2682,7 +2841,7 @@ export interface paths {
             path: {
                 /**
                  * @description System-assigned unique key for the reporting category.
-                 * @example 178
+                 * @example 129
                  */
                 key: string;
             };
@@ -2711,8 +2870,8 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * Submit the account balance report
-         * @description Submits the account balance report for processing. The response includes the `reportId` and `href` to check processing status.
+         * Run the account balance report
+         * @description Run the account balance report.
          */
         post: operations["gl-report-account-balance"];
         delete?: never;
@@ -2731,8 +2890,8 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * Submit the account balance by dimension report
-         * @description Submits the account balance by dimension report for processing. The response includes the `reportId` and `href` to check processing status.
+         * Run the account balance by dimension report
+         * @description Run the account balance by dimension report.
          */
         post: operations["gl-report-account-balance-by-dimension"];
         delete?: never;
@@ -2751,8 +2910,8 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * Submit the account group hierarchy report
-         * @description Submits the account group hierarchy report for processing. The response includes the `reportId` and `href` to check processing status.
+         * Run the account group hierarchy report
+         * @description Run the account group hierarchy report.
          */
         post: operations["gl-report-account-group-hierarchy"];
         delete?: never;
@@ -2771,8 +2930,8 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * Submit the GL details report
-         * @description Submits the GL details report for processing. The response includes the `reportId` and `href` to check processing status.
+         * Run the GL details report
+         * @description Run the GL details report.
          */
         post: operations["gl-report-details"];
         delete?: never;
@@ -2791,8 +2950,8 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * Submit the trial balance report
-         * @description Submits the trial balance report for processing. The response includes the `reportId` and `href` to check processing status.
+         * Run the trial balance report
+         * @description Run the trial balance report.
          */
         post: operations["gl-report-trial-balance"];
         delete?: never;
@@ -2851,102 +3010,100 @@ export interface components {
              */
             readonly previous?: number | null;
         };
-        /** @description General ledger account */
+        /** @description A General Ledger account records and organizes financial transactions. */
         "objects.general-ledger.account": {
             /**
-             * @description System-assigned key for the account. Used to identify the account in URLs or JSON bodies for all operations on the account.
+             * @description System-assigned unique key for the account.
              * @example 411
              */
             readonly key?: string;
             /**
-             * @description The primary account number. This number must be a specific length, which is set on the Accounting tab of the Company Information page.
+             * @description Unique ID for the account. The permitted length is configured at the company level.
              * @example 1501.04
              */
             id?: string;
             /**
-             * @description Name or title of the account, which appears on report headings. Max length is 80.
+             * @description Name or title of the account, which appears on report headings. Maximum length is 80 characters.
              * @example Expense Account
              */
             name?: string;
             /**
              * @description Type of account:
-             *     - `balanceSheet` - A snapshot of the current state of a company's assets, liabilities, and equity at a specific time.
-             *     - `incomeStatement` - Income statement accounts, sometimes called Profit and Loss statements, are cumulative for the selected period.
+             *     * `balanceSheet` - A snapshot of the current state of a company's assets, liabilities, and equity at a specific time.
+             *     * `incomeStatement` - Income statement accounts, sometimes called Profit and Loss statements, are cumulative for the selected period.
              * @default balanceSheet
              * @example balanceSheet
              * @enum {string}
              */
             accountType?: "balanceSheet" | "incomeStatement";
             /**
-             * @description Sets whether the normal balance, from an accounting standpoint, is a debit or credit. For example, expense accounts are normally a debit. Sales accounts are normally a credit.
+             * @description Normal balance of the account from an accounting perspective. For example, expense accounts normally have a debit balance, and sales accounts normally have a credit balance.
              * @default debit
              * @example debit
              * @enum {string}
              */
             normalBalance?: "debit" | "credit";
             /**
-             * @description Sets the account as a closing or non-closing account. Instead of manually closing accounts at year end, you can set them to be closing accounts and then specify the account in which to close that period.
+             * @description Specifies how the account is handled during year-end closing:
              *
-             *     - `nonClosingAccount` - Balance sheet accounts.
-             *     - `closingAccount` - Income statement accounts. Also specify a `closeToGLAccount`, which will typically be Retained Earnings. Sage Intacct then zeroes closing-type accounts into retained earnings at year-end.
-             *     - `closedToAccount` - An account that other accounts close to, such as Retained Earnings.
+             *     * `nonClosingAccount` - Balance sheet accounts that do not close at year-end.
+             *     * `closingAccount` - Income statement account that closes to retained earnings at year-end. Specify a `closeToGLAccount`, typically the Retained Earnings account.
+             *     * `closedToAccount` - Account designated to receive balances from other accounts during year-end closing, such as the Retained Earnings account.
              * @default nonClosingAccount
              * @example nonClosingAccount
              * @enum {string}
              */
             closingType?: "nonClosingAccount" | "closingAccount" | "closedToAccount";
-            /** @description Account into which this account should close. Required if `closingType` is set to `closingAccount`. */
+            /** @description GL account associated with the account for transferring balances during year-end closing. Required when `closingType` is `closingAccount`. */
             closeToGLAccount?: {
                 /**
-                 * @description System-assigned key for account.
+                 * @description Unique key for the GL account.
                  * @example 5
                  */
                 key?: string;
                 /**
-                 * @description GL account number.
+                 * @description ID for the GL account.
                  * @example 3500
                  */
                 id?: string;
                 /**
-                 * @description URL endpoint of the account.
+                 * @description URL endpoint for the GL account.
                  * @example /objects/general-ledger/account/5
                  */
                 readonly href?: string;
             };
             /**
-             * @description Sets whether the account can be used as an override of the default AP or AR GL accounts.
+             * @description Specifies whether this GL account overrides the default GL account for AP or AR transactions:
              *
-             *     - `payablesAccount` - The account can be used as an override account for bill and adjustment transactions, and transactions involving a specific vendor.
-             *     - `receivablesAccount` - The account can be used as an override for invoice and adjustment transactions and transactions involving a specific customer.
-             *     - `none` - The account cannot be used as an override account.
+             *     * `payablesAccount` - Overrides the default AP GL account for bills, adjustments, and transactions involving a vendor.
+             *     * `receivablesAccount` - Overrides the default AR GL account for invoices, adjustments, and transactions involving a customer.
+             *     * `none` - Does not override a default AP or AR GL account.
              *
-             *     The same alternative GL account can be used for all line items in a transaction, or different alternative accounts can be set for each line item. For vendors and customers, one alternative GL account can be used for balancing all transactions involving that vendor or customer.
-             *
-             *     Note: Currently, this field applies to bills, invoices, and adjustments only. It doesn't apply to recurring bills or invoices, manual payments, manual deposits, or advances.
+             *     Use this account as the override for all transaction lines or assign it to individual lines. For vendor or customer transactions, use it as the balancing account. This field applies only to bills, invoices, and adjustments; it does not apply to recurring bills or invoices, manual payments, manual deposits, or advances.
              * @default none
              * @example payablesAccount
              * @enum {string}
              */
             alternativeGLAccount?: "none" | "payablesAccount" | "receivablesAccount";
             /**
-             * @description Set to `true` to prevent direct entry of journal entries to the subledger control account (for example Accounts Payable, Accounts Receivable, etc.). Use this control to ensure that the account balance for the subledger account is accurate and has the necessary subledger details supporting the figure, rather than a direct entry which would not be reflected in the subledger application area.
+             * @description Indicates whether direct posting to the account is disallowed. If `true`, entries must be posted through subledger journals so the account retains supporting subledger details.
              * @default false
              * @example false
              */
             disallowDirectPosting?: boolean;
             /**
-             * @description Set to `true` to enable GL matching for the account.
+             * @description Indicates whether GL matching is enabled for the account.
              * @default false
              * @example false
              */
             enableGLMatching?: boolean;
             /**
              * @description Reconciliation sequence identifier used for GL matching.
-             * @example Expense Account
+             * @example SEQ-1001
              */
             reconciliationSequence?: string | null;
             /**
-             * @description If `true`, DATEV export will include tax.
+             * @description Indicates whether tax is included in the DATEV export for the account.
              * @default false
              * @example false
              */
@@ -2954,12 +3111,12 @@ export interface components {
             status?: components["schemas"]["status"];
             requireDimensions?: components["schemas"]["required-dimensions-ref"];
             /**
-             * @description Account categories are pre-defined groupings that arrange accounts into out-of-the-box reports, graphs, and performance cards. This field is available only for companies that were created with a QuickStart template or chose one later. If enabled, set a category for the account. The available values are tied to the particular QuickStart template used for the company. The category chosen will automatically set values for `accountType`, `normalBalance`, and `closingType`.
+             * @description Category used to organize accounts in predefined reports, graphs, and performance cards. Available only for companies using a QuickStart template; the available values depend on the template selected for the company. The selected category determines `accountType`, `normalBalance`, and `closingType`.
              * @example Cash and Cash Equivalents
              */
             category?: string;
             /**
-             * @description Set to `true` to mark the account as taxable.
+             * @description Indicates whether the account is taxable.
              * @default false
              * @example false
              */
@@ -3016,15 +3173,15 @@ export interface components {
              */
             readonly totalError?: number;
         };
-        /** @description Account category */
+        /** @description Classifies General Ledger accounts by account type and normal balance, and identifies categories used for statistical accounts. */
         "objects.general-ledger.account-category": {
             /**
-             * @description System-assigned key for the account category.
+             * @description System-assigned unique key for the account category.
              * @example 134
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account category.
+             * @description Unique ID for the account category.
              * @example Cash and Cash Equivalents
              */
             readonly id?: string;
@@ -3039,32 +3196,32 @@ export interface components {
              */
             isStatistical?: boolean;
             /**
-             * @description Specifies the account type associated with the account category.
+             * @description Account type associated with the account category.
              * @example asset
              * @enum {string}
              */
             accountType?: "asset" | "liability" | "equity" | "income" | "costOfRevenue" | "expense" | "other";
             /**
-             * @description Normal balance.
+             * @description Typical debit or credit balance for accounts in this category.
              * @example debit
              * @enum {string}
              */
             normalBalance?: "debit" | "credit";
         };
-        /** @description Account range */
+        /** @description An account range defines the lower and upper account numbers included in an account group, which can also contain individual named accounts. */
         "objects.general-ledger.account-range": {
             /**
-             * @description System-assigned key for the account range.
+             * @description System-assigned unique key for the account range.
              * @example 2
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account range.
+             * @description Unique ID for the account range. This value is the same as the `key` for this object.
              * @example 2
              */
             readonly id?: string;
             /**
-             * @description Sort order for the account range.
+             * @description Position of the account range within the account group.
              * @default 0
              * @example 2
              */
@@ -3079,7 +3236,7 @@ export interface components {
              * @example 1001
              */
             rangeTo?: string;
-            /** @description Account group that includes the account range. */
+            /** @description GL account group associated with the account range. */
             readonly glAccountGroup?: {
                 /**
                  * @description Unique key for the account group.
@@ -3087,7 +3244,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique identifier for the account group.
+                 * @description ID for the account group.
                  * @example Accounts Payable group
                  */
                 readonly id?: string;
@@ -3104,7 +3261,7 @@ export interface components {
              */
             readonly href?: string;
         };
-        /** @description An account name entity map represents the mapping of an account name to a specific location and general ledger account in a multi-entity company. */
+        /** @description An account name entity map represents the mapping of an account name to a specific location and General Ledger account in a multi-entity company. */
         "objects.general-ledger.account-name-entity-map": {
             /**
              * @description System-assigned unique key for the account name entity map.
@@ -3112,16 +3269,16 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account name entity map.
+             * @description Unique ID for the account name entity map. This value is the same as the `key` for this object.
              * @example 2
              */
             id?: string;
             /**
-             * @description Specifies a custom name for the account name entity map.
+             * @description Account title for the location associated with this mapping.
              * @example Corporate (India)
              */
             name?: string;
-            /** @description References the GL account associated with this mapping. */
+            /** @description General ledger account associated with the account name entity map. */
             glAccount?: {
                 /**
                  * @description Unique key for the GL account.
@@ -3129,7 +3286,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the GL account.
+                 * @description ID for the GL account.
                  * @example 1005
                  */
                 id?: string;
@@ -3144,7 +3301,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the location associated with this mapping. */
+            /** @description Location associated with the account name entity map. */
             location?: {
                 /**
                  * @description Unique key for the location.
@@ -3152,7 +3309,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the location.
+                 * @description ID for the location.
                  * @example Corporate
                  */
                 id?: string;
@@ -3169,7 +3326,7 @@ export interface components {
             readonly href?: string;
         };
         "general-ledger-account-name-entity-mapRequiredProperties": Record<string, never>;
-        /** @description Account allocations automatically distribute amounts across multiple dimensions such as departments, locations, projects, or classes. */
+        /** @description An account allocation defines how source amounts are distributed across dimensions. */
         "objects.general-ledger.account-allocation": {
             /**
              * @description System-assigned unique key for the account allocation.
@@ -3192,11 +3349,11 @@ export interface components {
              */
             description?: string;
             /**
-             * @description Specifies the methodology used to calculate the account allocation.
+             * @description Methodology for calculating the account allocation.
              * @example Expense allocation across revenue earning departments
              */
             methodology?: string;
-            /** @description References the journal associated with this account allocation. The journal is used to post the generated journal entries from the account allocation. */
+            /** @description Journal associated with the account allocation. The journal is used to post generated journal entries. */
             readonly journal?: {
                 /**
                  * @description Unique key for the journal.
@@ -3214,7 +3371,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Supporting documents that provide reasoning and methodology for the account allocation. */
+            /** @description Attachment associated with the account allocation. */
             attachment?: {
                 /**
                  * @description Unique key for the attachment.
@@ -3228,7 +3385,7 @@ export interface components {
                 id?: string | null;
                 /**
                  * @description URL endpoint for the attachment.
-                 * @example /objects/attachment/21
+                 * @example /objects/company-config/attachment/21
                  */
                 readonly href?: string;
             };
@@ -3238,7 +3395,7 @@ export interface components {
              */
             latestVersion?: number | null;
             /**
-             * @description Determines how dimensions are applied in the account allocation calculations, the detail level of created entries, and whether allocation is within one entity or across entities.
+             * @description Rules for applying dimensions in account allocation calculations. These rules determine the detail level of generated entries and whether the allocation runs within one entity or across entities.
              *
              *     * `notConsidered` - Excluded from calculations, but can still be used to filter the source pool or basis. Leave this blank, or set a single override value in `glAccountAllocationTarget`.
              *     * `preserveValues` - Keeps original dimension values and includes them in source and basis calculations to preserve proportional distribution in allocated entries.
@@ -3246,70 +3403,70 @@ export interface components {
              */
             dimensionTreatment?: {
                 /**
-                 * @description Indicates how location dimension values are applied in the account allocation.
+                 * @description Treatment of location dimension values in the account allocation.
                  * @default notConsidered
                  * @example preserveValues
                  * @enum {string}
                  */
                 location?: "notConsidered" | "preserveValues" | "allocationFocus";
                 /**
-                 * @description Indicates how department dimension values are applied in the account allocation.
+                 * @description Treatment of department dimension values in the account allocation.
                  * @default notConsidered
                  * @example allocationFocus
                  * @enum {string}
                  */
                 department?: "notConsidered" | "preserveValues" | "allocationFocus";
                 /**
-                 * @description Indicates how project dimension values are applied in the account allocation.
+                 * @description Treatment of project dimension values in the account allocation.
                  * @default notConsidered
                  * @example notConsidered
                  * @enum {string}
                  */
                 project?: "notConsidered" | "preserveValues" | "allocationFocus" | "perDimensionValue";
                 /**
-                 * @description Indicates how customer dimension values are applied in the account allocation.
+                 * @description Treatment of customer dimension values in the account allocation.
                  * @default notConsidered
                  * @example notConsidered
                  * @enum {string}
                  */
                 customer?: "notConsidered" | "preserveValues" | "allocationFocus";
                 /**
-                 * @description Indicates how vendor dimension values are applied in the account allocation.
+                 * @description Treatment of vendor dimension values in the account allocation.
                  * @default notConsidered
                  * @example notConsidered
                  * @enum {string}
                  */
                 vendor?: "notConsidered" | "preserveValues" | "allocationFocus";
                 /**
-                 * @description Indicates how employee dimension values are applied in the account allocation.
+                 * @description Treatment of employee dimension values in the account allocation.
                  * @default notConsidered
                  * @example notConsidered
                  * @enum {string}
                  */
                 employee?: "notConsidered" | "preserveValues" | "allocationFocus" | "perDimensionValue";
                 /**
-                 * @description Indicates how class dimension values are applied in the account allocation.
+                 * @description Treatment of class dimension values in the account allocation.
                  * @default notConsidered
                  * @example notConsidered
                  * @enum {string}
                  */
                 class?: "notConsidered" | "preserveValues" | "allocationFocus";
                 /**
-                 * @description Indicates how item dimension values are applied in the account allocation.
+                 * @description Treatment of item dimension values in the account allocation.
                  * @default notConsidered
                  * @example notConsidered
                  * @enum {string}
                  */
                 item?: "notConsidered" | "preserveValues" | "allocationFocus";
                 /**
-                 * @description Indicates how warehouse dimension values are applied in the account allocation.
+                 * @description Treatment of warehouse dimension values in the account allocation.
                  * @default notConsidered
                  * @example notConsidered
                  * @enum {string}
                  */
                 warehouse?: "notConsidered";
                 /**
-                 * @description Indicates how contract dimension values are applied in the account allocation.
+                 * @description Treatment of contract dimension values in the account allocation.
                  * @default notConsidered
                  * @example notConsidered
                  * @enum {string}
@@ -3317,7 +3474,7 @@ export interface components {
                 contract?: "notConsidered";
             };
             /**
-             * @description Indicates whether enhanced allocation validation is applied so each generation clears prior source amounts. This is useful for allocations that run multiple times in a period, such as payroll.
+             * @description Indicates whether the account allocation applies enhanced validation so each generation clears prior source amounts. This is useful for allocations that run multiple times in a period, such as payroll.
              *
              *     When true, Sage Intacct validates that accounts in the source pool are also used in the reversing source pool. If a different reversal account is used, it must be included in the source pool account group to offset prior allocations.
              *
@@ -3329,7 +3486,7 @@ export interface components {
              */
             activityDelta?: boolean;
             /**
-             * @description Indicates whether previously posted journal entries are automatically reversed.
+             * @description Indicates whether the account allocation automatically reverses previously posted journal entries.
              *
              *     When true, Sage Intacct checks for an existing allocation in the same source period and reverses it before generating a new allocation. The reversal uses the new allocation’s posting date and resets amounts so prior allocations are not double-counted.
              *
@@ -3338,16 +3495,16 @@ export interface components {
              * @example false
              */
             autoReversePriorPostedJournalEntry?: boolean;
-            /** @description References the source pool definition for the account allocation. */
+            /** @description Source pool definition for the account allocation. */
             glAccountAllocationSource?: components["schemas"]["objects.general-ledger.account-allocation-source"][];
-            /** @description References the basis definition for the account allocation. The basis determines how the source pool amount is distributed across each allocation-focused dimension. */
+            /** @description Basis definition for the account allocation, which determines how the source pool amount is distributed across each allocation-focused dimension. */
             glAccountAllocationBasis?: components["schemas"]["objects.general-ledger.account-allocation-basis"][];
-            /** @description References the target definition for the account allocation. The target specifies where the account allocation distributes source pool amounts during calculation. */
+            /** @description Target definition for the account allocation, specifying where source pool amounts are distributed during calculation. */
             glAccountAllocationTarget?: components["schemas"]["objects.general-ledger.account-allocation-target"][];
-            /** @description References the reverse definition for the account allocation. Determines whether to keep the allocated amounts in the allocation book or move them using copy and reverse to another book (such as accrual). */
+            /** @description Reverse definition for the account allocation. This definition determines whether allocated amounts remain in the allocation book or are moved using copy and reverse to another book, such as an accrual book. */
             glAccountAllocationReverse?: components["schemas"]["objects.general-ledger.account-allocation-reverse"][];
             /**
-             * @description Specifies how the account allocation interacts with multiple entities.
+             * @description Allocation scope and entity restrictions.
              *
              *     * `withinOneEntity` - You can only select source and basis options from the entity in which the allocation originates. Target entries are made in the same entity as the reversing source entries.
              *     * `acrossEntities` - For companies with multiple entities, account allocations can include more than one entity, even if they have different currencies. If using `acrossEntities`, specify an exchange rate type in the `glAccountAllocationTarget`.
@@ -3357,13 +3514,13 @@ export interface components {
              */
             allowAllocation?: "withinOneEntity" | "acrossEntities";
             /**
-             * @description Indicates the total number of journal entries that have been posted for a specific account allocation. This field is only available in the Query Service.
+             * @description Total number of journal entries posted for the account allocation. This field is only available in the Query Service.
              * @example 2
              */
             readonly numberPostedJournalEntries?: number | null;
             /**
              * Format: date
-             * @description Specifies the most recent date on which a posted journal entry was recorded for that account allocation. This field is only available in the Query Service.
+             * @description Most recent date a journal entry was posted for the account allocation. This field is only available in the Query Service.
              * @example 2026-05-23
              */
             readonly maxPostedJournalEntryDate?: string | null;
@@ -3393,20 +3550,20 @@ export interface components {
             glAccountAllocationTarget?: Record<string, never>[];
             glAccountAllocationReverse?: Record<string, never>[];
         };
-        /** @description List of processing groups for dynamic allocations. */
+        /** @description An account allocation group organizes dynamic allocations for coordinated processing. */
         "objects.general-ledger.account-allocation-group": {
             /**
-             * @description System-assigned key for the account allocation group.
+             * @description System-assigned unique key for the account allocation group.
              * @example 11
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account allocation group.
+             * @description Unique ID for the account allocation group. This value is the same as the `key` for this object.
              * @example 11
              */
             readonly id?: string;
             /**
-             * @description Name of the account allocation group (20 characters max).
+             * @description Name of the account allocation group (maximum 20 characters).
              * @example Month End
              */
             name?: string;
@@ -3416,34 +3573,34 @@ export interface components {
              */
             description?: string;
             /**
-             * @description How to handle any errors encountered when processing the group allocation members.
+             * @description Processing behavior when a member of the account allocation group encounters an error.
              *
-             *     - `stop` - The allocation process will stop and not move forward after a member of the allocation group has encountered errors. This is the recommended setting if sequential processing is important for the group.
-             *     - `skipAndContinue` - Skips the allocation member if an error is encountered. Processing then continues starting with the next member of the allocation group. This is the setting recommended if there are no dependencies within the allocation group.
+             *     * `stop` - Stops processing the group after a member encounters an error. Use this setting when processing order is important.
+             *     * `skipAndContinue` - Skips the member that encounters an error, then continues with the next member. Use this setting when allocations in the group do not depend on one another.
              * @example stop
              * @enum {string}
              */
             errorProcessingMethod?: "stop" | "skipAndContinue";
-            /** @description Account allocation group members. If one allocation is dependent on the completion of a previous allocation, order the members accordingly. */
+            /** @description Ordered account allocations in the group. If an allocation depends on a previous allocation, place the prerequisite allocation earlier in the list. */
             lines?: components["schemas"]["objects.general-ledger.account-allocation-group-member"][];
             status?: components["schemas"]["status"];
             audit?: components["schemas"]["audit.s1"];
             /**
-             * @description URL endpoint for the allocation group.
+             * @description URL endpoint for the account allocation group.
              * @example /objects/general-ledger/account-allocation-group/11
              */
             readonly href?: string;
         };
         "general-ledger-account-allocation-groupRequiredProperties": Record<string, never>;
-        /** @description General Ledger account allocation group member. */
+        /** @description An account allocation group member links an account allocation to its owning account allocation group. */
         "objects.general-ledger.account-allocation-group-member": {
             /**
-             * @description System-assigned key for the account allocation group member.
+             * @description System-assigned unique key for the account allocation group member.
              * @example 12
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account allocation group member.
+             * @description Unique ID for the account allocation group member. This value is the same as the `key` for this object.
              * @example 12
              */
             readonly id?: string;
@@ -3452,20 +3609,20 @@ export interface components {
              * @example /objects/general-ledger/account-allocation-group-member/12
              */
             readonly href?: string;
-            /** @description General Ledger account allocation. */
+            /** @description Account allocation associated with the account allocation group member. */
             glAccountAllocation?: {
                 /**
-                 * @description System-assigned key for the account allocation.
+                 * @description Unique key for the account allocation.
                  * @example 11
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the account allocation.
+                 * @description ID for the account allocation.
                  * @example 11
                  */
                 id?: string;
                 /**
-                 * @description Name for the account allocation.
+                 * @description Name of the account allocation.
                  * @example Monthly Expenses
                  */
                 readonly name?: string;
@@ -3475,15 +3632,15 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description General Ledger account allocation group. */
+            /** @description Account allocation group associated with the account allocation group member. */
             glAccountAllocationGroup?: {
                 /**
-                 * @description System-assigned key for the account allocation group.
+                 * @description Unique key for the account allocation group.
                  * @example 141
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the account allocation group.
+                 * @description ID for the account allocation group.
                  * @example 141
                  */
                 id?: string;
@@ -3510,11 +3667,11 @@ export interface components {
             readonly id?: string;
             /**
              * @description URL endpoint for the account allocation run.
-             * @example /objects/account-allocation-run/23
+             * @example /objects/general-ledger/account-allocation-run/23
              */
             readonly href?: string;
             /**
-             * @description Name of the account allocation or account allocation group.
+             * @description Name or ID of the account allocation or account allocation group associated with this run.
              * @example Skip and continue
              */
             readonly accountAllocationOrGroupName?: string;
@@ -3524,26 +3681,26 @@ export interface components {
              */
             readonly description?: string;
             /**
-             * @description Allocation type.
+             * @description Type of allocation executed by the account allocation run.
              * @example dynamicAllocation
              * @enum {string|null}
              */
             readonly allocationType?: null | "dynamicAllocation" | "restrictionRelease";
             /**
              * Format: date
-             * @description As-of date for the account allocation run.
-             * @example 2024-01-01
+             * @description Date used to determine the reporting date range for the account allocation run.
+             * @example 2026-09-20
              */
             asOfDate?: string;
             /**
              * Format: date
-             * @description GL posting date for the account allocation run.
-             * @example 2024-01-01
+             * @description Date used to post the journal entry generated by the account allocation run.
+             * @example 2026-09-20
              */
             glPostingDate?: string;
             /**
              * @description Email address to notify when the account allocation run completes.
-             * @example angie.kuman@mycompany.com
+             * @example accounts@company.com
              */
             email?: string;
             /**
@@ -3553,7 +3710,7 @@ export interface components {
              */
             readonly state?: "success" | "failed" | "inProgress" | "queued" | "partialSuccess";
             /**
-             * @description Status details for the account allocation run.
+             * @description Processing details for the account allocation run.
              * @example Account allocation run failed
              */
             readonly message?: string | null;
@@ -3622,11 +3779,11 @@ export interface components {
                  */
                 readonly name?: string | null;
             };
-            /** @description Dimension overrides for the account allocation run. */
+            /** @description Dimension overrides applied to the account allocation run. */
             dimensions?: {
                 /**
                  * employee
-                 * @description Employee dimension associated with the account allocation run.
+                 * @description Employee associated with the account allocation run.
                  */
                 employee?: {
                     /**
@@ -3652,7 +3809,7 @@ export interface components {
                 };
                 /**
                  * project
-                 * @description Project dimension associated with the account allocation run.
+                 * @description Project associated with the account allocation run.
                  */
                 project?: {
                     /**
@@ -3735,7 +3892,7 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "general-ledger-account-allocation-runRequiredProperties": Record<string, never>;
-        /** @description Parameters of the account allocation source, used when calculating the allocation. */
+        /** @description An account allocation source defines the account group and criteria used to identify source amounts for an account allocation. */
         "objects.general-ledger.account-allocation-source": {
             /**
              * @description System-assigned unique key for the account allocation source.
@@ -3743,43 +3900,52 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account allocation source.
+             * @description Unique ID for the account allocation source. This value is the same as the `key` for this object.
              * @example 21
              */
             readonly id?: string;
             /**
-             * @description Percent of the source pool to be allocated and applied to the source amount during calculation.
+             * @description Percentage of the source pool amount to allocate and apply during the allocation calculation.
              * @example 100
              */
             percentToAllocate?: string;
-            /** @description Source pool time period, the default time interval for the allocation. */
+            /** @description Reporting period associated with the account allocation source. It defines the date range for source pool amounts. */
             timePeriod?: {
-                /** @example 395 */
+                /**
+                 * @description Unique key for the reporting period.
+                 * @example 395
+                 */
                 key?: string;
-                /** @example Current Month */
+                /**
+                 * @description ID for the reporting period.
+                 * @example Current Month
+                 */
                 id?: string;
-                /** @example /objects/general-ledger/reporting-period/395 */
+                /**
+                 * @description URL endpoint for the reporting period.
+                 * @example /objects/general-ledger/reporting-period/395
+                 */
                 readonly href?: string;
             };
             /**
-             * @description Accounting method used when calculating the allocation.
+             * @description Accounting method used to calculate source amounts.
              * @example accrual
              * @enum {string}
              */
             reportingBook?: "accrual" | "cash";
             /**
-             * @description Base currency used in the entity where the allocation is processed.
+             * @description Base currency of the entity where the account allocation is processed.
              * @example USD
              */
             readonly currency?: string;
             /**
-             * @description Use amounts from specified reporting book when calculating the allocation.
+             * @description Reporting books included when calculating amounts for the source pool.
              * @default mainReportingBookAndAlternateBooks
              * @example mainReportingBookAndAlternateBooks
              * @enum {string}
              */
             useAmountsFrom?: "mainReportingBookAndAlternateBooks" | "alternateBooksOnly";
-            /** @description Account allocation. */
+            /** @description Account allocation associated with the account allocation source. */
             glAccountAllocation?: {
                 /**
                  * @description Unique key for the account allocation.
@@ -3787,17 +3953,17 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique identifier for the account allocation.
+                 * @description ID for the account allocation.
                  * @example 21
                  */
                 readonly id?: string;
                 /**
                  * @description URL endpoint for the account allocation.
-                 * @example /objects/general-ledger/account-allocation-source/21
+                 * @example /objects/general-ledger/account-allocation/21
                  */
                 readonly href?: string;
             };
-            /** @description Account group to base your allocation split on. */
+            /** @description Account group associated with the account allocation source. */
             glAccountGroup?: {
                 /**
                  * @description Unique key for the account group.
@@ -3805,7 +3971,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the account group.
+                 * @description ID for the account group.
                  * @example Basis
                  */
                 id?: string;
@@ -3815,10 +3981,11 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Source pool for the allocation. */
+            /** @description Adjustment books included in the source pool for the account allocation. */
             glAccountAllocationSourceAdjustmentBooks?: components["schemas"]["objects.general-ledger.account-allocation-source-adjustment-book"][];
+            /** @description Dimension groups used to filter the source pool. */
             dimensionGroups?: components["schemas"]["dimension-group-ref"];
-            /** @description Account allocation source dimensions. */
+            /** @description Dimension values used to filter the account allocation source. */
             dimensions?: components["schemas"]["dimension-ref"] & {
                 /**
                  * location
@@ -3831,12 +3998,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the location.
+                     * @description ID for the location.
                      * @example LOC-1
                      */
                     id?: string | null;
                     /**
-                     * @description Name for the location.
+                     * @description Name of the location.
                      * @example United States of America
                      */
                     readonly name?: string | null;
@@ -3857,12 +4024,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the department.
+                     * @description ID for the department.
                      * @example DEP-11
                      */
                     id?: string | null;
                     /**
-                     * @description Name for the department.
+                     * @description Name of the department.
                      * @example Sales and Marketing
                      */
                     readonly name?: string | null;
@@ -3880,7 +4047,7 @@ export interface components {
              */
             readonly href?: string;
         };
-        /** @description Parameters of the account allocation basis used as the blueprint for calculating dynamic allocations. */
+        /** @description An account allocation basis defines the parameters used to calculate dynamic allocation splits. */
         "objects.general-ledger.account-allocation-basis": {
             /**
              * @description System-assigned unique key for the account allocation basis.
@@ -3888,11 +4055,11 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account allocation basis.
+             * @description Unique ID for the account allocation basis. This value is the same as the `key` for this object.
              * @example 14
              */
             readonly id?: string;
-            /** @description Account allocation. */
+            /** @description Account allocation that owns the account allocation basis. */
             readonly glAccountAllocation?: {
                 /**
                  * @description Unique key for the account allocation.
@@ -3900,7 +4067,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique identifier for the account allocation.
+                 * @description ID for the account allocation.
                  * @example 21
                  */
                 readonly id?: string;
@@ -3911,13 +4078,13 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Determines how the amounts within the basis accounts are interpreted to derive amounts for the allocation split.
+             * @description Method for interpreting amounts in the basis accounts when calculating the allocation split.
              * @default activity
              * @example activity
              * @enum {string}
              */
             accumulation?: "activity" | "endingBalance";
-            /** @description Time period used to get the basis information. */
+            /** @description Reporting period used to determine the basis amounts. */
             timePeriod?: {
                 /**
                  * @description Unique key for the time period.
@@ -3925,7 +4092,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the time period.
+                 * @description Name of the time period.
                  * @example Current Month
                  */
                 id?: string;
@@ -3936,7 +4103,7 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Accounting method used in the basis calculation.
+             * @description Accounting method used to calculate the basis.
              * @example accrual
              * @enum {string}
              */
@@ -3949,19 +4116,19 @@ export interface components {
              */
             allocationMethod?: "dynamicRelativeAccountFinancial" | "dynamicRelativeAccountStatistical";
             /**
-             * @description Excludes negative balances from the basis calculation.
+             * @description Indicates whether negative balances are excluded from the basis calculation.
              * @default false
              * @example false
              */
             skipNegative?: boolean;
             /**
-             * @description Uses amounts from specified reporting book in the basis calculation.
+             * @description Reporting books used to determine the basis amounts.
              * @default mainReportingBookAndAlternateBooks
              * @example mainReportingBookAndAlternateBooks
              * @enum {string}
              */
             useAmountsFrom?: "mainReportingBookAndAlternateBooks" | "alternateBooksOnly";
-            /** @description Account group to base your allocation split on. */
+            /** @description Account group used to determine the basis amounts. */
             glAccountGroup?: {
                 /**
                  * @description Unique key for the account group.
@@ -3969,7 +4136,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the account group.
+                 * @description Name of the account group.
                  * @example Basis
                  */
                 id?: string;
@@ -3979,14 +4146,14 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Basis Adjustment book for the allocation. */
+            /** @description Adjustment books used in the account allocation basis. */
             glAccountAllocationBasisAdjustmentBooks?: components["schemas"]["objects.general-ledger.account-allocation-basis-adjustment-book"][];
             dimensionGroups?: components["schemas"]["dimension-group-ref"];
-            /** @description Account allocation basis dimensions. */
+            /** @description Dimensions associated with the account allocation basis. */
             dimensions?: components["schemas"]["dimension-ref"] & {
                 /**
                  * location
-                 * @description Location dimension.
+                 * @description Location dimension associated with the account allocation basis.
                  */
                 location?: {
                     /**
@@ -3995,12 +4162,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the location.
+                     * @description ID for the location.
                      * @example LOC-22
                      */
                     id?: string | null;
                     /**
-                     * @description Name for the location.
+                     * @description Name of the location.
                      * @example California
                      */
                     readonly name?: string | null;
@@ -4012,7 +4179,7 @@ export interface components {
                 };
                 /**
                  * department
-                 * @description Department dimension.
+                 * @description Department dimension associated with the account allocation basis.
                  */
                 department?: {
                     /**
@@ -4021,12 +4188,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the department.
+                     * @description ID for the department.
                      * @example DEP-11
                      */
                     id?: string | null;
                     /**
-                     * @description Name for the department.
+                     * @description Name of the department.
                      * @example Sales and Marketing
                      */
                     readonly name?: string | null;
@@ -4044,7 +4211,7 @@ export interface components {
              */
             readonly href?: string;
         };
-        /** @description Parameters of the account allocation target, used when calculating dynamic allocations. */
+        /** @description An account allocation target defines where amounts from a dynamic allocation are distributed. */
         "objects.general-ledger.account-allocation-target": {
             /**
              * @description System-assigned unique key for the account allocation target.
@@ -4052,11 +4219,11 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account allocation target.
+             * @description Unique ID for the account allocation target. This value is the same as the `key` for this object.
              * @example 14
              */
             readonly id?: string;
-            /** @description Account allocation. */
+            /** @description Account allocation that owns the target. */
             readonly glAccountAllocation?: {
                 /**
                  * @description Unique key for the account allocation.
@@ -4064,7 +4231,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Unique identifier for the account allocation.
+                 * @description ID for the account allocation.
                  * @example 21
                  */
                 readonly id?: string;
@@ -4074,7 +4241,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Account group to base your allocation split on. */
+            /** @description Account group used as the basis for the allocation split. */
             glAccountGroup?: {
                 /**
                  * @description Unique key for the account group.
@@ -4082,7 +4249,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the account group.
+                 * @description ID for the account group.
                  * @example 1
                  */
                 id?: string;
@@ -4093,12 +4260,12 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Flag lines in the allocation target as billable.
+             * @description Indicates whether lines generated for the account allocation target are billable.
              * @default false
              * @example false
              */
             isBillable?: boolean;
-            /** @description General ledger account. */
+            /** @description GL account associated with the allocation target. */
             glAccount?: {
                 /**
                  * @description Unique key for the account.
@@ -4106,12 +4273,12 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the account.
+                 * @description ID for the account.
                  * @example 1105
                  */
                 id?: string | null;
                 /**
-                 * @description Name for the account.
+                 * @description Name of the account.
                  * @example Target
                  */
                 readonly name?: string | null;
@@ -4122,12 +4289,12 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Specify if the original source account is included in the target.
+             * @description Indicates whether the original source account is included in the allocation target.
              * @default false
              * @example true
              */
             useSourceAccount?: boolean;
-            /** @description Journal where the allocation will be recorded when generated. */
+            /** @description Journal where the generated allocation is recorded. */
             journal?: {
                 /**
                  * @description Unique key for the journal.
@@ -4135,12 +4302,12 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the journal.
+                 * @description ID for the journal.
                  * @example Others
                  */
                 id?: string;
                 /**
-                 * @description Title for the account.
+                 * @description Title for the journal.
                  * @example Accommodation Expenses
                  */
                 readonly title?: string;
@@ -4153,14 +4320,14 @@ export interface components {
             /** @description Exchange rate details used to calculate the base amount. */
             exchangeRate?: {
                 /**
-                 * @description The type of exchange rate used to calculate the base amount from the transaction amount.
+                 * @description Exchange rate type used to calculate the base amount from the transaction amount.
                  * @example 1
                  */
                 typeId?: string | null;
             };
-            /** @description Dimension overrides for the account allocation target. */
+            /** @description Dimension overrides associated with the account allocation target. */
             dimensions?: {
-                /** @description Dimension override for class, applies only if the dimension treatment for class is set to not considered. */
+                /** @description For a class dimension set to not considered, the class applied to allocation target entries. */
                 class?: {
                     /**
                      * @description Unique key for the class.
@@ -4168,12 +4335,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the class.
+                     * @description Name of the class.
                      * @example 4
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the class.
+                     * @description ID for the class.
                      * @example Professional Services
                      */
                     id?: string | null;
@@ -4183,7 +4350,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for customer, applies only if the dimension treatment for customer is set to not considered. */
+                /** @description For a customer dimension set to not considered, the customer applied to allocation target entries. */
                 customer?: {
                     /**
                      * @description Unique key for the customer.
@@ -4191,12 +4358,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the customer.
+                     * @description Name of the customer.
                      * @example ACME Widgets
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the customer.
+                     * @description ID for the customer.
                      * @example ACME
                      */
                     id?: string | null;
@@ -4206,7 +4373,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for employee, applies only if the dimension treatment for employee is set to not considered. */
+                /** @description For an employee dimension set to not considered, the employee applied to allocation target entries. */
                 employee?: {
                     /**
                      * @description Unique key for the employee.
@@ -4214,12 +4381,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the employee.
+                     * @description Name of the employee.
                      * @example Eberhardt
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the employee.
+                     * @description ID for the employee.
                      * @example 12
                      */
                     id?: string | null;
@@ -4229,7 +4396,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for department, applies only if the dimension treatment for department is set to not considered. */
+                /** @description For a department dimension set to not considered, the department applied to allocation target entries. */
                 department?: {
                     /**
                      * @description Unique key for the department.
@@ -4237,12 +4404,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the department.
+                     * @description ID for the department.
                      * @example 12
                      */
                     id?: string | null;
                     /**
-                     * @description Name for the department.
+                     * @description Name of the department.
                      * @example Sales
                      */
                     readonly name?: string | null;
@@ -4252,7 +4419,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for location, applies only if the dimension treatment for location is set to not considered. */
+                /** @description For a location dimension set to not considered, the location applied to allocation target entries. */
                 location?: {
                     /**
                      * @description Unique key for the location.
@@ -4260,12 +4427,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the location.
+                     * @description ID for the location.
                      * @example AZ
                      */
                     id?: string | null;
                     /**
-                     * @description Name for the location.
+                     * @description Name of the location.
                      * @example Arizona
                      */
                     readonly name?: string | null;
@@ -4275,7 +4442,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for project, applies only if the dimension treatment for project is set to not considered. */
+                /** @description For a project dimension set to not considered, the project applied to allocation target entries. */
                 project?: {
                     /**
                      * @description Unique key for the project.
@@ -4283,12 +4450,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the project.
+                     * @description Name of the project.
                      * @example Client Services - Power Aerospace Materials
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the project.
+                     * @description ID for the project.
                      * @example 8
                      */
                     id?: string | null;
@@ -4298,7 +4465,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for vendor, applies only if the dimension treatment for vendor is set to not considered. */
+                /** @description For a vendor dimension set to not considered, the vendor applied to allocation target entries. */
                 vendor?: {
                     /**
                      * @description Unique key for the vendor.
@@ -4306,12 +4473,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the vendor.
+                     * @description Name of the vendor.
                      * @example Packard Bell
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the vendor.
+                     * @description ID for the vendor.
                      * @example 202
                      */
                     id?: string | null;
@@ -4321,7 +4488,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for warehouse, applies only if the dimension treatment for warehouse is set to not considered. */
+                /** @description For a warehouse dimension set to not considered, the warehouse applied to allocation target entries. */
                 warehouse?: {
                     /**
                      * @description Unique key for the warehouse.
@@ -4329,12 +4496,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the warehouse.
+                     * @description Name of the warehouse.
                      * @example WH02 Name
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the warehouse.
+                     * @description ID for the warehouse.
                      * @example WH02
                      */
                     id?: string | null;
@@ -4344,7 +4511,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for item, applies only if the dimension treatment for item is set to not considered. */
+                /** @description For an item dimension set to not considered, the item applied to allocation target entries. */
                 item?: {
                     /**
                      * @description Unique key for the item.
@@ -4352,12 +4519,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the item.
+                     * @description Name of the item.
                      * @example Platform pack
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the item.
+                     * @description ID for the item.
                      * @example Case 13
                      */
                     id?: string | null;
@@ -4367,7 +4534,7 @@ export interface components {
                      */
                     href?: string;
                 };
-                /** @description Dimension override for contract, applies only if the dimension treatment for contract is set to not considered. */
+                /** @description For a contract dimension set to not considered, the contract applied to allocation target entries. */
                 contract?: {
                     /**
                      * @description Unique key for the contract.
@@ -4375,12 +4542,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the contract.
+                     * @description Name of the contract.
                      * @example ACME Widgets - Service
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the contract.
+                     * @description ID for the contract.
                      * @example CON-0045-1
                      */
                     id?: string | null;
@@ -4398,7 +4565,7 @@ export interface components {
              */
             readonly href?: string;
         };
-        /** @description Parameters of the account allocation reversal, used when reversing dynamic account allocations. */
+        /** @description An account allocation reversal defines the parameters for reversing a dynamic account allocation. */
         "objects.general-ledger.account-allocation-reverse": {
             /**
              * @description System-assigned unique key for the account allocation reversal.
@@ -4406,19 +4573,19 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account allocation reversal.
+             * @description Unique ID for the account allocation reversal. This value is the same as the `key` for this object.
              * @example 14
              */
             readonly id?: string;
             /** @description Account allocation being reversed. */
             readonly glAccountAllocation?: {
                 /**
-                 * @description System-assigned unique key for the account allocation.
+                 * @description Unique key for the account allocation.
                  * @example 1
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique identifier for the account allocation.
+                 * @description ID for the account allocation.
                  * @example 1
                  */
                 readonly id?: string | null;
@@ -4429,7 +4596,7 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Specify if the original source account is included in the reversal.
+             * @description Indicates whether the original source account is included in the reversal.
              * @default false
              * @example true
              */
@@ -4437,17 +4604,17 @@ export interface components {
             /** @description General ledger account associated with the reversal. */
             glAccount?: {
                 /**
-                 * @description System-assigned unique key for the account.
+                 * @description Unique key for the account.
                  * @example 1
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the account.
+                 * @description ID for the account.
                  * @example 1000
                  */
                 id?: string | null;
                 /**
-                 * @description Name for the account.
+                 * @description Name of the account.
                  * @example Cash
                  */
                 readonly name?: string | null;
@@ -4459,7 +4626,7 @@ export interface components {
             };
             /** @description Dimension overrides for the account allocation reversal. */
             dimensions?: {
-                /** @description Dimension override for class, applies only if the dimension treatment for class is set to not considered. */
+                /** @description For a class dimension set to not considered, the class applied to the reversal. */
                 class?: {
                     /**
                      * @description Unique key for the class.
@@ -4467,12 +4634,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the class.
+                     * @description Name of the class.
                      * @example Professional Services
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the class.
+                     * @description ID for the class.
                      * @example 4
                      */
                     id?: string | null;
@@ -4482,7 +4649,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for customer, applies only if the dimension treatment for customer is set to not considered. */
+                /** @description For a customer dimension set to not considered, the customer applied to the reversal. */
                 customer?: {
                     /**
                      * @description Unique key for the customer.
@@ -4490,12 +4657,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the customer.
+                     * @description Name of the customer.
                      * @example Power Aerospace Materials
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the customer.
+                     * @description ID for the customer.
                      * @example 1
                      */
                     id?: string | null;
@@ -4505,7 +4672,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for employee, applies only if the dimension treatment for employee is set to not considered. */
+                /** @description For an employee dimension set to not considered, the employee applied to the reversal. */
                 employee?: {
                     /**
                      * @description Unique key for the employee.
@@ -4513,12 +4680,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the employee.
+                     * @description Name of the employee.
                      * @example John Smith
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the employee.
+                     * @description ID for the employee.
                      * @example 12
                      */
                     id?: string | null;
@@ -4528,7 +4695,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for department, applies only if the dimension treatment for department is set to not considered. */
+                /** @description For a department dimension set to not considered, the department applied to the reversal. */
                 department?: {
                     /**
                      * @description Unique key for the department.
@@ -4536,12 +4703,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the department.
+                     * @description ID for the department.
                      * @example 6
                      */
                     id?: string | null;
                     /**
-                     * @description Name for the department.
+                     * @description Name of the department.
                      * @example Marketing
                      */
                     readonly name?: string | null;
@@ -4551,7 +4718,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for location, applies only if the dimension treatment for location is set to not considered. */
+                /** @description For a location dimension set to not considered, the location applied to the reversal. */
                 location?: {
                     /**
                      * @description Unique key for the location.
@@ -4559,12 +4726,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the location.
+                     * @description ID for the location.
                      * @example AZ
                      */
                     id?: string | null;
                     /**
-                     * @description Name for the location.
+                     * @description Name of the location.
                      * @example Arizona
                      */
                     readonly name?: string | null;
@@ -4574,7 +4741,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for project, applies only if the dimension treatment for project is set to not considered. */
+                /** @description For a project dimension set to not considered, the project applied to the reversal. */
                 project?: {
                     /**
                      * @description Unique key for the project.
@@ -4582,12 +4749,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the project.
+                     * @description Name of the project.
                      * @example Client Services - Power Aerospace Materials
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the project.
+                     * @description ID for the project.
                      * @example 8
                      */
                     id?: string | null;
@@ -4597,7 +4764,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for vendor, applies only if the dimension treatment for vendor is set to not considered. */
+                /** @description For a vendor dimension set to not considered, the vendor applied to the reversal. */
                 vendor?: {
                     /**
                      * @description Unique key for the vendor.
@@ -4605,12 +4772,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the vendor.
+                     * @description Name of the vendor.
                      * @example Packard Bell
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the vendor.
+                     * @description ID for the vendor.
                      * @example 202
                      */
                     id?: string | null;
@@ -4620,7 +4787,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for warehouse, applies only if the dimension treatment for warehouse is set to not considered. */
+                /** @description For a warehouse dimension set to not considered, the warehouse applied to the reversal. */
                 warehouse?: {
                     /**
                      * @description Unique key for the warehouse.
@@ -4628,12 +4795,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the warehouse.
+                     * @description Name of the warehouse.
                      * @example Warehouse 2
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the warehouse.
+                     * @description ID for the warehouse.
                      * @example WH02
                      */
                     id?: string | null;
@@ -4643,7 +4810,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description Dimension override for item, applies only if the dimension treatment for item is set to not considered. */
+                /** @description For an item dimension set to not considered, the item applied to the reversal. */
                 item?: {
                     /**
                      * @description Unique key for the item.
@@ -4651,12 +4818,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the item.
+                     * @description Name of the item.
                      * @example Platform pack
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the item.
+                     * @description ID for the item.
                      * @example Case 13
                      */
                     id?: string | null;
@@ -4666,7 +4833,7 @@ export interface components {
                      */
                     href?: string;
                 };
-                /** @description Dimension override for contract, applies only if the dimension treatment for contract is set to not considered. */
+                /** @description For a contract dimension set to not considered, the contract applied to the reversal. */
                 contract?: {
                     /**
                      * @description Unique key for the contract.
@@ -4674,12 +4841,12 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the contract.
+                     * @description Name of the contract.
                      * @example ACME Widgets - Service
                      */
                     readonly name?: string | null;
                     /**
-                     * @description Unique identifier for the contract.
+                     * @description ID for the contract.
                      * @example CON-0045-1
                      */
                     id?: string | null;
@@ -4728,7 +4895,7 @@ export interface components {
              */
             readonly state?: "queued";
         };
-        /** @description Recurring allocations automate the distribution of amounts across multiple accounts on a scheduled basis. */
+        /** @description A recurring account allocation schedules an account allocation to run at defined intervals. */
         "objects.general-ledger.recurring-account-allocation": {
             /**
              * @description System-assigned unique key for the recurring allocation.
@@ -4746,33 +4913,33 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Name for the recurring allocation plan.
+             * @description Name of the recurring account allocation plan.
              * @example Monthly Operating Expenses
              */
             name?: string;
             /**
-             * @description Indicates whether to allocate through to the date when the recurring allocation ends. When `true`, the recurring allocation will run at the start of the day following the end of selected period, ensuring all entries for the period are considered in the allocation.
+             * @description Indicates whether the allocation runs at the start of the day after the selected period ends so that all entries for that period are included.
              * @default false
              * @example false
              */
             allocateToPeriodEnd?: boolean;
             /**
-             * @description Specifies the name of the account allocation or group.
+             * @description Name of the account allocation or group associated with this recurring account allocation.
              * @example Corporate Overhead Allocation Group
              */
             readonly accountAllocationOrGroupName?: string;
             /**
-             * @description Indicates the most recent execution status.
+             * @description Most recent execution status.
              * @example success
              * @enum {string|null}
              */
             readonly lastExecutionStatus?: null | "inTransit" | "scheduleError" | "failed" | "success";
             /**
-             * @description Specifies the number of times the recurring allocation has been run.
+             * @description Number of times the recurring account allocation has run.
              * @example 2
              */
             readonly runCount?: number;
-            /** @description References the account allocation associated with this recurring allocation. */
+            /** @description Account allocation associated with the recurring account allocation. */
             accountAllocation?: {
                 /**
                  * @description Unique key for the account allocation.
@@ -4785,7 +4952,7 @@ export interface components {
                  */
                 id?: string | null;
                 /**
-                 * @description Name for the account allocation.
+                 * @description Name of the account allocation.
                  * @example Monthly Expenses
                  */
                 readonly name?: string | null;
@@ -4795,11 +4962,11 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the account allocation group associated with this recurring allocation. */
+            /** @description Account allocation group associated with the recurring account allocation. */
             accountAllocationGroup?: {
                 /**
                  * @description URL endpoint for the account allocation group.
-                 * @example objects/general-ledger/account-allocation-group/23
+                 * @example /objects/general-ledger/account-allocation-group/23
                  */
                 readonly href?: string;
                 /**
@@ -4818,11 +4985,11 @@ export interface components {
                  */
                 readonly name?: string | null;
             };
-            /** @description Represents an internal operation or task that can be executed by the system. */
+            /** @description Operation that processes the recurring account allocation. */
             operation?: {
                 /**
-                 * @description ID for the operation.
-                 * @example Recurring Allocation Journal Entry - 2025.2.6-6:20:21-0.0833
+                 * @description Name of the operation.
+                 * @example Recurring Allocation Journal Entry - 2026.2.6-6:20:21-0.0833
                  */
                 readonly id?: string;
                 /**
@@ -4836,29 +5003,29 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description Contact email to alert when the allocation has been processed.
-                 * @example john.smith@mycompany.com
+                 * @description Email address for notifications when the recurring account allocation is processed.
+                 * @example accounts@company.com
                  */
                 contactEmail?: string;
             };
             /**
-             * @description Specifies the settings that establish the recurring schedule.
+             * @description Settings that define when the recurring account allocation runs.
              *
-             *     For more information, see [schedule a recurring allocation](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Account_allocations_recurring) in the Sage Intacct Help Center.
+             *     For more information, see [Schedule recurring allocations](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Account_allocations_recurring) in the Sage Intacct Help Center.
              */
             schedule?: {
                 /**
                  * Format: date
-                 * @description Specifies the journal entry start date for the recurring allocation.
-                 * @example 2025-02-06
+                 * @description On creation, date used to initialize the recurring account allocation schedule. When `allocateToPeriodEnd` is `true`, the stored start date and first scheduled run date are adjusted to the start of the next period specified by `repeatBy`, and journal entries are dated at the preceding period end. GET responses return the adjusted schedule start date.
+                 * @example 2026-02-06
                  */
                 startDate?: string;
                 /**
-                 * @description Indicates how the `endDate` for the recurring allocation is determined.
+                 * @description Condition that determines when the recurring account allocation schedule ends.
                  *
                  *     * `never` - Continues indefinitely until manually stopped.
-                 *     * `numberOfOccurrences` - Ends after a specified number of occurrences.
-                 *     * `endDate` - Ends on a specific date.
+                 *     * `numberOfOccurrences` - Ends after the specified number of occurrences.
+                 *     * `endDate` - Ends on the specified date.
                  * @default never
                  * @example endDate
                  * @enum {string}
@@ -4866,46 +5033,46 @@ export interface components {
                 scheduleEnd?: "never" | "numberOfOccurrences" | "endDate";
                 /**
                  * Format: date
-                 * @description Specifies the journal entry end date for the recurring allocation.
-                 * @example 2025-02-20
+                 * @description Cutoff date for scheduled runs when `scheduleEnd` is `endDate`. This is not necessarily the date of the final journal entry.
+                 * @example 2026-02-20
                  */
                 endDate?: string | null;
                 /**
-                 * @description Determines how often the recurring allocation repeats, for example, specifying `2` as the interval, with `month` as the value for `repeatBy`, repeats every two months.
+                 * @description Interval between recurring account allocation runs, measured in the unit specified by `repeatBy` (for example, an interval of 2 with `month` repeats every two months).
                  * @example 2
                  */
                 repeatInterval?: number;
                 /**
-                 * @description Indicates the number of occurrences to `repeatBy` for the recurring allocation.
+                 * @description For a schedule ending after a number of occurrences, number of runs before the schedule ends.
                  * @example 2
                  */
                 repeatCount?: number | null;
                 /**
                  * Format: date
-                 * @description Specifies the date on which the recurring allocation is scheduled to run next.
-                 * @example 2025-02-06
+                 * @description Next scheduled run date for the recurring account allocation.
+                 * @example 2026-02-06
                  */
                 readonly nextExecutionDate?: string | null;
                 /**
                  * Format: date
-                 * @description Specifies the date on which the recurring allocation was last run.
-                 * @example 2025-02-02
+                 * @description Date the recurring account allocation last ran.
+                 * @example 2026-02-02
                  */
                 readonly lastExecutionDate?: string | null;
                 /**
-                 * @description Specifies the number of times the recurring allocation has been run.
+                 * @description Number of times the schedule has run.
                  * @example 2
                  */
                 readonly executionCount?: number;
                 /**
-                 * @description Indicates the time unit that the `repeatInterval` uses for the recurring allocation, for example, specifying `month` as the value to repeat by, with a `repeatInterval` of `3` repeats every three months.
+                 * @description Time unit used by `repeatInterval` to determine how often the recurring account allocation runs (for example, a `repeatInterval` of 3 with `month` runs every three months).
                  * @default none
                  * @example day
                  * @enum {string}
                  */
                 repeatBy?: "none" | "day" | "week" | "month" | "year";
             };
-            /** @description Represents an internal operation or task configured to run automatically based on a defined schedule. */
+            /** @description Scheduled operation associated with the recurring account allocation. */
             scheduledOperation?: {
                 /**
                  * @description Unique key for the scheduled operation.
@@ -4913,13 +5080,13 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description ID for the scheduled operation.
-                 * @example Recurring Allocation Journal Entry - 2025.2.6-6:20:21-0.0833
+                 * @description Name of the scheduled operation.
+                 * @example Recurring Allocation Journal Entry - 2026.2.6-6:20:21-0.0833
                  */
                 readonly id?: string;
                 /**
                  * @description URL endpoint for the scheduled operation.
-                 * @example /objects/core/scheduled-operation/234
+                 * @example /objects/core/scheduled-operation/4
                  */
                 readonly href?: string;
             };
@@ -4930,222 +5097,217 @@ export interface components {
             schedule?: Record<string, never>;
             operation?: Record<string, never>;
         };
-        /** @description General ledger account groups. */
+        /** @description An account group organizes General Ledger accounts for financial reporting. */
         "objects.general-ledger.account-group": {
             /**
-             * @description System-assigned key for the account group.
+             * @description System-assigned unique key for the account group.
              * @example 33
              */
             readonly key?: string;
             /**
-             * @description ID for the account group.
+             * @description Unique ID for the account group.
              * @example 85 - Cash
              */
             id?: string;
             /**
-             * @description Header row title for the account group on financial reports.
+             * @description Title displayed in the header row for the account group in financial reports.
              * @example Cash
              */
             title?: string;
             /**
-             * @description Total line title for the account group on financial reports.
+             * @description Title displayed on the total line for the account group in financial reports.
              * @example Total Accounts Payable
              */
             displayTotalLineAs?: string;
             /**
              * @description Name of the manager responsible for the account group.
-             * @example John Smith
+             * @example Finance Manager
              */
             manager?: string;
             /**
-             * @description Calculation method used when calculating amounts on reports for each account group.
-             *     Valid calculation methods are:
+             * @description Calculation method for account group amounts in reports:
              *
-             *
-             *
-             *
-             *
-             *       - `period` - calculates only the amounts in the selected period.
-             *       - `startOfPeriod` - calculates the amounts cumulatively up to the start of the selected period.
-             *       - `endOfPeriod` - calculates the amounts cumulatively up to the end of the selected period.
-             *       - `null` - not supported.
+             *     * `period` - Amounts for the selected period only.
+             *     * `startOfPeriod` - Cumulative amounts through the start of the selected period.
+             *     * `endOfPeriod` - Cumulative amounts through the end of the selected period.
+             *     * `null` - Not supported.
              * @default period
              * @example period
              * @enum {string|null}
              */
             calculationMethod?: null | "period" | "startOfPeriod" | "endOfPeriod";
             /**
-             * @description Use this account group as either a debit balance or a credit balance, for example Cash is generally a debit balance, and Sales, a credit balance.
+             * @description Normal balance designation for the account group. Cash generally has a debit balance, while sales generally has a credit balance.
              *
-             *     Make sure that the normal balance is the same for all accounts in the account group. The normal balance takes the designation from the top of the group. For example, if the parent is debit normal, all included accounts will be added, regardless of their normal balance setting.
+             *     All accounts in the account group should have the same normal balance. The group uses the designation at its top level. For example, if the parent group has a debit normal balance, all included accounts are added, regardless of their individual normal balance settings.
              * @default credit
              * @example credit
              * @enum {string}
              */
             normalBalance?: "debit" | "credit";
             /**
-             * @description Indicate the type of account group. Different account group types yield different results in your financial reports.
+             * @description Type of account group, which determines how the group appears in financial reports:
              *
-             *     Valid account group types:
-             *     - `accounts` - the simplest and most basic type of account group types, it consists of one or  more accounts from the chart of accounts.
-             *     - `statisticalAccounts` - includes accounts that contain specific non-financial data, used for calculating ratios and business metrics such as, headcount or square footage.
-             *     - `computation` - consists of other account groups or individual accounts that you use as components in a mathematical equation; results of the equation display in your financial report.
-             *     - `category` - contains accounts based on categories (account groups) configured when your Intacct company was first set up.
-             *     - `statisticalCategory` - contains statistical accounts, also based on the pre-configured categories.
-             *     - `null` - not supported.
+             *     * `accounts` - Contains one or more accounts from the chart of accounts.
+             *     * `groups` - Contains other account groups.
+             *     * `statisticalAccounts` - Contains accounts with non-financial data used to calculate ratios and business metrics, such as headcount or square footage.
+             *     * `computation` - Uses other account groups or individual accounts as components in a mathematical equation; the result appears in financial reports.
+             *     * `category` - Contains accounts based on categories configured when the company was set up.
+             *     * `statisticalCategory` - Contains statistical accounts based on preconfigured categories.
+             *     * `null` - Not supported.
              * @default accounts
              * @example groups
              * @enum {string}
              */
             groupType?: "accounts" | "groups" | "statisticalAccounts" | "computation" | "category" | "statisticalCategory";
             /**
-             * @description Use `true` to specify the account group is a KPI account group. Key Performance Indicators (KPI) measure how effectively your company is meeting business objectives.  KPI account groups can be used in financial reports just like any other account groups.
+             * @description Indicates whether the account group is a key performance indicator (KPI) account group. KPIs measure how effectively your company is meeting business objectives. KPI account groups can be used in financial reports like other account groups.
              * @default false
              * @example false
              */
             isKPI?: boolean;
             /**
-             * @description Use `true` to roll up an entire hierarchy of child transactions into one total.
+             * @description Indicates whether amounts from descendant dimension members are included when calculating a dimension group.
              * @default false
              * @example true
              */
             includeChildAmount?: boolean;
-            /** @description Account group purpose to associate with this account group. */
+            /** @description Account group purpose associated with the account group. */
             accountGroupPurpose?: {
                 /**
-                 * @description System-assigned key for the account group purpose.
+                 * @description Unique key for the account group purpose.
                  * @example 126
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier of the account group purpose.
+                 * @description ID for the account group purpose.
                  * @example P&L
                  */
                 id?: string | null;
                 /**
                  * @description URL endpoint for the account group purpose.
-                 * @example /objects/company-config/account-group-purpose/126
+                 * @example /objects/general-ledger/account-group-purpose/126
                  */
                 readonly href?: string;
             };
             /**
-             * @description Filtering on the account group restricts the information displayed to certain dimensions. You can also filter for multiple locations and departments at the same time by using a dimension group.
+             * @description Report filters determine which transactions appear in reports that use this account group.
              *
-             *     Valid values for all report filters, use in reports where the account group is specified:
+             *     The available filter options vary by dimension:
              *
-             *     - `noFilter` - includes all account group transactions for the dimension and it's sub-dimensions.
-             *     - `null` - includes account group transactions where the dimension is not specified.
-             *     - `specific` - only includes account group transactions for the specified dimension or dimension group (only for location and department).
-             *     - `specificHierarchy` - includes account group transactions for the specified dimension hierarchy, including it's sub-dimensions.
+             *     * `noFilter` - Includes all transactions for the dimension and its sub-dimensions.
+             *     * `specific` - Filters by the selected dimension value. Location and department filters can also use a dimension group.
+             *     * `specificHierarchy` - Filters by the selected dimension hierarchy, including its sub-dimensions, where supported.
+             *     * `nullValue` (or `unspecified` for the vendor filter) - Includes transactions where the dimension is not specified.
              */
             reportFilters?: {
                 /**
-                 * @description Include account group transactions for a specific location (including sub-locations) or location group (contains multiple locations) in your reports where the account group is specified.
+                 * @description Location filter options for reports that include this account group. Use `specific` to filter by the selected location, or use `specificHierarchy` to include the location and its sub-locations.
                  * @default noFilter
                  * @example noFilter
                  * @enum {string|null}
                  */
                 location?: null | "noFilter" | "specificHierarchy" | "specific" | "nullValue";
                 /**
-                 * @description Include debit only or credit only account group transactions in your reports where the account group is specified. Use `both` to include all debit and credit transactions within the account group. This filter has limited options, it works on charts, graphs, performance cards, and financial reports, but is ignored in GL reports.
+                 * @description Debit or credit filter options for reports that include this account group. Use `both` to include all debit and credit transactions. Applies to charts, graphs, performance cards, and financial reports other than General Ledger reports.
                  * @default null
                  * @example both
                  * @enum {string|null}
                  */
                 debitOrCredit?: null | "both" | "debitOnly" | "creditOnly";
                 /**
-                 * @description Include account group transactions for a specific department (including sub-departments) or department group (contains multiple departments) in your reports where the account group is specified.
+                 * @description Department filter options for reports that include this account group. Use `specific` to filter by the selected department or department group, or use `specificHierarchy` to include the department and its sub-departments.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 department?: null | "noFilter" | "specificHierarchy" | "specific" | "nullValue";
                 /**
-                 * @description Include account group transactions for a specific vendor (including sub-vendors) in your reports where the account group is specified.
+                 * @description Vendor filter options for reports that include this account group. Use `specific` to filter by the selected vendor, or use `specificHierarchy` to include the vendor and its sub-vendors.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 vendor?: null | "noFilter" | "specificHierarchy" | "specific" | "unspecified";
                 /**
-                 * @description Include account group transactions for a specific customer (including sub-customers) in your reports where the account group is specified.
+                 * @description Customer filter options for reports that include this account group. Use `specific` to filter by the selected customer, or use `specificHierarchy` to include the customer and its sub-customers.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 customer?: null | "noFilter" | "specificHierarchy" | "specific" | "nullValue";
                 /**
-                 * @description Include account group transactions for a specific project (including sub-projects) in your reports where the account group is specified.
+                 * @description Project filter options for reports that include this account group. Use `specific` to filter by the selected project, or use `specificHierarchy` to include the project and its sub-projects.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 project?: null | "noFilter" | "specificHierarchy" | "specific" | "nullValue";
                 /**
-                 * @description Include account group transactions for a specific employee (including sub-employees) in your reports where the account group is specified.
+                 * @description Employee filter options for reports that include this account group. Use `specific` to filter by the selected employee, or use `specificHierarchy` to include the employee and its sub-employees.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 employee?: null | "noFilter" | "specificHierarchy" | "specific" | "nullValue";
                 /**
-                 * @description Include all account group transactions with specific inventory items in your reports where the account group is specified. This filter has limited options, it works on charts, graphs, performance cards, and financial reports, but is ignored in GL reports.
+                 * @description Inventory item filter options for reports that include this account group. Use `specific` to filter by the selected inventory item to include only that item. Applies to charts, graphs, performance cards, and financial reports other than General Ledger reports.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 item?: null | "noFilter" | "specific" | "nullValue";
                 /**
-                 * @description Include account group transactions for a specific class (including sub-classes) in your reports where the account group is specified.
+                 * @description Class filter options for reports that include this account group. Use `specific` to filter by the selected class, or use `specificHierarchy` to include the class and its sub-classes.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 class?: null | "noFilter" | "specificHierarchy" | "specific" | "nullValue";
                 /**
-                 * @description Include account group transactions for a specific contract (including sub-contracts) in your reports where the account group is specified.
+                 * @description Contract filter options for reports that include this account group. Use `specific` to filter by the selected contract, or use `specificHierarchy` to include the contract and its sub-contracts.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 contract?: null | "noFilter" | "specificHierarchy" | "specific" | "nullValue";
                 /**
-                 * @description Include all account group transactions with tasks in your reports where the account group is specified. This filter has limited options, it works on charts, graphs, performance cards, and financial reports, but is ignored in GL reports.
+                 * @description Task filter options for reports that include this account group. Applies to charts, graphs, performance cards, and financial reports other than General Ledger reports.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 task?: null | "noFilter" | "nullValue";
                 /**
-                 * @description Include account group transactions for a specific warehouse (including sub-warehouses) in your reports where the account group is specified.
+                 * @description Warehouse filter options for reports that include this account group. Use `specific` to filter by the selected warehouse, or use `specificHierarchy` to include the warehouse and its sub-warehouses.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 warehouse?: null | "noFilter" | "specificHierarchy" | "specific" | "nullValue";
                 /**
-                 * @description Include all account group transactions with cost types in your reports where the account group is specified. This filter has limited options, it works on charts, graphs, performance cards, and financial reports, but is ignored in GL reports.
+                 * @description Cost type filter options for reports that include this account group. Applies to charts, graphs, performance cards, and financial reports other than General Ledger reports.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 costType?: null | "noFilter" | "nullValue";
                 /**
-                 * @description Include account group transactions for a specific asset (including sub-assets) in your reports where the account group is specified.
+                 * @description Asset filter options for reports that include this account group. Use `specific` to filter by the selected asset, or use `specificHierarchy` to include the asset and its sub-assets.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 asset?: null | "noFilter" | "specificHierarchy" | "specific" | "nullValue";
                 /**
-                 * @description Include all account group transactions with specific affiliate entities in your reports where the account group is specified. This filter has limited options, it works on charts, graphs, performance cards, and financial reports, but is ignored in GL reports.
+                 * @description Affiliate entity filter options for reports that include this account group. Applies to charts, graphs, performance cards, and financial reports other than General Ledger reports.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
                  */
                 affiliateEntity?: null | "noFilter" | "specific" | "nullValue";
                 /**
-                 * @description Include account group transactions for a specific loan account in your reports where the account group is specified. This filter has limited scope. It applies to charts, graphs, performance cards, and financial reports, but is ignored in GL reports.
+                 * @description Loan account filter options for reports that include this account group. Applies to charts, graphs, performance cards, and financial reports other than General Ledger reports.
                  * @default null
                  * @example noFilter
                  * @enum {string|null}
@@ -5153,23 +5315,32 @@ export interface components {
                 loanAccount?: null | "noFilter" | "specific" | "nullValue";
             };
             /**
-             * @description Filter by the specified dimension values if `reportFilters` is set to `specific` or `specificHierarchy`.
+             * @description Dimension values used to filter reports when a corresponding `reportFilters` field is set to `specific` or `specificHierarchy`.
              *
-             *     A dimension is a classification system used to organize, sort, and report on your company information in meaningful ways. Each dimension has a set of related values with transactions and entries. Every transaction you enter can be tagged with multiple dimension values for identification and reporting.
+             *     These dimensions classify company data for reporting. Transactions can include multiple dimension values for identification and analysis.
              */
             dimensions?: components["schemas"]["dimension-ref"] & {
                 /**
                  * location
-                 * @description Location to filter by if `reportFilters.location` is set to `specific` or `specificHierarchy`.
+                 * @description Standard Sage Intacct dimension that allows you to create a hierarchy of locations to reflect how your company is organized.
                  *
-                 *     You can filter by a single `location`, or alternatively, you can filter by multiple locations using a `locationGroup`. You cannot filter both `location` and `locationGroup` at the same time.
+                 *     When `reportFilters.location` is `specific` or `specificHierarchy`, specify either `dimensions.location` or one location group via `dimensionsGroup.locationGroup` (or the deprecated `dimensions.locationGroup`), not both.
                  */
                 location?: {
-                    /** @example 1 */
+                    /**
+                     * @description Unique key for the location.
+                     * @example 1
+                     */
                     key?: string | null;
-                    /** @example 1 */
+                    /**
+                     * @description ID for the location.
+                     * @example 1
+                     */
                     id?: string | null;
-                    /** @example New York */
+                    /**
+                     * @description Name of the location.
+                     * @example New York
+                     */
                     readonly name?: string | null;
                     /**
                      * @description URL endpoint for the location.
@@ -5179,16 +5350,23 @@ export interface components {
                 };
                 /**
                  * @deprecated
-                 * @description Location group to filter by if `reportFilters.location` is set to `specific` or `specificHierarchy`.
-                 *
-                 *     You can filter by multiple locations using a `locationGroup`, or alternatively, you can filter by a single `location`. You cannot filter both `locationGroup` and `location` at the same time.
+                 * @description Sage Intacct dimension used to filter reports by multiple locations. This field is deprecated; use `dimensionsGroup.locationGroup` instead.
                  */
                 locationGroup?: {
-                    /** @example 7 */
+                    /**
+                     * @description Unique key for the location group.
+                     * @example 7
+                     */
                     key?: string | null;
-                    /** @example USA-GRP */
+                    /**
+                     * @description ID for the location group.
+                     * @example USA-GRP
+                     */
                     id?: string | null;
-                    /** @example USA Locations */
+                    /**
+                     * @description Name of the location group.
+                     * @example USA Locations
+                     */
                     readonly name?: string | null;
                     /**
                      * @description URL endpoint for the location group.
@@ -5198,18 +5376,18 @@ export interface components {
                 };
                 /**
                  * department
-                 * @description Department to filter by if `reportFilters.department` is set to `specific` or `specificHierarchy`.
+                 * @description Standard Sage Intacct dimension that allows you to create a hierarchy of departments to reflect how your company is organized.
                  *
-                 *     You can filter by a single `department`, or alternatively, you can filter by multiple departments using a `departmentGroup`. You cannot filter both `department` and `departmentGroup` at the same time.
+                 *     When `reportFilters.department` is `specific` or `specificHierarchy`, specify either `dimensions.department` or one department group via `dimensionsGroup.departmentGroup` (or the deprecated `dimensions.departmentGroup`), not both.
                  */
                 department?: {
                     /**
-                     * @description System-assigned key for the department.
+                     * @description Unique key for the department.
                      * @example 9
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier of the department.
+                     * @description ID of the department.
                      * @example PRS
                      */
                     id?: string | null;
@@ -5226,18 +5404,16 @@ export interface components {
                 };
                 /**
                  * @deprecated
-                 * @description Department group to filter by if `reportFilters.department` is set to `specific` or `specificHierarchy`. If you've defined department groups, these will be available to you in addition to the individual departments.
-                 *
-                 *     You can filter by multiple departments using a `departmentGroup`, or alternatively, you can filter by a single `department`. You cannot filter both `departmentGroup` and `department` at the same time.
+                 * @description Sage Intacct dimension used to filter reports by specific department groups. This field is deprecated; use `dimensionsGroup.departmentGroup` instead.
                  */
                 departmentGroup?: {
                     /**
-                     * @description System-assigned key for the department group.
+                     * @description Unique key for the department group.
                      * @example 3086
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier of the department group.
+                     * @description ID of the department group.
                      * @example SA-GRP
                      */
                     id?: string | null;
@@ -5253,22 +5429,24 @@ export interface components {
                     readonly href?: string;
                 };
             };
-            /**
-             * @description Filter by the specified dimension group values if `reportFilters` is set to `specific` or `specificHierarchy`.
-             *     A dimension group is a classification system used to organize, sort, and report on your company information in meaningful ways. Each dimension group has a set of related values with transactions and entries. Every transaction you enter can be tagged with multiple dimension values for identification and reporting.
-             */
+            /** @description Dimension groups provide location and department group filters for reports when the corresponding `reportFilters` field is set to `specific` or `specificHierarchy`. */
             dimensionsGroup?: {
-                /**
-                 * @description Location group to filter by if `reportFilters.location` is set to `specific` or `specificHierarchy`.
-                 *
-                 *     You can filter by multiple locations using a `locationGroup`, or alternatively, you can filter by a single `location`. You cannot filter both `locationGroup` and `location` at the same time.
-                 */
+                /** @description Sage Intacct dimension group used to filter reports by a location group, which can contain multiple locations. */
                 locationGroup?: {
-                    /** @example 7 */
+                    /**
+                     * @description Unique key for the location group.
+                     * @example 7
+                     */
                     key?: string | null;
-                    /** @example USA-GRP */
+                    /**
+                     * @description ID for the location group.
+                     * @example USA-GRP
+                     */
                     id?: string | null;
-                    /** @example USA Locations */
+                    /**
+                     * @description Name of the location group.
+                     * @example USA Locations
+                     */
                     readonly name?: string | null;
                     /**
                      * @description URL endpoint for the location group.
@@ -5276,19 +5454,15 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /**
-                 * @description Department group to filter by if `reportFilters.department` is set to `specific` or `specificHierarchy`. If you've defined department groups, these will be available to you in addition to the individual departments.
-                 *
-                 *     You can filter by multiple departments using a `departmentGroup`, or alternatively, you can filter by a single `department`. You cannot filter both `departmentGroup` and `department` at the same time.
-                 */
+                /** @description Sage Intacct dimension group used to filter reports by a department group, which can contain multiple departments. */
                 departmentGroup?: {
                     /**
-                     * @description System-assigned key for the department group.
+                     * @description Unique key for the department group.
                      * @example 3086
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier of the department group.
+                     * @description ID for the department group.
                      * @example SA-GRP
                      */
                     id?: string | null;
@@ -5304,17 +5478,17 @@ export interface components {
                     readonly href?: string;
                 };
             };
-            /** @description Array of account ranges for the account group. */
+            /** @description Collection of account ranges associated with the account group. */
             accountRanges?: components["schemas"]["objects.general-ledger.account-range"][];
-            /** @description Array of statistical account ranges for the account group. */
+            /** @description Collection of statistical account ranges associated with the account group. */
             statisticalAccountRanges?: components["schemas"]["objects.general-ledger.account-range"][];
-            /** @description Array of account group members for the account group. */
+            /** @description Collection of account group members for the account group. */
             accountGroupMembers?: components["schemas"]["objects.general-ledger.account-group-member"][];
-            /** @description Array of account group category members for the account group. */
+            /** @description Collection of category members for the account group. */
             accountGroupCategoryMembers?: components["schemas"]["objects.general-ledger.account-group-category-member"][];
-            /** @description Array of statistical account group category members for the account group. */
+            /** @description Collection of statistical category members for the account group. */
             statisticalAccountGroupCategoryMembers?: components["schemas"]["objects.general-ledger.account-group-category-member"][];
-            /** @description Array of computation group members for the account group. */
+            /** @description Collection of computation group members for the account group. */
             accountGroupComputation?: components["schemas"]["objects.general-ledger.account-group-computation"][];
             audit?: components["schemas"]["audit.s1"];
             entity?: components["schemas"]["entity-ref"];
@@ -5325,20 +5499,20 @@ export interface components {
             readonly href?: string;
         };
         "general-ledger-account-groupRequiredProperties": Record<string, never>;
-        /** @description Account group purposes let you filter account groups according to why you might use them, which is particularly useful in financial reporting. You create account group purposes and then assign them to account groups when you create or update the groups. */
+        /** @description An account group purpose lets you filter account groups according to why you might use them, which is particularly useful in financial reporting. You create account group purposes and then assign them to account groups when you create or update the groups. */
         "objects.general-ledger.account-group-purpose": {
             /**
-             * @description System-assigned key for the account group purpose.
+             * @description System-assigned unique key for the account group purpose.
              * @example 21
              */
             readonly key?: string;
             /**
-             * @description Name for the account group purpose.
+             * @description Unique ID for the account group purpose.
              * @example P&L
              */
             id?: string;
             /**
-             * @description URL endpoint of the account group purpose.
+             * @description URL endpoint for the account group purpose.
              * @example /objects/general-ledger/account-group-purpose/2
              */
             readonly href?: string;
@@ -5347,7 +5521,7 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "general-ledger-account-group-purposeRequiredProperties": Record<string, never>;
-        /** @description General ledger account group member. */
+        /** @description An account group member represents an account group owned by another account group. */
         "objects.general-ledger.account-group-member": {
             /**
              * @description System-assigned unique key for the account group member.
@@ -5355,7 +5529,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account group member.
+             * @description Unique ID for the account group member. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -5365,91 +5539,117 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Sort order for the account group members.
+             * @description Position of the account group member within its owning account group.
              * @example 1
              */
             sortOrder?: number;
-            /** @description Account group containing the account group member. */
+            /** @description Account group that is a member of the owning account group. */
             accountGroup?: {
                 /**
-                 * @description Account group key.
+                 * @description Unique key for the account group.
                  * @example 22
                  */
                 key?: string;
                 /**
-                 * @description Account group ID.
+                 * @description Name of the account group.
                  * @example Payroll group
                  */
                 id?: string;
-                /** @example /objects/general-ledger/account-group/22 */
+                /**
+                 * @description URL endpoint for the account group.
+                 * @example /objects/general-ledger/account-group/22
+                 */
                 readonly href?: string;
             };
-            /** @description General ledger account group. */
+            /** @description GL account group that owns the account group member. */
             readonly glAccountGroup?: {
                 /**
-                 * @description General ledger account group key.
+                 * @description Unique key for the GL account group.
                  * @example 21
                  */
                 readonly key?: string;
                 /**
-                 * @description General ledger account group ID.
+                 * @description Name of the GL account group.
                  * @example 85 - Cash
                  */
                 readonly id?: string;
-                /** @example /objects/general-ledger/account-group/21 */
+                /**
+                 * @description URL endpoint for the GL account group.
+                 * @example /objects/general-ledger/account-group/21
+                 */
                 readonly href?: string;
             };
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Account group category member. */
+        /** @description An account group category member associates a reporting category with an account group. */
         "objects.general-ledger.account-group-category-member": {
             /**
-             * @description System-assigned key for the account group category member.
+             * @description System-assigned unique key for the account group category member.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Account group category member ID.
+             * @description Unique ID for the account group category member. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
             /**
-             * @description Endpoint for the account group category member.
+             * @description URL endpoint for the account group category member.
              * @example /objects/general-ledger/account-group-category-member/23
              */
             readonly href?: string;
             /**
-             * @description Sort order.
+             * @description Sort order of the reporting category within the account group.
              * @example 1
              */
             sortOrder?: number;
+            /** @description Reporting category assigned to the account group. */
             accountCategory?: {
-                /** @example 21 */
+                /**
+                 * @description Unique key for the reporting category.
+                 * @example 21
+                 */
                 key?: string;
-                /** @example Fixed Assets */
+                /**
+                 * @description Name of the reporting category.
+                 * @example Fixed Assets
+                 */
                 id?: string;
-                /** @example /objects/general-ledger/reporting-category/21 */
+                /**
+                 * @description URL endpoint for the reporting category.
+                 * @example /objects/general-ledger/reporting-category/21
+                 */
                 readonly href?: string;
             };
+            /** @description Account group that owns the account group category member. */
             readonly glAccountGroup?: {
-                /** @example 21 */
+                /**
+                 * @description Unique key for the account group.
+                 * @example 21
+                 */
                 readonly key?: string;
-                /** @example Assets */
+                /**
+                 * @description Name of the account group.
+                 * @example Assets
+                 */
                 readonly id?: string;
-                /** @example /objects/general-ledger/account-group/21 */
+                /**
+                 * @description URL endpoint for the account group.
+                 * @example /objects/general-ledger/account-group/21
+                 */
                 readonly href?: string;
             };
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Computation account groups */
+        /** @description A computation account group defines a mathematical formula used to calculate values for an account group. */
         "objects.general-ledger.account-group-computation": {
             /**
-             * @description System-assigned key for the computation account group.
+             * @description System-assigned unique key for the computation account group.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the computation account group.
+             * @description Unique ID for the computation account group. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -5458,147 +5658,160 @@ export interface components {
              * @example /objects/general-ledger/account-group-computation/23
              */
             readonly href?: string;
+            /** @description Left-hand operand in the computation formula. */
             formulaLeft?: {
+                /** @description Account group used as the left-hand operand. */
                 glAccountGroup?: {
                     /**
-                     * @description Unique identifier for the left-hand account group in the computation formula.
+                     * @description Name of the account group.
                      * @example Payable account group
                      */
                     id?: string | null;
                     /**
-                     * @description Key for the left-hand account group in the computation formula.
+                     * @description Unique key for the account group.
                      * @example 21
                      */
                     key?: string | null;
                     /**
-                     * @description URL endpoint for the left-hand account group in the computation formula.
+                     * @description URL endpoint for the account group.
                      * @example /objects/general-ledger/account-group/21
                      */
                     readonly href?: string;
                 };
+                /** @description GL account used as the left-hand operand. */
                 glAccount?: {
                     /**
-                     * @description Unique identifier for the left-hand account in the computation formula.
+                     * @description ID for the GL account.
                      * @example 1000
                      */
                     id?: string | null;
                     /**
-                     * @description Key for the left-hand account in the computation formula.
+                     * @description Unique key for the GL account.
                      * @example 402
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the left-hand account in the computation formula.
+                     * @description Name of the GL account.
                      * @example Cash account
                      */
                     readonly name?: string | null;
                     /**
-                     * @description URL endpoint for the left-hand account in the computation formula.
+                     * @description URL endpoint for the GL account.
                      * @example /objects/general-ledger/account/402
                      */
                     readonly href?: string;
                 };
                 /**
-                 * @description As of period for the left-hand account in the computation formula.
+                 * @description Period point used to calculate the left-hand operand.
                  * @example forPeriod
                  * @enum {string}
                  */
                 asOf?: "forPeriod" | "startOfPeriod" | "endOfPeriod";
                 /**
-                 * @description Constant for the left-hand account in the computation formula, for example, a tax rate or discount.
+                 * @description Constant value for the left-hand operand, such as a tax rate or discount.
                  * @example 12
                  */
                 constant?: string | null;
             };
             /**
-             * @description Operator for the computation formula.
+             * @description Mathematical operation applied between the left-hand and right-hand operands.
              * @example add
              * @enum {string}
              */
             operator?: "add" | "subtract" | "multiply" | "divide";
+            /** @description Right-hand operand in the computation formula. */
             formulaRight?: {
+                /** @description Account group used as the right-hand operand. */
                 glAccountGroup?: {
                     /**
-                     * @description Unique identifier for the right-hand account group in the computation formula.
+                     * @description Name of the account group.
                      * @example Payable account group
                      */
                     id?: string | null;
                     /**
-                     * @description Key for the right-hand account group in the computation formula.
+                     * @description Unique key for the account group.
                      * @example 21
                      */
                     key?: string | null;
                     /**
-                     * @description URL endpoint for the right-hand account group in the computation formula.
+                     * @description URL endpoint for the account group.
                      * @example /objects/general-ledger/account-group/21
                      */
                     readonly href?: string;
                 };
+                /** @description GL account used as the right-hand operand. */
                 glAccount?: {
                     /**
-                     * @description Unique identifier for the right-hand account in the computation formula.
+                     * @description ID for the GL account.
                      * @example 1000
                      */
                     id?: string | null;
                     /**
-                     * @description Key for the right-hand account in the computation formula.
+                     * @description Unique key for the GL account.
                      * @example 402
                      */
                     key?: string | null;
                     /**
-                     * @description Name for the right-hand account in the computation formula.
+                     * @description Name of the GL account.
                      * @example Cash account
                      */
                     readonly name?: string | null;
                     /**
-                     * @description URL endpoint for the right-hand account in the computation formula.
+                     * @description URL endpoint for the GL account.
                      * @example /objects/general-ledger/account/402
                      */
                     readonly href?: string;
                 };
                 /**
-                 * @description As of period for the right-hand account in the computation formula.
+                 * @description Period point used to calculate the right-hand operand.
                  * @example forPeriod
                  * @enum {string}
                  */
                 asOf?: "forPeriod" | "startOfPeriod" | "endOfPeriod";
                 /**
-                 * @description Constant for the right-hand account in the computation formula, for example, a tax rate or discount.
+                 * @description Constant value for the right-hand operand, such as a tax rate or discount.
                  * @example 12
                  */
                 constant?: string | null;
             };
             /**
-             * @description Number of decimal places to display.
+             * @description Number of decimal places used to display the computed value.
              * @example 2
              */
             numberOfDecimalPlaces?: number;
             /**
-             * @description Type of number to display.
+             * @description Display format for the computed value.
              * @example number
              * @enum {string}
              */
             displayAs?: "number" | "percent" | "ratioWithDecimals" | "ratioWithoutDecimals" | "dailyAverage" | "weeklyAverage" | "monthlyAverage" | "quarterlyAverage";
             /**
-             * @description Unit of measurement.
+             * @description Unit label displayed with the computed value.
              * @example $
              */
             unit?: string;
             /**
-             * @description Placement of the unit of measurement.
+             * @description Position of the unit label relative to the computed value.
              * @example right
              * @enum {string|null}
              */
             unitPlacement?: null | "left" | "right";
+            /** @description Account group that owns this computation. */
             readonly glAccountGroup?: {
-                /** @example 21 */
+                /**
+                 * @description Unique key for the owning account group.
+                 * @example 21
+                 */
                 readonly key?: string;
                 /**
-                 * @description Reference to the owning account group for this account group computation.
+                 * @description Name of the owning account group.
                  * @example Payable account group
                  */
                 readonly id?: string;
-                /** @example /objects/general-ledger/account-group/21 */
+                /**
+                 * @description URL endpoint for the owning account group.
+                 * @example /objects/general-ledger/account-group/21
+                 */
                 readonly href?: string;
             };
             audit?: components["schemas"]["audit.s1"];
@@ -5611,23 +5824,162 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the account group map.
+             * @description GL account number for the account group map.
              * @example 1000
              */
             readonly id?: string;
             /**
-             * @description Specifies the name of the account.
+             * @description Name assigned to the account.
              * @example Bank of America A/c
              */
             accountName?: string;
             /**
-             * @description Specifies the name of the account group to which the account is assigned.
+             * @description Name of the account group assigned to the account.
              * @example Accounts Receivable
              */
             accountGroupName?: string;
             /**
              * @description URL endpoint for the account group map.
              * @example /objects/general-ledger/account-group-map/132
+             */
+            readonly href?: string;
+        };
+        /** @description An account group hierarchy organizes member account groups and accounts within the chart of accounts. */
+        "objects.general-ledger.account-group-hierarchy": {
+            /**
+             * Format: base64url
+             * @description System-assigned unique key for the account group hierarchy.
+             * @example MjYtMTM3
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the account group hierarchy. The `key` is the base64url-encoded form of this ID.
+             * @example 26-137
+             */
+            readonly id?: string;
+            /** @description GL account group associated with the hierarchy. */
+            readonly glAccountGroup?: {
+                /**
+                 * @description Unique key for the account group.
+                 * @example 26
+                 */
+                readonly key?: string;
+                /**
+                 * @description Name of the account group.
+                 * @example Liabilities
+                 */
+                readonly id?: string;
+                /**
+                 * @description Title of the account group, which appears on reports.
+                 * @example Liabilities
+                 */
+                readonly title?: string;
+                /**
+                 * @description Normal balance for the account group, either debit or credit.
+                 * @default credit
+                 * @example credit
+                 * @enum {string}
+                 */
+                readonly normalBalance?: "debit" | "credit";
+                /**
+                 * @description Indicates the type of account group in the hierarchy:
+                 *
+                 *     * `accounts` - Account-level members from the chart of accounts.
+                 *     * `groups` - Nested account groups used to build the hierarchy.
+                 *     * `statisticalAccounts` - Non-financial accounts used for operational metrics.
+                 *     * `computation` - Accounts or groups used in formula-based calculations.
+                 *     * `category` - Accounts grouped by category.
+                 *     * `statisticalCategory` - Statistical accounts grouped by category.
+                 * @default accounts
+                 * @example accounts
+                 * @enum {string|null}
+                 */
+                readonly groupType?: null | "accounts" | "groups" | "statisticalAccounts" | "computation" | "category" | "statisticalCategory";
+                /**
+                 * @description URL endpoint for the account group.
+                 * @example /objects/general-ledger/account-group/26
+                 */
+                readonly href?: string;
+            };
+            /** @description GL account associated with the hierarchy. */
+            glAccount?: {
+                /**
+                 * @description Unique key for the GL account.
+                 * @example 137
+                 */
+                key?: string | null;
+                /**
+                 * @description ID for the GL account.
+                 * @example 2080.07
+                 */
+                readonly id?: string;
+                /**
+                 * @description Name of the GL account.
+                 * @example Germany- Inter Entity Payable
+                 */
+                readonly name?: string;
+                /**
+                 * @description Normal balance for the GL account, from an accounting standpoint. Expense accounts normally have a debit balance, while sales accounts normally have a credit balance.
+                 * @default debit
+                 * @example debit
+                 * @enum {string}
+                 */
+                readonly normalBalance?: "debit" | "credit";
+                /**
+                 * @description Account classification, either balance sheet or income statement:
+                 *
+                 *     * `balanceSheet` - Provides a snapshot of the current state of a company's assets, liabilities, and equity at a specific point in time.
+                 *     * `incomeStatement` - Includes income statement accounts that accumulate activity over the selected period.
+                 * @default balanceSheet
+                 * @example balanceSheet
+                 * @enum {string}
+                 */
+                readonly accountType?: "balanceSheet" | "incomeStatement";
+                /**
+                 * @description URL endpoint for the GL account.
+                 * @example /objects/general-ledger/account/137
+                 */
+                readonly href?: string;
+            };
+            /** @description Location associated with the account group hierarchy. */
+            location?: {
+                /**
+                 * @description Unique key for the location.
+                 * @example 0
+                 */
+                key?: string | null;
+                /**
+                 * @description ID for the location.
+                 * @example 0
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the location.
+                 * @example /objects/company-config/location/0
+                 */
+                readonly href?: string;
+            };
+            /** @description Location group associated with the account group hierarchy. */
+            readonly locationGroup?: {
+                /**
+                 * @description Unique key for the location group.
+                 * @example 7
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description ID for the location group.
+                 * @example 7
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the location group.
+                 * @example /objects/company-config/location-group/7
+                 */
+                readonly href?: string;
+            };
+            /**
+             * @description URL endpoint for the account group hierarchy.
+             * @example /objects/general-ledger/account-group-hierarchy/MjYtMTM3
              */
             readonly href?: string;
         };
@@ -5639,7 +5991,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the accounting sequence. This value is the same as the key for this object.
+             * @description Unique ID for the accounting sequence. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -5650,17 +6002,17 @@ export interface components {
             readonly href?: string;
             /**
              * Format: date
-             * @description Specifies the start date of the accounting sequence.
+             * @description Start date for the accounting sequence.
              * @example 2026-04-01
              */
             startDate?: string;
             /**
              * Format: date
-             * @description Specifies the end date of the accounting sequence.
+             * @description End date for the accounting sequence.
              * @example 2026-06-30
              */
             endDate?: string;
-            /** @description Reference to the entity associated with the accounting sequence. */
+            /** @description Entity associated with the accounting sequence. */
             entity?: {
                 /**
                  * @description URL endpoint for the entity.
@@ -5673,17 +6025,17 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the entity.
+                 * @description ID for the entity.
                  * @example 1
                  */
                 id?: string;
             };
             audit?: components["schemas"]["audit.s2"];
-            /** @description Reference to a collection of accounting sequence lines associated with the accounting sequence. There must be at least one line. */
+            /** @description Accounting sequence lines for the accounting sequence. There must be at least one line. */
             lines?: components["schemas"]["objects.general-ledger.accounting-sequence-line"][];
         };
         "general-ledger-accounting-sequenceRequiredProperties": Record<string, never>;
-        /** @description Line item for the unique sequential accounting sequence called an accounting sequence number for each posted transaction that affects the general ledger. */
+        /** @description An accounting sequence line links a General Ledger journal and a document sequence to an accounting sequence used to number posted transactions. */
         "objects.general-ledger.accounting-sequence-line": {
             /**
              * @description System-assigned unique key for the accounting sequence line.
@@ -5691,7 +6043,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the accounting sequence line. This value is the same as the key for this object.
+             * @description Unique ID for the accounting sequence line. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -5700,15 +6052,15 @@ export interface components {
              * @example /objects/general-ledger/accounting-sequence-line/23
              */
             readonly href?: string;
-            /** @description Reference to the GL journal associated with the accounting sequence line. */
+            /** @description GL journal associated with the accounting sequence line. */
             gljournal?: {
                 /**
-                 * @description Unique key for GL journal.
+                 * @description Unique key for the GL journal.
                  * @example 107
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the GL journal.
+                 * @description ID for the GL journal.
                  * @example CRJ
                  */
                 id?: string;
@@ -5718,7 +6070,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Reference to the document sequence associated with the accounting sequence line. */
+            /** @description Document sequence associated with the accounting sequence line. */
             documentSequence?: {
                 /**
                  * @description Unique key for the document sequence.
@@ -5726,7 +6078,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the document sequence.
+                 * @description ID for the document sequence.
                  * @example Vendors
                  */
                 id?: string;
@@ -5736,16 +6088,16 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description Indicates the next sequence number.
+                 * @description Next number in the document sequence.
                  * @example 1
                  */
                 readonly nextNumber?: string;
             };
             audit?: components["schemas"]["audit.s2"];
-            /** @description Reference to the accounting sequence associated with the accounting sequence line. */
+            /** @description Header level details for the accounting sequence. */
             accountingSequence?: {
                 /**
-                 * @description Identifier for the accounting sequence.
+                 * @description ID for the accounting sequence.
                  * @example 23
                  */
                 id?: string;
@@ -5774,7 +6126,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the budget. Assign a budget `id` that does not include a specific fiscal year or date to allow new time periods to be added to an existing budget when needed.
+             * @description Unique ID for the budget. Assign a budget ID without a specific fiscal year or date so you can add new time periods to the same budget when needed.
              * @example Employee Expense Budget
              */
             id?: string;
@@ -5790,7 +6142,7 @@ export interface components {
              */
             isDefault?: boolean;
             /**
-             * @description Identifies the user who submitted the budget.
+             * @description User who submitted the budget.
              * @example Admin
              */
             readonly submitterName?: string;
@@ -5803,7 +6155,7 @@ export interface components {
              */
             consolidateAmounts?: boolean;
             /**
-             * @description Specifies the budget currency in a multi-currency company. Required when `consolidateAmounts` is set to `true`. (Consolidation subscription)
+             * @description Currency used for the budget in a multi-currency company. Required when `consolidateAmounts` is set to `true`. (Consolidation subscription)
              * @example USD
              */
             currency?: string;
@@ -5820,7 +6172,7 @@ export interface components {
              */
             postProjectContract?: boolean;
             /**
-             * @description Indicates whether the payment is system generated.
+             * @description Indicates whether the budget was generated by the system.
              * @default false
              * @example true
              * @enum {string}
@@ -5828,12 +6180,12 @@ export interface components {
             readonly systemGenerated?: "true" | "false";
             audit?: components["schemas"]["audit.s1"] & {
                 /**
-                 * @description Identifies the user who created the budget.
+                 * @description User who created the budget.
                  * @example Admin
                  */
                 readonly createdBy?: string | null;
                 /**
-                 * @description Identifies the user who most recently modified the budget.
+                 * @description User who most recently modified the budget.
                  * @example Admin
                  */
                 readonly modifiedBy?: string | null;
@@ -5850,24 +6202,24 @@ export interface components {
         "general-ledger-budgetRequiredProperties": {
             lines?: unknown[];
         };
-        /** @description Budget details for a general ledger account, including dimensions for the account, reporting periods for the budget, and the budget amount for each period. Create and maintain budget details from the owning budget object. */
+        /** @description A budget detail records a budgeted amount for a General Ledger account and reporting period, optionally by dimensions. */
         "objects.general-ledger.budget-detail": {
             /**
-             * @description System-assigned unique key for the budget details.
+             * @description System-assigned unique key for the budget detail.
              * @example 291
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the budget details. This value is the same as the key for this object.
+             * @description Unique ID for the budget detail. This value is the same as the `key` for this object.
              * @example 291
              */
             readonly id?: string;
             /**
-             * @description URL for the the budget detail.
+             * @description URL endpoint for the budget detail.
              * @example /objects/general-ledger/budget-detail/291
              */
             readonly href?: string;
-            /** @description Budget that contains the budget details. */
+            /** @description Budget associated with the budget detail. */
             readonly budget?: {
                 /**
                  * @description Unique key for the budget.
@@ -5875,7 +6227,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Identifier for the budget.
+                 * @description ID for the budget.
                  * @example Employee Expense Budget
                  */
                 readonly id?: string;
@@ -5885,15 +6237,15 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description General ledger account associated with the budget details. Once the details are saved, the selected account cannot be changed. */
+            /** @description General ledger account associated with the budget detail. The selected account cannot be changed after the budget detail is saved. */
             glAccount?: {
                 /**
-                 * @description Unique key of the account.
+                 * @description Unique key for the account.
                  * @example 9
                  */
                 key?: string;
                 /**
-                 * @description Identifier of the account.
+                 * @description ID for the account.
                  * @example 4000
                  */
                 id?: string;
@@ -5903,17 +6255,17 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL endpoint of the account.
+                 * @description URL endpoint for the account.
                  * @example /objects/general-ledger/account/9
                  */
                 readonly href?: string;
             };
-            /** @description Dimensions associated with the budget detail. Any dimension that is available in the General Ledger can be used with budgets, including user-defined dimensions. */
+            /** @description Dimensions associated with the budget detail. Any dimension available in the General Ledger can be used with budgets, including user-defined dimensions. */
             dimensions?: components["schemas"]["dimension-ref-immutable"];
             /**
-             * @description Reporting period for the budget details, limits information to a specific time-period.
+             * @description Reporting period associated with the budget detail. The reporting period limits the budget detail to a specific time period.
              *
-             *     A reporting period cannot be used if it has already been assigned to the same combination of account, department and location in another budget detail.
+             *     A reporting period cannot be used if it has already been assigned to another budget detail with the same account, department, and location combination.
              */
             reportingPeriod?: {
                 /**
@@ -5922,20 +6274,20 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the reporting period.
+                 * @description ID for the reporting period.
                  * @example Current Month
                  */
                 id?: string;
                 /**
                  * Format: date
                  * @description Date the reporting period starts.
-                 * @example 2016-01-08
+                 * @example 2026-05-01
                  */
                 readonly startDate?: string;
                 /**
                  * Format: date
                  * @description Date the reporting period ends.
-                 * @example 2025-01-08
+                 * @example 2026-05-31
                  */
                 readonly endDate?: string;
                 /**
@@ -5945,14 +6297,14 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Brief description with any relevant notes for the budget details.
-             * @example Projection for 2025
+             * @description Notes about the budget detail.
+             * @example Projection for 2026
              */
             notes?: string | null;
-            /** @description Defines how the budget details are calculated using the specified budget type and planned growth. The calculation is triggered when the budget details object is created or updated. */
+            /** @description Settings for planned budget growth based on the selected basis and planned growth. The API does not calculate budget detail amounts; provide an `amount` for every detail. */
             budgetGrowth?: {
                 /**
-                 * @description Indicates whether the budget is based on the budget type, amount, actual amount, or number of employees. Used by the system to calculate budget growth.
+                 * @description Basis for planned budget growth, such as the budget, an amount, or employee count.
                  * @default null
                  * @example budget
                  * @enum {string|null}
@@ -5960,12 +6312,12 @@ export interface components {
                 basedOn?: null | "budget" | "actual" | "employeeCount";
                 /**
                  * Format: decimal-precision-2
-                 * @description Amount of planned growth or reduction. Used by the system to calculate budget growth.
+                 * @description Amount of planned growth or reduction.
                  * @example 10.00
                  */
                 growBy?: string;
                 /**
-                 * @description Indicates whether the planned growth value is a percentage or fixed amount. Used by the system to calculate budget growth.
+                 * @description Indicates whether planned growth or reduction is specified as a fixed amount or a percentage.
                  * @default null
                  * @example percentage
                  * @enum {string|null}
@@ -5974,14 +6326,14 @@ export interface components {
             };
             /**
              * Format: decimal-precision-2
-             * @description Budgeted amount for the budget details.
+             * @description Budgeted amount for the budget detail.
              * @example 100.00
              */
             amount?: string;
-            /** @description Currency for the budgeted amount. */
+            /** @description Currency of the budgeted amount. */
             currency?: {
                 /**
-                 * @description Transaction currency.
+                 * @description Transaction currency for the budget detail.
                  * @example GBP
                  */
                 txnCurrency?: string;
@@ -5989,15 +6341,15 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
             entity?: components["schemas"]["entity-ref"];
         };
-        /** @description General ledger journal */
+        /** @description A General Ledger journal categorizes transactions entered directly in the General Ledger or posted from subledgers. */
         "objects.general-ledger.journal": {
             /**
-             * @description System-assigned key for the journal. Used to identify the journal in URLs or JSON bodies for all operations on the journal.
+             * @description System-assigned unique key for the journal.
              * @example 3
              */
             readonly key?: string;
             /**
-             * @description An abbreviation (symbol) for this journal, for example, AP. In most places in Sage Intacct, the symbol appears along with the `name` of the journal, as in "AP--Accounts Payable."
+             * @description Unique ID for the journal. This abbreviation appears with the journal name in most areas of Sage Intacct, such as `AP--Accounts Payable`.
              * @example EJ
              */
             id?: string;
@@ -6007,45 +6359,45 @@ export interface components {
              */
             name?: string;
             /**
-             * @description Set to `true` to enable journal entry line items for a project to be marked as billable. (Requires Projects subscription and billable General Ledger transactions to be enabled.)
+             * @description Indicates whether journal entry line items for a project can be marked as billable. Requires a Projects subscription and billable General Ledger transactions to be enabled.
              * @default false
              * @example true
              */
             isBillable?: boolean;
             status?: components["schemas"]["status"];
             /**
-             * @description To Check if the journal is an adjustments journal.
+             * @description Indicates whether the journal is an adjustment journal.
              * @default false
              * @example false
              */
             isAdjustment?: boolean;
             /**
-             * @description The reporting book for which the journal was created. For most companies, the reporting book is `Accrual`. If the company is set up for dual-method reporting, the choices are Accrual, Cash, or Accrual and cash.
+             * @description Reporting book for which the journal was created. For most companies, the reporting book is `Accrual`. For companies set up for dual-method reporting, the choices are `Accrual`, `Cash`, or `Accrual and cash`.
              * @example Accrual
              */
             readonly bookId?: string;
             /**
-             * @description A book type could be Accrual, Cash, Cash and Accrual, or Consolidation.  For most companies, the reporting book is accrual. If the company is set up for dual-method reporting, the choices are `accrual`, `cash`, or `cashAndAccrual`.
+             * @description Type of reporting book associated with the journal. Possible values are `accrual`, `cash`, `cashAndAccrual`, and `consolidation`. For most companies, the reporting book is `accrual`; companies set up for dual-method reporting can use `accrual`, `cash`, or `cashAndAccrual`.
              * @default accrual
              * @example accrual
              * @enum {string}
              */
             bookType?: "accrual" | "cash" | "cashAndAccrual" | "consolidation";
             /**
-             * @description Set to `true` to prevent direct entry of journal entries for this journal .
+             * @description Indicates whether direct entry of journal entries is prevented for the journal.
              * @default false
              * @example false
              */
             disallowDirectPosting?: boolean;
             /**
-             * @description Set to `true` to enable e-reporting for this journal; applicable only for France e-invoice enabled entities.
+             * @description For entities in France where e-invoicing is enabled, indicates whether e-reporting is enabled for the journal.
              * @default false
              * @example false
              */
             enableEReporting?: boolean;
             audit?: components["schemas"]["audit.s1"];
             /**
-             * @description Set to `true` to enable [journal entry approvals](https://www.intacct.com/ia/docs/en_US/help_action/General_Ledger/Approvals/journal-entry-approval-overview.htm).
+             * @description Indicates whether [journal entry approvals](https://www.intacct.com/ia/docs/en_US/help_action/General_Ledger/Approvals/journal-entry-approval-overview.htm) are enabled.
              * @default false
              * @example false
              */
@@ -6057,7 +6409,7 @@ export interface components {
             readonly href?: string;
         };
         "general-ledger-journalRequiredProperties": Record<string, never>;
-        /** @description User-defined books give you a way to manage different reporting standards beyond what's available with GAAP and tax books. */
+        /** @description A user-defined book supports reporting needs beyond standard GAAP and tax books. */
         "objects.general-ledger.user-defined-book": {
             /**
              * @description System-assigned unique key for the user-defined book.
@@ -6065,7 +6417,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the user-defined book.
+             * @description Unique ID for the user-defined book.
              * @example IFRS9
              */
             id?: string;
@@ -6075,7 +6427,7 @@ export interface components {
              */
             description?: string;
             /**
-             * @description Indicates whether the user-defined book is used for management reporting purposes. Management reporting books do not impact actual books. They bypass closed periods and can stack on top of actual books when reports are run. User-defined journals and the Software Digital Board Book can only post to management reporting books. Subledgers, such as Accounts Payable, cannot post to management reporting books.
+             * @description Indicates whether the user-defined book is used for management reporting. Management reporting books do not affect actual books, bypass closed periods, and can be stacked on top of actual books in reports. User-defined journals and the Software Digital Board Book can post only to management reporting books. Subledgers such as Accounts Payable cannot post to management reporting books.
              * @default false
              * @example false
              */
@@ -6098,7 +6450,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the user-defined journal.
+             * @description Unique ID for the user-defined journal.
              * @example UDJ-INTERCO
              */
             id?: string;
@@ -6108,12 +6460,12 @@ export interface components {
              */
             name?: string;
             /**
-             * @description Indicates whether entries in this journal are billable. If true, journal entries are billable, but individual entry lines can still be non-billable. Requires a Projects subscription and billable General Ledger (GL) transactions.
+             * @description Indicates whether journal entries in this journal are billable. When this is `true`, individual entry lines can still be non-billable. Requires a Projects subscription and billable General Ledger (GL) transactions.
              * @default false
              * @example false
              */
             isBillable?: boolean;
-            /** @description References the user-defined book to which this journal belongs. */
+            /** @description User-defined book associated with the journal. */
             userDefinedBook?: {
                 /**
                  * @description Unique key for the user-defined book.
@@ -6121,7 +6473,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the user-defined book.
+                 * @description ID for the user-defined book.
                  * @example CE
                  */
                 id?: string;
@@ -6132,14 +6484,14 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Indicates the reporting method classification for the user-defined journal, `accrual` for most companies.
+             * @description Reporting method classification for the user-defined journal. For most companies, this is `accrual`.
              * @default accrual
              * @example accrual
              * @enum {string}
              */
             bookType?: "accrual" | "cash" | "cashAndAccrual" | "consolidation";
             /**
-             * @description Indicates whether entries must be posted through sub-ledger journals. If true, direct posting is disabled. Requires dual-method reporting.
+             * @description Indicates whether entries must be posted through subledger journals. When this is `true`, direct posting is disabled. Requires dual-method reporting.
              * @default false
              * @example false
              */
@@ -6154,7 +6506,7 @@ export interface components {
             readonly href?: string;
         };
         "general-ledger-user-defined-journalRequiredProperties": Record<string, never>;
-        /** @description Journal entries are used to create, update, or reverse accounting entries within a journal before they are posted to the general ledger for financial reporting and analysis. */
+        /** @description A journal entry records accounting transactions in the General Ledger, including the accounts, amounts, and related details. */
         "objects.general-ledger.journal-entry": {
             /**
              * @description System-assigned unique key for the journal entry.
@@ -6162,7 +6514,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the journal entry.
+             * @description Unique ID for the journal entry. This value is the same as the `key` for this object.
              * @example 132
              */
             readonly id?: string;
@@ -6171,72 +6523,72 @@ export interface components {
              * @example 40
              */
             readonly txnNumber?: number;
-            /** @description Specifies the journal associated with this journal entry. */
+            /** @description Journal associated with the journal entry. */
             glJournal?: {
                 /**
-                 * @description System-assigned unique key for the journal associated with this journal entry.
+                 * @description Unique key for the journal.
                  * @example 3
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the journal associated with this journal entry.
+                 * @description ID for the journal.
                  * @example EJ
                  */
                 id?: string;
                 /**
-                 * @description Indicates if the journal is intended for recording adjustments.
+                 * @description Indicates whether the journal is intended for recording adjustments.
                  * @default false
                  * @example false
                  */
                 readonly isAdjustment?: boolean;
                 /**
-                 * @description The full name of the journal, as it should appear in reports.
+                 * @description Full name of the journal as it appears in reports.
                  * @example Expense Journal
                  */
                 readonly name?: string;
                 /**
-                 * @description URL endpoint for the journal entry.
+                 * @description URL endpoint for the journal.
                  * @example /objects/general-ledger/journal/3
                  */
                 readonly href?: string;
             };
             /**
-             * @description Description of the journal entry.
+             * @description Detailed explanation of the journal entry.
              * @example Revenue entries
              */
             description?: string;
             /**
              * Format: date
-             * @description The date when the journal entry is recorded in the journal and posted to the general ledger for tracking and reporting.
-             * @example 2023-04-01
+             * @description Date the journal entry is recorded in the journal.
+             * @example 2026-09-30
              */
             postingDate?: string;
             /**
-             * @description Scheduled operation key for the journal entry.
+             * @description Unique key for the scheduled operation associated with the journal entry.
              * @example 40
              */
             readonly scheduledOperationKey?: string;
             /**
              * Format: date
-             * @description The date a journal entry is automatically reversed in the general ledger. `automaticReversalDate` must be later than the `postingDate`.
-             * @example 2023-04-04
+             * @description Date the journal entry is automatically reversed in the General Ledger. Must be on or after the `postingDate`.
+             * @example 2026-09-30
              */
             automaticReversalDate?: string | null;
             /**
              * Format: date
-             * @description The original posting date of the journal entry that is being reversed. Only populated if the journal entry has been reversed.
-             * @example 2023-04-05
+             * @description For reversed journal entries, the original posting date of the journal entry being reversed.
+             * @example 2026-09-30
              */
             readonly reversedFromDate?: string | null;
-            /** @description Identifies the journal entry that reversed the original entry. Only populated if the journal entry has been reversed. */
+            /** @description Journal entry that reversed this journal entry. Populated only if the journal entry has been reversed. */
             readonly reversedBy?: {
                 /**
-                 * @description System-assigned unique key of the reversing entry.
+                 * @description Unique key for the reversing journal entry.
                  * @example 663
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique identifier of the reversing entry.
+                 * @description ID for the reversing journal entry.
                  * @example 663
                  */
                 readonly id?: string;
@@ -6252,22 +6604,22 @@ export interface components {
              */
             moduleName?: string;
             /**
-             * @description Unique identifier assigned to the journal entry by the user for tracking and reconciliation.
+             * @description Reference number for tracking and reconciliation.
              * @example Recurr_GL_101
              */
             referenceNumber?: string;
             entity?: components["schemas"]["entity-ref"];
-            /** @description RecordURL of the journal entry. */
+            /** @description Record URL for the journal entry. */
             readonly webURL?: string;
-            /** @description Specifies the base location for a multi-entity company. Required if multi-entity is enabled and entries do not balance by entity. */
+            /** @description Base location for a multi-entity company. Required when the journal entry does not balance by entity. */
             baseLocation?: {
                 /**
-                 * @description System-assigned unique key for the base location.
+                 * @description Unique key for the base location.
                  * @example 32
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the base location.
+                 * @description ID for the base location.
                  * @example BC
                  */
                 id?: string;
@@ -6278,54 +6630,48 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Shows the current state of the journal entry.
+             * @description Current state of the journal entry. For a new journal entry, the only valid values are `posted` (the default, system-defined state) and `draft`.
              *
-             *     Note: The only valid values when creating a new entry are `posted` (default, system-defined state), and `draft`. Only populate the state field when creating a `draft` entry. This field cannot be changed when updating an existing journal entry.
+             *     Set this field only when creating a `draft` entry. This field cannot be changed when updating an existing journal entry.
              * @default posted
              * @example draft
              * @enum {string}
              */
             state?: "draft" | "submitted" | "partiallyApproved" | "approved" | "posted" | "declined" | "reversalPending" | "reversed";
             /**
-             * @description System-assigned accounting sequence number that uniquely identifies each journal entry within the accounting sequence. For multi-entity companies that use accounting sequences.
+             * @description System-assigned accounting sequence number that uniquely identifies each journal entry within the accounting sequence. Used by multi-entity companies that use accounting sequences.
              * @example GLJE_001
              */
             readonly sequenceNumber?: string;
             /**
-             * @description Source of the transaction. For transactions created automatically from a bank feed, the value is bank, otherwise the value is null.
+             * @description For transactions created automatically from a bank feed, the source of the transaction is `bank`; otherwise, this field is null.
              * @default null
              * @example bank
              * @enum {string|null}
              */
             readonly txnSource?: null | "bank";
             /**
-             * @description Invoice mode for France e-invoicing workflows; applicable only for France e-invoice enabled entities.
-             *
-             *     Supported values:
-             *     - `tlb1` - E-Reporting mode for goods.
-             *     - `tps1` - E-Reporting mode for services.
-             *
-             *     Leave this field blank when e-reporting does not apply.
+             * @description For France e-invoice-enabled entities, invoice mode for e-reporting. Use `tlb1` for goods and `tps1` for services. Set this field to `null` when e-reporting does not apply.
              * @example tlb1
              * @enum {string|null}
              */
             invoiceMode?: null | "tlb1" | "tps1";
             /**
-             * @description Indicates the e-reporting type used for transaction reporting; applicable only for France e-invoice enabled entities.
+             * @description For France e-invoice-enabled entities, classification of the transaction for e-reporting.
              * @example sales
              * @enum {string|null}
              */
             eReportingType?: null | "none" | "sales" | "payment";
             /**
              * Format: decimal-precision-2
-             * @description Specifies the journal entry balance.
+             * @description Balance of the journal entry.
              * @example 1.07
              */
             balance?: string;
-            /** @description Tax-related details applied to the journal entry, such as tax codes, rates and exemptions. This field applies only to companies using the Taxes application to track VAT or GST. */
+            /** @description Tax-related details for the journal entry, such as tax codes, rates, and exemptions. Applies only to companies using the Taxes application to track VAT or GST. */
             tax?: {
                 /**
-                 * @description Specifies the impact of a journal entry on tax calculations. This field applies only to companies using the Taxes application to track VAT or GST.
+                 * @description Impact of the journal entry on tax calculations. Applies only to companies using the Taxes application to track VAT or GST.
                  * @default null
                  * @example inbound
                  * @enum {string|null}
@@ -6333,16 +6679,16 @@ export interface components {
                 taxImplication?: null | "none" | "inbound" | "outbound";
                 /**
                  * tax-solution
-                 * @description Reference to the tax solution. Required only if the company is set up for multiple tax jurisdictions and the journal entry occurs at the top level (GB, AU, and ZA only). See [Tax solutions](tax.tax-solution) for more information.
+                 * @description For top-level journal entries in companies set up for multiple tax jurisdictions, a tax solution is required in GB, AU, and ZA. See [Tax solutions](/intacct/apis/intacct/1/intacct-openapi/groups/tax/tags/tax_tax-solutions) for more information.
                  */
                 readonly taxSolution?: {
                     /**
-                     * @description System-assigned unique key for the tax solution.
+                     * @description Unique key for the tax solution.
                      * @example 5
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the tax solution.
+                     * @description ID for the tax solution.
                      * @example Australia - GST
                      */
                     id?: string;
@@ -6354,16 +6700,16 @@ export interface components {
                 };
                 /**
                  * vendor
-                 * @description Specifies the vendor for tax-related information when `taxImplication` is set to `inbound`.
+                 * @description For `inbound` tax implications, vendor associated with the journal entry's tax details.
                  */
                 vendor?: {
                     /**
-                     * @description System-assigned unique key for the vendor.
+                     * @description Unique key for the vendor.
                      * @example 15
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the vendor.
+                     * @description ID for the vendor.
                      * @example V-00014
                      */
                     id?: string;
@@ -6375,16 +6721,16 @@ export interface components {
                 };
                 /**
                  * customer
-                 * @description Specifies the customer for tax-related information when `taxImplication` is set to `outbound`.
+                 * @description For `outbound` tax implications, customer associated with the journal entry's tax details.
                  */
                 customer?: {
                     /**
-                     * @description System-assigned unique key for the customer.
+                     * @description Unique key for the customer.
                      * @example 14
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the customer.
+                     * @description ID for the customer.
                      * @example C-00019
                      */
                     id?: string;
@@ -6396,17 +6742,17 @@ export interface components {
                 };
                 /**
                  * contact
-                 * @description Specifies the associated contact details for the journal entry such as a vendor, customer, or other relevant entity.
+                 * @description Contact associated with the journal entry's tax details, such as a vendor, customer, or other relevant entity.
                  */
                 contact?: {
                     /**
-                     * @description System-assigned unique key for the contact.
+                     * @description Unique key for the contact.
                      * @example 416
                      */
                     key?: string;
                     /**
-                     * @description Unique idetifier for the contact.
-                     * @example Klay Vanderbilt
+                     * @description Name of the contact.
+                     * @example John Smith
                      */
                     id?: string;
                     /**
@@ -6425,12 +6771,12 @@ export interface components {
             /** @description Account allocation run used by this journal entry. */
             readonly accountAllocationRun?: {
                 /**
-                 * @description System-assigned unique key for the account allocation run.
+                 * @description Unique key for the account allocation run.
                  * @example 87
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique identifier for the account allocation run.
+                 * @description ID for the account allocation run.
                  * @example 87
                  */
                 readonly id?: string | null;
@@ -6440,14 +6786,15 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description Account allocation associated with the journal entry. */
             accountAllocation?: {
                 /**
-                 * @description System-assigned unique key for the account allocation.
+                 * @description Unique key for the account allocation.
                  * @example 23
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique identifier for the account allocation.
+                 * @description ID for the account allocation.
                  * @example Monthly expense allocation
                  */
                 readonly id?: string | null;
@@ -6465,15 +6812,15 @@ export interface components {
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Identifier for the transaction template.
+                 * @description ID for the transaction template.
                  * @example Monthly Payroll
                  */
                 readonly id?: string | null;
             };
-            /** @description Supporting document for the adjustment. */
+            /** @description Supporting document for the journal entry. */
             attachment?: {
                 /**
-                 * @description System-assigned key for the supporting document.
+                 * @description Unique key for the supporting document.
                  * @example 1
                  */
                 key?: string;
@@ -6488,31 +6835,31 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description A collection of line items within the journal entry. At least two line items are required per journal entry, one debit and one credit. */
+            /** @description Collection of lines owned by the journal entry. Total amount of debits must equal total amount of credits. At least two line items are required per journal entry, one debit and one credit. */
             lines?: components["schemas"]["objects.general-ledger.journal-entry-line"][];
         };
         "general-ledger-journal-entryRequiredProperties": {
             lines: unknown[];
         };
-        /** @description Provides detailed and summary information for each line item within a journal entry. */
+        /** @description A journal entry line records a debit or credit entry within a journal entry. */
         "objects.general-ledger.journal-entry-line": {
             /**
-             * @description System assigned unique key for the journal entry line item.
+             * @description System-assigned unique key for the journal entry line.
              * @example 1981
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the journal entry line item.
+             * @description Unique ID for the journal entry line. This value is the same as the `key` for this object.
              * @example 1981
              */
             readonly id?: string;
             /**
-             * @description Line number of a line item within the journal entry.
+             * @description Position of the journal entry line within the journal entry.
              * @example 1
              */
             readonly lineNumber?: number;
             /**
-             * @description Specifies whether the line item in the journal entry is a debit or credit.
+             * @description Debit or credit type for the journal entry line.
              * @default debit
              * @example credit
              * @enum {string}
@@ -6520,94 +6867,94 @@ export interface components {
             txnType?: "debit" | "credit";
             /**
              * Format: decimal-precision-2
-             * @description Amount of the line item as an absolute value within the journal entry.
+             * @description Absolute amount for the journal entry line.
              * @example 100.45
              */
             txnAmount?: string;
             /**
              * Format: date
-             * @description Date when the line item was added to the journal entry.
-             * @example 2024-01-23
+             * @description Posting date associated with the journal entry line.
+             * @example 2026-01-23
              */
             readonly entryDate?: string;
             /**
-             * @description Reference for the journal entry line item, this is a user-entered value that can contain numeric or alpha-numeric values.
-             * @example CalOil_Credit_01-24
+             * @description User-entered reference for the journal entry line.
+             * @example CalOil_Credit_01-26
              */
             documentId?: string;
             /**
              * @description Description of the journal entry line.
-             * @example CalOil Credit entries January 2024
+             * @example CalOil Credit entries January 2026
              */
             description?: string;
             /**
-             * @description Quantity of units associated with the journal entry line item, representing a non-monetary measurement, such as hours or other measurable units.
+             * @description Quantity of units associated with the journal entry line, representing a non-monetary measurement such as hours or other measurable units.
              * @example 5
              */
             readonly numberOfUnits?: number;
-            /** @description Reconciliation group that links related journal entry line items. */
+            /** @description Reconciliation details for the journal entry line. */
             readonly reconciliationGroup?: {
                 /**
                  * Format: date
-                 * @description Automatically generated date when the line item was reconciled or cleared as part of the reconciliation process.
-                 * @example 2024-01-23
+                 * @description Automatically generated date on which the journal entry line was cleared during reconciliation.
+                 * @example 2026-01-23
                  */
                 readonly clearingDate?: string;
                 /**
-                 * @description Indicates whether the line item has been reconciled or cleared as part of the reconciliation process.
+                 * @description Clearing status of the journal entry line, `true` if cleared, `false` if not cleared, or `matched` if matched during reconciliation.
                  * @example false
                  * @enum {string}
                  */
                 readonly cleared?: "true" | "false" | "matched";
                 /**
                  * Format: date
-                 * @description Date when the line item was reconciled as part of the reconciliation process.
-                 * @example 2024-01-23
+                 * @description Date the journal entry line was reconciled.
+                 * @example 2026-01-23
                  */
                 readonly reconciliationDate?: string;
             };
             /**
-             * @description Financial reporting period in which the line item is recorded. if company uses custom accounting periods.
+             * @description Accounting period in which the journal entry line is recorded when the company uses custom accounting periods.
              * @example 11
              */
             readonly accountingPeriod?: number;
             /**
-             * @description Indicates whether the line item is billable. Requires a Projects subscription and the billable option to be enabled for General Ledger transactions.
+             * @description Indicates whether the journal entry line is billable. Requires a Projects subscription and the billable option to be enabled for General Ledger transactions.
              * @default false
              * @example false
              */
             isBillable?: boolean;
             /**
-             * @description Indicates whether the line item has already been billed.
+             * @description Indicates whether the journal entry line has been billed.
              * @default false
              * @example false
              */
             readonly isBilled?: boolean;
             /**
              * Format: decimal-precision-2
-             * @description Line item amount in the company's base currency.
+             * @description Amount of the journal entry line in the company's base currency.
              * @example 100.45
              */
             readonly baseAmount?: string;
             /**
-             * @description Specifies whether the transaction is payable or receivable in inter-entity transactions (IET).
+             * @description Transaction type for an inter-entity transaction; use `r` for receivable and `p` for payable, or `a` for auto-balance.
              * @example r
              */
             readonly interEntityTxnType?: string;
-            /** @description Represents the parent of the line item, used for nested items within the same journal entry. */
+            /** @description Parent journal entry line for a nested line. */
             readonly parent?: {
                 /**
-                 * @description System-assigned unique key for the immediate parent of the line item.
+                 * @description Unique key for the parent journal entry line.
                  * @example 40
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique identifier for the immediate parent of the line item.
+                 * @description ID for the parent journal entry line.
                  * @example 40
                  */
                 readonly id?: string | null;
                 /**
-                 * @description URL endpoint for the immediate parent of the line item.
+                 * @description URL endpoint for the parent journal entry line.
                  * @example /objects/general-ledger/journal-entry-line/40
                  */
                 readonly href?: string;
@@ -6616,15 +6963,15 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
             currency?: components["schemas"]["currency"];
             glAccount?: components["schemas"]["gl-account-ref"];
-            /** @description Transaction allocation template, a predefined template used to allocate line items across accounts, departments, or entities. */
+            /** @description Transaction allocation template used to allocate the journal entry line across accounts, departments, or entities. */
             allocation?: {
                 /**
-                 * @description System-assigned unique key for the transaction allocation template.
+                 * @description Unique key for the transaction allocation template.
                  * @example 21
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier (user-defined) for the transaction allocation template.
+                 * @description User-defined ID for the transaction allocation template.
                  * @example FA_ALLOC
                  */
                 id?: string;
@@ -6636,32 +6983,32 @@ export interface components {
             };
             dimensions?: components["schemas"]["dimension-ref"];
             /**
-             * @description URL endpoint for journal entry line item.
+             * @description URL endpoint for the journal entry line.
              * @example /objects/general-ledger/journal-entry-line/1981
              */
             readonly href?: string;
-            /** @description Journal entry to which the line item belongs. */
+            /** @description Journal entry associated with the journal entry line. */
             journalEntry?: {
                 /**
-                 * @description Unique identifier for the journal entry containing the line item.
+                 * @description ID for the journal entry.
                  * @example 132
                  */
                 id?: string;
                 /**
-                 * @description System-assigned unique key for the journal entry containing the line item.
+                 * @description Unique key for the journal entry.
                  * @example 132
                  */
                 key?: string;
                 /**
-                 * @description URL endpoint for the associated journal entry containing the line item.
+                 * @description URL endpoint for the journal entry.
                  * @example /objects/general-ledger/journal-entry/132
                  */
                 readonly href?: string;
             };
-            /** @description Tax-related details for the line item. */
+            /** @description Tax entries for the journal entry line. */
             taxEntries?: components["schemas"]["objects.general-ledger.journal-entry-tax-entry"][];
         };
-        /** @description journal entry tax entry, owned object of journal entry line. */
+        /** @description A journal entry tax entry records tax information for a journal entry line. */
         "objects.general-ledger.journal-entry-tax-entry": {
             /**
              * @description System-assigned key for the tax entry.
@@ -6691,71 +7038,74 @@ export interface components {
              */
             taxRate?: number;
         } & {
-            /** @description Tax details describe a specific type of tax that applies to journal entry lines. */
+            /** @description Tax detail that identifies the type of tax applied to the journal entry line. */
             taxDetail?: {
                 /**
-                 * @description System-assigned key for the tax detail.
+                 * @description Unique key for the tax detail.
                  * @example 1
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier of the tax detail.
+                 * @description ID for the tax detail.
                  * @example Alaska Tax Detail
                  */
                 id?: string;
                 /**
-                 * @description URL of the tax detail object.
+                 * @description URL endpoint for the tax detail.
                  * @example /objects/tax/tax-detail/1
                  */
                 readonly href?: string;
             };
-            /** journalEntryLine */
+            /**
+             * journalEntryLine
+             * @description Journal entry line associated with the journal entry tax entry.
+             */
             readonly journalEntryLine?: {
                 /**
-                 * @description Identifier for the journal entry line object.
+                 * @description ID for the journal entry line.
                  * @example 100
                  */
                 readonly id?: string;
                 /**
-                 * @description System-assigned key for the journal entry line object.
+                 * @description Unique key for the journal entry line.
                  * @example 100
                  */
                 readonly key?: string;
                 /**
-                 * @description URL for the journal entry line line object.
+                 * @description URL endpoint for the journal entry line.
                  * @example /objects/general-ledger/journal-entry-line/100
                  */
                 readonly href?: string;
             };
         };
-        /** @description Transaction templates are used to create templates for journal entries. */
+        /** @description A journal entry transaction template stores reusable details for creating journal entries. */
         "objects.general-ledger.journal-entry-txn-template": {
             /**
-             * @description System-assigned unique key for the GL journal entry transaction template.
+             * @description System-assigned unique key for the journal entry transaction template.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the GL journal entry transaction template.
+             * @description Unique ID for the journal entry transaction template.
              * @example Monthly payroll
              */
             id?: string;
             /**
-             * @description URL endpoint for the GL journal entry transaction template.
+             * @description URL endpoint for the journal entry transaction template.
              * @example /objects/general-ledger/journal-entry-txn-template/23
              */
             readonly href?: string;
             /**
-             * @description Indicates the version key for the transaction template.
+             * @description Record key for the latest version of the journal entry transaction template.
              * @example 23
              */
             readonly version?: string;
             /**
-             * @description Specifies a description for the transaction template.
+             * @description Description of the journal entry transaction template.
              * @example 2026 Monthly payroll
              */
             description?: string;
-            /** @description Reference to the offset General Ledger (GL) account associated with the journal entry transaction template. */
+            /** @description Offset GL account for the journal entry transaction template. */
             offsetGLAccount?: {
                 /**
                  * @description URL endpoint for the offset GL account.
@@ -6768,17 +7118,17 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the offset GL account.
+                 * @description ID for the offset GL account.
                  * @example 2250
                  */
                 id?: string;
                 /**
-                 * @description Name of the offset general ledger account.
+                 * @description Name of the offset General Ledger account.
                  * @example Payroll payable
                  */
                 readonly name?: string;
             };
-            /** @description Reference to the GL journal associated with the journal entry transaction template. */
+            /** @description GL journal associated with the journal entry transaction template. */
             journal?: {
                 /**
                  * @description URL endpoint for the GL journal.
@@ -6791,7 +7141,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the GL journal.
+                 * @description ID for the GL journal.
                  * @example PYRL
                  */
                 id?: string;
@@ -6801,13 +7151,13 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description Indicates whether the GL journal associated with the transaction template is billable.
+                 * @description Indicates whether the GL journal is billable.
                  * @default false
                  * @example false
                  */
                 readonly isBillable?: boolean;
                 /**
-                 * @description Indicates whether the GL journal associated with the transaction template is an adjustment journal.
+                 * @description Indicates whether the GL journal is an adjustment journal.
                  * @default false
                  * @example false
                  */
@@ -6816,26 +7166,26 @@ export interface components {
             status?: components["schemas"]["status"];
             audit?: components["schemas"]["audit.s1"];
             entity?: components["schemas"]["entity-ref"];
-            /** @description Reference to a collection of lines associated with the transaction template. There must be at least one line. */
+            /** @description Collection of lines owned by the transaction template. At least one line is required. */
             lines?: components["schemas"]["objects.general-ledger.journal-entry-txn-template-line"][];
         };
         "general-ledger-journal-entry-txn-templateRequiredProperties": {
             lines: unknown[];
         };
-        /** @description Lines that define the debit and credit entries for a journal entry transaction template. */
+        /** @description A journal entry transaction template line defines a debit or credit entry within a journal entry transaction template. */
         "objects.general-ledger.journal-entry-txn-template-line": {
             /**
-             * @description System-assigned unique key for the GL journal entry transaction template line.
+             * @description System-assigned unique key for the journal entry transaction template line.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the GL journal entry transaction template line. This value is the same as the key for this object.
+             * @description Unique ID for the journal entry transaction template line. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
             /**
-             * @description URL endpoint for the GL journal entry transaction template line.
+             * @description URL endpoint for the journal entry transaction template line.
              * @example /objects/general-ledger/journal-entry-txn-template-line/23
              */
             readonly href?: string;
@@ -6878,17 +7228,17 @@ export interface components {
                  */
                 hideLocation?: "T" | "F";
             };
-            /** @description Settings that control how the dimension field appears when posting a journal entry from this template. Use `isDimensionEditable` and `hideDimension` together to set the dimension to `read-only`, `editable`, or `hidden`. */
+            /** @description Settings that control how dimension fields appear when posting a journal entry from this template. Use `isDimensionEditable` and `hideDimension` together to set the dimension to `read-only`, `editable`, or `hidden`. */
             dimensionSettings?: {
                 /**
-                 * @description Indicates whether the dimension field is editable when posting a journal entry from this template. Set to `T` (true) for editable, or `F` (false) for read-only or hidden. Use with `hideDimension` to determine the display state.
+                 * @description Indicates whether dimension fields are editable when posting a journal entry from this template. Set to `T` (true) for editable, or `F` (false) for read-only or hidden. Use with `hideDimension` to determine the display state.
                  * @default F
                  * @example F
                  * @enum {string}
                  */
                 isDimensionEditable?: "T" | "F";
                 /**
-                 * @description Indicates whether the dimension field is hidden when posting a journal entry from this template. Set to `T` (true) to hide the field, or `F` (false) to show it. Use with `isDimensionEditable` to determine the display state.
+                 * @description Indicates whether dimension fields are hidden when posting a journal entry from this template. Set to `T` (true) to hide the field, or `F` (false) to show it. Use with `isDimensionEditable` to determine the display state.
                  * @default F
                  * @example F
                  * @enum {string}
@@ -6896,7 +7246,7 @@ export interface components {
                 hideDimension?: "T" | "F";
             };
             /**
-             * @description Specifies whether the line entry is a debit or credit transaction. By default, the transaction type is set to debit.
+             * @description Debit or credit type for the transaction template line. Defaults to debit.
              * @default debit
              * @example debit
              * @enum {string}
@@ -6908,8 +7258,9 @@ export interface components {
              * @example false
              */
             isBillable?: boolean;
+            /** @description Dimension values for the journal entry transaction template line. */
             dimensions?: components["schemas"]["dimension-ref"] & {
-                /** @description Reference to the department associated with the GL journal entry transaction template line. */
+                /** @description Department associated with the journal entry transaction template line. */
                 department?: {
                     /**
                      * @description URL endpoint for the department.
@@ -6922,7 +7273,7 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description Identifier for the department.
+                     * @description ID for the department.
                      * @example 200
                      */
                     id?: string | null;
@@ -6932,7 +7283,7 @@ export interface components {
                      */
                     readonly name?: string | null;
                 };
-                /** @description Reference to the location associated with the GL journal entry transaction template line. */
+                /** @description Location associated with the journal entry transaction template line. */
                 location?: {
                     /**
                      * @description URL endpoint for the location.
@@ -6945,7 +7296,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Identifier for the location.
+                     * @description ID for the location.
                      * @example AZ
                      */
                     id?: string;
@@ -6956,7 +7307,7 @@ export interface components {
                     readonly name?: string;
                 };
             };
-            /** @description Reference to the GL account associated with the journal entry transaction template line. */
+            /** @description GL account for the journal entry transaction template line. */
             glAccount?: {
                 /**
                  * @description URL endpoint for the GL account.
@@ -6969,7 +7320,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the GL account.
+                 * @description ID for the GL account.
                  * @example 6000
                  */
                 id?: string;
@@ -6980,15 +7331,15 @@ export interface components {
                 readonly name?: string;
             };
             status?: components["schemas"]["status"];
-            /** @description Reference to the GL journal entry transaction template that this line belongs to. */
+            /** @description Journal entry transaction template associated with the journal entry transaction template line. */
             readonly txnTemplate?: {
                 /**
-                 * @description Unique key for the GL journal entry transaction template.
+                 * @description Unique key for the journal entry transaction template.
                  * @example 23
                  */
                 readonly key?: string;
                 /**
-                 * @description Identifier for the GL journal entry transaction template.
+                 * @description ID for the journal entry transaction template.
                  * @example Monthly payroll
                  */
                 readonly id?: string;
@@ -6999,7 +7350,402 @@ export interface components {
                 readonly href?: string;
             };
         };
-        /** @description Reporting period definition */
+        /** @description Recurring journal entries automate the creation and posting of journal transactions according to a defined schedule, with optional automatic reversals. */
+        "objects.general-ledger.recurring-journal-entry": {
+            /**
+             * @description System-assigned unique key for the recurring journal entry.
+             * @example 127
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the recurring journal entry. This value is the same as the key for this object.
+             * @example 127
+             */
+            readonly id?: string;
+            /**
+             * @description Module from which the journal entry originates. This value is always `generalLedger`.
+             * @default generalLedger
+             * @example generalLedger
+             * @enum {string}
+             */
+            readonly moduleName?: "generalLedger";
+            /**
+             * @description System-assigned transaction number for the recurring journal entry.
+             * @example 123
+             */
+            readonly txnNumber?: number;
+            /** @description General Ledger journal associated with this recurring journal entry. */
+            glJournal?: {
+                /**
+                 * @description Unique key for the journal.
+                 * @example 57
+                 */
+                key?: string;
+                /**
+                 * @description ID for the journal.
+                 * @example ACandCash
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the journal.
+                 * @example /objects/general-ledger/journal/57
+                 */
+                readonly href?: string;
+            };
+            /**
+             * @description Description of the transaction.
+             * @example AWS Capital Services Bill
+             */
+            description?: string;
+            /**
+             * @description Unique identifier assigned to the recurring journal entry by the user for tracking and reconciliation.
+             * @example AWS_Serv_Bill_0001
+             */
+            referenceNumber?: string;
+            /** @description Supporting document for the recurring journal entry. */
+            attachment?: {
+                /**
+                 * @description Unique key for the attachment.
+                 * @example 6
+                 */
+                key?: string | null;
+                /**
+                 * @description ID for the attachment.
+                 * @example DOC6331
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the attachment.
+                 * @example /objects/company-config/attachment/6
+                 */
+                readonly href?: string;
+            };
+            /** @description Associated journal entry schedule for the recurring journal entry. */
+            schedule?: {
+                /**
+                 * Format: date
+                 * @description First date on which the entry is posted.
+                 * @example 2026-05-31
+                 */
+                startDate?: string;
+                /**
+                 * @description Ending condition for the journal entry schedule:
+                 *     * `never`: The schedule does not end.
+                 *     * `numberOfOccurrences`: The schedule ends after a fixed number of occurrences.
+                 *     * `endDate`: The schedule ends on a specific date.
+                 * @default never
+                 * @example never
+                 * @enum {string}
+                 */
+                scheduleEnd?: "never" | "numberOfOccurrences" | "endDate";
+                /**
+                 * @description Number of occurrences before ending, if `scheduleEnd` is set to `numberOfOccurrences`.
+                 * @example 12
+                 */
+                numberOfOccurrences?: number;
+                /**
+                 * Format: date
+                 * @description The date on which the schedule ends, if `scheduleEnd` is set to `endDate`.
+                 * @example 2026-12-31
+                 */
+                endDate?: string;
+                /**
+                 * @description Time unit used to determine how often the recurring journal entry is posted.
+                 * @default none
+                 * @example months
+                 * @enum {string}
+                 */
+                repeatBy?: "none" | "days" | "weeks" | "months" | "years";
+                /**
+                 * @description Indicates whether posting occurs at the end of the month when `repeatBy` is `months`.
+                 * @default false
+                 * @example false
+                 */
+                isEndOfMonth?: boolean;
+                /**
+                 * @description Number of time units between postings when `repeatBy` is not `none`.
+                 * @example 1
+                 */
+                repeatInterval?: string;
+                /**
+                 * @description One or more email addresses, separated by commas, to notify when the scheduled entry fails.
+                 * @example accounts@company.com
+                 */
+                email?: string | null;
+                /**
+                 * Format: date
+                 * @description Next scheduled posting date.
+                 * @example 2026-05-31
+                 */
+                readonly nextPostingDate?: string;
+                /**
+                 * Format: date
+                 * @description Last date on which the schedule posted an entry.
+                 * @example 2026-05-31
+                 */
+                readonly lastPostedDate?: string;
+                /**
+                 * @description Number of times this schedule has executed.
+                 * @example 123
+                 */
+                readonly executionCount?: string;
+            };
+            /** @description Reversal schedule linked to the original journal entry and used when automatic reversal is enabled. */
+            linkedReversingSchedule?: {
+                /**
+                 * @description Number of time units between automatic reversal postings when the linked reversal schedule is enabled.
+                 * @example 1
+                 */
+                repeatInterval?: number | null;
+                /**
+                 * @description Time unit used to determine the automatic reversal frequency when the linked reversal schedule is enabled.
+                 * @default none
+                 * @example months
+                 * @enum {string|null}
+                 */
+                unitOfTime?: null | "none" | "days" | "weeks" | "months" | "years" | "endOfMonth";
+            };
+            /** @description Independent reversal schedule for the recurring journal entry, used when automatic reversal is not linked to the original schedule. */
+            independentReversingSchedule?: {
+                /**
+                 * Format: date
+                 * @description Start date for the reversing journal entry.
+                 * @example 2026-06-30
+                 */
+                startDate?: string;
+                /**
+                 * @description Ending condition for the reversing journal entry schedule:
+                 *     * `never`: The schedule does not end.
+                 *     * `numberOfOccurrences`: The schedule ends after a fixed number of occurrences.
+                 *     * `endDate`: The schedule ends on a specific date.
+                 * @default never
+                 * @example never
+                 * @enum {string}
+                 */
+                scheduleEnd?: "never" | "numberOfOccurrences" | "endDate";
+                /**
+                 * @description Number of occurrences before reversing ends, if `scheduleEnd` = `numberOfOccurrences`.
+                 * @example 12
+                 */
+                numberOfOccurrences?: number;
+                /**
+                 * Format: date
+                 * @description The date on which the reversing journal entry schedule ends, if `scheduleEnd` is set to `endDate`.
+                 * @example 2026-12-31
+                 */
+                endDate?: string;
+                /**
+                 * @description Time unit used to determine the automatic reversal frequency when the independent reversal schedule is enabled.
+                 * @default null
+                 * @example weeks
+                 * @enum {string|null}
+                 */
+                reversePeriod?: null | "none" | "days" | "weeks" | "months" | "years";
+                /**
+                 * @description Indicates whether reversal occurs at the end of the month when `reversePeriod` is `months`.
+                 * @default false
+                 * @example false
+                 */
+                isEndOfMonth?: boolean;
+                /**
+                 * @description One or more email addresses, separated by commas, to notify when the independent reversal schedule fails.
+                 * @example accounts@company.com
+                 */
+                email?: string;
+                /**
+                 * Format: date
+                 * @description Last date on which the schedule reversed an entry.
+                 * @example 2026-04-01
+                 */
+                readonly lastReversedDate?: string;
+                /**
+                 * Format: date
+                 * @description Next scheduled reversal date.
+                 * @example 2026-05-01
+                 */
+                readonly nextReversalDate?: string;
+                /**
+                 * @description Number of times the reversal schedule has posted.
+                 * @example 123
+                 */
+                readonly executionCount?: string;
+                /**
+                 * @description Number of time units between reversal postings when `reversePeriod` is not `none`.
+                 * @example 1
+                 */
+                repeatInterval?: string;
+            };
+            /**
+             * @description Most recent result of the automatic posting attempt for this recurring journal entry.
+             * @example success
+             * @enum {string}
+             */
+            readonly lastPostedResult?: "success" | "failed" | "scheduleError" | "inTransit" | "notScheduled" | null;
+            /**
+             * @description Most recent result of the automatic reversal attempt for this recurring journal entry.
+             * @example success
+             * @enum {string}
+             */
+            readonly lastReversedResult?: "success" | "failed" | "scheduleError" | "inTransit" | "notScheduled" | null;
+            /** @description Scheduled operation that automatically posts journal entries according to the recurring journal entry schedule. */
+            readonly scheduledOperation?: {
+                /**
+                 * @description Unique key for the scheduled operation.
+                 * @example 4
+                 */
+                readonly key?: string;
+                /**
+                 * @description Identifier for the scheduled operation.
+                 * @example Recurring Journal Entry - 2026.7.2-06:45:00-0.3771
+                 */
+                readonly id?: string;
+            };
+            /** @description Scheduled operation that automatically reverses journal entries according to the recurring journal entry reversal schedule. */
+            readonly reversalScheduledOperation?: {
+                /**
+                 * @description Unique key for the scheduled operation.
+                 * @example 4
+                 */
+                readonly key?: string;
+                /**
+                 * @description ID for the scheduled operation.
+                 * @example Recurring Journal Entry Reversal - 2026.7.2-06:45:00-0.3771
+                 */
+                readonly id?: string;
+            };
+            /** @description Base location for a multi-entity company. Required if multi-entity is enabled and entries do not balance by entity. */
+            baseLocation?: {
+                /**
+                 * @description Unique key for the base location.
+                 * @example 32
+                 */
+                key?: string | null;
+                /**
+                 * @description ID for the base location.
+                 * @example US
+                 */
+                id?: string | null;
+                /**
+                 * @description Name of the base location.
+                 * @example USA
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the base location.
+                 * @example /objects/company-config/location/32
+                 */
+                readonly href?: string;
+            };
+            audit?: components["schemas"]["audit.s2"];
+            status?: components["schemas"]["status"];
+            /**
+             * @description URL endpoint for the recurring journal entry.
+             * @example /objects/general-ledger/recurring-journal-entry/127
+             */
+            readonly href?: string;
+            entity?: components["schemas"]["entity-ref"];
+            /** @description Recurring journal entry lines included in this entry. Must have at least two lines, one debit and one credit. */
+            lines?: components["schemas"]["objects.general-ledger.recurring-journal-entry-line"][];
+        };
+        "general-ledger-recurring-journal-entryRequiredProperties": Record<string, never>;
+        /** @description A recurring journal entry line represents a single debit or credit entry within a recurring journal entry. */
+        "objects.general-ledger.recurring-journal-entry-line": {
+            /**
+             * @description System-assigned unique key for the recurring journal entry line.
+             * @example 121
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the recurring journal entry line. This value is the same as the key for this object.
+             * @example 121
+             */
+            readonly id?: string;
+            /**
+             * @description Document identifier for the recurring journal entry line.
+             * @example ME012021
+             */
+            documentId?: string | null;
+            /**
+             * @description Memo describing the recurring journal entry line.
+             * @example Monthly Accrual - Utilities Expense
+             */
+            memo?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Transaction amount as an absolute value for the recurring journal entry line.
+             * @example 125.95
+             */
+            txnAmount?: string;
+            /**
+             * @description Line number assigned to the recurring journal entry line.
+             * @example 5
+             */
+            readonly lineNumber?: number;
+            /**
+             * @description Number of units for the recurring journal entry line.
+             * @example 5
+             */
+            numberOfUnits?: number;
+            /** @description Transaction allocation template associated with the recurring journal entry line. */
+            txnAllocationTemplate?: {
+                /**
+                 * @description Unique key for the transaction allocation template.
+                 * @example 21
+                 */
+                key?: string | null;
+                /**
+                 * @description ID for the transaction allocation template.
+                 * @example FA_ALLOC
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the transaction allocation template.
+                 * @example /objects/general-ledger/txn-allocation-template/21
+                 */
+                readonly href?: string;
+            };
+            /**
+             * @description Type of transaction for the recurring journal entry line.
+             * @default debit
+             * @example debit
+             * @enum {string}
+             */
+            txnType?: "debit" | "credit";
+            /**
+             * @description Indicates whether the recurring journal entry line is billable. Requires a Projects subscription and the billable option to be enabled for General Ledger transactions.
+             * @default false
+             * @example false
+             */
+            isBillable?: boolean;
+            /** @description Recurring journal entry associated with the recurring journal entry line. */
+            recurringJournalEntry?: {
+                /**
+                 * @description ID for the recurring journal entry.
+                 * @example 121
+                 */
+                id?: string;
+                /**
+                 * @description Unique key for the recurring journal entry.
+                 * @example 121
+                 */
+                key?: string;
+                /**
+                 * @description URL endpoint for the recurring journal entry.
+                 * @example /objects/general-ledger/recurring-journal-entry/121
+                 */
+                readonly href?: string;
+            };
+            dimensions?: components["schemas"]["dimension-ref"];
+            currency?: components["schemas"]["currency"];
+            glAccount?: components["schemas"]["gl-account-ref"];
+            audit?: components["schemas"]["audit.s2"];
+            /**
+             * @description URL endpoint for the recurring journal entry line.
+             * @example /objects/general-ledger/recurring-journal-entry-line/121
+             */
+            readonly href?: string;
+        };
+        /** @description A reporting period defines a date range used to organize financial activity in reports and budgets. */
         "objects.general-ledger.reporting-period": {
             /**
              * @description System-assigned unique key for the reporting period.
@@ -7017,24 +7763,24 @@ export interface components {
              */
             columnHeader1?: string;
             /**
-             * @description The second line to be shown on the report, such as "April 2023".
-             * @example April 2023
+             * @description The second line to be shown on the report, such as the month and year.
+             * @example April 2026
              */
             columnHeader2?: string | null;
             /**
              * Format: date
              * @description The starting date of the reporting period.
-             * @example 2023-04-01
+             * @example 2026-02-01
              */
             startDate?: string | null;
             /**
              * Format: date
              * @description The ending date of the reporting period.
-             * @example 2023-06-30
+             * @example 2026-09-30
              */
             endDate?: string | null;
             /**
-             * @description Set to `true` to make this reporting period available for inclusion in budgets.
+             * @description Indicates whether this reporting period can be included in budgets. Set to `true` to make this reporting period available for inclusion in budgets.
              * @default false
              * @example true
              */
@@ -7046,20 +7792,20 @@ export interface components {
              */
             readonly reportingPeriodType?: "standard" | "custom";
             /**
-             * @description The date type is the rule.
+             * @description The type of date used for the reporting period.
              * @example 99
              */
             readonly dateType?: number;
             /**
              * @description URL endpoint for the reporting period.
-             * @example /objects/general-ledger/reporting-period/1
+             * @example /objects/general-ledger/reporting-period/421
              */
             readonly href?: string;
             status?: components["schemas"]["status"];
             audit?: components["schemas"]["audit.s1"];
         };
         "general-ledger-reporting-periodRequiredProperties": Record<string, never>;
-        /** @description General ledger adjustment journals represent journal entries that are used to make adjustments to closed accounting periods. Each adjustment journal contains its own line items, and you can create as many adjustment journals as needed. You can also control whether direct posting is allowed for each journal. */
+        /** @description An adjustment journal represents journal entries used to make adjustments to closed accounting periods. */
         "objects.general-ledger.adjustment-journal": {
             /**
              * @description System-assigned unique key for the adjustment journal.
@@ -7067,34 +7813,34 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the adjustment journal.
+             * @description Unique ID for the adjustment journal.
              * @example PERIOD-END-26Q1
              */
             id?: string;
             /**
-             * @description Name of the adjustment journal, as it appears in reports.
+             * @description Name of the adjustment journal as it appears in reports.
              * @example Period End Adjustment Journal - 26Q1
              */
             name?: string;
             /**
-             * @description Indicates whether entries in this adjustment journal are billable. If true, journal entries are billable, but individual entry lines can still be non-billable. Requires a Projects subscription and billable General Ledger (GL) transactions.
+             * @description Indicates whether entries in this adjustment journal are billable. If `true`, journal entries are billable, but individual entry lines can still be non-billable. Requires a Projects subscription and billable General Ledger (GL) transactions.
              * @default false
              * @example false
              */
             isBillable?: boolean;
             /**
-             * @description Indicates whether entries must be posted through sub-ledger journals. If true, direct posting is disabled. Requires dual-method reporting.
+             * @description Indicates whether direct posting to the adjustment journal is disallowed. If `true`, entries must be posted through subledger journals. Requires dual-method reporting for the adjustment journal.
              * @default false
              * @example false
              */
             disallowDirectPosting?: boolean;
             /**
-             * @description Identifies the reporting book associated with the adjustment journal, Accrual for most companies.
+             * @description Reporting book associated with the adjustment journal. The Accrual book is used for most companies.
              * @example Accrual
              */
             readonly bookId?: string;
             /**
-             * @description Indicates the reporting method classification for the adjustment journal, `accrual` for most companies.
+             * @description Reporting method classification for the adjustment journal, typically `accrual`.
              * @default accrual
              * @example accrual
              * @enum {string}
@@ -7110,7 +7856,7 @@ export interface components {
             readonly href?: string;
         };
         "general-ledger-adjustment-journalRequiredProperties": Record<string, never>;
-        /** @description GAAP (Generally Accepted Accounting Principles) adjustment journals represent journal entries that are used to post adjustments without changing historical monthly amounts, which maintains the integrity of the operational reporting. */
+        /** @description A GAAP (Generally Accepted Accounting Principles) adjustment journal represents journal entries used to post adjustments without changing historical monthly amounts. */
         "objects.general-ledger.gaap-adjustment-journal": {
             /**
              * @description System-assigned unique key for the GAAP adjustment journal.
@@ -7118,35 +7864,35 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the GAAP adjustment journal.
+             * @description Unique ID for the GAAP adjustment journal.
              * @example GAJ
              */
             id?: string;
             /**
-             * @description Name of the GAAP adjustment journal.
+             * @description Name for the GAAP adjustment journal.
              * @example GAAP Adjustment Journal
              */
             name?: string;
             /**
-             * @description Indicates whether entries in this adjustment journal are billable. If true, journal entries are billable, but individual entry lines can still be non-billable. Requires a Projects subscription and billable General Ledger (GL) transactions.
+             * @description Indicates whether entries in this GAAP adjustment journal are billable. If `true`, journal entries are billable, but individual entry lines can still be non-billable. Requires a Projects subscription and billable General Ledger (GL) transactions.
              * @default false
              * @example false
              */
             isBillable?: boolean;
             /**
-             * @description Identifies the reporting book associated with the adjustment journal, Accrual for most companies.
+             * @description Reporting book associated with the GAAP adjustment journal. The Accrual book is used for most companies.
              * @example Accrual
              */
             readonly bookId?: string;
             /**
-             * @description Indicates the reporting method classification for the adjustment journal, `accrual` for most companies.
+             * @description Reporting method classification for the GAAP adjustment journal, typically `accrual`.
              * @default accrual
              * @example accrual
              * @enum {string}
              */
             bookType?: "accrual" | "cash" | "cashAndAccrual" | "consolidation";
             /**
-             * @description Indicates whether entries must be posted through sub-ledger journals. If true, direct posting is disabled. Requires dual-method reporting.
+             * @description Indicates whether direct posting to the GAAP adjustment journal is disallowed. If `true`, entries must be posted through subledger journals. Requires dual-method reporting for the GAAP adjustment journal.
              * @default false
              * @example false
              */
@@ -7160,7 +7906,7 @@ export interface components {
             readonly href?: string;
         };
         "general-ledger-gaap-adjustment-journalRequiredProperties": Record<string, never>;
-        /** @description Tax adjustment journals record tax changes for transactions already posted to the general ledger. */
+        /** @description A tax adjustment journal records tax changes for transactions already posted to the General Ledger. */
         "objects.general-ledger.tax-adjustment-journal": {
             /**
              * @description System-assigned unique key for the tax adjustment journal.
@@ -7168,35 +7914,35 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the tax adjustment journal.
+             * @description Unique ID for the tax adjustment journal.
              * @example TAX-ADJ-26Q1
              */
             id?: string;
             /**
-             * @description Name of the tax adjustment journal.
+             * @description Name for the tax adjustment journal.
              * @example Tax Adjustment Journal - 26Q1
              */
             name?: string;
             /**
-             * @description Indicates whether entries in this adjustment journal are billable. If true, journal entries are billable, but individual entry lines can still be non-billable. Requires a Projects subscription and billable General Ledger (GL) transactions.
+             * @description Indicates whether entries in this tax adjustment journal are billable. If true, journal entries are billable, but individual entry lines can still be non-billable. Requires a Projects subscription and billable General Ledger (GL) transactions.
              * @default false
              * @example true
              */
             isBillable?: boolean;
             /**
-             * @description Identifies the reporting book associated with the adjustment journal. This is Accrual for most companies.
+             * @description Reporting book associated with the tax adjustment journal. The Accrual book is used for most companies.
              * @example Accrual
              */
             readonly bookId?: string;
             /**
-             * @description Indicates the reporting method classification for the adjustment journal. This is `accrual` for most companies.
+             * @description Reporting method classification for the tax adjustment journal, typically `accrual`.
              * @default accrual
              * @example accrual
              * @enum {string}
              */
             bookType?: "accrual" | "cash" | "cashAndAccrual" | "consolidation";
             /**
-             * @description Indicates whether entries must be posted through sub-ledger journals. If true, direct posting is disabled. Requires dual-method reporting.
+             * @description Indicates whether direct posting to the tax adjustment journal is disallowed. If `true`, entries must be posted through subledger journals. Requires dual-method reporting for the tax adjustment journal.
              * @default false
              * @example false
              */
@@ -7205,31 +7951,31 @@ export interface components {
             status?: components["schemas"]["status"];
             audit?: components["schemas"]["audit.s2"];
             /**
-             * @description URL for this tax adjustment journal.
+             * @description URL endpoint for the tax adjustment journal.
              * @example /objects/general-ledger/tax-adjustment-journal/44
              */
             readonly href?: string;
         };
         "general-ledger-tax-adjustment-journalRequiredProperties": Record<string, never>;
-        /** @description Statistical account */
+        /** @description A statistical account tracks non-financial quantities for General Ledger reporting. */
         "objects.general-ledger.statistical-account": {
             /**
-             * @description System-assigned key for the statistical  account. Used to identify the account in URLs or JSON bodies for all operations on the account.
+             * @description System-assigned unique key for the statistical account.
              * @example 397
              */
             readonly key?: string;
             /**
-             * @description The primary account number. This number must be a specific length, which is set on the Accounting tab of the Company Information page.
+             * @description Unique ID for the statistical account. The primary account segment and any subaccount segments must match the lengths configured for the company.
              * @example 9001
              */
             id?: string;
             /**
-             * @description Name or title of this statistical account.
+             * @description Name or title of the statistical account.
              * @example Customer Account
              */
             name?: string;
             /**
-             * @description This is a non-functional field, for information purposes only. It does not affect how amounts are calculated for reporting.
+             * @description Reporting period type for the statistical account. This field is informational only and does not affect how amounts are calculated for reporting.
              * @default forPeriod
              * @example forPeriod
              * @enum {string}
@@ -7237,13 +7983,13 @@ export interface components {
             reportType?: "forPeriod" | "cumulative";
             requireDimensions?: components["schemas"]["required-dimensions-ref"];
             /**
-             * @description Set to `true` to mark the account as taxable.
+             * @description Indicates whether the statistical account is taxable.
              * @default false
              * @example true
              */
             isTaxable?: boolean;
             /**
-             * @description Account categories are pre-defined groupings that arrange accounts into out-of-the-box reports, graphs, and performance cards. This field is available only for companies that were created with a QuickStart template or chose one later. If enabled, set a category for the account. The available values are set by the particular QuickStart template used for the company.
+             * @description Predefined grouping for organizing accounts in out-of-the-box reports, graphs, and performance cards. Available only for companies created with a QuickStart template or that choose one later. When enabled, choose a category defined by the company's QuickStart template.
              * @example Customers
              */
             category?: string;
@@ -7258,7 +8004,7 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "general-ledger-statistical-accountRequiredProperties": Record<string, never>;
-        /** @description Statistical journals hold all non-monetary journal entries, which do not have a debit or credit as a transaction */
+        /** @description A statistical journal records non-monetary journal entries that increase or decrease values without debits or credits. */
         "objects.general-ledger.statistical-journal": {
             /**
              * @description System-assigned unique key for the statistical journal.
@@ -7266,29 +8012,29 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the statistical journal.
+             * @description Unique ID for the statistical journal.
              * @example TSSJ
              */
             id?: string;
             /**
-             * @description Name of the statistical journal, as it should appear in reports.
+             * @description Name of the statistical journal as it appears in reports.
              * @example Timesheet Statistical Journal
              */
             name?: string;
             /**
-             * @description Reporting book for which the statistical journal was created. For most companies, the reporting book is accrual. If the company is set up for dual-method reporting, the choices are accrual, cash, or accrual and cash.
+             * @description Reporting book associated with the statistical journal. For most companies, this is the accrual book. For companies set up for dual-method reporting, the choices are Accrual, Cash, or Cash and accrual.
              * @example Accrual
              */
             readonly bookId?: string;
             /**
-             * @description Indicates the type of reporting book for which the statistical journal was created, either `accrual`, `cash`, `cash and accrual` or `consolidation`.  For most companies, the reporting book is accrual. If the company uses dual-method reporting, the choices are `accrual`, `cash`, or `cash and accrual`.
+             * @description Type of reporting book associated with the statistical journal. The value is `accrual`, `cash`, `cashAndAccrual`, or `consolidation`. For most companies, the value is `accrual`; companies set up for dual-method reporting can use `accrual`, `cash`, or `cashAndAccrual`.
              * @default accrual
              * @example accrual
              * @enum {string}
              */
             readonly bookType?: "accrual" | "cash" | "cashAndAccrual" | "consolidation";
             /**
-             * @description When `true`, prevents direct entry of journal entries for this journal.
+             * @description Indicates whether direct posting of journal entries is disallowed for the statistical journal.
              * @default false
              * @example false
              */
@@ -7297,21 +8043,21 @@ export interface components {
             status?: components["schemas"]["status"];
             audit?: components["schemas"]["audit.s1"];
             /**
-             * @description URL endpoint for this journal.
+             * @description URL endpoint for the statistical journal.
              * @example /objects/general-ledger/statistical-journal/36
              */
             readonly href?: string;
         };
         "general-ledger-statistical-journalRequiredProperties": Record<string, never>;
-        /** @description Statistical journal entries allow you to add, edit, or reverse statistical transactions within a journal before posting them to the general ledger for reporting and analysis. */
+        /** @description Statistical journal entries record non-financial transactions in a statistical journal for reporting and analysis. */
         "objects.general-ledger.statistical-journal-entry": {
             /**
-             * @description System-assigned key for the statistical journal entry.
+             * @description System-assigned unique key for the statistical journal entry.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the statistical journal entry.
+             * @description Unique ID for the statistical journal entry. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -7327,8 +8073,8 @@ export interface components {
             description?: string;
             /**
              * Format: date
-             * @description The date when the statistical journal entry is recorded in the journal and posted to the general ledger for tracking and reporting.
-             * @example 2023-04-01
+             * @description Date the statistical journal entry is recorded in the journal.
+             * @example 2026-10-05
              */
             postingDate?: string;
             /**
@@ -7339,36 +8085,36 @@ export interface components {
             readonly moduleName?: string;
             /**
              * Format: date
-             * @description The date a statistical journal entry is automatically reversed in the general ledger. `automaticReversalDate` must be later than the `postingDate`.
-             * @example 2023-04-04
+             * @description The date the statistical journal entry is automatically reversed in the general ledger. This date must be on or after the `postingDate`.
+             * @example 2026-10-06
              */
             automaticReversalDate?: string | null;
             /**
              * Format: date
-             * @description The original posting date of the statistical journal entry that is being reversed. Only populated if the journal entry has been reversed.
-             * @example 2023-04-05
+             * @description The original posting date of the statistical journal entry being reversed. Populated only when the entry has been reversed.
+             * @example 2026-10-01
              */
             readonly reversedFromDate?: string | null;
-            /** @description Identifies the statistical journal entry that reversed the original entry. Only populated if the journal entry has been reversed. */
+            /** @description Reversing statistical journal entry associated with the statistical journal entry. Populated only when the entry has been reversed. */
             readonly reversedBy?: {
                 /**
-                 * @description System-assigned key of the reversing entry.
+                 * @description Unique key for the reversing statistical journal entry.
                  * @example 663
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique identifier of the reversing entry.
+                 * @description ID for the reversing statistical journal entry.
                  * @example 663
                  */
                 readonly id?: string | null;
                 /**
-                 * @description URL endpoint for the reversing entry.
+                 * @description URL endpoint for the reversing statistical journal entry.
                  * @example /objects/general-ledger/statistical-journal-entry/663
                  */
                 readonly href?: string;
             };
             /**
-             * @description Shows the current state of the statistical journal entry. The only valid values when creating a new entry are `posted` (default, system-defined state), and `draft`. Only populate the state field when creating a `draft` entry. If you leave the state field blank, it will have the default state of `posted`.
+             * @description Current state of the statistical journal entry. When creating an entry, the valid values are `posted` (the default, system-defined state) and `draft`. Set this field only to create a `draft` entry; if omitted, the entry defaults to `posted`.
              * @default posted
              * @example draft
              * @enum {string}
@@ -7379,15 +8125,15 @@ export interface components {
              * @example STATGLJE_001
              */
             readonly sequenceNumber?: string;
-            /** @description Identifies the statistical journal associated to which the statistical journal entry belongs. */
+            /** @description Statistical journal associated with the statistical journal entry. */
             statisticalJournal?: {
                 /**
-                 * @description System-assigned key for the statistical journal.
+                 * @description Unique key for the statistical journal.
                  * @example 3
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the statistical journal.
+                 * @description ID for the statistical journal.
                  * @example EJ
                  */
                 id?: string;
@@ -7402,15 +8148,15 @@ export interface components {
              * @example Recurr_GL_101
              */
             referenceNumber?: string;
-            /** @description Supporting documents or files linked to the statistical journal entry. */
+            /** @description Attachment associated with the statistical journal entry. */
             attachment?: {
                 /**
-                 * @description System-assigned key for the attachment.
+                 * @description Unique key for the attachment.
                  * @example 6
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the attachment.
+                 * @description ID for the attachment.
                  * @example Doc6331
                  */
                 id?: string;
@@ -7427,31 +8173,31 @@ export interface components {
              * @example /objects/general-ledger/statistical-journal-entry/23
              */
             readonly href?: string;
-            /** @description A collection of statistical transaction lines within the journal entry. At least one line in required per statistical journal entry. */
+            /** @description Statistical transaction lines for the journal entry. At least one line is required for each statistical journal entry. */
             lines?: components["schemas"]["objects.general-ledger.statistical-journal-entry-line"][];
         };
         "general-ledger-statistical-journal-entryRequiredProperties": {
             lines: unknown[];
         };
-        /** @description Detail and header information for the statistical journal line items within the statistical journal entry. */
+        /** @description A statistical journal entry line records an individual non-monetary transaction within a statistical journal entry. */
         "objects.general-ledger.statistical-journal-entry-line": {
             /**
-             * @description System assigned unique key for the statistical journal entry line.
+             * @description System-assigned unique key for the statistical journal entry line.
              * @example 1981
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the statistical journal entry line.
+             * @description Unique ID for the statistical journal entry line. This value is the same as the `key` for this object.
              * @example 1981
              */
             readonly id?: string;
             /**
-             * @description Specifies the specific line number within the statistical journal entry.
+             * @description Line number within the statistical journal entry.
              * @example 1
              */
             readonly lineNumber?: number;
             /**
-             * @description Indicates the type of line item recorded in the statistical journal entry.
+             * @description Indicates whether the line's amount is an `increase` or `decrease`.
              * @default increase
              * @example increase
              * @enum {string}
@@ -7459,68 +8205,69 @@ export interface components {
             txnType?: "increase" | "decrease";
             /**
              * Format: decimal-precision-2
-             * @description Represents the amount of the line item as an absolute value within the statistical journal entry.
+             * @description Absolute statistical amount recorded on the line.
              * @example 100.45
              */
             txnAmount?: string;
             /**
              * Format: date
-             * @description Specifies the date when the line item was added to the statistical journal entry.
-             * @example 2021-01-23
+             * @description Date the line was added to the statistical journal entry.
+             * @example 2026-03-23
              */
             readonly entryDate?: string;
             /**
-             * @description Reference for the statistical journal entry line item, this is a user-entered value that can contain numeric or alpha-numeric values.
-             * @example Headcount_Increase-03-24
+             * @description User-entered reference for the statistical journal entry line. The value can contain numeric or alphanumeric characters.
+             * @example Headcount_Increase-03-26
              */
             documentId?: string;
             /**
              * @description Description of the statistical journal entry line.
-             * @example Headcount Increase March 2024
+             * @example Headcount Increase March 2026
              */
             description?: string;
             /**
-             * @description Indicates the quantity associated with the line item, representing a non-monetary measurement, for example, headcount or production units.
+             * @description Quantity associated with the line, representing a non-monetary measurement such as headcount or production units.
              * @example 5
              */
             readonly numberOfUnits?: number;
+            /** @description Reconciliation details for the line. */
             readonly reconciliationGroup?: {
                 /**
                  * Format: date
-                 * @description Represents an automatically generated date when the line item was reconciled or cleared as part of the reconciliation process.
-                 * @example 2021-01-23
+                 * @description Automatically generated date when the line was reconciled or cleared.
+                 * @example 2026-03-23
                  */
                 readonly clearingDate?: string;
                 /**
-                 * @description Indicates whether the line item has been reconciled or cleared as part of the reconciliation process.
+                 * @description Reconciliation status of the line, `true` if cleared, `false` if not cleared, and `matched` if matched for reconciliation.
                  * @example false
                  * @enum {string}
                  */
                 readonly cleared?: "true" | "false" | "matched";
                 /**
                  * Format: date
-                 * @description The date when the line item was reconciled as part of the reconciliation process.
-                 * @example 2021-01-23
+                 * @description Date the line was reconciled.
+                 * @example 2026-03-23
                  */
                 readonly reconciliationDate?: string;
             };
             /**
-             * @description Accounting period if company uses custom accounting periods.
+             * @description For companies that use custom accounting periods, the accounting period associated with the line.
              * @example 11
              */
             readonly accountingPeriod?: number | null;
             state?: components["schemas"]["state"];
             audit?: components["schemas"]["audit.s1"];
             statisticalAccount?: components["schemas"]["gl-statistical-account-ref"];
-            /** @description Transaction allocation template, a predefined template used to allocate statistical line items across accounts, departments, or entities. */
+            /** @description Transaction allocation template associated with the line. The template allocates statistical line items across accounts, departments, or entities. */
             allocation?: {
                 /**
-                 * @description System-assigned unique key for the transaction allocation template.
+                 * @description Unique key for the transaction allocation template.
                  * @example 21
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier (user-defined) for the transaction allocation template.
+                 * @description ID for the transaction allocation template. This value is user-defined.
                  * @example FA_ALLOC
                  */
                 id?: string;
@@ -7536,15 +8283,15 @@ export interface components {
              * @example /objects/general-ledger/statistical-journal-entry-line/1981
              */
             readonly href?: string;
-            /** @description Statistical journal entry to which this line item belongs. */
+            /** @description Header level details for the statistical journal entry. */
             readonly statisticalJournalEntry?: {
                 /**
-                 * @description Unique identifier for the statistical journal entry.
+                 * @description ID for the statistical journal entry.
                  * @example 132
                  */
                 readonly id?: string;
                 /**
-                 * @description System-assigned unique key for the statistical journal entry.
+                 * @description Unique key for the statistical journal entry.
                  * @example 132
                  */
                 readonly key?: string;
@@ -7555,25 +8302,25 @@ export interface components {
                 readonly href?: string;
             };
         };
-        /** @description Use a statistical adjustment journal to store entries made to closed periods. */
+        /** @description A statistical adjustment journal is used to store entries made to closed periods. */
         "objects.general-ledger.statistical-adjustment-journal": {
             /**
-             * @description System assigned unique key for the statistical adjustment journal.
+             * @description System-assigned unique key for the statistical adjustment journal.
              * @example 2
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the statistical adjustment journal.
-             * @example ADJ-2025
+             * @description Unique ID for the statistical adjustment journal.
+             * @example ADJ-2026
              */
             id?: string;
             /**
              * @description Name of the statistical adjustment journal.
-             * @example Adjustment entry journal 2025
+             * @example Adjustment entry journal 2026
              */
             name?: string;
             /**
-             * @description Set to `true` to allow posts to this journal only through subledgers. This prevents direct entry of journal entries for this journal.
+             * @description Indicates whether the statistical adjustment journal disallows direct posting, allowing entries only through subledgers.
              * @default false
              * @example false
              */
@@ -7587,7 +8334,7 @@ export interface components {
             readonly href?: string;
         };
         "general-ledger-statistical-adjustment-journalRequiredProperties": Record<string, never>;
-        /** @description Header object for standard allocation combinations that are used routinely. */
+        /** @description Header details for a transaction allocation template that defines standard allocation combinations used routinely. */
         "objects.general-ledger.txn-allocation-template": {
             /**
              * @description System-assigned unique key for the transaction allocation template.
@@ -7595,104 +8342,113 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description User defined transaction allocation template ID.
+             * @description Unique ID for the transaction allocation template, defined by the user.
              * @example FA_ALLOC
              */
             id?: string;
             /**
-             * @description A description of the allocation.
+             * @description Description of the transaction allocation template.
              * @example Fixed Amount Allocation
              */
             description?: string;
             /**
-             * @description Determines how transaction allocations are split across the dimensions included in a transaction.
+             * @description Method for splitting transaction allocations across the dimensions included in a transaction.
              *
              *     * Use `percentage` to specify entries as percentages (default)
              *     * Use `exactAmount` to specify entries as fixed amounts
-             *     * Use `fixedAmount` for a combination of both. Exact amounts are distributed first, based on the `lineNumber` values in each txn-allocation-template-line. Any remaining amount is distributed using the percentage allocations. Entries for exact amounts must have lower line numbers than entries for percentages, and percentages must always total 100%. (You use the `valueType` parameter on each entry to specify amount or percent.)
+             *     * Use `fixedAmount` for a combination of both. Exact amounts are distributed first, based on the `lineNumber` values in each transaction allocation template line. Any remaining amount is distributed using the percentage allocations. Entries for exact amounts must have lower line numbers than entries for percentages, and percentages must always total 100%. (Use the `valueType` parameter on each entry to specify an amount or percent.)
              * @default percentage
              * @example percentage
              * @enum {string}
              */
             allocateBy?: "percentage" | "exactAmount" | "fixedAmount";
             /**
-             * @description A reference number or name to a specific document--such as a contract--used to define the transaction allocation template formula.
+             * @description Reference number or name for a specific document, such as a contract, used to define the transaction allocation template formula.
              * @example RJEALC
              */
             documentNumber?: string;
             status?: components["schemas"]["status"];
-            /** @description Supporting document ID for this attachment. */
+            /** @description Attachment associated with the transaction allocation template. */
             attachment?: {
-                /** @example 21 */
+                /**
+                 * @description Unique key for the attachment.
+                 * @example 21
+                 */
                 key?: string;
-                /** @example Sales01 */
+                /**
+                 * @description ID for the attachment.
+                 * @example Sales01
+                 */
                 id?: string;
-                /** @example /objects/attachment/21 */
+                /**
+                 * @description URL endpoint for the attachment.
+                 * @example /objects/attachment/21
+                 */
                 readonly href?: string;
             };
             entity?: components["schemas"]["entity-ref"];
             audit?: components["schemas"]["audit.s1"];
             /**
-             * @description URL endpoint of the allocation template.
+             * @description URL endpoint for the transaction allocation template.
              * @example /objects/general-ledger/txn-allocation-template/21
              */
             readonly href?: string;
-            /** @description Transaction allocation lines. */
+            /** @description Lines for the transaction allocation template. */
             lines?: components["schemas"]["objects.general-ledger.txn-allocation-template-line"][];
         };
         "general-ledger-txn-allocation-templateRequiredProperties": {
             lines: unknown[];
         };
-        /** @description Line level component of a transaction allocation template. */
+        /** @description Line in a transaction allocation template that defines the value and dimensions used for an allocation. */
         "objects.general-ledger.txn-allocation-template-line": {
             /**
-             * @description System-assigned unique key for the allocation line.
+             * @description System-assigned unique key for the transaction allocation template line.
              * @example 1
              */
             readonly key?: string;
             /**
-             * @description This value is the same as the `key` value for this object.
+             * @description Unique ID for the transaction allocation template line. This value is the same as the `key` for this object.
              * @example 1
              */
             readonly id?: string;
             /**
-             * @description The exact amount or percentage to allocate for this line.
+             * @description Amount or percentage allocated by this transaction allocation template line.
              * @example 60.56
              */
             value?: string;
             /**
-             * @description Specifies whether the current line is an exact amount or percentage. Must be set when creating `fixedAmount` allocations, but is set automatically for `percentage` and `exactAmount` allocations.
+             * @description Indicates whether this line allocates an exact amount or a percentage. Set this field when creating `fixedAmount` allocations; it is set automatically for `percentage` and `exactAmount` allocations.
              * @default amount
              * @example amount
              * @enum {string}
              */
             valueType?: "amount" | "percent";
             /**
-             * @description Line number of the allocation entry. For `fixedAmount` allocations, exact amounts are distributed by line number.
+             * @description Position of the line in the transaction allocation template. For `fixedAmount` allocations, exact amounts are distributed by line number.
              * @example 1
              */
             lineNumber?: number;
-            /** @description Dimensions to use in allocations. */
+            /** @description Dimensions used to determine how the transaction allocation template line is applied. */
             dimensions?: components["schemas"]["dimension-ref"] & {
                 /** location */
                 location?: {
                     /**
-                     * @description Location key
+                     * @description Unique key for the location.
                      * @example 1
                      */
                     key?: string;
                     /**
-                     * @description Location ID
+                     * @description ID for the location.
                      * @example US
                      */
                     id?: string;
                     /**
-                     * @description Location name
+                     * @description Name of the location.
                      * @example United States of America
                      */
                     readonly name?: string;
                     /**
-                     * @description URL endpoint for the location
+                     * @description URL endpoint for the location.
                      * @example /objects/company-config/location/1
                      */
                     href?: string;
@@ -7700,22 +8456,22 @@ export interface components {
                 /** department */
                 department?: {
                     /**
-                     * @description Department key
+                     * @description Unique key for the department.
                      * @example 3
                      */
                     key?: string;
                     /**
-                     * @description Department ID
+                     * @description ID for the department.
                      * @example ENG
                      */
                     id?: string;
                     /**
-                     * @description Department name
+                     * @description Name of the department.
                      * @example Engineering
                      */
                     readonly name?: string;
                     /**
-                     * @description URL endpoint for the department
+                     * @description URL endpoint for the department.
                      * @example /objects/company-config/department/3
                      */
                     href?: string;
@@ -7727,26 +8483,26 @@ export interface components {
              * @example /objects/general-ledger/txn-allocation-template-line/1
              */
             readonly href?: string;
-            /** @description Transaction allocation template that this allocation line belongs to. */
+            /** @description Header level details for the transaction allocation template. */
             txnAllocationTemplate?: {
                 /**
-                 * @description Allocation template key
+                 * @description Unique key for the transaction allocation template.
                  * @example 1
                  */
                 readonly key?: string;
                 /**
-                 * @description Allocation template ID
+                 * @description ID for the transaction allocation template.
                  * @example RootAllocation
                  */
                 readonly id?: string;
                 /**
-                 * @description URL endpoint for the allocation template
+                 * @description URL endpoint for the transaction allocation template.
                  * @example /objects/general-ledger/txn-allocation-template/1
                  */
                 readonly href?: string;
             };
         };
-        /** @description Financial graphs visualize financial data to help businesses assess performance, spot trends, and make better decisions. */
+        /** @description A financial graph represents a configured visualization of General Ledger data. */
         "objects.general-ledger.financial-graph": {
             /**
              * @description System-assigned unique key for the financial graph.
@@ -7754,7 +8510,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the financial graph. This is the same as `key` for this object.
+             * @description Unique ID for the financial graph. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -7764,40 +8520,40 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Specifies the name of the financial graph.
+             * @description Name of the financial graph.
              * @example Monthly Revenue vs Operating Expense
              */
             name?: string;
             /**
-             * @description Specifies the title of the graph for display at the top of the graph.
+             * @description Display title for the financial graph.
              * @example Revenue and Operating Expense Trend (Last 12 Months)
              */
             graphTitle?: string;
             /**
-             * @description Specifies the date that represents the specific point in time for the financial graph data.
+             * @description Date that defines the point in time for the financial graph data.
              * @example 2026-01-10
              */
             asOfDate?: string;
             /**
-             * @description Specifies the graph type for the financial graph, such as line, bar, or column graph.
+             * @description Chart type for the financial graph, such as a line, bar, or column graph.
              * @default col.1
              * @example line.1
              */
             reType?: string;
             /**
-             * @description Specifies the primary graph series for the financial graph. This represents the main data points to be visualized in the graph.
+             * @description Primary data series for the financial graph, representing the main data points to visualize.
              * @default P
              * @example A
              */
             series?: string;
             /**
-             * @description Specifies the secondary graph series for the financial graph. This provides additional data points or comparisons to the primary series.
+             * @description Secondary data series for the financial graph, providing additional data points or comparisons to the primary series.
              * @default A
              * @example A
              */
             seconseries?: string;
             /**
-             * @description Provides a brief descriptive comment for the financial graph. Use this comment to add additional context or information about the graph.
+             * @description Additional context or information about the financial graph.
              * @example Tracks monthly revenue against operating expenses to monitor profitability trends.
              */
             comment?: string;
@@ -7805,7 +8561,7 @@ export interface components {
             audit?: components["schemas"]["audit.s2"];
             entity?: components["schemas"]["entity-ref"];
         };
-        /** @description Reporting accounts provide an optional reporting structure in the General Ledger, organized within reporting account sets. */
+        /** @description A reporting account provides an optional reporting structure in the General Ledger and belongs to a reporting account set. */
         "objects.general-ledger.reporting-account": {
             /**
              * @description System-assigned unique key for the reporting account.
@@ -7813,7 +8569,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the reporting account. This is the same value as `key` for this object.
+             * @description Unique ID for the reporting account. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -7823,40 +8579,40 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Specifies the account number for the reporting account.
+             * @description Account number for the reporting account.
              * @example 1000
              */
             accountNumber?: string;
             /**
-             * @description Specifies the name of the reporting account.
+             * @description Name of the reporting account.
              * @example Checking Account
              */
             name?: string;
             /**
-             * @description Specifies the account type classification for the reporting account.
+             * @description Account type classification for the reporting account.
              * @default balancesheet
              * @example balancesheet
              * @enum {string}
              */
             accountType?: "balancesheet" | "incomestatement";
             /**
-             * @description Specifies the account type classification for a statistical reporting account. Applies when `isStatistical` is true.
+             * @description For a statistical reporting account, account type classification. Applies when `isStatistical` is true.
              * @default forperiod
              * @example forperiod
              * @enum {string}
              */
             statisticalAccountType?: "forperiod" | "cumulative";
             /**
-             * @description Indicates whether this is a statistical account (tracks quantity/units rather than amounts)
+             * @description Indicates whether the reporting account tracks quantities or units rather than amounts.
              * @example true
              */
             isStatistical?: boolean;
-            /** @description References a collection of reporting account maps that link this reporting account to GL accounts (for financial reporting) or statistical accounts (for statistical reporting). */
+            /** @description Reporting account maps that link the reporting account to GL accounts for financial reporting or statistical accounts for statistical reporting. */
             reportingAccountMaps?: components["schemas"]["objects.general-ledger.reporting-account-map"][];
-            /** @description References the reporting account set associated with the reporting account. */
+            /** @description Reporting account set associated with the reporting account. */
             reportingAccountSet?: {
                 /**
-                 * @description Identifier for the reporting account set.
+                 * @description ID for the reporting account set.
                  * @example 132
                  */
                 readonly id?: string;
@@ -7873,15 +8629,15 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s2"];
         };
-        /** @description Reporting account maps represent the mapping of a reporting account to GL accounts (for financial reporting) or statistical accounts (for statistical reporting). */
+        /** @description A reporting account map links a reporting account to a GL account for financial reporting or a statistical account for statistical reporting. */
         "objects.general-ledger.reporting-account-map": {
             /**
-             * @description System-assigned key for the reporting account map.
+             * @description System-assigned unique key for the reporting account map.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the reporting account map. This value is the same as `key` for this object.
+             * @description Unique ID for the reporting account map. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -7899,7 +8655,7 @@ export interface components {
                      */
                     readonly key?: string;
                     /**
-                     * @description Account number for the GL account.
+                     * @description ID for the GL account.
                      * @example 1000
                      */
                     id?: string;
@@ -7917,7 +8673,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Identifier for the statistical account.
+                     * @description ID for the statistical account.
                      * @example 3000
                      */
                     id?: string;
@@ -7941,7 +8697,7 @@ export interface components {
                  */
                 readonly key?: string;
                 /**
-                 * @description Identifier for the reporting account.
+                 * @description ID for the reporting account.
                  * @example 23
                  */
                 readonly id?: string;
@@ -7957,7 +8713,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the reporting account set. This is the same value as `key` for this object.
+             * @description Unique ID for the reporting account set. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -7976,7 +8732,7 @@ export interface components {
              * @example Revenue accounts across all entities for consolidated reporting.
              */
             description?: string;
-            /** @description References the user who is the administrator for the reporting account set, responsible for managing the set, account mappings, and permissions. */
+            /** @description User who administers the reporting account set, including its account mappings and permissions. */
             administrator?: {
                 /**
                  * @description URL endpoint for the user.
@@ -7989,20 +8745,20 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the user.
+                 * @description ID for the user.
                  * @example Admin
                  */
                 id?: string;
             };
-            /** @description References a collection of permissions associated with the reporting account set, defining access for users or user groups. */
+            /** @description Permissions associated with the reporting account set that define access for users or user groups. */
             permissions?: components["schemas"]["objects.general-ledger.reporting-account-set-permission"][];
-            /** @description References a collection of reporting accounts associated with the reporting account set that are used for financial or statistical reporting. */
+            /** @description Reporting accounts associated with the reporting account set for financial or statistical reporting. */
             reportingAccounts?: components["schemas"]["objects.general-ledger.reporting-account"][];
             status?: components["schemas"]["status"];
             audit?: components["schemas"]["audit.s2"];
         };
         "general-ledger-reporting-account-setRequiredProperties": Record<string, never>;
-        /** @description A reporting account set permission object defines whether access to a reporting account set is allowed or denied for everyone, a specific user group, or an individual user. */
+        /** @description A reporting account set permission defines whether access to a reporting account set is allowed or denied for everyone, a specific user group, or an individual user. */
         "objects.general-ledger.reporting-account-set-permission": {
             /**
              * @description System-assigned unique key for the reporting account set permission.
@@ -8010,7 +8766,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the reporting account set permission.
+             * @description Unique ID for the reporting account set permission. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -8020,7 +8776,7 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Specifies who the permission targets for the reporting account set; access is then controlled by `accessRights`.
+             * @description Users or groups to which the reporting account set permission applies; access is controlled by `accessRights`.
              *
              *     * `everyone` - Applies to all users, regardless of group membership or individual user assignment.
              *     * `group` - The permission applies to the specified `userGroup`.
@@ -8030,7 +8786,7 @@ export interface components {
              */
             permissionAppliesTo?: "everyone" | "group" | "user";
             /**
-             * @description Indicates whether access to the reporting account set is allowed or denied.
+             * @description Access level granted by the reporting account set permission.
              * @default allow
              * @example allow
              * @enum {string}
@@ -8045,7 +8801,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the user group.
+                 * @description ID for the user group.
                  * @example 21
                  */
                 id?: string;
@@ -8063,7 +8819,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the user.
+                 * @description ID for the user.
                  * @example Admin
                  */
                 id?: string;
@@ -8076,7 +8832,7 @@ export interface components {
             /** @description References the reporting account set associated with the permission. */
             reportingAccountSet?: {
                 /**
-                 * @description Identifier for the reporting account set.
+                 * @description ID for the reporting account set.
                  * @example 132
                  */
                 readonly id?: string;
@@ -8100,7 +8856,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the report audience. This value is the same as the `key` for this object.
+             * @description Unique ID for the report audience. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -8119,7 +8875,7 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "general-ledger-report-audienceRequiredProperties": Record<string, never>;
-        /** @description Report types define the business category of a General Ledger report, such as balance sheet, income statement, cash flow, or trial balance. */
+        /** @description A report type defines the business category of a General Ledger report, such as a balance sheet, income statement, cash flow, or trial balance. */
         "objects.general-ledger.report-type": {
             /**
              * @description System-assigned unique key for the report type.
@@ -8127,7 +8883,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the report type. This value is the same as the `key` for this object.
+             * @description Unique ID for the report type. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -8146,21 +8902,21 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "general-ledger-report-typeRequiredProperties": Record<string, never>;
-        /** @description Reporting category */
+        /** @description A reporting category classifies General Ledger accounts for financial reporting or tracks statistical data for operational reporting. */
         "objects.general-ledger.reporting-category": {
             /**
-             * @description System-assigned key for the reporting category.
-             * @example 134
+             * @description System-assigned unique key for the reporting category.
+             * @example 129
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the reporting category.
-             * @example Cash and Cash Equivalents
+             * @description Unique ID for the reporting category.
+             * @example Patents
              */
             id?: string;
             /**
              * @description URL endpoint for the reporting category.
-             * @example /objects/general-ledger/reporting-category/23
+             * @example /objects/general-ledger/reporting-category/129
              */
             readonly href?: string;
             /**
@@ -8170,21 +8926,21 @@ export interface components {
              */
             isStatistical?: boolean;
             /**
-             * @description Specifies the category type associated with the reporting category.
+             * @description For financial reporting, classification of the accounts assigned to the reporting category.
              * @default asset
              * @example asset
              * @enum {string}
              */
             categoryType?: "asset" | "liability" | "equity" | "income" | "costOfRevenue" | "expense" | "other";
             /**
-             * @description Normal balance.
+             * @description Normal balance for the accounts assigned to the reporting category.
              * @default debit
              * @example debit
              * @enum {string}
              */
             normalBalance?: "debit" | "credit";
             /**
-             * @description To Check if the reporting category is system installed category or custom created.
+             * @description Indicates whether the reporting category is system-generated rather than custom.
              * @default false
              * @example false
              */
@@ -8195,50 +8951,50 @@ export interface components {
         /** @description The General Ledger (GL) account balance report provides a snapshot of account balances for a specified period, showing opening balances, period activity, and closing balances across accounts and dimensions. */
         "services.reports.general-ledger-account-balance": {
             /**
-             * @description Specifies the primary title to display at the top of the account balance report.
+             * @description Primary title displayed at the top of the account balance report.
              * @example General Ledger Account Balances - March 2026
              */
             title1?: string;
             /**
-             * @description Specifies the secondary title to display below the primary title for the account balance report.
+             * @description Secondary title displayed below the primary title for the account balance report.
              * @example NexCom Corporation | Reporting Book - Accrual | USD
              */
             title2?: string;
             /**
-             * @description Specifies the text to display in the footer of the account balance report.
+             * @description Text displayed in the footer of the account balance report.
              * @example Confidential - For internal use only.
              */
             footerText?: string;
             /**
              * Format: date
-             * @description Indicates the date the report is scheduled to run. If not provided, the report will run immediately.
+             * @description Date the report is scheduled to run. If not provided, the report runs immediately.
              * @example 2026-03-31
              */
             scheduledReportDate?: string;
             /**
-             * @description Specifies the name assigned to the account balance report, used for identification and reference purposes within the system.
+             * @description Name assigned to the account balance report for identification and reference within the system.
              * @example GL Account Balance Report - March 2026 (Accrual)
              */
             reportName?: string;
             /**
-             * @description Indicates the output format for the account balance report.
+             * @description Output format for the account balance report.
              * @default html
              * @example html
              * @enum {string}
              */
             outputType?: "html" | "pdf" | "csv" | "excel" | "text";
             /**
-             * @description Indicates where to store the account balance report.
+             * @description Storage location for the account balance report.
              * @default intacct
              * @example intacct
              * @enum {string}
              */
             outputLocation?: "intacct" | "cloud";
             cloudStoreParameters?: components["schemas"]["report.cloud-store-options"];
-            /** @description Defines the input parameters for the account balance report, including time period, reporting book, dimensions, account filters, and output options. */
+            /** @description Input parameters for the account balance report, including the time period, reporting book, dimensions, account filters, and output options. */
             parameters?: {
                 timePeriod?: components["schemas"]["report-time-period-filter-ref"];
-                /** @description Specifies options for including a reporting account label in the account balance report. */
+                /** @description Options for including a reporting account label in the account balance report. */
                 reportingAccountLabel?: {
                     /**
                      * @description Indicates whether to include the reporting account label in the report.
@@ -8246,7 +9002,7 @@ export interface components {
                      * @example false
                      */
                     includeReportingAccountLabel?: boolean;
-                    /** @description References the associated reporting account set, which determines which reporting accounts to include in the account balance report. */
+                    /** @description Reporting account set that determines which reporting accounts to include in the account balance report. */
                     reportingAccountSet?: {
                         /**
                          * @description Unique key for the reporting account set.
@@ -8254,7 +9010,7 @@ export interface components {
                          */
                         key?: string;
                         /**
-                         * @description Identifier for the reporting account set.
+                         * @description ID for the reporting account set.
                          * @example Management Reporting Accounts
                          */
                         id?: string;
@@ -8266,12 +9022,12 @@ export interface components {
                     };
                 };
                 /**
-                 * @description Specifies the reporting book used for the account balance report, which determines the accounting method applied to the report. Use `ACCRUAL` for accrual basis accounting or `CASH` for cash basis accounting, depending on the company configuration. If Global Consolidations is enabled, you can provide a consolidation book ID instead.
+                 * @description Reporting book used for the account balance report, which determines the accounting method applied to the report. Use `ACCRUAL` for accrual basis accounting or `CASH` for cash basis accounting, depending on the company configuration. If Global Consolidations is enabled, you can provide a consolidation book ID instead.
                  * @default ACCRUAL
                  * @example ACCRUAL
                  */
                 reportingBook?: string;
-                /** @description References the ownership structure associated with the account balance report, which determines the entities to include based on the consolidation configuration. */
+                /** @description Ownership structure associated with the account balance report that determines the entities to include based on the consolidation configuration. */
                 ownershipStructure?: {
                     /**
                      * @description Unique key for the ownership structure.
@@ -8279,7 +9035,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Identifier for the ownership structure.
+                     * @description Name of the ownership structure.
                      * @example North America
                      */
                     id?: string;
@@ -8290,7 +9046,7 @@ export interface components {
                     readonly href?: string;
                 };
                 /**
-                 * @description Specifies the adjustment books to include in the account balance report, which allows you to combine entries from specified adjustment books with the reporting book.
+                 * @description Adjustment books to include in the account balance report, which allows you to combine entries from specified adjustment books with the reporting book.
                  *
                  *     If specified, the report can include separate columns for each adjustment book. When `includeReportingBook` is `true`, those columns appear alongside the main reporting book; otherwise, the output includes only the specified adjustment books. If using Global Consolidations, you can provide consolidation adjustment books instead.
                  * @example [
@@ -8308,7 +9064,7 @@ export interface components {
                 includeReportingBook?: boolean;
                 glAccountRange?: components["schemas"]["account-range-ref"];
                 glReportingAccountRange?: components["schemas"]["reporting-account-range-ref"];
-                /** @description References a predefined General Ledger (GL) account group (a saved set of multiple accounts) to include in the report. Use this as an alternative to entering account ranges, and when GL account numbers are not used. */
+                /** @description Predefined General Ledger (GL) account group, which is a saved set of multiple accounts to include in the report. Use this as an alternative to entering account ranges and when GL account numbers are not used. */
                 glAccountGroup?: {
                     /**
                      * @description Unique key for the account group.
@@ -8316,7 +9072,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Identifier for the account group.
+                     * @description ID for the account group.
                      * @example Accounts Payable
                      */
                     id?: string;
@@ -8330,7 +9086,7 @@ export interface components {
                 dimensionTypes?: components["schemas"]["report-dimension-type-ref"];
                 dimensionGroups?: components["schemas"]["report-dimension-groups-ref"];
                 subDimensions?: components["schemas"]["report-sub-dimension-ref"];
-                /** @description Provides options for generating individual reports based on dimensions. If any of these options are enabled, the system generates separate reports for each unique value within the specified dimensions. */
+                /** @description Options for generating individual reports based on dimensions. If any of these options are enabled, the system generates separate reports for each unique value within the specified dimensions. */
                 individualReport?: {
                     /**
                      * @description Indicates whether to create a separate report for individual locations or location groups. Set to `true` to create a separate report for each location. For location groups, this creates a separate report for the individual locations within the group.
@@ -8381,20 +9137,20 @@ export interface components {
                  */
                 showZeroBalanceAccounts?: "all" | "onlyWithActivity" | "doNotShow";
                 /**
-                 * @description Indicates whether to include statistical accounts in the report. Statistical accounts are used to track non-financial data, such as employee headcount, or number of members.
+                 * @description Indicates whether to include statistical accounts in the report. Statistical accounts are used to track non-financial data, such as employee headcount or the number of members.
                  * @default false
                  * @example true
                  */
                 includeStatisticalAccounts?: boolean;
                 /**
-                 * @description Indicates whether to show transaction details in the report. Set to `summary` to show only account balances. Set to `detail` to show transaction details that make up the account balances.
+                 * @description Transaction detail level for the report. Set to `summary` to show only account balances. Set to `detail` to show transaction details that make up the account balances.
                  * @default summary
                  * @example summary
                  * @enum {string}
                  */
                 txnPresentation?: "summary" | "detail";
                 /**
-                 * @description Indicates the orientation of the account balance report, which can be either portrait or landscape.
+                 * @description Orientation of the account balance report, which can be either portrait or landscape.
                  * @default portrait
                  * @example portrait
                  * @enum {string}
@@ -8562,6 +9318,7 @@ export interface components {
                  * @example true
                  */
                 showDifference?: boolean;
+                /** @description Collection of GL account ranges used to select GL accounts for the report. */
                 glAccountRange?: components["schemas"]["account-range-ref"][];
                 /**
                  * @description Specifies how GL accounts are selected for the report:
@@ -8702,11 +9459,11 @@ export interface components {
             };
         };
         "general-ledger-reports.account-balance-by-dimensionRequiredProperties": Record<string, never>;
-        /** @description The General Ledger (GL) account groups hierarchy report provides a structured view of your account groups, their member account groups, and the accounts within those groups. */
+        /** @description The account group hierarchy report provides a structured view of account groups, their member account groups, and the accounts within those groups. */
         "services.reports.general-ledger-account-group-hierarchy": {
             /**
              * @description Specifies the primary title to display at the top of the account group hierarchy report.
-             * @example General Ledger (GL) Account Group Hierarchy Report
+             * @example Account Group Hierarchy Report
              */
             title1?: string;
             /**
@@ -8722,7 +9479,7 @@ export interface components {
             /**
              * Format: date
              * @description Indicates the date to schedule the account group hierarchy report. If not provided, the report runs immediately.
-             * @example 2025-01-31
+             * @example 2026-09-30
              */
             scheduledReportDate?: string;
             /**
@@ -8747,7 +9504,7 @@ export interface components {
             cloudStoreParameters?: components["schemas"]["report.cloud-store-options"];
             /** @description Defines the input parameters for the account group hierarchy report, including reporting account labels, account group source, account group type, and account ranges. */
             parameters?: {
-                /** @description Specifies options for including reporting account labels in the account group hierarchy report. */
+                /** @description Options for including reporting account labels in the account group hierarchy report. */
                 reportingAccountLabel?: {
                     /**
                      * @description Indicates whether to include reporting account labels in the account group hierarchy report.
@@ -8755,7 +9512,7 @@ export interface components {
                      * @example false
                      */
                     includeReportingAccountLabel?: boolean;
-                    /** @description References the reporting account set to use for the report, which determines which reporting accounts to include. */
+                    /** @description Reporting account set used for the report, which determines the reporting accounts to include. */
                     reportingAccountSet?: {
                         /**
                          * @description Unique key for the reporting account set.
@@ -8763,7 +9520,7 @@ export interface components {
                          */
                         key?: string;
                         /**
-                         * @description Identifier for the reporting account set.
+                         * @description ID for the reporting account set.
                          * @example 23
                          */
                         id?: string;
@@ -8936,7 +9693,9 @@ export interface components {
                  *     ]
                  */
                 txnStateFilter?: ("draft" | "partiallyApproved" | "submitted" | "declined")[];
+                /** @description Collection of GL account ranges used to select accounts for the report. */
                 glAccountRange?: components["schemas"]["account-range-ref"][];
+                /** @description Collection of reporting account ranges used to select accounts for the report. */
                 glReportingAccountRange?: components["schemas"]["reporting-account-range-ref"][];
                 /**
                  * @description Specifies how to select accounts for the report:
@@ -9197,7 +9956,7 @@ export interface components {
                          */
                         key?: string;
                         /**
-                         * @description Identifier for the reporting account set.
+                         * @description ID for the reporting account set.
                          * @example Management Reporting Accounts
                          */
                         id?: string;
@@ -9222,7 +9981,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Identifier for the ownership structure.
+                     * @description ID for the ownership structure.
                      * @example North America
                      */
                     id?: string;
@@ -9501,6 +10260,12 @@ export interface components {
              * @example false
              */
             isWorkOrderRequired?: boolean;
+            /**
+             * @description Set to `true` to require a value for property lease.
+             * @default false
+             * @example false
+             */
+            propertyLease?: boolean;
         };
         /** @description The entity that the object is associated with. Objects created at the top level do not have an entity reference so the `key`, `id`, and `name` properties will be `null`. */
         "entity-ref": {
@@ -10215,6 +10980,29 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
+                 */
+                readonly href?: string;
+            };
         };
         "audit.s2": {
             /**
@@ -10673,6 +11461,29 @@ export interface components {
                 /**
                  * @description URL endpoint for the work order.
                  * @example /objects/construction/work-order/18
+                 */
+                readonly href?: string;
+            };
+            /** @description Property lease associated with the budget detail. */
+            propertyLease?: {
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
                  */
                 readonly href?: string;
             };
@@ -11918,7 +12729,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Account to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.account"] & components["schemas"]["general-ledger-accountRequiredProperties"];
@@ -12113,7 +12923,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account range.
+                 * @description System-assigned unique key for the account range.
                  * @example 178
                  */
                 key: string;
@@ -12313,7 +13123,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create an account allocation. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.account-allocation"] & components["schemas"]["general-ledger-account-allocationRequiredProperties"];
@@ -12457,7 +13266,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a new account allocation group. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.account-allocation-group"] & components["schemas"]["general-ledger-account-allocation-groupRequiredProperties"];
@@ -12485,7 +13293,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account allocation group.
+                 * @description System-assigned unique key for the account allocation group.
                  * @example 178
                  */
                 key: string;
@@ -12515,7 +13323,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account allocation group.
+                 * @description System-assigned unique key for the account allocation group.
                  * @example 178
                  */
                 key: string;
@@ -12540,7 +13348,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account allocation group.
+                 * @description System-assigned unique key for the account allocation group.
                  * @example 178
                  */
                 key: string;
@@ -12600,7 +13408,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account allocation group member.
+                 * @description System-assigned unique key for the account allocation group member.
                  * @example 99
                  */
                 key: string;
@@ -12655,7 +13463,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create an account allocation run */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.account-allocation-run"] & components["schemas"]["general-ledger-account-allocation-runRequiredProperties"];
@@ -13143,7 +13950,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a recurring account allocation. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.recurring-account-allocation"] & components["schemas"]["general-ledger-recurring-account-allocationRequiredProperties"];
@@ -13287,7 +14093,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Account group to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.account-group"] & components["schemas"]["general-ledger-account-groupRequiredProperties"];
@@ -13316,7 +14121,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the account group.
-                 * @example 99
+                 * @example 719
                  */
                 key: string;
             };
@@ -13346,7 +14151,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the account group.
-                 * @example 99
+                 * @example 719
                  */
                 key: string;
             };
@@ -13371,7 +14176,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned key for the account group.
-                 * @example 99
+                 * @example 719
                  */
                 key: string;
             };
@@ -13432,7 +14237,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Account group purpose to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.account-group-purpose"] & components["schemas"]["general-ledger-account-group-purposeRequiredProperties"];
@@ -13460,7 +14264,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account group purpose.
+                 * @description System-assigned unique key for the account group purpose.
                  * @example 3906
                  */
                 key: string;
@@ -13490,7 +14294,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account group purpose.
+                 * @description System-assigned unique key for the account group purpose.
                  * @example 3906
                  */
                 key: string;
@@ -13515,7 +14319,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the account group purpose.
+                 * @description System-assigned unique key for the account group purpose.
                  * @example 3906
                  */
                 key: string;
@@ -13759,6 +14563,60 @@ export interface operations {
             400: components["responses"]["400error"];
         };
     };
+    "list-general-ledger-account-group-hierarchy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-general-ledger-account-group-hierarchy-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the account group hierarchy.
+                 * @example MjYtMTM3
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.general-ledger.account-group-hierarchy"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
     "list-general-ledger-accounting-sequence": {
         parameters: {
             query?: never;
@@ -13790,7 +14648,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Accounting sequence to create. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.accounting-sequence"] & components["schemas"]["general-ledger-accounting-sequenceRequiredProperties"];
@@ -13932,7 +14789,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Accounting sequence line to create. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.accounting-sequence-line"] & components["schemas"]["general-ledger-accounting-sequence-lineRequiredProperties"];
@@ -14074,7 +14930,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a budget */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.budget"] & components["schemas"]["general-ledger-budgetRequiredProperties"];
@@ -14102,7 +14957,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the budget.
+                 * @description System-assigned unique key for the budget.
                  * @example 291
                  */
                 key: string;
@@ -14132,7 +14987,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the budget.
+                 * @description System-assigned unique key for the budget.
                  * @example 291
                  */
                 key: string;
@@ -14157,7 +15012,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the budget.
+                 * @description System-assigned unique key for the budget.
                  * @example 291
                  */
                 key: string;
@@ -14272,7 +15127,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Journal to create */
         requestBody?: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.journal"] & components["schemas"]["general-ledger-journalRequiredProperties"];
@@ -14300,7 +15154,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the journal.
+                 * @description System-assigned unique key for the journal.
                  * @example 411
                  */
                 key: string;
@@ -14330,7 +15184,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the journal.
+                 * @description System-assigned unique key for the journal.
                  * @example 411
                  */
                 key: string;
@@ -14355,7 +15209,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the journal.
+                 * @description System-assigned unique key for the journal.
                  * @example 411
                  */
                 key: string;
@@ -14416,7 +15270,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description User-defined book to create. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.user-defined-book"] & components["schemas"]["general-ledger-user-defined-bookRequiredProperties"];
@@ -14444,7 +15297,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the user-defined book
+                 * @description System-assigned unique key for the user-defined book.
                  * @example 23
                  */
                 key: string;
@@ -14474,7 +15327,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the user-defined book
+                 * @description System-assigned unique key for the user-defined book.
                  * @example 23
                  */
                 key: string;
@@ -14499,7 +15352,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the user-defined book
+                 * @description System-assigned unique key for the user-defined book.
                  * @example 23
                  */
                 key: string;
@@ -14560,7 +15413,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a new user-defined journal with the specified properties. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.user-defined-journal"] & components["schemas"]["general-ledger-user-defined-journalRequiredProperties"];
@@ -14708,7 +15560,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a new journal entry */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.journal-entry"] & components["schemas"]["general-ledger-journal-entryRequiredProperties"];
@@ -14986,7 +15837,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Journal entry transaction template to create. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.journal-entry-txn-template"] & components["schemas"]["general-ledger-journal-entry-txn-templateRequiredProperties"];
@@ -15129,7 +15979,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the GL journal entry transaction template line.
+                 * @description System-assigned unique key for the journal entry transaction template line.
                  * @example 22
                  */
                 key: string;
@@ -15159,7 +16009,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the GL journal entry transaction template line.
+                 * @description System-assigned unique key for the journal entry transaction template line.
                  * @example 22
                  */
                 key: string;
@@ -15174,6 +16024,264 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-general-ledger-recurring-journal-entry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "create-general-ledger-recurring-journal-entry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.general-ledger.recurring-journal-entry"] & components["schemas"]["general-ledger-recurring-journal-entryRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-general-ledger-recurring-journal-entry-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the recurring journal entry.
+                 * @example 132
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.general-ledger.recurring-journal-entry"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-general-ledger-recurring-journal-entry-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the recurring journal entry.
+                 * @example 132
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "update-general-ledger-recurring-journal-entry-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the recurring journal entry.
+                 * @example 132
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["objects.general-ledger.recurring-journal-entry"] & {
+                    readonly id?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-general-ledger-recurring-journal-entry-line": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-general-ledger-recurring-journal-entry-line-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned key for the recurring journal entry line.
+                 * @example 132
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.general-ledger.recurring-journal-entry-line"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-general-ledger-recurring-journal-entry-line-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned key for the recurring journal entry line.
+                 * @example 132
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "update-general-ledger-recurring-journal-entry-line-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned key for the recurring journal entry line.
+                 * @example 132
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["objects.general-ledger.recurring-journal-entry-line"] & {
+                    readonly id?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
             };
             400: components["responses"]["400error"];
         };
@@ -15209,7 +16317,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Reporting period to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.reporting-period"] & components["schemas"]["general-ledger-reporting-periodRequiredProperties"];
@@ -15353,7 +16460,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create an adjustment journal. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.adjustment-journal"] & components["schemas"]["general-ledger-adjustment-journalRequiredProperties"];
@@ -15497,7 +16603,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a GAAP adjustment journal */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.gaap-adjustment-journal"] & components["schemas"]["general-ledger-gaap-adjustment-journalRequiredProperties"];
@@ -15525,7 +16630,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for a specified GAAP adjustment journal.
+                 * @description System-assigned unique key for the GAAP adjustment journal.
                  * @example 89
                  */
                 key: string;
@@ -15555,7 +16660,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for a specified GAAP adjustment journal.
+                 * @description System-assigned unique key for the GAAP adjustment journal.
                  * @example 89
                  */
                 key: string;
@@ -15580,7 +16685,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for a specified GAAP adjustment journal.
+                 * @description System-assigned unique key for the GAAP adjustment journal.
                  * @example 89
                  */
                 key: string;
@@ -15642,7 +16747,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a tax adjustment journal with the specified properties. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.tax-adjustment-journal"] & components["schemas"]["general-ledger-tax-adjustment-journalRequiredProperties"];
@@ -15670,7 +16774,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the tax adjustment journal
+                 * @description System-assigned unique key for the tax adjustment journal.
                  * @example 44
                  */
                 key: string;
@@ -15700,7 +16804,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the tax adjustment journal
+                 * @description System-assigned unique key for the tax adjustment journal.
                  * @example 44
                  */
                 key: string;
@@ -15725,7 +16829,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the tax adjustment journal
+                 * @description System-assigned unique key for the tax adjustment journal.
                  * @example 44
                  */
                 key: string;
@@ -15814,7 +16918,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the statistical account.
+                 * @description System-assigned unique key for the statistical account.
                  * @example 439
                  */
                 key: string;
@@ -15844,7 +16948,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the statistical account.
+                 * @description System-assigned unique key for the statistical account.
                  * @example 439
                  */
                 key: string;
@@ -15869,7 +16973,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the statistical account.
+                 * @description System-assigned unique key for the statistical account.
                  * @example 439
                  */
                 key: string;
@@ -15928,7 +17032,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a statistical journal */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.statistical-journal"] & components["schemas"]["general-ledger-statistical-journalRequiredProperties"];
@@ -16072,7 +17175,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a new statistical journal entry */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.statistical-journal-entry"] & components["schemas"]["general-ledger-statistical-journal-entryRequiredProperties"];
@@ -16100,7 +17202,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the statistical journal entry.
+                 * @description System-assigned unique key for the statistical journal entry.
                  * @example 132
                  */
                 key: string;
@@ -16130,7 +17232,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the statistical journal entry.
+                 * @description System-assigned unique key for the statistical journal entry.
                  * @example 132
                  */
                 key: string;
@@ -16155,7 +17257,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the statistical journal entry.
+                 * @description System-assigned unique key for the statistical journal entry.
                  * @example 132
                  */
                 key: string;
@@ -16213,7 +17315,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the statistical journal entry line item.
+                 * @description System-assigned unique key for the statistical journal entry line.
                  * @example 2647
                  */
                 key: string;
@@ -16412,7 +17514,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Transaction allocation template to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.txn-allocation-template"] & components["schemas"]["general-ledger-txn-allocation-templateRequiredProperties"];
@@ -16822,7 +17923,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Fields for the new reporting account set. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.general-ledger.reporting-account-set"] & components["schemas"]["general-ledger-reporting-account-setRequiredProperties"];
@@ -17331,7 +18431,7 @@ export interface operations {
             path: {
                 /**
                  * @description System-assigned unique key for the reporting category.
-                 * @example 178
+                 * @example 129
                  */
                 key: string;
             };
@@ -17361,7 +18461,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Report definition and runtime parameters used to submit the account balance report for processing. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["services.reports.general-ledger-account-balance"] & components["schemas"]["general-ledger-reports.account-balanceRequiredProperties"];
@@ -17390,7 +18489,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Report definition and runtime parameters used to submit the account balance by dimension report for processing. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["services.reports.general-ledger-account-balance-by-dimension"] & components["schemas"]["general-ledger-reports.account-balance-by-dimensionRequiredProperties"];
@@ -17419,7 +18517,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Report definition and runtime parameters used to submit the account group hierarchy report for processing. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["services.reports.general-ledger-account-group-hierarchy"] & components["schemas"]["general-ledger-reports.account-group-hierarchyRequiredProperties"];
@@ -17448,7 +18545,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Report definition and runtime parameters used to submit the GL details report for processing. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["services.reports.general-ledger-details"] & components["schemas"]["general-ledger-reports.detailsRequiredProperties"];
@@ -17477,7 +18573,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Report definition and runtime parameters used to submit the trial balance report for processing. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["services.reports.general-ledger-trial-balance"] & components["schemas"]["general-ledger-reports.trial-balanceRequiredProperties"];

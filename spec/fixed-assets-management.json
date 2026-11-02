@@ -40,12 +40,12 @@
   {
    "name": "Fixed_Assets_Depreciation schedules",
    "x-displayName": "Depreciation schedules",
-   "description": "Depreciation schedule tracks the loss in value of an asset over the period of its useful life using a specified [depreciation rule](fixed-assets.asset-depreciation-rule)."
+   "description": "Depreciation schedule tracks the loss in value of an asset over the period of its useful life using a specified [depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_asset-depreciation-rules)."
   },
   {
    "name": "Fixed_Assets_Depreciation schedule entries",
    "x-displayName": "Depreciation schedule entries",
-   "description": "Line items in a [depreciation schedule](fixed-assets.depreciation-schedule), which denote the amount and posting date of depreciation entries for an asset."
+   "description": "Line items in a [depreciation schedule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_depreciation-schedules), which denote the amount and posting date of depreciation entries for an asset."
   },
   {
    "name": "Fixed_Assets_Setups",
@@ -525,7 +525,6 @@
              }
             ],
             "acquisitionDate": "2020-01-01",
-            "capitalizationDate": "2020-01-01",
             "assetCost": "3000",
             "quantity": 1,
             "serialNumber": "CE_ASSET-1",
@@ -3281,7 +3280,7 @@
    },
    "patch": {
     "summary": "Update a setup posting rule",
-    "description": "Updates an existing setup posting rule by setting field values. Any fields not provided remain unchanged.\n\nBefore editing a setup posting rule, ensure that there are no depreciation rules using that posting rule. Edit the depreciation rule on the classification or asset to temporarily remove the posting rule first.\nFor more information, see [classification depreciation rule](fixed-assets.classification-depreciation-rule) or [asset depreciation rule](fixed-assets.asset-depreciation-rule).",
+    "description": "Updates an existing setup posting rule by setting field values. Any fields not provided remain unchanged.\n\nBefore editing a setup posting rule, ensure that there are no depreciation rules using that posting rule. Edit the depreciation rule on the classification or asset to temporarily remove the posting rule first.\nFor more information, see [classification depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_classification-depreciation-rules) or [asset depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_asset-depreciation-rules).",
     "tags": [
      "Fixed_Assets_Setup posting rules"
     ],
@@ -3380,7 +3379,7 @@
    },
    "delete": {
     "summary": "Delete a setup posting rule",
-    "description": "Deletes a setup posting rule.\n\nBefore deleting a setup posting rule, ensure that there are no depreciation rules using that posting rule. Edit the depreciation rule on the classification or asset to remove the setup posting rule first.\nFor more information, see [classification depreciation rule](fixed-assets.classification-depreciation-rule) or [asset depreciation rule](fixed-assets.asset-depreciation-rule).",
+    "description": "Deletes a setup posting rule.\n\nBefore deleting a setup posting rule, ensure that there are no depreciation rules using that posting rule. Edit the depreciation rule on the classification or asset to remove the setup posting rule first.\nFor more information, see [classification depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_classification-depreciation-rules) or [asset depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_asset-depreciation-rules).",
     "tags": [
      "Fixed_Assets_Setup posting rules"
     ],
@@ -3475,7 +3474,14 @@
      "content": {
       "application/json": {
        "schema": {
-        "$ref": "#/components/schemas/objects.fixed-assets.transfer-history"
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.fixed-assets.transfer-history"
+         },
+         {
+          "$ref": "#/components/schemas/fixed-assets-transfer-historyRequiredProperties"
+         }
+        ]
        },
        "examples": {
         "Create a transfer history": {
@@ -3595,6 +3601,31 @@
              "state": "inService",
              "key": "2140"
             },
+            "reversedId": "1 - Reversed",
+            "reversalDate": "2026-05-05",
+            "journalEntryLabel": "Journal entries",
+            "journalEntryFilter": [
+             {
+              "$eq": {
+               "key": "9"
+              }
+             },
+             {
+              "$eq": {
+               "key": "10"
+              }
+             },
+             {
+              "$eq": {
+               "key": "7"
+              }
+             },
+             {
+              "$eq": {
+               "key": "8"
+              }
+             }
+            ],
             "journalEntries": [
              {
               "journalEntry": {
@@ -3936,6 +3967,19 @@
          "Get a transfer journal entry map": {
           "value": {
            "ia::result": {
+            "journalEntryLabel": "Journal entries",
+            "journalEntryFilter": [
+             {
+              "$eq": {
+               "key": "57"
+              }
+             },
+             {
+              "$eq": {
+               "key": "58"
+              }
+             }
+            ],
             "journalEntry": {
              "key": "57",
              "id": "57",
@@ -4575,8 +4619,8 @@
       "type": "string",
       "format": "date",
       "nullable": true,
-      "description": "The date when the CIP asset was capitalized. This date is set when the asset state changes from `constructionInProgress` to `readyForReview`.",
-      "example": "2020-01-01"
+      "deprecated": true,
+      "description": "This field has been deprecated. Use the capitalizationDate field in the asset-capitalization object instead."
      },
      "serialNumber": {
       "type": "string",
@@ -5507,7 +5551,8 @@
      "cipJournalEntry": {
       "type": "object",
       "readOnly": true,
-      "description": "The journal entry associated with CIP (Construction in Progress) transactions for this asset.",
+      "deprecated": true,
+      "description": "This field has been deprecated. Use the cipJournalEntry field in the asset-capitalization object instead.",
       "properties": {
        "key": {
         "type": "string",
@@ -6182,7 +6227,7 @@
      "depreciationSchedule": {
       "readOnly": true,
       "type": "object",
-      "description": "Tracks the loss in value of an asset over the period of its useful life using a specified [depreciation rule](fixed-assets.setup-posting-rule).\nThe depreciation schedule also tracks the gain and loss when an asset is disposed.",
+      "description": "Tracks the loss in value of an asset over the period of its useful life using a specified [depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_setup-posting-rules).\nThe depreciation schedule also tracks the gain and loss when an asset is disposed.",
       "properties": {
        "key": {
         "type": "string",
@@ -7116,7 +7161,7 @@
      },
      "setupPostingRules": {
       "type": "array",
-      "description": "Setup posting rules identify journal, useful life units, convention, and so forth for fixed asset transactions.\n\nBefore updating a setup posting rule, ensure that there are no depreciation rules using that posting rule. Update the depreciation rule on the classification or asset to temporarily remove the posting rule first. \nFor more information, see [classification depreciation rule](fixed-assets.classification-depreciation-rule) or [asset depreciation rule](fixed-assets.asset-depreciation-rule).",
+      "description": "Setup posting rules identify journal, useful life units, convention, and so forth for fixed asset transactions.\n\nBefore updating a setup posting rule, ensure that there are no depreciation rules using that posting rule. Update the depreciation rule on the classification or asset to temporarily remove the posting rule first. \nFor more information, see [classification depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_classification-depreciation-rules) or [asset depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_asset-depreciation-rules).",
       "items": {
        "$ref": "#/components/schemas/objects.fixed-assets.setup-posting-rule"
       }
@@ -7276,9 +7321,56 @@
       "description": "Date on which asset will be transferred.",
       "example": "2020-01-31"
      },
+     "reversedId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "For a reversed transfer, the value has the system-assigned postfix ' - Reversed'.",
+      "example": "2 - Reversed"
+     },
+     "reversalDate": {
+      "type": "string",
+      "format": "date",
+      "readOnly": true,
+      "description": "The date on which the transfer was reversed.",
+      "example": "2026-07-09"
+     },
+     "state": {
+      "type": "string",
+      "enum": [
+       "active",
+       "reversed"
+      ],
+      "default": "active",
+      "readOnly": true,
+      "description": "Indicates whether the transfer is active or has been reversed.",
+      "example": "active"
+     },
+     "journalEntryLabel": {
+      "readOnly": true,
+      "type": "string",
+      "description": "Journal entries label for the asset transfer.",
+      "example": "Journal entries"
+     },
+     "journalEntryFilter": {
+      "readOnly": true,
+      "type": "array",
+      "description": "Journal entries filter for an asset transfer.",
+      "example": [
+       {
+        "$eq": {
+         "key": "472"
+        }
+       },
+       {
+        "$eq": {
+         "key": "473"
+        }
+       }
+      ]
+     },
      "transferJournalEntry": {
       "type": "object",
-      "description": "Transfer journal entry corresponding to this asset transfer. This property is deprecated.",
+      "description": "Transfer journal entry corresponding to this asset transfer. This field has been deprecated. Use the `journalEntries` field instead.",
       "deprecated": true,
       "properties": {
        "key": {
@@ -7318,17 +7410,21 @@
        "id": {
         "type": "string",
         "description": "Unique ID for the asset.",
-        "example": "CE_ASSET-1"
+        "example": "CE_ASSET-1",
+        "readOnly": true
        },
        "state": {
         "enum": [
+         "constructionInProgress",
          "inService",
          "readyForReview",
-         "disposed"
+         "disposed",
+         "split"
         ],
         "type": "string",
         "default": "readyForReview",
-        "description": "Represents stages in the asset life cycle:\n\n- `readyForReview` - new asset exists in Sage Intacct but it is not yet depreciating.\n- `inService` - the asset is currently in use by a business and its value can depreciate on a schedule.\n- `disposed` - the asset was removed from service, typically due to a sale.\n\nAssets are moved from `readyForReview` to `inService` and ultimately to `disposed` state.",
+        "readOnly": true,
+        "description": "Represents stages in the asset life cycle:\n\n- `constructionInProgress` - the asset is being constructed and is not yet ready for use.\n- `readyForReview` - new asset exists in Sage Intacct but it is not yet depreciating.\n- `inService` - the asset is currently in use by a business and its value can depreciate on a schedule.\n- `disposed` - the asset was removed from service, typically due to a sale.\n- `split` - the asset was split into multiple assets.\n\nAssets are moved from `constructionInProgress` to `readyForReview` to `inService` and ultimately to `disposed` state.",
         "example": "inService"
        },
        "href": {
@@ -7872,6 +7968,13 @@
      }
     }
    },
+   "fixed-assets-transfer-historyRequiredProperties": {
+    "type": "object",
+    "required": [
+     "asset.key",
+     "transferDate"
+    ]
+   },
    "objects.fixed-assets.transfer-journal-entry-map": {
     "type": "object",
     "description": "Journal entry created during asset transfer.",
@@ -7993,6 +8096,29 @@
         "example": "TAX Accrual"
        }
       }
+     },
+     "journalEntryLabel": {
+      "readOnly": true,
+      "type": "string",
+      "description": "Journal entries label for the transfer journal entry map.",
+      "example": "Journal entries"
+     },
+     "journalEntryFilter": {
+      "readOnly": true,
+      "type": "array",
+      "description": "Journal entries filter for a transfer journal entry map.",
+      "example": [
+       {
+        "$eq": {
+         "key": "472"
+        }
+       },
+       {
+        "$eq": {
+         "key": "473"
+        }
+       }
+      ]
      },
      "audit": {
       "$ref": "#/components/schemas/audit.s1"

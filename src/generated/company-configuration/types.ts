@@ -50,7 +50,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the class.
+                 * @description System-assigned unique key for the class.
                  * @example 43
                  */
                 key: string;
@@ -116,7 +116,7 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get the details of a class group
+         * Get a class group
          * @description Returns detailed information for a specified class group.
          */
         get: operations["get-company-config-class-group-key"];
@@ -145,7 +145,7 @@ export interface paths {
         };
         /**
          * List departments
-         * @description Returns up to 100 department references from the collection with a key, ID, and link for each department. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find departments that meet certain criteria and to specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each department. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned. Returns up to 100 department references.
          */
         get: operations["list-company-config-department"];
         put?: never;
@@ -203,7 +203,7 @@ export interface paths {
         };
         /**
          * List department groups
-         * @description Returns up to 100 department groups from the collection with a key, ID, and link for each group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find department groups that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each department group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned. Returns up to 100 department groups.
          */
         get: operations["list-company-config-department-group"];
         put?: never;
@@ -262,7 +262,7 @@ export interface paths {
         /**
          * List department group members
          * @deprecated
-         * @description Returns a collection with a key, ID, and link for each department group member.
+         * @description Returns a collection with a key, ID, and link for each department group member. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-department-group-member"];
         put?: never;
@@ -308,7 +308,7 @@ export interface paths {
         };
         /**
          * List employees
-         * @description Returns a collection with a key, ID, and link for each employee. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find employees that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each employee. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-employee"];
         put?: never;
@@ -474,7 +474,7 @@ export interface paths {
         };
         /**
          * List employee groups
-         * @description Returns up to 100 employee groups from the collection with a key, ID, and link for each group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find employee groups that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each employee group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned. Returns up to 100 results.
          */
         get: operations["list-company-config-employee-group"];
         put?: never;
@@ -532,7 +532,7 @@ export interface paths {
         };
         /**
          * List employee bank file setups
-         * @description Returns a collection with a key, ID, and link for each bank file setup. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find employee bank file setups that meet certain criteria and to specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each employee bank file setup. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-employee-bank-file-setup"];
         put?: never;
@@ -636,13 +636,13 @@ export interface paths {
         };
         /**
          * List locations
-         * @description Returns up to 100 locations from the collection with a key, ID, and link for each location. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find locations that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each location. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned. The operation returns up to 100 locations.
          */
         get: operations["list-company-config-location"];
         put?: never;
         /**
          * Create a location
-         * @description Creates a new location. You can think of this as adding a new value to the dimension that you can use to tag transactions for reporting.
+         * @description Creates a new location. This adds a new value to the dimension that you can use to tag transactions for reporting.
          */
         post: operations["create-company-config-location"];
         delete?: never;
@@ -809,7 +809,7 @@ export interface paths {
         };
         /**
          * List attachments
-         * @description Returns a collection with a key, ID, and link for each attachment. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find attachments that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each attachment. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-attachment"];
         put?: never;
@@ -867,7 +867,7 @@ export interface paths {
         };
         /**
          * List files
-         * @description Returns a collection with a key, ID, and link for each file. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each file. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-file"];
         put?: never;
@@ -900,7 +900,7 @@ export interface paths {
         post?: never;
         /**
          * Delete a file
-         * @description Deletes a file from an attachment.
+         * @description Deletes a file.
          */
         delete: operations["delete-company-config-file-key"];
         options?: never;
@@ -917,13 +917,13 @@ export interface paths {
         };
         /**
          * List folders
-         * @description Returns a collection with a key, ID, and link for each folder. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find folders that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each folder. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-folder"];
         put?: never;
         /**
          * Create a folder
-         * @description Creates a new folder for attachments.
+         * @description Creates a new folder. The folder stores attachments.
          */
         post: operations["create-company-config-folder"];
         delete?: never;
@@ -975,7 +975,7 @@ export interface paths {
         };
         /**
          * List contacts
-         * @description Returns up to 100 contacts from the collection with a key, ID, and link for each contact. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find contacts that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each contact. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned. Returns up to 100 contacts.
          */
         get: operations["list-company-config-contact"];
         put?: never;
@@ -1079,7 +1079,7 @@ export interface paths {
         };
         /**
          * List document sequences
-         * @description Returns up to 100 document sequences from the collection with a key, ID, and link for each sequence. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find document sequences that meet certain criteria and to specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each document sequence. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned. Returns up to 100 document sequences.
          */
         get: operations["list-company-config-document-sequence"];
         put?: never;
@@ -1109,7 +1109,7 @@ export interface paths {
         };
         /**
          * Get a document sequence
-         * @description Returns detailed information for a particular document sequence.
+         * @description Returns detailed information for a specified document sequence.
          */
         get: operations["get-company-config-document-sequence-key"];
         put?: never;
@@ -1157,7 +1157,7 @@ export interface paths {
         };
         /**
          * List document sequence rollovers
-         * @description Returns a collection with a key, ID, and link for each document sequence rollover object.
+         * @description Returns a collection with a key, ID, and link for each document sequence rollover. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-document-sequence-rollover"];
         put?: never;
@@ -1183,7 +1183,7 @@ export interface paths {
         };
         /**
          * Get a document sequence rollover
-         * @description Returns detailed information for a specified document sequence rollover object.
+         * @description Returns detailed information for a specified document sequence rollover.
          */
         get: operations["get-company-config-document-sequence-rollover-key"];
         put?: never;
@@ -1261,7 +1261,7 @@ export interface paths {
         };
         /**
          * List entities
-         * @description Returns a collection with a key, ID, and link for each entity. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find entities that meet certain criteria and to specify properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each entity. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-entity"];
         put?: never;
@@ -1423,7 +1423,7 @@ export interface paths {
         };
         /**
          * List inter-entity account mappings
-         * @description Returns a reference with a key, ID, and link for the inter-entity account mapping. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find folders that meet certain criteria and specify the properties that are returned.
+         * @description Returns a reference with a key, ID, and link for this inter-entity account mapping. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-inter-entity-account-mapping"];
         put?: never;
@@ -1449,7 +1449,7 @@ export interface paths {
         };
         /**
          * Get an inter-entity account mapping
-         * @description Returns detailed information for a specified inter-entity account mapping. There is only one inter entity account mapping object for a company, and the `key` is always 1.
+         * @description Returns detailed information for a specified inter-entity account mapping. There is only one inter entity account mapping object for a company, and the `key` is always `1`.
          */
         get: operations["get-company-config-inter-entity-account-mapping-key"];
         put?: never;
@@ -1459,7 +1459,7 @@ export interface paths {
         head?: never;
         /**
          * Update an inter-entity account mapping
-         * @description Updates an existing inter-entity account mapping by setting field values. Any field values not provided remain unchanged.
+         * @description Updates an existing inter-entity account mapping by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-company-config-inter-entity-account-mapping-key"];
         trace?: never;
@@ -1473,7 +1473,7 @@ export interface paths {
         };
         /**
          * List inter-entity basic maps
-         * @description Returns a collection with a key, ID, and link for each inter-entity basic map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find folders that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each inter-entity basic map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-inter-entity-basic-map"];
         put?: never;
@@ -1523,7 +1523,7 @@ export interface paths {
         };
         /**
          * List inter-entity advanced maps
-         * @description Returns a collection with a key, ID, and link for each inter-entity advanced map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find folders that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each inter-entity advanced map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-inter-entity-advanced-map"];
         put?: never;
@@ -1548,7 +1548,7 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get an inter-entity advanced map.
+         * Get an inter-entity advanced map
          * @description Returns detailed information for a specified inter-entity advanced map.
          */
         get: operations["get-company-config-inter-entity-advanced-map-key"];
@@ -1747,7 +1747,7 @@ export interface paths {
         };
         /**
          * List users
-         * @description Returns a collection with a key, ID, and link for each user. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find users that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each user. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-user"];
         put?: never;
@@ -1784,7 +1784,7 @@ export interface paths {
         post?: never;
         /**
          * Delete a user
-         * @description After a user logs in to Sage Intacct, they cannot be deleted. Users are preserved to maintain the audit trail throughout Intacct.
+         * @description Deletes a user. After a user logs in to Sage Intacct, the user cannot be deleted. User records are retained to maintain the audit trail throughout Intacct.
          */
         delete: operations["delete-company-config-user-key"];
         options?: never;
@@ -1805,7 +1805,7 @@ export interface paths {
         };
         /**
          * List user groups
-         * @description Returns a collection with a key, ID, and link for each user group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find user groups that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each user group. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-user-group"];
         put?: never;
@@ -1834,15 +1834,15 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get the details of a user group
-         * @description Returns detailed information for a specified user group, which includes the role-based permissions assigned to the group.
+         * Get a user group
+         * @description Returns detailed information for a specified user group, including the role-based permissions assigned to the group.
          */
         get: operations["get-company-config-user-group-key"];
         put?: never;
         post?: never;
         /**
          * Delete a user group
-         * @description Deletes a user group. If you no longer need a user group, you can delete the group. After you delete a user group, members automatically lose all permissions assigned to that group. Additionally, you cannot restore the user group after it's deleted. For more information see [Delete a user group](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Delete_a_user_group) in the Sage Intacct Help Center.
+         * @description Deletes a user group. If you no longer need a user group, you can delete it. After deletion, members automatically lose all permissions assigned to the group, and you cannot restore the group. For more information, see [Delete a user group](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Delete_a_user_group) in the Sage Intacct Help Center.
          */
         delete: operations["delete-company-config-user-group-key"];
         options?: never;
@@ -1917,7 +1917,7 @@ export interface paths {
         };
         /**
          * List roles
-         * @description Returns a collection with a key, ID, and link for each role. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find roles that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each role. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and specify the properties that are returned.
          *
          *     System-generated roles are denoted by "::SYS::" in the ID.
          */
@@ -1977,7 +1977,7 @@ export interface paths {
         };
         /**
          * List role user maps
-         * @description Returns a collection with a key, ID, and link for each role user map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find role user map that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each role user map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and specify the properties that are returned.
          */
         get: operations["list-company-config-role-user-map"];
         put?: never;
@@ -2023,7 +2023,7 @@ export interface paths {
         };
         /**
          * List role user group maps
-         * @description Returns a collection with a key, ID, and link for each role user group map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find role user group maps that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each role user group map. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and specify the properties that are returned.
          */
         get: operations["list-company-config-role-user-group-map"];
         put?: never;
@@ -2069,7 +2069,7 @@ export interface paths {
         };
         /**
          * List permissions
-         * @description Returns a collection with a key, ID, and link for each permission. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find permissions that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each permission. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and specify the properties that are returned.
          */
         get: operations["list-company-config-permission"];
         put?: never;
@@ -2115,7 +2115,7 @@ export interface paths {
         };
         /**
          * List role permission assignments
-         * @description Returns a collection with a key, ID, and link for each role permission assignment. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find role permission assignments that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each role permission assignment. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and specify the properties that are returned.
          */
         get: operations["list-company-config-role-permission-assignment"];
         put?: never;
@@ -2151,7 +2151,7 @@ export interface paths {
         head?: never;
         /**
          * Update a role permission assignment
-         * @description Updates an existing role-permission-assignment by setting field values. Any fields not provided remain unchanged.
+         * @description Updates an existing role permission assignment by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-company-config-role-permission-assignment-key"];
         trace?: never;
@@ -2237,7 +2237,7 @@ export interface paths {
         };
         /**
          * Get an advanced audit history
-         * @description Returns a collection with a key, ID, and link for each advanced audit history.
+         * @description Returns detailed information for a specified advanced audit history.
          */
         get: operations["get-company-config-advanced-audit-history"];
         put?: never;
@@ -2257,13 +2257,13 @@ export interface paths {
         };
         /**
          * List cloud storage
-         * @description Returns a collection with a key, ID, and link for each cloud storage. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find employee groups that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each cloud storage. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-cloud-storage"];
         put?: never;
         /**
          * Create a cloud storage
-         * @description Creates a new cloud storage object.
+         * @description Creates a new cloud storage.
          */
         post: operations["create-company-config-cloud-storage"];
         delete?: never;
@@ -2294,7 +2294,7 @@ export interface paths {
         post?: never;
         /**
          * Delete a cloud storage
-         * @description Delete a cloud storage object.
+         * @description Deletes a cloud storage.
          */
         delete: operations["delete-company-config-cloud-storage-key"];
         options?: never;
@@ -2431,7 +2431,7 @@ export interface paths {
         };
         /**
          * List email delivery records
-         * @description Returns a collection with a key, ID, and link for each email delivery record. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and specify the properties that are returned.
+         * @description Returns a collection with a key, ID, and link for each email delivery record. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["get-company-config-email-delivery-record"];
         put?: never;
@@ -2635,7 +2635,7 @@ export interface paths {
         };
         /**
          * List payment provider notifications
-         * @description Returns a collection with a key, ID, and link for each payment provider notification.
+         * @description Returns a collection with a key, ID, and link for each payment provider notification. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and specify the properties that are returned.
          */
         get: operations["list-company-config-payment-provider-notification"];
         put?: never;
@@ -2652,7 +2652,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the payment-provider-notification.
+                 * @description System-assigned unique key for the payment provider notification.
                  * @example 99
                  */
                 key: string;
@@ -2759,7 +2759,7 @@ export interface paths {
         };
         /**
          * List transaction currencies
-         * @description Returns a collection with a key, ID, and link for each transaction currency. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find currencies that meet specific criteria and to specify the properties that you want in the response.
+         * @description Returns a collection with a key, ID, and link for each transaction currency. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
          */
         get: operations["list-company-config-txn-currency"];
         put?: never;
@@ -2852,8 +2852,8 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Get multi-entity preferences
-         * @description Returns detailed preferences information for a specified multi entity.
+         * Get a multi-entity preference
+         * @description Returns detailed information for a specified multi-entity preference.
          */
         get: operations["get-company-config-multi-entity-preference-key"];
         put?: never;
@@ -2862,8 +2862,8 @@ export interface paths {
         options?: never;
         head?: never;
         /**
-         * Update multi-entity preferences
-         * @description Update the multi-entity preferences for a company. Any fields not provided remain unchanged.
+         * Update a multi-entity preference
+         * @description Updates an existing multi-entity preference by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-company-config-multi-entity-preference-key"];
         trace?: never;
@@ -2887,7 +2887,7 @@ export interface paths {
         head?: never;
         /**
          * Update consolidation preferences
-         * @description Updates existing consolidation preferences by setting field values. Any field values not provided remain unchanged.
+         * @description Updates existing consolidation preferences by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-services-preferences.consolidation"];
         trace?: never;
@@ -2935,7 +2935,7 @@ export interface paths {
         };
         /**
          * Get an Order Entry preference
-         * @description Returns detailed information for the Order Entry preference.
+         * @description Returns detailed information for a specified Order Entry preference.
          */
         get: operations["get-company-config-order-entry-preference-key"];
         put?: never;
@@ -2956,7 +2956,7 @@ export interface paths {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the Purchasing preference. This value must be set to `setup` for this object.
+                 * @description System-assigned unique key for the Purchasing preference. This value must be set to `setup`.
                  * @example setup
                  */
                 key: string;
@@ -2965,7 +2965,7 @@ export interface paths {
         };
         /**
          * Get a Purchasing preference
-         * @description Returns detailed information for the Purchasing preferences.
+         * @description Returns detailed information for the Purchasing preference.
          */
         get: operations["get-company-config-purchasing-preference"];
         put?: never;
@@ -3016,6 +3016,11 @@ export interface components {
              * @example /objects/company-config/department
              */
             dimensionEndpoint?: string;
+            /**
+             * @description Numeric key identifying the dimension. For standard dimensions, sourced from `IASTANDARDDIMENSIONS.DIMENSIONID`. For user-defined dimensions, sourced from `PT_OBJ_DEF.RECORD#`. Use this value as `dimensionKey` or `customDimensionKey` when patching `dimensionOrderSetupLines`, `automatedStatisticalPostSetupLines`, `dimensionRelationshipSetupLines`, or `userDefinedDimensions` in the GLSETUP object.
+             * @example 5002
+             */
+            dimensionKey?: number | null;
         };
         /** @description Metadata for the response. */
         metadata: {
@@ -3111,8 +3116,7 @@ export interface components {
             status?: components["schemas"]["dimension-status"];
             /**
              * @deprecated
-             * @description System-assigned unique key for the entity. Used to identify the entity in URLs or JSON bodies for all operations involving the entity. This field is deprecated, please use entity object reference
-             * @example 3345
+             * @description This field has been deprecated. Use the `entity` field instead.
              */
             readonly locationKey?: string | null;
             entity?: components["schemas"]["entity-ref"];
@@ -3124,7 +3128,7 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description Parent class key.
+                 * @description Unique key for the parent class.
                  * @example 4
                  */
                 key?: string;
@@ -3134,7 +3138,7 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description Name of parent class.
+                 * @description Name of the parent class.
                  * @example Donations
                  */
                 readonly name?: string;
@@ -3187,7 +3191,7 @@ export interface components {
             isDimensionStructure?: boolean;
             /** @description One or more filters to select the classes to include in the class group. Can be used in addition to the `groupMembers` array to filter from a selected list of classes. */
             memberFilter?: components["schemas"]["member-filter"] & Record<string, never>;
-            /** @description Members of the class group and their sort order. Only applicable when `groupType` = `specific`. */
+            /** @description For `specific` group types, members of the class group and their sort order. */
             groupMembers?: {
                 /**
                  * @description Unique key for the class.
@@ -3221,7 +3225,7 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "company-config-class-groupRequiredProperties": Record<string, never>;
-        /** @description Information about a department. */
+        /** @description A department provides information about a department within the company. */
         "objects.company-config.department": {
             /**
              * @description System-assigned unique key for the department.
@@ -3229,7 +3233,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the department.
+             * @description Unique ID for the department.
              * @example SW
              */
             id?: string;
@@ -3240,8 +3244,7 @@ export interface components {
             name?: string;
             /**
              * @deprecated
-             * @description Department number.
-             * @example 10
+             * @description Deprecated department number.
              */
             number?: string;
             /**
@@ -3253,13 +3256,13 @@ export interface components {
             /** @description Parent department, for department hierarchies. */
             parent?: {
                 /**
-                 * @description Parent department key.
+                 * @description Unique key for the parent department.
                  * @default null
                  * @example 7
                  */
                 key?: string | null;
                 /**
-                 * @description Parent department ID.
+                 * @description ID for the parent department.
                  * @example Dev
                  */
                 id?: string;
@@ -3269,21 +3272,21 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL endpoint of the parent department.
+                 * @description URL endpoint for the parent department.
                  * @example /objects/company-config/department/7
                  */
                 readonly href?: string;
             };
-            /** @description A reference to the employee object of the supervisor for the department. Used for routing purchase approvals. */
+            /** @description Employee who supervises the department. Used for routing purchase approvals. */
             supervisor?: {
                 /**
-                 * @description Supervisor key.
+                 * @description Unique key for the supervisor employee.
                  * @default null
                  * @example 5
                  */
                 key?: string | null;
                 /**
-                 * @description Supervisor ID.
+                 * @description ID for the supervisor employee.
                  * @example EMP-0192
                  */
                 id?: string;
@@ -3293,7 +3296,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL endpoint of the supervisor employee.
+                 * @description URL endpoint for the supervisor employee.
                  * @example /objects/company-config/employee/5
                  */
                 readonly href?: string;
@@ -3307,7 +3310,7 @@ export interface components {
             readonly href?: string;
         };
         "company-config-departmentRequiredProperties": Record<string, never>;
-        /** @description A specified set of departments, or a set of departments that meet certain criteria. */
+        /** @description A department group represents a specified set of departments or departments that meet certain criteria. */
         "objects.company-config.department-group": {
             /**
              * @description System-assigned unique key for the department group.
@@ -3315,7 +3318,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Department group ID. Displayed together with the group name in Sage Intacct (_ID_--_Name_). Department group IDs cannot be changed after the group has been created.
+             * @description Unique ID for the department group. Displayed together with the group name in Sage Intacct (_ID_--_Name_). Department group IDs cannot be changed after the group has been created.
              * @example SA01
              */
             id?: string;
@@ -3346,15 +3349,15 @@ export interface components {
             groupType?: "all" | "specific";
             /** @description One or more filters to select the departments to include in the department group. Can be used in addition to the `groupMembers` array to filter from a selected list of departments. */
             memberFilter?: components["schemas"]["member-filter"] & Record<string, never>;
-            /** @description Members of the department group and their sort order. Only applicable when `groupType` = `specific`. */
+            /** @description For `groupType` = `specific`, members of the department group and their sort order. */
             groupMembers?: {
                 /**
-                 * @description System-assigned key for the department-group-member.
+                 * @description Unique key for the department.
                  * @example 23
                  */
                 key?: string;
                 /**
-                 * @description Department group members ID.
+                 * @description ID for the department.
                  * @example 23
                  */
                 id?: string;
@@ -3370,7 +3373,7 @@ export interface components {
                 readonly href?: string;
             }[];
             /**
-             * @description Indicates whether a dimension structure is created from the group. If true, the group can be added to the rows or columns of a financial report.
+             * @description Indicates whether a dimension structure is created from the group. If `true`, the group can be added to the rows or columns of a financial report.
              * @default false
              * @example false
              */
@@ -3382,12 +3385,12 @@ export interface components {
         /** @description A department group member represents a member in a department group. */
         "objects.company-config.department-group-member": {
             /**
-             * @description System-assigned key for the department group member.
+             * @description System-assigned unique key for the department group member.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Department group member ID. Same as `key` for this object.
+             * @description Unique ID for the department group member. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -3399,12 +3402,12 @@ export interface components {
             /** @description Department that this member represents. */
             department?: {
                 /**
-                 * @description Department key.
+                 * @description Unique key for the department.
                  * @example 24
                  */
                 key?: string;
                 /**
-                 * @description Department ID.
+                 * @description ID for the department.
                  * @example DES
                  */
                 id?: string;
@@ -3422,12 +3425,12 @@ export interface components {
             /** @description Department group that this member belongs to. */
             readonly departmentGroup?: {
                 /**
-                 * @description Department group key.
+                 * @description Unique key for the department group.
                  * @example 33
                  */
                 readonly key?: string;
                 /**
-                 * @description Department group ID.
+                 * @description ID for the department group.
                  * @example SA01
                  */
                 readonly id?: string;
@@ -3444,7 +3447,7 @@ export interface components {
             sortOrder?: number;
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description An employee object represents someone who executes work for a company and is associated with financial transactions such as timesheet entries or expenses. */
+        /** @description An employee represents a person who performs work for a company and is associated with financial transactions such as timesheet entries or expenses. */
         "objects.company-config.employee": {
             /**
              * @description System-assigned unique key for the employee.
@@ -3452,7 +3455,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier of the employee.
+             * @description Unique ID for the employee.
              * @example jsmith
              */
             id?: string;
@@ -3468,20 +3471,20 @@ export interface components {
              */
             startDate?: string | null;
             /**
-             * @description Specifies the employee's current position in the company, such as software engineer.
+             * @description Employee's current position in the company, such as software engineer.
              * @example VP Sales
              */
             jobTitle?: string | null;
             status?: components["schemas"]["status"];
             /**
              * Format: date
-             * @description Indicates the employee's date of birth.
+             * @description Date the employee was born.
              * @example 1984-04-13
              */
             birthDate?: string | null;
             /**
              * Format: date
-             * @description Specifies the date the employment was terminated.
+             * @description Date the employee's employment ended.
              * @example 2026-04-01
              */
             endDate?: string | null;
@@ -3503,15 +3506,15 @@ export interface components {
              * @example true
              */
             sendAutomaticPaymentNotification?: boolean;
-            /** @description References the manager of the employee. */
+            /** @description Manager of the employee. */
             manager?: {
                 /**
-                 * @description Unique key for the manager.
+                 * @description Unique key for the employee's manager.
                  * @example 1
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the manager.
+                 * @description ID for the employee's manager.
                  * @example jsmith
                  */
                 id?: string | null;
@@ -3521,19 +3524,19 @@ export interface components {
                  */
                 readonly name?: string | null;
                 /**
-                 * @description URL endpoint for the manager.
+                 * @description URL endpoint for the employee's manager.
                  * @example /objects/company-config/employee/1
                  */
                 readonly href?: string;
             };
             /**
-             * @description Specifies the gender of the employee.
+             * @description Gender of the employee.
              * @default null
              * @example female
              * @enum {string|null}
              */
             gender?: null | "female" | "male";
-            /** @description References the location where the employee works. Required when an employee is created at the top level in a multi-entity, multi-base-currency company. */
+            /** @description Location where the employee works. Required when an employee is created at the top level in a multi-entity, multi-base-currency company. */
             location?: {
                 /**
                  * @description Unique key for the location.
@@ -3541,7 +3544,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the location.
+                 * @description ID for the location.
                  * @example US
                  */
                 id?: string | null;
@@ -3556,7 +3559,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the department that the employee works for. */
+            /** @description Department that the employee works for. */
             department?: {
                 /**
                  * @description Unique key for the department.
@@ -3564,7 +3567,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the department.
+                 * @description ID for the department.
                  * @example HR
                  */
                 id?: string | null;
@@ -3579,7 +3582,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the class that the employee is associated with. */
+            /** @description Class that the employee is associated with. */
             class?: {
                 /**
                  * @description Unique key for the class.
@@ -3587,7 +3590,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the class.
+                 * @description ID for the class.
                  * @example A
                  */
                 id?: string | null;
@@ -3602,7 +3605,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the default customer that the employee is associated with. */
+            /** @description Default customer that the employee is associated with. */
             defaultCustomer?: {
                 /**
                  * @description Unique key for the customer.
@@ -3610,7 +3613,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the customer.
+                 * @description ID for the default customer.
                  * @example A
                  */
                 id?: string | null;
@@ -3625,7 +3628,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the default item that the employee is associated with. */
+            /** @description Default item that the employee is associated with. */
             defaultItem?: {
                 /**
                  * @description Unique key for the item.
@@ -3633,7 +3636,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the item.
+                 * @description ID for the default item.
                  * @example A
                  */
                 id?: string | null;
@@ -3648,7 +3651,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the default vendor that the employee is associated with. */
+            /** @description Default vendor that the employee is associated with. */
             defaultVendor?: {
                 /**
                  * @description Unique key for the vendor.
@@ -3656,7 +3659,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the vendor.
+                 * @description ID for the default vendor.
                  * @example A
                  */
                 id?: string | null;
@@ -3671,15 +3674,15 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the default time allocation that the employee is associated with. */
+            /** @description Default time allocation that the employee is associated with. */
             defaultTimeAllocation?: {
                 /**
-                 * @description Identifier for the allocation.
+                 * @description ID for the default time allocation.
                  * @example 2
                  */
                 id?: string | null;
                 /**
-                 * @description Unique key for the allocation.
+                 * @description Unique key for the transaction allocation template.
                  * @example 2
                  */
                 key?: string | null;
@@ -3689,15 +3692,15 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the default expense distribution that the employee is associated with. */
+            /** @description Default expense distribution that the employee is associated with. */
             defaultExpenseDistribution?: {
                 /**
-                 * @description Identifier for the allocation.
+                 * @description ID for the default expense distribution.
                  * @example 2
                  */
                 id?: string | null;
                 /**
-                 * @description Unique key for the allocation.
+                 * @description Unique key for the transaction allocation template.
                  * @example 2
                  */
                 key?: string | null;
@@ -3708,19 +3711,19 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Specifies the currency to use for the employee's expense reports and payments, if different from the company's base currency. For companies using multiple transaction currencies.
+             * @description Currency to use for the employee's expense reports and payments, if different from the company's base currency. For companies using multiple transaction currencies.
              * @example USD
              */
             defaultCurrency?: string | null;
-            /** @description References the primary contact name for the employee. */
+            /** @description Primary contact name for the employee. */
             primaryContact?: {
                 /**
-                 * @description Unique key for the employee contact.
+                 * @description Unique key for the contact.
                  * @example 12345
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the employee contact.
+                 * @description Name of the primary contact.
                  * @example rkincaid
                  */
                 id?: string;
@@ -3843,15 +3846,15 @@ export interface components {
                      * @description ISO country code of the employee mailing address.
                      * @example US
                      */
-                    readonly isoCountryCode?: string;
+                    readonly isoCountryCode?: string & components["schemas"]["country-code"];
                 };
                 /**
-                 * @description URL endpoint for the employee contact.
+                 * @description URL endpoint for the contact.
                  * @example /objects/company-config/contact/12345
                  */
                 readonly href?: string;
             };
-            /** @description References the employee type, such as full time, part time, or contractor. */
+            /** @description Employee type, such as full-time, part-time, or contractor. */
             employeeType?: {
                 /**
                  * @description Unique key for the employee type.
@@ -3859,7 +3862,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the employee type.
+                 * @description ID for the employee type.
                  * @example hourly
                  */
                 id?: string | null;
@@ -3869,7 +3872,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description References the earning type for the employee. Specifies the GL accounts that the employee's labor costs are posted to. */
+            /** @description Earning type for the employee. Specifies the GL accounts that the employee's labor costs are posted to. */
             earningType?: {
                 /**
                  * @description Unique key for the earning type.
@@ -3877,7 +3880,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the earning type.
+                 * @description ID for the earning type.
                  * @example Overtime pay
                  */
                 id?: string | null;
@@ -3888,11 +3891,11 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Specifies the social security number for the employee. Do not include dashes.
+             * @description Social security number for the employee, without dashes.
              * @example 078051120
              */
             SSN?: string | null;
-            /** @description References the employee position, applies only to companies with a Construction subscription. */
+            /** @description For each company with a Construction subscription, the employee position associated with the employee. */
             employeePosition?: {
                 /**
                  * @description Unique key for the employee position.
@@ -3900,7 +3903,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the employee position.
+                 * @description ID for the employee position.
                  * @example SV001
                  */
                 id?: string | null;
@@ -3916,14 +3919,14 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Specifies the termination status, if the employee has left the company.
+             * @description Termination status, if the employee has left the company.
              * @default null
              * @example voluntary
              * @enum {string|null}
              */
             terminationType?: null | "voluntary" | "involuntary" | "deceased" | "disability" | "retired";
             /**
-             * @description Provides information relating to the 1099 form for the employee.
+             * @description Information relating to the 1099 form for the employee.
              *
              *     For more information, read the [step-by-step guide to employee 1099s](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Employee_overview_1099) in the Sage Intacct Help Center.
              */
@@ -3934,12 +3937,12 @@ export interface components {
                  */
                 name?: string | null;
                 /**
-                 * @description Specifies the type of 1099 form for the employee.
+                 * @description Type of 1099 form for the employee.
                  * @example MISC
                  */
                 type?: string | null;
                 /**
-                 * @description Indicates the 1099 category box where transactions for the employee will be tracked. Used to classify payments, such as royalties, non-employee compensation, or rent, in accordance with IRS reporting requirements.
+                 * @description 1099 category box where transactions for the employee will be tracked. Used to classify payments, such as royalties, non-employee compensation, or rent, in accordance with IRS reporting requirements.
                  * @example 3
                  */
                 box?: string | null;
@@ -3984,54 +3987,55 @@ export interface components {
              */
             isPlaceholderResource?: boolean;
             /**
-             * @description Specifies the type of payment service used to process employee payments.
+             * @description Type of payment service used to process employee payments.
              * @default none
              * @example ach
              * @enum {string|null}
              */
             filePaymentService?: null | "ach" | "bankFile" | "none";
+            /** @description Bank file payment settings for the employee. */
             bankFile?: {
                 /**
-                 * @description Specifies the country code used in the bank file for processing employee payments. Required when `filePaymentService` is `bankFile`.
+                 * @description Country code used in the bank file for processing employee payments. Required when `filePaymentService` is `bankFile`.
                  * @example gb
                  */
                 paymentCountryCode?: (string & components["schemas"]["country-code"]) | null;
                 /**
-                 * @description Indicates the currency used in the bank file for processing employee payments.
+                 * @description Currency used in the bank file for processing employee payments.
                  * @example EUR
                  */
                 paymentCurrency?: string | null;
             };
-            /** @description References the bank file setup for the employee, containing the information needed to send electronic payments to the employee using a bank file. */
+            /** @description Bank file setup for the employee, containing the information needed to send electronic payments to the employee using a bank file. */
             bankFileSetup?: components["schemas"]["objects.company-config.employee-bank-file-setup"][];
             /**
-             * @description Specifies the employee's preferred method for receiving payments.
+             * @description Employee's preferred method for receiving payments.
              * @default null
              * @example cash
              * @enum {string|null}
              */
             preferredPaymentMethod?: null | "printedCheck" | "eft" | "cash" | "ach";
-            /** @description References the folder for storing attachments related to the employee. */
+            /** @description Folder for storing attachments related to the employee. */
             attachmentFolder?: {
                 /**
-                 * @description Unique key for the attachment folder.
+                 * @description Unique key for the folder.
                  * @example 1
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the attachment folder.
+                 * @description ID for the attachment folder.
                  * @example RK495
                  */
                 id?: string | null;
                 /**
-                 * @description URL endpoint for the attachment folder.
+                 * @description URL endpoint for the folder.
                  * @example /objects/company-config/folder/1
                  */
                 readonly href?: string;
             };
-            /** @description References the cost rates for the employee. */
+            /** @description Cost rates for the employee. */
             employeeRates?: components["schemas"]["objects.company-config.employee-rate"][];
-            /** @description References an array of positions and skills associated with the employee. */
+            /** @description An array of positions and skills associated with the employee. */
             positionSkills?: {
                 /**
                  * @description Unique key for the position skill.
@@ -4039,7 +4043,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the position skill.
+                 * @description ID for the position skill.
                  * @example Care giver
                  */
                 id?: string | null;
@@ -4049,6 +4053,30 @@ export interface components {
                  */
                 readonly href?: string;
             }[];
+            /** @description Vendor associated with the employee for AP Bill reimbursements. Set `id` to link an existing active vendor; auto-generation is not supported via API. */
+            associatedVendor?: {
+                /**
+                 * @description Unique key for the vendor.
+                 * @example 14
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description ID for the associated vendor.
+                 * @example V-EMP-001
+                 */
+                id?: string | null;
+                /**
+                 * @description Indicates whether the vendor was autogenerated for this employee.
+                 * @default false
+                 * @example false
+                 */
+                readonly isSystemGenerated?: boolean;
+                /**
+                 * @description URL endpoint for the vendor.
+                 * @example /objects/accounts-payable/vendor/14
+                 */
+                readonly href?: string;
+            };
             audit?: components["schemas"]["audit.s1"];
             /** @description Record URL for the employee. */
             readonly webURL?: string;
@@ -4062,7 +4090,7 @@ export interface components {
         "company-config-employeeRequiredProperties": {
             primaryContact?: Record<string, never>;
         };
-        /** @description Employee type is a customizable classification that can be defined in a company and assigned to employees to enhance reporting and insight into the value delivered by different employee categories, such as contractor, full-time, and part-time. */
+        /** @description An employee type is a customizable company classification, such as contractor, full-time, or part-time, that can be assigned to employees to assess the value delivered to a project, location, or other dimension in per-type reporting. */
         "objects.company-config.employee-type": {
             /**
              * @description System-assigned unique key for the employee type.
@@ -4070,7 +4098,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the employee type.
+             * @description Unique ID for the employee type.
              * @example Contractor
              */
             id?: string;
@@ -4079,7 +4107,7 @@ export interface components {
              * @example /objects/company-config/employee-type/23
              */
             readonly href?: string;
-            /** @description References the parent employee type in employee type hierarchies. */
+            /** @description Parent employee type in employee type hierarchies. */
             parent?: {
                 /**
                  * @description Unique key for the parent employee type.
@@ -4087,7 +4115,7 @@ export interface components {
                  */
                 key?: string | null;
                 /**
-                 * @description Identifier for the parent employee type.
+                 * @description Name of the parent employee type.
                  * @example Contractor
                  */
                 id?: string | null;
@@ -4097,15 +4125,15 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Provides information relating to the 1099 form for the employee type. */
+            /** @description Information relating to the 1099 form for the employee type. */
             readonly form1099?: {
                 /**
-                 * @description Specifies the type of 1099 form for the employee type.
+                 * @description Type of 1099 form for the employee type.
                  * @example MISC
                  */
                 readonly type?: string | null;
                 /**
-                 * @description Indicates the 1099 category box where transactions for the employee type will be tracked. Used to classify payments, such as royalties, non-employee compensation, or rent, in accordance with IRS reporting requirements.
+                 * @description 1099 category box where transactions for the employee type will be tracked. Used to classify payments, such as royalties, non-employee compensation, or rent, in accordance with IRS reporting requirements.
                  * @example 3
                  */
                 readonly box?: string | null;
@@ -4115,7 +4143,7 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "company-config-employee-typeRequiredProperties": Record<string, never>;
-        /** @description An employee rate, including history. */
+        /** @description An employee rate records an employee's hourly rate or annual salary for a specified date range and can retain compensation history. */
         "objects.company-config.employee-rate": {
             /**
              * @description System-assigned unique key for the employee rate.
@@ -4123,7 +4151,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the employee rate. This value is the same as the `key` for this object.
+             * @description Unique ID for the employee rate. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -4134,31 +4162,31 @@ export interface components {
             readonly href?: string;
             /**
              * Format: decimal-precision-2
-             * @description Specifies the hourly rate for the employee.
-             * @example 50
+             * @description Hourly rate for the employee.
+             * @example 50.00
              */
             hourlyRate?: string;
             /**
-             * @description Specifies the annual salary for the employee.
+             * @description Annual salary for the employee.
              * @example 100000
              */
             annualSalary?: string | null;
             /**
              * Format: date
-             * @description Indicates the start date for the hourly rate or annual salary.
+             * @description Start date for the hourly rate or annual salary.
              * @example 2023-04-01
              */
             startDate?: string;
             /**
              * Format: date
-             * @description Specifies the end date for the hourly rate or annual salary.
+             * @description End date for the hourly rate or annual salary.
              * @example 2023-04-01
              */
             endDate?: string;
-            /** @description References the employee associated with the rate. */
+            /** @description Employee associated with the rate. */
             readonly employee?: {
                 /**
-                 * @description Identifier for the employee.
+                 * @description ID for the employee.
                  * @example 111
                  */
                 readonly id?: string;
@@ -4180,7 +4208,7 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description A specified set of employees, or a set of employees that meet certain criteria. */
+        /** @description An employee group defines employees selected explicitly or by membership criteria. */
         "objects.company-config.employee-group": {
             /**
              * @description System-assigned unique key for the employee group.
@@ -4188,12 +4216,12 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the employee group. Employee group IDs cannot be changed.
+             * @description Unique ID for the employee group. Employee group IDs cannot be changed.
              * @example MGR
              */
             id?: string;
             /**
-             * @description Endpoint URL for the employee group.
+             * @description URL endpoint for the employee group.
              * @example /objects/company-config/employee-group/23
              */
             readonly href?: string;
@@ -4222,17 +4250,17 @@ export interface components {
             /** @description Members of the employee group and their sort order. Only applicable when `groupType` is set to `specific`. */
             groupMembers?: {
                 /**
-                 * @description System-assigned key for the employee.
+                 * @description Unique key for the employee.
                  * @example 1
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the employee.
+                 * @description ID for the employee.
                  * @example jsmith
                  */
                 id?: string;
                 /**
-                 * @description Endpoint URL for the employee.
+                 * @description URL endpoint for the employee.
                  * @example /objects/company-config/employee/23
                  */
                 readonly href?: string;
@@ -4253,7 +4281,7 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "company-config-employee-groupRequiredProperties": Record<string, never>;
-        /** @description A bank file enables electronic payments to be made to employees using a local bank file format. Bank files are standard files used by banks to make multiple payments. */
+        /** @description An employee bank file setup stores the information used to make electronic payments to employees using a local bank file format; bank files are standard files used by banks to make multiple payments. */
         "objects.company-config.employee-bank-file-setup": {
             /**
              * @description System-assigned unique key for the employee bank file setup.
@@ -4261,72 +4289,76 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Identifier for the employee bank file setup. This value is the same as `key` for this object.
+             * @description Unique ID for the employee bank file setup. This value is the same as the `key` for this object.
              * @example 1
              */
             readonly id?: string;
             /**
-             * @description Provides the bank account number used for electronic bank file payments.
+             * @description Bank account number used for electronic bank file payments.
              * @example IE26SCT666666
              */
             bankAccountNumber?: string;
             /**
-             * @description Specifies the bank account name used for electronic bank file payments.
+             * @description Bank account name used for electronic bank file payments.
              * @example Jane Blogs Corp.
              */
             bankAccountName?: string;
             /**
-             * @description Indicates the bank branch number for the employee bank account, Australia (AU) only.
+             * @description Bank branch number for the employee bank account, Australia (AU) only.
              * @example 047-359
              */
             bsbNumber?: string | null;
             /**
-             * @description Specifies the bank sort code that identifies the employee's bank branch, United Kingdom (GB) only.
+             * @description Bank sort code that identifies the employee's bank branch, United Kingdom (GB) only.
              * @example 204718
              */
             sortCode?: string | null;
             /**
-             * @description Indicates the payment reference number to connect the bank file with the expenses to be reimbursed, Australia (AU) and South Africa (ZA) only. Used when no reference exists or multiple references apply.
+             * @description Payment reference number to connect the bank file with the expenses to be reimbursed, Australia (AU) and South Africa (ZA) only. Used when no reference exists or multiple references apply.
              * @example ZG8609
              */
             paymentReference?: string | null;
             /**
-             * @description Specifies the branch code for the employee bank account to which payments are made, South Africa (ZA) only.
+             * @description Branch code for the employee bank account to which payments are made, South Africa (ZA) only.
              * @example 213456
              */
             branchCode?: string | null;
             /**
-             * @description Indicates the account type to which employee payments are made, South Africa (ZA) only. The available account types are determined by the bank file format selected for the associated checking account.
+             * @description Account type to which employee payments are made, South Africa (ZA) only. The available account types are determined by the bank file format selected for the associated checking account.
              * @example 4
              */
             bankAccountType?: string | null;
             /**
-             * @description Provides the account code for the employee bank account to which payments are made, South Africa (ZA) only.
+             * @description Account code for the employee bank account to which payments are made, South Africa (ZA) only.
              * @example ACME345624
              */
             bankAccountCode?: string | null;
             /**
-             * @description Indicates whether to print the proof of payment when the bank file payment batch is authorized, South Africa (ZA) only.
+             * @description Indicates whether to print the proof of payment when the bank file payment batch is authorized in South Africa (ZA).
              * @example true
              */
             printPaymentProof?: string | null;
             /**
-             * @description Provides the creditor bank identifier code for the bank account, supports all European countries where Generic-SEPA file format is supported.
+             * @description Creditor bank identifier code for the bank account, supports all European countries where Generic-SEPA file format is supported.
              * @example AIBKIE2D491
              */
             businessIdCode?: string | null;
             /**
-             * @description Specifies the creditor code for the bank account, Canada (CA) only.
+             * @description Creditor code for the bank account, Canada (CA) only.
              * @example 1234567891234567
              */
             creditorCode?: string | null;
             /**
-             * @description Indicates the bank number, as assigned by the account CAD financial institution, Canada (CA) only.
+             * @description Bank number, as assigned by the account CAD financial institution, Canada (CA) only.
              * @example 00710423598
              */
             secondaryIdentifier?: string | null;
             /**
-             * @description Indicates the account classification for Automated Clearing House (ACH) transactions, United States (US) only.
+             * @description Account classification for Automated Clearing House (ACH) transactions, United States (US) only.
+             *
+             *
+             *
+             *
              *
              *       - `ppd`: Prearranged Payment and Deposit for transactions with individual or consumer accounts.
              *       - `ccd`: Corporate Credit or Debit for transactions with business or corporate accounts.
@@ -4363,7 +4395,7 @@ export interface components {
                  */
                 countryCode?: (string & components["schemas"]["country-code"]) | null;
             };
-            /** @description References the employee associated with the bank file setup. */
+            /** @description Employee associated with the bank file setup. */
             employee?: {
                 /**
                  * @description Unique key for the employee.
@@ -4371,7 +4403,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the employee.
+                 * @description ID for the employee.
                  * @example E-00014
                  */
                 id?: string;
@@ -4387,7 +4419,7 @@ export interface components {
              */
             readonly href?: string;
         };
-        /** @description Earning types for employee labor costs. */
+        /** @description An earning type configures how an employee's labor costs are calculated and posted to the GL. */
         "objects.company-config.earning-type": {
             /**
              * @description System-assigned unique key for the earning type.
@@ -4395,19 +4427,19 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Earning type name.
+             * @description Unique ID for the earning type, represented by its name.
              * @example Over time
              */
             id?: string;
             /** @description General ledger account to post billable labor cost for an employee assigned to this earning type. */
             billableGLAccount?: {
                 /**
-                 * @description GL account key.
+                 * @description Unique key for the account.
                  * @example 158
                  */
                 key?: string | null;
                 /**
-                 * @description GL account ID.
+                 * @description ID for the billable GL account.
                  * @example 6775.30
                  */
                 id?: string | null;
@@ -4417,7 +4449,7 @@ export interface components {
                  */
                 readonly name?: string | null;
                 /**
-                 * @description URL endpoint for the GL account.
+                 * @description URL endpoint for the account.
                  * @example /objects/general-ledger/account/23
                  */
                 readonly href?: string;
@@ -4425,12 +4457,12 @@ export interface components {
             /** @description General ledger account to post non-billable labor cost for an employee assigned to this earning type. */
             nonBillableGLAccount?: {
                 /**
-                 * @description GL account key.
+                 * @description Unique key for the account.
                  * @example 158
                  */
                 key?: string | null;
                 /**
-                 * @description GL account ID.
+                 * @description ID for the non-billable GL account.
                  * @example 6774.30
                  */
                 id?: string | null;
@@ -4440,13 +4472,13 @@ export interface components {
                  */
                 readonly name?: string | null;
                 /**
-                 * @description URL endpoint for the GL account.
+                 * @description URL endpoint for the account.
                  * @example /objects/general-ledger/account/23
                  */
                 readonly href?: string;
             };
             /**
-             * @description Calculation method.
+             * @description Method used to calculate labor costs for employees assigned to the earning type.
              * @default salary
              * @example hourly
              * @enum {string}
@@ -4460,20 +4492,20 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "company-config-earning-typeRequiredProperties": Record<string, never>;
-        /** @description Location is a dimension that is used to represent the geographic locations of offices or facilities. It can also be used for divisions in a company, if that is more significant than geographic locations. Once defined, locations can be set on transactions, and that information can be used to provide new insights in reports. */
+        /** @description A location is a dimension for geographic offices or facilities, or a company division when that is more significant than geography. Once defined, locations can be set on transactions to provide additional reporting insights. */
         "objects.company-config.location": {
             /**
-             * @description System-assigned unique key for the location. Used to identify the location in URLs or JSON bodies for all operations on the location.
+             * @description System-assigned unique key for the location.
              * @example 3345
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the location.
+             * @description Unique ID for the location.
              * @example 1-Lyon
              */
             id?: string;
             /**
-             * @description URL endpoint for this location.
+             * @description URL endpoint for the location.
              * @example /objects/company-config/location/21
              */
             readonly href?: string;
@@ -4508,9 +4540,9 @@ export interface components {
             /** @description The list of contacts for the location. */
             contacts?: {
                 /** @description The primary location contact specifies the company name, address, and other details as they should appear on invoices, bills, and other forms. */
-                primary?: components["schemas"]["contact-ref"] & Record<string, never>;
+                primary?: components["schemas"]["contact-location-ref"] & Record<string, never>;
                 /** @description The address for receiving goods and services, if different from the primary contact address. */
-                shipTo?: components["schemas"]["contact-ref"] & Record<string, never>;
+                shipTo?: components["schemas"]["contact-location-ref"] & Record<string, never>;
             };
             /**
              * @deprecated
@@ -4531,17 +4563,17 @@ export interface components {
             /** @description Parent location, for location hierarchies. */
             parent?: {
                 /**
-                 * @description Parent location key.
+                 * @description Unique key for the parent.
                  * @example 65
                  */
                 key?: string;
                 /**
-                 * @description Parent location ID.
+                 * @description ID for the parent.
                  * @example 1-France
                  */
                 id?: string;
                 /**
-                 * @description URL endpoint of parent location.
+                 * @description URL endpoint for the parent.
                  * @example /objects/company-config/location/65
                  */
                 readonly href?: string;
@@ -4551,10 +4583,10 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description This field indicates an parent object of type:
-                 *     - `entity` - company-config-entity
-                 *     - `elimination` - company-config-entity configured as elimination that is used solely for posting consolidation entries
-                 *     - `location` - company-config-location
+                 * @description This field indicates the parent object type:
+                 *     - `entity` - `company-config.entity`
+                 *     - `elimination` - `company-config.entity` configured as an elimination entity used solely for posting consolidation entries
+                 *     - `location` - `company-config.location`.
                  * @example location
                  * @enum {string}
                  */
@@ -4563,17 +4595,17 @@ export interface components {
             /** @description The employee that manages the location. */
             manager?: {
                 /**
-                 * @description Manager's employee key.
+                 * @description Unique key for the manager.
                  * @example 81
                  */
                 key?: string;
                 /**
-                 * @description ID of the manager employee.
+                 * @description ID for the manager.
                  * @example anne.jason
                  */
                 id?: string;
                 /**
-                 * @description URL endpoint of the manager employee.
+                 * @description URL endpoint for the manager.
                  * @example /objects/company-config/employee/81
                  */
                 readonly href?: string;
@@ -4584,11 +4616,10 @@ export interface components {
                 readonly name?: string;
             };
             /**
-             * @description Locations and entities are related as a hierarchy and this field will allow building it with the help of the `parent` field.
-             *     This field indicates an object of type:
-             *     - `entity` - company-config-entity
-             *     - `elimination` - company-config-entity configured as elimination that is used solely for posting consolidation entries
-             *     - `location` - company-config-location
+             * @description Locations and entities form a hierarchy through the `parent` field. This field indicates the object type:
+             *     - `entity` - `company-config.entity`
+             *     - `elimination` - `company-config.entity` configured as an elimination entity used solely for posting consolidation entries
+             *     - `location` - `company-config.location`.
              * @example location
              * @enum {string}
              */
@@ -4601,12 +4632,12 @@ export interface components {
             /** @description Entity associated with the location. */
             readonly entity?: {
                 /**
-                 * @description System-assigned key for the entity.
+                 * @description Unique key for the entity.
                  * @example 46
                  */
                 readonly key?: string | null;
                 /**
-                 * @description Unique identifier for the entity.
+                 * @description ID for the entity.
                  * @example NYC
                  */
                 readonly id?: string | null;
@@ -4632,7 +4663,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Location group ID. Displayed together with the group name in Sage Intacct (_ID_--_Name_). Location group IDs cannot be changed after the group has been created.
+             * @description Unique ID for the location group.
              * @example WH1
              */
             id?: string;
@@ -4654,17 +4685,17 @@ export interface components {
             /** @description Primary contact for the location group. */
             primaryContact?: {
                 /**
-                 * @description Unique key for the contact.
+                 * @description Unique key for the primary contact.
                  * @example 7
                  */
                 key?: string;
                 /**
-                 * @description Name of the contact.
+                 * @description Name of the primary contact.
                  * @example Jeff Pinkerton
                  */
                 id?: string;
                 /**
-                 * @description URL endpoint for the contact.
+                 * @description URL endpoint for the primary contact.
                  * @example /objects/company-config/contact/7
                  */
                 readonly href?: string;
@@ -4693,7 +4724,7 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "company-config-location-groupRequiredProperties": Record<string, never>;
-        /** @description A member in a location group. */
+        /** @description A location group member represents a location included in a location group. */
         "objects.company-config.location-group-member": {
             /**
              * @description System-assigned unique key for the location group member.
@@ -4718,7 +4749,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Location ID.
+                 * @description ID for the location.
                  * @example 1
                  */
                 id?: string;
@@ -4788,7 +4819,7 @@ export interface components {
             /** @description Folder that this attachment is in. */
             folder?: {
                 /**
-                 * @description Unique key of the folder.
+                 * @description Unique key for the folder.
                  * @example 4
                  */
                 key?: string;
@@ -4809,32 +4840,30 @@ export interface components {
             readonly audit?: {
                 /**
                  * Format: date-time
-                 * @description Date-time when this record was created.
+                 * @description Date and time when the record was created.
                  * @example 2023-05-16T15:34:35Z
                  */
                 readonly createdDateTime?: string;
                 /**
                  * Format: date-time
-                 * @description Date-time when this record was modified.
+                 * @description Date and time when the record was last modified.
                  * @example 2024-09-14T21:23:42Z
                  */
                 readonly modifiedDateTime?: string;
                 /**
                  * @deprecated
-                 * @description Key for the user who created this object.
-                 * @example 436
+                 * @description This field has been deprecated. Use the `createdByUser.key` field instead.
                  */
                 readonly createdBy?: string | null;
                 /**
                  * @deprecated
-                 * @description Key for the user who last modified this object.
-                 * @example 3086
+                 * @description This field has been deprecated. Use the `modifiedByUser.key` field instead.
                  */
                 readonly modifiedBy?: string | null;
-                /** @description The user who created this object. */
+                /** @description The user who created the record. */
                 readonly createdByUser?: {
                     /**
-                     * @description User key.
+                     * @description Unique key for the user.
                      * @example 436
                      */
                     readonly key?: string | null;
@@ -4849,10 +4878,10 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description The user who last modified this object. */
+                /** @description The user who last modified the record. */
                 readonly modifiedByUser?: {
                     /**
-                     * @description User key.
+                     * @description Unique key for the user.
                      * @example 3086
                      */
                     readonly key?: string | null;
@@ -4870,7 +4899,7 @@ export interface components {
             };
         };
         "company-config-attachmentRequiredProperties": Record<string, never>;
-        /** @description A file in an attachment. */
+        /** @description A file stores digital content in an attachment. */
         "objects.company-config.file": {
             /**
              * @description System-assigned unique key for the file.
@@ -4903,6 +4932,11 @@ export interface components {
              * @example Y2V2YSwgYWx0Y2V2YQ0Kc2kgaW5jYSBjZXZh
              */
             data?: string;
+            /**
+             * @description Parent ID of the split attachment.
+             * @example 408
+             */
+            parentId?: string | null;
             /** @description Attachment associated with the file. */
             readonly attachment?: {
                 /**
@@ -4927,7 +4961,7 @@ export interface components {
              */
             readonly href?: string;
         };
-        /** @description Folder for holding one or more attachments. */
+        /** @description A folder holds one or more attachments and can contain nested folders. */
         "objects.company-config.folder": {
             /**
              * @description System-assigned unique key for the folder. Used to identify the folder in URLs or JSON bodies for all operations on the folder.
@@ -4935,7 +4969,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique name for the folder. Cannot be changed after the folder is created.
+             * @description Unique ID for the folder, which is its unique name. It cannot be changed after the folder is created.
              * @example 2026 Taxes
              */
             id?: string;
@@ -4997,17 +5031,17 @@ export interface components {
                 /** @description The user who created this object. */
                 readonly createdByUser?: {
                     /**
-                     * @description Unique key for the user.
+                     * @description Unique key for the created by user.
                      * @example 436
                      */
                     readonly key?: string | null;
                     /**
-                     * @description ID for the user.
+                     * @description ID for the created by user.
                      * @example JohnDoe
                      */
                     readonly id?: string | null;
                     /**
-                     * @description URL endpoint for the user.
+                     * @description URL endpoint for the created by user.
                      * @example /objects/company-config/user/436
                      */
                     readonly href?: string;
@@ -5015,17 +5049,17 @@ export interface components {
                 /** @description The user who last modified this object. */
                 readonly modifiedByUser?: {
                     /**
-                     * @description Unique key for the user.
+                     * @description Unique key for the modified by user.
                      * @example 3086
                      */
                     readonly key?: string | null;
                     /**
-                     * @description ID for the user.
+                     * @description ID for the modified by user.
                      * @example JaneDoe
                      */
                     readonly id?: string | null;
                     /**
-                     * @description URL endpoint for the user.
+                     * @description URL endpoint for the modified by user.
                      * @example /objects/company-config/user/3086
                      */
                     readonly href?: string;
@@ -5045,7 +5079,7 @@ export interface components {
             readonly hasAttachments?: boolean;
         };
         "company-config-folderRequiredProperties": Record<string, never>;
-        /** @description A contact hold all the information needed to contact an individual or business, including name, email address, phone number, mailing address, and more. */
+        /** @description A contact holds all the information needed to contact an individual or business, including name, email address, phone number, mailing address, and more. */
         "objects.company-config.contact": {
             /**
              * @description System-assigned unique key for the contact.
@@ -5053,7 +5087,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the contact.
+             * @description Unique ID for the contact.
              * @example rkincaid
              */
             id?: string;
@@ -5138,7 +5172,7 @@ export interface components {
              */
             printAs?: string;
             /**
-             * @description Set to `true` to display the contact in the contact list.
+             * @description Indicates whether the contact is displayed in the contact list.
              * @default true
              * @example true
              */
@@ -5157,12 +5191,12 @@ export interface components {
             /** @description The entity that the contact is associated with. Contacts created at the top level do not have an entity reference so the `key`, `id`, and `name` properties will be `null`. */
             readonly entity?: {
                 /**
-                 * @description Entity key.
+                 * @description Unique key for the entity.
                  * @example 54
                  */
                 readonly key?: string;
                 /**
-                 * @description Entity ID.
+                 * @description ID for the entity.
                  * @example Western Region
                  */
                 readonly id?: string;
@@ -5190,34 +5224,33 @@ export interface components {
                  */
                 addressLine2?: string | null;
                 /**
-                 * @description The third address line for shipping, billing, etc. which provides additional geographical information.
+                 * @description The third address line for shipping, billing, etc., which provides additional geographical information.
                  * @example Western industrial area
                  */
                 addressLine3?: string | null;
                 /**
-                 * @description City.
+                 * @description City in the contact mailing address.
                  * @example San Jose
                  */
                 city?: string | null;
                 /**
-                 * @description State.
+                 * @description State in the contact mailing address.
                  * @example California
                  */
                 state?: string | null;
                 /**
-                 * @description Zip or Postal Code.
+                 * @description Zip or postal code in the contact mailing address.
                  * @example 95110
                  */
                 postCode?: string | null;
                 /**
                  * @deprecated
-                 * @description Country. This field is deprecated; please use `isoCountryCode` instead.
+                 * @description Country in the contact mailing address. Deprecated. Use `isoCountryCode` instead.
                  * @default United States
-                 * @example United States
                  */
                 country?: string | null;
                 /**
-                 * @description ISO country code.
+                 * @description ISO country code in the contact mailing address.
                  * @default US
                  * @example US
                  */
@@ -5226,12 +5259,12 @@ export interface components {
             /** @description Default price list used in order entry when this contact places orders. Read [the notes in the Help Center](https://www.intacct.com/ia/docs/en_US/help_action/Order_Entry/Setting_up_Order_Entry/Price_lists/assign-OE-price-list-to-objects.htm#Assignapricelisttoacontact) for requirements and additional information. */
             priceList?: {
                 /**
-                 * @description Price list key.
+                 * @description Unique key for the price list.
                  * @example 7
                  */
                 key?: string | null;
                 /**
-                 * @description Price list ID.
+                 * @description ID for the price list.
                  * @example Custom-Pricelist
                  */
                 id?: string | null;
@@ -5244,12 +5277,12 @@ export interface components {
             /** @description Price schedule used in order entry when this contact places orders. */
             priceSchedule?: {
                 /**
-                 * @description Price schedule key.
+                 * @description Unique key for the price schedule.
                  * @example 7
                  */
                 key?: string | null;
                 /**
-                 * @description Price schedule ID.
+                 * @description ID for the price schedule.
                  * @example Discount-Premium
                  */
                 id?: string | null;
@@ -5262,7 +5295,7 @@ export interface components {
             /** @description Tax settings needed for Intacct to calculate taxes on transactions for this contact. */
             tax?: {
                 /**
-                 * @description Set to `true` to enable tax calculation.
+                 * @description Indicates whether tax calculation is enabled for the contact.
                  * @default true
                  * @example true
                  */
@@ -5275,17 +5308,17 @@ export interface components {
                 /** @description The contact tax group to be used with this contact. */
                 group?: {
                     /**
-                     * @description Contact tax group key.
+                     * @description Unique key for the contact tax group.
                      * @example 7
                      */
                     key?: string | null;
                     /**
-                     * @description Contact tax group ID.
+                     * @description ID for the contact tax group.
                      * @example Taxes-for-residents
                      */
                     id?: string | null;
                     /**
-                     * @description URL endpoint of the contact tax group.
+                     * @description URL endpoint for the contact tax group.
                      * @example /objects/company-config/contact-tax-group/7
                      */
                     readonly href?: string;
@@ -5293,15 +5326,15 @@ export interface components {
             };
         };
         "company-config-contactRequiredProperties": Record<string, never>;
-        /** @description Contact version captures the changes to a contact object. */
+        /** @description A contact version captures changes to a contact. */
         "objects.company-config.contact-version": {
             /**
-             * @description System-assigned key for the contact version.
+             * @description System-assigned unique key for the contact version.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the contact version. The value is the same as the `key` for this object.
+             * @description Unique ID for the contact version. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -5313,12 +5346,12 @@ export interface components {
             /** @description Contact associated with the contact version. */
             contact?: {
                 /**
-                 * @description System-assigned key for the contact.
+                 * @description Unique key for the contact. This key is system-assigned.
                  * @example 197
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the contact.
+                 * @description Name of the contact.
                  * @example John Doe
                  */
                 id?: string;
@@ -5329,7 +5362,7 @@ export interface components {
                 readonly href?: string | null;
             };
             /**
-             * @description Indicates if the company associated with the contact is GST registered.
+             * @description Indicates whether the company associated with the contact is GST registered.
              * @default false
              * @example true
              */
@@ -5367,12 +5400,12 @@ export interface components {
             /** @description Price schedule associated with the contact version. */
             priceSchedule?: {
                 /**
-                 * @description System-assigned key for the price schedule.
+                 * @description Unique key for the price schedule. This key is system-assigned.
                  * @example 5
                  */
                 key?: string | null;
                 /**
-                 * @description Unique ID for the price schedule.
+                 * @description ID for the price schedule.
                  * @example PREF
                  */
                 id?: string | null;
@@ -5384,13 +5417,13 @@ export interface components {
             };
             /**
              * Format: percent-precision-2
-             * @description Discount percentage for the contact, for example, specify 25.00 for 25.00% discount.
+             * @description Discount percentage for the contact. For example, specify 25.00 for a 25.00% discount.
              * @example 25.00
              */
             discountPercent?: string | null;
             /**
              * @deprecated
-             * @description This field is deprecated, please use `discountPercent` instead.
+             * @description Deprecated. Use `discountPercent` instead.
              */
             discount?: string | null;
             /**
@@ -5439,7 +5472,7 @@ export interface components {
              */
             URL2?: string | null;
             /**
-             * @description Set to `true` to include the contact in the contact list.
+             * @description Indicates whether the contact is included in the contact list.
              * @default true
              * @example true
              */
@@ -5457,7 +5490,7 @@ export interface components {
                  */
                 addressLine2?: string | null;
                 /**
-                 * @description The third address line for shipping, billing, etc. which provides additional geographical information.
+                 * @description The third address line for shipping, billing, etc., which provides additional geographical information.
                  * @example Western industrial area
                  */
                 addressLine3?: string | null;
@@ -5478,8 +5511,7 @@ export interface components {
                 postCode?: string | null;
                 /**
                  * @deprecated
-                 * @description Country. This field is deprecated, please use `isoCountryCode`.
-                 * @example United States
+                 * @description Country in the contact mailing address. Deprecated. Use `isoCountryCode` instead.
                  */
                 readonly country?: string | null;
                 /**
@@ -5491,12 +5523,12 @@ export interface components {
             /** @description Default price list used in order entry when this contact places orders. */
             priceList?: {
                 /**
-                 * @description System-assigned key for the price list.
+                 * @description Unique key for the price list. This key is system-assigned.
                  * @example 31
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the price list.
+                 * @description ID for the price list.
                  * @example Base Price List
                  */
                 id?: string | null;
@@ -5526,7 +5558,7 @@ export interface components {
                  */
                 taxIdValidationDate?: string | null;
                 /**
-                 * @description Company name as registered.
+                 * @description Registered company name for the contact tax information.
                  * @example Sage Inc.
                  */
                 taxCompanyName?: string | null;
@@ -5538,17 +5570,17 @@ export interface components {
                 /** @description The contact tax group associated with the contact version. */
                 group?: {
                     /**
-                     * @description System-assigned key for the contact tax group.
+                     * @description Unique key for the contact tax group. This key is system-assigned.
                      * @example 7
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the contact tax group.
+                     * @description ID for the contact tax group.
                      * @example Taxes-for-residents
                      */
                     id?: string | null;
                     /**
-                     * @description URL endpoint of the contact tax group.
+                     * @description URL endpoint for the contact tax group.
                      * @example /objects/company-config/contact-tax-group/7
                      */
                     readonly href?: string | null;
@@ -5564,7 +5596,7 @@ export interface components {
                      */
                     key?: string | null;
                     /**
-                     * @description ID or name of the tax solution.
+                     * @description ID for the tax solution. The value can also be the name of the tax solution.
                      * @example Australia GST
                      */
                     id?: string | null;
@@ -5577,12 +5609,12 @@ export interface components {
                 /** @description Tax schedule associated with the contact version. */
                 taxSchedule?: {
                     /**
-                     * @description System-assigned key for the tax schedule.
+                     * @description Unique key for the tax schedule. This key is system-assigned.
                      * @example 7
                      */
                     key?: string | null;
                     /**
-                     * @description Unique identifier for the tax schedule.
+                     * @description ID for the tax schedule.
                      * @example TaxSchedule
                      */
                     id?: string | null;
@@ -5600,7 +5632,7 @@ export interface components {
             entityUseCode?: string | null;
             status?: components["schemas"]["status"];
         };
-        /** @description Document sequencing */
+        /** @description A document sequence automatically generates IDs for transactions and records. */
         "objects.company-config.document-sequence": {
             /**
              * @description System-assigned unique key for the document sequence.
@@ -5608,7 +5640,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique name for the document sequence.
+             * @description Unique ID for the document sequence. This value is the unique name of the document sequence.
              * @example Vendors
              */
             id?: string;
@@ -5618,14 +5650,14 @@ export interface components {
              */
             printTitle?: string;
             /**
-             * @description Numeric or alpha sequence. Alpha sequences are currently only available for use with Cash Management, or French companies.
+             * @description Sequence type: `numeric` or `alpha`. Alpha sequences are currently only available for use with Cash Management or French companies.
              * @default numeric
              * @example numeric
              * @enum {string}
              */
             type?: "numeric" | "alpha";
             /**
-             * @description The total length of the primary sequence, including any padding characters, up to 16 characters. Numeric sequences will be padded with zeroes and alpha sequence will be padded with a's.
+             * @description The total length of the primary sequence, including any padding characters, up to 16 characters. Numeric sequences will be padded with zeroes and alpha sequences will be padded with a's.
              * @example 16
              */
             fixedLength?: string | null;
@@ -5650,22 +5682,22 @@ export interface components {
              */
             suffixSeparator?: string | null;
             /**
-             * @description Starting number for `numeric` sequences. Required when `type` is `numeric`.
+             * @description For `numeric` sequences, the starting number. Required when `type` is `numeric`.
              * @example 1
              */
             startingNumber?: number | null;
             /**
-             * @description Ending number for `numeric` sequences.
+             * @description For `numeric` sequences, the ending number.
              * @example 100
              */
             endingNumber?: number | null;
             /**
-             * @description Next number. Required when `type` is `numeric`.
+             * @description For `numeric` sequences, the next number. Required when `type` is `numeric`.
              * @example 1
              */
             nextNumber?: number | null;
             /**
-             * @description Starting sequence. Required when `type` is `alpha`.
+             * @description For `alpha` sequences, the starting sequence. Required when `type` is `alpha`.
              * @example a
              */
             startingSequence?: string | null;
@@ -5675,7 +5707,7 @@ export interface components {
              */
             endingSequence?: string | null;
             /**
-             * @description Next sequence. Required when `type` is `alpha`.
+             * @description For `alpha` sequences, the next sequence. Required when `type` is `alpha`.
              * @example a
              */
             nextSequence?: string | null;
@@ -5688,12 +5720,12 @@ export interface components {
             /** @description Entity that the document sequence can be used in. */
             readonly entity?: {
                 /**
-                 * @description Entity Key.
+                 * @description Unique key for the entity.
                  * @example 54
                  */
                 key?: string;
                 /**
-                 * @description Entity ID.
+                 * @description ID for the entity.
                  * @example Western Region
                  */
                 id?: string;
@@ -5708,14 +5740,10 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /**
-             * @description Fiscal year rollover configuration for the document sequence, which will automatically restart the document sequence for each fiscal year.
-             *     Use the `fiscalYears` to configure the next number or alpha values used to generate sequences for the fiscal years.
-             *     If the configuration for a fiscal year is missing then it will be generated by the system when the first sequence is generated. The next number or alpha values will be taken from the base start values.
-             */
+            /** @description Fiscal year rollover configuration for the document sequence, which will automatically restart the document sequence for each fiscal year. Use the `fiscalYears` array to configure the next number or alpha values used to generate sequences for the fiscal years. If the configuration for a fiscal year is missing then it will be generated by the system when the first sequence is generated. The next number or alpha values will be taken from the base start values. */
             rollover?: {
                 /**
-                 * @description Set to `true` to enable sequence rollover by fiscal years.
+                 * @description Indicates whether sequence rollover by fiscal year is enabled.
                  * @default false
                  * @example false
                  */
@@ -5729,11 +5757,11 @@ export interface components {
                 /**
                  * @description Where to insert the fiscal year in document sequence values.
                  *
-                 *     ** Valid values **
+                 *     **Valid values**
                  *
-                 *       - `none` Do not automatically insert the fiscal year into the document sequence.
-                 *       - `prefix` Use the fiscal year and the rollover `separator`` as a prefix to the document sequence.
-                 *       - `suffix` Append the rollover `separator`` and the fiscal year as a suffix to the document sequence.
+                 *     - `none` Do not automatically insert the fiscal year into the document sequence.
+                 *     - `prefix` Use the fiscal year and the rollover `separator` as a prefix to the document sequence.
+                 *     - `suffix` Append the rollover `separator` and the fiscal year as a suffix to the document sequence.
                  * @default none
                  * @example prefix
                  * @enum {string}
@@ -5744,12 +5772,12 @@ export interface components {
                  * @example -
                  */
                 separator?: string | null;
-                /** @description Array of document-sequence-rollover objects that define the next number or alpha values to use to generate sequences for specific fiscal years. */
+                /** @description Document sequence rollover entries that define the next number or alpha values used to generate sequences for specific fiscal years. */
                 fiscalYears?: components["schemas"]["objects.company-config.document-sequence-rollover"][];
             };
             status?: components["schemas"]["status"];
             /**
-             * @description URL endpoint of the document-sequence
+             * @description URL endpoint for the document sequence.
              * @example /objects/company-config/document-sequence/61
              */
             readonly href?: string;
@@ -5797,12 +5825,7 @@ export interface components {
              */
             fiscalYear?: number;
         };
-        /**
-         * @description The rollover configuration holds the next number or alpha values used to generate sequences for the fiscal years.
-         *     When rollover is enabled for a document sequence then a restart of the document sequence is initiated for each fiscal year.
-         *     If the configuration for a fiscal year is missing then it is automatically generated by the system when the first sequence is generated.
-         *     When the system generates a configuration the next number or alpha values are taken over from the base start values.
-         */
+        /** @description A document sequence rollover stores the next numeric or alphabetic value used to generate sequences for each fiscal year and, when rollover is enabled for a document sequence, initiates a restart each fiscal year; if a fiscal-year configuration is missing, the system generates it when the first sequence is generated and takes the next values from the base start values. */
         "objects.company-config.document-sequence-rollover": {
             /**
              * @description System-assigned unique key for the document sequence rollover.
@@ -5810,7 +5833,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the document sequence rollover. This value is the same as the `key` for this object.
+             * @description Unique ID for the document sequence rollover. This value is the same as the `key` for this object.
              * @example 100
              */
             readonly id?: string;
@@ -5822,12 +5845,12 @@ export interface components {
             /** @description Document sequence that the rollover configuration applies to. */
             readonly documentSequence?: {
                 /**
-                 * @description Document sequence key.
+                 * @description Unique key for the document sequence.
                  * @example 107
                  */
                 readonly key?: string;
                 /**
-                 * @description Document sequence ID.
+                 * @description ID for the document sequence.
                  * @example BOA_ACH_BatchNo
                  */
                 readonly id?: string;
@@ -5854,7 +5877,7 @@ export interface components {
             nextSequence?: string | null;
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Listing of the templates for sending out any electronic order entry transaction with the person who created it. (Legacy) */
+        /** @description A legacy email template lists the templates used to send electronic order entry transactions and identifies the person who created each template. */
         "objects.company-config.email-template": {
             /**
              * @description System-assigned unique key for the email template.
@@ -5862,12 +5885,12 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Email Template ID. This value is the same as `key` for this object.
+             * @description Unique ID for the email template. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
             /**
-             * @description URL endpoint of the email template.
+             * @description URL endpoint for the email template.
              * @example /objects/company-config/email-template/23
              */
             readonly href?: string;
@@ -5886,8 +5909,7 @@ export interface components {
             sender?: {
                 /**
                  * @deprecated
-                 * @description Legacy derived reply-to email address for the template. This value is retained for backward
-                 *     compatibility and is populated from the underlying approved sender email configuration.
+                 * @description Legacy derived reply-to email address for the template. This value is retained for backward compatibility and is populated from the underlying approved sender email configuration.
                  * @example someEmail@co.com
                  */
                 readonly replyTo?: string;
@@ -5897,15 +5919,12 @@ export interface components {
                  */
                 senderName?: string;
                 /**
-                 * @description Identifier for the approved sender email entry. The reply-to address is automatically populated
-                 *     from the referenced entry. Required when `useOwnEmailAddress` is `false` or not set.
-                 *     This value is `null` when `useOwnEmailAddress` is `true`.
+                 * @description Identifier for the approved sender email entry. The reply-to address is automatically populated from the referenced entry. Required when `useOwnEmailAddress` is `false` or not set. This value is `null` when `useOwnEmailAddress` is `true`.
                  * @example 11
                  */
                 approvedSenderEmailId?: string | null;
                 /**
-                 * @description Set to `true` to use the sending user's own email address as the reply-to address for this template.
-                 *     When `true`, `approvedSenderEmailId` is not required. When `false` or not set, `approvedSenderEmailId` is required.
+                 * @description Indicates whether the sending user's own email address is used as the reply-to address for the template. When `true`, `approvedSenderEmailId` is not required. When `false` or unset, `approvedSenderEmailId` is required.
                  * @default false
                  * @example false
                  */
@@ -5917,45 +5936,45 @@ export interface components {
                  * @description The primary recipients of the email.
                  * @example someEmail@co.com
                  */
-                to?: string;
+                to?: string | null;
                 /**
                  * @description Recipients who should receive a courtesy copy of the email.
                  * @example someEmail@co.com
                  */
-                cc?: string;
+                cc?: string | null;
                 /**
                  * @description Recipients who should receive a copy of the email but not be visible to other recipients.
                  * @example someEmail@co.com
                  */
-                bcc?: string;
+                bcc?: string | null;
             };
             /**
-             * @description Enter a combination of text and merge fields as desired to create an informative subject line.
+             * @description Combination of text and merge fields as desired to create an informative subject line.
              * @example Account statement due by {!ARINVOICE.WHENDUE!}
              */
             subject?: string;
             /**
-             * @description Enter a combination of text, merge fields, and HTML markup as desired to create and customize the message.
+             * @description Combination of text, merge fields, and HTML markup as desired to create and customize the message.
              * @example Message for all to see
              */
             body?: string;
             /** @description Logo information for the email template. The logo is included in the email if the `isLogoIncluded` property is set to `true`. */
             logo?: {
                 /**
-                 * @description Set to `true` to include the logo image file identified on the Company Information page in the email template.
+                 * @description Indicates whether to include the logo image file identified on the Company Information page in the email template.
                  * @default false
                  * @example true
                  */
                 isLogoIncluded?: boolean;
                 /**
-                 * @description Vertical logo position. Sets whether the logo should appear at the top or bottom of the email.
+                 * @description Vertical logo position. Sets whether the logo should appear at the `top` or `bottom` of the email.
                  * @default bottom
                  * @example bottom
                  * @enum {string}
                  */
                 verticalPosition?: "top" | "bottom";
                 /**
-                 * @description Horizontal logo position. Sets whether the logo should appear on the left or right side of the email.
+                 * @description Horizontal logo position. Sets whether the logo should appear on the `left` or `right` side of the email.
                  * @default left
                  * @example left
                  * @enum {string}
@@ -5963,13 +5982,13 @@ export interface components {
                 horizontalPosition?: "left" | "right";
             };
             /**
-             * @description Set to `true` to include documents attached to the transaction, such as receipts, in emails sent from transactions. Attachments are emailed in the format in which they were attached to the transaction. For example, if you attached a TXT file, the file is sent as a TXT file.
+             * @description Indicates whether to include documents attached to the transaction, such as receipts, in emails sent from transactions. Attachments are emailed in the format in which they were attached to the transaction. For example, if you attached a TXT file, the file is sent as a TXT file.
              * @default false
              * @example true
              */
             includeTxnAttachments?: boolean;
             /**
-             * @description Set to `true` to include all source document attachments linked to a project invoice when emailing the invoice. Attachments are emailed in the format in which they were attached to the transaction. For example, if you attached a TXT file, the file is sent as a TXT file.
+             * @description Indicates whether to include all source document attachments linked to a project invoice when emailing the invoice. Attachments are emailed in the format in which they were attached to the transaction. For example, if you attached a TXT file, the file is sent as a TXT file.
              * @default false
              * @example true
              */
@@ -5981,18 +6000,17 @@ export interface components {
              * @enum {string}
              */
             templateType?: "arInvoice" | "arStatement" | "dunningNotice" | "contract" | "orderEntryTxn" | "purchasingTxn" | "changeRequest" | "projectChangeOrder" | "compliance" | "closeWorkspaceTaskApproachingDeadline" | "closeWorkspaceOverdueTasks" | "closeWorkspacePrerequisiteTasksAtRisk" | "closeWorkspaceDependentTasksAtRisk" | "closeWorkspaceOutstandingTasksUsers" | "closeWorkspaceAllTasksCompletedUsers" | "closeWorkspacePrerequisiteTaskFinished" | "budgetVariance" | "apRemittance";
+            /** @description Notification configuration for budget variance email. */
             budgetVarianceNotification?: {
                 /**
-                 * @description This field specifies the condition under which a notification is triggered for Budget vs Actuals analysis.
-                 *     This value is only applicable when the `templateType` is set to `budgetVariance`.
+                 * @description This field specifies the condition under which a notification is triggered for Budget vs Actuals analysis. This value is only applicable when the `templateType` is set to `budgetVariance`.
                  * @default null
                  * @example exceedOperatingExpense
                  * @enum {string|null}
                  */
                 notificationType?: null | "exceedOperatingExpense";
                 /**
-                 * @description This field is used to identify the audience for Budget vs Actuals analysis.
-                 *     This value is only applicable when the templateType is set to budgetVariance.
+                 * @description This field is used to identify the audience for Budget vs Actuals analysis. This value is only applicable when the templateType is set to budgetVariance.
                  * @default null
                  * @example managers
                  * @enum {string|null}
@@ -6000,16 +6018,17 @@ export interface components {
                 recipients?: null | "unrestrictedUsers" | "managers";
             };
             /**
-             * @description Set to `true` to use dates in the email in the user preference setting.
+             * @description Indicates whether dates in the email use the date format in the sender's user preference setting.
              * @default false
              * @example true
              */
             useSendersPreferredDateFormat?: boolean;
             /**
-             * @description Combine attachments into a zip file
-             *     - `none` - Do not combine attachments into a zip file
-             *     - `single` - Combine attachments into a single zip file
-             *     - `expenseType` - Combine attachments into a single zip file by expense type
+             * @description Combine attachments into a zip file.
+             *
+             *     - `none` - Do not combine attachments into a zip file.
+             *     - `single` - Combine attachments into a single zip file.
+             *     - `expenseType` - Combine attachments into a single zip file by expense type.
              * @default none
              * @example none
              * @enum {string}
@@ -6018,7 +6037,7 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "company-config-email-templateRequiredProperties": Record<string, never>;
-        /** @description In a multi-entity shared company, entities represent a separate tax identification or a separately secured, fully balancing set of books. */
+        /** @description An entity represents a separate tax identification or a separately secured, fully balancing set of books within a multi-entity shared company. */
         "objects.company-config.entity": {
             /**
              * @description System-assigned unique key for the entity.
@@ -6026,7 +6045,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier of the entity. 20 characters max. The ID cannot be changed after the entity has been created.
+             * @description Unique ID for the entity. 20 characters max. The ID cannot be changed after the entity has been created.
              * @example Lyon
              */
             id?: string;
@@ -6065,23 +6084,23 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description System-assigned key for the transaction currency.
+                 * @description Unique key for the transaction currency.
                  * @example 1
                  */
                 key?: string;
                 /**
-                 * @description Unique currency code. For ISO currency type, the value must be one of ('USD','AED','AFN','ALL','AMD','ANG','AOA','ARS','AUD','AWG','AZN','BAM','BBD','BDT','BGN','BHD','BIF','BMD','BND','BOB','BRL','BSD','BTN','BWP','BYN','BYR','BZD','CAD','CDF','CHF','CLP','CNY','COP','CRC','CUC','CUP','CVE','CZK','DJF','DKK','DOP','DZD','EGP','ERN','ETB','EUR','FJD','**P','GBP','GEL','GHS','GIP','GMD','GNF','GTQ','GYD','HKD','HNL','HRK','HTG','HUF','IDR','ILS','INR','IQD','IRR','ISK','JMD','JOD','JPY','KES','KGS','KHR','KMF','KPW','KRW','KWD','KYD','KZT','LAK','LBP','LKR','LRD','LSL','LYD','MAD','MDL','MGA','MKD','MMK','MNT','MOP','MRO','MUR','MVR','MWK','MXN','MYR','MZN','NAD','NGN','NIO','NOK','NPR','NZD','OMR','PAB','PEN','PGK','PHP','PKR','PLN','PYG','QAR','RON','RSD','RUB','RWF','SAR','SBD','SCR','SDG','SEK','SGD','SHP','SLL','SOS','SRD','STD','SVC','SYP','SZL','THB','TJS','TMT','TND','TOP','TRY','TTD','TWD','TZS','UAH','UGX','UYU','UZS','VEF','VES','VND','VUV','WST','XAF','XCD','XOF','XPF','YER','ZAR','ZMW','ZWL').
+                 * @description ID for the base currency. For ISO currency type, the value must be one of ('USD','AED','AFN','ALL','AMD','ANG','AOA','ARS','AUD','AWG','AZN','BAM','BBD','BDT','BGN','BHD','BIF','BMD','BND','BOB','BRL','BSD','BTN','BWP','BYN','BYR','BZD','CAD','CDF','CHF','CLP','CNY','COP','CRC','CUC','CUP','CVE','CZK','DJF','DKK','DOP','DZD','EGP','ERN','ETB','EUR','FJD','**P','GBP','GEL','GHS','GIP','GMD','GNF','GTQ','GYD','HKD','HNL','HRK','HTG','HUF','IDR','ILS','INR','IQD','IRR','ISK','JMD','JOD','JPY','KES','KGS','KHR','KMF','KPW','KRW','KWD','KYD','KZT','LAK','LBP','LKR','LRD','LSL','LYD','MAD','MDL','MGA','MKD','MMK','MNT','MOP','MRO','MUR','MVR','MWK','MXN','MYR','MZN','NAD','NGN','NIO','NOK','NPR','NZD','OMR','PAB','PEN','PGK','PHP','PKR','PLN','PYG','QAR','RON','RSD','RUB','RWF','SAR','SBD','SCR','SDG','SEK','SGD','SHP','SLL','SOS','SRD','STD','SVC','SYP','SZL','THB','TJS','TMT','TND','TOP','TRY','TTD','TWD','TZS','UAH','UGX','UYU','UZS','VEF','VES','VND','VUV','WST','XAF','XCD','XOF','XPF','YER','ZAR','ZMW','ZWL').
                  * @example USD
                  */
                 id?: string;
             };
             /**
-             * @description First fiscal month.
+             * @description First month of the entity fiscal year.
              * @default null
              */
             firstFiscalMonth?: (string & components["schemas"]["month"]) | null;
             /**
-             * @description First tax month.
+             * @description First month of the entity tax year.
              * @default null
              */
             firstTaxMonth?: (string & components["schemas"]["month"]) | null;
@@ -6102,7 +6121,7 @@ export interface components {
                  */
                 legalCategory?: string;
                 /**
-                 * @description Specifies the primary economic activities the business engages in, helping classify the nature of operations.
+                 * @description Primary economic activities the business engages in, helping classify the nature of operations.
                  * @example 10.3 Transformation and conservation of fruits and vegetables
                  */
                 mainActivity?: string;
@@ -6130,7 +6149,7 @@ export interface components {
                  */
                 message?: string | null;
                 /**
-                 * @description Marketing text.
+                 * @description Marketing text included in entity documents.
                  * @example Intacct. A Better Way to Run Your Business
                  */
                 marketing?: string | null;
@@ -6151,7 +6170,7 @@ export interface components {
                 customTitle?: string | null;
             };
             /**
-             * @description Used in Cash Management (checking account) to indicate whether this is a working entity.
+             * @description Indicates whether the entity is a working entity for Cash Management checking accounts.
              * @default false
              * @example false
              */
@@ -6188,7 +6207,7 @@ export interface components {
              */
             defaultCountryForAddresses?: string & components["schemas"]["country"];
             /**
-             * @description A company's business ID (SIRET) is a 14-digit number that starts with the SIREN (a 9-digit number that identifies the company itself) followed by 5 digits that identifies the company's physical location or branch. For companies operating in France only.
+             * @description A company's business ID (SIRET) is a 14-digit number that starts with the SIREN (a 9-digit number that identifies the company itself) followed by 5 digits that identify the company's physical location or branch. For companies operating in France only. For a French entity enabled for e-invoicing, enter the 9-digit SIREN.
              * @example 453 983 245 12345
              */
             businessId?: string | null;
@@ -6203,16 +6222,22 @@ export interface components {
              * @default null
              */
             operatingCountry?: (string & components["schemas"]["country"]) | null;
+            /**
+             * @description Indicates whether transactions in this entity require an accounting sequence. This value is true for a new French entity or when an existing entity's operating country is changed to France.
+             * @default false
+             * @example true
+             */
+            requireAccountingSequence?: boolean;
             /** @description Legal contact information for the entity to be used on 1099 form, 1096 form, and taxable payments annual report (TPAR). */
             legalContact?: {
                 /**
-                 * @description Set to `true` to include the legal name and address on forms 1099 and 1096 for the entity.
+                 * @description Indicates whether the legal name and address are included on the entity's forms 1099 and 1096.
                  * @default false
                  * @example false
                  */
                 enableOnTaxForms?: boolean;
                 /**
-                 * @description Set to `true` to include the legal name and address on taxable payments annual report (TPAR) for Australian companies and entities.
+                 * @description Indicates whether the legal name and address are included on the taxable payments annual report (TPAR) for Australian companies and entities.
                  * @default false
                  * @example false
                  */
@@ -6298,19 +6323,19 @@ export interface components {
                 };
             };
             /**
-             * @description Set to `true` to enable partial VAT exemption for eligible bill items. Applicable for United Kingdom VAT or France.
+             * @description Indicates whether partial VAT exemption is enabled for eligible bill items in the United Kingdom or France.
              * @default false
              * @example true
              */
             isPartialExempt?: boolean;
             /**
-             * @description Set to `true` to mark items as partially exempt by default on bills and invoices for Accounts Payable and Purchasing with Australia GST (RITC), Canadian Sales Tax (ITC), France, or UK VAT tax solutions.
+             * @description Indicates whether items on bills and invoices for Accounts Payable and Purchasing are partially exempt by default. Applies to Australia GST (RITC), Canadian Sales Tax (ITC), France, or UK VAT tax solutions.
              * @default false
              * @example true
              */
             isDefaultPartialExempt?: boolean;
             /**
-             * @description Accounting type.
+             * @description Accounting classification for the entity.
              * @default entity
              * @example entity
              * @enum {string|null}
@@ -6325,7 +6350,7 @@ export interface components {
             /** @description Customer associated with the entity. */
             customer?: {
                 /**
-                 * @description System-assigned key for the customer.
+                 * @description Unique key for the customer.
                  * @example 15
                  */
                 key?: string | null;
@@ -6335,7 +6360,7 @@ export interface components {
                  */
                 readonly href?: string | null;
                 /**
-                 * @description Unique identifier for the customer.
+                 * @description ID for the customer.
                  * @example C-00003
                  */
                 id?: string;
@@ -6348,7 +6373,7 @@ export interface components {
             /** @description Vendor associated with the entity. */
             vendor?: {
                 /**
-                 * @description System-assigned key for the vendor.
+                 * @description Unique key for the vendor.
                  * @example 15
                  */
                 key?: string;
@@ -6358,7 +6383,7 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description Unique identifier for the vendor.
+                 * @description ID for the vendor.
                  * @example V-00014
                  */
                 id?: string;
@@ -6371,12 +6396,12 @@ export interface components {
             /** @description Unrecoverable tax account used for posting partial exemptions for the entity. Transactions are posted to the GL account if this account is not specified. */
             unrecoverableTaxAccount?: {
                 /**
-                 * @description System-assigned key for the account.
+                 * @description Unique key for the account.
                  * @example 23
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the account.
+                 * @description ID for the unrecoverable tax account.
                  * @example 123.45
                  */
                 id?: string | null;
@@ -6387,7 +6412,7 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Set to `true` to enable using different payable and receivable accounts for inter-entity transactions.
+             * @description Indicates whether inter-entity transactions use different payable and receivable accounts.
              * @default false
              * @example true
              */
@@ -6395,12 +6420,12 @@ export interface components {
             /** @description Inter-entity payable account associated with the entity. Only applicable if `enableInterEntityRelationships` is set to `true`. */
             interEntityPayableGLAccount?: {
                 /**
-                 * @description System-assigned key for the account.
+                 * @description Unique key for the account.
                  * @example 89
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the account.
+                 * @description ID for the inter entity payable GL account.
                  * @example 555.99
                  */
                 id?: string | null;
@@ -6418,12 +6443,12 @@ export interface components {
             /** @description Inter-entity receivable account associated with the entity. Only applicable if `enableInterEntityRelationships` is set to `true`. */
             interEntityReceivableGLAccount?: {
                 /**
-                 * @description System-assigned key for the account.
+                 * @description Unique key for the account.
                  * @example 876
                  */
                 key?: string | null;
                 /**
-                 * @description Unique identifier for the account.
+                 * @description ID for the inter entity receivable GL account.
                  * @example 555.98
                  */
                 id?: string | null;
@@ -6446,12 +6471,12 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description Unique identifier for the employee.
+                 * @description ID for the manager.
                  * @example jsmith
                  */
                 id?: string;
                 /**
-                 * @description System-assigned key for the employee.
+                 * @description Unique key for the manager.
                  * @example 81
                  */
                 key?: string;
@@ -6474,7 +6499,7 @@ export interface components {
             /** @description Tax solution for the entity. Only for companies subscribed to the Taxes application. */
             taxSolution?: {
                 /**
-                 * @description System-assigned key for the tax solution.
+                 * @description Unique key for the tax solution.
                  * @example 23
                  */
                 key?: string;
@@ -6484,7 +6509,7 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
-                 * @description Unique identifier for the tax solution.
+                 * @description ID for the tax solution.
                  * @example Australia - GST
                  */
                 id?: string;
@@ -6496,13 +6521,19 @@ export interface components {
                 taxCalculationMethod?: null | "NoTax" | "SimpleTax" | "AdvancedTax" | "AvaTax" | "VAT";
             };
             /**
-             * @description Set to 'true' to indicate that this is a limited entity.
+             * @description Indicates whether the entity is enabled for Management Console Reporting. A reporting entity can be created only when the company has Management Console Reporting enabled.
+             * @default false
+             * @example false
+             */
+            isReportingEntity?: boolean;
+            /**
+             * @description Indicates whether the entity is a limited entity.
              * @default false
              * @example true
              */
             isLimitedEntity?: boolean;
             /**
-             * @description Set to 'true' to enable e-invoicing for the entity.
+             * @description Indicates whether e-invoicing is enabled for the entity.
              * @default false
              * @example true
              */
@@ -6526,7 +6557,7 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "company-config-entityRequiredProperties": Record<string, never>;
-        /** @description Affiliate entities are associated separate legal entities defined within your Sage Intacct company. You use an affiliate entity to tag the related entity in a transaction, enabling more detailed reporting. Affiliate entity is a read-only standard dimension based on the list of entities in your company. */
+        /** @description Read-only standard dimension representing an affiliate entity used to tag related legal entities on transactions. */
         "objects.company-config.affiliate-entity": {
             /**
              * @description System-assigned unique key for the affiliate entity.
@@ -6534,7 +6565,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the affiliate entity.
+             * @description Unique ID for the affiliate entity.
              * @example E200
              */
             readonly id?: string;
@@ -6559,7 +6590,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the affiliate entity group.
+             * @description Unique ID for the affiliate entity group.
              * @example AF-MBE
              */
             id?: string;
@@ -6581,6 +6612,10 @@ export interface components {
             /**
              * @description Specifies the group membership type, indicating which affiliate entities are included in the group. When reports include affiliate entities in rows or columns, this field also defines the row and column headings and the order in which they are displayed.
              *
+             *
+             *
+             *
+             *
              *       - `specific` - Specify the affiliate entities to include and their order in the `groupMembers` array. You can optionally filter the array with the `memberFilter` settings.
              *       - `all` - All affiliate entities that match the `memberFilter` criteria.
              * @default all
@@ -6590,15 +6625,15 @@ export interface components {
             groupType?: "all" | "specific";
             /** @description One or more filters that define which affiliate entities are included in the group. This can be used with the `groupMembers` array to filter a predefined list of affiliate entities. */
             memberFilter?: components["schemas"]["member-filter"] & Record<string, never>;
-            /** @description Indicates the affiliate entities to include in the group when `groupType` is set to `specific`. */
+            /** @description For `specific` group types, affiliate entities to include in the group. */
             groupMembers?: {
                 /**
-                 * @description Unique key for affiliate entity.
+                 * @description Unique key for the affiliate entity.
                  * @example 23
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the affiliate entity.
+                 * @description ID for the affiliate entity.
                  * @example E200
                  */
                 id?: string;
@@ -6623,7 +6658,7 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "company-config-affiliate-entity-groupRequiredProperties": Record<string, never>;
-        /** @description Configure inter-entity account mapping subscriptions for multi-entity shared companies to designate payable and receivable accounts for inter-entity transactions. */
+        /** @description Inter-entity account mapping subscriptions for multi-entity shared companies designate payable and receivable accounts for inter-entity transactions. */
         "objects.company-config.inter-entity-account-mapping": {
             /**
              * @description System-assigned unique key for the inter-entity account mapping.
@@ -6631,7 +6666,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the inter-entity account mapping. This value is the same as `key` for this object.
+             * @description Unique ID for the inter-entity account mapping. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -6653,7 +6688,7 @@ export interface components {
             /** @description References the inter-entity account mapping details for an advanced `interEntityAccountMappingPlan`. */
             interEntityAdvancedMaps?: components["schemas"]["objects.company-config.inter-entity-advanced-map"][];
         };
-        /** @description Basic inter-entity account mapping enables you to map entities to accounts which post inter-entity transactions (IETs). */
+        /** @description A basic inter-entity account map enables a multi-entity company to map entities to accounts that post inter-entity transactions (IETs). */
         "objects.company-config.inter-entity-basic-map": {
             /**
              * @description System-assigned unique key for the inter-entity basic map.
@@ -6661,7 +6696,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the inter-entity basic map. This value is the same as `key` for this object.
+             * @description Unique ID for the inter-entity basic map. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -6678,7 +6713,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the entity.
+                 * @description ID for the entity.
                  * @example 1
                  */
                 id?: string;
@@ -6701,12 +6736,12 @@ export interface components {
             /** @description References the General Ledger (GL) payable account assigned to the entity to record inter-entity payable (IEP) transactions. */
             interEntityPayableGLAccount?: {
                 /**
-                 * @description Unique key for the GL account.
+                 * @description Unique key for the inter entity payable GL account.
                  * @example 9
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the GL account.
+                 * @description ID for the inter entity payable GL account.
                  * @example 1000
                  */
                 id?: string;
@@ -6716,7 +6751,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL endpoint for the GL account.
+                 * @description URL endpoint for the inter entity payable GL account.
                  * @example /objects/general-ledger/account/9
                  */
                 readonly href?: string;
@@ -6724,12 +6759,12 @@ export interface components {
             /** @description References the General Ledger (GL) receivable account assigned to the entity to record inter-entity receivable (IER) transactions. */
             interEntityReceivableGLAccount?: {
                 /**
-                 * @description Unique key for the GL account.
+                 * @description Unique key for the inter entity receivable GL account.
                  * @example 13
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the GL account.
+                 * @description ID for the inter entity receivable GL account.
                  * @example 1004
                  */
                 id?: string;
@@ -6739,7 +6774,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL endpoint for the GL account.
+                 * @description URL endpoint for the inter entity receivable GL account.
                  * @example /objects/general-ledger/account/13
                  */
                 readonly href?: string;
@@ -6747,24 +6782,24 @@ export interface components {
             /** @description References the account mapping configuration for the inter-entity basic map. */
             readonly interEntityAccountMapping?: {
                 /**
-                 * @description Unique key for the account mapping configuration.
+                 * @description Unique key for the inter entity account mapping.
                  * @example 1
                  */
                 readonly key?: string;
                 /**
-                 * @description Identifier for the account mapping configuration.
+                 * @description ID for the inter entity account mapping.
                  * @example 1
                  */
                 readonly id?: string;
                 /**
-                 * @description URL endpoint for the parent account mapping configuration.
+                 * @description URL endpoint for the inter entity account mapping.
                  * @example /objects/company-config/inter-entity-account-mapping/1
                  */
                 readonly href?: string;
             };
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Advanced inter-entity account mapping enables a multi-entity company to map pairs of transacting entities using up to four accounts to record inter-entity transactions (IETs). */
+        /** @description An advanced inter-entity account map enables a multi-entity company to map pairs of transacting entities using up to four accounts to record inter-entity transactions (IETs). */
         "objects.company-config.inter-entity-advanced-map": {
             /**
              * @description System-assigned unique key for the inter-entity advanced map.
@@ -6772,7 +6807,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the inter-entity advanced map. This value is the same as `key` for this object.
+             * @description Unique ID for the inter-entity advanced map. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -6784,12 +6819,12 @@ export interface components {
             /** @description References the General Ledger (GL) payable account assigned to the entity to record inter-entity payable (IEP) transactions. */
             interEntityPayableGLAccount?: {
                 /**
-                 * @description Unique key for the GLaccount.
+                 * @description Unique key for the inter entity payable GL account.
                  * @example 9
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the GL account.
+                 * @description ID for the inter entity payable GL account.
                  * @example 1000
                  */
                 id?: string;
@@ -6799,7 +6834,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL endpoint for the GL account.
+                 * @description URL endpoint for the inter entity payable GL account.
                  * @example /objects/general-ledger/account/9
                  */
                 readonly href?: string;
@@ -6807,12 +6842,12 @@ export interface components {
             /** @description References the General Ledger (GL) receivable account assigned to the entity to record inter-entity receivable (IER) transactions. */
             interEntityReceivableGLAccount?: {
                 /**
-                 * @description Unique key for the GL account.
+                 * @description Unique key for the inter entity receivable GL account.
                  * @example 13
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the GL account.
+                 * @description ID for the inter entity receivable GL account.
                  * @example 1004
                  */
                 id?: string;
@@ -6822,7 +6857,7 @@ export interface components {
                  */
                 readonly name?: string;
                 /**
-                 * @description URL endpoint for the GL account.
+                 * @description URL endpoint for the inter entity receivable GL account.
                  * @example /objects/general-ledger/account/13
                  */
                 readonly href?: string;
@@ -6835,7 +6870,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the source entity.
+                 * @description ID for the source entity.
                  * @example 1
                  */
                 id?: string;
@@ -6863,7 +6898,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the target entity.
+                 * @description ID for the target entity.
                  * @example 2
                  */
                 id?: string;
@@ -6886,23 +6921,23 @@ export interface components {
             /** @description References the account mapping configuration for the inter-entity advanced map. */
             readonly interEntityAccountMapping?: {
                 /**
-                 * @description Unique key for the account mapping configuration. This value is always '1' for this object.
+                 * @description Unique key for the inter entity account mapping. This value is always '1' for this object.
                  * @example 1
                  */
                 readonly key?: string;
                 /**
-                 * @description Identifier for the account mapping configuration. This value is the same as `key` for this object.
+                 * @description ID for the inter entity account mapping. This value is the same as `key` for this object.
                  * @example 1
                  */
                 readonly id?: string;
                 /**
-                 * @description URL endpoint for the account mapping configuration.
+                 * @description URL endpoint for the inter entity account mapping.
                  * @example /objects/company-config/inter-entity-account-mapping/1
                  */
                 readonly href?: string;
             };
         };
-        /** @description Exchange rates convert one currency to another when a company chooses not to use the Intacct Daily Rate. */
+        /** @description An exchange rate converts one currency to another when a company does not use the Intacct Daily Rate and defines the currency pair, rate type, and dated conversion entries. */
         "objects.company-config.exchange-rate": {
             /**
              * @description System-assigned unique key for the exchange rate.
@@ -6910,7 +6945,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the exchange rate. This is the same as `key` for this object.
+             * @description Unique ID for the exchange rate. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -6920,16 +6955,16 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Specifies the currency of the original transaction being converted from.
+             * @description Currency of the original transaction being converted from.
              * @example USD
              */
             fromCurrency?: string;
             /**
-             * @description Specifies the currency of the transaction being converted to.
+             * @description Currency of the transaction being converted to.
              * @example GBP
              */
             toCurrency?: string;
-            /** @description Indicates the exchange rate type being converted. */
+            /** @description Exchange rate type being converted. */
             exchangeRateType?: {
                 /**
                  * @description Unique key for the exchange rate type.
@@ -6937,7 +6972,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Exchange rate type ID.
+                 * @description ID for the exchange rate type.
                  * @example 123
                  */
                 id?: string;
@@ -6957,7 +6992,7 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "company-config-exchange-rateRequiredProperties": Record<string, never>;
-        /** @description Exchange rate lines are entries within an exchange rate object that contain details such as effective start date, exchange rate, and reciprocal rate. */
+        /** @description An exchange rate line is an entry within an exchange rate that contains its effective start date, conversion rate, and reciprocal rate. */
         "objects.company-config.exchange-rate-line": {
             /**
              * @description System-assigned unique key for the exchange rate line.
@@ -6965,7 +7000,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the exchange rate line. This value is the same as `key` for this object.
+             * @description Unique ID for the exchange rate line. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -6976,7 +7011,7 @@ export interface components {
             readonly href?: string;
             /**
              * Format: date
-             * @description Specifies the date the exchange rate becomes effective.
+             * @description Date the exchange rate becomes effective.
              * @example 2021-01-31
              */
             effectiveStartDate?: string;
@@ -6986,7 +7021,7 @@ export interface components {
              */
             rate?: number;
             /**
-             * @description Specifies the reverse of the conversion rate (`rate`). For example, if you are establishing a `rate` to convert dollars to Euros, the `reciprocalRate` is used to convert Euros to dollars.
+             * @description Reverse of the conversion rate (`rate`). For example, if you are establishing a `rate` to convert dollars to Euros, the `reciprocalRate` is used to convert Euros to dollars.
              * @example 0.5
              */
             reciprocalRate?: number;
@@ -6998,7 +7033,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the exchange rate.
+                 * @description ID for the exchange rate.
                  * @example 23
                  */
                 id?: string;
@@ -7011,7 +7046,7 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "company-config-exchange-rate-lineRequiredProperties": Record<string, never>;
-        /** @description Exchange rate types control how currency conversions are applied in Sage Intacct, enabling foreign currency transactions to use exchange rates tailored to specific business needs. */
+        /** @description An exchange rate type controls how currency conversions are applied and lets foreign-currency transactions use rates tailored to business needs. */
         "objects.company-config.exchange-rate-type": {
             /**
              * @description System-assigned unique key for the exchange rate type.
@@ -7019,12 +7054,12 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the exchange rate type.
+             * @description Unique ID for the exchange rate type.
              * @example 23
              */
             readonly id?: string;
             /**
-             * @description URL endpoint for the the exchange rate type.
+             * @description URL endpoint for the exchange rate type.
              * @example /objects/company-config/exchange-rate-type/23
              */
             readonly href?: string;
@@ -7042,37 +7077,43 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "company-config-exchange-rate-typeRequiredProperties": Record<string, never>;
-        /** @description User information */
+        /** @description A user is an individual who has access to Sage Intacct. */
         "objects.company-config.user": {
             /**
-             * @description System-assigned unique key for the user. Used to identify the user in URLs or JSON bodies for all operations on the user.
+             * @description System-assigned unique key for the user. This key identifies the user in URLs or JSON bodies for all operations on the user.
              * @example 29
              */
             readonly key?: string;
             /**
-             * @description User login ID. This unique identifier cannot be changed after the user is created.
+             * @description Unique ID for the user. This login ID cannot be changed after the user is created.
              * @example john.doe
              */
             id?: string;
             /**
-             * @description The name that will be used to identify the user. This name is displayed in the user interface.
+             * @description Name used to identify the user and displayed in the user interface.
              * @example John Doe
              */
             userName?: string;
             /**
-             * @description User email address.
+             * @description Email address for the user.
              * @example john.doe@company.com
              */
             accountEmail?: string;
             /**
-             * @description The user type for this user. User types determines the _maximum_ set of features and activities that a user can access and perform in Intacct. The things a user can do also depend on the permissions that are assigned to the user. For more information see [User types](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_user_types).
+             * Format: date
+             * @description Date the user's account email address was most recently verified.
+             * @example 2026-07-24
+             */
+            readonly lastEmailVerifiedDate?: string | null;
+            /**
+             * @description User type that determines the _maximum_ set of features and activities the user can access and perform in Intacct. The user's permissions also determine what they can do. For more information, see [User types](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_user_types).
              * @default business
              * @example employee
              * @enum {string}
              */
             userType?: "business" | "employee" | "viewOnly" | "dashboard" | "projectManager" | "paymentApprover" | "client" | "platform" | "crm" | "warehouse" | "constructionManager";
             /**
-             * @description User admin privileges.
+             * @description Level of administrator privileges for the user.
              *
              *     * `off` - No admin privileges
              *     * `full` - Complete administration privileges including the ability to create other full administrators and use Platform Services features. Requires that `userType` is set to `business`.
@@ -7083,7 +7124,7 @@ export interface components {
              */
             adminPrivileges?: "off" | "limited" | "full";
             /**
-             * @description User status.
+             * @description Current status of the user.
              *
              *     - `active` - The user can log in and access Intacct.
              *     - `inactive` -  Hides the user from lists throughout Intacct but retains the user information in the system. Cannot be used when creating a new user.
@@ -7093,15 +7134,15 @@ export interface components {
              * @enum {string}
              */
             status?: "active" | "inactive" | "lockedOut";
-            /** @description Specifies whether the user is allowed to use Sage Intacct Web Services (API). */
+            /** @description Web Services access settings for the user. */
             webServices?: {
                 /**
-                 * @description Set to `true` to allow the user to use web services.
+                 * @description Indicates whether the user is allowed to use Web Services. Set to `true` to allow Web Services use.
                  * @example true
                  */
                 readonly isEnabled?: boolean;
                 /**
-                 * @description Specifies whether the user is restricted to Web Services only. That is, when set to `true` the user cannot log in to the Sage Intacct user interface.
+                 * @description Indicates whether the user is restricted to Web Services only. When set to `true`, the user cannot log in to the Sage Intacct user interface.
                  * @default false
                  * @example true
                  */
@@ -7110,19 +7151,19 @@ export interface components {
             /** @description Password properties. */
             password?: {
                 /**
-                 * @description Specifies whether the user's password expires. Set to `true` to prevent the user's password from expiring. Use this setting only for Web Services API users.
+                 * @description Indicates whether the user's password is set to never expire. Set to `true` to prevent the password from expiring. Use this setting only for Web Services API users.
                  * @default false
                  * @example true
                  */
                 neverExpires?: boolean;
                 /**
-                 * @description Set to `true` to trigger the password reset flow for the user.
+                 * @description Indicates whether to trigger the password reset flow for the user. Set to `true` to trigger the flow.
                  * @default false
                  * @example false
                  */
                 requiresReset?: boolean;
                 /**
-                 * @description Specifies whether password requirements are disabled for the user.
+                 * @description Indicates whether password requirements are disabled for the user.
                  * @default false
                  * @example false
                  */
@@ -7131,7 +7172,7 @@ export interface components {
             /** @description Single sign-on settings for the user. */
             sso?: {
                 /**
-                 * @description Specifies whether single sign-on is enabled for the user.
+                 * @description Indicates whether single sign-on is enabled for the user.
                  * @default false
                  * @example true
                  */
@@ -7142,23 +7183,35 @@ export interface components {
                  */
                 federatedSSOId?: string;
             };
-            /** @description Entity level restrictions. */
+            /** @description Entity-level access restrictions for the user. */
             entityAccess?: {
                 /**
-                 * @description Specifies whether the user can access all entities in the company. Set to `false` to restrict the user to the entities listed in the `entities` array.
+                 * @description Indicates whether the user can access all entities in the company. Set to `false` to restrict the user to the entities listed in the `entities` array.
                  * @default true
                  * @example true
                  */
                 allowUnrestrictedAccess?: boolean;
                 /**
-                 * @description Specifies whether the user can access the top-level entity in the company. It's a best practice to enable access to the top level for all users who are restricted to a single entity in a multi-entity shared company.
+                 * @description Indicates whether the user can access the top-level entity in the company. It's a best practice to enable top-level access for users restricted to a single entity in a multi-entity shared company.
                  * @default false
                  * @example false
                  */
                 allowTopLevelAccess?: boolean;
             };
-            /** @description The contact associated with this user. */
+            /** @description Contact associated with the user. */
             contact?: components["schemas"]["contact-ref"] & Record<string, never>;
+            /**
+             * @description Suite application IDs for products that the user can access. Each suite application must be enabled in
+             *     the Suites configuration and assigned to the company before it can be assigned to a user.
+             *     `SI_FINANCIALS` is required when `userType` is `business`.
+             *
+             *     Examples include `SI_FINANCIALS`, `SI_PLANNING_ACCELERATE`, and `SI_CONSTRUCTION_MANAGEMENT`.
+             * @example [
+             *       "SI_FINANCIALS",
+             *       "SI_PLANNING_ACCELERATE"
+             *     ]
+             */
+            productAccess?: string[];
             /**
              * @description Whether to recognize trusted devices for the user-- always, never, or use the company setting.
              * @default companyDefault
@@ -7167,35 +7220,35 @@ export interface components {
              */
             trustedDevices?: "companyDefault" | "always" | "never";
             /**
-             * @description Specifies whether the Intacct Collaborate feature is disabled for the user.
+             * @description Indicates whether the Intacct Collaborate feature is disabled for the user.
              * @default false
              * @example false
              */
             isChatterDisabled?: boolean;
             /**
-             * @description Specifies whether to hide transactions from this user that do not belong to the departments listed in the `departments` array.
+             * @description Indicates whether to hide transactions from the user that do not belong to the departments listed in the `departments` array.
              * @default false
              * @example false
              */
             hideOtherDepartmentTransactions?: boolean;
             /**
              * @deprecated
-             * @description This object array is deprecated, please use the `entities` array.
+             * @description Deprecated. Use the `entities` array instead.
              */
             locations?: {
                 /**
                  * @deprecated
-                 * @description Location key.
+                 * @description Unique key for the location.
                  */
                 key?: string;
                 /**
                  * @deprecated
-                 * @description Location ID.
+                 * @description ID for the location.
                  */
                 id?: string;
                 /**
                  * @deprecated
-                 * @description Endpoint URL for the location.
+                 * @description URL endpoint for the location.
                  */
                 readonly href?: string;
             }[];
@@ -7207,7 +7260,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Entity ID.
+                 * @description ID for the entity.
                  * @example PNW
                  */
                 id?: string;
@@ -7225,7 +7278,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Department ID.
+                 * @description ID for the department.
                  * @example Sales
                  */
                 id?: string;
@@ -7243,7 +7296,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Territory ID.
+                 * @description ID for the territory.
                  * @example T1
                  */
                 id?: string;
@@ -7261,7 +7314,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Role ID.
+                 * @description Name of the role.
                  * @example Employee
                  */
                 id?: string;
@@ -7281,7 +7334,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Permission ID.
+                     * @description ID for the permission.
                      * @example 414
                      */
                     id?: string;
@@ -7312,7 +7365,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Custom application ID.
+                     * @description Name of the custom application.
                      * @example Custom Dimension
                      */
                     id?: string;
@@ -7384,12 +7437,12 @@ export interface components {
                 /** @description Copilot agent. */
                 agent?: {
                     /**
-                     * @description System-assigned key for the agent.
+                     * @description Unique key for the agent.
                      * @example 9030801000000002
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the agent.
+                     * @description ID for the agent.
                      * @example scm-to-transaction-converter
                      */
                     id?: string;
@@ -7441,13 +7494,13 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description URL endpoint for user.
+             * @description URL endpoint for the user.
              * @example /objects/company-config/user/21
              */
             readonly href?: string;
         };
         "company-config-userRequiredProperties": Record<string, never>;
-        /** @description List of users assigned to user groups. */
+        /** @description A user group defines users and their shared role-based permissions in Sage Intacct. */
         "objects.company-config.user-group": {
             /**
              * @description System-assigned unique key for the user group.
@@ -7455,7 +7508,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Name of the user group. The name cannot be changed after the group is created.
+             * @description Unique ID for the user group. This ID is the group name, which cannot be changed after the group is created.
              * @example AP
              */
             id?: string;
@@ -7472,7 +7525,7 @@ export interface components {
             /** @description List of roles assigned to the user group. All users in the group inherit the permissions defined by the roles. Only applies to companies that use role-based permissions instead of user-based permissions. */
             roles?: {
                 /**
-                 * @description Unique key of the role.
+                 * @description Unique key for the role.
                  * @example 7
                  */
                 key?: string;
@@ -7482,7 +7535,7 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description Endpoint of the role.
+                 * @description URL endpoint for the role.
                  * @example /objects/company-config/role/7
                  */
                 readonly href?: string;
@@ -7551,15 +7604,15 @@ export interface components {
             audit?: components["schemas"]["audit.s2"];
         };
         "company-config-member-user-groupRequiredProperties": Record<string, never>;
-        /** @description A user role. */
+        /** @description A role groups permissions that can be assigned to users or user groups. */
         "objects.company-config.role": {
             /**
-             * @description System-assigned unique key for the role. Used to identify the role in URLs or JSON bodies for all operations on the role.
+             * @description System-assigned unique key for the role.
              * @example 24
              */
             readonly key?: string;
             /**
-             * @description Unique ID for the role. Cannot be changed after the role is created.
+             * @description Unique ID for the role. This value cannot be changed after the role is created.
              *
              *     Note that the `id` values for system-generated roles begin with `::SYS::`.
              * @example Employee
@@ -7578,8 +7631,8 @@ export interface components {
             /**
              * @description The type of company in which the role will be used.
              *
-             *     * `enterprise`: A single entity company with unique chart of accounts.
-             *     * `eConsole`: Accountant or Partner console.
+             *     * `enterprise`: A single-entity company with a unique chart of accounts.
+             *     * `eConsole`: An accountant or partner console.
              *     * `multiEntityDistributed`: Separate companies with different charts of accounts accessed from a Management console.
              *     * `multiEntityShared`: Multiple units or locations with the same chart of accounts.
              * @default enterprise
@@ -7588,15 +7641,15 @@ export interface components {
              */
             roleType?: "enterprise" | "eConsole" | "multiEntityDistributed" | "multiEntityShared";
             /**
-             * @description Role is applicable to users with specified access method.
+             * @description Access methods to which the role applies.
              * @default loginAndSlideIn
              * @example loginAndSlideIn
              * @enum {string}
              */
             applyTo?: "loginAndSlideIn" | "loginOnly" | "slideInOnly";
-            /** @description Array of permissions and access rights for the role. */
+            /** @description Permissions and access rights assigned to the role. */
             rolePermissionAssignments?: components["schemas"]["objects.company-config.role-permission-assignment"][];
-            /** @description Array of permissions for custom applications. */
+            /** @description Permissions for custom applications. */
             customRolePermissionAssignments?: {
                 application?: {
                     /**
@@ -7672,7 +7725,7 @@ export interface components {
                  */
                 allowedAccessRights?: components["schemas"]["permission-access-rights"][];
             }[];
-            /** @description List of permissions for Copilot agents. */
+            /** @description Permissions for Copilot agents. */
             agentRolePermissionAssignments?: {
                 /** @description Copilot agent. */
                 agent?: {
@@ -7709,22 +7762,22 @@ export interface components {
                  */
                 allowedAccessRights?: components["schemas"]["permission-access-rights"][];
             }[];
-            /** @description Array of users assigned to the role. */
+            /** @description Users assigned to the role. */
             readonly roleUsers?: components["schemas"]["objects.company-config.role-user-map"][];
-            /** @description Array of user groups assigned to the role. */
+            /** @description User groups assigned to the role. */
             readonly roleGroups?: components["schemas"]["objects.company-config.role-user-group-map"][];
             audit?: components["schemas"]["audit.s1"];
         };
         "company-config-roleRequiredProperties": Record<string, never>;
-        /** @description Map of roles assigned to users. */
+        /** @description Associates a role with a user. */
         "objects.company-config.role-user-map": {
             /**
-             * @description System-assigned key for the role user map.
+             * @description System-assigned unique key for the role user map.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the roll user map. This value is the same as the `key` for this object.
+             * @description Unique ID for the role user map. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -7733,15 +7786,15 @@ export interface components {
              * @example /objects/company-config/role-user-map/23
              */
             readonly href?: string;
-            /** @description A role assigned to the user. */
+            /** @description Role assigned to the user. */
             readonly role?: {
                 /**
-                 * @description Role key.
+                 * @description Unique key for the role.
                  * @example 469
                  */
                 readonly key?: string;
                 /**
-                 * @description Role name.
+                 * @description Name of the role.
                  * @example Admin role
                  */
                 readonly id?: string;
@@ -7754,12 +7807,12 @@ export interface components {
             /** @description User to whom the role is assigned. */
             readonly user?: {
                 /**
-                 * @description User key.
+                 * @description Unique key for the user.
                  * @example 189
                  */
                 readonly key?: string;
                 /**
-                 * @description User login ID.
+                 * @description Login ID for the user.
                  * @example Admin
                  */
                 readonly id?: string;
@@ -7771,7 +7824,7 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Map of roles assigned to user groups. */
+        /** @description Associates a role with a user group. */
         "objects.company-config.role-user-group-map": {
             /**
              * @description System-assigned unique key for the role user group map.
@@ -7779,7 +7832,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the roll user group map. This value is the same as the `key` for this object.
+             * @description Unique ID for the role user group map. This value is the same as the `key` for this object.
              * @example 761
              */
             readonly id?: string;
@@ -7791,12 +7844,12 @@ export interface components {
             /** @description Role assigned to the user group. */
             readonly role?: {
                 /**
-                 * @description Role key.
+                 * @description Unique key for the role.
                  * @example 805
                  */
                 readonly key?: string;
                 /**
-                 * @description Role name.
+                 * @description Name of the role.
                  * @example ::SYS::Multi Entity Shared-ROLE-FOR - Aaron
                  */
                 readonly id?: string;
@@ -7809,12 +7862,12 @@ export interface components {
             /** @description User group that has the assigned role. */
             readonly userGroup?: {
                 /**
-                 * @description User group key.
+                 * @description Unique key for the user group.
                  * @example 1
                  */
                 readonly key?: string;
                 /**
-                 * @description User group name.
+                 * @description Name of the user group.
                  * @example Bypass group
                  */
                 readonly id?: string;
@@ -7826,7 +7879,7 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Permission definition. */
+        /** @description Defines an available permission and its allowed access rights. */
         "objects.company-config.permission": {
             /**
              * @description System-assigned unique key for the permission. Used to identify the permission in URLs or JSON bodies for all operations on the permission.
@@ -7834,7 +7887,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique ID for the permission. Same as `key` for this object.
+             * @description Unique ID for the permission. This value is the same as the `key` for this object.
              * @example 24
              */
             readonly id?: string;
@@ -7846,7 +7899,7 @@ export interface components {
             module?: components["schemas"]["module"];
             name?: components["schemas"]["permission-name"];
             /**
-             * @description The group that a standard permission belongs to.
+             * @description Group to which a standard permission belongs.
              * @example activitiesAndLists
              * @enum {string|null}
              */
@@ -7861,15 +7914,15 @@ export interface components {
              */
             readonly allowedAccessRights?: components["schemas"]["permission-access-rights"][];
         };
-        /** @description List of permissions assigned to the roles for standard objects. */
+        /** @description Assigns a permission and its access rights to a role. */
         "objects.company-config.role-permission-assignment": {
             /**
-             * @description System-assigned key for the role permission assignment.
+             * @description System-assigned unique key for the role permission assignment.
              * @example 1748
              */
             readonly key?: string;
             /**
-             * @description Role permission assignment ID. Same as `key` for this object.
+             * @description Unique ID for the role permission assignment. This value is the same as the `key` for this object.
              * @example 1748
              */
             readonly id?: string;
@@ -7878,15 +7931,15 @@ export interface components {
              * @example /objects/company-config/role-permission-assignment/1748
              */
             readonly href?: string;
-            /** @description Role that the permission and access rights are assigned to. */
+            /** @description Role to which the permission and access rights are assigned. */
             readonly role?: {
                 /**
-                 * @description Role key.
+                 * @description Unique key for the role.
                  * @example 528
                  */
                 readonly key?: string;
                 /**
-                 * @description Role ID.
+                 * @description ID for the role.
                  * @example ::SYS::Multi Entity Shared-ROLE-FOR - EMP4-US
                  */
                 readonly id?: string;
@@ -7899,12 +7952,12 @@ export interface components {
             /** @description Permission assigned to the role. */
             permission?: {
                 /**
-                 * @description Permission key.
+                 * @description Unique key for the permission.
                  * @example 3295
                  */
                 key?: string;
                 /**
-                 * @description Permission ID.
+                 * @description ID for the permission.
                  * @example 3295
                  */
                 id?: string;
@@ -7930,19 +7983,28 @@ export interface components {
             accessRights?: components["schemas"]["permission-access-rights"][];
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Provides information about field level changes for a given object. */
+        /** @description Provides information about field-level changes for a given object. */
         "objects.company-config.audit-history": {
             /**
              * Format: base64url
-             * @description System-assigned key for the audit history.
+             * @description System-assigned unique key for the audit history.
              * @example OTA6MjgwOTU4
              */
             readonly key?: string;
             /**
-             * @description Internal audit trail identifier for the modification.
+             * @description ID for the audit history. This value is unique per audit instance and not per field-level change.
+             *
+             *     This field will change in future versions to reflect the unique key of the audit history (same as the `key` field).
+             *     The current value will still be accessible via the `recordId` field.
              * @example 12:221
              */
             readonly id?: string;
+            /**
+             * @description ID for the audit history. This value is unique per audit instance and not per field-level change.
+             * @example 12:221
+             */
+            readonly recordId?: string;
+            /** @description Details about what changed. */
             changeDetails?: {
                 /**
                  * @description Name of the object that was accessed or modified.
@@ -7970,13 +8032,15 @@ export interface components {
                  */
                 readonly newValue?: string;
             };
+            /** @description Details about the source of the change. */
             changeSource?: {
                 /**
                  * @description Source where the access or modification originated.
+                 * @default null
                  * @example userInterface
-                 * @enum {string}
+                 * @enum {string|null}
                  */
-                readonly source?: "userInterface" | "api" | "csvImport" | "system" | "smartEvent" | "importService" | "copilot";
+                readonly source?: null | "userInterface" | "api" | "csvImport" | "system" | "smartEvent" | "importService" | "copilot";
                 /**
                  * @description Login ID of the user who modified the object.
                  * @example Admin
@@ -7993,7 +8057,7 @@ export interface components {
                  * @example modify
                  * @enum {string}
                  */
-                readonly actionPerformed?: "access" | "create" | "delete" | "modify" | "workflow" | "userAction" | "activity" | "systemAudit";
+                readonly actionPerformed?: "access" | "create" | "delete" | "modify" | "workflow" | "userAction" | "activity" | "systemAudit" | "login" | "platformDefinition" | "platformAction";
                 /**
                  * @description If the modification made was due to a workflow action, this field contains the identifier for the workflow.
                  * @example 2
@@ -8014,6 +8078,16 @@ export interface components {
                  * @example sage_client_01
                  */
                 readonly clientId?: string;
+                /**
+                 * @description Name of the OAuth application associated with the client ID that triggered the change. This is a derived display field; use `clientId` for filtering.
+                 * @example Sage HR Connect
+                 */
+                readonly applicationName?: string | null;
+                /**
+                 * @description Agent ID associated with the API request that triggered the change.
+                 * @example sage_agent_01
+                 */
+                readonly agentId?: string | null;
             };
             /**
              * @description System-generated details about the modified record.
@@ -8026,52 +8100,53 @@ export interface components {
              */
             readonly href?: string;
         };
-        /** @description Provides information about access to a given object. */
+        /** @description Provides detailed information about access to or modification of personal data stored in contact, customer, and vendor records for compliance with data protection laws such as HIPAA. */
         "objects.company-config.advanced-audit-history": {
             /**
              * Format: base64url
-             * @description System-assigned key for the advanced audit history.
+             * @description System-assigned unique key for the advanced audit history.
              * @example OTA6MjgwOTU4
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the advanced audit history.
+             * @description Unique ID for the advanced audit history.
              * @example 103:305:DISPLAYCONTACT.INITIAL:JohnDoe
              */
             readonly id?: string;
             accessDetails?: {
                 /**
-                 * @description Name of the object that was accessed or modified. This value is `null` if the audit is related to an administrative task, such as a password change.
+                 * @description Name of the record that was accessed or modified.
+                 *     This value is `null` if the audit is related to an administrative task, such as a password change.
                  * @example company-config/contact
                  * @enum {string}
                  */
                 readonly objectName?: "company-config/contact" | "accounts-payable/vendor" | "accounts-receivable/customer" | null;
                 /**
-                 * @description Unique identifier for the object.
+                 * @description ID for the record that was accessed or modified.
                  * @example 23
                  */
                 readonly objectId?: string;
             };
             accessSource?: {
                 /**
-                 * @description Login ID of the user who modified the object.
+                 * @description Login ID of the user who performed the access or modification.
                  * @example Admin
                  */
                 readonly completedBy?: string;
                 /**
                  * Format: date-time
-                 * @description Date and time when the object was accessed.
+                 * @description Date and time when the record was accessed.
                  * @example 2024-02-13T11:28:45Z
                  */
                 readonly accessDateTime?: string;
                 /**
-                 * @description The type of the action performed on the object.
+                 * @description Type of action performed on the record.
                  * @example personalData
                  * @enum {string}
                  */
                 readonly actionPerformed?: "personalDataAccess" | "dataChange";
                 /**
-                 * @description If the modification made was due to a workflow action, this field contains the identifier for the workflow.
+                 * @description For modifications made through a workflow action, ID for the workflow that made the change.
                  * @example 5
                  */
                 readonly workflowAction?: string;
@@ -8086,6 +8161,16 @@ export interface components {
                  * @enum {string}
                  */
                 readonly source?: "userInterface" | "api" | "csvImport" | "system" | "smartEvent" | "importService" | "copilot";
+                /**
+                 * @description The sender ID of the partner or integration that initiated the request. Only populated for API-originated actions.
+                 * @example acme_partner
+                 */
+                readonly senderId?: string | null;
+                /**
+                 * @description The client application ID that initiated the request. Only populated for API-originated actions.
+                 * @example acme_integration_app
+                 */
+                readonly clientApplicationId?: string | null;
             };
             /**
              * @description URL endpoint for the advanced audit history.
@@ -8101,33 +8186,33 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Name for the cloud storage.
+             * @description Unique ID for the cloud storage.
              * @example Amazon Storage Plan
              */
             id?: string;
             /**
-             * @description Endpoint URL for the cloud storage.
+             * @description URL endpoint for the cloud storage.
              * @example /objects/company-config/cloud-storage/44
              */
             readonly href?: string;
             /**
-             * @description Cloud storage targets supported for Intacct report delivery.
+             * @description Type of cloud storage target supported for report delivery.
              * @example box
              * @enum {string}
              */
             storageType?: "http" | "dropbox" | "googleDrive" | "box" | "aws" | "oneDrive" | "azureStorage";
             /**
-             * @description Set internally at the time of delivery service creation. If the `storageType' field is set to:
+             * @description Set internally at the time of delivery service creation. If the `storageType` field is set to:
              *
              *     * `http`, `aws`, or `azureStorage` - this field is set to `active`
-             *     * 'googleDrive', 'box', or 'oneDrive' - based on the OAuth authorization token, this field is set to `loggedIn` or `loggedOut`
-             *     * 'dropbox' - based on the OAuth secret, this field is set to `loggedIn` or `loggedOut`
+             *     * `googleDrive`, `box`, or `oneDrive` - based on the OAuth authorization token, this field is set to `loggedIn` or `loggedOut`
+             *     * `dropbox` - based on the OAuth secret, this field is set to `loggedIn` or `loggedOut`
              * @example loggedIn
              * @enum {string}
              */
             readonly state?: "loggedIn" | "loggedOut" | "active";
             /**
-             * @description The email address where any error reports for the cloud storage target are sent.
+             * @description Email address where any error reports for the cloud storage target are sent.
              * @example john.doe@sage.com
              */
             errorNotificationEmail?: string;
@@ -8161,18 +8246,18 @@ export interface components {
              */
             isPrivate?: boolean;
             /**
-             * @description The location relative to the top level of the cloud storage target, where reports are to be delivered.
+             * @description Location relative to the top level of the cloud storage target, where reports are to be delivered.
              * @example /
              */
             path?: string;
             /**
              * Format: date-time
              * @description Date and time of the most recent delivery.
-             * @example 2023-01-12T18:08:58Z
+             * @example 2026-01-12T18:08:58Z
              */
             readonly lastDeliveryDateTime?: string;
             /**
-             * @description The status of the most recent delivery.
+             * @description Status of the most recent delivery.
              * @example Delivery error
              */
             lastDeliveryStatus?: string;
@@ -8192,8 +8277,8 @@ export interface components {
                 /**
                  * @description Restrict file access to one of the following:
                  *
-                 *     * `bucketOwnersOnly` - restricts file access to the Amazon S3 bucket owner and the account owner
-                 *     * `authenticatedUsers` -  allows any Amazon Web Services user access to the file with the Amazon S3 file URL
+                 *     * `bucketOwnerOnly` - restricts file access to the Amazon S3 bucket owner and the account owner
+                 *     * `authenticatedUsers` - allows any Amazon Web Services user access to the file with the Amazon S3 file URL
                  *     * `public` - unrestricted
                  * @default bucketOwnerOnly
                  * @example bucketOwnerOnly
@@ -8201,10 +8286,10 @@ export interface components {
                  */
                 restrictFileAccess?: "public" | "authenticatedUsers" | "bucketOwnerOnly";
             };
-            /** @description The user who owns the cloud storage target. */
+            /** @description User who owns the cloud storage target. */
             owner?: {
                 /**
-                 * @description Sysstem-assigned key for the user.
+                 * @description Unique key for the user.
                  * @example 1
                  */
                 key?: string;
@@ -8214,12 +8299,12 @@ export interface components {
                  */
                 id?: string;
                 /**
-                 * @description The name for the user.
+                 * @description Name for the user.
                  * @example ADMIN
                  */
                 readonly userName?: string;
                 /**
-                 * @description Endpoint URL for the user.
+                 * @description URL endpoint for the user.
                  * @example /objects/company-config/user/1
                  */
                 readonly href?: string;
@@ -8247,20 +8332,20 @@ export interface components {
             readonly href?: string;
             /**
              * Format: date
-             * @description The date the company message was created.
-             * @example 2025-08-10
+             * @description Date the company message was created.
+             * @example 2026-08-10
              */
             readonly createdDate?: string;
             /**
              * Format: date
-             * @description The date the company message was last updated.
-             * @example 2025-08-10
+             * @description Date the company message was last updated.
+             * @example 2026-08-10
              */
             readonly lastUpdatedDate?: string;
             /**
              * Format: date
-             * @description The date the company message expires.
-             * @example 2025-09-19
+             * @description Date the company message expires.
+             * @example 2026-09-19
              */
             expirationDate?: string;
             /**
@@ -8287,7 +8372,7 @@ export interface components {
              * @example New office hours will be effective starting next week
              */
             message?: string;
-            /** @description Reference to the user associated with the company message. */
+            /** @description User associated with the company message. */
             readonly postedBy?: {
                 /**
                  * @description System-assigned key for the user.
@@ -8305,7 +8390,7 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Reference to the entity associated with the company message. */
+            /** @description Entity associated with the company message. */
             entity?: {
                 /**
                  * @description System-assigned key for the entity.
@@ -8332,7 +8417,7 @@ export interface components {
             audit?: components["schemas"]["audit.s2"];
         };
         "company-config-company-messageRequiredProperties": Record<string, never>;
-        /** @description A cover letter is a document that you can include in a group of reports. When you send the group of reports, use the cover letter to introduce the reports and describe what information they contain. In Intacct, you can create a cover letter and include it in a memorized report group. */
+        /** @description A cover letter template provides a document that you can create in Sage Intacct and include in a group of reports, including a memorized report group, to introduce the reports and describe the information they contain when the group is sent. */
         "objects.company-config.cover-letter-template": {
             /**
              * @description System-assigned unique key for the cover letter template.
@@ -8340,7 +8425,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the cover letter template. This value is the same as the `key` for this object.
+             * @description Unique ID for the cover letter template. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -8355,7 +8440,7 @@ export interface components {
              */
             name?: string;
             /**
-             * @description Description for the cover letter template.
+             * @description Description of the cover letter template included with reports.
              * @example The cover letter provides information about the application
              */
             description?: string;
@@ -8374,12 +8459,12 @@ export interface components {
                  */
                 data?: string;
                 /**
-                 * @description Filename for the cover letter template file, without extension.
+                 * @description Filename for the cover letter template file, without the extension.
                  * @example applicationDetails
                  */
                 name?: string;
                 /**
-                 * @description The extension of the cover letter template filename (doc/docx).
+                 * @description Extension of the cover letter template filename (`doc` or `docx`).
                  * @example doc
                  */
                 type?: string;
@@ -8398,15 +8483,15 @@ export interface components {
             audit?: components["schemas"]["audit.s2"];
         };
         "company-config-cover-letter-templateRequiredProperties": Record<string, never>;
-        /** @description The delivery record for the email delivery service lets you check if any sent email encountered errors. */
+        /** @description An email delivery record lets you check whether a sent email encountered errors and captures its status, message details, and delivery history. */
         "objects.company-config.email-delivery-record": {
             /**
-             * @description System-assigned key for the email delivery record.
+             * @description System-assigned unique key for the email delivery record.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the email delivery record. This value is the same as the `key` for this object.
+             * @description Unique ID for the email delivery record. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -8524,12 +8609,12 @@ export interface components {
                 readonly dateTime?: string;
                 /**
                  * @description Additional details related to the email status (e.g., protocol info, error codes).
-                 * @example TSL: 1
+                 * @example TLS: 1
                  */
                 additionalInfo?: string;
             }[];
         };
-        /** @description External authorization. */
+        /** @description An external authorization grants another Sage Intacct company access to your company. */
         "objects.company-config.external-authorization": {
             /**
              * @description System-assigned unique key for the external authorization.
@@ -8537,7 +8622,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the external authorization.
+             * @description Unique ID for the external authorization. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
@@ -8552,7 +8637,7 @@ export interface components {
              */
             readonly externalCompanyName?: string | null;
             /**
-             * @description Specifies whether the external authorization is in effect.
+             * @description Indicates whether the external authorization is in effect.
              * @default true
              * @example true
              */
@@ -8561,10 +8646,10 @@ export interface components {
              * @description External access type.
              *
              *       * `consolidation` - Give access to your parent consolidating company for use with Advanced Consolidations.
-             *       * `console` - Give access to a company linked to a console.
+             *       * `console` - Give access to a company linked to a `console`.
              *       * `support` - Used by Intacct Customer Support and Platform Services only.
-             *       * `services` - Give access to an external services provider.
-             *       * `portal` - External authorization for a portal.
+             *       * `services` - Give access to an external `services` provider.
+             *       * `portal` - External authorization for a `portal`.
              * @example support
              * @enum {string}
              */
@@ -8582,9 +8667,7 @@ export interface components {
             description?: string;
             /**
              * Format: date
-             * @description The date the external authorization record expires.
-             *     To extend access to a company, provide a new expiration date for this record.
-             *     This field is only applicable if `accessType` is set to `services` or `support`.
+             * @description The date the external authorization record expires. To extend access to a company, provide a new expiration date for this record. This field is only applicable if `accessType` is set to `services` or `support`.
              * @example 2026-01-31
              */
             expirationDate?: string | null;
@@ -8595,7 +8678,7 @@ export interface components {
             readonly href?: string;
         };
         "company-config-external-authorizationRequiredProperties": Record<string, never>;
-        /** @description Specifies a holiday established for a company and the schedule to which that holiday belongs. */
+        /** @description A holiday is a date established for a company and associated with a holiday schedule. */
         "objects.company-config.holiday": {
             /**
              * @description System-assigned unique key for the holiday.
@@ -8603,7 +8686,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the holiday. This value is the same as the key for this object.
+             * @description Unique ID for the holiday. This value is the same as the `key` for this object.
              * @example 3
              */
             readonly id?: string;
@@ -8626,12 +8709,12 @@ export interface components {
             /** @description Reference to the holiday schedule associated with the holiday. */
             holidaySchedule?: {
                 /**
-                 * @description System-assigned key for the holiday schedule.
+                 * @description Unique key for the holiday schedule.
                  * @example 2
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier or name for the holiday schedule.
+                 * @description ID for the holiday schedule.
                  * @example Holiday 2023
                  */
                 id?: string;
@@ -8644,12 +8727,12 @@ export interface components {
             /** @description Reference to the timesheet rule associated with the holiday. */
             timesheetRule?: {
                 /**
-                 * @description System-assigned key for the timesheet rule.
+                 * @description Unique key for the timesheet rule.
                  * @example 1
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the timesheet rule.
+                 * @description ID for the timesheet rule.
                  * @example 1
                  */
                 id?: string;
@@ -8662,12 +8745,12 @@ export interface components {
             /** @description Reference to the entity associated with the holiday. */
             entity?: {
                 /**
-                 * @description System-assigned key for entity.
+                 * @description Unique key for the entity.
                  * @example 4
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier of the entity. 20 characters max. The ID cannot be changed after the entity has been created.
+                 * @description ID for the entity.
                  * @example Central Region
                  */
                 id?: string;
@@ -8684,7 +8767,7 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s2"];
         };
-        /** @description List of holiday schedules. */
+        /** @description A holiday schedule groups individual holidays that can affect timesheet entry and pay handling. */
         "objects.company-config.holiday-schedule": {
             /**
              * @description System-assigned unique key for the holiday schedule.
@@ -8692,7 +8775,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the holiday schedule.
+             * @description Unique ID for the holiday schedule.
              * @example Holiday Schedule 2023
              */
             id?: string;
@@ -8704,12 +8787,12 @@ export interface components {
             /** @description Reference to the entity associated with the holiday schedule. */
             entity?: {
                 /**
-                 * @description System-assigned key for the entity.
+                 * @description Unique key for the entity.
                  * @example 21
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the entity.
+                 * @description ID for the entity.
                  * @example 253422
                  */
                 id?: string;
@@ -8722,12 +8805,12 @@ export interface components {
             /** @description Reference to the timesheet rule associated with the holiday schedule. */
             timesheetRule?: {
                 /**
-                 * @description System-assigned key for the timesheet rule.
+                 * @description Unique key for the timesheet rule.
                  * @example 21
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the timesheet rule.
+                 * @description ID for the timesheet rule.
                  * @example 21
                  */
                 id?: string;
@@ -8746,47 +8829,47 @@ export interface components {
             audit?: components["schemas"]["audit.s2"];
         };
         "company-config-holiday-scheduleRequiredProperties": Record<string, never>;
-        /** @description A payment provider notification refers to a notification that Intacct receives and subsequently processes to update an object, depending on the notification type. */
+        /** @description A payment provider notification is a message that Sage Intacct receives and processes to update a record, depending on the notification type. */
         "objects.company-config.payment-provider-notification": {
             /**
-             * @description System-assigned key for the payment-provider-notification.
+             * @description System-assigned unique key for the payment provider notification.
              * @example 23
              */
             readonly key?: string;
             /**
-             * @description System-assigned key for the payment-provider-notification.
+             * @description Unique ID for the payment provider notification. This value is the same as the `key` for this object.
              * @example 23
              */
             readonly id?: string;
             /**
-             * @description Endpoint for the payment-provider-notification.
+             * @description URL endpoint for the payment provider notification.
              * @example /objects/company-config/payment-provider-notification/23
              */
             readonly href?: string;
             /**
-             * @description Notification ID.
+             * @description Identifier for the payment provider notification.
              * @example c391804c-d1ab-4527-bafc-0086788d9ee7
              */
             notificationGUID?: string;
             /**
-             * @description The type of notification.
+             * @description Type of notification.
              * @example BatchPatched
              */
             notificationType?: string;
             /**
-             * @description This body contains the detailed information about a given notification type (can be a payment request payload, subscription request payload, vendor or bank account enrolment payload) from partner. Based on the type of notification we update the respective records in our system.
+             * @description Detailed payload for the notification type received from the payment provider. The payload can contain a payment request, subscription request, vendor enrollment, or bank account enrollment. Sage Intacct updates the corresponding records based on the notification type.
              * @example {\"type\":\"BatchPatched\",\"notificationParties\":{\"organisationId\":\"32574d23-8181-4bef-904a-85338044fedd\",\"companyId\":\"be368f13-41dd-4ac5-bf34-1b17910a5db5\",\"applicationId\":\"sage.intacct\",\"subscriptionId\":\"46f2cc63-3f68-484e-8ecd-535abb4a2c11\",\"externalOrganisationId\":\"08978319B0B7EF5BE0637610E20A576E\",\"externalCompanyId\":\"0\"},\"resource\":{\"id\":\"c391804c-d1ab-4527-bafc-0086788d9ee7\",\"type\":\"batchpayments\",\"batchpayment\":{\"data\":{\"status\":\"Processing\",\"extendedStatus\":\"Reconcile\",\"extendedStatusDetail\":\"Payment.\",\"providerReference\":\"16488223\",\"creditorLocalInstrument\":\"ACH\",\"fundingId\":\"1336062\",\"payments\":[{\"paymentId\":\"c391804c-d1ab-4527-bafc-0086788d9ee7-00000\",\"status\":\"None\",\"providerReference\":\"16488223\",\"creditorLocalInstrument\":\"ACH\",\"fundingId\":\"1336062\",\"paymentCompletedDate\":\"2024-05-18T01:05:16Z\"}]}}}}
              */
             notificationBody?: string;
             /**
-             * @description State.
+             * @description Processing state of the notification.
              * @default Queued
              * @example success
              * @enum {string}
              */
             state?: "queued" | "success" | "failed";
             /**
-             * @description Error description in case notification processing failed.
+             * @description Error description when notification processing fails.
              * @example Unable to update the payment request record, RECORDNO:75310
              */
             errorDescription?: string | null;
@@ -8876,7 +8959,7 @@ export interface components {
              */
             readonly state?: "pending";
         };
-        /** @description The transaction currency object defines both ISO and custom currencies that can be used in company transactions where multiple transaction currencies are enabled. */
+        /** @description A transaction currency represents both ISO and custom currencies that can be used in company transactions where multiple transaction currencies are enabled. */
         "objects.company-config.txn-currency": {
             /**
              * @description System-assigned unique key for the transaction currency.
@@ -8884,7 +8967,7 @@ export interface components {
              */
             readonly key?: string;
             /**
-             * @description Unique identifier for the transaction currency. When `currencyType` is set to `iso`, choose a valid ISO currency code from this list:
+             * @description Unique ID for the transaction currency. When `currencyType` is set to `iso`, choose a valid ISO currency code from this list:
              *
              *     ('USD','AED','AFN','ALL','AMD','ANG','AOA','ARS','AUD','AWG','AZN','BAM','BBD','BDT','BGN','BHD','BIF','BMD','BND','BOB','BRL','BSD','BTN','BWP','BYN','BYR','BZD','CAD','CDF','CHF','CLP','CNY','COP','CRC','CUC','CUP','CVE','CZK','DJF','DKK','DOP','DZD','EGP','ERN','ETB','EUR','FJD','**P','GBP','GEL','GHS','GIP','GMD','GNF','GTQ','GYD','HKD','HNL','HRK','HTG','HUF','IDR','ILS','INR','IQD','IRR','ISK','JMD','JOD','JPY','KES','KGS','KHR','KMF','KPW','KRW','KWD','KYD','KZT','LAK','LBP','LKR','LRD','LSL','LYD','MAD','MDL','MGA','MKD','MMK','MNT','MOP','MRO','MUR','MVR','MWK','MXN','MYR','MZN','NAD','NGN','NIO','NOK','NPR','NZD','OMR','PAB','PEN','PGK','PHP','PKR','PLN','PYG','QAR','RON','RSD','RUB','RWF','SAR','SBD','SCR','SDG','SEK','SGD','SHP','SLL','SOS','SRD','STD','SVC','SYP','SZL','THB','TJS','TMT','TND','TOP','TRY','TTD','TWD','TZS','UAH','UGX','UYU','UZS','VEF','VES','VND','VUV','WST','XAF','XCD','XOF','XPF','YER','ZAR','ZMW','ZWL')
              * @example USD
@@ -8896,7 +8979,7 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description Specifies the type of the transaction currency:
+             * @description Type of the transaction currency:
              *
              *     * `iso` - An ISO currency with predefined properties. The `id` field must be set to a valid ISO currency code, and the other properties will be automatically populated based on the selected ISO currency.
              *     * `custom` - A user-defined currency with custom properties, provide values for the other properties to define the custom currency.
@@ -8906,17 +8989,17 @@ export interface components {
              */
             currencyType?: "iso" | "custom";
             /**
-             * @description Specifies the name of the transaction currency. Required when `currencyType` is set to `custom`.
+             * @description Name of the transaction currency. Required when `currencyType` is set to `custom`.
              * @example US Dollar
              */
             name?: string;
             /**
-             * @description Specifies the official ISO-4217 numeric code for the transaction currency. Applies only when `currencyType` is set to `iso`, and the value is automatically populated based on the selected ISO currency code in the `id` field. For example, if `id` is set to `GBP`, the `isoCode` will be automatically populated with `826`.
+             * @description Official ISO-4217 numeric code for the transaction currency. Applies only when `currencyType` is set to `iso`. The value is automatically populated based on the selected ISO currency code in the `id` field. For example, if `id` is set to `GBP`, the `isoCode` is automatically populated with `826`.
              * @example 826
              */
             readonly isoCode?: string | null;
             /**
-             * @description Specifies the format of the transaction currency. Required when `currencyType` is set to `custom`.
+             * @description Format of the transaction currency. Required when `currencyType` is set to `custom`.
              * @example british
              * @enum {string}
              */
@@ -8955,7 +9038,7 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "company-config-txn-currencyRequiredProperties": Record<string, never>;
-        /** @description Company preferences. */
+        /** @description Company preference defines company-wide settings such as legal information, contact details, branding, security, and localization options. */
         "objects.company-config.company-preference": {
             /**
              * @description System-assigned key for the company preference.
@@ -8963,22 +9046,22 @@ export interface components {
              */
             key?: string;
             /**
-             * @description Unique identifier for the company preference.
+             * @description Unique ID for the company preference.
              * @example SAGECNYID
              */
             id?: string;
             /**
-             * @description The contract number for the customer set by the sales team in Salesforce.
+             * @description Contract number for the customer, set by the sales team in Salesforce.
              * @example C1234
              */
             readonly contractCustomerId?: string;
             /**
-             * @description The name for the company.
+             * @description Name for the company.
              * @example Expert Sage
              */
             name?: string;
             /**
-             * @description The legal name for the company.
+             * @description Legal name for the company.
              * @example Expert Sage Intacct LTD
              */
             legalName?: string;
@@ -8989,12 +9072,12 @@ export interface components {
              */
             readonly useISOCountryCodes?: boolean;
             /**
-             * @description The VAT or GST registration number for the company.
+             * @description VAT or GST registration number for the company.
              * @example CO1000002
              */
             taxId?: string;
             /**
-             * @description The country in which the company operates.
+             * @description Country in which the company operates.
              * @default unitedStates
              * @example unitedStates
              */
@@ -9005,109 +9088,109 @@ export interface components {
              */
             internationalTaxId?: string;
             /**
-             * @description Identifies the type of organization under French law, encompassing various recognized forms for both private and public entities.
+             * @description Type of organization under French law, encompassing various recognized forms for both private and public entities.
              * @example 24 Fiduciary
              */
             legalCategory?: string;
             /**
-             * @description Specifies the primary economic activities the company engages in, helping classify the nature of operations.
+             * @description Primary economic activities the company engages in, used to classify the nature of operations.
              * @example 10.3 Transformation and conservation of fruits and vegetables
              */
             mainActivity?: string;
             /**
-             * @description Classifies the company based on legal structure, size, activities, or other key characteristics.
+             * @description Classification of the company based on legal structure, size, activities, or other key characteristics.
              * @example 03 Intermediate sized enterprises
              */
             typeOfCompany?: string;
             /**
-             * @description Represents the total capital invested by shareholders upon the company's formation.
+             * @description Total capital invested by shareholders upon the company's formation.
              * @example 37 000
              */
             registeredCapital?: number;
             /**
-             * @description Specifies VAT rules and regulations applicable to the company, including requirements for VAT collection, application, and reporting within France.
+             * @description VAT rules and regulations applicable to the company, including requirements for VAT collection, application, and reporting within France.
              * @example Monthly
              */
             valueAddedTaxRegime?: string;
-            /** @description The address where the company is legally incorporated or established. */
+            /** @description Address where the company is legally incorporated or established. */
             legalAddress?: {
                 /**
-                 * @description The first line of the company legal address.
+                 * @description First line of the company's legal address.
                  * @example 300 Park Avenue
                  */
                 addressLine1?: string;
                 /**
-                 * @description The second line of the company legal address.
+                 * @description Second line of the company's legal address.
                  * @example Suite 1400
                  */
                 addressLine2?: string;
                 /**
-                 * @description The third line of the company legal address.
+                 * @description Third line of the company's legal address.
                  * @example Western industrial area
                  */
                 addressLine3?: string;
                 /**
-                 * @description The city where the company operates in legally incorporated or established.
+                 * @description City where the company is legally incorporated or established.
                  * @example San Jose
                  */
                 city?: string;
                 /**
-                 * @description The state or territory in which the company is legally incorporated or established. Intacct uses this value on 1099 tax forms for vendors and employees who qualify for 1099 eligibility.
+                 * @description State or territory in which the company is legally incorporated or established. Intacct uses this value on 1099 tax forms for vendors and employees who qualify for 1099 eligibility.
                  * @example California
                  */
                 stateOrRegion?: string;
                 /**
-                 * @description The ZIP or post code where the company is legally incorporated or established.
+                 * @description ZIP or post code where the company is legally incorporated or established.
                  * @example 95110
                  */
                 postCode?: string;
                 /**
-                 * @description The country where the company is legally incorporated or established.
+                 * @description Country where the company is legally incorporated or established.
                  * @example unitedStates
                  */
                 country?: components["schemas"]["country"];
             };
-            /** @description The address of the company. */
+            /** @description Address of the company used for outgoing documents and emails. */
             companyAddress?: {
                 /**
-                 * @description The first line of the company address used for outgoing documents and emails.
+                 * @description First line of the company address used for outgoing documents and emails.
                  * @example Dows Street 5
                  */
                 addressLine1?: string;
                 /**
-                 * @description The second line of the company address used for outgoing documents and emails.
+                 * @description Second line of the company address used for outgoing documents and emails.
                  * @example Flt 22
                  */
                 addressLine2?: string;
                 /**
-                 * @description The third line of the company address used for outgoing documents and emails.
+                 * @description Third line of the company address used for outgoing documents and emails.
                  * @example Western industrial area
                  */
                 addressLine3?: string;
                 /**
-                 * @description The city the company operates in used for outgoing documents and emails.
+                 * @description City for the company, used for outgoing documents and emails.
                  * @example New York
                  */
                 city?: string;
                 /**
-                 * @description The country used to identify the company on outgoing documents and emails.
+                 * @description Country used to identify the company on outgoing documents and emails.
                  * @default unitedStates
                  */
                 country?: string & components["schemas"]["country"];
                 /**
-                 * @description The company state or territory used for outgoing documents and emails.
+                 * @description State or territory for the company, used for outgoing documents and emails.
                  * @example CA
                  */
                 stateOrRegion?: string;
                 /**
-                 * @description The ZIP or post code used for outgoing documents or emails.
+                 * @description ZIP or post code used for outgoing documents or emails.
                  * @example 90210
                  */
                 postCode?: string;
             };
-            /** @description The person in your company with administrative privileges who can be contacted regarding administrative matters. An administrative contact can only be a business user with full admin privileges. */
+            /** @description Person in your company with administrative privileges who can be contacted regarding administrative matters. An administrative contact can only be a business user with full admin privileges. */
             administrativeContact?: {
-                /** @description A business user in your company with full administrative privileges who can be contacted regarding administrative matters. */
+                /** @description Business user in your company with full administrative privileges who can be contacted regarding administrative matters. */
                 adminUser?: {
                     /**
                      * @description System-assigned key for the administrative user.
@@ -9115,7 +9198,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the administrative user.
+                     * @description ID for the administrative user.
                      * @example JohnD
                      */
                     id?: string;
@@ -9126,7 +9209,7 @@ export interface components {
                     readonly href?: string;
                 };
                 /**
-                 * @description Name of the the administrative user.
+                 * @description Name of the administrative user.
                  * @example John Doe
                  */
                 readonly name?: string;
@@ -9154,7 +9237,7 @@ export interface components {
              */
             companyStructure?: "flat" | "hierarchical";
             /**
-             * @description Specifies whether you will set permissions on an individual user basis, or set permissions for certain roles.
+             * @description Method for setting permissions, either for individual users or by role.
              * @default roleBased
              * @example userBased
              * @enum {string}
@@ -9175,22 +9258,22 @@ export interface components {
             /** @description Login timeout inactivity settings. */
             userSessionSettings?: {
                 /**
-                 * @description The number of minutes a user session can remain inactive before Intacct automatically logs out the user.
+                 * @description Number of minutes a user session can remain inactive before Intacct automatically logs out the user.
                  * @example 60
                  */
                 inactivityTimeOutMinutes?: number;
                 /**
-                 * @description The maximum number of hours of inactivity that can be set by users in their preferences.
+                 * @description Maximum number of hours of inactivity that can be set by users in their preferences.
                  * @example 4
                  */
                 userPreferenceInactivityMaxHours?: number;
                 /**
-                 * @description The number of minutes minutes a user can remain logged in before Intacct automatically logs out the user.
+                 * @description Number of minutes a user can remain logged in before Intacct automatically logs out the user.
                  * @example 30
                  */
                 sessionTimeoutMinutes?: number;
                 /**
-                 * @description The maximum number of hours that can be set by users in their preferences for session duration.
+                 * @description Maximum number of hours that can be set by users in their preferences for session duration.
                  * @example 5
                  */
                 userPreferenceTimeoutMaxHours?: number;
@@ -9198,50 +9281,58 @@ export interface components {
             /** @description Password configuration settings. */
             passwordSettings?: {
                 /**
-                 * @description The number of failed login attempts a user can make in a 24 hour period before Intacct locks them out. The recorded number of attempts resets after a successful login. After Intacct locks out a user, only an administrator can reset user status from locked out to active. This setting applies to all users.
+                 * @description Number of failed login attempts a user can make in a 24-hour period before Intacct locks them out. The recorded number of attempts resets after a successful login. After Intacct locks out a user, only an administrator can reset user status from locked out to active. This setting applies to all users.
                  * @default 5
                  * @example 2
                  */
                 maxLoginAttempts?: number;
                 /**
-                 * @description The frequency at which users must change their Sage Intacct passwords.
+                 * @description Frequency at which users must change their Sage Intacct passwords.
                  * @default quarterly
                  * @example monthly
                  * @enum {string}
                  */
                 changeFrequency?: "weekly" | "everyTwoWeeks" | "monthly" | "everyTwoMonths" | "quarterly" | "everySixMonths" | "yearly" | "never";
                 /**
-                 * @description The number of recent passwords that cannot be reused when resetting a password.
+                 * @description Number of recent passwords that cannot be reused when resetting a password.
                  * @example 5
                  */
                 passwordReuseHistoryLength?: number;
                 /**
-                 * @description The minimum number of characters required for a password.
+                 * @description Minimum number of characters required for a password.
                  * @default 8
                  * @example 8
                  */
                 minLength?: number;
                 /**
-                 * @description The maximum number of password reset attempts that can be tried by a user in a 24 hour period.
+                 * @description Maximum number of password reset attempts that can be tried by a user in a 24-hour period.
                  * @default 5
                  * @example 8
                  */
                 maxDailyChangeAttempts?: number;
                 /**
-                 * @description The maximum number of times incorrect information can be entered in a password reset attempt. When the limit is reached, Intacct locks the account for 24 hours.
+                 * @description Maximum number of times incorrect information can be entered in a password reset attempt. When the limit is reached, Intacct locks the account for 24 hours.
                  * @default 5
                  * @example 5
                  */
                 maxFailAttemptsPerPasswordReset?: number;
             };
             /**
-             * @description Use IP address filtering to restrict login to your company to locations with known IP addresses only (such as those coming from your corporate office). When you enforce IP address filters, any login that does not come from the list of allowed IP addresses is denied, preventing login attempts from unknown locations.
+             * @description IP address filtering setting that restricts company login to known IP addresses only (such as those from your corporate office). When enforced, any login that does not come from the list of allowed IP addresses is denied, preventing login attempts from unknown locations.
              * @default none
              * @example companyLevel
              * @enum {string}
              */
             ipAddressFiltering?: "none" | "companyLevel" | "companyLevelOverrideUserLevel" | "userLevel";
-            /** @description Date and time settings */
+            /**
+             * @description Indicates whether developer translation tools are enabled for custom labels on platform components and related features.
+             *     * `true` - Granted access to custom labels on platform components and related features.
+             *     * `false` - No access on custom labels.
+             * @default true
+             * @example false
+             */
+            enableDeveloperTranslationTools?: boolean;
+            /** @description Date and time settings. */
             dateTimeSettings?: {
                 /**
                  * @description Time zone for the company.
@@ -9265,14 +9356,14 @@ export interface components {
                 timeFormat?: "HH24:MI:SS" | "HH12:MI:SS AM/PM" | null;
             };
             /**
-             * @description The symbol that separates decimals, usually the period.
+             * @description Symbol that separates decimals, usually the period.
              * @default period
              * @example period
              * @enum {string}
              */
             decimalsSeparator?: "comma" | "period" | "underscore" | "space" | "companyDefault";
             /**
-             * @description The symbol that separates groups of thousands, usually the comma.
+             * @description Symbol that separates groups of thousands, usually the comma.
              * @default comma
              * @example comma
              * @enum {string}
@@ -9284,7 +9375,7 @@ export interface components {
              * @example true
              */
             useUTF8ForPDF?: boolean;
-            /** @description You can use your company logo to co-brand the login page and main title bar of Sage Intacct. You can also add your company logo on documents such as invoices, statements, and financial reports. */
+            /** @description Branding settings used to co-brand the login page and main title bar of Sage Intacct, and to add your company logo on documents such as invoices, statements, and financial reports. */
             branding?: {
                 /**
                  * @description Your company color in HEX format.
@@ -9312,7 +9403,7 @@ export interface components {
                      */
                     readonly fileName?: string;
                     /**
-                     * @description The branding logo for console companies in base64 encoded binary format.
+                     * @description Branding logo for console companies in base64 encoded binary format.
                      * @example binarydata
                      */
                     readonly data?: string;
@@ -9365,45 +9456,45 @@ export interface components {
                  * @enum {string|null}
                  */
                 readonly accountingPeriods?: null | "standard" | "custom";
-                /** @description The month that your company fiscal year starts. If your company uses custom accounting periods, this field does not apply. */
+                /** @description Month that your company's fiscal year starts. If your company uses custom accounting periods, this field does not apply. */
                 firstFiscalMonth?: components["schemas"]["month"];
                 /**
-                 * @description The day of the week that your calendar begins.
+                 * @description Day of the week that your calendar begins.
                  * @default null
                  * @example monday
                  * @enum {string|null}
                  */
                 weekBeginsOn?: null | "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday" | "firstDayOfTheYear";
                 /**
-                 * @description The default reporting method for the company.
+                 * @description Default reporting method for the company.
                  * @default null
                  * @example accrualBasis
                  * @enum {string|null}
                  */
                 readonly reportingMethod?: null | "accrualBasis" | "cashBasis";
-                /** @description First tax month */
+                /** @description Month that your company's tax year starts. */
                 firstTaxMonth?: components["schemas"]["month"];
                 /**
-                 * @description The primary accounting currency for the company.
+                 * @description Primary accounting currency for the company.
                  * @default USD
                  * @example USD
                  */
                 readonly baseCurrency?: string;
                 /**
-                 * @description The number of digits for account numbers including any subaccounts and separators.
+                 * @description Number of digits for account numbers including any subaccounts and separators.
                  * @default 4
                  * @example 2
                  */
                 readonly primaryAccountNumberLength?: number;
                 /**
-                 * @description The character that separates the primary account number from subaccount numbers.
+                 * @description Character that separates the primary account number from subaccount numbers.
                  * @default period
                  * @example colon
                  * @enum {string|null}
                  */
                 readonly accountFieldSeparator?: null | "period" | "tilde" | "comma" | "colon" | "underscore" | "dash";
                 /**
-                 * @description The number of digits for subaccount numbers excluding the account field separator.
+                 * @description Number of digits for subaccount numbers excluding the account field separator.
                  * @default 2
                  * @example 2
                  */
@@ -9415,7 +9506,7 @@ export interface components {
                  */
                 enableCustomCurrency?: boolean;
             };
-            /** @description The type of numbering sequence used for attachments. */
+            /** @description Type of numbering sequence used for attachments. */
             attachmentSequenceType?: {
                 /**
                  * @description System-assigned key for the document sequence.
@@ -9423,7 +9514,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the document sequence.
+                 * @description ID for the document sequence.
                  * @example Vendors
                  */
                 id?: string;
@@ -9434,7 +9525,7 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description Specifies the order the applications appear in the Intacct UI main navigation menu. Possible values are (according to installed modules): dash - Dashboard, co - Company, ar - Accounts receivable, ap - Accounts payable, cm - Cash Management, gl - General ledger,
+             * @description Order in which applications appear in the Intacct UI main navigation menu. Possible values are (according to installed modules): dash - Dashboard, co - Company, ar - Accounts receivable, ap - Accounts payable, cm - Cash Management, gl - General ledger,
              *     cerp - Interactive custom reports, so - Order entry, pa - Projects, ee - Time and expenses, inv - Inventory control, po - Purchasing, budg - Budgets,
              *     reportcenter - Reports, cs - Consolidation, saasmt - SaaS Metrics, atlas - Global consolidations, pay - Construction payroll
              * @example [
@@ -9458,12 +9549,12 @@ export interface components {
                  */
                 issuerURL?: string;
                 /**
-                 * @description The link to your SSO login page, as provided by your identity provider.
+                 * @description Link to your SSO login page, as provided by your identity provider.
                  * @example https://example.com
                  */
                 loginURL?: string;
                 /**
-                 * @description The x.509 certificate issued by your identity provider for your application.
+                 * @description X.509 certificate issued by your identity provider for your application.
                  * @example AD377739999ALLLD
                  */
                 certificate?: string;
@@ -9474,7 +9565,7 @@ export interface components {
                  */
                 identityProviderType?: null | "saml2.0" | "saml2.0withAdfs";
                 /**
-                 * @description The level of authentication required for a login attempt.
+                 * @description Level of authentication required for a login attempt.
                  * @default minimum
                  * @example maximum
                  * @enum {string}
@@ -9497,7 +9588,7 @@ export interface components {
                  */
                 disallowTrustedDevices?: boolean;
                 /**
-                 * @description Specifies who must enter a verification code when logging in.
+                 * @description Who must enter a verification code when logging in.
                  * @default selectedUsers
                  * @example allUsers
                  * @enum {string}
@@ -9514,7 +9605,7 @@ export interface components {
             /** @description Domain settings for emails. */
             emailSenderDomainSettings?: {
                 /**
-                 * @description A unique and static key generated for each company to prevent spoofing, and to specify that Intacct is allowed to send emails on your behalf.
+                 * @description Unique and static key generated for each company to prevent spoofing, and to specify that Intacct is allowed to send emails on your behalf.
                  * @example CB670951D9220F1AA0530811E11A9058
                  */
                 globallyUniqueIdentifier?: string;
@@ -9532,7 +9623,7 @@ export interface components {
              */
             locale?: "en_AU.UTF-8" | "en_US.UTF-8" | "en_GB.UTF-8" | "en_ZA.UTF-8" | "fr_FR.UTF-8" | "fr_CA.UTF-8" | "de_DE.UTF-8" | "es_ES.UTF-8";
             /**
-             * @description Specifies the default country to use for addresses.
+             * @description Default country to use for addresses.
              * @default unitedStates
              */
             defaultCountryForAddresses?: string & components["schemas"]["country"];
@@ -9558,7 +9649,7 @@ export interface components {
                 maskEmployeeBankDetails?: boolean;
             };
             /**
-             * @description Specifies the accounting practice used by the company.
+             * @description Accounting practice used by the company.
              * @default netAsset
              * @example netAsset
              * @enum {string}
@@ -9577,10 +9668,10 @@ export interface components {
              */
             weekends?: string;
         };
-        /** @description Configure preferences for consolidations in Sage Intacct for multi-entity companies. */
+        /** @description Multi-entity preferences configure consolidations in Sage Intacct for multi-entity companies. */
         "objects.company-config.multi-entity-preference": {
             /**
-             * @description System-assigned unique key for the multi-entity preferences.
+             * @description System-assigned unique key for the multi-entity preference.
              * @example setup
              */
             key?: string;
@@ -9692,9 +9783,9 @@ export interface components {
                 creditsJournal?: {
                     /** @description Unique key for the credits journal. */
                     key?: string;
-                    /** @description Identifier for the credits journal. */
+                    /** @description ID for the credits journal. */
                     id?: string;
-                    /** @description Name for the credits journal */
+                    /** @description Name for the credits journal. */
                     name?: string;
                     /** @description URL endpoint for the credits journal. */
                     readonly href?: string;
@@ -9708,7 +9799,7 @@ export interface components {
             balanceJournalEntryBy?: "location" | "entity";
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Configure preferences for consolidations in Sage Intacct for domestic, global, and advanced ownership consolidation. */
+        /** @description Preferences for consolidations in Sage Intacct, covering domestic, global, and advanced ownership consolidation. */
         "objects.company-config.consolidation-preference": {
             /**
              * @description System-assigned unique key for the consolidation preferences.
@@ -9716,7 +9807,7 @@ export interface components {
              */
             key?: string;
             /**
-             * @description Specifies the consolidation subscription type:
+             * @description Type of consolidation subscription:
              *
              *     * `domesticOrGlobalConsolidation` - Standard consolidation features.
              *     * `advancedOwnershipConsolidation` - Advanced consolidation features including multi-tier consolidations and complex ownership structures.
@@ -9728,11 +9819,11 @@ export interface components {
              */
             consolidationSubscriptionSelection?: "domesticOrGlobalConsolidation" | "advancedOwnershipConsolidation";
             /**
-             * @description Set to `true` to enable management console reporting for consolidations. Only applicable when `consolidationSubscriptionSelection` is set to `advancedOwnershipConsolidation`.
+             * @description For `advancedOwnershipConsolidation` subscriptions, indicates whether management console reporting is enabled for consolidations.
              * @default false
              * @example true
              */
-            enableManagementConsoleReporting?: boolean;
+            readonly enableManagementConsoleReporting?: boolean;
             /**
              * @description URL endpoint for the consolidation preferences.
              * @example /objects/company-config/consolidation-preference/setup
@@ -9740,7 +9831,7 @@ export interface components {
             readonly href?: string;
             audit?: components["schemas"]["audit.s1"];
         };
-        /** @description Configure preferences for consolidations in Sage Intacct for advanced ownership consolidation. */
+        /** @description Configuration settings for advanced ownership consolidation, including minority interest GL accounts and the consolidating location. */
         "objects.company-config.advanced-consolidation-preference": {
             /**
              * @description System-assigned unique key for the advanced consolidation preferences.
@@ -9748,13 +9839,13 @@ export interface components {
              */
             key?: string;
             /**
-             * @description Specifies the email address to send consolidation notifications on completion of a successful or failed consolidation.
+             * @description Email address to send consolidation notifications when a consolidation completes successfully or fails.
              * @example john.smith@company.com
              */
             notificationEmail?: string;
-            /** @description Specifies the details for the minority interest General Ledger (GL) accounts to which minority interest amounts are assigned. */
+            /** @description Minority interest General Ledger (GL) accounts to which minority interest amounts are assigned. */
             minorityInterestGLAccounts?: {
-                /** @description References the income or expense account for the minority interest General Ledger (GL). */
+                /** @description Income or expense GL account associated with minority interest amounts. */
                 incomeOrExpenseGLAccount?: {
                     /**
                      * @description Unique key for the income or expense account.
@@ -9762,7 +9853,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Identifier for the income or expense account.
+                     * @description ID for the income or expense account.
                      * @example 1000
                      */
                     id?: string;
@@ -9777,7 +9868,7 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description References the interest liability account for the minority interest General Ledger (GL). */
+                /** @description Interest liability GL account associated with minority interest amounts. */
                 interestLiabilityGLAccount?: {
                     /**
                      * @description Unique key for the interest liability account.
@@ -9785,7 +9876,7 @@ export interface components {
                      */
                     key?: string;
                     /**
-                     * @description Identifier for the interest liability account.
+                     * @description ID for the interest liability account.
                      * @example 1100
                      */
                     id?: string;
@@ -9801,7 +9892,7 @@ export interface components {
                     readonly href?: string;
                 };
             };
-            /** @description References the location to which the consolidated financial data is assigned. */
+            /** @description Location to which the consolidated financial data is assigned. */
             consolidatingLocation?: {
                 /**
                  * @description Unique key for the consolidating location.
@@ -9809,7 +9900,7 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Identifier for the consolidating location.
+                 * @description ID for the consolidating location.
                  * @example 999
                  */
                 id?: string;
@@ -9827,10 +9918,10 @@ export interface components {
             audit?: components["schemas"]["audit.s1"];
         };
         "company-config-advanced-consolidation-preferenceRequiredProperties": Record<string, never>;
-        /** @description Manage settings and preferences for the Order Entry application. */
+        /** @description Order Entry preferences manage settings and preferences for the Order Entry application. */
         "objects.company-config.order-entry-preference": {
             /**
-             * @description System-assigned key for the Order Entry preference. This value must be set to `setup` for this object.
+             * @description System-assigned unique key for the Order Entry preference. This value must be set to `setup` for this object.
              * @example setup
              */
             key?: string;
@@ -9846,12 +9937,12 @@ export interface components {
                 /** @description The default General Ledger (GL) account to use for the credit side of Order Entry transactions (offset account). */
                 offsetGLAccount?: {
                     /**
-                     * @description System-assigned key for the offset GL account.
+                     * @description Unique key for the offset GL account.
                      * @example 101
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the offset GL account.
+                     * @description ID for the offset GL account.
                      * @example 2000
                      */
                     id?: string;
@@ -9869,12 +9960,12 @@ export interface components {
                 /** @description The default unbilled account to use in unbilled workflows. */
                 unbilledGLAccount?: {
                     /**
-                     * @description System-assigned key for the unbilled GL account.
+                     * @description Unique key for the unbilled GL account.
                      * @example 110
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the unbilled GL account.
+                     * @description ID for the unbilled GL account.
                      * @example 2001
                      */
                     id?: string;
@@ -9891,102 +9982,94 @@ export interface components {
                 };
             };
             /**
-             * @description For multi-currency companies, set to `true` to use multiple currencies in your Order Entry transactions.
+             * @description For multi-currency companies, indicates whether multiple currencies are used in Order Entry transactions.
              * @default false
              * @example true
              */
             enableForeignCurrency?: boolean;
             /**
-             * @description Set to `true` to inherit the thresholds that are configured for the General Ledger and Accounts Payable for handling transactions that have a future GL posting date.
+             * @description Indicates whether Order Entry inherits the thresholds configured for the General Ledger and Accounts Payable for handling transactions with a future GL posting date.
              * @default true
              * @example false
              */
             enableFuturePostingRestriction?: boolean;
             /**
-             * @description Set to `true` to allow saving transactions as a draft to finish and post later. This setting does not apply to recurring transactions.
+             * @description Indicates whether transactions can be saved as drafts to finish and post later. This setting does not apply to recurring transactions.
              * @default true
              * @example false
              */
             enableDraftMode?: boolean;
             /**
-             * @description When `true`, draft transactions are not flagged as printed after any print or email option is used.
+             * @description Indicates whether draft transactions are left unflagged as printed after any print or email option is used.
              * @default false
              * @example true
              */
             omitMarkDraftPrintedTxn?: boolean;
             /**
-             * @description When `true`, allows access to payment details for Order Entry transactions directly. Applies only to transactions that post to Accounts Payable.
+             * @description Indicates whether payment details are accessible directly for Order Entry transactions. Applies only to transactions that post to Accounts Payable.
              * @default false
              * @example false
              */
             displayPaymentStatus?: boolean;
             /**
-             * @description Advanced transaction processing provides access to the following features for Order Entry transactions:
-             *     - Convert two or more transactions into one transaction
-             *     - Convert line items from different transactions into one transaction
-             *     - Process two or more transactions at a time
+             * @description Indicates whether advanced transaction processing is enabled for Order Entry transactions, providing these features:
+             *     - Convert two or more transactions into one transaction.
+             *     - Convert line items from different transactions into one transaction.
+             *     - Process two or more transactions at a time.
              * @default false
              * @example true
              */
             enableAdvanceTxnProcessing?: boolean;
             /**
-             * @description When `true`, you can add a bill-to contact on contract invoice line items. Applicable to Contracts data only.
+             * @description Indicates whether you can add a bill-to contact on contract invoice line items. This applies to Contracts data only.
              * @default false
              * @example true
              */
             enableBillToContactAtLine?: boolean;
             /**
-             * @description When `true`, you can add a ship-to contact on a transaction line item to:
-             *       - Calculate tax at the line level based on the ship-to contact. Taxes are always calculated at the line level based on a ship-to contact.
-             *         However, you can change the ship-to contact at the line level, depending on the transaction definition configuration.
-             *       - Specify multiple ship-to addresses on a single sales transaction for use when printing sales documents.
-             *     A ship-to contact at the line level for tax calculation is only applicable to Avalara and Advanced Tax users.
+             * @description Indicates whether you can add a ship-to contact on a transaction line item. A line-level ship-to contact is used to calculate tax at the line level; taxes are always calculated at the line level based on a ship-to contact. Depending on the transaction definition configuration, you can change the ship-to contact at the line level. You can also specify multiple ship-to addresses on one sales transaction for printing sales documents. A line-level ship-to contact for tax calculation applies only to Avalara and Advanced Tax users.
              * @default false
              * @example true
              */
             enableShipToContactAtLine?: boolean;
             /**
-             * @description For sales transactions that use inventory from another entity, set to `true` to ensure that the value of the sold inventory is properly recorded in the General Ledger.
-             *     Journal entries for inter-entity receivables and payables are automatically created for the COGS (cost of goods sold) when the sales transaction is posted.
+             * @description For sales transactions that use inventory from another entity, indicates whether the value of the sold inventory is recorded in the General Ledger. When the sales transaction is posted, journal entries for inter-entity receivables and payables are automatically created for cost of goods sold (COGS).
              * @default false
              * @example true
              */
             enableInterEntityCOGSPostings?: boolean;
             /**
-             * @description For top-level transactions in a multi-entity environment only. Set to `true` to have the dimension values that are enabled for line items used as the dimension values in the subtotal lines.
-             *     If `editDimensionInSubtotal` is also `true`, the dimension values from the line items override any dimension values that are enabled for the lines in the subtotals.
+             * @description For top-level transactions in a multi-entity environment, indicates whether dimension values enabled for line items are used as the dimension values in subtotal lines. If `editDimensionInSubtotal` is also `true`, the dimension values from the line items override any dimension values enabled for subtotal lines.
              * @default false
              * @example true
              */
             useLineItemDimensionsInSubtotal?: boolean;
             /**
-             * @description For top-level transactions in a multi-entity environment only. Set to `true` to specify dimension values in the subtotal lines for transactions.
-             *     If `useLineItemDimensionsInSubtotal` is also `true`, the dimension values from the line items override any dimension values that are enabled for the lines in the subtotals.
+             * @description For top-level transactions in a multi-entity environment, indicates whether dimension values can be specified in subtotal lines. If `useLineItemDimensionsInSubtotal` is also `true`, the dimension values from the line items override any dimension values enabled for subtotal lines.
              * @default false
              * @example true
              */
             editDimensionInSubtotal?: boolean;
             /**
-             * @description When `editDimensionInSubtotal` is `true`, set this field to `true` at the top level in a multi-entity company, to enable selecting values for location and department in subtotal lines.
+             * @description When `editDimensionInSubtotal` is `true`, indicates whether users can select location and department values in subtotal lines at the top level in a multi-entity company.
              * @default false
              * @example true
              */
             editLocationDepartmentInSubtotal?: boolean;
             /**
-             * @description Applicable only for multi-entity companies and entity level users. Set to `true` to distribute dimensions across subtotal lines, including proportional distributions.
-             *     For custom reports for subtotal details, the subtotal information for the entity-level transactions is included.
+             * @description For multi-entity companies and entity-level users, indicates whether dimensions are distributed across subtotal lines, including proportional distributions. For custom reports for subtotal details, the subtotal information for entity-level transactions is included.
              * @default false
              * @example true
              */
             distributeDimensions?: boolean;
             /**
-             * @description Set to `true` to select price instead of quantity (default) as a conversion option for non-inventory line items on orders and invoices.
+             * @description Indicates whether price, instead of quantity (the default), can be selected as a conversion option for non-inventory line items on orders and invoices.
              * @default false
              * @example true
              */
             enablePriceConversion?: boolean;
             /**
-             * @description For non-inventory items, set to `true` to allow to change the default conversion type to price on orders and invoices.
+             * @description For non-inventory items, indicates whether the default conversion type can be changed to price on orders and invoices.
              * @default false
              * @example true
              */
@@ -9994,19 +10077,19 @@ export interface components {
             /** @description Preferences applicable for construction enabled companies. */
             constructionPreferences?: {
                 /**
-                 * @description Set to `true` if you want a 0 (zero) to prefill on lines price or quantity (depending on conversion type) when converting a document, rather than converting the remaining amount.
+                 * @description Indicates whether 0 (zero) prefills the line price or quantity, depending on the conversion type, when converting a document instead of converting the remaining amount.
                  * @default false
                  * @example true
                  */
                 prefillConversionZero?: boolean;
                 /**
-                 * @description Set to `true` to include fully converted lines during conversion.
+                 * @description Indicates whether fully converted lines are included during conversion.
                  * @default false
                  * @example true
                  */
                 includeFullyConvertedLines?: boolean;
                 /**
-                 * @description Set to `true` to enable reverse conversions.
+                 * @description Indicates whether reverse conversions are enabled.
                  * @default false
                  * @example true
                  */
@@ -10036,27 +10119,22 @@ export interface components {
             /** @description Tax preferences for Order Entry transactions. */
             taxPreferences?: {
                 /**
-                 * @description Enable Advanced Tax as the tax calculation method for Order Entry transactions:
-                 *
-                 *
-                 *
-                 *
-                 *
-                 *       - Set to `true` if your company is not subscribed to the Taxes application. This option enables Advanced Tax for the tax calculation method. You create tax details, tax schedules, and tax schedule maps to define the tax mapping that Sage Intacct uses to calculate taxes in transactions.
-                 *       - Set to `false` if you've enabled Avalara AvaTax for your application or plan to use Simple Tax. Advanced Tax is not compatible with using either of these two other tax calculation methods.
-                 *       - This field is set to `true` and cannot be changed if you're subscribed to the Taxes application. You can create an Advanced Tax solution and assign the tax solution to the applicable entities.
+                 * @description Indicates whether Advanced Tax is the tax calculation method for Order Entry transactions.
+                 *     - Set to `true` if your company does not have a Taxes application subscription. This option enables Advanced Tax as the tax calculation method. Create tax details, tax schedules, and tax schedule maps to define the tax mapping Sage Intacct uses to calculate taxes in transactions.
+                 *     - Set to `false` if you have enabled Avalara AvaTax or plan to use Simple Tax. Advanced Tax is not compatible with either of these other tax calculation methods.
+                 *     - If your company has a Taxes application subscription, this field is set to `true` and cannot be changed. You can create an Advanced Tax solution and assign it to the applicable entities.
                  * @default false
                  * @example true
                  */
                 enableAdvancedTax?: boolean;
                 /**
-                 * @description Set to `true` to use templates to populate the subtotals in transaction definitions. You can configure different entities to use different subtotals.
+                 * @description Indicates whether templates are used to populate subtotals in transaction definitions. You can configure different entities to use different subtotals.
                  * @default false
                  * @example true
                  */
                 enableSubtotalTemplates?: boolean;
                 /**
-                 * @description Set to `true` to override tax entry level for sale orders.
+                 * @description Indicates whether the tax entry level can be overridden for sales orders.
                  * @default false
                  * @example true
                  */
@@ -10065,25 +10143,25 @@ export interface components {
             /** @description Price and discount preferences for Order Entry transactions. */
             priceAndDiscountPreferences?: {
                 /**
-                 * @description Set to `true` to enable adding a discount percent to line items on Order Entry transactions to add custom discounts.
+                 * @description Indicates whether a discount percentage can be added to Order Entry line items to apply custom discounts.
                  * @default false
                  * @example true
                  */
                 enableSuggestedPriceDiscount?: boolean;
                 /**
-                 * @description Set to `true` to enable price schedule for Order Entry transactions. You can then apply any price schedule associated with a customer to order entry for that customer.
+                 * @description Indicates whether price schedules are enabled for Order Entry transactions. You can then apply a price schedule associated with a customer to that customer?s Order Entry transactions.
                  * @default false
                  * @example true
                  */
                 enablePriceSchedule?: boolean;
                 /**
-                 * @description Set to `true` to enable customer price lists for Order Entry transactions. You can then assign price lists to specific customers. If you assign a price list to a customer, the price list overrides the one associated with the transaction definition for the Order Entry transaction.
+                 * @description Indicates whether customer price lists are enabled for Order Entry transactions. You can assign price lists to specific customers. When assigned, a customer price list overrides the price list associated with the transaction definition for the Order Entry transaction.
                  * @default false
                  * @example true
                  */
                 enableCustomerPriceLists?: boolean;
                 /**
-                 * @description Set to `true` to enable fixed customer discount for Order Entry transactions. You can then apply the fixed or blanket discount percentage for a customer to Order Entry for that customer.
+                 * @description Indicates whether fixed customer discounts are enabled for Order Entry transactions. You can apply the fixed or blanket discount percentage for a customer to that customer?s Order Entry transactions.
                  * @default false
                  * @example true
                  */
@@ -10096,47 +10174,37 @@ export interface components {
              */
             itemPrecision?: number;
             /**
-             * @description Set to `true` if you have items that are contracts or subscriptions. When you enable this option, Intacct adds a Contract tab to the Item Information page so that you can define the contract period for an item.
-             *     When this option is enabled, you can:
-             *
-             *
-             *
-             *
-             *
-             *       - Define the contract period for an item. For example, you might have a subscription item that has a 12-month period.
-             *       - Add the item to an order, along with the actual start and end date.
+             * @description Indicates whether contract or subscription items are used. When enabled, Intacct adds a Contract tab to the Item Information page so you can define the contract period for an item. You can define the contract period, such as a 12-month subscription period, and add the item to an order with its actual start and end dates.
              * @default false
              * @example true
              */
             enableStartAndEndDate?: boolean;
             /**
-             * @description Set to `true` to enable grouping a set of individual components, which you build and invoice as a single item. For example, you can build a group of computer components into a computer that you sell and invoice as a single item.
+             * @description Indicates whether individual components can be grouped, built, and invoiced as a single item. For example, you can build a group of computer components into a computer that you sell and invoice as a single item.
              * @default false
              * @example true
              */
             enableKit?: boolean;
             /**
-             * @description Determines whether you can save Order Entry or Inventory Control transactions that create negative inventory for items:
-             *     - Set to `true` to prevent saving transactions that would cause the quantity on hand to become negative at all warehouses. Sage Intacct issues a warning message instead.
-             *     - Set to `false` to permit transactions which cause the quantity on hand to become negative.
+             * @description Indicates whether saving Order Entry or Inventory Control transactions that create negative inventory for items is prevented. Set to `true` to prevent saving transactions that would make the quantity on hand negative at all warehouses; Sage Intacct issues a warning message instead. Set to `false` to permit transactions that make the quantity on hand negative.
              * @default false
              * @example true
              */
             preventNegativeInventory?: boolean;
             /**
-             * @description Set to `true` to prevent users from making certain changes during the workflow, such as editing a line item to increase the quantity or adding new line items. When `true`, users can still decrease quantities and delete line items.
+             * @description Indicates whether users are prevented from making certain changes during the workflow, such as increasing a line item quantity or adding line items. When `true`, users can still decrease quantities and delete line items.
              * @default false
              * @example true
              */
             disableQuantityChange?: boolean;
             /**
-             * @description Set to `true` to enable advanced workflow for order entry transactions. When `true`, users can set up different transaction definitions for different types of order entry transactions.
+             * @description Indicates whether advanced workflow is enabled for Order Entry transactions. When `true`, users can set up different transaction definitions for different types of Order Entry transactions.
              * @default false
              * @example true
              */
             enableAdvanceWorkflow?: boolean;
             /**
-             * @description Set to `false` to validate whether a line reference exists between change order documents. A line reference between change orders determines the order in which you can delete change orders.
+             * @description Indicates whether line references between change order documents are not validated before deletion. Set to `false` to validate whether a line reference exists; line references determine the order in which you can delete change orders.
              * @default false
              * @example true
              */
@@ -10147,7 +10215,7 @@ export interface components {
              */
             readonly href?: string;
             /**
-             * @description If your company is subscribed to Order Entry and Purchasing, set to `true` to enable a drop-ship workflow that allows the system to automatically create Purchasing transactions for sales transaction line items that are selected for drop ship.
+             * @description For a company with Order Entry and Purchasing subscriptions, indicates whether a drop-ship workflow is enabled. When enabled, the system can automatically create Purchasing transactions for sales transaction line items selected for drop ship.
              * @default false
              * @example true
              */
@@ -10155,7 +10223,7 @@ export interface components {
             /** @description Details of the drop ship preference. */
             dropShipLines?: components["schemas"]["objects.order-entry.txn-drop-ship-preference"][];
             /**
-             * @description If your company is subscribed to Order Entry and Purchasing, set to `true` to enable a buy-to-order workflow that allows the system to automatically create Purchasing transactions for sales transaction line items that are selected for buy to order.
+             * @description For a company with Order Entry and Purchasing subscriptions, indicates whether a buy-to-order workflow is enabled. When enabled, the system can automatically create Purchasing transactions for sales transaction line items selected for buy to order.
              * @default false
              * @example true
              */
@@ -10166,36 +10234,36 @@ export interface components {
             documentConfigurationLines?: components["schemas"]["objects.order-entry.document-configuration-preference"][];
             audit?: components["schemas"]["audit.s2"];
         };
-        /** @description Use the purchasing preference object to manage settings and preferences for the Purchasing application. */
+        /** @description Purchasing preferences define settings for the Purchasing application. */
         "objects.company-config.purchasing-preference": {
             /**
-             * @description System-assigned key for the Purchasing preference object. This value must be set to `setup` for this object.
+             * @description System-assigned unique key for the Purchasing preference. This value must be `setup`.
              * @example setup
              */
             key?: string;
             /**
-             * @description The workflow that specifies transaction definitions to determine how Purchasing transactions are routed through your company's financial system.
+             * @description Workflow that specifies the transaction definitions used to route Purchasing transactions through your company's financial system.
              * @default none
              * @example inventory
              * @enum {string}
              */
             readonly installedWorkflow?: null | "none" | "inventory" | "inventoryUnbilled" | "nonInventory" | "nonInventoryUnbilled" | "inventoryAndNonInventory" | "inventoryAndNonInventoryUnbilled" | "custom";
-            /** @description Applicable offset account information for Purchasing transactions in a simplified company setup. */
+            /** @description Offset account information for Purchasing transactions in a simplified company setup. */
             accountingPreferences?: {
-                /** @description The default Accounts Payable (AP) account to use for the credit side of Purchasing transactions (offset account). */
+                /** @description Default Accounts Payable (AP) account for the credit side of Purchasing transactions (offset account). */
                 offsetGLAccount?: {
                     /**
-                     * @description System-assigned key for the offset GL account.
+                     * @description System-assigned unique key for the offset GL account.
                      * @example 101
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the offset GL account.
+                     * @description ID for the offset GL account.
                      * @example 2000
                      */
                     id?: string;
                     /**
-                     * @description Name for the offset GL account.
+                     * @description Name of the offset GL account.
                      * @example Account Payable - Offset
                      */
                     readonly name?: string;
@@ -10205,20 +10273,20 @@ export interface components {
                      */
                     readonly href?: string;
                 };
-                /** @description The default unbilled account to use in unbilled workflows. */
+                /** @description Default account for unbilled workflows. */
                 unbilledGLAccount?: {
                     /**
-                     * @description System-assigned key for the unbilled GL account.
+                     * @description System-assigned unique key for the unbilled GL account.
                      * @example 110
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the unbilled GL account.
+                     * @description ID for the unbilled GL account.
                      * @example 2001
                      */
                     id?: string;
                     /**
-                     * @description Name for the unbilled GL account.
+                     * @description Name of the unbilled GL account.
                      * @example Account Payable - Unbilled
                      */
                     readonly name?: string;
@@ -10230,19 +10298,19 @@ export interface components {
                 };
             };
             /**
-             * @description For multi-currency companies, set to `true` to use multiple currencies in your Purchasing transactions.
+             * @description Indicates whether Purchasing transactions use multiple currencies in multi-currency companies.
              * @default false
              * @example true
              */
             enableForeignCurrency?: boolean;
             /**
-             * @description Set to `true` to inherit the thresholds that are configured for the General Ledger and Accounts Payable for handling transactions that have a future GL posting date.
+             * @description Indicates whether Purchasing inherits the thresholds configured for General Ledger and Accounts Payable when handling transactions with a future GL posting date.
              * @default false
              * @example false
              */
             enableFuturePostingRestriction?: boolean;
             /**
-             * @description Set to `true` to allow saving transactions as a draft to finish and post later. This setting does not apply to recurring transactions.
+             * @description Indicates whether users can save transactions as drafts to finish and post later. This setting does not apply to recurring transactions.
              * @default true
              * @example false
              */
@@ -10256,41 +10324,41 @@ export interface components {
              */
             restrictEmployeeToPurchasing?: boolean;
             /**
-             * @description When `true`, allows to access payment details for Purchasing transactions directly. Applies only to transactions that post to Accounts Payable.
+             * @description Indicates whether users can access payment details for Purchasing transactions directly. Applies only to transactions that post to Accounts Payable.
              * @default false
              * @example false
              */
             displayPaymentStatus?: boolean;
             /**
-             * @description Advanced transaction processing provides access to the following features for Purchasing transactions:
-             *     - Convert two or more transactions into one transaction
-             *     - Convert line items from different transactions into one transaction
-             *     - Process two or more transactions at a time
+             * @description Indicates whether advanced transaction processing is enabled for Purchasing transactions, providing access to these features:
+             *     - Convert two or more transactions into one transaction.
+             *     - Convert line items from different transactions into one transaction.
+             *     - Process two or more transactions at a time.
              * @default false
              * @example true
              */
             enableAdvanceTxnProcessing?: boolean;
             /**
-             * @description Use to add a deliver-to contact to Purchasing transactions to:
+             * @description Use deliver-to contacts on Purchasing transactions to:
              *     - Calculate tax using the contact that corresponds to where your company will take possession of products or services and optionally calculate line-level tax subtotals for different deliver-to contacts. Only applicable to Avalara and Advanced Tax.
              *     - Specify multiple delivery addresses on a single Purchasing transaction for use when printing Purchasing documents.
              */
             deliverToContactPreferences?: {
                 /**
-                 * @description When `true`, users can set default deliver-to contact at the header level of the Purchasing transaction.
+                 * @description Indicates whether users can set a default deliver-to contact at the header level of a Purchasing transaction.
                  * @default false
                  * @example true
                  */
                 deliverToHeaderLevelContact?: boolean;
-                /** @description When `deliverToHeaderLevelContact` is `true`, specifies the deliver-to contact for the Purchasing transactions. */
+                /** @description Deliver-to contact for Purchasing transactions when `deliverToHeaderLevelContact` is `true`. */
                 deliverToContact?: {
                     /**
-                     * @description System-assigned key for the deliver-to contact.
+                     * @description System-assigned unique key for the deliver-to contact.
                      * @example 1
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier or name for the deliver-to contact.
+                     * @description Name of the deliver-to contact.
                      * @example Joe
                      */
                     id?: string;
@@ -10301,43 +10369,43 @@ export interface components {
                     readonly href?: string;
                 };
                 /**
-                 * @description Set to `true` to allow different deliver-to contacts for the line items in a Purchasing transaction. Enabling line-level deliver-to contacts also enables line-level subtotals.
+                 * @description Indicates whether different deliver-to contacts can be set for line items in a Purchasing transaction. Enabling line-level deliver-to contacts also enables line-level subtotals.
                  * @default false
                  * @example true
                  */
                 deliverToLineLevelContact?: boolean;
             };
             /**
-             * @description For multi-currency companies, enables additional postings to be posted in the transaction currency and not the base currency.
-             *     Posting in the transaction currency ensures that journal entries are consistently recorded for all posted transactions in compliance with the rules for multi-currency transaction posting. The transaction currency is converted to the base currency using the exchange rate in effect at the time transactions are posted.
+             * @description Indicates whether additional postings for multi-currency companies use the transaction currency instead of the base currency.
+             *     Posting in the transaction currency ensures that journal entries are consistently recorded for all posted transactions in compliance with the rules for multi-currency transaction posting. The transaction currency is converted to the base currency using the exchange rate in effect when transactions are posted.
              * @default false
              * @example true
              */
             postAdditionsInTxnCurrency?: boolean;
             /**
-             * @description Set to `true` to enable match tolerances, which validate the percent tolerance for quantity and unit price when converting a source transaction to the transaction to validate. Sage Intacct flags the lines in the transaction as an exception, when either the quantity, unit price, or both is higher or lower than the percent tolerance.
-             *     Manage transaction definitions that you want to validate and the percent tolerance for quantity and unit price using the 'purchasing/match-tolerance-setup' object.
+             * @description Indicates whether match tolerances are enabled. Match tolerances validate the percent tolerance for quantity and unit price when converting a source transaction to the transaction being validated. Sage Intacct flags transaction lines as exceptions when the quantity, unit price, or both are higher or lower than the percent tolerance.
+             *     Manage the transaction definitions to validate and the percent tolerances for quantity and unit price using the `purchasing/match-tolerance-setup` object.
              * @default false
              * @example true
              */
             enableMatchTolerances?: boolean;
             /**
-             * @description Match tolerance GL account. When `enableMatchTolerances` is set to `true`, the variance posts to this account.
-             *     When `null`, the variance posts according to the account mapping in the transaction definition.
+             * @description Match tolerance GL account. When `enableMatchTolerances` is `true`, the variance posts to this account.
+             *     When this value is `null`, the variance posts according to the account mapping in the transaction definition.
              */
             matchTolerancesGLAccount?: {
                 /**
-                 * @description System-assigned key for the match tolerance GL account.
+                 * @description System-assigned unique key for the match tolerance GL account.
                  * @example 201
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the match tolerance GL account.
+                 * @description ID for the match tolerance GL account.
                  * @example 2101
                  */
                 id?: string;
                 /**
-                 * @description Name for the match tolerance GL account.
+                 * @description Name of the match tolerance GL account.
                  * @example Variance Account
                  */
                 readonly name?: string;
@@ -10348,66 +10416,66 @@ export interface components {
                 readonly href?: string;
             };
             /**
-             * @description For top-level transactions in a multi-entity environment only. Set to `true` to have the dimension values that are specified for line items used as the dimension values in the subtotal lines.
-             *     If `editDimensionInSubtotal` is also `true`, the dimension values from the line items override any dimension values that are specified for the lines in the subtotals.
+             * @description For top-level transactions in a multi-entity environment, this setting indicates whether dimension values specified for line items are used as the dimension values in subtotal lines.
+             *     If `editDimensionInSubtotal` is also `true`, the dimension values from line items override any dimension values specified for subtotal lines.
              * @default false
              * @example true
              */
             useLineItemDimensionsInSubtotal?: boolean;
             /**
-             * @description For top-level transactions in a multi-entity environment only. Set to `true` to specify dimension values in the subtotal lines for transactions.
-             *     If `useLineItemDimensionsInSubtotal` is also `true`, the dimension values from the line items override any dimension values that are specified for the lines in the subtotals.
+             * @description For top-level transactions in a multi-entity environment, this setting indicates whether dimension values can be specified in transaction subtotal lines.
+             *     If `useLineItemDimensionsInSubtotal` is also `true`, the dimension values from line items override any dimension values specified for subtotal lines.
              * @default false
              * @example true
              */
             editDimensionInSubtotal?: boolean;
             /**
-             * @description When `allowEditDimensionInSubtotal` is `true`, set this field to `true` to allow to specify values for location and department in the subtotal lines, at the top level in a multi-entity company.
+             * @description For top-level transactions in a multi-entity company, this setting indicates whether location and department values can be specified in subtotal lines when `allowEditDimensionInSubtotal` is `true`.
              * @default false
              * @example true
              */
             editLocationDepartmentInSubtotal?: boolean;
             /**
-             * @description Applicable only for multi-entity companies at entity level users. Set to `true` to distribute dimensions across subtotal lines, including proportional distributions.
-             *     When you run custom reports for subtotal details, the subtotal information for the entity-level transactions is included.
+             * @description For entity-level users in multi-entity companies, this setting indicates whether dimensions are distributed across subtotal lines, including proportional distributions.
+             *     When you run custom reports for subtotal details, subtotal information for entity-level transactions is included.
              * @default false
              * @example true
              */
             distributeDimensions?: boolean;
             /**
-             * @description Set to `true` to choose price instead of quantity (default) as a conversion option for non-inventory line items on orders and invoices.
+             * @description Indicates whether price is selected instead of quantity (the default) as a conversion option for non-inventory line items on orders and invoices.
              * @default false
              * @example true
              */
             enablePriceConversion?: boolean;
             /**
-             * @description For non-inventory items, set to `true` to change the default conversion type to price on orders and invoices.
+             * @description For non-inventory items, this setting indicates whether the default conversion type on orders and invoices is changed to price.
              * @default false
              * @example true
              */
             overrideDefaultTxnConversionType?: boolean;
             /**
-             * @description Set to `true` to convert multiple documents, including lines of documents, into a single Purchasing transaction so that you can pay a vendor in one payment.
+             * @description Indicates whether multiple documents, including document lines, can be converted into a single Purchasing transaction so you can pay a vendor in one payment.
              * @default false
              * @example true
              */
             enableMultipleDocumentConversion?: boolean;
-            /** @description Construction preferences, for Construction enabled companies. */
+            /** @description Preferences for companies that have Construction enabled. */
             constructionPreferences?: {
                 /**
-                 * @description Set to `true` to prefill conversion price or quantity (depending on conversion type) with 0 (zero).
+                 * @description Indicates whether conversion price or quantity is prefilled with 0 (zero), depending on the conversion type.
                  * @default false
                  * @example true
                  */
                 prefillConversionZero?: boolean;
                 /**
-                 * @description Set to `true` to include fully converted lines during conversion.
+                 * @description Indicates whether fully converted lines are included during conversion.
                  * @default false
                  * @example true
                  */
                 includeFullyConvertedLines?: boolean;
                 /**
-                 * @description Set to `true` to enable reverse conversions.
+                 * @description Indicates whether reverse conversions are enabled.
                  * @default false
                  * @example true
                  */
@@ -10416,14 +10484,14 @@ export interface components {
             /** @description Contact preferences for Purchasing transactions. */
             contactPreferences?: {
                 /**
-                 * @description The source for contact details in emails with attached transactions (name, email address, and phone number).
+                 * @description Source for contact details (name, email address, and phone number) in emails with attached transactions.
                  * @default userProfile
                  * @example contactProfile
                  * @enum {string}
                  */
                 senderEmailProfile?: null | "userProfile" | "contactProfile";
                 /**
-                 * @description Indicates whether to include all contacts or restrict to contacts related to a specified vendor, in transaction for pay-to, return-to, or deliver-to contacts.
+                 * @description Indicates whether transactions include all contacts or only contacts related to a specified vendor for pay-to, return-to, or deliver-to contacts.
                  * @default all
                  * @example vendorContacts
                  * @enum {string}
@@ -10433,22 +10501,21 @@ export interface components {
             /** @description Tax preferences for Purchasing transactions. */
             taxPreferences?: {
                 /**
-                 * @description Set to `true` to use Advanced Tax as the tax calculation method. Create tax details, schedules, and tax schedule maps to define the tax mapping for the tax calculations in transactions. Set to `true` by default when subscribed to the Taxes application and cannot modified.
+                 * @description Indicates whether Advanced Tax is used as the tax calculation method. Create tax details, schedules, and tax schedule maps to define tax mapping for transaction calculations. When subscribed to the Taxes application, this setting defaults to `true` and cannot be modified.
                  *
-                 *     Set to `false` if you've enabled Avalara AvaTax or plan to use Simple Tax. Advanced Tax is not compatible with using either of these two other tax calculation methods.
+                 *     Set this to `false` if you've enabled Avalara AvaTax or plan to use Simple Tax. Advanced Tax is not compatible with either of these tax calculation methods.
                  * @default false
                  * @example true
                  */
                 enableAdvancedTax?: boolean;
                 /**
-                 * @description Set to `true` to use templates to populate the subtotals in transaction definitions. You can configure transaction definitions to use different subtotals for different entities.
-                 *     Transactions created from an entity will use the subtotals from the subtotal template associated with the entity.
+                 * @description Indicates whether templates are used to populate subtotals in transaction definitions. You can configure transaction definitions to use different subtotals for different entities. Transactions created from an entity use the subtotals from the subtotal template associated with that entity.
                  * @default false
                  * @example true
                  */
                 enableSubtotalTemplates?: boolean;
                 /**
-                 * @description Set to `true` to override the tax entry level for purchase orders.
+                 * @description Indicates whether the tax entry level is overridden for purchase orders.
                  * @default false
                  * @example true
                  */
@@ -10457,40 +10524,40 @@ export interface components {
             /** @description Price and discount preferences for Purchasing transactions. */
             priceAndDiscountPreferences?: {
                 /**
-                 * @description Set to `true` to apply any price schedule associated with a vendor to purchasing for that vendor.
+                 * @description Indicates whether a price schedule associated with a vendor is applied to Purchasing transactions for that vendor.
                  * @default false
                  * @example true
                  */
                 enablePriceSchedule?: boolean;
                 /**
-                 * @description Enable vendor price lists for Purchasing transactions. This enables you to assign price lists to specific vendors. If you assign a price list to a vendor, this price list overrides the one associated with the transaction definition for the Purchasing transaction.
+                 * @description Indicates whether vendor price lists are enabled for Purchasing transactions. This lets you assign price lists to specific vendors. If you assign a price list to a vendor, that price list overrides the one associated with the Purchasing transaction definition.
                  * @default false
                  * @example true
                  */
                 enableVendorPriceLists?: boolean;
                 /**
-                 * @description Set to `true` to apply the fixed or blanket discount percentage for a vendor to purchasing for that vendor.
+                 * @description Indicates whether the fixed or blanket discount percentage for a vendor is applied to Purchasing transactions for that vendor.
                  * @default false
                  * @example true
                  */
                 enableFixedVendorDiscount?: boolean;
             };
             /**
-             * @description The default is 2 decimal places for unit price and cost. Depending on your required level of precision, you can set as many as 10 decimal places.
+             * @description Default number of decimal places for unit price and cost is 2. Depending on your required precision, you can set up to 10 decimal places.
              * @default 2
              * @example 2
              */
             itemPrecision?: number;
             /**
-             * @description Set to `true` to prevent certain changes during the workflow, such as modifying a line item to increase the quantity or adding new line items. You can still decrease quantities and delete line items.
+             * @description Indicates whether certain changes are prevented during the workflow, such as increasing a line item's quantity or adding new line items. You can still decrease quantities and delete line items.
              * @default false
              * @example true
              */
             disableQuantityChange?: boolean;
-            /** @description Price variance GL posting preferences for Purchasing transaction. */
+            /** @description Price variance GL posting preferences for Purchasing transactions. */
             priceVarianceGLPostingPreferences?: {
                 /**
-                 * @description Set to `true` to have the variance between the standard cost and the actual purchase or invoice price automatically posted.
+                 * @description Indicates whether the variance between the standard cost and the actual purchase or invoice price is posted automatically.
                  * @default false
                  * @example true
                  */
@@ -10498,12 +10565,12 @@ export interface components {
                 /** @description Price variance GL account for Purchasing transactions. */
                 purchasePriceVarianceGLAccount?: {
                     /**
-                     * @description System-assigned key for the price variance GL account.
+                     * @description System-assigned unique key for the price variance GL account.
                      * @example 202
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier fot the price variance GL account.
+                     * @description ID for the price variance GL account.
                      * @example 2102
                      */
                     id?: string;
@@ -10516,12 +10583,12 @@ export interface components {
                 /** @description Invoice price variance GL account. */
                 invoicePriceVarianceGLAccount?: {
                     /**
-                     * @description System-assigned key for the invoice price variance GL account.
+                     * @description System-assigned unique key for the invoice price variance GL account.
                      * @example 203
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier for the invoice price variance GL account.
+                     * @description ID for the invoice price variance GL account.
                      * @example 2103
                      */
                     id?: string;
@@ -10535,21 +10602,21 @@ export interface components {
             /** @description Approval preferences for Purchasing transactions. */
             approvalPreferences?: {
                 /**
-                 * @description Set to `true` to enable approval workflow for Purchasing transactions. Manage approval policies and rules via the `purchasing/approval-policy` object.
+                 * @description Indicates whether the approval workflow is enabled for Purchasing transactions. Manage approval policies and rules through the `purchasing/approval-policy` object.
                  * @default false
                  * @example true
                  */
                 enablePurchasingApproval?: boolean;
                 /**
-                 * @description Set to `true` to require a vendor to be specified on the transaction before being sent for approval. After a vendor is specified for the transaction, the vendor cannot be changed.
+                 * @description Indicates whether a vendor must be specified on a transaction before it is sent for approval. After a vendor is specified for the transaction, it cannot be changed.
                  * @default false
                  * @example true
                  */
                 requireVendorForApproval?: boolean;
                 /**
-                 * @description Specify the conditions under which a transaction requires reapproval.
+                 * @description Conditions under which a transaction requires reapproval:
                  *     - `noReapproval` - The transaction does not require reapproval.
-                 *     - `whenLineAmountChange` - The transaction requires reapproval only if the line amount changes.
+                 *     - `lineAmountChange` - The transaction requires reapproval only if the line amount changes.
                  *     - `anyLineOrSubtotalAmountChange` - The transaction requires reapproval if any line or subtotal amount changes.
                  * @default noReapproval
                  * @example lineAmountChange
@@ -10557,26 +10624,26 @@ export interface components {
                  */
                 requireReapproval?: "noReapproval" | "lineAmountChange" | "anyLineOrSubtotalAmountChange";
                 /**
-                 * @description Set to `true` to enable email notifications for Purchasing approval transactions.
+                 * @description Indicates whether email notifications are enabled for Purchasing approval transactions.
                  * @default false
                  * @example true
                  */
                 enableEmailNotifications?: boolean;
                 /**
-                 * @description Set to `true` to enable delegation for Purchasing approval, so that an admin user can delegate their approval tasks to another user.
+                 * @description Indicates whether delegation is enabled for Purchasing approvals, allowing an admin user to delegate their approval tasks to another user.
                  * @default false
                  * @example true
                  */
                 enableDelegation?: boolean;
-                /** @description An admin user who can terminate the rest of the approval cycle for a transaction by approving or declining the transaction. */
+                /** @description Admin user who can terminate the rest of the approval cycle for a transaction by approving or declining it. */
                 adminApprover?: {
                     /**
-                     * @description System-assigned key of the user.
+                     * @description System-assigned unique key for the user.
                      * @example 6
                      */
                     key?: string;
                     /**
-                     * @description Unique identifier of the user.
+                     * @description ID for the user.
                      * @example John
                      */
                     id?: string;
@@ -10588,43 +10655,43 @@ export interface components {
                 };
             };
             /**
-             * @description Set to `true` to enable advanced workflows for Purchasing transactions. Turning on advanced workflows cannot be reversed. If you enable advanced workflows in one application, it is automatically enabled for Order Entry, Purchasing, and Inventory Control.
+             * @description Indicates whether advanced workflows are enabled for Purchasing transactions. Turning on advanced workflows cannot be reversed. If you enable advanced workflows in one application, they are automatically enabled for Order Entry, Purchasing, and Inventory Control.
              * @default false
              * @example true
              */
             enableAdvanceWorkflow?: boolean;
             /**
-             * @description With AP Automation with Purchasing, you define which Purchasing transactions you want to automate. You can automate transactions with document matching, without document matching, or both.
-             *     Then, instead of manually adding and converting Purchasing documents to vendor invoices, you let Sage Intacct create incoming transactions using email or upload vendor invoice documents for automated processing.
+             * @description With AP Automation with Purchasing, you define which Purchasing transactions to automate. You can automate transactions with document matching, without document matching, or both.
+             *     Instead of manually adding and converting Purchasing documents to vendor invoices, you can let Sage Intacct create incoming transactions using email or upload vendor invoice documents for automated processing.
              */
             automationPreferences?: {
                 /**
-                 * @description Set to `true` to automate transactions with document matching. Manage the transaction definition mapping via the 'purchasing/txn-automation-preference' object.
+                 * @description Indicates whether transactions with document matching are automated. Manage transaction definition mapping through the `purchasing/txn-automation-preference` object.
                  * @default false
                  * @example true
                  */
                 enableAutomationWithDocumentMatching?: boolean;
                 /**
-                 * @description Set to `true` to enable line level matching for Purchasing automation. When enabled, automation matches with line items from the document.
+                 * @description Indicates whether line-level matching is enabled for Purchasing automation. When enabled, automation matches document line items.
                  * @default false
                  * @example true
                  */
                 enableLineLevelPOMatching?: boolean;
                 /**
-                 * @description Set to `true` to enable standalone purchase order matching for Purchasing automation. Manage transaction definition mapping via the 'purchasing/txn-automation-without-match-preference' object.
+                 * @description Indicates whether standalone purchase order matching is enabled for Purchasing automation. Manage transaction definition mapping through the `purchasing/txn-automation-without-match-preference` object.
                  * @default false
                  * @example true
                  */
                 enableAutomationNoDocumentMatching?: boolean;
             };
             /**
-             * @description By default, transaction line items for a 1099 vendor are flagged for 1099 treatment. Set this field to `true` to let users manage individual line items, which exclude them from a 1099 form for a 1099 vendor.
+             * @description Indicates whether users can manage individual transaction line items for a 1099 vendor, excluding those items from a 1099 form. By default, transaction line items for a 1099 vendor are flagged for 1099 treatment.
              * @default false
              * @example true
              */
             enableForm1099?: boolean;
             /**
-             * @description By default, all transaction line items for a vendor are associated with a specific 1099 form and box. Set this field to `true` to override the default for an individual line item within a transaction.
+             * @description Indicates whether the default 1099 form and box associated with all transaction line items for a vendor can be overridden for an individual line item within a transaction. By default, all transaction line items for a vendor are associated with a specific 1099 form and box.
              * @default false
              * @example true
              */
@@ -10636,17 +10703,17 @@ export interface components {
              */
             doNotValidateLinesBeforeDeleting?: boolean;
             /**
-             * @description URL endpoint for the Purchasing setup.
+             * @description URL endpoint for the Purchasing preference.
              * @example /objects/company-config/purchasing-preference/setup
              */
             readonly href?: string;
-            /** @description Details of the match tolerance configuration. */
+            /** @description Match tolerance configuration details. */
             txnMatchToleranceLines?: components["schemas"]["objects.purchasing.txn-match-tolerance-preference"][];
-            /** @description Details of the transaction automation preference. */
+            /** @description Transaction automation preference details. */
             txnAutomationLines?: components["schemas"]["objects.purchasing.txn-automation-preference"][];
-            /** @description Details of the transaction automation without matching preferences. */
+            /** @description Transaction automation preference details for transactions without matching. */
             txnAutomationWithoutMatchLines?: components["schemas"]["objects.purchasing.txn-automation-without-match-preference"][];
-            /** @description Details of the document configuration preference. */
+            /** @description Document configuration preference details. */
             documentConfigurationLines?: components["schemas"]["objects.purchasing.document-configuration-preference"][];
             audit?: components["schemas"]["audit.s2"];
         };
@@ -10997,7 +11064,7 @@ export interface components {
          * @enum {string|null}
          */
         "country-code": null | "us" | "af" | "ax" | "al" | "dz" | "as" | "ad" | "ao" | "ai" | "aq" | "ag" | "ar" | "am" | "aw" | "au" | "at" | "az" | "bs" | "bh" | "bd" | "bb" | "by" | "be" | "bz" | "bj" | "bm" | "bt" | "bo" | "bq" | "ba" | "bw" | "bv" | "br" | "io" | "bn" | "bg" | "bf" | "bi" | "kh" | "cm" | "ca" | "ic" | "cv" | "ky" | "cf" | "td" | "cl" | "cn" | "cx" | "cc" | "co" | "km" | "cg" | "cd" | "ck" | "cr" | "ci" | "hr" | "cu" | "cw" | "cy" | "cz" | "dk" | "dj" | "dm" | "do" | "ec" | "eg" | "sv" | "gq" | "er" | "ee" | "sz" | "et" | "fk" | "fo" | "fj" | "fi" | "fr" | "gf" | "pf" | "tf" | "ga" | "gm" | "ge" | "de" | "gh" | "gi" | "gr" | "gl" | "gd" | "gp" | "gu" | "gt" | "gg" | "gn" | "gw" | "gy" | "ht" | "hm" | "hn" | "hk" | "hu" | "is" | "in" | "id" | "ir" | "iq" | "ie" | "im" | "il" | "it" | "jm" | "jp" | "je" | "jo" | "kz" | "ke" | "ki" | "kr" | "kp" | "xk" | "kw" | "kg" | "la" | "lv" | "lb" | "ls" | "lr" | "ly" | "li" | "lt" | "lu" | "mo" | "mk" | "mg" | "mw" | "my" | "mv" | "ml" | "mt" | "mh" | "mq" | "mr" | "mu" | "yt" | "mx" | "fm" | "md" | "mc" | "mn" | "me" | "ms" | "ma" | "mz" | "mm" | "na" | "nr" | "np" | "nl" | "an" | "nc" | "nz" | "ni" | "ne" | "ng" | "nu" | "nf" | "mp" | "no" | "om" | "pk" | "pw" | "ps" | "pa" | "pg" | "py" | "pe" | "ph" | "pn" | "pl" | "pt" | "pr" | "qa" | "re" | "ro" | "ru" | "rw" | "bl" | "sh" | "kn" | "lc" | "mf" | "pm" | "vc" | "ws" | "sm" | "st" | "sa" | "sn" | "rs" | "sc" | "sl" | "sg" | "sx" | "sk" | "si" | "sb" | "so" | "za" | "gs" | "es" | "lk" | "sd" | "ss" | "sr" | "sj" | "se" | "ch" | "sy" | "tw" | "tj" | "tz" | "th" | "tl" | "tg" | "tk" | "to" | "tt" | "tn" | "tr" | "tm" | "tc" | "tv" | "ug" | "ua" | "ae" | "gb" | "um" | "uy" | "uz" | "vu" | "va" | "ve" | "vn" | "vg" | "vi" | "wf" | "eh" | "ye" | "zm" | "zw";
-        "contact-ref": {
+        "contact-location-ref": {
             /**
              * @description System-assigned unique key for the contact.
              * @example 21
@@ -11167,6 +11234,144 @@ export interface components {
          * @enum {string|null}
          */
         weekdays: null | "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday";
+        "contact-ref": {
+            /**
+             * @description System-assigned unique key for the contact.
+             * @example 21
+             */
+            key?: string;
+            /**
+             * @description Contact ID.
+             * @example jsmith
+             */
+            id?: string;
+            /**
+             * @description URL endpoint for the contact.
+             * @example /objects/company-config/contact/21
+             */
+            readonly href?: string;
+            /**
+             * @description Last name.
+             * @example Smith
+             */
+            lastName?: string | null;
+            /**
+             * @description First name.
+             * @example John
+             */
+            firstName?: string | null;
+            /**
+             * @description Middle name.
+             * @example Archibald
+             */
+            middleName?: string | null;
+            /**
+             * @description Prefix, such as Mr., Mrs., or Ms.
+             * @example Mr
+             */
+            prefix?: string | null;
+            /**
+             * @description The contact's name as it will appear on documents.
+             * @example John Smith
+             */
+            printAs?: string;
+            /**
+             * @description Primary email address.
+             * @example jsmith@company.com
+             */
+            email1?: string | null;
+            /**
+             * @description Secondary email address.
+             * @example john@aol.com
+             */
+            email2?: string | null;
+            /**
+             * @description Primary phone number.
+             * @example 14085551212
+             */
+            phone1?: string | null;
+            /**
+             * @description Secondary phone number.
+             * @example 14085559876
+             */
+            phone2?: string | null;
+            /**
+             * @description Mobile phone number.
+             * @example 14085554420
+             */
+            mobile?: string | null;
+            /**
+             * @description Pager number.
+             * @example 14085559987
+             */
+            pager?: string | null;
+            /**
+             * @description Fax number.
+             * @example 14085555309
+             */
+            fax?: string | null;
+            /**
+             * @description Web page address for this contact.
+             * @example https://mycompany.com
+             */
+            URL1?: string | null;
+            /**
+             * @description Secondary web page address.
+             * @example https://anothercompany.com
+             */
+            URL2?: string | null;
+            /**
+             * @description Name of the company.
+             * @example AlcoSoft Inc
+             */
+            companyName?: string | null;
+            /** @description Mailing address. */
+            mailingAddress?: {
+                /**
+                 * @description The first address line for shipping, billing, etc.
+                 * @example 300 Park Avenue
+                 */
+                addressLine1?: string | null;
+                /**
+                 * @description The second address line for shipping, billing, etc.
+                 * @example Suite 1400
+                 */
+                addressLine2?: string | null;
+                /**
+                 * @description The third address line for shipping, billing, etc. which provides additional geographical information.
+                 * @example Western industrial area
+                 */
+                addressLine3?: string | null;
+                /**
+                 * @description City.
+                 * @example San Jose
+                 */
+                city?: string | null;
+                /**
+                 * @description State.
+                 * @example California
+                 */
+                state?: string | null;
+                /**
+                 * @description Zip or Postal Code.
+                 * @example 95110
+                 */
+                postCode?: string | null;
+                /**
+                 * @deprecated
+                 * @description Country. This field is deprecated, please use `isoCountryCode`.
+                 * @default US
+                 * @example United States
+                 */
+                country?: string | null;
+                /**
+                 * @description ISO country code. This field takes prevalence over `country` which is now deprecated.
+                 * @default US
+                 * @example US
+                 */
+                isoCountryCode?: string | null;
+            };
+        };
         /**
          * @example france
          * @enum {string|null}
@@ -11182,13 +11387,13 @@ export interface components {
          * @example accountsPayable
          * @enum {string}
          */
-        module: "accountsPayable" | "accountsReceivable" | "administration" | "advancedAuditTrail" | "aiMachineLearning" | "avalaraTax" | "budgets" | "cashManagement" | "company" | "console" | "consolidation" | "construction" | "constructionPayroll" | "contracts" | "customizationServices" | "dataDeliveryService" | "dataImport" | "digitalBoardBook" | "digitalNetworkSync" | "dimensionSync" | "dynamicAllocations" | "eInvoicing" | "externalServicesProvider" | "fixedAssets" | "generalLedger" | "globalTransactionSecurity" | "intacctCollaborate" | "intacctSalesforceIntegration" | "intacctSalesforceIntegrationV2" | "interactiveCustomReportWriter" | "interactiveVisualExplorer" | "inventoryApplications" | "inventoryControl" | "managementConsole" | "managementConsoleConsolidation" | "msTeamsIntegration" | "multiEntity" | "myAccounting" | "myClients" | "myPractice" | "orderEntry" | "outboundPaymentServices" | "outsourcedPaymentServices" | "paymentServices" | "projects" | "purchasing" | "quickbooksMigration" | "realEstate" | "revenueManagement" | "saasMetrics" | "sageCloudServices" | "sageCopilotCloseAssistant" | "sageIntacctBudgetingAndPlanningConnector" | "sagePeople" | "siCollaboration" | "siFundRaising" | "smartTransaction" | "spendManagement" | "suppliesInventory" | "taxExport" | "taxes" | "expenses" | "vendorCompliance" | "webServices" | "wellsFargoPaymentManager" | "loanManagement" | "budgetVsActual" | "depositoryManagement" | "time" | "siEMRConnect" | "closeWorkspace" | "paymentAcceptanceServices" | "fieldWorkOrderManagement" | "taxServices" | "financeIntelligenceAgent" | "managementConsoleReporting";
+        module: "accountsPayable" | "accountsReceivable" | "administration" | "advancedAuditTrail" | "aiMachineLearning" | "avalaraTax" | "budgets" | "cashManagement" | "company" | "console" | "consolidation" | "construction" | "constructionPayroll" | "contracts" | "customizationServices" | "dataDeliveryService" | "dataImport" | "digitalBoardBook" | "digitalNetworkSync" | "dimensionSync" | "dynamicAllocations" | "eInvoicing" | "externalServicesProvider" | "fixedAssets" | "generalLedger" | "globalTransactionSecurity" | "intacctCollaborate" | "intacctSalesforceIntegration" | "intacctSalesforceIntegrationV2" | "interactiveCustomReportWriter" | "interactiveVisualExplorer" | "inventoryApplications" | "inventoryControl" | "managementConsole" | "managementConsoleConsolidation" | "msTeamsIntegration" | "multiEntity" | "myAccounting" | "myClients" | "myPractice" | "orderEntry" | "outboundPaymentServices" | "outsourcedPaymentServices" | "paymentServices" | "projects" | "purchasing" | "quickbooksMigration" | "realEstate" | "revenueManagement" | "saasMetrics" | "sageCloudServices" | "sageCopilotCloseAssistant" | "sageIntacctBudgetingAndPlanningConnector" | "sagePeople" | "siCollaboration" | "siFundRaising" | "smartTransaction" | "spendManagement" | "suppliesInventory" | "taxExport" | "taxes" | "expenses" | "vendorCompliance" | "webServices" | "wellsFargoPaymentManager" | "loanManagement" | "budgetVsActual" | "depositoryManagement" | "time" | "siEMRConnect" | "closeWorkspace" | "paymentAcceptanceServices" | "fieldWorkOrderManagement" | "taxServices" | "financeIntelligenceAgent" | "managementConsoleReporting" | "smartReporting" | "approvals";
         /**
          * @description Permission name
          * @example postedPayments
          * @enum {string}
          */
-        "permission-name": "1099Reports" | "aatrix" | "accessLog" | "accountAllocationDefinitions" | "accountAllocationGroups" | "accountGroups" | "accountMappingStatus" | "accountTitleByEntity" | "accountingEntriesFile" | "accountingPeriods" | "accounts" | "accumulationTypes" | "achBankConfigurations" | "achFileGenerator" | "achPaymentFile" | "addToCheckRun" | "adjustAccount" | "adjustedAvailableCash" | "adjustingJournalEntries" | "adjustmentJournals" | "adjustments" | "affiliateEntityGroups" | "aisle" | "analysisAndReporting" | "apAccountLabels" | "apAdvances" | "apAmortizationForecastReport" | "apAmortizationTemplate" | "apBillsApprovalLevels" | "apLedger" | "apOpenItemsRevaluationReport" | "apReleaseRetainage" | "apTerms" | "applicationAdministration" | "applicationSetup" | "applicationSubscriptions" | "applyPenalties" | "approveBills" | "approveExpenses" | "approveJournalEntries" | "approvePayments" | "approvePurchaseTransaction" | "approveReimbursements" | "approveTimesheets" | "approveVendors" | "arAccountLabelTaxGroups" | "arAccountLabels" | "arAmortizationForecastReport" | "arAmortizationTemplate" | "arLedger" | "arOpenItemsRevaluationReport" | "arReleaseRetainage" | "arTerms" | "archive" | "assignmentCategories" | "assignmentConstraints" | "assignmentDependents" | "assignmentStatus" | "assignments" | "assuranceDocuments" | "attachmentFolders" | "attachments" | "auditLog" | "automatedTransactions" | "bankAccounts" | "bankCheckRegister" | "bankFeeds" | "bankFile" | "bankFileGenerator" | "bankInterestAndCharges" | "bankTransactionAssignmentRules" | "bankTransactionRuleSets" | "bankTransactionRules" | "bankTransactions" | "billBackTemplates" | "billPercentageRent" | "billingGroup" | "billingGroupInvoicePreview" | "billingGroupInvoiceRuns" | "billingTemplate" | "bills" | "bin" | "binFace" | "binSize" | "books" | "budgetVariance" | "budgets" | "buildAndDisassembleKits" | "bulkActionRuns" | "caDe542Report" | "cancelService" | "cashAnalysis" | "cashBalances" | "cashRequirements" | "changeRequestStatus" | "changeRequestTypes" | "changeRequests" | "chargeCardAccounts" | "chargeCardRegister" | "chargeCardTransactions" | "chargePayoffs" | "checkReconciliation" | "checkRegister" | "checkRun" | "checkRunDetail" | "checkingAccounts" | "checklistCategories" | "checklistItem" | "checklistOptions" | "checklistStatus" | "checklists" | "checks" | "class" | "classGroups" | "classId" | "clearCompanyData" | "clients" | "closeAnalytics" | "closeAssistant" | "closeChecklistTemplateTasks" | "closeChecklistTemplates" | "closeChecklists" | "closeDashboard" | "closeTaskCategories" | "closeTaskTemplates" | "closeTasks" | "closeTemplateCategories" | "cloudStorage" | "cmRevaluationReport" | "companyInformationMyPractice" | "companySetupChecklist" | "compensationTables" | "complianceRecords" | "complianceSetup" | "configuration" | "consolidateStructure" | "consolidateSubsidiaryData" | "constructionReporting" | "consumerPriceIndexEscalations" | "contactTaxGroup" | "contacts" | "contract" | "contractBillingTemplate" | "contractComplianceChecklist" | "contractComplianceTaskItem" | "contractExpenseTemplate" | "contractGroups" | "contractMEAPriceList" | "contractPriceList" | "contractRevenueTemplate" | "contractTypes" | "contracts" | "contributions" | "costCodeOverrides" | "costTypeGroups" | "costTypes" | "costingChanges" | "coverLetters" | "creditCardChargesAndOtherFees" | "customApplicationsWithUserDefinedDimensions" | "customReports" | "customerAgingReportsGraphs" | "customerBacklog" | "customerBankAccounts" | "customerCardAccounts" | "customerGLGroups" | "customerGroups" | "customerListReport" | "customerReconciliation" | "customerTypes" | "customers" | "cycleCounts" | "dashboard" | "dataDeliveryService" | "datevDataExport" | "deferredRevenueDetails" | "deferredRevenueForecast" | "deferredRevenueForecastGraph" | "deferredRevenueRevaluationReport" | "departmentActivityReport" | "departmentGroups" | "departmentId" | "departmentMappingStatus" | "departments" | "deposits" | "depositsRegister" | "documentNumbering" | "drillDownToAllTransactionsFromReports" | "dunningLevels" | "eReports" | "earningTypes" | "electronicReceipts" | "emailDeliveryLog" | "emailTemplates" | "employeeAgingReportsGraphs" | "employeeGroups" | "employeeOutOfOffice" | "employeePositions" | "employeeRates" | "employeeTypes" | "employees" | "entities" | "entity" | "escalations" | "estimateTypes" | "evergreenTemplates" | "exchangeRate" | "exchangeRateTypes" | "executiveSummary" | "expenseAdjustments" | "expenseApprovalLevels" | "expenseLedger" | "expensePaymentTypes" | "expenseRecovery" | "expenseSummaries" | "expenseTypes" | "exportClientTaxData" | "extendedGeneralLedger" | "externalAuthorizations" | "fairValuePriceListEntry" | "fairValuePriceLists" | "financeIntelligenceAgentAccess" | "financialContexts" | "financialInstitution" | "financials" | "form1099" | "fulfillment" | "fundsTransfers" | "gaapAdjustingEntries" | "gaapAdjustmentJournals" | "ganttChart" | "generalLedger" | "generalLedgerRevaluationReport" | "generateAllocation" | "generateInvoices" | "generateLateCharges" | "generateReceipt" | "generateScheduledCharges" | "glAccountId" | "glDynamicAccountReclassificationReport" | "glMatching" | "glMatchingActivity" | "goBDDataExport" | "grantAdminRights" | "graphs" | "hourTypes" | "imports" | "individualCharges" | "initialOpenItems" | "interEntityAccountMapping" | "interEntityTransactions" | "interactiveAccountGroups" | "interactiveCustomReports" | "interactiveDataVisualizationReports" | "interactiveReportAreas" | "interactiveReportsMasterConsumerRole" | "interestrates" | "inventoryAnalysis" | "inventoryControlSetup" | "inventoryCosting" | "inventoryCycles" | "inventoryFulfillment" | "inventoryJournal" | "inventoryRecurring" | "inventoryRegister" | "inventoryReorders" | "inventorySelfHelp" | "inventoryStatus" | "inventoryTotals" | "inventoryTransactionDefinitions" | "inventoryTransactions" | "inventoryValuation" | "invoicePolicies" | "invoices" | "itemActivity" | "itemGLGroups" | "itemGroups" | "itemProfitability" | "itemTaxGroups" | "items" | "jobs" | "journalActivityReport" | "journalEntries" | "journalEntryMappingLink" | "journals" | "kitAnalysis" | "laborClasses" | "laborShifts" | "laborUnions" | "landedCostAdjustment" | "landedCostsCategory" | "leaseRenewal" | "leases" | "linkSubsidiaries" | "loanTypes" | "loans" | "locationActivityReport" | "locationGroups" | "locationMappingStatus" | "locations" | "lotCategory" | "lotTracking" | "maintainInventoryValuation" | "manageBooks" | "manageContributions" | "managePayments" | "managePlan" | "manageProjectBillableExpenses" | "manageResourceSchedules" | "manageSchedules" | "manageSupplies" | "manageTimesheets" | "managementCompanies" | "managementFees" | "managersAndBrokers" | "mandates" | "manualPayment" | "mapReportingInstance" | "meaAllocation" | "memorizedEntryTemplates" | "memorizedReportGroups" | "memorizedReports" | "messages" | "multiCurrencyProcessing" | "myExpenses" | "myTimesheets" | "notes" | "offlineJobQueue" | "opsbidBills" | "orderAnalysis" | "orderEntrySetup" | "orderEntryStatus" | "orderEntryTransactionDefinitions" | "orderEntryTransactions" | "otherReceipts" | "ownerDistribution" | "ownerInformation" | "ownershipStructure" | "partnerSyncEvents" | "payBills" | "payGroups" | "payInAdvance" | "paymentAccountInformation" | "paymentDefaults" | "paymentExchangeRateInformation" | "paymentManagerPayments" | "paymentRequests" | "payments" | "payrollReportCheck" | "payrollReportCheckSummary" | "payrollReportCompensationTable" | "payrollReportEmployee" | "payrollReportGrossPay" | "payrollReportHourType" | "payrollReportPTOAccrualSchedule" | "payrollReportPayGroup" | "payrollReportPayModifier" | "payrollReportPayModifierSetup" | "payrollReportPtoActivity" | "payrollReportPtoType" | "payrollReportTax" | "payrollReportTaxSetup" | "payrollReportTimecard" | "payrollReportTimecardReport" | "payrollReportTrade" | "payrollReportUnionLocal" | "pendingReimbursements" | "period" | "periodMappingStatus" | "physicalInventory" | "pickEngagements" | "pickList" | "pickingList" | "planStatement" | "poTransactionDefinitions" | "positionsAndSkills" | "postExpenseReports" | "postScheduledTransactions" | "postTemplates" | "postedAdvances" | "postedPayments" | "postedReimbursements" | "preferences" | "preparerSignoff" | "priceListEntry" | "priceLists" | "priceSchedules" | "printChecks" | "printEMailDocuments" | "printEMailDunningNotice" | "printEMailInvoices" | "printEMailStatements" | "printPaymentCopies" | "printedDocumentTemplates" | "priorPeriodCogsAdjustments" | "processContractSchedules" | "productLine" | "productLines" | "projectChangeOrders" | "projectContractInvoicing" | "projectContractRateTables" | "projectContractTypes" | "projectContracts" | "projectDetailReporting" | "projectEstimates" | "projectExpenses" | "projectGroups" | "projectResources" | "projectStatus" | "projectTransactions" | "projectTypes" | "projects" | "properties" | "ptoAccrualSchedules" | "ptoTypes" | "purchasePriceVarianceInvoicePriceVariance" | "purchasingAnalysis" | "purchasingApprovalLevels" | "purchasingRecurring" | "purchasingSetup" | "purchasingTransaction" | "purchasingTransactions" | "quickCheckEntry" | "quickDeposits" | "receiptHistory" | "receiptsRegister" | "receiveAdvances" | "reclassificationReport" | "reconcileBank" | "reconcileCharges" | "reconcileCreditCard" | "recoveryTemplates" | "recurringAllocations" | "recurringBills" | "recurringInvoices" | "recurringJournalEntries" | "recurringSchedules" | "recurringStatisticalJournalEntries" | "recurringTransactionForecast" | "recurringTransactionStatus" | "recurringTransactions" | "refunds" | "releaseToPay" | "renewalTemplates" | "renewalsForecast" | "replenishInventory" | "replenishmentFluctuatingForecasts" | "reporting" | "reportingAccounts" | "reportingAccountsMappingReport" | "reportingCategories" | "reportingPeriods" | "reports" | "requestSupplies" | "restrictionRelease" | "revenueRecognitionCategory" | "revenueRecognitionSchedule" | "revenueRecognitionTemplate" | "revenueSummaries" | "revenueTxnEntries" | "reverseConversions" | "reviewNote" | "reviewerSignoff" | "rolesPermissionsReport" | "row" | "ruleSetPerformanceLog" | "runConsolidations" | "saasChangeType" | "saasSchedule" | "saasScheduleEntry" | "salesAnalysis" | "salesEntry" | "salesRecurring" | "salesTaxReport" | "salesforceSyncJobs" | "salesforceSynchronizationReport" | "salesforceSynchronizationStatus" | "sandbox" | "savingsAccounts" | "selectToReimburse" | "sendgridEmailDeliveryLog" | "serialMask" | "serialTracking" | "serviceAuthorizations" | "sharedLimits" | "shipmentHistory" | "shippingMethods" | "smartEventJobs" | "spendInsight" | "staffTimesheets" | "standardCostTypes" | "standardTasks" | "statisticalAccountId" | "statisticalAccountMappingStatus" | "statisticalAccounts" | "statisticalAdjustingJournalEntries" | "statisticalAdjustingJournals" | "statisticalJournalEntries" | "statisticalJournals" | "statisticalMemorizedEntryTemplates" | "subledgerAndScmCombinedObjects" | "subscriptionUsage" | "subsidiaryAccounts" | "subsidiaryDepartments" | "subsidiaryLocations" | "subsidiaryReportingPeriods" | "subsidiaryStatisticalAccounts" | "summaries" | "support" | "switchToConsole" | "switchToManagementConsole" | "switchToMyAccounting" | "systemPayModifiers" | "t5018ReportForCanada" | "taskGroups" | "taskResources" | "taskTypes" | "tasks" | "taxAdjustingEntries" | "taxAdjustmentJournals" | "taxAuthority" | "taxDetail" | "taxDetailBox" | "taxReciprocity" | "taxRecords" | "taxReport" | "taxSchedule" | "taxScheduleMap" | "taxSolutions" | "taxSubmissions" | "taxablePaymentsAnnualReport" | "taxes" | "taxesLink" | "templates" | "tenantConfiguration" | "tenantchargeback" | "tenantledger" | "tenants" | "tenantstatement" | "territories" | "territoryGroups" | "timeCards" | "timePreferences" | "timeSources" | "timeTypes" | "timesheetRules" | "trades" | "transactionAllocations" | "transactionCurrencies" | "transactionRule" | "transactionTemplates" | "trialBalance" | "triggerLogs" | "unions" | "units" | "unitsOfMeasure" | "usageAndMetrics" | "userDefinedBooks" | "userDefinedJournalEntries" | "userDefinedJournals" | "users" | "vendorAgingReportsGraphs" | "vendorException" | "vendorGLGroups" | "vendorGroups" | "vendorInsuranceReport" | "vendorReconciliation" | "vendorTypes" | "vendors" | "viewAllocationLog" | "viewMyClients" | "viewMyServiceAuthorizations" | "warehouseGroups" | "warehouseTransfer" | "warehouses" | "wipManagement" | "wipRelief" | "workOrderCallTypes" | "workOrderGroups" | "workOrderProblemCodes" | "workOrderStates" | "workOrderTypes" | "workOrders" | "zone";
+        "permission-name": "1099Reports" | "aatrix" | "accessLog" | "accountAllocationDefinitions" | "accountAllocationGroups" | "accountGroups" | "accountMappingStatus" | "accountTitleByEntity" | "accountingEntriesFile" | "accountingPeriods" | "accounts" | "accumulationTypes" | "achBankConfigurations" | "achFileGenerator" | "achPaymentFile" | "addToCheckRun" | "adjustAccount" | "adjustedAvailableCash" | "adjustingJournalEntries" | "adjustmentJournals" | "adjustments" | "affiliateEntityGroups" | "aisle" | "analysisAndReporting" | "apAccountLabels" | "apAdvances" | "apAmortizationForecastReport" | "apAmortizationTemplate" | "apBillsApprovalLevels" | "apLedger" | "apOpenItemsRevaluationReport" | "apReleaseRetainage" | "apTerms" | "applicationAdministration" | "applicationSetup" | "applicationSubscriptions" | "applyPenalties" | "approveBills" | "approveExpenses" | "approveJournalEntries" | "approvePayments" | "approvePurchaseTransaction" | "approveReimbursements" | "approveTimesheets" | "approveVendors" | "arAccountLabelTaxGroups" | "arAccountLabels" | "arAmortizationForecastReport" | "arAmortizationTemplate" | "arLedger" | "arOpenItemsRevaluationReport" | "arReleaseRetainage" | "arTerms" | "archive" | "assignmentCategories" | "assignmentConstraints" | "assignmentDependents" | "assignmentStatus" | "assignments" | "assuranceDocuments" | "attachmentFolders" | "attachments" | "auditLog" | "automatedTransactions" | "bankAccounts" | "bankCheckRegister" | "bankFeeds" | "bankFile" | "bankFileGenerator" | "bankInterestAndCharges" | "bankTransactionAssignmentRules" | "bankTransactionRuleSets" | "bankTransactionRules" | "bankTransactions" | "billBackTemplates" | "billPercentageRent" | "billingGroup" | "billingGroupInvoicePreview" | "billingGroupInvoiceRuns" | "billingTemplate" | "bills" | "bin" | "binFace" | "binSize" | "books" | "budgetVariance" | "budgets" | "buildAndDisassembleKits" | "bulkActionRuns" | "caDe542Report" | "cancelService" | "cashAnalysis" | "cashBalances" | "cashRequirements" | "changeRequestStatus" | "changeRequestTypes" | "changeRequests" | "chargeCardAccounts" | "chargeCardRegister" | "chargeCardTransactions" | "chargePayoffs" | "checkReconciliation" | "checkRegister" | "checkRun" | "checkRunDetail" | "checkingAccounts" | "checklistCategories" | "checklistItem" | "checklistOptions" | "checklistStatus" | "checklists" | "checks" | "class" | "classGroups" | "classId" | "clearCompanyData" | "clients" | "closeAnalytics" | "closeAssistant" | "closeChecklistTemplateTasks" | "closeChecklistTemplates" | "closeChecklists" | "closeDashboard" | "closeTaskCategories" | "closeTaskTemplates" | "closeTasks" | "closeTemplateCategories" | "cloudStorage" | "cmRevaluationReport" | "communications" | "companyInformationMyPractice" | "companySetupChecklist" | "compensationTables" | "complianceRecords" | "complianceSetup" | "configuration" | "consolidateStructure" | "consolidateSubsidiaryData" | "constructionReporting" | "consumerPriceIndexEscalations" | "consumerPriceIndexTemplates" | "contactTaxGroup" | "contacts" | "contract" | "contractBillingTemplate" | "contractComplianceChecklist" | "contractComplianceTaskItem" | "contractExpenseTemplate" | "contractGroups" | "contractMEAPriceList" | "contractPriceList" | "contractRevenueTemplate" | "contractTypes" | "contracts" | "contributions" | "costCodeOverrides" | "costLayers" | "costTypeGroups" | "costTypes" | "costingChanges" | "coverLetters" | "creditCardChargesAndOtherFees" | "customApplicationsWithUserDefinedDimensions" | "customApprovalPolicies" | "customApprovalRuleSets" | "customReports" | "customerAgingReportsGraphs" | "customerBacklog" | "customerBankAccounts" | "customerCardAccounts" | "customerGLGroups" | "customerGroups" | "customerListReport" | "customerReconciliation" | "customerTypes" | "customers" | "cycleCounts" | "dashboard" | "dataDeliveryService" | "datevDataExport" | "deferredRevenueDetails" | "deferredRevenueForecast" | "deferredRevenueForecastGraph" | "deferredRevenueRevaluationReport" | "departmentActivityReport" | "departmentGroups" | "departmentId" | "departmentMappingStatus" | "departments" | "deposits" | "depositsRegister" | "documentNumbering" | "drillDownToAllTransactionsFromReports" | "dunningLevels" | "eReports" | "earningTypes" | "electronicReceipts" | "emailDeliveryLog" | "emailTemplates" | "employeeAgingReportsGraphs" | "employeeGroups" | "employeeOutOfOffice" | "employeePositions" | "employeeRates" | "employeeTypes" | "employees" | "entities" | "entitlements" | "entity" | "escalations" | "estimateTypes" | "evergreenTemplates" | "exchangeRate" | "exchangeRateTypes" | "executiveSummary" | "expenseAdjustments" | "expenseApprovalLevels" | "expenseLedger" | "expensePaymentTypes" | "expenseRecovery" | "expenseSummaries" | "expenseTypes" | "exportClientTaxData" | "extendedGeneralLedger" | "externalAuthorizations" | "fairValuePriceListEntry" | "fairValuePriceLists" | "financeIntelligenceAgentAccess" | "financialContexts" | "financialInstitution" | "financials" | "floorplanTemplates" | "form1099" | "fulfillment" | "fundsTransfers" | "gaapAdjustingEntries" | "gaapAdjustmentJournals" | "ganttChart" | "generalLedger" | "generalLedgerRevaluationReport" | "generateAllocation" | "generateInvoices" | "generateLateCharges" | "generateReceipt" | "generateScheduledCharges" | "glAccountId" | "glDynamicAccountReclassificationReport" | "glMatching" | "glMatchingActivity" | "goBDDataExport" | "grantAdminRights" | "graphs" | "hourTypes" | "imports" | "individualCharges" | "initialOpenItems" | "interEntityAccountMapping" | "interEntityTransactions" | "interactiveAccountGroups" | "interactiveCustomReports" | "interactiveDataVisualizationReports" | "interactiveReportAreas" | "interactiveReportsMasterConsumerRole" | "interestrates" | "inventoryAnalysis" | "inventoryControlSetup" | "inventoryCosting" | "inventoryCycles" | "inventoryFulfillment" | "inventoryJournal" | "inventoryRecurring" | "inventoryRegister" | "inventoryReorders" | "inventorySelfHelp" | "inventoryStatus" | "inventoryTotals" | "inventoryTransactionDefinitions" | "inventoryTransactions" | "inventoryValuation" | "inventoryValuationByCost" | "invoicePolicies" | "invoices" | "itemActivity" | "itemGLGroups" | "itemGroups" | "itemProfitability" | "itemTaxGroups" | "items" | "jobs" | "journalActivityReport" | "journalEntries" | "journalEntryMappingLink" | "journals" | "kitAnalysis" | "laborClasses" | "laborShifts" | "laborUnions" | "landedCostAdjustment" | "landedCostsCategory" | "leaseRenewal" | "leases" | "linkSubsidiaries" | "loanTypes" | "loans" | "locationActivityReport" | "locationGroups" | "locationMappingStatus" | "locations" | "lotCategory" | "lotTracking" | "maintainInventoryValuation" | "manageBooks" | "manageContributions" | "managePayments" | "managePlan" | "manageProjectBillableExpenses" | "manageResourceSchedules" | "manageSchedules" | "manageSupplies" | "manageTimesheets" | "managementCompanies" | "managementFees" | "managersAndBrokers" | "mandates" | "manualPayment" | "mapReportingInstance" | "meaAllocation" | "memorizedEntryTemplates" | "memorizedReportGroups" | "memorizedReports" | "messages" | "multiCurrencyProcessing" | "myExpenses" | "myTimesheets" | "notes" | "offlineJobQueue" | "opsbidBills" | "orderAnalysis" | "orderEntrySetup" | "orderEntryStatus" | "orderEntryTransactionDefinitions" | "orderEntryTransactions" | "otherReceipts" | "ownerDistribution" | "ownerInformation" | "ownershipStructure" | "partnerSyncEvents" | "payBills" | "payGroups" | "payInAdvance" | "paymentAccountInformation" | "paymentDefaults" | "paymentExchangeRateInformation" | "paymentManagerPayments" | "paymentRequests" | "payments" | "payrollReportCheck" | "payrollReportCheckSummary" | "payrollReportCompensationTable" | "payrollReportEmployee" | "payrollReportGrossPay" | "payrollReportHourType" | "payrollReportPTOAccrualSchedule" | "payrollReportPayGroup" | "payrollReportPayModifier" | "payrollReportPayModifierSetup" | "payrollReportPtoActivity" | "payrollReportPtoType" | "payrollReportTax" | "payrollReportTaxSetup" | "payrollReportTimecard" | "payrollReportTimecardReport" | "payrollReportTrade" | "payrollReportUnionLocal" | "pendingReimbursements" | "period" | "periodMappingStatus" | "physicalInventory" | "pickEngagements" | "pickList" | "pickingList" | "planStatement" | "poTransactionDefinitions" | "positionsAndSkills" | "postExpenseReports" | "postScheduledTransactions" | "postTemplates" | "postedAdvances" | "postedPayments" | "postedReimbursements" | "preferences" | "preparerSignoff" | "priceListEntry" | "priceListEntryTier" | "priceLists" | "priceSchedules" | "printChecks" | "printEMailDocuments" | "printEMailDunningNotice" | "printEMailInvoices" | "printEMailStatements" | "printPaymentCopies" | "printedDocumentTemplates" | "priorPeriodCogsAdjustments" | "processContractSchedules" | "productLine" | "productLines" | "projectChangeOrders" | "projectContractInvoicing" | "projectContractRateTables" | "projectContractTypes" | "projectContracts" | "projectDetailReporting" | "projectEstimates" | "projectExpenses" | "projectGroups" | "projectResources" | "projectStatus" | "projectTransactions" | "projectTypes" | "projects" | "properties" | "propertyLeaseBusinessCategories" | "propertyLeaseGroups" | "propertyLeaseStates" | "propertyLeaseTerminationReasons" | "propertyLeaseTypes" | "propertyLeases" | "ptoAccrualSchedules" | "ptoTypes" | "purchasePriceVarianceInvoicePriceVariance" | "purchasingAnalysis" | "purchasingApprovalLevels" | "purchasingRecurring" | "purchasingSetup" | "purchasingTransaction" | "purchasingTransactions" | "quantityRecord" | "quickCheckEntry" | "quickDeposits" | "receiptHistory" | "receiptsRegister" | "receiveAdvances" | "reclassificationReport" | "reconcileBank" | "reconcileCharges" | "reconcileCreditCard" | "recoveryTemplates" | "recurringAllocations" | "recurringBills" | "recurringInvoices" | "recurringJournalEntries" | "recurringSchedules" | "recurringStatisticalJournalEntries" | "recurringTransactionForecast" | "recurringTransactionStatus" | "recurringTransactions" | "refunds" | "releaseToPay" | "remitExpenses" | "renewalTemplates" | "renewalsForecast" | "replenishInventory" | "replenishmentFluctuatingForecasts" | "reporting" | "reportingAccounts" | "reportingAccountsMappingReport" | "reportingCategories" | "reportingPeriods" | "reports" | "requestSupplies" | "restrictionRelease" | "revenueRecognitionCategory" | "revenueRecognitionSchedule" | "revenueRecognitionTemplate" | "revenueSummaries" | "revenueTxnEntries" | "reverseConversions" | "reviewNote" | "reviewPendingApprovals" | "reviewerSignoff" | "rolesPermissionsReport" | "row" | "ruleSetPerformanceLog" | "runConsolidations" | "saasChangeType" | "saasSchedule" | "saasScheduleEntry" | "salesAnalysis" | "salesEntry" | "salesRecurring" | "salesTaxReport" | "salesforceSyncJobs" | "salesforceSynchronizationReport" | "salesforceSynchronizationStatus" | "sandbox" | "savingsAccounts" | "selectToReimburse" | "sendgridEmailDeliveryLog" | "serialMask" | "serialTracking" | "serviceAuthorizations" | "sharedLimits" | "shipmentHistory" | "shippingMethods" | "sireReportDashboard" | "smartEventJobs" | "sovosTransactions" | "spendInsight" | "staffTimesheets" | "standardCostTypes" | "standardTasks" | "statisticalAccountId" | "statisticalAccountMappingStatus" | "statisticalAccounts" | "statisticalAdjustingJournalEntries" | "statisticalAdjustingJournals" | "statisticalJournalEntries" | "statisticalJournals" | "statisticalMemorizedEntryTemplates" | "subledgerAndScmCombinedObjects" | "subscriptionUsage" | "subsidiaryAccounts" | "subsidiaryDepartments" | "subsidiaryLocations" | "subsidiaryReportingPeriods" | "subsidiaryStatisticalAccounts" | "summaries" | "support" | "switchToConsole" | "switchToManagementConsole" | "switchToMyAccounting" | "systemPayModifiers" | "t5018ReportForCanada" | "taskGroups" | "taskResources" | "taskTypes" | "tasks" | "taxAdjustingEntries" | "taxAdjustmentJournals" | "taxAuthority" | "taxDetail" | "taxDetailBox" | "taxReciprocity" | "taxRecords" | "taxReport" | "taxSchedule" | "taxScheduleMap" | "taxSolutions" | "taxSubmissions" | "taxablePaymentsAnnualReport" | "taxes" | "taxesLink" | "templates" | "tenantConfiguration" | "tenantchargeback" | "tenantledger" | "tenants" | "tenantstatement" | "terminateLeases" | "territories" | "territoryGroups" | "timeCards" | "timePreferences" | "timeSources" | "timeTypes" | "timesheetRules" | "trades" | "transactionAllocations" | "transactionCurrencies" | "transactionRule" | "transactionTemplates" | "trialBalance" | "triggerLogs" | "unions" | "units" | "unitsOfMeasure" | "usageAndMetrics" | "userDefinedBooks" | "userDefinedJournalEntries" | "userDefinedJournals" | "users" | "vendorAgingReportsGraphs" | "vendorException" | "vendorGLGroups" | "vendorGroups" | "vendorInsuranceReport" | "vendorReconciliation" | "vendorTypes" | "vendors" | "viewAllocationLog" | "viewMyClients" | "viewMyServiceAuthorizations" | "warehouseGroups" | "warehouseTransfer" | "warehouses" | "wipManagement" | "wipRelief" | "workOrderCallTypes" | "workOrderGroups" | "workOrderProblemCodes" | "workOrderStates" | "workOrderTypes" | "workOrders" | "zone";
         /**
          * @description Content of email.
          * @example {
@@ -12046,7 +12251,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Class object to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.class"] & components["schemas"]["company-config-classRequiredProperties"];
@@ -12074,7 +12278,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the class.
+                 * @description System-assigned unique key for the class.
                  * @example 43
                  */
                 key: string;
@@ -12104,7 +12308,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the class.
+                 * @description System-assigned unique key for the class.
                  * @example 43
                  */
                 key: string;
@@ -12129,7 +12333,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the class.
+                 * @description System-assigned unique key for the class.
                  * @example 43
                  */
                 key: string;
@@ -12309,7 +12513,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -12321,7 +12525,7 @@ export interface operations {
                     };
                 };
             };
-            /** @description Created */
+            /** @description Created. */
             201: {
                 headers: {
                     [name: string]: unknown;
@@ -12338,14 +12542,13 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Department to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.department"] & components["schemas"]["company-config-departmentRequiredProperties"];
             };
         };
         responses: {
-            /** @description Created */
+            /** @description Created. */
             201: {
                 headers: {
                     [name: string]: unknown;
@@ -12375,7 +12578,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -12405,7 +12608,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description No Content */
+            /** @description No Content. */
             204: {
                 headers: {
                     [name: string]: unknown;
@@ -12434,7 +12637,7 @@ export interface operations {
             };
         };
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -12458,7 +12661,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -12480,14 +12683,13 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Creates a new department group. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.department-group"] & components["schemas"]["company-config-department-groupRequiredProperties"];
             };
         };
         responses: {
-            /** @description Created */
+            /** @description Created. */
             201: {
                 headers: {
                     [name: string]: unknown;
@@ -12517,7 +12719,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -12547,7 +12749,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description No Content */
+            /** @description No Content. */
             204: {
                 headers: {
                     [name: string]: unknown;
@@ -12578,7 +12780,7 @@ export interface operations {
             };
         };
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -12602,7 +12804,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -12632,7 +12834,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -12678,7 +12880,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a new employee. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.employee"] & components["schemas"]["company-config-employeeRequiredProperties"];
@@ -12822,7 +13023,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create a new employee type */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.employee-type"] & components["schemas"]["company-config-employee-typeRequiredProperties"];
@@ -13045,7 +13245,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Creates a new employee group. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.employee-group"] & components["schemas"]["company-config-employee-groupRequiredProperties"];
@@ -13392,7 +13591,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create location object */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.location"] & components["schemas"]["company-config-locationRequiredProperties"];
@@ -13733,7 +13931,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Attachment to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.attachment"] & components["schemas"]["company-config-attachmentRequiredProperties"];
@@ -13956,7 +14153,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Folder to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.folder"] & components["schemas"]["company-config-folderRequiredProperties"];
@@ -14078,7 +14274,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -14100,14 +14296,13 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Contact object to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.contact"] & components["schemas"]["company-config-contactRequiredProperties"];
             };
         };
         responses: {
-            /** @description Created */
+            /** @description Created. */
             201: {
                 headers: {
                     [name: string]: unknown;
@@ -14137,7 +14332,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -14167,7 +14362,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description No Content */
+            /** @description No Content. */
             204: {
                 headers: {
                     [name: string]: unknown;
@@ -14198,7 +14393,7 @@ export interface operations {
             };
         };
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -14222,7 +14417,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -14252,7 +14447,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -14276,7 +14471,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -14298,14 +14493,13 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Document sequence to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.document-sequence"] & components["schemas"]["company-config-document-sequenceRequiredProperties"];
             };
         };
         responses: {
-            /** @description Created */
+            /** @description Created. */
             201: {
                 headers: {
                     [name: string]: unknown;
@@ -14335,7 +14529,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -14365,7 +14559,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description No Content */
+            /** @description No Content. */
             204: {
                 headers: {
                     [name: string]: unknown;
@@ -14396,7 +14590,7 @@ export interface operations {
             };
         };
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -14524,7 +14718,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Email template to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.email-template"] & components["schemas"]["company-config-email-templateRequiredProperties"];
@@ -14668,7 +14861,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create entity object */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.entity"] & components["schemas"]["company-config-entityRequiredProperties"];
@@ -14866,7 +15058,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Creates a new affiliate entity group. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.affiliate-entity-group"] & components["schemas"]["company-config-affiliate-entity-groupRequiredProperties"];
@@ -14956,7 +15147,6 @@ export interface operations {
             };
             cookie?: never;
         };
-        /** @description Updates an affiliate entity group */
         requestBody?: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.affiliate-entity-group"] & {
@@ -15257,7 +15447,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Exchange rate to create */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.exchange-rate"] & components["schemas"]["company-config-exchange-rateRequiredProperties"];
@@ -15402,7 +15591,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create an exchange rate line. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.exchange-rate-line"] & components["schemas"]["company-config-exchange-rate-lineRequiredProperties"];
@@ -15548,7 +15736,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create an exchange rate type. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.exchange-rate-type"] & components["schemas"]["company-config-exchange-rate-typeRequiredProperties"];
@@ -16588,7 +16775,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Creates a new cloud storage object. */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.cloud-storage"] & components["schemas"]["company-config-cloud-storageRequiredProperties"];
@@ -16733,7 +16919,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description New company message */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.company-message"] & components["schemas"]["company-config-company-messageRequiredProperties"];
@@ -16853,7 +17038,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -16881,7 +17066,7 @@ export interface operations {
             };
         };
         responses: {
-            /** @description Created */
+            /** @description Created. */
             201: {
                 headers: {
                     [name: string]: unknown;
@@ -16911,7 +17096,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -16941,7 +17126,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description No Content */
+            /** @description No Content. */
             204: {
                 headers: {
                     [name: string]: unknown;
@@ -16970,7 +17155,7 @@ export interface operations {
             };
         };
         responses: {
-            /** @description OK */
+            /** @description OK. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -17386,7 +17571,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned unique key for the payment-provider-notification.
+                 * @description System-assigned unique key for the payment provider notification.
                  * @example 99
                  */
                 key: string;
@@ -17871,40 +18056,6 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /**
-                     * @example {
-                     *       "Get consolidation preferences": {
-                     *         "value": {
-                     *           "ia::result": {
-                     *             "consolidationSubscriptionSelection": "domesticOrGlobalConsolidation",
-                     *             "enableManagementConsoleReporting": false,
-                     *             "audit": {
-                     *               "modifiedDateTime": "2025-04-13T09:19:58Z",
-                     *               "modifiedBy": "1",
-                     *               "modifiedByUser": {
-                     *                 "key": "1",
-                     *                 "id": "Admin",
-                     *                 "href": "/objects/company-config/user/1"
-                     *               },
-                     *               "createdDateTime": "2025-04-13T09:05:08Z",
-                     *               "createdBy": "1",
-                     *               "createdByUser": {
-                     *                 "key": "1",
-                     *                 "id": "Admin",
-                     *                 "href": "/objects/company-config/user/1"
-                     *               }
-                     *             },
-                     *             "href": "/services/company-config/preferences/consolidation"
-                     *           },
-                     *           "ia::meta": {
-                     *             "totalCount": 1,
-                     *             "totalSuccess": 1,
-                     *             "totalError": 0
-                     *           }
-                     *         }
-                     *       }
-                     *     }
-                     */
                     "application/json": {
                         "ia::result"?: components["schemas"]["objects.company-config.consolidation-preference"][];
                         "ia::meta"?: components["schemas"]["metadata-pages"];
@@ -18026,7 +18177,6 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        /** @description Create advanced consolidation preferences */
         requestBody: {
             content: {
                 "application/json": components["schemas"]["objects.company-config.advanced-consolidation-preference"] & components["schemas"]["company-config-advanced-consolidation-preferenceRequiredProperties"];
@@ -18366,7 +18516,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the Purchasing preference. This value must be set to `setup` for this object.
+                 * @description System-assigned unique key for the Purchasing preference. This value must be set to `setup`.
                  * @example setup
                  */
                 key: string;
@@ -18666,7 +18816,7 @@ export interface operations {
             header?: never;
             path: {
                 /**
-                 * @description System-assigned key for the Purchasing preference. This value must be set to `setup` for this object.
+                 * @description System-assigned unique key for the Purchasing preference. This value must be set to `setup`.
                  * @example setup
                  */
                 key: string;

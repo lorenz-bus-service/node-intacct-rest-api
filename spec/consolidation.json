@@ -521,27 +521,6 @@
      }
     ]
    },
-   "delete": {
-    "summary": "Delete a consolidation book",
-    "description": "Deletes a consolidation book.",
-    "tags": [
-     "Consolidation_Consolidation books"
-    ],
-    "operationId": "delete-consolidation-book-key",
-    "responses": {
-     "204": {
-      "description": "No Content"
-     },
-     "400": {
-      "$ref": "#/components/responses/400error"
-     }
-    },
-    "security": [
-     {
-      "OAuth2": []
-     }
-    ]
-   },
    "patch": {
     "summary": "Update a consolidation book",
     "description": "Updates an existing consolidation book by setting field values. Any field values not provided remain unchanged.",
@@ -653,6 +632,27 @@
         }
        }
       }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a consolidation book",
+    "description": "Deletes a consolidation book.",
+    "tags": [
+     "Consolidation_Consolidation books"
+    ],
+    "operationId": "delete-consolidation-book-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
      },
      "400": {
       "$ref": "#/components/responses/400error"

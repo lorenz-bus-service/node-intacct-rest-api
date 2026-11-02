@@ -762,6 +762,110 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/objects/construction/project-billable-expense": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List project billable expenses
+         * @description Returns a collection with a key, ID, and link for each project billable expense. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-construction-project-billable-expense"];
+        put?: never;
+        /**
+         * Create a project billable expense
+         * @description Creates a new project billable expense.
+         */
+        post: operations["create-construction-project-billable-expense"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/project-billable-expense/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the project billable expense.
+                 * @example 2354
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a project billable expense
+         * @description Returns detailed information for a specified project billable expense.
+         */
+        get: operations["get-construction-project-billable-expense-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a project billable expense
+         * @description Deletes a project billable expense.
+         */
+        delete: operations["delete-construction-project-billable-expense-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a project billable expense
+         * @description Updates an existing project billable expense by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["update-construction-project-billable-expense-key"];
+        trace?: never;
+    };
+    "/objects/construction/project-expense": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List project expenses
+         * @description Returns a collection with a key, ID, and link for each project expense. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-construction-project-expense"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/project-expense/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the project expense.
+                 * @example employeeExpenseLine--10095
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a project expense
+         * @description Returns detailed information for a specified project expense.
+         */
+        get: operations["get-construction-project-expense-key"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/objects/construction/project-estimate": {
         parameters: {
             query?: never;
@@ -1492,6 +1596,64 @@ export interface paths {
          * @description Updates an existing labor union by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-construction-labor-union-key"];
+        trace?: never;
+    };
+    "/objects/construction/advanced-retainage-step": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List advanced retainage steps
+         * @description Returns up to 100 advanced retainage steps from the collection with a key, ID, and link for each step. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find steps that meet specific criteria and to specify the properties that you want in the response.
+         */
+        get: operations["get-objects-advanced-retainage-step"];
+        put?: never;
+        /**
+         * Create an advanced retainage step
+         * @description Creates a new advanced retainage step.
+         */
+        post: operations["post-objects-advanced-retainage-step"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/advanced-retainage-step/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the advanced retainage step.
+                 * @example 33
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get an advanced retainage step
+         * @description Returns detailed information for a specified advanced retainage step.
+         */
+        get: operations["get-objects-advanced-retainage-step-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an advanced retainage step
+         * @description Deletes an advanced retainage step.
+         */
+        delete: operations["delete-objects-advanced-retainage-step-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an advanced retainage step
+         * @description Updates an existing advanced retainage step by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["patch-objects-advanced-retainage-step-key"];
         trace?: never;
     };
     "/objects/construction/ap-releasable-retainage": {
@@ -2532,6 +2694,388 @@ export interface paths {
          * @description Updates an existing work order problem code by setting field values. Any fields not provided remain unchanged.
          */
         patch: operations["update-construction-work-order-problem-code-key"];
+        trace?: never;
+    };
+    "/objects/construction/property-lease": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List property leases
+         * @description Returns a collection with a key, ID, and link for each property lease. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-construction-property-lease"];
+        put?: never;
+        /**
+         * Create a property lease
+         * @description Creates a new property lease.
+         */
+        post: operations["create-construction-property-lease"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/property-lease/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease.
+                 * @example 11
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a property lease
+         * @description Returns detailed information for a specified property lease.
+         */
+        get: operations["get-construction-property-lease-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a property lease
+         * @description Deletes a property lease.
+         */
+        delete: operations["delete-construction-property-lease-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a property lease
+         * @description Updates an existing property lease by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["update-construction-property-lease-key"];
+        trace?: never;
+    };
+    "/objects/construction/property-lease-business-category": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List property lease business categories
+         * @description Returns a collection with a key, ID, and link for each property lease business category. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-construction-property-lease-business-category"];
+        put?: never;
+        /**
+         * Create a property lease business category
+         * @description Creates a new property lease business category.
+         */
+        post: operations["create-construction-property-lease-business-category"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/property-lease-business-category/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease business category.
+                 * @example 4
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a property lease business category
+         * @description Returns detailed information for a specified property lease business category.
+         */
+        get: operations["get-construction-property-lease-business-category-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a property lease business category
+         * @description Deletes a property lease business category.
+         */
+        delete: operations["delete-construction-property-lease-business-category-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a property lease business category
+         * @description Updates an existing property lease business category by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["update-construction-property-lease-business-category-key"];
+        trace?: never;
+    };
+    "/objects/construction/property-lease-state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List property lease states
+         * @description Returns a collection with a key, ID, and link for each property lease state. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-construction-property-lease-state"];
+        put?: never;
+        /**
+         * Create a property lease state
+         * @description Creates a new property lease state.
+         */
+        post: operations["create-construction-property-lease-state"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/property-lease-state/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease state.
+                 * @example 6
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a property lease state
+         * @description Returns detailed information for a specified property lease state.
+         */
+        get: operations["get-construction-property-lease-state-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a property lease state
+         * @description Deletes a property lease state.
+         */
+        delete: operations["delete-construction-property-lease-state-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a property lease state
+         * @description Updates an existing property lease state by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["update-construction-property-lease-state-key"];
+        trace?: never;
+    };
+    "/objects/construction/property-lease-tenant": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List property lease tenants
+         * @description Returns a collection with a key, ID, and link for each property lease tenant. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-construction-property-lease-tenant"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/property-lease-tenant/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease tenant.
+                 * @example 1
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a property lease tenant
+         * @description Returns detailed information for a specified property lease tenant.
+         */
+        get: operations["get-construction-property-lease-tenant-key"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/property-lease-termination-reason": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List property lease termination reasons
+         * @description Returns a collection with a key, ID, and link for each property lease termination reason. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-construction-property-lease-termination-reason"];
+        put?: never;
+        /**
+         * Create a property lease termination reason
+         * @description Creates a new property lease termination reason.
+         */
+        post: operations["create-construction-property-lease-termination-reason"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/property-lease-termination-reason/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease termination reason.
+                 * @example 2
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a property lease termination reason
+         * @description Returns detailed information for a specified property lease termination reason.
+         */
+        get: operations["get-construction-property-lease-termination-reason-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a property lease termination reason
+         * @description Deletes a property lease termination reason.
+         */
+        delete: operations["delete-construction-property-lease-termination-reason-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a property lease termination reason
+         * @description Updates an existing property lease termination reason by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["update-construction-property-lease-termination-reason-key"];
+        trace?: never;
+    };
+    "/objects/construction/property-lease-type": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List property lease types
+         * @description Returns a collection with a key, ID, and link for each property lease type. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-construction-property-lease-type"];
+        put?: never;
+        /**
+         * Create a property lease type
+         * @description Creates a new property lease type.
+         */
+        post: operations["create-construction-property-lease-type"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/property-lease-type/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease type.
+                 * @example 4
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a property lease type
+         * @description Returns detailed information for a specified property lease type.
+         */
+        get: operations["get-construction-property-lease-type-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a property lease type
+         * @description Deletes a property lease type.
+         */
+        delete: operations["delete-construction-property-lease-type-key"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a property lease type
+         * @description Updates an existing property lease type by setting field values. Any fields not provided remain unchanged.
+         */
+        patch: operations["update-construction-property-lease-type-key"];
+        trace?: never;
+    };
+    "/objects/construction/property-lease-unit": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List property lease units
+         * @description Returns a collection with a key, ID, and link for each property lease unit. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-construction-property-lease-unit"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/construction/property-lease-unit/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease unit.
+                 * @example 1
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a property lease unit
+         * @description Returns detailed information for a specified property lease unit.
+         */
+        get: operations["get-construction-property-lease-unit-key"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/objects/construction-forecasting/wip-setup": {
@@ -4134,6 +4678,29 @@ export interface components {
                      */
                     readonly href?: string;
                 };
+                /** @description Reference to the project dimension associated with the project contract line. */
+                project?: {
+                    /**
+                     * @description Project system-assigned key.
+                     * @example 38
+                     */
+                    key?: string;
+                    /**
+                     * @description Project ID.
+                     * @example CUM BUD - BTI
+                     */
+                    id?: string;
+                    /**
+                     * @description Project name.
+                     * @example Cumulative Budgets - Berkeley Technology Inc
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the project.
+                     * @example /objects/projects/project/38
+                     */
+                    readonly href?: string;
+                };
             };
             /**
              * @description Set to `true` to exclude this line from the from GL budget.
@@ -4334,9 +4901,69 @@ export interface components {
             mappedTasks?: components["schemas"]["objects.construction.project-contract-line-task-map"][];
             /** @description Change requests applied to this contract line. */
             changeRequestEntries?: components["schemas"]["objects.construction.change-request-line"][];
+            /** @description Reference to an item associated with the project contract line. */
+            item?: {
+                /**
+                 * @description Item key
+                 * @example 319
+                 */
+                key?: string | null;
+                /**
+                 * @description Item ID
+                 * @example Overhead
+                 */
+                id?: string | null;
+                /**
+                 * @description Item name
+                 * @example Overhead
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL of the item
+                 * @example /objects/inventory-control/item/319
+                 */
+                readonly href?: string;
+            };
+            /**
+             * Format: decimal-precision-2
+             * @description Balance to bill.
+             * @example 500.00
+             */
+            balanceToBill?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Retainage amount from work.
+             * @example 50.00
+             */
+            retainageAmountFromWork?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Retainage amount from materials.
+             * @example 25.00
+             */
+            retainageAmountFromStoredMaterial?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Last amount applied.
+             * @example 100.00
+             */
+            lastAmountApplied?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Percent complete.
+             * @example 50.00
+             */
+            percentCompleted?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Stored materials.
+             * @example 100.00
+             */
+            storedMaterials?: string;
             attachment?: components["schemas"]["attachment-ref"];
             status?: components["schemas"]["status"];
             audit?: components["schemas"]["audit.s1"];
+            entity?: components["schemas"]["entity-ref"];
         };
         "construction-project-contract-lineRequiredProperties": Record<string, never>;
         "objects.construction.project-contract-line-entry": {
@@ -5741,6 +6368,2209 @@ export interface components {
             dimensions?: components["schemas"]["dimension-ref"];
             audit?: components["schemas"]["audit.s1"];
         };
+        /** @description Project billable expense. */
+        "objects.construction.project-billable-expense": {
+            /**
+             * @description System-assigned unique key for the project billable expense.
+             * @example 23
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the project billable expense. This value is the same as the `key` for this object.
+             * @example 23
+             */
+            readonly id?: string;
+            /**
+             * @description URL endpoint for the project billable expense.
+             * @example /objects/construction/project-billable-expense/23
+             */
+            readonly href?: string;
+            /** @description Billable expense source. */
+            expenseSource?: {
+                /** @description Reference to the GL journal entry line associated with the project billable expense. */
+                glJournalEntryLine?: {
+                    /**
+                     * @description Unique key for the journal entry line.
+                     * @example 10
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the journal entry line.
+                     * @example 10
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the journal entry line.
+                     * @example /objects/general-ledger/journal-entry-line/10
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the order entry document line associated with the project billable expense. */
+                orderEntryDocumentLine?: {
+                    /**
+                     * @description Unique key for the order entry document line.
+                     * @example 23
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the order entry document line.
+                     * @example 23
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the order entry document line.
+                     * @example /objects/order-entry/document-line/23
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the purchasing document line associated with the project billable expense. */
+                purchasingDocumentLine?: {
+                    /**
+                     * @description Unique key for the purchasing document line.
+                     * @example 510
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the purchasing document line.
+                     * @example 510
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the purchasing document line.
+                     * @example /objects/purchasing/document-line/510
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the timesheet line associated with the project billable expense. */
+                timesheetLine?: {
+                    /**
+                     * @description Unique key for the timesheet line.
+                     * @example 234
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the timesheet line.
+                     * @example 234
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the timesheet line.
+                     * @example /objects/time/timesheet-line/234
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the AP bill line associated with the project billable expense. */
+                apBillLine?: {
+                    /**
+                     * @description Unique key for the accounts payable line.
+                     * @example 123
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the accounts payable line.
+                     * @example 123
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the accounts payable line.
+                     * @example /objects/accounts-payable/bill-line/123
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the credit card transaction line associated with the project billable expense. */
+                creditCardTxnLine?: {
+                    /**
+                     * @description Unique key for the credit card transaction line.
+                     * @example 789
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the credit card transaction line.
+                     * @example 789
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the credit card transaction line.
+                     * @example /objects/cash-management/credit-card-txn-line/789
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the employee expense line associated with the project billable expense. */
+                employeeExpenseLine?: {
+                    /**
+                     * @description Unique key for the employee expense line.
+                     * @example 456
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the employee expense line.
+                     * @example 456
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the employee expense line.
+                     * @example /objects/expenses/employee-expense-line/456
+                     */
+                    readonly href?: string;
+                };
+            };
+            /**
+             * @description Source expense record number.
+             * @example 7445
+             */
+            sourceExpenseRecordNumber?: string;
+            /**
+             * @description Expense identifier.
+             * @example EXP-001
+             */
+            expenseId?: string;
+            /**
+             * @description Line number of the source document line.
+             * @example 1
+             */
+            readonly sourceDocumentLineNumber?: string;
+            /**
+             * Format: date
+             * @description Date the expense transaction occurred.
+             * @example 2025-07-01
+             */
+            readonly txnDate?: string;
+            /**
+             * Format: date
+             * @description Date the expense was posted to the general ledger.
+             * @example 2025-07-05
+             */
+            readonly glPostingDate?: string;
+            /**
+             * @description Type of the source expense transaction, such as a general ledger journal, employee expense, or purchasing invoice.
+             * @example orderEntryOrder
+             * @enum {string}
+             */
+            expenseType: "apBill" | "creditCardCharge" | "employeeExpense" | "glJournal" | "orderEntryOrder" | "purchasingInvoice" | "timesheet";
+            /** @description Reference to the project contract associated with the project billable expense. */
+            projectContract?: {
+                /**
+                 * @description Unique key for the project contract.
+                 * @example 12
+                 */
+                key?: string | null;
+                /**
+                 * @description ID for the project contract.
+                 * @example Project Contract-1
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the project contract.
+                 * @example /objects/construction/project-contract/12
+                 */
+                readonly href?: string;
+            };
+            /** @description Reference to the project contract line associated with the project billable expense. */
+            projectContractLine?: {
+                /**
+                 * @description Unique key for the project contract line.
+                 * @example 1124
+                 */
+                key?: string | null;
+                /**
+                 * @description ID for the project contract line.
+                 * @example Project Contract Line-1
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the project contract line.
+                 * @example /objects/construction/project-contract-line/1124
+                 */
+                readonly href?: string;
+            };
+            /** @description Reference to the tax schedule associated with the project contract line for the project billable expense. */
+            readonly taxSchedule?: {
+                /**
+                 * @description Unique key for the project contract line tax schedule.
+                 * @example 7
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description ID for the project contract line tax schedule.
+                 * @example Sale Goods Standard
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the tax schedule.
+                 * @example /objects/tax/order-entry-tax-schedule/7
+                 */
+                readonly href?: string | null;
+            };
+            /** @description Reference to the tax solution associated with the project billable expense. */
+            readonly taxSolution?: {
+                /**
+                 * @description Unique key for the tax solution.
+                 * @example 4
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description ID or name of the tax solution.
+                 * @example Australia GST
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the tax solution.
+                 * @example /objects/tax/tax-solution/4
+                 */
+                readonly href?: string;
+            };
+            /** @description Reference to the rate table associated with the project billable expense. */
+            billingRateTable?: {
+                /**
+                 * @description Unique key for the rate table.
+                 * @example 135
+                 */
+                key?: string | null;
+                /**
+                 * @description ID for the rate table.
+                 * @example 2021-LV2
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the rate table.
+                 * @example /objects/construction/rate-table/135
+                 */
+                readonly href?: string;
+            };
+            /**
+             * Format: date-time
+             * @description Timestamp of billable rate or billable amount change.
+             * @example 2025-07-01T00:00:00Z
+             */
+            readonly rateDeterminationDateTime?: string;
+            /**
+             * @description Indicates whether the tax schedule is overridden for this project billable expense.
+             * @default false
+             * @example false
+             */
+            overrideTaxSchedule?: boolean;
+            /** @description Reference to the tax schedule override associated with the project billable expense. Allowed only if overrideTaxSchedule is true. */
+            readonly taxScheduleOverride?: {
+                /**
+                 * @description Unique key for the tax schedule.
+                 * @example 7
+                 */
+                key?: string | null;
+                /**
+                 * @description ID for the tax schedule.
+                 * @example Sale Goods Standard
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the tax schedule.
+                 * @example /objects/tax/order-entry-tax-schedule/9
+                 */
+                readonly href?: string | null;
+            };
+            /**
+             * @description Conversion type used to calculate the billed amount, either `quantity` or `price`.
+             * @default price
+             * @example price
+             * @enum {string}
+             */
+            conversionType?: "quantity" | "price";
+            /** @description Dimensions for the source expense. */
+            readonly sourceDimensions?: {
+                /** @description Reference to the project dimension associated with the source expense. */
+                project?: {
+                    /**
+                     * @description Unique key for the project.
+                     * @example 789
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the project.
+                     * @example Project-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the project.
+                     * @example Epic townhall remodel
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the project.
+                     * @example /objects/projects/project/789
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the project task dimension associated with the source expense, if applicable. */
+                task?: {
+                    /**
+                     * @description Unique key for the task.
+                     * @example 456
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the task.
+                     * @example Task-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the task.
+                     * @example Foundation and framing
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the task.
+                     * @example /objects/projects/task/456
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the cost type dimension associated with the source expense. */
+                costType?: {
+                    /**
+                     * @description Unique key for the cost type.
+                     * @example 321
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the cost type.
+                     * @example EQ
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the cost type.
+                     * @example Equipment
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the cost type.
+                     * @example /objects/construction/cost-type/321
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the class dimension associated with the source expense. */
+                class?: {
+                    /**
+                     * @description Unique key for the class.
+                     * @example 456
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the class.
+                     * @example Class-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the class.
+                     * @example Commercial construction
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the class.
+                     * @example /objects/company-config/class/456
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the item dimension associated with the source expense, if applicable. */
+                item?: {
+                    /**
+                     * @description Unique key for the item.
+                     * @example 654
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the item.
+                     * @example Rebar
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the item.
+                     * @example Steel reinforcement bar
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the item.
+                     * @example /objects/inventory-control/item/654
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the location dimension associated with the source expense. */
+                location?: {
+                    /**
+                     * @description Unique key for the location.
+                     * @example 123
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the location.
+                     * @example Location-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the location.
+                     * @example Atlanta office
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the location.
+                     * @example /objects/company-config/location/123
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the department dimension associated with the source expense. */
+                department?: {
+                    /**
+                     * @description Unique key for the department.
+                     * @example 123
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the department.
+                     * @example Department-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the department.
+                     * @example Construction services
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the department.
+                     * @example /objects/company-config/department/123
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the customer dimension associated with the source expense, if applicable. */
+                customer?: {
+                    /**
+                     * @description Unique key for the customer.
+                     * @example 539
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the customer.
+                     * @example Customer-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the customer.
+                     * @example Delta Airlines
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the customer.
+                     * @example /objects/accounts-receivable/customers/customer/539
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the employee dimension associated with the source expense, if applicable. */
+                employee?: {
+                    /**
+                     * @description Unique key for the employee.
+                     * @example 987
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the employee.
+                     * @example Employee-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the employee.
+                     * @example John Smith
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the employee.
+                     * @example /objects/company-config/employee/987
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the contract dimension associated with the source expense, if applicable. */
+                contract?: {
+                    /**
+                     * @description Unique key for the contract.
+                     * @example 456
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the contract.
+                     * @example Contract-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the contract.
+                     * @example Airport expansion contract
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the contract.
+                     * @example /objects/contracts/contract/456
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the warehouse dimension associated with the source expense, if applicable. */
+                warehouse?: {
+                    /**
+                     * @description Unique key for the warehouse.
+                     * @example 321
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the warehouse.
+                     * @example Warehouse-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the warehouse.
+                     * @example Central warehouse
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the warehouse.
+                     * @example /objects/inventory-control/warehouse/321
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the vendor dimension associated with the source expense, if applicable. */
+                vendor?: {
+                    /**
+                     * @description Unique key for the vendor.
+                     * @example 654
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the vendor.
+                     * @example Vendor-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the vendor.
+                     * @example ABC Supplies Inc
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the vendor.
+                     * @example /objects/accounts-payable/vendor/654
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the asset dimension associated with the source expense, if applicable. */
+                asset?: {
+                    /**
+                     * @description Unique key for the asset.
+                     * @example 852
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the asset.
+                     * @example Asset-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the asset.
+                     * @example Excavator CAT 320
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the asset.
+                     * @example /objects/fixed-assets/asset/852
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the affiliate entity dimension associated with the source expense, if applicable. */
+                affiliateEntity?: {
+                    /**
+                     * @description Unique key for the affiliate entity.
+                     * @example 123
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the affiliate entity.
+                     * @example AffiliateEntity-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the affiliate entity.
+                     * @example US East Affiliate
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the affiliate entity.
+                     * @example /objects/company-config/affiliate-entity/123
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the work order dimension associated with the source expense, if applicable. */
+                workOrder?: {
+                    /**
+                     * @description Unique key for the work order.
+                     * @example 456
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the work order.
+                     * @example WO-2024-001
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the work order.
+                     * @example Work Order April 2024
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the work order.
+                     * @example /objects/construction/work-order/456
+                     */
+                    readonly href?: string;
+                };
+            };
+            /** @description Dimensions for the project billable expense. */
+            readonly billingDimensions?: {
+                /** @description Reference to the root project if this project is a subproject. */
+                rootProject?: {
+                    /**
+                     * @description Unique key for the root project.
+                     * @example 75
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the root project.
+                     * @example Delta Airport Hub Expansion
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the root project.
+                     * @example Delta Airport Hub Expansion - Phase 1
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the project.
+                     * @example /objects/projects/project/75
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the project dimension associated with the project billable expense. */
+                project?: {
+                    /**
+                     * @description Unique key for the project.
+                     * @example 789
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the project.
+                     * @example Delta Airport Hub Expansion - Phase 1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the project.
+                     * @example Delta Airport Hub Expansion - Phase 1
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the project.
+                     * @example /objects/projects/project/789
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the project task dimension associated with the project billable expense, if applicable. */
+                task?: {
+                    /**
+                     * @description Unique key for the task.
+                     * @example 456
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the task.
+                     * @example Task-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the task.
+                     * @example Foundation and framing
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the task.
+                     * @example /objects/projects/task/456
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the cost type dimension associated with the project billable expense. */
+                costType?: {
+                    /**
+                     * @description Unique key for the cost type.
+                     * @example 321
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the cost type.
+                     * @example EQ
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the cost type.
+                     * @example Equipment
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the cost type.
+                     * @example /objects/construction/cost-type/321
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the class dimension associated with the project billable expense. */
+                class?: {
+                    /**
+                     * @description Unique key for the class.
+                     * @example 456
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the class.
+                     * @example Class-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the class.
+                     * @example Commercial construction
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the class.
+                     * @example /objects/company-config/class/456
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the item dimension associated with the project billable expense, if applicable. */
+                item?: {
+                    /**
+                     * @description Unique key for the item.
+                     * @example 654
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the item.
+                     * @example Rebar
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the item.
+                     * @example Steel reinforcement bar
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the item.
+                     * @example /objects/inventory-control/item/654
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the location dimension associated with the project billable expense. */
+                location?: {
+                    /**
+                     * @description Unique key for the location.
+                     * @example 123
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the location.
+                     * @example Location-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the location.
+                     * @example Atlanta office
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the location.
+                     * @example /objects/company-config/location/123
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the department dimension associated with the project billable expense. */
+                department?: {
+                    /**
+                     * @description Unique key for the department.
+                     * @example 123
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the department.
+                     * @example Department-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the department.
+                     * @example Construction services
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the department.
+                     * @example /objects/company-config/department/123
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the customer dimension associated with the project billable expense, if applicable. */
+                customer?: {
+                    /**
+                     * @description Unique key for the customer.
+                     * @example 539
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the customer.
+                     * @example Customer-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the customer.
+                     * @example Delta Airlines
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the customer.
+                     * @example /objects/accounts-receivable/customers/customer/539
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the employee dimension associated with the project billable expense, if applicable. */
+                employee?: {
+                    /**
+                     * @description Unique key for the employee.
+                     * @example 987
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the employee.
+                     * @example Employee-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the employee.
+                     * @example John Smith
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the employee.
+                     * @example /objects/company-config/employee/987
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the contract dimension associated with the project billable expense, if applicable. */
+                contract?: {
+                    /**
+                     * @description Unique key for the contract.
+                     * @example 456
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the contract.
+                     * @example Contract-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the contract.
+                     * @example Airport expansion contract
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the contract.
+                     * @example /objects/contracts/contract/456
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the warehouse dimension associated with the project billable expense, if applicable. */
+                warehouse?: {
+                    /**
+                     * @description Unique key for the warehouse.
+                     * @example 321
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the warehouse.
+                     * @example Warehouse-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the warehouse.
+                     * @example Central warehouse
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the warehouse.
+                     * @example /objects/inventory-control/warehouse/321
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the vendor dimension associated with the project billable expense, if applicable. */
+                vendor?: {
+                    /**
+                     * @description Unique key for the vendor.
+                     * @example 654
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the vendor.
+                     * @example Vendor-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the vendor.
+                     * @example ABC Supplies Inc
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the vendor.
+                     * @example /objects/accounts-payable/vendor/654
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the asset dimension associated with the project billable expense, if applicable. */
+                asset?: {
+                    /**
+                     * @description Unique key for the asset.
+                     * @example 852
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the asset.
+                     * @example Asset-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the asset.
+                     * @example Excavator CAT 320
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the asset.
+                     * @example /objects/fixed-assets/asset/852
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the affiliate entity dimension associated with the project billable expense, if applicable. */
+                affiliateEntity?: {
+                    /**
+                     * @description Unique key for the affiliate entity.
+                     * @example 123
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the affiliate entity.
+                     * @example AffiliateEntity-1
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the affiliate entity.
+                     * @example US East Affiliate
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the affiliate entity.
+                     * @example /objects/company-config/affiliate-entity/123
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the work order dimension associated with the project billable expense, if applicable. */
+                workOrder?: {
+                    /**
+                     * @description Unique key for the work order.
+                     * @example 456
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the work order.
+                     * @example WO-2024-001
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the work order.
+                     * @example Work Order April 2024
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the work order.
+                     * @example /objects/construction/work-order/456
+                     */
+                    readonly href?: string;
+                };
+            };
+            /** @description Dimensions for the project contract line. */
+            projectContractLineDimensions?: {
+                /** @description Reference to the project dimension associated with the project contract line. */
+                project?: {
+                    /**
+                     * @description Unique key for the project.
+                     * @example 789
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the project.
+                     * @example Project-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the project.
+                     * @example Epic townhall remodel
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the project.
+                     * @example /objects/projects/project/101
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the project task dimension associated with the project contract line, if applicable. */
+                task?: {
+                    /**
+                     * @description Unique key for the task.
+                     * @example 456
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the task.
+                     * @example Task-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the task.
+                     * @example Foundation and framing
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the task.
+                     * @example /objects/projects/task/456
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the cost type dimension associated with the project contract line. */
+                costType?: {
+                    /**
+                     * @description Unique key for the cost type.
+                     * @example 321
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the cost type.
+                     * @example EQ
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the cost type.
+                     * @example Equipment
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the cost type.
+                     * @example /objects/construction/cost-type/321
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the class dimension associated with the project contract line. */
+                class?: {
+                    /**
+                     * @description Unique key for the class.
+                     * @example 456
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the class.
+                     * @example Class-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the class.
+                     * @example Commercial construction
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the class.
+                     * @example /objects/company-config/class/456
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the item dimension associated with the project contract line, if applicable. */
+                item?: {
+                    /**
+                     * @description Unique key for the item.
+                     * @example 654
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the item.
+                     * @example Rebar
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the item.
+                     * @example Steel reinforcement bar
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the item.
+                     * @example /objects/inventory-control/item/654
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the location dimension associated with the project contract line. */
+                location?: {
+                    /**
+                     * @description Unique key for the location.
+                     * @example 123
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the location.
+                     * @example Location-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the location.
+                     * @example Atlanta office
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the location.
+                     * @example /objects/company-config/location/123
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the department dimension associated with the project contract line. */
+                department?: {
+                    /**
+                     * @description Unique key for the department.
+                     * @example 123
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the department.
+                     * @example Department-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the department.
+                     * @example Construction services
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the department.
+                     * @example /objects/company-config/department/123
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the customer dimension associated with the project contract line, if applicable. */
+                customer?: {
+                    /**
+                     * @description Unique key for the customer.
+                     * @example 539
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the customer.
+                     * @example Customer-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the customer.
+                     * @example Delta Airlines
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the customer.
+                     * @example /objects/accounts-receivable/customers/customer/539
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the employee dimension associated with the project contract line, if applicable. */
+                employee?: {
+                    /**
+                     * @description Unique key for the employee.
+                     * @example 987
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the employee.
+                     * @example Employee-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the employee.
+                     * @example John Smith
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the employee.
+                     * @example /objects/company-config/employee/987
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the contract dimension associated with the project contract line, if applicable. */
+                contract?: {
+                    /**
+                     * @description Unique key for the contract.
+                     * @example 456
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the contract.
+                     * @example Contract-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the contract.
+                     * @example Airport expansion contract
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the contract.
+                     * @example /objects/contracts/contract/456
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the warehouse dimension associated with the project contract line, if applicable. */
+                warehouse?: {
+                    /**
+                     * @description Unique key for the warehouse.
+                     * @example 321
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the warehouse.
+                     * @example Warehouse-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the warehouse.
+                     * @example Central warehouse
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the warehouse.
+                     * @example /objects/inventory-control/warehouse/321
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the vendor dimension associated with the project contract line, if applicable. */
+                vendor?: {
+                    /**
+                     * @description Unique key for the vendor.
+                     * @example 654
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the vendor.
+                     * @example Vendor-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the vendor.
+                     * @example ABC Supplies Inc
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the vendor.
+                     * @example /objects/accounts-payable/vendor/654
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the asset dimension associated with the project contract line, if applicable. */
+                asset?: {
+                    /**
+                     * @description Unique key for the asset.
+                     * @example 852
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the asset.
+                     * @example Asset-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the asset.
+                     * @example Excavator CAT 320
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the asset.
+                     * @example /objects/fixed-assets/asset/852
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the affiliate entity dimension associated with the project contract line, if applicable. */
+                affiliateEntity?: {
+                    /**
+                     * @description Unique key for the affiliate entity.
+                     * @example 123
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the affiliate entity.
+                     * @example AffiliateEntity-1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the affiliate entity.
+                     * @example US East Affiliate
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the affiliate entity.
+                     * @example /objects/company-config/affiliate-entity/123
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the work order dimension associated with the project contract line, if applicable. */
+                workOrder?: {
+                    /**
+                     * @description Unique key for the work order.
+                     * @example 456
+                     */
+                    readonly key?: string;
+                    /**
+                     * @description ID for the work order.
+                     * @example WO-2024-001
+                     */
+                    readonly id?: string;
+                    /**
+                     * @description Name of the work order.
+                     * @example Work Order April 2024
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the work order.
+                     * @example /objects/construction/work-order/456
+                     */
+                    readonly href?: string;
+                };
+            };
+            /** @description Data for the source values. */
+            sourceExpenseDetails?: {
+                /**
+                 * @description Transaction currency of the source expense.
+                 * @example USD
+                 */
+                readonly sourceTxnCurrency?: string;
+                /**
+                 * @description Base currency of the source expense.
+                 * @example USD
+                 */
+                readonly sourceBaseCurrency?: string;
+                /**
+                 * @description Base currency of the project.
+                 * @example USD
+                 */
+                readonly projectBaseCurrency?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Quantity from the source document line.
+                 * @example 10.0000000000
+                 */
+                readonly sourceQuantity?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Unit transaction cost from the source document line.
+                 * @example 100.0000000000
+                 */
+                readonly sourceUnitTxnCost?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Unit cost in the base currency from the source document line.
+                 * @example 100.0000000000
+                 */
+                readonly sourceUnitCost?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Source transaction amount.
+                 * @example 1000.0000000000
+                 */
+                readonly sourceTxnAmount?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Source amount in the base currency.
+                 * @example 1000.0000000000
+                 */
+                readonly sourceAmount?: string;
+                /**
+                 * @description Unit of measure associated with the source document line.
+                 * @example EA
+                 */
+                unit?: string;
+            };
+            /** @description Data for the billable values. */
+            billableDetails?: {
+                /**
+                 * @description Indicates whether the billing amount is overridden for this project billable expense.
+                 * @default false
+                 * @example false
+                 */
+                overrideBillingAmount?: boolean;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Quantity to be billed.
+                 * @example 20.0000000000
+                 */
+                billableQuantity?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Unit price to be billed.
+                 * @example 200.0000000000
+                 */
+                billableUnitPrice?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Billable amount.
+                 * @example 4000.0000000000
+                 */
+                billableAmount?: string;
+            };
+            /** @description Data for the billed values. */
+            billedDetails?: {
+                /**
+                 * @description Transaction currency for the billed amount.
+                 * @example USD
+                 */
+                readonly txnCurrency?: string;
+                /**
+                 * Format: percent-precision-2
+                 * @description Markup percentage applied to the billable amount.
+                 * @default 0.00
+                 * @example 5.00
+                 */
+                markupPercent?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Quantity that has been billed.
+                 * @example 15.0000000000
+                 */
+                readonly quantityBilled?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Amount that has been billed.
+                 * @example 500.0000000000
+                 */
+                readonly amountBilled?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Quantity remaining to be billed.
+                 * @example 5.0000000000
+                 */
+                readonly quantityRemaining?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Amount remaining to be billed.
+                 * @example 700.0000000000
+                 */
+                readonly amountRemaining?: string;
+                /**
+                 * @description Indicates whether the project billable expense has been fully billed.
+                 * @default false
+                 * @example false
+                 */
+                readonly isFullyBilled?: boolean;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Transaction price that has been billed.
+                 * @example 10.0000000000
+                 */
+                readonly txnPriceBilled?: string;
+            };
+            /**
+             * @description Indicates whether the expense is summarized on the project contract invoice.
+             * @default false
+             * @example true
+             */
+            readonly summarizeBill?: boolean;
+            /**
+             * @description Indicates whether the project billable expense is on hold for billing.
+             * @default false
+             * @example false
+             */
+            isOnHold?: boolean;
+            /**
+             * @description Indicates whether the project billable expense is excluded from billing.
+             * @default false
+             * @example false
+             */
+            isExcluded?: boolean;
+            /**
+             * @description Memo or description for the project billable expense.
+             * @example Project billable expense memo
+             */
+            memo?: string;
+            attachment?: components["schemas"]["attachment-ref"];
+            audit?: components["schemas"]["audit.s2"];
+            entity?: components["schemas"]["entity-ref"];
+        };
+        "construction-project-billable-expenseRequiredProperties": Record<string, never>;
+        /** @description Project expense available for selection to be billed on a project. */
+        "objects.construction.project-expense": {
+            /**
+             * @description System-assigned unique key for the project expense.
+             * @example employeeExpenseLine--10095
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the project expense. This value is the same as the `key` for this object.
+             * @example employeeExpenseLine--10095
+             */
+            readonly id?: string;
+            /**
+             * @description URL endpoint for the project expense.
+             * @example /objects/construction/project-expense/EmployeeExpenseLine--10095
+             */
+            readonly href?: string;
+            /**
+             * @description Record number associated with the source expense line. This is the record number part of the `key`.
+             * @example 9133
+             */
+            readonly sourceExpenseLineKey?: string;
+            /** @description Source expense. */
+            sourceExpense?: {
+                /**
+                 * @description Identifier for the source expense, which is a combination of the name and record number of the parent entity of the source expense. The list of entities used here are GLBATCH, CCTRANSACTION, APBILL, EEXPENSES, TIMESHEET, PODOCUMENT, and SODOCUMENT.
+                 * @example APBILL--50
+                 */
+                readonly id?: string;
+                /**
+                 * @description Record number associated with the source expense. This is the record number part of the `id`.
+                 * @example 50
+                 */
+                readonly key?: string;
+                /**
+                 * @description A descriptor for the source expense, which is a combination of multiple fields based on the expense type. This is used for assisting the user with visually identifying the expenses to select for billing.
+                 * @example APVendorInv-E1-501-PO1--04/28/2024
+                 */
+                readonly descriptor?: string;
+                /**
+                 * @description Name of the source module from which the expense originated, such as general ledger, purchasing, or order entry.
+                 * @default accountsPayable
+                 * @example purchasing
+                 * @enum {string}
+                 */
+                readonly moduleName?: "generalLedger" | "accountsPayable" | "expenses" | "orderEntry" | "purchasing" | "cashManagement" | "time";
+                /**
+                 * @description Name of the source expense, such as an AP bill or employee expense.
+                 * @example Employee Expenses
+                 */
+                readonly name?: string;
+                /**
+                 * @description Record type of the source expense, such as a general ledger journal, employee expense, or purchasing invoice.
+                 * @default apBill
+                 * @example purchaseOrder
+                 * @enum {string}
+                 */
+                recordType?: "apBill" | "creditCardCharge" | "employeeExpense" | "glJournal" | "orderEntryOrder" | "purchasingInvoice" | "timesheet";
+            };
+            /**
+             * Format: date
+             * @description Date the expense transaction occurred.
+             * @example 2024-04-15
+             */
+            readonly txnDate?: string;
+            /**
+             * Format: date
+             * @description Date the expense was posted to the general ledger.
+             * @example 2024-04-20
+             */
+            readonly glPostingDate?: string;
+            /**
+             * @description Indicates whether the source expense is billable.
+             * @default false
+             * @example true
+             */
+            readonly isBillable?: boolean;
+            /**
+             * @description Indicates whether this expense is selected to be included in the project's billable expenses.
+             * @default false
+             * @example false
+             */
+            readonly selectedToBill?: boolean;
+            /** @description Reference to the expense source object associated with this expense. */
+            sourceExpenseLine?: {
+                /** @description Reference to the GL journal entry line. */
+                glJournalEntryLine?: {
+                    /**
+                     * @description System-assigned key for the GL journal entry line.
+                     * @example 1024
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the GL journal entry line.
+                     * @example 1024
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the GL journal entry line.
+                     * @example /objects/general-ledger/journal-entry-line/1024
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the credit card transaction line. */
+                creditCardTxnLine?: {
+                    /**
+                     * @description System-assigned key for the credit card transaction line.
+                     * @example 23
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the credit card transaction line.
+                     * @example 23
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the credit card transaction line.
+                     * @example /objects/cash-management/credit-card-txn-line/23
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the employee expense line. */
+                employeeExpenseLine?: {
+                    /**
+                     * @description System-assigned key for the employee expense line.
+                     * @example 9
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the employee expense line.
+                     * @example 9
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the employee expense line.
+                     * @example /objects/expenses/employee-expense-line/9
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the accounts payable bill line. */
+                apBillLine?: {
+                    /**
+                     * @description System-assigned key for the accounts payable bill line.
+                     * @example 295
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the accounts payable bill line.
+                     * @example 295
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the accounts payable bill line.
+                     * @example /objects/accounts-payable/bill-line/295
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the purchasing document line. */
+                purchasingDocumentLine?: {
+                    /**
+                     * @description System-assigned key for the purchasing document line.
+                     * @example 2048
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the purchasing document line.
+                     * @example 2048
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the purchasing document line.
+                     * @example /objects/purchasing/document-line/2048
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the order entry document line. */
+                orderEntryDocumentLine?: {
+                    /**
+                     * @description System-assigned key for the order entry document line.
+                     * @example 4096
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the order entry document line.
+                     * @example 4096
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the order entry document line.
+                     * @example /objects/order-entry/document-line/4096
+                     */
+                    readonly href?: string;
+                };
+            } | {
+                /** @description Reference to the timesheet line. */
+                timesheetLine?: {
+                    /**
+                     * @description System-assigned key for the timesheet line.
+                     * @example 8192
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the timesheet line.
+                     * @example 8192
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the timesheet line.
+                     * @example /objects/time/timesheet-line/8192
+                     */
+                    readonly href?: string;
+                };
+            };
+            /**
+             * Format: decimal-precision-10
+             * @description Quantity associated with the expense item.
+             * @example 10
+             */
+            readonly quantity?: string;
+            /**
+             * @description Unit of measure for the quantity, such as hours or items.
+             * @example hours
+             */
+            readonly unit?: string;
+            /**
+             * Format: decimal-precision-10
+             * @description Unit price of the expense item.
+             * @example 15.75
+             */
+            readonly unitPrice?: string;
+            /**
+             * Format: decimal-precision-10
+             * @description Transaction amount of the expense.
+             * @example 157.5
+             */
+            readonly txnAmount?: string;
+            /**
+             * @description Transaction currency of the expense.
+             * @example USD
+             */
+            readonly txnCurrency?: string;
+            /**
+             * Format: decimal-precision-10
+             * @description Base amount of the expense.
+             * @example 150
+             */
+            readonly baseAmount?: string;
+            /**
+             * @description Base currency of the expense.
+             * @example USD
+             */
+            readonly baseCurrency?: string;
+            /**
+             * @description Conversion type used to calculate the transaction amount for the expense line, either `quantity` or `price`.
+             * @default price
+             * @example price
+             * @enum {string}
+             */
+            readonly conversionType?: "quantity" | "price";
+            /**
+             * @description Line number of the source document line.
+             * @example 1
+             */
+            readonly sourceDocumentLineNumber?: string;
+            /** @description Dimensions associated with the expense. */
+            dimensions?: {
+                /** @description Reference to the project dimension associated with the expense. */
+                project?: {
+                    /**
+                     * @description Unique key for the project.
+                     * @example 38
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the project.
+                     * @example CUM BUD - BTI
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the project.
+                     * @example Cumulative Budgets - Berkeley Technology Inc
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the project.
+                     * @example /objects/projects/project/38
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the root project if this project is a subproject. */
+                readonly rootProject?: {
+                    /**
+                     * @description Unique key for the root project.
+                     * @example 1
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the root project.
+                     * @example DIM - BTI
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the root project.
+                     * @example Dimensions - Berkeley Technology Inc
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the root project.
+                     * @example /objects/projects/project/1
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the project task dimension associated with the expense, if applicable. */
+                task?: {
+                    /**
+                     * @description Unique key for the task.
+                     * @example 1
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the task.
+                     * @example TSK-RT-0001
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the task.
+                     * @example DIM - BTI01
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the task.
+                     * @example /objects/projects/task/1
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the cost type dimension associated with the expense. */
+                costType?: {
+                    /**
+                     * @description Unique key for the cost type.
+                     * @example 16
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the cost type.
+                     * @example EQR
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the cost type.
+                     * @example Equipment Rental DIM-BTI 0001
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the cost type.
+                     * @example /objects/construction/cost-type/16
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the class dimension associated with the expense. */
+                class?: {
+                    /**
+                     * @description Unique key for the class.
+                     * @example 5
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the class.
+                     * @example HS
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the class.
+                     * @example Hospitality
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the class.
+                     * @example /objects/company-config/class/5
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the item dimension associated with the expense, if applicable. */
+                item?: {
+                    /**
+                     * @description Unique key for the item.
+                     * @example 39
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the item.
+                     * @example C001
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the item.
+                     * @example Printers-HP
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the item.
+                     * @example /objects/inventory-control/item/39
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the location dimension associated with the expense. */
+                location?: {
+                    /**
+                     * @description Unique key for the location.
+                     * @example 1
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the location.
+                     * @example 1
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the location.
+                     * @example United States of America
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the location.
+                     * @example /objects/company-config/location/1
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the department dimension associated with the expense. */
+                department?: {
+                    /**
+                     * @description Unique key for the department.
+                     * @example 29
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the department.
+                     * @example TS
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the department.
+                     * @example Technical Services
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the department.
+                     * @example /objects/company-config/department/29
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the customer dimension associated with the expense, if applicable. */
+                customer?: {
+                    /**
+                     * @description Unique key for the customer.
+                     * @example 14
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the customer.
+                     * @example BTI
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the customer.
+                     * @example Berkeley Technology Inc
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the customer.
+                     * @example /objects/accounts-receivable/customer/14
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the vendor dimension associated with the expense, if applicable. */
+                vendor?: {
+                    /**
+                     * @description Unique key for the vendor.
+                     * @example 149
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the vendor.
+                     * @example 501
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the vendor.
+                     * @example 501-Portland Floor
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the vendor.
+                     * @example /objects/accounts-payable/vendor/149
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the employee dimension associated with the expense, if applicable. */
+                employee?: {
+                    /**
+                     * @description Unique key for the employee.
+                     * @example 2
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the employee.
+                     * @example hatcherd
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the employee.
+                     * @example David Hatcher
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the employee.
+                     * @example /objects/company-config/employee/2
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the contract dimension associated with the expense, if applicable. */
+                contract?: {
+                    /**
+                     * @description Unique key for the contract.
+                     * @example 1
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the contract.
+                     * @example C-001
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the contract.
+                     * @example Contract Alpha
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the project contract.
+                     * @example /objects/contracts/contract/1
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the asset dimension associated with the expense, if applicable. */
+                asset?: {
+                    /**
+                     * @description Unique key for the asset.
+                     * @example 10
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the asset.
+                     * @example FA-1001
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the asset.
+                     * @example Company Vehicle 1
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the asset.
+                     * @example /objects/fixed-assets/asset/10
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the affiliate entity dimension associated with the expense, if applicable. */
+                affiliateEntity?: {
+                    /**
+                     * @description Unique key for the affiliate entity.
+                     * @example 3
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the affiliate entity.
+                     * @example AFF-003
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the affiliate entity.
+                     * @example Affiliate Entity 3
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the affiliate entity.
+                     * @example /objects/company-config/affiliate-entity/3
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the warehouse dimension associated with the expense, if applicable. */
+                warehouse?: {
+                    /**
+                     * @description Unique key for the warehouse.
+                     * @example 18
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the warehouse.
+                     * @example WH10001
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the warehouse.
+                     * @example US AZ Warehouse 10001
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the warehouse.
+                     * @example /objects/inventory-control/warehouse/18
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the work order dimension associated with the expense, if applicable. */
+                workOrder?: {
+                    /**
+                     * @description Unique key for the work order.
+                     * @example 25
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the work order.
+                     * @example WO-2024-001
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the work order.
+                     * @example Work Order April 2024
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the work order.
+                     * @example /objects/construction/work-order/25
+                     */
+                    readonly href?: string;
+                };
+                /** @description Reference to the loan account dimension associated with the expense, if applicable. */
+                loanAccount?: {
+                    /**
+                     * @description Unique key for the loan account.
+                     * @example 8
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the loan account.
+                     * @example LA-1001
+                     */
+                    id?: string;
+                    /**
+                     * @description Name of the loan account.
+                     * @example Business Loan Account 1001
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the loan account.
+                     * @example /objects/loan-management/loan-account/8
+                     */
+                    readonly href?: string;
+                };
+            };
+            entity?: components["schemas"]["entity-ref"];
+        };
         /** @description A project estimate lets you compare estimated costs for a project against the actual amounts posted. */
         "objects.construction.project-estimate": {
             /**
@@ -7059,6 +9889,96 @@ export interface components {
             entity?: components["schemas"]["entity-ref"];
         };
         "construction-labor-unionRequiredProperties": Record<string, never>;
+        /** @description Advanced retainage step defines a single step in a multi-step advanced retainage schedule applied to a purchasing document or project contract. */
+        "objects.construction.advanced-retainage-step": {
+            /**
+             * @description Unique key for the advanced retainage step.
+             * @example 23
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the advanced retainage step. This value is the same as the `key` for this object.
+             * @example 23
+             */
+            readonly id?: string;
+            /**
+             * @description URL endpoint for the advanced retainage step.
+             * @example /objects/construction/advanced-retainage-step/23
+             */
+            readonly href?: string;
+            /** @description For `documentHeader` record types, purchasing document associated with the advanced retainage step. Can be null if the `recordType` is `projectContract`. */
+            purchasingDocument?: {
+                /**
+                 * @description Unique key for the purchasing document.
+                 * @example 101
+                 */
+                key?: string;
+                /**
+                 * @description ID for the purchasing document.
+                 * @example PO-001
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the purchasing document.
+                 * @example /objects/purchasing/document/101
+                 */
+                readonly href?: string;
+            };
+            /** @description For `projectContract` record types, project contract associated with the advanced retainage step. Can be null if the `recordType` is `documentHeader`. */
+            projectContract?: {
+                /**
+                 * @description Unique key for the project contract.
+                 * @example 202
+                 */
+                key?: string;
+                /**
+                 * @description ID for the project contract.
+                 * @example PC-001
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the project contract.
+                 * @example /objects/construction/project-contract/202
+                 */
+                readonly href?: string;
+            };
+            /**
+             * @description Type of record for the retainage step.
+             * @example documentHeader
+             * @enum {string}
+             */
+            recordType?: "documentHeader" | "projectContract";
+            /**
+             * @description Line number (step number) for the advanced retainage step.
+             * @example 2
+             */
+            readonly lineNumber?: number;
+            /**
+             * Format: decimal-precision-2
+             * @description Retainage percentage for the advanced retainage step.
+             * @example 10.5
+             */
+            retainagePercentage?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Amount of retainage held.
+             * @example 5000.00
+             */
+            retainageHeld?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Amount of retainage invoiced.
+             * @example 2500.00
+             */
+            amountInvoiced?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Percent of contract for the advanced retainage step.
+             * @example 25.0
+             */
+            percentOfContract?: string;
+            audit?: components["schemas"]["audit.s2"];
+        };
         /** @description The AP retainage records that can be released. */
         "objects.construction.ap-releasable-retainage": {
             /**
@@ -8097,6 +11017,47 @@ export interface components {
                  * @example line 2
                  */
                 readonly memo?: string | null;
+                /**
+                 * @description Conversion type used for the transaction.
+                 * @example quantity
+                 * @enum {string}
+                 */
+                readonly conversionType?: "quantity" | "price";
+                /**
+                 * Format: decimal-precision-10
+                 * @description Unit quantity associated with this document line item.
+                 * @example 10.1000000000
+                 */
+                readonly unitQuantity?: string;
+                /**
+                 * @description Unit associated with this document line item.
+                 * @example Each
+                 */
+                readonly unit?: string;
+                /**
+                 * Format: decimal-precision-2
+                 * @description Unit price associated with this line item.
+                 * @example 10.50
+                 */
+                readonly unitPrice?: string;
+                /**
+                 * Format: decimal-precision-10
+                 * @description Quantity of items converted to a downstream document from the original quantity entered.
+                 * @example 5.1000000000
+                 */
+                readonly quantityConverted?: string;
+                /**
+                 * Format: decimal-precision-2
+                 * @description Price of converted document.
+                 * @example 200.00
+                 */
+                readonly priceConverted?: string;
+                /**
+                 * Format: decimal-precision-1
+                 * @description Revised quantity.
+                 * @example 10.1
+                 */
+                readonly quantity?: string | null;
             };
             /** @description The project associated with the primary document detail. */
             readonly project?: {
@@ -9550,17 +12511,17 @@ export interface components {
             workOrderType?: {
                 /**
                  * @description System-assigned key for the work order type.
-                 * @example 10
+                 * @example 8
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the work order type. This value is same as key for this object.
-                 * @example 10
+                 * @description Unique identifier for the work order type.
+                 * @example WO-India-00
                  */
                 id?: string;
                 /**
                  * @description URL endpoint for the work order type.
-                 * @example /objects/construction/work-order-type/10
+                 * @example /objects/construction/work-order-type/8
                  */
                 readonly href?: string;
             };
@@ -9572,8 +12533,8 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the work order call type. This value is same as key for this object.
-                 * @example 11
+                 * @description Unique identifier for the work order call type.
+                 * @example WO-CT-India06
                  */
                 id?: string;
                 /**
@@ -9590,8 +12551,8 @@ export interface components {
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the work order problem code. This value is same as key for this object.
-                 * @example 10
+                 * @description Unique identifier for the work order problem code.
+                 * @example WO-PC-India11
                  */
                 id?: string;
                 /**
@@ -9604,17 +12565,17 @@ export interface components {
             workOrderState?: {
                 /**
                  * @description System-assigned key for the work order state.
-                 * @example 10
+                 * @example 6
                  */
                 key?: string;
                 /**
-                 * @description Unique identifier for the work order state. This value is same as key for this object.
-                 * @example 10
+                 * @description Unique identifier for the work order state.
+                 * @example WO-State-India-02
                  */
                 id?: string;
                 /**
                  * @description URL endpoint for the work order state.
-                 * @example /objects/construction/work-order-state/10
+                 * @example /objects/construction/work-order-state/6
                  */
                 readonly href?: string;
             };
@@ -9895,7 +12856,29 @@ export interface components {
              */
             recordURL?: string | null;
             status?: components["schemas"]["status"];
-            entity?: components["schemas"]["entity-ref"];
+            /** @description Entity associated with the work order. */
+            entity?: {
+                /**
+                 * @description Unique key for the entity.
+                 * @example 2
+                 */
+                key?: string;
+                /**
+                 * @description Identifier for the entity.
+                 * @example 2
+                 */
+                id?: string;
+                /**
+                 * @description Name for the entity.
+                 * @example India
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the entity.
+                 * @example /objects/company-config/entity/2
+                 */
+                readonly href?: string;
+            };
             audit?: components["schemas"]["audit.s2"];
         };
         "construction-work-orderRequiredProperties": Record<string, never>;
@@ -10059,6 +13042,701 @@ export interface components {
             audit?: components["schemas"]["audit.s2"];
         };
         "construction-work-order-problem-codeRequiredProperties": Record<string, never>;
+        /** @description A property lease represents a contract between a landlord and a tenant for the rental of a property. It includes details such as the start and end dates of the lease, the rent amount, and the terms of the agreement. */
+        "objects.construction.property-lease": {
+            /**
+             * @description System-assigned unique key for the property lease.
+             * @example 11
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the property lease.
+             * @example PL-06
+             */
+            id?: string;
+            /**
+             * @description URL endpoint for the property lease.
+             * @example /objects/construction/property-lease/11
+             */
+            readonly href?: string;
+            /**
+             * @description Name of the property lease.
+             * @example Lease for 123 Main St.
+             */
+            name?: string;
+            /** @description Collection of tenant entry lines associated with the property lease. */
+            tenants?: components["schemas"]["objects.construction.property-lease-tenant"][];
+            /** @description Collection of unit entry lines associated with the property lease. */
+            units?: components["schemas"]["objects.construction.property-lease-unit"][];
+            /** @description Entity associated with the property lease. */
+            entity?: {
+                /**
+                 * @description Unique key for the entity.
+                 * @example 1
+                 */
+                key?: string;
+                /**
+                 * @description Identifier for the entity.
+                 * @example 1
+                 */
+                id?: string;
+                /**
+                 * @description Name for the entity.
+                 * @example United States of America
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the entity.
+                 * @example /objects/company-config/entity/1
+                 */
+                readonly href?: string;
+            };
+            /** @description The project associated with the property lease. */
+            project?: {
+                /**
+                 * @description System-assigned key for the project.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the project.
+                 * @example DIM - BTI
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the project.
+                 * @example Dimensions - Berkeley Technology Inc
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the project.
+                 * @example /objects/projects/project/1
+                 */
+                readonly href?: string;
+            };
+            /** @description The class associated with the property lease. */
+            class?: {
+                /**
+                 * @description System-assigned key for the class.
+                 * @example 731
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the class.
+                 * @example REST_CLS_001
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the class.
+                 * @example Enterprises
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the class.
+                 * @example /objects/company-config/class/731
+                 */
+                readonly href?: string;
+            };
+            /** @description Department associated with the property lease. */
+            department?: {
+                /**
+                 * @description System-assigned key for the department.
+                 * @example 7
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the department.
+                 * @example CS
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the department.
+                 * @example Client Services
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the department.
+                 * @example /objects/company-config/department/7
+                 */
+                readonly href?: string;
+            };
+            /** @description Property lease type for the property lease. */
+            propertyLeaseType?: {
+                /**
+                 * @description System-assigned key for the property lease type.
+                 * @example 1
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the property lease type.
+                 * @example Residential Lease
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the property lease type.
+                 * @example /objects/construction/property-lease-type/1
+                 */
+                readonly href?: string;
+            };
+            /** @description Property lease state for the property lease. */
+            propertyLeaseState?: {
+                /**
+                 * @description System-assigned key for the property lease state.
+                 * @example 4
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the property lease state.
+                 * @example Hold
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the property lease state.
+                 * @example /objects/construction/property-lease-state/4
+                 */
+                readonly href?: string;
+            };
+            /** @description Business category for the property lease. */
+            propertyLeaseBusinessCategory?: {
+                /**
+                 * @description System-assigned key for the property lease business category.
+                 * @example 2
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the property lease business category.
+                 * @example Office
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the property lease business category.
+                 * @example /objects/construction/property-lease-business-category/2
+                 */
+                readonly href?: string;
+            };
+            /** @description Reason for termination for the property lease. */
+            propertyLeaseTerminationReason?: {
+                /**
+                 * @description System-assigned key for the property lease reason for termination.
+                 * @example 2
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the property lease reason for termination.
+                 * @example Non-Payment of Rent
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the property lease reason for termination.
+                 * @example /objects/construction/property-lease-termination-reason/2
+                 */
+                readonly href?: string;
+            };
+            /**
+             * Format: date
+             * @description Start date for the property lease.
+             * @example 2025-01-01
+             */
+            startDate?: string | null;
+            /**
+             * Format: date
+             * @description End date for the property lease.
+             * @example 2025-12-31
+             */
+            endDate?: string | null;
+            /**
+             * Format: date
+             * @description Move in date for the property lease.
+             * @example 2025-01-05
+             */
+            moveInDate?: string | null;
+            /**
+             * Format: date
+             * @description Notice termination date for the property lease.
+             * @example 2025-11-30
+             */
+            noticeTerminationDate?: string | null;
+            /**
+             * Format: date
+             * @description Intended move out date for the property lease.
+             * @example 2025-12-15
+             */
+            intendedMoveOutDate?: string | null;
+            /**
+             * Format: date
+             * @description Actual move out date for the property lease.
+             * @example 2025-12-20
+             */
+            actualMoveOutDate?: string | null;
+            /**
+             * Format: date
+             * @description Lease termination date for the property lease.
+             * @example 2025-12-31
+             */
+            leaseEndDate?: string | null;
+            /**
+             * Format: date
+             * @description Recurring charge termination date for the property lease.
+             * @example 2025-12-31
+             */
+            recurringChargeEndDate?: string | null;
+            /**
+             * Format: date
+             * @description Termination intention date for the property lease.
+             * @example 2025-11-30
+             */
+            terminationIntentDate?: string | null;
+            /**
+             * Format: date
+             * @description Certificate of occupancy date for the property lease.
+             * @example 2025-01-10
+             */
+            certificateOfOccupancyDate?: string | null;
+            /**
+             * Format: date
+             * @description Execution date for the property lease.
+             * @example 2025-01-01
+             */
+            executionDate?: string | null;
+            /**
+             * @description Indicates whether the property lease is month to month.
+             * @default false
+             * @example true
+             */
+            isMonthToMonth?: boolean;
+            /** @description Primary tenant for the property lease. */
+            primaryTenant?: {
+                /**
+                 * @description System-assigned key for the primary tenant.
+                 * @example 2
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the primary tenant.
+                 * @example 2
+                 */
+                id?: string;
+                /**
+                 * @description Name for the primary tenant.
+                 * @example Logic Solutions
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the primary tenant.
+                 * @example /objects/accounts-receivable/customer/2
+                 */
+                readonly href?: string;
+            };
+            /** @description Primary unit for the property lease. */
+            primaryUnit?: {
+                /**
+                 * @description System-assigned key for the primary unit.
+                 * @example 10
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the primary unit.
+                 * @example 1
+                 */
+                id?: string;
+                /**
+                 * @description Name for the primary unit.
+                 * @example India
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the primary unit.
+                 * @example /objects/company-config/location/10
+                 */
+                readonly href?: string;
+            };
+            /** @description Recurring charges item associated with the property lease. */
+            recurringChargesItem?: {
+                /**
+                 * @description System-assigned key for the recurring charges item.
+                 * @example 319
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the recurring charges item.
+                 * @example Overhead
+                 */
+                id?: string;
+                /**
+                 * @description Name for the recurring charges item.
+                 * @example Overhead
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the recurring charges item.
+                 * @example /objects/inventory-control/item/319
+                 */
+                readonly href?: string;
+            };
+            /**
+             * @description Lease status for the property lease.
+             * @default future
+             * @example current
+             * @enum {string}
+             */
+            leaseStatus?: "none" | "current" | "future" | "futureRevision" | "canceled" | "terminated" | "historical";
+            /**
+             * Format: date
+             * @description Lease commence date for the property lease.
+             * @example 2025-01-01
+             */
+            leaseCommencementDate?: string | null;
+            /**
+             * Format: date
+             * @description Lease expiration date for the property lease.
+             * @example 2025-12-31
+             */
+            leaseExpirationDate?: string | null;
+            /**
+             * Format: decimal-precision-2
+             * @description Current rent.
+             * @example 2500.00
+             */
+            currentRent?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Market rent.
+             * @example 3000.00
+             */
+            marketRent?: string;
+            /**
+             * Format: decimal-precision-2
+             * @description Recurring charges current amount.
+             * @example 500.00
+             */
+            recurringChargesCurrentAmount?: string;
+            /**
+             * Format: date
+             * @description Recurring charges next date.
+             * @example 2025-02-01
+             */
+            recurringChargesNextDate?: string | null;
+            status?: components["schemas"]["status"];
+            audit?: components["schemas"]["audit.s2"];
+        };
+        "construction-property-leaseRequiredProperties": {
+            entity?: Record<string, never>;
+            primaryTenant?: Record<string, never>;
+            units?: {
+                location: Record<string, never>;
+            }[];
+            tenants?: {
+                customer: Record<string, never>;
+            }[];
+        };
+        /** @description A property lease business category represents the different categories of businesses that can be associated with a property lease. This can help classify leases based on the type of business operating under the lease, such as retail, office, industrial, etc. */
+        "objects.construction.property-lease-business-category": {
+            /**
+             * @description System-assigned key for the property lease business category.
+             * @example 4
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the property lease business category.
+             * @example Commercial
+             */
+            id?: string;
+            /**
+             * @description URL endpoint for the property lease business category.
+             * @example /objects/construction/property-lease-business-category/4
+             */
+            readonly href?: string;
+            /** @description Parent property lease business category, used to create property lease business category hierarchies. */
+            parent?: {
+                /**
+                 * @description System-assigned key for the parent property lease business category.
+                 * @example 2
+                 */
+                key?: string | null;
+                /**
+                 * @description Name of the parent property lease business category.
+                 * @example Office
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the parent property lease business category.
+                 * @example /objects/construction/property-lease-business-category/2
+                 */
+                readonly href?: string;
+            };
+            status?: components["schemas"]["status"];
+            entity?: components["schemas"]["entity-ref"];
+            audit?: components["schemas"]["audit.s2"];
+        };
+        "construction-property-lease-business-categoryRequiredProperties": Record<string, never>;
+        /** @description A property lease state represents the different states that a property lease can be in, such as active, or inactive. */
+        "objects.construction.property-lease-state": {
+            /**
+             * @description System-assigned key for the property lease state.
+             * @example 6
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the property lease state.
+             * @example Completed
+             */
+            id?: string;
+            /**
+             * @description URL endpoint for the property lease state.
+             * @example /objects/construction/property-lease-state/6
+             */
+            readonly href?: string;
+            /** @description Parent property lease state, used to create property lease state hierarchies. */
+            parent?: {
+                /**
+                 * @description System-assigned key for the parent property lease state.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Name of the parent property lease state.
+                 * @example In Progress
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the parent property lease state.
+                 * @example /objects/construction/property-lease-state/1
+                 */
+                readonly href?: string;
+            };
+            status?: components["schemas"]["status"];
+            entity?: components["schemas"]["entity-ref"];
+            audit?: components["schemas"]["audit.s2"];
+        };
+        "construction-property-lease-stateRequiredProperties": Record<string, never>;
+        /** @description A property lease tenant represents a tenant assigned to a property lease. */
+        "objects.construction.property-lease-tenant": {
+            /**
+             * @description System-assigned key for the property lease tenant.
+             * @example 1
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the property lease tenant. This value is the same as the `key` for this object.
+             * @example 1
+             */
+            readonly id?: string;
+            /**
+             * @description URL endpoint for the property lease tenant.
+             * @example /objects/construction/property-lease-tenant/1
+             */
+            readonly href?: string;
+            /**
+             * @description Indicates if the tenant is the primary tenant for the property lease.
+             * @default false
+             * @example true
+             */
+            isPrimaryTenant?: boolean;
+            /** @description Customer associated with the property lease tenant. */
+            customer?: {
+                /**
+                 * @description System-assigned key for the customer.
+                 * @example 14
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the customer.
+                 * @example BTI
+                 */
+                id?: string;
+                /**
+                 * @description Name for the customer.
+                 * @example Berkeley Technology Inc
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the customer.
+                 * @example /objects/accounts-receivable/customer/14
+                 */
+                readonly href?: string;
+            };
+            /** @description Property lease associated with the property lease tenant. */
+            readonly propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
+                 */
+                readonly href?: string;
+            };
+            audit?: components["schemas"]["audit.s2"];
+        };
+        /** @description A property lease termination reason represents the different reasons for termination that can be associated with a property lease. */
+        "objects.construction.property-lease-termination-reason": {
+            /**
+             * @description System-assigned key for the property lease termination reason.
+             * @example 2
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the property lease termination reason.
+             * @example Non-Payment of Rent
+             */
+            id?: string;
+            /**
+             * @description URL endpoint for the property lease termination reason.
+             * @example /objects/construction/property-lease-termination-reason/2
+             */
+            readonly href?: string;
+            /** @description Parent property lease termination reason, used to create property lease termination reason hierarchies. */
+            parent?: {
+                /**
+                 * @description System-assigned key for the parent property lease termination reason.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Name of the parent property lease termination reason.
+                 * @example Lease Expiration
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the parent property lease termination reason.
+                 * @example /objects/construction/property-lease-termination-reason/1
+                 */
+                readonly href?: string;
+            };
+            status?: components["schemas"]["status"];
+            entity?: components["schemas"]["entity-ref"];
+            audit?: components["schemas"]["audit.s2"];
+        };
+        "construction-property-lease-termination-reasonRequiredProperties": Record<string, never>;
+        /** @description A property lease type represents the different types of leases that can be associated with a property. */
+        "objects.construction.property-lease-type": {
+            /**
+             * @description System-assigned key for the property lease type.
+             * @example 4
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the property lease type.
+             * @example Residential Lease
+             */
+            id?: string;
+            /**
+             * @description URL endpoint for the property lease type.
+             * @example /objects/construction/property-lease-type/4
+             */
+            readonly href?: string;
+            /** @description Parent property lease type, used to create property lease type hierarchies. */
+            parent?: {
+                /**
+                 * @description System-assigned key for the parent property lease type.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Name of the parent property lease type.
+                 * @example Residential Lease
+                 */
+                id?: string | null;
+                /**
+                 * @description URL endpoint for the parent property lease type.
+                 * @example /objects/construction/property-lease-type/1
+                 */
+                readonly href?: string;
+            };
+            status?: components["schemas"]["status"];
+            entity?: components["schemas"]["entity-ref"];
+            audit?: components["schemas"]["audit.s2"];
+        };
+        "construction-property-lease-typeRequiredProperties": Record<string, never>;
+        /** @description A property lease unit represents a specific unit assigned to a property lease, including move-in date and unit information. */
+        "objects.construction.property-lease-unit": {
+            /**
+             * @description System-assigned key for the property lease unit.
+             * @example 1
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the property lease unit. This value is the same as the `key` for this object.
+             * @example 1
+             */
+            readonly id?: string;
+            /**
+             * @description URL endpoint for the property lease unit.
+             * @example /objects/construction/property-lease-unit/1
+             */
+            readonly href?: string;
+            /**
+             * @description Indicates if the unit is the primary unit for the property lease.
+             * @default false
+             * @example true
+             */
+            isPrimaryUnit?: boolean;
+            /**
+             * Format: date
+             * @description Move-in date for the property lease unit.
+             * @example 2025-01-01
+             */
+            moveInDate?: string | null;
+            /** @description Location associated with the property lease unit. */
+            location?: {
+                /**
+                 * @description System-assigned key for the location.
+                 * @example 2
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the location.
+                 * @example 2
+                 */
+                id?: string;
+                /**
+                 * @description Name for the location.
+                 * @example India
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the location.
+                 * @example /objects/company-config/location/2
+                 */
+                readonly href?: string;
+            };
+            /** @description Property lease associated with the property lease unit. */
+            readonly propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
+                 */
+                readonly href?: string;
+            };
+            audit?: components["schemas"]["audit.s2"];
+        };
         /** @description Configuration of accounts used for your WIP schedule periods, and a reconciliation method for overbilling and underbilling amounts. */
         "objects.construction-forecasting.wip-setup": {
             /**
@@ -10132,6 +13810,12 @@ export interface components {
              * @example true
              */
             usePrimaryForecasts?: boolean;
+            /**
+             * @description If `true`, the CVR schedule will be available in the project menu.
+             * @default false
+             * @example true
+             */
+            enableCVR?: boolean;
             /**
              * @description Endpoint URL for the WIP setup.
              * @example /objects/construction-forecasting/wip-setup/123
@@ -10369,7 +14053,7 @@ export interface components {
             contractVarianceAmount?: string;
             /**
              * Format: decimal-precision-2
-             * @description Job-to-date billings amount comes from journal postings to the revenue accounts specified in the [WIP setup](construction-forecasting.wip-setup) object.
+             * @description Job-to-date billings amount comes from journal postings to the revenue accounts specified in the [WIP setup](/intacct/apis/intacct/1/intacct-openapi/groups/construction/groups/construction-forecasting/tags/construction_wip-setups) object.
              *
              *     Journal entries are included in this amount if they meet the following conditions:
              *
@@ -11457,7 +15141,7 @@ export interface components {
                  * @description Unique identifier for the project status.
                  * @example In Progress
                  */
-                id?: string | null;
+                readonly id?: string | null;
                 /**
                  * @description Indicates whether to generate project invoices for the project in the specified status. Set to `true` to prevent invoice generation.
                  * @example false
@@ -11791,6 +15475,29 @@ export interface components {
                 readonly name?: string | null;
                 /**
                  * @description URL endpoint for the project manager.
+                 * @example /objects/company-config/employee/1
+                 */
+                readonly href?: string;
+            };
+            /** @description References the quantity surveyor for the project. Quantity surveyors usually manage project costs and contracts. */
+            readonly quantitySurveyor?: {
+                /**
+                 * @description System-assigned key for the quantity surveyor.
+                 * @example 1
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Unique identifier for the quantity surveyor.
+                 * @example E1
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description Name for the quantity surveyor.
+                 * @example Carl Smith
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the quantity surveyor.
                  * @example /objects/company-config/employee/1
                  */
                 readonly href?: string;
@@ -12249,6 +15956,11 @@ export interface components {
                  */
                 id?: string;
                 /**
+                 * @description The key for the CVR project that is the active one associated with this project.
+                 * @example 9
+                 */
+                currentCVRProjectKey?: string | null;
+                /**
                  * Format: date
                  * @description Date the project is costs complete in WIP.
                  * @example 2025-01-31
@@ -12344,6 +16056,11 @@ export interface components {
              */
             readonly id?: string;
             /**
+             * @description The key for the CVR project that is the active one associated with this project.
+             * @example 9
+             */
+            currentCVRProjectKey?: string | null;
+            /**
              * Format: date
              * @description Date the project is costs complete in WIP.
              * @example 2025-01-31
@@ -12438,10 +16155,17 @@ export interface components {
             periodEndDate?: string;
             /**
              * Format: date
-             * @description The ending date of the fiscal year this period belongs to.
+             * @deprecated
+             * @description This field has been deprecated, use `fiscalYearEndDate` instead.
              * @example 2024-12-31
              */
             readonly fiscalYear?: string;
+            /**
+             * Format: date
+             * @description The ending date of the fiscal year this period belongs to.
+             * @example 2024-12-31
+             */
+            readonly fiscalYearEndDate?: string;
             /**
              * @description The state is `posted` if the WIP projects are finalized and posted to the general ledger, otherwise, it is `unposted`.  On creating a `wip-period` object, the `state` must be `unposted`.
              *
@@ -14336,6 +18060,29 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
+                 */
+                readonly href?: string;
+            };
         };
         /** @description Reference to a project contract line */
         "project-contract-line-ref": {
@@ -14725,7 +18472,7 @@ export interface components {
             contractVarianceAmount?: string;
             /**
              * Format: decimal-precision-2
-             * @description Job-to-date billings amount comes from journal postings to the revenue accounts specified in the [WIP setup](construction-forecasting.wip-setup) object.
+             * @description Job-to-date billings amount comes from journal postings to the revenue accounts specified in the [WIP setup](/intacct/apis/intacct/1/intacct-openapi/groups/construction/groups/construction-forecasting/tags/construction_wip-setups) object.
              * @example 5000.00
              */
             jobToDateBillings?: string;
@@ -16518,6 +20265,203 @@ export interface operations {
             400: components["responses"]["400error"];
         };
     };
+    "list-construction-project-billable-expense": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "create-construction-project-billable-expense": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.project-billable-expense"] & components["schemas"]["construction-project-billable-expenseRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-construction-project-billable-expense-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the project billable expense.
+                 * @example 2354
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.project-billable-expense"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-construction-project-billable-expense-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the project billable expense.
+                 * @example 2354
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "update-construction-project-billable-expense-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the project billable expense.
+                 * @example 2354
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.project-billable-expense"] & {
+                    readonly id?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-construction-project-expense": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-construction-project-expense-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the project expense.
+                 * @example employeeExpenseLine--10095
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.project-expense"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
     "list-construction-project-estimate": {
         parameters: {
             query?: never;
@@ -18203,6 +22147,147 @@ export interface operations {
                 content: {
                     "application/json": {
                         "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-objects-advanced-retainage-step": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.advanced-retainage-step"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "post-objects-advanced-retainage-step": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.advanced-retainage-step"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.advanced-retainage-step"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-objects-advanced-retainage-step-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the advanced retainage step.
+                 * @example 33
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.advanced-retainage-step"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-objects-advanced-retainage-step-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the advanced retainage step.
+                 * @example 33
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "patch-objects-advanced-retainage-step-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the advanced retainage step.
+                 * @example 33
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.advanced-retainage-step"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.advanced-retainage-step"];
                         "ia::meta"?: components["schemas"]["metadata"];
                     };
                 };
@@ -20189,6 +24274,834 @@ export interface operations {
                 content: {
                     "application/json": {
                         "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-construction-property-lease": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "create-construction-property-lease": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease"] & components["schemas"]["construction-property-leaseRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-construction-property-lease-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease.
+                 * @example 11
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.property-lease"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-construction-property-lease-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease.
+                 * @example 11
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "update-construction-property-lease-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease.
+                 * @example 11
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease"] & {
+                    readonly key?: unknown;
+                    readonly id?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-construction-property-lease-business-category": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "create-construction-property-lease-business-category": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease-business-category"] & components["schemas"]["construction-property-lease-business-categoryRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-construction-property-lease-business-category-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease business category.
+                 * @example 4
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.property-lease-business-category"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-construction-property-lease-business-category-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease business category.
+                 * @example 4
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "update-construction-property-lease-business-category-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease business category.
+                 * @example 4
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease-business-category"] & {
+                    readonly key?: unknown;
+                    readonly id?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-construction-property-lease-state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "create-construction-property-lease-state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease-state"] & components["schemas"]["construction-property-lease-stateRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-construction-property-lease-state-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease state.
+                 * @example 6
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.property-lease-state"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-construction-property-lease-state-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease state.
+                 * @example 6
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "update-construction-property-lease-state-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease state.
+                 * @example 6
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease-state"] & {
+                    readonly key?: unknown;
+                    readonly id?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-construction-property-lease-tenant": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-construction-property-lease-tenant-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease tenant.
+                 * @example 1
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.property-lease-tenant"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-construction-property-lease-termination-reason": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "create-construction-property-lease-termination-reason": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease-termination-reason"] & components["schemas"]["construction-property-lease-termination-reasonRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-construction-property-lease-termination-reason-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease termination reason.
+                 * @example 2
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.property-lease-termination-reason"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-construction-property-lease-termination-reason-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease termination reason.
+                 * @example 2
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "update-construction-property-lease-termination-reason-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease termination reason.
+                 * @example 2
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease-termination-reason"] & {
+                    readonly key?: unknown;
+                    readonly id?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-construction-property-lease-type": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "create-construction-property-lease-type": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease-type"] & components["schemas"]["construction-property-lease-typeRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-construction-property-lease-type-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease type.
+                 * @example 4
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.property-lease-type"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-construction-property-lease-type-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease type.
+                 * @example 4
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "update-construction-property-lease-type-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease type.
+                 * @example 4
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["objects.construction.property-lease-type"] & {
+                    readonly key?: unknown;
+                    readonly id?: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-construction-property-lease-unit": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-construction-property-lease-unit-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key for the property lease unit.
+                 * @example 1
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.construction.property-lease-unit"];
                         "ia::meta"?: components["schemas"]["metadata"];
                     };
                 };

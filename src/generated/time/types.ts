@@ -1295,15 +1295,57 @@ export interface components {
                  * @description Unique key for the user.
                  * @example 203
                  */
-                readonly key?: string;
+                readonly key?: string | null;
                 /**
                  * @description Unique identifier of the user.
                  * @example jlee
                  */
-                readonly id?: string;
+                readonly id?: string | null;
                 /**
                  * @description URL endpoint for the user.
                  * @example /objects/company-config/user/203
+                 */
+                readonly href?: string;
+            };
+            /**
+             * @description Indicates whether this approval record was routed through delegation.
+             * @default false
+             * @example false
+             */
+            readonly enableDelegation?: boolean;
+            /** @description Reference to the original approver associated with this delegated approval record. */
+            readonly delegate?: {
+                /**
+                 * @description System-assigned key for the user.
+                 * @example 207
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Unique identifier for the user.
+                 * @example approver.user
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the user.
+                 * @example /objects/company-config/user/207
+                 */
+                readonly href?: string;
+            };
+            /** @description Reference to the user group assigned to approve the timesheet line entry. */
+            readonly approverUserGroup?: {
+                /**
+                 * @description System-assigned key for the user group.
+                 * @example 12
+                 */
+                readonly key?: string | null;
+                /**
+                 * @description Unique name of the user group.
+                 * @example Time approvers
+                 */
+                readonly id?: string | null;
+                /**
+                 * @description URL endpoint for the user group.
+                 * @example /objects/company-config/user-group/12
                  */
                 readonly href?: string;
             };
@@ -1972,6 +2014,29 @@ export interface components {
                 /**
                  * @description URL endpoint for the work order.
                  * @example /objects/construction/work-order/18
+                 */
+                readonly href?: string;
+            };
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
                  */
                 readonly href?: string;
             };

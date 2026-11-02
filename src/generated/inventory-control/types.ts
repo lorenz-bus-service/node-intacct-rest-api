@@ -423,8 +423,8 @@ export interface paths {
             query?: never;
             header?: never;
             path: {
-                /** @description Document Name */
-                documentName: components["parameters"]["documentName"];
+                /** @description Document name */
+                documentName: string;
             };
             cookie?: never;
         };
@@ -438,7 +438,7 @@ export interface paths {
         put?: never;
         /**
          * Create an inventory document
-         * @description Creates a new Inventory Control document. To create a new inventory document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. To access a list of available transaction definitions, use the list operation of the [transaction definition](inventory-control.txn-definition) object. For example, to create a new inventory document that uses the Beginning Balance transaction definition as a template, specify `Beginning Balance` for the `documentName` in the request URL.
+         * @description Creates a new Inventory Control document. To create a new inventory document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. To access a list of available transaction definitions, use the list operation of the [transaction definition](/intacct/apis/intacct/1/intacct-openapi/groups/inventory-control/groups/transaction-definitions/tags/inventory_control_inventory-transaction-definitions) object. For example, to create a new inventory document that uses the Beginning Balance transaction definition as a template, specify `Beginning Balance` for the `documentName` in the request URL.
          *
          *     You can create a document if the **Create policy** for the associated transaction definition is not set to "Convert only".  If the transaction type that you want to create has a **Create policy** that's set to "Convert only", you have to convert an existing transaction into the desired transaction.
          */
@@ -485,8 +485,8 @@ export interface paths {
                  * @example 99
                  */
                 key: string;
-                /** @description Document Name */
-                documentName: components["parameters"]["documentName"];
+                /** @description Name of the transaction definition template used for the inventory document. */
+                documentName: string;
             };
             cookie?: never;
         };
@@ -4077,7 +4077,7 @@ export interface components {
              * @description The type of transaction document.
              * @example Beginning Balance
              */
-            documentType?: string;
+            readonly documentType?: string;
             /**
              * @description Indicates whether the document has been printed.
              * @default false
@@ -4085,15 +4085,15 @@ export interface components {
              */
             readonly isPrinted?: boolean;
             /**
-             * Format: decimal-precision-2
+             * Format: decimal-precision-14
              * @description Subtotal of the document in the base currency.
-             * @example 51.00
+             * @example 1.20000000000000
              */
             readonly subTotal?: string;
             /**
-             * Format: decimal-precision-2
+             * Format: decimal-precision-14
              * @description The sum of values across all lines in the document.
-             * @example 1.00
+             * @example 1.20000000000000
              */
             readonly total?: string;
             /**
@@ -4152,10 +4152,16 @@ export interface components {
             };
             /**
              * Format: date
+             * @deprecated
+             * @description This field has been deprecated. Use the `txnDate` field instead.
+             */
+            transactionDate?: string;
+            /**
+             * Format: date
              * @description Date that the transaction occurred.
              * @example 2023-01-01
              */
-            transactionDate?: string;
+            txnDate?: string;
             /**
              * Format: date
              * @description Date that the document was last printed.
@@ -4187,7 +4193,7 @@ export interface components {
              */
             txnCurrency?: string;
             /** @description Transaction definition for the inventory document. */
-            txnDefinition?: {
+            readonly txnDefinition?: {
                 /**
                  * @description URL endpoint for the transaction definition.
                  * @example /objects/inventory-control/txn-definition/23
@@ -4197,17 +4203,17 @@ export interface components {
                  * @description Unique key for the transaction definition.
                  * @example 23
                  */
-                key?: string;
+                readonly key?: string;
                 /**
                  * @description Name of the transaction definition.
                  * @example Beginning Balance
                  */
-                id?: string;
+                readonly id?: string;
                 /**
                  * @description Document type of the transaction definition.
                  * @example Beginning Balance
                  */
-                documentType?: string;
+                readonly documentType?: string;
                 /**
                  * @description Transaction definition template class.
                  * @example INVOICE
@@ -4218,26 +4224,26 @@ export interface components {
                  * @example quantityAndValue
                  * @enum {string}
                  */
-                updatesInventory?: "no" | "quantity" | "value" | "quantityAndValue";
+                readonly updatesInventory?: "no" | "quantity" | "value" | "quantityAndValue";
                 /**
                  * @description For transactions that update inventory, indicates whether it increases or decreases inventory.
                  * @example increase
                  * @enum {string}
                  */
-                increaseOrDecreaseInventory?: "increase" | "decrease";
+                readonly increaseOrDecreaseInventory?: "increase" | "decrease";
             };
             /** @description The source transaction from which the inventory document was created. */
-            sourceDocument?: {
+            readonly sourceDocument?: {
                 /**
                  * @description Unique key for the source document.
                  * @example 23
                  */
-                key?: string;
+                readonly key?: string;
                 /**
                  * @description ID for the source document.
                  * @example Beginning Balance-Doc0001
                  */
-                id?: string;
+                readonly id?: string;
                 /**
                  * @description URL endpoint for the source document.
                  * @example /objects/inventory-control/document/23
@@ -4293,8 +4299,8 @@ export interface components {
                  */
                 id?: string;
                 /**
+                 * @deprecated
                  * @description Geographical location of the warehouse.
-                 * @example DF-WH-0001
                  */
                 defaultWarehouse?: string;
                 /**
@@ -4322,9 +4328,9 @@ export interface components {
             /** @description Lines of the inventory document. */
             lines?: components["schemas"]["objects.inventory-control.document-line"][];
             /** @description History lines for the inventory document. */
-            history?: components["schemas"]["objects.inventory-control.document-history"][];
+            readonly history?: components["schemas"]["objects.inventory-control.document-history"][];
             /** @description Subtotal lines for the inventory document. */
-            subtotals?: components["schemas"]["objects.inventory-control.document-subtotal"][];
+            readonly subtotals?: components["schemas"]["objects.inventory-control.document-subtotal"][];
             /** @description Information about the journal entries associated with this document. */
             readonly postingSummary?: {
                 /**
@@ -4368,7 +4374,7 @@ export interface components {
                 /** @example { "item": { "id": "1" }, "warehouse": { "id": "1" }, "location" : { "id": "1" }} */
                 dimensions?: unknown;
             }[];
-        };
+        } | unknown | unknown;
         /** @description Line information for Inventory transactions, including opening balances and adjustments. */
         "objects.inventory-control.document-line": {
             /**
@@ -5622,7 +5628,10 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description Shipping method for delivery from the purchasing requisition line. */
+            /**
+             * @deprecated
+             * @description Shipping method for delivery from the purchasing requisition line.
+             */
             deliveryMethod?: {
                 /**
                  * @description URL endpoint for the shipping method.
@@ -5630,15 +5639,33 @@ export interface components {
                  */
                 readonly href?: string;
                 /**
+                 * @deprecated
                  * @description Unique key for the shipping method.
-                 * @example 11
                  */
                 key?: string;
                 /**
+                 * @deprecated
                  * @description Name of the shipping method.
-                 * @example FedEx
                  */
                 id?: string;
+            };
+            /** @description How goods are shipped to the customer. */
+            shippingMethod?: {
+                /**
+                 * @description System-assigned key for the shipping method.
+                 * @example 3
+                 */
+                key?: string;
+                /**
+                 * @description ID of the shipping method.
+                 * @example Fedex
+                 */
+                id?: string;
+                /**
+                 * @description URL of the shipping method.
+                 * @example /objects/accounts-receivable/shipping-method/3
+                 */
+                readonly href?: string;
             };
             /** @description Supplies requisition details for the supplies document. */
             suppliesDetail?: components["schemas"]["objects.inventory-control.supplies-document-detail"][];
@@ -6026,10 +6053,15 @@ export interface components {
              */
             precision?: {
                 /**
-                 * @description Universal Product Code (UPC) for the item.
-                 * @example 23342
+                 * @deprecated
+                 * @description This field has been deprecated. Use the `upcPrecision` field instead.
                  */
                 upc?: string;
+                /**
+                 * @description Universal Product Code (UPC) precision.
+                 * @example 23342
+                 */
+                upcPrecision?: string;
                 /**
                  * @description Inventory unit cost precision
                  * @example 2
@@ -6146,15 +6178,25 @@ export interface components {
                  */
                 specification3?: string;
                 /**
+                 * @deprecated
+                 * @description This field has been deprecated. Use the `upc` field instead.
+                 */
+                universalProductCode?: number;
+                /**
                  * @description UPC-12, the 12-digit Universal Product Code of the item.
                  * @example 123456789123
                  */
-                universalProductCode?: number;
+                upc?: string;
+                /**
+                 * @deprecated
+                 * @description This field has been deprecated. Use the `articleNumber` field instead.
+                 */
+                internationalArticleNumber?: number;
                 /**
                  * @description EAN-13, the 13-digit International Article Number of the item.
                  * @example 1234567891234
                  */
-                internationalArticleNumber?: number;
+                articleNumber?: string;
                 /**
                  * @description Use true if item is classified as a Safety Item.
                  * @default false
@@ -12262,6 +12304,29 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
+                 */
+                readonly href?: string;
+            };
         };
         /** @description Member filter. */
         "member-filter": {
@@ -13604,8 +13669,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description Document Name */
-                documentName: components["parameters"]["documentName"];
+                /** @description Document name */
+                documentName: string;
             };
             cookie?: never;
         };
@@ -13631,8 +13696,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description Document Name */
-                documentName: components["parameters"]["documentName"];
+                /** @description Document name */
+                documentName: string;
             };
             cookie?: never;
         };
@@ -13697,8 +13762,8 @@ export interface operations {
                  * @example 99
                  */
                 key: string;
-                /** @description Document Name */
-                documentName: components["parameters"]["documentName"];
+                /** @description Name of the transaction definition template used for the inventory document. */
+                documentName: string;
             };
             cookie?: never;
         };
@@ -13729,8 +13794,8 @@ export interface operations {
                  * @example 99
                  */
                 key: string;
-                /** @description Document Name */
-                documentName: components["parameters"]["documentName"];
+                /** @description Name of the transaction definition template used for the inventory document. */
+                documentName: string;
             };
             cookie?: never;
         };
@@ -13756,8 +13821,8 @@ export interface operations {
                  * @example 99
                  */
                 key: string;
-                /** @description Document Name */
-                documentName: components["parameters"]["documentName"];
+                /** @description Name of the transaction definition template used for the inventory document. */
+                documentName: string;
             };
             cookie?: never;
         };

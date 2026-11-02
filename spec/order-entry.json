@@ -25,7 +25,7 @@
   {
    "name": "Order_Entry_Document line details",
    "x-displayName": "Document line details",
-   "description": "Inventory tracking details including serial number, aisle, bin, and row per line item.\n\nCreate and maintain document line details by creating and updating the `trackingDetail` in the owning [document line objects](order-entry.document-line).\n"
+   "description": "Inventory tracking details including serial number, aisle, bin, and row per line item.\n\nCreate and maintain document line details by creating and updating the `trackingDetail` in the owning [document line objects](/intacct/apis/intacct/1/intacct-openapi/groups/order-entry/groups/documents/tags/order_entry_document-lines).\n"
   },
   {
    "name": "Order_Entry_Document line subtotals",
@@ -56,6 +56,11 @@
    "name": "Order_Entry_Price list entries",
    "x-displayName": "Price list entries",
    "description": "Contains the pricing for a selected item within a selected price list. You can create price list entries for items whose prices are determined based on an amount, a discount or mark-up percentage, the quantity sold, and more.\n\nFor more information, see [Price list entries - Order Entry](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Price_list_entries_oe) in the Sage Intacct Help Center.\n"
+  },
+  {
+   "name": "Order_Entry_Price list entry tiers",
+   "x-displayName": "Price list entry tiers",
+   "description": "A price list entry tier defines a starting quantity and rate for a single pricing band within a tiered billing price list entry.\n\n**When to use:** Use when setting up or reviewing the quantity-based pricing bands that determine the rate applied to transactions within a price list entry.\n\n**Relationships:** Owned by the [price list entry](/intacct/apis/intacct/1/intacct-openapi/groups/order-entry/tags/order_entry_price-list-entries), which defines the tiered pricing that each tier's quantity range and rate apply to.\n\n**Lifecycle context:** Defined during price list setup, before any transactions reference the price list entry. At transaction time, Sage Intacct selects the tier whose quantity range matches the transaction line to determine the applicable rate.\n\nFor more information, see [price list entries](https://www.intacct.com/ia/docs/en_US/help_action/Order_Entry/Setting_up_Order_Entry/Price_lists/price-list-entries-OE.htm) in the Sage Intacct Help Center."
   },
   {
    "name": "Order_Entry_Price schedules",
@@ -283,6 +288,7 @@
              "modifiedDateTime": "2024-11-10T18:36:32Z"
             },
             "invoiceType": "invoice",
+            "projectInvoice": "false",
             "invoiceMode": "b1",
             "eInvoiceStatus": "paymentReceived",
             "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
@@ -298,6 +304,8 @@
             "txnDefinition": {
              "id": "Sales Invoice",
              "key": "188",
+             "uiCategory": "invoice",
+             "templateClass": "invoice",
              "href": "/objects/order-entry-txn-definition::Sales%20Invoice/188"
             },
             "contacts": {
@@ -824,6 +832,8 @@
             "txnDefinition": {
              "key": "11",
              "id": "Sales Invoice",
+             "uiCategory": "invoice",
+             "templateClass": "invoice",
              "href": "/objects/order-entry/txn-definition/11"
             },
             "sourceDocument": {
@@ -861,6 +871,7 @@
              "modifiedBy": "95"
             },
             "invoiceType": "invoice",
+            "projectInvoice": "projectContract",
             "invoiceMode": "b1",
             "eInvoiceStatus": "paymentReceived",
             "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
@@ -879,17 +890,23 @@
              "showMultilineTax": true
             },
             "projectContractBillingInvoiceSummary": {
-             "originalContractAmount": "1000.0000000000",
-             "netApprovedChangesAmount": "1000.0000000000",
-             "revisedContractAmount": "1000.0000000000",
-             "completedFromPriorApplicationAmount": "1000.0000000000",
-             "completedToDateAmount": "1000.0000000000",
-             "lessPreviousBillingAmount": "1000.0000000000",
-             "currentDueAmount": "1000.0000000000",
-             "balanceToFinishAmount": "1000.0000000000",
-             "taxAmount": "1000.0000000000",
-             "chargeAmount": "1000.0000000000",
-             "discountAmount": "1000.0000000000",
+             "accountsReceivableInvoice": {
+              "id": "23",
+              "key": "23",
+              "invoiceNumber": "INV1",
+              "href": "/objects/accounts-receivable/invoice/23"
+             },
+             "orderEntryDocument": {
+              "id": "SO-AIA-Invoice01-Ord#0011#doc",
+              "key": "44",
+              "href": "/objects/order-entry/document::SO-AIA-Invoice01/44"
+             },
+             "project": {
+              "id": "DIM - HCS",
+              "key": "1",
+              "name": "Dimensions - Hands Computer Systems",
+              "href": "/objects/projects/project/1"
+             },
              "changesApprovedPriorMonth": {
               "additionsAmount": "1000.0000000000",
               "deductionsAmount": "1000.0000000000"
@@ -908,10 +925,17 @@
               "previousBalanceAmount": "1000.0000000000",
               "totalEarnedLessAmount": "1000.0000000000"
              },
-             "accountsReceivableInvoiceNumber": "INV1",
-             "orderEntryDocumentId": "SO-AIA-Invoice01-Ord#0011#doc",
-             "projectId": "DIM - HCS",
-             "projectName": "Dimensions - Hands Computer Systems"
+             "balanceToFinishAmount": "1000.0000000000",
+             "chargeAmount": "1000.0000000000",
+             "completedFromPriorApplicationAmount": "1000.0000000000",
+             "completedToDateAmount": "1000.0000000000",
+             "currentDueAmount": "1000.0000000000",
+             "discountAmount": "1000.0000000000",
+             "lessPreviousBillingAmount": "1000.0000000000",
+             "netApprovedChangesAmount": "1000.0000000000",
+             "originalContractAmount": "1000.0000000000",
+             "revisedContractAmount": "1000.0000000000",
+             "taxAmount": "1000.0000000000"
             },
             "lines": [
              {
@@ -969,6 +993,7 @@
               "priceInTxnCurrency": "10.00",
               "isBillable": true,
               "isBilled": true,
+              "taxType": "Freight",
               "taxRate": "10.050",
               "taxInBaseCurrency": "10.50",
               "taxInTxnCurrency": "40.50",
@@ -1463,7 +1488,7 @@
    },
    "post": {
     "summary": "Create an Order Entry document",
-    "description": "Creates a new Order Entry document. To create a new document, specify the transaction definition that is the template for the new document as `documentName` in the request URL.\n\nWhen creating a new document, the field `state` must be set to one of these values: `pending`, `draft`, or `submitted`. If no value is specified for the `state` field, it defaults to `pending`.\n\nTo access a list of available transaction definitions, use the [list transaction definitions](order-entry.txn-definition:list-order-entry-txn-definition) operation. For example, to create a new order entry document that uses the Sales Invoice transaction definition as a template, specify `Sales Invoice` for the `documentName` in the request URL.\n",
+    "description": "Creates a new Order Entry document. To create a new document, specify the transaction definition that is the template for the new document as `documentName` in the request URL.\n\nWhen creating a new document, the field `state` must be set to one of these values: `pending`, `draft`, or `submitted`. If no value is specified for the `state` field, it defaults to `pending`.\n\nTo access a list of available transaction definitions, use the [list transaction definitions](/intacct/apis/intacct/1/intacct-openapi/groups/order-entry/groups/transaction-definitions/tags/order_entry_transaction-definitions/paths/list-order-entry-txn-definition) operation. For example, to create a new order entry document that uses the Sales Invoice transaction definition as a template, specify `Sales Invoice` for the `documentName` in the request URL.\n",
     "tags": [
      "Order_Entry_Documents"
     ],
@@ -1828,6 +1853,7 @@
              "modifiedDateTime": "2024-11-10T18:36:32Z"
             },
             "invoiceType": "invoice",
+            "projectInvoice": "false",
             "invoiceMode": "b1",
             "eInvoiceStatus": "paymentReceived",
             "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
@@ -1843,6 +1869,8 @@
             "txnDefinition": {
              "id": "Sales Invoice",
              "key": "188",
+             "uiCategory": "invoice",
+             "templateClass": "invoice",
              "href": "/objects/order-entry-txn-definition::Sales%20Invoice/188"
             },
             "contacts": {
@@ -2351,6 +2379,8 @@
             "txnDefinition": {
              "key": "11",
              "id": "Sales Invoice",
+             "uiCategory": "invoice",
+             "templateClass": "invoice",
              "href": "/objects/order-entry/txn-definition/11"
             },
             "sourceDocument": {
@@ -2388,6 +2418,7 @@
              "modifiedBy": "95"
             },
             "invoiceType": "invoice",
+            "projectInvoice": "projectContract",
             "invoiceMode": "b1",
             "eInvoiceStatus": "paymentReceived",
             "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
@@ -2406,17 +2437,23 @@
              "showMultilineTax": true
             },
             "projectContractBillingInvoiceSummary": {
-             "originalContractAmount": "1000.0000000000",
-             "netApprovedChangesAmount": "1000.0000000000",
-             "revisedContractAmount": "1000.0000000000",
-             "completedFromPriorApplicationAmount": "1000.0000000000",
-             "completedToDateAmount": "1000.0000000000",
-             "lessPreviousBillingAmount": "1000.0000000000",
-             "currentDueAmount": "1000.0000000000",
-             "balanceToFinishAmount": "1000.0000000000",
-             "taxAmount": "1000.0000000000",
-             "chargeAmount": "1000.0000000000",
-             "discountAmount": "1000.0000000000",
+             "accountsReceivableInvoice": {
+              "id": "23",
+              "key": "23",
+              "invoiceNumber": "INV1",
+              "href": "/objects/accounts-receivable/invoice/23"
+             },
+             "orderEntryDocument": {
+              "id": "SO-AIA-Invoice01-Ord#0011#doc",
+              "key": "44",
+              "href": "/objects/order-entry/document::SO-AIA-Invoice01/44"
+             },
+             "project": {
+              "id": "DIM - HCS",
+              "key": "1",
+              "name": "Dimensions - Hands Computer Systems",
+              "href": "/objects/projects/project/1"
+             },
              "changesApprovedPriorMonth": {
               "additionsAmount": "1000.0000000000",
               "deductionsAmount": "1000.0000000000"
@@ -2435,10 +2472,17 @@
               "previousBalanceAmount": "1000.0000000000",
               "totalEarnedLessAmount": "1000.0000000000"
              },
-             "accountsReceivableInvoiceNumber": "INV1",
-             "orderEntryDocumentId": "SO-AIA-Invoice01-Ord#0011#doc",
-             "projectId": "DIM - HCS",
-             "projectName": "Dimensions - Hands Computer Systems"
+             "balanceToFinishAmount": "1000.0000000000",
+             "chargeAmount": "1000.0000000000",
+             "completedFromPriorApplicationAmount": "1000.0000000000",
+             "completedToDateAmount": "1000.0000000000",
+             "currentDueAmount": "1000.0000000000",
+             "discountAmount": "1000.0000000000",
+             "lessPreviousBillingAmount": "1000.0000000000",
+             "netApprovedChangesAmount": "1000.0000000000",
+             "originalContractAmount": "1000.0000000000",
+             "revisedContractAmount": "1000.0000000000",
+             "taxAmount": "1000.0000000000"
             },
             "lines": [
              {
@@ -2496,6 +2540,7 @@
               "priceInTxnCurrency": "10.00",
               "isBillable": true,
               "isBilled": true,
+              "taxType": "Tax",
               "taxRate": "10.050",
               "taxInBaseCurrency": "10.50",
               "taxInTxnCurrency": "40.50",
@@ -3432,6 +3477,7 @@
             "priceInTxnCurrency": "10.00",
             "isBillable": true,
             "isBilled": true,
+            "taxType": "Freight",
             "taxRate": "10.050",
             "taxInBaseCurrency": "10.50",
             "taxInTxnCurrency": "40.50",
@@ -4089,6 +4135,7 @@
             "priceInTxnCurrency": "10.00",
             "isBillable": true,
             "isBilled": true,
+            "taxType": "Freight",
             "taxRate": "10.050",
             "taxInBaseCurrency": "10.50",
             "taxInTxnCurrency": "40.50",
@@ -5871,6 +5918,35 @@
           },
           "currency": "USD"
          }
+        },
+        "Create a tiered billing price list entry": {
+         "value": {
+          "startDate": "2026-01-01",
+          "endDate": "2026-12-31",
+          "valueType": "actual",
+          "isFixedPrice": false,
+          "status": "active",
+          "item": {
+           "key": "90"
+          },
+          "currency": "USD",
+          "enableTieredBilling": true,
+          "tierCalculationType": "volume",
+          "tiers": [
+           {
+            "beginQuantity": "0",
+            "tierRangeRate": "9.99"
+           },
+           {
+            "beginQuantity": "100.000001",
+            "tierRangeRate": "8.50"
+           },
+           {
+            "beginQuantity": "500.000001",
+            "tierRangeRate": "7.00"
+           }
+          ]
+         }
         }
        }
       }
@@ -6018,6 +6094,77 @@
             "totalError": 0
            }
           }
+         },
+         "Get a tiered billing price list entry": {
+          "value": {
+           "ia::result": {
+            "id": "452",
+            "key": "452",
+            "priceList": {
+             "id": "Tiered Service List",
+             "key": "2",
+             "href": "/objects/order-entry/price-list/2"
+            },
+            "item": {
+             "key": "90",
+             "id": "Consulting_Hours",
+             "name": "Consulting Hours",
+             "href": "/objects/inventory-control/item/90"
+            },
+            "startDate": "2026-01-01",
+            "endDate": "2026-12-31",
+            "valueType": "actual",
+            "isFixedPrice": false,
+            "status": "active",
+            "currency": "USD",
+            "enableTieredBilling": true,
+            "tierCalculationType": "volume",
+            "tiers": [
+             {
+              "key": "1",
+              "id": "1",
+              "priceListEntry": {
+               "key": "452",
+               "id": "452",
+               "href": "/objects/order-entry/price-list-entry/452"
+              },
+              "beginQuantity": "0",
+              "tierRangeRate": "9.99",
+              "href": "/objects/order-entry/price-list-entry-tier/1"
+             },
+             {
+              "key": "2",
+              "id": "2",
+              "priceListEntry": {
+               "key": "452",
+               "id": "452",
+               "href": "/objects/order-entry/price-list-entry/452"
+              },
+              "beginQuantity": "100.000001",
+              "tierRangeRate": "8.50",
+              "href": "/objects/order-entry/price-list-entry-tier/2"
+             },
+             {
+              "key": "3",
+              "id": "3",
+              "priceListEntry": {
+               "key": "452",
+               "id": "452",
+               "href": "/objects/order-entry/price-list-entry/452"
+              },
+              "beginQuantity": "500.000001",
+              "tierRangeRate": "7.00",
+              "href": "/objects/order-entry/price-list-entry-tier/3"
+             }
+            ],
+            "href": "/objects/order-entry/price-list-entry/452"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
          }
         }
        }
@@ -6063,6 +6210,22 @@
         "Update a price list entry": {
          "value": {
           "startDate": "2025-02-01"
+         }
+        },
+        "Update tiers on a tiered billing price list entry": {
+         "value": {
+          "tiers": [
+           {
+            "key": "1",
+            "beginQuantity": "0",
+            "rate": "9.50"
+           },
+           {
+            "key": "2",
+            "beginQuantity": "200.000001",
+            "rate": "7.75"
+           }
+          ]
          }
         }
        }
@@ -6122,6 +6285,341 @@
      "Order_Entry_Price list entries"
     ],
     "operationId": "delete-order-entry-price-list-entry-key",
+    "responses": {
+     "204": {
+      "description": "No Content"
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/order-entry/price-list-entry-tier": {
+   "get": {
+    "summary": "List price list entry tiers",
+    "description": "Returns a collection with a key, ID, and link for each price list entry tier. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.",
+    "tags": [
+     "Order_Entry_Price list entry tiers"
+    ],
+    "operationId": "list-order-entry-price-list-entry-tier",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "List price list entry tiers",
+         "properties": {
+          "ia::result": {
+           "type": "array",
+           "items": {
+            "$ref": "#/components/schemas/object-reference"
+           }
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata-pages"
+          }
+         }
+        },
+        "examples": {
+         "List price list entry tiers": {
+          "value": {
+           "ia::result": [
+            {
+             "key": "1",
+             "id": "1",
+             "href": "/objects/order-entry/price-list-entry-tier/1"
+            },
+            {
+             "key": "2",
+             "id": "2",
+             "href": "/objects/order-entry/price-list-entry-tier/2"
+            },
+            {
+             "key": "3",
+             "id": "3",
+             "href": "/objects/order-entry/price-list-entry-tier/3"
+            }
+           ],
+           "ia::meta": {
+            "totalCount": 3,
+            "start": 1,
+            "pageSize": 100,
+            "next": null,
+            "previous": null
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "post": {
+    "summary": "Create a price list entry tier",
+    "description": "Creates a new price list entry tier.",
+    "tags": [
+     "Order_Entry_Price list entry tiers"
+    ],
+    "operationId": "create-order-entry-price-list-entry-tier",
+    "requestBody": {
+     "description": "",
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/objects.order-entry.price-list-entry-tier"
+         },
+         {
+          "$ref": "#/components/schemas/order-entry-price-list-entry-tierRequiredProperties"
+         }
+        ]
+       },
+       "examples": {
+        "Create a price list entry tier": {
+         "value": {
+          "priceListEntry": {
+           "key": "38"
+          },
+          "beginQuantity": "0",
+          "tierRangeRate": "9.99"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to new price list entry tier",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to new price list entry tier": {
+          "value": {
+           "ia::result": {
+            "key": "12",
+            "id": "12",
+            "href": "/objects/order-entry/price-list-entry-tier/12"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   }
+  },
+  "/objects/order-entry/price-list-entry-tier/{key}": {
+   "parameters": [
+    {
+     "name": "key",
+     "description": "System-assigned unique key for the price list entry tier.",
+     "in": "path",
+     "required": true,
+     "schema": {
+      "type": "string"
+     },
+     "example": "12"
+    }
+   ],
+   "get": {
+    "summary": "Get a price list entry tier",
+    "description": "Returns detailed information for a specified price list entry tier.",
+    "tags": [
+     "Order_Entry_Price list entry tiers"
+    ],
+    "operationId": "get-order-entry-price-list-entry-tier-key",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Get a price list entry tier",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/objects.order-entry.price-list-entry-tier"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Get a price list entry tier": {
+          "value": {
+           "ia::result": {
+            "key": "12",
+            "id": "12",
+            "priceListEntry": {
+             "key": "38",
+             "id": "38",
+             "href": "/objects/order-entry/price-list-entry/38"
+            },
+            "beginQuantity": "0",
+            "tierRangeRate": "9.99",
+            "audit": {
+             "createdDateTime": "2026-08-01T10:00:00Z",
+             "modifiedDateTime": "2026-08-01T10:00:00Z",
+             "createdByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             },
+             "createdBy": "1",
+             "modifiedByUser": {
+              "key": "1",
+              "id": "Admin",
+              "href": "/objects/company-config/user/1"
+             },
+             "modifiedBy": "1"
+            },
+            "href": "/objects/order-entry/price-list-entry-tier/12"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "patch": {
+    "summary": "Update a price list entry tier",
+    "description": "Updates an existing price list entry tier by setting field values. Any fields not provided remain unchanged.",
+    "tags": [
+     "Order_Entry_Price list entry tiers"
+    ],
+    "operationId": "update-order-entry-price-list-entry-tier-key",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/objects.order-entry.price-list-entry-tier"
+       },
+       "examples": {
+        "Update a price list entry tier": {
+         "value": {
+          "beginQuantity": "0",
+          "tierRangeRate": "8.50"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "title": "Reference to updated price list entry tier",
+         "properties": {
+          "ia::result": {
+           "$ref": "#/components/schemas/object-reference"
+          },
+          "ia::meta": {
+           "$ref": "#/components/schemas/metadata"
+          }
+         }
+        },
+        "examples": {
+         "Reference to updated price list entry tier": {
+          "value": {
+           "ia::result": {
+            "key": "12",
+            "id": "12",
+            "href": "/objects/order-entry/price-list-entry-tier/12"
+           },
+           "ia::meta": {
+            "totalCount": 1,
+            "totalSuccess": 1,
+            "totalError": 0
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/400error"
+     }
+    },
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ]
+   },
+   "delete": {
+    "summary": "Delete a price list entry tier",
+    "description": "Deletes a price list entry tier.",
+    "tags": [
+     "Order_Entry_Price list entry tiers"
+    ],
+    "operationId": "delete-order-entry-price-list-entry-tier-key",
     "responses": {
      "204": {
       "description": "No Content"
@@ -8200,6 +8698,8 @@
              }
             },
             "referenceNumber": "1012",
+            "enableOnlinePayment": true,
+            "recurringReferenceUUID": "550e8400-e29b-41d4-a716-446655440000",
             "paymentTerm": {
              "key": "5",
              "id": "N15",
@@ -8614,7 +9114,7 @@
    },
    "post": {
     "summary": "Create a recurring document",
-    "description": "Creates a new recurring document. To create a new recurring document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. \n\nTo access a list of available transaction definitions, use the list operation of the [transaction definition](order-entry.txn-definition) object. For example, to create a new recurring document that uses the Sales Invoice transaction definition as a template, specify `Sales Invoice` for the `documentName` in the request URL.\n",
+    "description": "Creates a new recurring document. To create a new recurring document, specify the transaction definition that is the template for the new document as `documentName` in the request URL. \n\nTo access a list of available transaction definitions, use the list operation of the [transaction definition](/intacct/apis/intacct/1/intacct-openapi/groups/order-entry/groups/transaction-definitions/tags/order_entry_transaction-definitions) object. For example, to create a new recurring document that uses the Sales Invoice transaction definition as a template, specify `Sales Invoice` for the `documentName` in the request URL.\n",
     "tags": [
      "Order_Entry_Recurring documents"
     ],
@@ -9310,99 +9810,6 @@
             "totalCount": 3,
             "start": 1,
             "pageSize": 100
-           }
-          }
-         }
-        }
-       }
-      }
-     },
-     "400": {
-      "$ref": "#/components/responses/400error"
-     }
-    },
-    "security": [
-     {
-      "OAuth2": []
-     }
-    ]
-   },
-   "post": {
-    "summary": "Create a recurring document line",
-    "description": "Creates a new recurring document line.",
-    "tags": [
-     "Order_Entry_Recurring document lines"
-    ],
-    "operationId": "create-order-entry-recurring-document-line",
-    "requestBody": {
-     "description": "",
-     "required": true,
-     "content": {
-      "application/json": {
-       "schema": {
-        "allOf": [
-         {
-          "$ref": "#/components/schemas/objects.order-entry.recurring-document-line"
-         },
-         {
-          "$ref": "#/components/schemas/order-entry-recurring-document-lineRequiredProperties"
-         }
-        ]
-       },
-       "examples": {
-        "Create a recurring document line": {
-         "value": {
-          "recurringDocumentHeader": {
-           "key": "469"
-          },
-          "dimensions": {
-           "item": {
-            "id": "1"
-           },
-           "warehouse": {
-            "id": "1"
-           },
-           "location": {
-            "id": "1"
-           }
-          },
-          "unit": "Each",
-          "unitQuantity": "1",
-          "unitPrice": "650"
-         }
-        }
-       }
-      }
-     }
-    },
-    "responses": {
-     "201": {
-      "description": "Created",
-      "content": {
-       "application/json": {
-        "schema": {
-         "type": "object",
-         "title": "New recurring-document-line",
-         "properties": {
-          "ia::result": {
-           "$ref": "#/components/schemas/object-reference"
-          },
-          "ia::meta": {
-           "$ref": "#/components/schemas/metadata"
-          }
-         }
-        },
-        "examples": {
-         "Reference to new recurring document line": {
-          "value": {
-           "ia::result": {
-            "key": "807",
-            "href": "/objects/order-entry/recurring-document-line::Sales%20Invoice/807"
-           },
-           "ia::meta": {
-            "totalCount": 1,
-            "totalSuccess": 1,
-            "totalError": 0
            }
           }
          }
@@ -14380,6 +14787,34 @@
         "description": "Name or other unique ID for the transaction definition.",
         "example": "Sales Invoice"
        },
+       "uiCategory": {
+        "type": "string",
+        "readOnly": true,
+        "description": "UI category of the transaction definition associated with this Order Entry document.",
+        "example": "invoice",
+        "enum": [
+         "quote",
+         "order",
+         "shipping",
+         "invoice",
+         "return",
+         "loan"
+        ]
+       },
+       "templateClass": {
+        "type": "string",
+        "description": "Template type of the transaction definition associated with the Order Entry document.",
+        "example": "invoice",
+        "enum": [
+         "quote",
+         "order",
+         "list",
+         "invoice",
+         "adjustment",
+         "other"
+        ],
+        "readOnly": true
+       },
        "href": {
         "type": "string",
         "description": "URL endpoint for the transaction definition.",
@@ -14648,6 +15083,17 @@
        "eReporting"
       ],
       "example": "invoice"
+     },
+     "projectInvoice": {
+      "type": "string",
+      "description": "Identifies the project invoice classification for the document. Applicable only for companies subscribed to Construction and Projects.\n\n**Valid values**\n- `projectContract` - Project contract invoice.\n- `project` - Project invoice.\n- `false` - Not a project invoice.\n",
+      "enum": [
+       "projectContract",
+       "project",
+       "false"
+      ],
+      "example": "projectContract",
+      "readOnly": true
      },
      "invoiceMode": {
       "type": "string",
@@ -15102,6 +15548,11 @@
       "readOnly": true,
       "example": true,
       "default": true
+     },
+     "taxType": {
+      "type": "string",
+      "description": "Tax subtotal type to apply to the line when line-level simple tax is enabled. Specify the description of a tax subtotal configured for the document type. If omitted, the default configured tax subtotal is used.",
+      "example": "Freight"
      },
      "taxRate": {
       "type": "string",
@@ -17191,8 +17642,8 @@
      "value": {
       "type": "string",
       "format": "decimal-precision-10",
-      "description": "The value specified in this field depends on the type that you set in the `valueType` field.\n* `actual` - Specify the price of the item. For example, specify `500.00` if the item price is $500.00.\n* `dollarMarkup` - Specify the amount to mark up the price. For example, specify `10.00` to mark up the price by $10.00.\n* `dollarDiscount`- Specify the amount to subtract from the price. For example, specify `10.00` to discount the price by $10.00.\n* `markupPercent` - Specify the percentage by which to mark up the price. For example, specify `20` to mark up the price by 20%.\n* `discountPercent` - Specify the percentage that you want to subtract from the price. For example, specify `5` to discount the price by 5%.\n",
-      "nullable": false,
+      "description": "The value specified in this field depends on the type that you set in the `valueType` field. Not used when `enableTieredBilling` is `true`; pricing is determined by the `tiers` collection instead.\n* `actual` - Specify the price of the item. For example, specify `500.00` if the item price is $500.00.\n* `dollarMarkup` - Specify the amount to mark up the price. For example, specify `10.00` to mark up the price by $10.00.\n* `dollarDiscount`- Specify the amount to subtract from the price. For example, specify `10.00` to discount the price by $10.00.\n* `markupPercent` - Specify the percentage by which to mark up the price. For example, specify `20` to mark up the price by 20%.\n* `discountPercent` - Specify the percentage that you want to subtract from the price. For example, specify `5` to discount the price by 5%.\n",
+      "nullable": true,
       "example": "60.56"
      },
      "valueType": {
@@ -17293,6 +17744,31 @@
      },
      "status": {
       "$ref": "#/components/schemas/status"
+     },
+     "enableTieredBilling": {
+      "type": "boolean",
+      "description": "Indicates whether tiered billing is enabled for this price list entry. When `true`, pricing is determined by evaluating the applicable quantity range across the `tiers` collection, and the `value` and `valueType` fields on the entry itself are ignored. Tiered billing is only available for items of type `Non-Inventory` or `Non-Inventory (Sales only)`.\n",
+      "example": false,
+      "default": false
+     },
+     "tierCalculationType": {
+      "type": "string",
+      "description": "Specifies how the rate from the matching tier is applied to the transaction quantity when `enableTieredBilling` is `true`.\n* `volume` - The rate for the tier that contains the total transaction quantity is applied to the **entire** quantity.\n* `step` - Each unit of quantity is priced at the rate of the tier in which it falls, so different portions of the total quantity may be billed at different rates.\n* `absolute` - The rate of the matching tier is applied as a flat fee regardless of the quantity.\n",
+      "example": "volume",
+      "nullable": true,
+      "enum": [
+       null,
+       "volume",
+       "step",
+       "absolute"
+      ]
+     },
+     "tiers": {
+      "type": "array",
+      "description": "Ordered list of quantity tiers that define pricing breakpoints when `enableTieredBilling` is `true`. Each tier specifies a starting quantity and the rate applied from that quantity up to the next tier's starting quantity.\n\nRules:\n* `beginQuantity` and `rate` are both required for every tier.\n* `beginQuantity` must be 0 or greater.\n* The tier with the lowest `beginQuantity` must have `beginQuantity` equal to `0`.\n",
+      "items": {
+       "$ref": "#/components/schemas/objects.order-entry.price-list-entry-tier"
+      }
      }
     }
    },
@@ -17316,6 +17792,76 @@
        "productLine"
       ]
      }
+    ]
+   },
+   "objects.order-entry.price-list-entry-tier": {
+    "type": "object",
+    "description": "A price list entry tier defines a starting quantity and rate for a single pricing band within a tiered billing price list entry.",
+    "properties": {
+     "key": {
+      "type": "string",
+      "description": "System-assigned unique key for the price list entry tier.",
+      "readOnly": true,
+      "example": "12"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique ID for the price list entry tier. This value is the same as the `key` for this object.",
+      "readOnly": true,
+      "example": "12"
+     },
+     "href": {
+      "type": "string",
+      "description": "URL endpoint for the price list entry tier.",
+      "readOnly": true,
+      "example": "/objects/order-entry/price-list-entry-tier/12"
+     },
+     "beginQuantity": {
+      "type": "string",
+      "format": "decimal-precision-6",
+      "description": "The starting quantity for this pricing tier. The first tier must have `beginQuantity` equal to `0`. Negative values are not allowed.",
+      "example": "100.000000"
+     },
+     "tierRangeRate": {
+      "type": "string",
+      "format": "decimal-precision-10",
+      "description": "The rate applied to transactions whose quantity falls within this tier's range. The interpretation depends on the `tierCalculationType` of the parent price list entry.",
+      "example": "9.9900000000"
+     },
+     "priceListEntry": {
+      "type": "object",
+      "description": "References the price list entry to which this tier belongs.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Unique key for the price list entry.",
+        "example": "38"
+       },
+       "id": {
+        "type": "string",
+        "description": "ID for the price list entry.",
+        "readOnly": true,
+        "example": "38"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the price list entry.",
+        "readOnly": true,
+        "example": "/objects/order-entry/price-list-entry/38"
+       }
+      }
+     },
+     "audit": {
+      "$ref": "#/components/schemas/audit.s1"
+     }
+    }
+   },
+   "order-entry-price-list-entry-tierRequiredProperties": {
+    "type": "object",
+    "required": [
+     "priceListEntry",
+     "beginQuantity",
+     "tierRangeRate"
     ]
    },
    "objects.order-entry.price-schedule": {
@@ -18215,6 +18761,19 @@
       "description": "Reference to another document, as needed.",
       "example": "SALES-100"
      },
+     "enableOnlinePayment": {
+      "type": "boolean",
+      "description": "Indicates whether invoices created from this recurring document are enabled for online payment through a Payment Acceptance Services (PAS) provider.",
+      "default": false,
+      "example": true
+     },
+     "recurringReferenceUUID": {
+      "type": "string",
+      "description": "System-generated reference shared with the Payment Acceptance Services (PAS) provider for all invoices created from this recurring document.",
+      "readOnly": true,
+      "nullable": true,
+      "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+     },
      "contractId": {
       "type": "string",
       "description": "Sales contract ID associated with the transaction.",
@@ -18854,30 +19413,6 @@
         "example": "/objects/order-entry-document::Sales%20Invoice/55"
        }
       }
-     }
-    }
-   },
-   "order-entry-recurring-document-lineRequiredProperties": {
-    "type": "object",
-    "required": [
-     "unit",
-     "unitQuantity",
-     "unitPrice"
-    ],
-    "properties": {
-     "dimensions": {
-      "required": [
-       "item",
-       "warehouse",
-       "location"
-      ],
-      "example": "{ \"item\": { \"id\": \"1\" }, \"warehouse\": { \"id\": \"1\" }, \"location\": { \"id\": \"1\" }}"
-     },
-     "recurringDocumentHeader": {
-      "required": [
-       "key"
-      ],
-      "example": "22"
      }
     }
    },
@@ -22019,33 +22554,100 @@
        }
       }
      },
-     "accountsReceivableInvoiceNumber": {
-      "type": "string",
-      "description": "Accounts Receivable invoice number.",
+     "orderEntryDocument": {
+      "type": "object",
+      "description": "Order Entry document associated with the project contract billing invoice summary.",
       "readOnly": true,
-      "nullable": true,
-      "example": "INV1"
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Order Entry document key.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "44"
+       },
+       "id": {
+        "type": "string",
+        "description": "Order Entry document ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "SO-AIA-Invoice01-Ord#0011#doc"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the Order Entry document.",
+        "readOnly": true,
+        "example": "/objects/order-entry/document::SO-AIA-Invoice01/44"
+       }
+      }
      },
-     "orderEntryDocumentId": {
-      "type": "string",
-      "description": "Order Entry document ID.",
+     "accountsReceivableInvoice": {
+      "type": "object",
+      "description": "Accounts Receivable invoice associated with the project contract billing invoice summary.",
       "readOnly": true,
-      "nullable": true,
-      "example": "SO-AIA-Invoice01-Ord#0011#doc"
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Accounts Receivable invoice key.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "23"
+       },
+       "id": {
+        "type": "string",
+        "description": "Accounts Receivable invoice ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "23"
+       },
+       "invoiceNumber": {
+        "type": "string",
+        "description": "Accounts Receivable invoice number.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "INV1"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the Accounts Receivable invoice.",
+        "readOnly": true,
+        "example": "/objects/accounts-receivable/invoice/23"
+       }
+      }
      },
-     "projectId": {
-      "type": "string",
-      "description": "Project ID.",
+     "project": {
+      "type": "object",
+      "description": "Project associated with the project contract for the project contract billing invoice summary.",
       "readOnly": true,
-      "nullable": true,
-      "example": "DIM - HCS"
-     },
-     "projectName": {
-      "type": "string",
-      "description": "Project name.",
-      "readOnly": true,
-      "nullable": true,
-      "example": "Dimensions - Hands Computer Systems"
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "Project key.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "1"
+       },
+       "id": {
+        "type": "string",
+        "description": "Project ID.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "DIM - HCS"
+       },
+       "name": {
+        "type": "string",
+        "description": "Project name.",
+        "readOnly": true,
+        "nullable": true,
+        "example": "Dimensions - Hands Computer Systems"
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the project.",
+        "readOnly": true,
+        "example": "/objects/projects/project/1"
+       }
+      }
      }
     }
    },
@@ -22662,6 +23264,37 @@
         "description": "URL endpoint for the work order.",
         "readOnly": true,
         "example": "/objects/construction/work-order/18"
+       }
+      }
+     },
+     "propertyLease": {
+      "description": "Property lease associated with the dimension.",
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the property lease.",
+        "example": "1",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the property lease.",
+        "example": "PL-01",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the property lease.",
+        "readOnly": true,
+        "example": "Lease for 123 Main St.",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the property lease.",
+        "readOnly": true,
+        "example": "/objects/construction/property-lease/1"
        }
       }
      }

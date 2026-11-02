@@ -2974,6 +2974,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/services/reports/cash-management/check-register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Run the check register report
+         * @description Run the check register report.
+         */
+        post: operations["cm-report-check-register"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/services/reports/cash-management/bank-register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Run the bank register report
+         * @description Run the bank register report.
+         */
+        post: operations["cm-report-bank-register"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -4054,6 +4094,33 @@ export interface components {
                      * @example US
                      */
                     readonly countryCode?: string | null;
+                };
+                /** @description Specifies how generated bank files are delivered to cloud storage. */
+                cloudDelivery?: {
+                    /**
+                     * @description Delivery mode for generated bank files.
+                     * @default downloadOnly
+                     * @example downloadOnly
+                     * @enum {string|null}
+                     */
+                    mode?: null | "downloadOnly" | "cloudOnly" | "cloudAndDownload";
+                    cloudStorage?: {
+                        /**
+                         * @description System-assigned key for the cloud storage.
+                         * @example 44
+                         */
+                        key?: string | null;
+                        /**
+                         * @description Name for the cloud storage.
+                         * @example Amazon Storage Plan
+                         */
+                        readonly id?: string | null;
+                        /**
+                         * @description Endpoint URL for the cloud storage.
+                         * @example /objects/company-config/cloud-storage/44
+                         */
+                        readonly href?: string | null;
+                    };
                 };
             };
             readonly audit?: components["schemas"]["audit.s1"];
@@ -6858,6 +6925,21 @@ export interface components {
             };
             /** @description References a collection of bank file details, such as payment details and bank file errors related to the bank file. */
             bankFileDetails?: components["schemas"]["objects.cash-management.bank-file-detail"][];
+            /** @description Status of delivery through the Upload to cloud action and its configured cloud storage connection. */
+            readonly cloudDelivery?: {
+                /**
+                 * @description Current cloud delivery status for this bank file.
+                 * @example none
+                 * @enum {string}
+                 */
+                status?: "none" | "awaitingUpload" | "delivered" | "error";
+                /**
+                 * @description Current state of the cloud storage connection configured for the associated checking account.
+                 * @example signedIn
+                 * @enum {string}
+                 */
+                connectionState?: "notApplicable" | "notConfigured" | "inactive" | "active" | "signedIn" | "signInRequired";
+            };
             audit?: components["schemas"]["audit.s1"];
         };
         /** @description Bank file details are associated with a bank file and provide detailed information about a bank file payment transaction, such as payment details and bank file errors. */
@@ -7122,7 +7204,7 @@ export interface components {
              * @example loading
              * @enum {string|null}
              */
-            readonly importedFileStatus?: "initiated" | "loading" | "completed" | "partiallyDeleted" | "deleted" | "canceled" | null;
+            readonly importedFileStatus?: "initiated" | "loading" | "completed" | "partiallyDeleted" | "deleted" | "canceled" | "error" | null;
             /** @description References the user who uploaded the bank feed. */
             readonly addedByUser?: {
                 /**
@@ -7856,7 +7938,9 @@ export interface components {
             readonly whenPaid?: string;
             /**
              * @description Current state of the credit card transaction.
+             *
              *     When a credit card transaction has been issued and is in a `posted` state, it can be reversed. When a credit card transaction is reversed, the original `posted` transaction immediately enters the `reversal` state and transitions to the `reversed` state once the reversal date is reached.
+             *
              *     A reversal transaction is also created in the `reversal` state when you reverse a credit card transaction. The state of the reversal transaction does not change.
              * @example posted
              * @enum {string}
@@ -7872,7 +7956,7 @@ export interface components {
             /**
              * Format: date
              * @description Date when the transaction was cleared as part of the reconciliation process.
-             * @example 2024-01-23
+             * @example 2026-01-23
              */
             readonly clearingDate?: string | null;
             /**
@@ -7927,7 +8011,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description Date the transaction was reversed.
-                 * @example 2021-01-23
+                 * @example 2026-01-23
                  */
                 readonly reversalDate?: string;
                 /**
@@ -7951,7 +8035,7 @@ export interface components {
                 /**
                  * Format: date
                  * @description Date of the reversed transaction.
-                 * @example 2021-10-22
+                 * @example 2026-10-22
                  */
                 readonly txnDate?: string;
                 /**
@@ -7984,7 +8068,7 @@ export interface components {
                 /**
                  * Format: date-time
                  * @description Date and time when the credit card transaction was created.
-                 * @example 2025-10-01T11:28:12Z
+                 * @example 2026-09-01T11:28:12Z
                  */
                 readonly createdDateTime?: string;
             };
@@ -9995,12 +10079,12 @@ export interface components {
                  * @description Unique key for the attachment
                  * @example 1
                  */
-                key?: string;
+                key?: string | null;
                 /**
                  * @description Identifier for the attachment.
                  * @example 1
                  */
-                id?: string;
+                id?: string | null;
                 /**
                  * @description URL endpoint for the attachment.
                  * @example /objects/attachment/1
@@ -10180,18 +10264,18 @@ export interface components {
                  * @description Unique key for the reversing transaction.
                  * @example 221
                  */
-                readonly key?: string;
+                readonly key?: string | null;
                 /**
                  * @description Identifier of the reversing transaction.
                  * @example 221
                  */
-                readonly id?: string;
+                readonly id?: string | null;
                 /**
                  * Format: date
                  * @description Date of the reversing transaction. This is usually the original transaction date or a later date.
                  * @example 2021-01-23
                  */
-                readonly reversalDate?: string;
+                readonly reversalDate?: string | null;
                 /**
                  * @description URL endpoint for the reversing transaction.
                  * @example /objects/cash-management/funds-transfer/221
@@ -10204,18 +10288,18 @@ export interface components {
                  * @description Unique key for the reversed transaction.
                  * @example 125
                  */
-                readonly key?: string;
+                readonly key?: string | null;
                 /**
                  * @description Identifier of the reversed transaction.
                  * @example 125
                  */
-                readonly id?: string;
+                readonly id?: string | null;
                 /**
                  * Format: date
                  * @description Transaction date of the reversed transaction.
                  * @example 2021-10-22
                  */
-                readonly txnDate?: string;
+                readonly txnDate?: string | null;
                 /**
                  * @description URL endpoint for the reversed transaction.
                  * @example /objects/cash-management/funds-transfer/125
@@ -10234,12 +10318,19 @@ export interface components {
                 readonly createdDateTime?: string;
             };
         };
-        "funds-transferRequiredProperties": {
-            transferFromAccount?: {
-                bankAccount?: Record<string, never>;
+        "cash-management-funds-transferRequiredProperties": {
+            transferFromAccount: {
+                bankAccount: Record<string, never>;
+                /**
+                 * Format: decimal-precision-2
+                 * @description Specifies the amount of the funds transfer in the currency of the originating bank account. Applies to multi-currency companies.
+                 * @example 2500.10
+                 */
+                transferAmount: string;
             };
-            transferToAccount?: {
-                bankAccount?: Record<string, never>;
+            transferToAccount: {
+                bankAccount: Record<string, never>;
+                receivedAmount: string;
             };
         };
         /** @description Funds transfer lines are automatically generated when a funds transfer is created. Each line is posted to the general ledger when the transaction is created. */
@@ -10358,18 +10449,23 @@ export interface components {
              * @description System-assigned unique key for the original fund transfer transaction.
              * @example 39
              */
-            key?: string;
+            key: string;
             /**
              * Format: date
              * @description Specifies the date of the fund transfer reversal.
              * @example 2025-05-07
              */
-            reversedDate?: string;
+            reversedDate: string;
+            /**
+             * @deprecated
+             * @description Deprecated. Use the `notes` field instead.
+             */
+            memo?: string;
             /**
              * @description Provides brief descriptive notes about the reason for the reversal.
              * @example Reversed the fund transfer transaction to correct a duplicate entry.
              */
-            memo?: string;
+            notes?: string;
         };
         "cash-management-funds-transfer-actions-reverse-response": {
             /**
@@ -11839,6 +11935,358 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s1"];
         };
+        /** @description The check register report shows check and payment transactions for a bank account over a specified date range. */
+        "services.reports.cash-management-check-register": {
+            /**
+             * @description Specifies the primary title displayed at the top of the check register report.
+             * @example Check Register Report - March 2026
+             */
+            title1?: string;
+            /**
+             * @description Specifies the secondary title displayed below the primary title.
+             * @example NexCom Corporation | USD
+             */
+            title2?: string;
+            /**
+             * @description Specifies the text to display in the report footer.
+             * @example Confidential - For Internal Use Only
+             */
+            footerText?: string;
+            /**
+             * Format: date
+             * @description Indicates the date the report is scheduled to run. If not provided, the report runs immediately.
+             * @example 2026-03-31
+             */
+            scheduledReportDate?: string;
+            /**
+             * @description Specifies the name assigned to the check register report, used for identification and reference.
+             * @example Check Register Report - March 2026
+             */
+            reportName?: string;
+            /**
+             * @description Indicates the output format for the check register report.
+             * @default html
+             * @example html
+             * @enum {string}
+             */
+            outputType?: "html" | "pdf" | "csv" | "excel" | "text";
+            /**
+             * @description Indicates where to store the check register report.
+             * @default intacct
+             * @example intacct
+             * @enum {string}
+             */
+            outputLocation?: "intacct" | "cloud";
+            cloudStoreParameters?: components["schemas"]["report.cloud-store-options"];
+            /** @description Defines the input parameters for the check register report, including time range, account, payees, dimensions, and display options. */
+            parameters?: {
+                timePeriod?: components["schemas"]["report-time-period-filter-ref"];
+                /** @description Checking account to filter the report by. If omitted, all checking accounts are included. */
+                bankAccount?: {
+                    /**
+                     * @description Checking account ID.
+                     * @example BOA-CHK
+                     */
+                    id?: string;
+                };
+                /** @description Payee (vendor or employee) ID range to filter transactions by. */
+                payee?: {
+                    /**
+                     * @description Starting payee ID in the range.
+                     * @example V-1001
+                     */
+                    fromId?: string;
+                    /**
+                     * @description Ending payee ID in the range.
+                     * @example V-2000
+                     */
+                    toId?: string;
+                };
+                /** @description Check (document) number range to filter transactions by. */
+                checkNumber?: {
+                    /**
+                     * @description Starting check number in the range.
+                     * @example 1000
+                     */
+                    from?: string;
+                    /**
+                     * @description Ending check number in the range.
+                     * @example 2000
+                     */
+                    to?: string;
+                };
+                /** @description Location dimension values to filter transactions by. */
+                location?: string[];
+                /**
+                 * @description Indicates how to filter transactions by the selected locations.
+                 * @default all
+                 * @example all
+                 * @enum {string}
+                 */
+                filterTransactions?: "self" | "children" | "all";
+                /** @description Department dimension values to filter transactions by. */
+                department?: string[];
+                /**
+                 * @description Show transaction details (true) or summary only (false).
+                 * @default true
+                 * @example true
+                 */
+                showDetails?: boolean;
+                /** @description GL account range or GL account group to filter detail transactions by. Applies only when `showDetails` is true. */
+                glAccount?: {
+                    /**
+                     * @description Starting GL account in the range.
+                     * @example 1000
+                     */
+                    from?: string;
+                    /**
+                     * @description Ending GL account in the range.
+                     * @example 1999
+                     */
+                    to?: string;
+                    /**
+                     * @description GL account group. Use instead of a GL account range.
+                     * @example Cash Accounts
+                     */
+                    group?: string;
+                };
+                /**
+                 * @description Show only voided or reversed transactions.
+                 * @default false
+                 * @example false
+                 */
+                showOnlyVoided?: boolean;
+                /**
+                 * @description Show only check transactions and exclude other payment types.
+                 * @default false
+                 * @example false
+                 */
+                showOnlyCheckTransactions?: boolean;
+                /**
+                 * @description Display the reconciliation status column in the report.
+                 * @default true
+                 * @example true
+                 */
+                showReconciliationStatus?: boolean;
+                /**
+                 * @description Filter transactions by reconciliation state.
+                 * @default all
+                 * @example all
+                 * @enum {string}
+                 */
+                reconciliationState?: "all" | "inTransit" | "cleared";
+                /**
+                 * @description Page orientation for printable output.
+                 * @default portrait
+                 * @example portrait
+                 * @enum {string}
+                 */
+                pageOrientation?: "portrait" | "landscape";
+                /**
+                 * @description Indicates the field used to sort transactions in the report.
+                 * @default date
+                 * @example date
+                 * @enum {string}
+                 */
+                sortBy?: "date" | "check" | "payee" | "payeeId" | "amount" | "glAccount";
+                /**
+                 * @description Indicates how to group transactions in the report.
+                 * @default bank
+                 * @example bank
+                 * @enum {string}
+                 */
+                reportGrouping?: "bank" | "payee" | "date" | "glAccount";
+                /** @description Provides options for generating individual reports based on location or department. If enabled, the system generates separate reports for each unique value within the specified dimension. */
+                individualReport?: {
+                    /**
+                     * @description Indicates whether to create a separate report for individual locations or location groups. Set to `true` to create a separate report for each location. For location groups, this creates a separate report for the individual locations within the group.
+                     * @default false
+                     * @example true
+                     */
+                    includeLocation?: boolean;
+                    /**
+                     * @description Indicates whether to create a separate report for individual departments or department groups. Set to `true` to create a separate report for each department. For department groups, this creates a separate report for the individual departments within the group.
+                     * @default false
+                     * @example true
+                     */
+                    includeDepartment?: boolean;
+                };
+            };
+        };
+        "cash-management-reports.check-registerRequiredProperties": Record<string, never>;
+        /** @description Report status response. */
+        "services.report.submitted-status": {
+            /**
+             * @description Unique identifier for the report.
+             * @example 1
+             */
+            reportId?: string;
+            /**
+             * @description Status of the report execution.
+             * @example submitted
+             * @enum {string}
+             */
+            status?: "submitted" | "failed";
+            /**
+             * @description Name for the report.
+             * @example Trial balance report
+             */
+            readonly name?: string | null;
+            /**
+             * @description Format for the report output.
+             * @example pdf
+             * @enum {string}
+             */
+            readonly outputType?: "html" | "pdf" | "csv" | "excel" | "text" | "fec" | "zip";
+            /**
+             * @description Location where the report is stored.
+             * @example intacct
+             * @enum {string}
+             */
+            readonly outputLocation?: "intacct" | "cloud";
+            /**
+             * @description URL endpoint for the report status.
+             * @example /services/reports/status?reportId=1&outputType=pdf&outputLocation=intacct
+             */
+            href?: string | null;
+        };
+        /** @description The bank register report shows transactions for a bank account over a specified date range. */
+        "services.reports.cash-management-bank-register": {
+            /**
+             * @description Specifies the primary title displayed at the top of the bank register report.
+             * @example Bank Register Report - March 2026
+             */
+            title1?: string;
+            /**
+             * @description Specifies the secondary title displayed below the primary title.
+             * @example NexCom Corporation | USD
+             */
+            title2?: string;
+            /**
+             * @description Specifies the text to display in the report footer.
+             * @example Confidential - For Internal Use Only
+             */
+            footerText?: string;
+            /**
+             * Format: date
+             * @description Indicates the date the report is scheduled to run. If not provided, the report runs immediately.
+             * @example 2026-03-31
+             */
+            scheduledReportDate?: string;
+            /**
+             * @description Specifies the name assigned to the bank register report for identification and later retrieval.
+             * @example Bank Register Report - March 2026
+             */
+            reportName?: string;
+            /**
+             * @description Indicates the output format for the bank register report.
+             * @default html
+             * @example html
+             * @enum {string}
+             */
+            outputType?: "html" | "pdf" | "csv" | "excel" | "text";
+            /**
+             * @description Indicates where to store the generated bank register report.
+             * @default intacct
+             * @example intacct
+             * @enum {string}
+             */
+            outputLocation?: "intacct" | "cloud";
+            cloudStoreParameters?: components["schemas"]["report.cloud-store-options"];
+            /** @description Defines the input parameters for the bank register report, including time range, account, dimensions, and display options. */
+            parameters?: {
+                timePeriod?: components["schemas"]["report-time-period-filter-ref"];
+                /** @description Bank account to filter the report by. If omitted, all bank accounts are included. */
+                bankAccount?: {
+                    /**
+                     * @description ID for the bank account.
+                     * @example BOA-CHK
+                     */
+                    id?: string;
+                };
+                /** @description Location dimension values to filter transactions by. */
+                location?: string[];
+                /**
+                 * @description Indicates how to filter transactions by the selected locations.
+                 * @default all
+                 * @example children
+                 * @enum {string}
+                 */
+                filterTransactions?: "self" | "children" | "all";
+                /** @description Department dimension values to filter transactions by. */
+                department?: string[];
+                /**
+                 * @description Show transaction details (true) or summary only (false).
+                 * @default true
+                 * @example true
+                 */
+                showDetails?: boolean;
+                /**
+                 * @description Show only voided or reversed transactions.
+                 * @default false
+                 * @example false
+                 */
+                showOnlyVoided?: boolean;
+                /**
+                 * @description Display the reconciliation status column in the report.
+                 * @default true
+                 * @example true
+                 */
+                showReconciliationStatus?: boolean;
+                /**
+                 * @description Filter transactions by reconciliation state.
+                 * @default all
+                 * @example all
+                 * @enum {string}
+                 */
+                reconciliationState?: "all" | "inTransit" | "cleared";
+                /**
+                 * @description Hide bank accounts that have no transactions in the selected period.
+                 * @default false
+                 * @example false
+                 */
+                hideAccountsWithNoTransactions?: boolean;
+                /**
+                 * @description Indicates whether to report by transaction date or GL posting date.
+                 * @default transactionDate
+                 * @example transactionDate
+                 * @enum {string}
+                 */
+                reportBy?: "transactionDate" | "glPostingDate";
+                /**
+                 * @description Field used to sort bank accounts in the report.
+                 * @default bankAccountId
+                 * @example bankAccountId
+                 * @enum {string}
+                 */
+                sortByBankField?: "bankAccountId" | "bankName";
+                /** @description Indicates the fields used to sort transactions in the report. */
+                sortBy?: ("date" | "description" | "txnNumber" | "debitAmount" | "creditAmount" | "reconciliationState")[];
+                /**
+                 * @description Page orientation for printable output.
+                 * @default portrait
+                 * @example portrait
+                 * @enum {string}
+                 */
+                pageOrientation?: "portrait" | "landscape";
+                /** @description Provides options for generating individual reports based on location or department. If enabled, the system generates separate reports for each unique value within the specified dimension. */
+                individualReport?: {
+                    /**
+                     * @description Indicates whether to create a separate report for individual locations or location groups. Set to `true` to create a separate report for each location. For location groups, this creates a separate report for the individual locations within the group.
+                     * @default false
+                     * @example true
+                     */
+                    includeLocation?: boolean;
+                    /**
+                     * @description Indicates whether to create a separate report for individual departments or department groups. Set to `true` to create a separate report for each department. For department groups, this creates a separate report for the individual departments within the group.
+                     * @default false
+                     * @example true
+                     */
+                    includeDepartment?: boolean;
+                };
+            };
+        };
+        "cash-management-reports.bank-registerRequiredProperties": Record<string, never>;
         "audit.s1": {
             /**
              * Format: date-time
@@ -12390,6 +12838,29 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /** @description Property lease associated with the dimension. */
+            propertyLease?: {
+                /**
+                 * @description System-assigned key for the property lease.
+                 * @example 1
+                 */
+                key?: string | null;
+                /**
+                 * @description Unique identifier for the property lease.
+                 * @example PL-01
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the property lease.
+                 * @example Lease for 123 Main St.
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the property lease.
+                 * @example /objects/construction/property-lease/1
+                 */
+                readonly href?: string;
+            };
         };
         /**
          * @description Reconciliation status
@@ -12459,6 +12930,80 @@ export interface components {
              * @example GBP
              */
             txnCurrency?: string;
+        };
+        /** @description Report cloud store options */
+        "report.cloud-store-options": {
+            /**
+             * @description Predefined cloud store name. Required when the `outputLocation` is set to `cloud`.
+             * @example CloudStore
+             */
+            cloudStore?: string;
+            /** @description Predefined cloud store. Required when the `outputLocation` is set to `cloud`. */
+            cloudStorage?: {
+                /**
+                 * @description Unique key for the cloud storage.
+                 * @example 44
+                 */
+                key?: string;
+                /**
+                 * @description Unique ID for the cloud storage.
+                 * @example Amazon Storage Plan
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the cloud storage.
+                 * @example /objects/company-config/cloud-storage/44
+                 */
+                readonly href?: string;
+            };
+            /**
+             * @description Cloud store path. Used when the `outputLocation` is set to `cloud`.
+             * @example 2025 Reports
+             */
+            path?: string;
+        };
+        "report-time-period-filter-ref": {
+            periodToDate?: {
+                reportingPeriod?: components["schemas"]["reporting-period-ref"];
+                /**
+                 * Format: date
+                 * @description The "as of" date to use with any relative date comparisons in selected filters. The current date is used if `asOfDate` is not set.
+                 * @example 2014-01-08
+                 */
+                asOfDate?: string;
+            };
+            /** @description Date range. */
+            dateRange?: {
+                /**
+                 * Format: date
+                 * @description Start of the date range.
+                 * @example 2025-01-02
+                 */
+                startDate?: string;
+                /**
+                 * Format: date
+                 * @description End of the date range.
+                 * @example 2025-12-31
+                 */
+                endDate?: string;
+            };
+        };
+        "reporting-period-ref": {
+            /**
+             * @description System-assigned key for the reporting period.
+             * @example 79
+             */
+            key?: string;
+            /**
+             * @description Unique identifier for the reporting period (case sensitive).
+             * @example January 2021
+             */
+            id?: string;
+            /**
+             * @description URL endpoint for the reporting period.
+             * @example /objects/general-ledger/reporting-period/45
+             */
+            readonly href?: string;
         };
     };
     responses: {
@@ -14506,10 +15051,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": {
-                        "ia::result"?: components["schemas"]["cash-management-generate-bank-file-generate-response"];
-                        "ia::meta"?: components["schemas"]["metadata"];
-                    };
+                    "application/json": components["schemas"]["cash-management-generate-bank-file-generate-response"];
                 };
             };
         };
@@ -16101,7 +16643,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["objects.cash-management.funds-transfer"] & components["schemas"]["funds-transferRequiredProperties"];
+                "application/json": components["schemas"]["objects.cash-management.funds-transfer"] & components["schemas"]["cash-management-funds-transferRequiredProperties"];
             };
         };
         responses: {
@@ -16226,6 +16768,7 @@ export interface operations {
                     "application/json": components["schemas"]["cash-management-funds-transfer-actions-reverse-response"];
                 };
             };
+            400: components["responses"]["400error"];
         };
     };
     "list-cash-management-other-receipt": {
@@ -17253,6 +17796,64 @@ export interface operations {
                 content: {
                     "application/json": {
                         "ia::result"?: components["schemas"]["objects.cash-management.provider-payment-method"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "cm-report-check-register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Report definition and runtime parameters used to submit the check register report for processing. */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["services.reports.cash-management-check-register"] & components["schemas"]["cash-management-reports.check-registerRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["services.report.submitted-status"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "cm-report-bank-register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Report definition and runtime parameters used to submit the bank register report for processing. */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["services.reports.cash-management-bank-register"] & components["schemas"]["cash-management-reports.bank-registerRequiredProperties"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["services.report.submitted-status"];
                         "ia::meta"?: components["schemas"]["metadata"];
                     };
                 };

@@ -27,7 +27,8 @@ export type AdvanceCreate = RequestBody<operations["create-accounts-payable-adva
 export type AdvanceUpdate = RequestBody<operations["update-accounts-payable-advance-key"]>;
 /** accounts-payable/advance-line */
 export type AdvanceLine = components["schemas"]["objects.accounts-payable.advance-line"];
-export type AdvanceLineUpdate = RequestBody<operations["update-accounts-payable-advance-line"]>;
+export type AdvanceLineCreate = RequestBody<operations["create-accounts-payable-advance-line"]>;
+export type AdvanceLineUpdate = RequestBody<operations["update-accounts-payable-advance-line-key"]>;
 /** accounts-payable/amortization-template */
 export type AmortizationTemplate = components["schemas"]["objects.accounts-payable.amortization-template"];
 export type AmortizationTemplateCreate = RequestBody<operations["create-accounts-payable-amortization-template"]>;
@@ -49,8 +50,9 @@ export type CheckRun = components["schemas"]["objects.accounts-payable.check-run
 export type CheckRunCreate = RequestBody<operations["create-accounts-payable-check-run"]>;
 export type CheckRunUpdate = RequestBody<operations["update-accounts-payable-check-run-key"]>;
 /** accounts-payable/joint-payee */
-export type AccountsPayableJointPayee = components["schemas"]["objects.accounts-payable.joint-payee"];
-export type AccountsPayableJointPayeeCreate = RequestBody<operations["create-accounts-payable-joint-payee"]>;
+export type JointPayee = components["schemas"]["objects.accounts-payable.joint-payee"];
+export type JointPayeeCreate = RequestBody<operations["create-accounts-payable-joint-payee"]>;
+export type JointPayeeUpdate = RequestBody<operations["update-accounts-payable-joint-payee"]>;
 /** accounts-payable/payment */
 export type Payment = components["schemas"]["objects.accounts-payable.payment"];
 export type PaymentCreate = RequestBody<operations["create-accounts-payable-payment"]>;
@@ -84,7 +86,7 @@ export type VendorUpdate = RequestBody<operations["update-accounts-payable-vendo
 /** accounts-payable/vendor-account-number */
 export type VendorAccountNumber = components["schemas"]["objects.accounts-payable.vendor-account-number"];
 export type VendorAccountNumberCreate = RequestBody<operations["create-accounts-payable-vendor-account-number"]>;
-export type VendorAccountNumberUpdate = RequestBody<operations["update-accounts-payable-vendor-account-number"]>;
+export type VendorAccountNumberUpdate = RequestBody<operations["update-accounts-payable-vendor-account-number-key"]>;
 /** accounts-payable/vendor-bank-file-setup */
 export type VendorBankFileSetup = components["schemas"]["objects.accounts-payable.vendor-bank-file-setup"];
 /** accounts-payable/vendor-contact */
@@ -113,9 +115,6 @@ export type VendorTotal = components["schemas"]["objects.accounts-payable.vendor
 export type VendorType = components["schemas"]["objects.accounts-payable.vendor-type"];
 export type VendorTypeCreate = RequestBody<operations["create-accounts-payable-vendor-type"]>;
 export type VendorTypeUpdate = RequestBody<operations["update-accounts-payable-vendor-type-key"]>;
-/** acounts-payable/joint-payee */
-export type AcountsPayableJointPayee = ResponseResult<operations["get-accounts-payable-joint-payee-key"]>;
-export type AcountsPayableJointPayeeUpdate = RequestBody<operations["update-accounts-payable-joint-payee"]>;
 
 export const accountsPayable = defineApplication({
   accountLabel: object(shape<{ record: AccountLabel; create: AccountLabelCreate; update: AccountLabelUpdate }>(), "accounts-payable/account-label", ["create","delete","get","update"]),
@@ -130,7 +129,7 @@ export const accountsPayable = defineApplication({
     reverse: action<RequestBody<operations["reverse-accounts-payable-advance"]>, ResponseResult<operations["reverse-accounts-payable-advance"]>>("reverse"),
     submit: action<RequestBody<operations["submit-accounts-payable-advance"]>, ResponseResult<operations["submit-accounts-payable-advance"]>>("submit"),
   }),
-  advanceLine: object(shape<{ record: AdvanceLine; update: AdvanceLineUpdate }>(), "accounts-payable/advance-line", ["delete","get","update"]),
+  advanceLine: object(shape<{ record: AdvanceLine; create: AdvanceLineCreate; update: AdvanceLineUpdate }>(), "accounts-payable/advance-line", ["create","delete","get","update"]),
   amortizationTemplate: object(shape<{ record: AmortizationTemplate; create: AmortizationTemplateCreate; update: AmortizationTemplateUpdate }>(), "accounts-payable/amortization-template", ["create","delete","get","update"]),
   bill: object(shape<{ record: Bill; create: BillCreate; update: BillUpdate }>(), "accounts-payable/bill", ["create","delete","get","update"], {
     approve: action<RequestBody<operations["approve-accounts-payable-bill"]>, ResponseResult<operations["approve-accounts-payable-bill"]>>("approve"),
@@ -145,7 +144,7 @@ export const accountsPayable = defineApplication({
   billSummary: object(shape<{ record: BillSummary }>(), "accounts-payable/bill-summary", ["get"]),
   billTaxEntry: object(shape<{ record: BillTaxEntry }>(), "accounts-payable/bill-tax-entry", ["get"]),
   checkRun: object(shape<{ record: CheckRun; create: CheckRunCreate; update: CheckRunUpdate }>(), "accounts-payable/check-run", ["create","delete","get","update"]),
-  accountsPayableJointPayee: object(shape<{ record: AccountsPayableJointPayee; create: AccountsPayableJointPayeeCreate }>(), "accounts-payable/joint-payee", ["create"]),
+  jointPayee: object(shape<{ record: JointPayee; create: JointPayeeCreate; update: JointPayeeUpdate }>(), "accounts-payable/joint-payee", ["create","delete","get","update"]),
   payment: object(shape<{ record: Payment; create: PaymentCreate; update: PaymentUpdate }>(), "accounts-payable/payment", ["create","delete","get","update"], {
     approve: action<RequestBody<operations["approve-accounts-payable-payment"]>, ResponseResult<operations["approve-accounts-payable-payment"]>>("approve"),
     confirm: action<RequestBody<operations["confirm-accounts-payable-payment"]>, ResponseResult<operations["confirm-accounts-payable-payment"]>>("confirm"),
@@ -175,7 +174,6 @@ export const accountsPayable = defineApplication({
   vendorRestrictedLocation: object(shape<{ record: VendorRestrictedLocation }>(), "accounts-payable/vendor-restricted-location", ["get"]),
   vendorTotal: object(shape<{ record: VendorTotal }>(), "accounts-payable/vendor-total", ["get"]),
   vendorType: object(shape<{ record: VendorType; create: VendorTypeCreate; update: VendorTypeUpdate }>(), "accounts-payable/vendor-type", ["create","delete","get","update"]),
-  acountsPayableJointPayee: object(shape<{ record: AcountsPayableJointPayee; update: AcountsPayableJointPayeeUpdate }>(), "acounts-payable/joint-payee", ["delete","get","update"]),
 });
 
 export default accountsPayable;

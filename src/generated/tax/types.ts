@@ -1505,7 +1505,7 @@ export interface components {
              * @example true
              */
             readonly isVATEnabled?: boolean;
-            /** @description Tax solution associated with this contact tax group. Different tax solutions are available for different countries, for example, Australia GST, South Africa VAT, UK Vat. See [tax solutions](tax.tax-solution) for details. */
+            /** @description Tax solution associated with this contact tax group. Different tax solutions are available for different countries, for example, Australia GST, South Africa VAT, UK Vat. See [tax solutions](/intacct/apis/intacct/1/intacct-openapi/groups/tax/tags/tax_tax-solutions) for details. */
             taxSolution?: {
                 /**
                  * @description System-assigned key for the tax solution.
@@ -1566,7 +1566,7 @@ export interface components {
              * @example true
              */
             readonly isVATEnabled?: boolean;
-            /** @description Tax solution associated with this item tax group. Different tax solutions are available for different countries, for example, Australia GST, South Africa VAT, UK Vat. See [Tax solutions](tax.tax-solution) for details. */
+            /** @description Tax solution associated with this item tax group. Different tax solutions are available for different countries, for example, Australia GST, South Africa VAT, UK Vat. See [Tax solutions](/intacct/apis/intacct/1/intacct-openapi/groups/tax/tags/tax_tax-solutions) for details. */
             taxSolution?: {
                 /**
                  * @description System-assigned key for the tax solution.
@@ -1668,13 +1668,13 @@ export interface components {
              */
             isAdjustingCompleted?: boolean;
             /**
-             * @description Current step in the Sage Intacct process used to submit the tax return. For details about each step, see [Processing steps section](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Use/Submit_taxes/submit-taxes.htm?#Fielddescriptions).
+             * @description Current step in the Sage Intacct process used to submit the tax return. For details about each step, see [Processing steps section](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Submit_taxes).
              * @example submitToGovernment
              * @enum {string}
              */
             readonly currentStepStage?: null | "prepareTaxData" | "transmitTaxData" | "prepareTaxReturn" | "submitToGovernment" | "transmitRrFilesToSage" | "manualAdjustment";
             /**
-             * @description Status of the current processing step, see the [Processing steps section](https://www.intacct.com/ia/docs/en_US/help_action/Taxes/Indirect_Tax/VAT_and_GST/Use/Submit_taxes/submit-taxes.htm?#Fielddescriptions) for details.
+             * @description Status of the current processing step, see the [Processing steps section](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Submit_taxes) for details.
              * @example completed
              * @enum {string}
              */
@@ -1769,6 +1769,22 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /**
+             * @description Snapshot of the tax submission date basis that was active when this tax return was created. This value is captured at submission time and cannot be changed afterwards.
+             *
+             *     * `txnDate` - Transaction date was used as the tax point date for this return.
+             *     * `glPostingDate` - GL batch posting date was used as the tax point date for this return.
+             * @default null
+             * @example txnDate
+             * @enum {string|null}
+             */
+            readonly reportingDateBasis?: null | "txnDate" | "glPostingDate";
+            /**
+             * Format: date
+             * @description Snapshot of the effective date for the tax submission date basis that was active when this tax return was created. This value is captured at submission time and cannot be changed afterwards.
+             * @example 2026-05-01
+             */
+            readonly reportingDateBasisEffectiveDate?: string | null;
         };
         "tax-tax-returnRequiredProperties": Record<string, never>;
         /** @description Definition for how taxes should be captured and reported. */
@@ -1893,6 +1909,27 @@ export interface components {
                  */
                 readonly href?: string;
             };
+            /**
+             * @description The date used to determine which tax reporting period a transaction belongs to.
+             *
+             *     * `txnDate` - The transaction (document) date is used as the tax point date.
+             *     * `glPostingDate` - The GL batch posting date is used as the tax point date.
+             *
+             *     Not applicable for cash-basis companies.
+             * @default null
+             * @example txnDate
+             * @enum {string|null}
+             */
+            taxSubmissionDateBasis?: null | "txnDate" | "glPostingDate";
+            /**
+             * Format: date
+             * @description The date from which the configured `taxSubmissionDateBasis` takes effect.
+             *
+             *     * When null, transactions use the legacy `txnDate` basis.
+             *     * When set, transactions with a comparison date on or after this date use the selected basis; earlier transactions use the opposite basis.
+             * @example 2026-05-01
+             */
+            taxSubmissionBasisEffectiveDate?: string | null;
         };
         /** @description Account label tax groups organize account labels under one tax category. They are part of the glue in tax schedule maps, which associate tax schedules with one or more combinations of contact tax groups and account label tax groups. */
         "objects.tax.account-label-tax-group": {
@@ -2192,6 +2229,12 @@ export interface components {
              * @example 2024-08-24
              */
             taxPointDate?: string;
+            /**
+             * Format: date
+             * @description The GL batch posting date for the journal entry associated with this tax record. Populated from the GL batch (`glbatch.batch_date`) at the time the tax record is created or posted. Used together with `taxPointDate` to support basis-aware tax period reporting.
+             * @example 2024-08-26
+             */
+            readonly glPostingDate?: string | null;
             /**
              * @description A description for the tax record.
              * @example G10 Capital Acquisition

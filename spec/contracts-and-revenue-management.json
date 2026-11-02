@@ -20,7 +20,7 @@
   {
    "name": "Contracts_and_Revenue_Management_Contract group members",
    "x-displayName": "Contract group members",
-   "description": "A contract group member represents a contract that belongs to a contract group. Each member is associated with one contract and one contract group, and the member's properties are determined by the associated contract and contract group. The contract group member object provides information about the contract's membership in the group, such as the sort order of the member within the group and details about the associated contract. Update the contract group member in the owning [contract group](contracts.contract-group) object.\n\nFor more information, read about [contracts](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_Contracts) in the Sage Intacct Help Center.\n"
+   "description": "A contract group member represents a contract that belongs to a contract group. Each member is associated with one contract and one contract group, and the member's properties are determined by the associated contract and contract group. The contract group member object provides information about the contract's membership in the group, such as the sort order of the member within the group and details about the associated contract. Update the contract group member in the owning [contract group](/intacct/apis/intacct/1/intacct-openapi/groups/contracts-and-revenue-management/groups/contract-setup/tags/contracts_and_revenue_management_contract-groups) object.\n\nFor more information, read about [contracts](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=About_Contracts) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Contracts_and_Revenue_Management_Contract types",
@@ -65,12 +65,12 @@
   {
    "name": "Contracts_and_Revenue_Management_Billing schedules",
    "x-displayName": "Billing schedules",
-   "description": "A billing schedule shows when a Flat/Fixed amount for a contract line is expected to be invoiced during the contract term. It shows the scheduled billing date and amount to be billed for each potential invoice. For periods that have been invoiced, it shows the date the invoice posted, the exchange rate associated with the invoice date (if applicable), and the document number. Billing schedules are referenced by [contract lines](contracts.contract-line).\n\nFor more information, read about [billing schedules](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Adding_Editing_and_Viewing_a_Billing_schedule) in the Sage Intacct Help Center.\n"
+   "description": "A billing schedule shows when a Flat/Fixed amount for a contract line is expected to be invoiced during the contract term. It shows the scheduled billing date and amount to be billed for each potential invoice. For periods that have been invoiced, it shows the date the invoice posted, the exchange rate associated with the invoice date (if applicable), and the document number. Billing schedules are referenced by [contract lines](/intacct/apis/intacct/1/intacct-openapi/groups/contracts-and-revenue-management/groups/contract-management/tags/contracts_and_revenue_management_contract-lines).\n\nFor more information, read about [billing schedules](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Adding_Editing_and_Viewing_a_Billing_schedule) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Contracts_and_Revenue_Management_Billing schedule lines",
    "x-displayName": "Billing schedule lines",
-   "description": "Line items in a billing schedule represent a single billing for a contract line. You create, update, and delete billing schedule line objects through operations on the owning [billing schedule](contracts.billing-schedule).\n\nFor more information, read about [billing schedules](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Adding_Editing_and_Viewing_a_Billing_schedule) in the Sage Intacct Help Center.\n"
+   "description": "Line items in a billing schedule represent a single billing for a contract line. You create, update, and delete billing schedule line objects through operations on the owning [billing schedule](/intacct/apis/intacct/1/intacct-openapi/groups/contracts-and-revenue-management/groups/billing/tags/contracts_and_revenue_management_billing-schedules).\n\nFor more information, read about [billing schedules](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Adding_Editing_and_Viewing_a_Billing_schedule) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Contracts_and_Revenue_Management_Billing templates",
@@ -80,7 +80,7 @@
   {
    "name": "Contracts_and_Revenue_Management_Billing template lines",
    "x-displayName": "Billing template lines",
-   "description": "Line items in a contract billing schedule specify the percentages complete at which you want to invoice. You create, update, and delete billing template line objects through operations on the owning [billing template](contracts.billing-template).\n\nFor more information, read about [billing templates](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Billing_templates) in the Sage Intacct Help Center.\n"
+   "description": "Line items in a contract billing schedule specify the percentages complete at which you want to invoice. You create, update, and delete billing template line objects through operations on the owning [billing template](/intacct/apis/intacct/1/intacct-openapi/groups/contracts-and-revenue-management/groups/billing/tags/contracts_and_revenue_management_billing-templates).\n\nFor more information, read about [billing templates](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Billing_templates) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Contracts_and_Revenue_Management_Evergreen templates",
@@ -145,7 +145,7 @@
   {
    "name": "Contracts_and_Revenue_Management_Expense template lines",
    "x-displayName": "Expense template lines",
-   "description": "An expense template line defines the percentage of the total expense amount to be recognized at a specific number of months from the expense start date. Create, update, and delete expense template lines in the owning [expense template](contracts.expense-template) object.\n\nFor more information, read about [expense templates](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Expense_templates) in the Sage Intacct Help Center.\n"
+   "description": "An expense template line defines the percentage of the total expense amount to be recognized at a specific number of months from the expense start date. Create, update, and delete expense template lines in the owning [expense template](/intacct/apis/intacct/1/intacct-openapi/groups/contracts-and-revenue-management/groups/expense-recognition/tags/contracts_and_revenue_management_expense-templates) object.\n\nFor more information, read about [expense templates](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Expense_templates) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Contracts_and_Revenue_Management_Billing price lists",
@@ -160,12 +160,12 @@
   {
    "name": "Contracts_and_Revenue_Management_Billing price list entry lines",
    "x-displayName": "Billing price list entry lines",
-   "description": "Billing price list entry lines define pricing details for an item specified in a billing price list entry. Details include the starting date for a price, the flat amount, and usage rates. Create and maintain billing price list entry lines from the owning [billing price list entry](contracts.billing-price-list-entry) object.\n\nFor more information, read about [billing price list entries](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Billing_price_list_entries) in the Sage Intacct Help Center.\n"
+   "description": "Billing price list entry lines define pricing details for an item specified in a billing price list entry. Details include the starting date for a price, the flat amount, and usage rates. Create and maintain billing price list entry lines from the owning [billing price list entry](/intacct/apis/intacct/1/intacct-openapi/groups/contracts-and-revenue-management/groups/price-lists/tags/contracts_and_revenue_management_billing-price-list-entries) object.\n\nFor more information, read about [billing price list entries](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Billing_price_list_entries) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Contracts_and_Revenue_Management_Billing price list entry line tiers",
    "x-displayName": "Billing price list entry line tiers",
-   "description": "A billing price list entry line tier defines the starting quantity and price for a single tier in a billing price list entry line. Create and maintain billing price list entry line tiers from the owning [billing price list entry line](contracts.billing-price-list-entry-line) object.\n\nFor more information, read about [billing price list entries](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Billing_price_list_entries) in the Sage Intacct Help Center.\n"
+   "description": "A billing price list entry line tier defines the starting quantity and price for a single tier in a billing price list entry line. Create and maintain billing price list entry line tiers from the owning [billing price list entry line](/intacct/apis/intacct/1/intacct-openapi/groups/contracts-and-revenue-management/groups/price-lists/tags/contracts_and_revenue_management_billing-price-list-entry-lines) object.\n\nFor more information, read about [billing price list entries](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Billing_price_list_entries) in the Sage Intacct Help Center.\n"
   },
   {
    "name": "Contracts_and_Revenue_Management_MEA price lists",
@@ -5005,6 +5005,7 @@
               "scheduledBillingDate": "2025-01-01",
               "actualBillingDate": null,
               "billed": false,
+              "billedQuantity": "25.1091",
               "isHistorical": false,
               "state": "open",
               "computationMemo": null,
@@ -5318,6 +5319,7 @@
             "scheduledBillingDate": "2025-01-01",
             "actualBillingDate": null,
             "billed": false,
+            "billedQuantity": "25.1091",
             "isHistorical": false,
             "state": "open",
             "computationMemo": null,
@@ -14362,7 +14364,7 @@
      },
      "renewalTemplate": {
       "type": "object",
-      "description": "References the [contract renewal template](contracts.contract-renewal-template) used to generate renewal contracts, when `isRenewable` is set to `true`.\n",
+      "description": "References the [contract renewal template](/intacct/apis/intacct/1/intacct-openapi/groups/contracts-and-revenue-management/groups/contract-management/tags/contracts_and_revenue_management_contract-renewal-templates) used to generate renewal contracts, when `isRenewable` is set to `true`.\n",
       "properties": {
        "key": {
         "type": "string",
@@ -15655,6 +15657,7 @@
        "durationInPeriods": {
         "type": "string",
         "description": "Specifies the duration (in periods) of the contract line. The duration is calculated with a precision of 10 and rounded to 2 decimal places. \n\nWhen `proratePartialPeriods` is `true`, the value equals the number of full periods in the contract line term plus (number of days in partial period / number of days in month). If two partial periods exist, the second is also calculated and added to the duration. If `proratePartialPeriods` is `false`, equals the number of billing periods for the contract line.\n\nApplies only when `amountFrequency` is set to `includeWithEveryInvoice`. \n",
+        "readOnly": true,
         "example": "3"
        },
        "proratePartialPeriods": {
@@ -17597,6 +17600,14 @@
       "readOnly": true,
       "example": false
      },
+     "billedQuantity": {
+      "type": "string",
+      "description": "Specifies the billed quantity allocated to the billing schedule line. Returned only when quantity details are enabled in the company Contracts configuration.",
+      "format": "decimal-precision-4",
+      "readOnly": true,
+      "nullable": true,
+      "example": "25.1091"
+     },
      "actualBillingDate": {
       "type": "string",
       "format": "date",
@@ -18138,7 +18149,6 @@
         "example": "3"
        },
        "lineNumber": {
-        "readOnly": true,
         "type": "string",
         "description": "Line number for the contract line.",
         "example": "1"
