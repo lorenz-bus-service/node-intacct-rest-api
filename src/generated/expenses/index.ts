@@ -37,6 +37,8 @@ export type EmployeeExpensePaymentTypeUpdate = RequestBody<operations["update-ex
 export type EmployeeExpenseSummary = components["schemas"]["objects.expenses.employee-expense-summary"];
 export type EmployeeExpenseSummaryCreate = RequestBody<operations["create-expenses-employee-expense-summary"]>;
 export type EmployeeExpenseSummaryUpdate = RequestBody<operations["update-expenses-employee-expense-summary-key"]>;
+/** expenses/employee-expense-tax-entry */
+export type EmployeeExpenseTaxEntry = components["schemas"]["objects.expenses.employee-expense-tax-entry"];
 /** expenses/employee-expense-type */
 export type EmployeeExpenseType = components["schemas"]["objects.expenses.employee-expense-type"];
 export type EmployeeExpenseTypeCreate = RequestBody<operations["create-expenses-employee-expense-type"]>;
@@ -61,6 +63,7 @@ export const expenses = defineApplication({
   employeeExpenseLine: object(shape<{ record: EmployeeExpenseLine; create: EmployeeExpenseLineCreate; update: EmployeeExpenseLineUpdate }>(), "expenses/employee-expense-line", ["create","delete","get","update"]),
   employeeExpensePaymentType: object(shape<{ record: EmployeeExpensePaymentType; create: EmployeeExpensePaymentTypeCreate; update: EmployeeExpensePaymentTypeUpdate }>(), "expenses/employee-expense-payment-type", ["create","delete","get","update"]),
   employeeExpenseSummary: object(shape<{ record: EmployeeExpenseSummary; create: EmployeeExpenseSummaryCreate; update: EmployeeExpenseSummaryUpdate }>(), "expenses/employee-expense-summary", ["create","delete","get","update"]),
+  employeeExpenseTaxEntry: object(shape<{ record: EmployeeExpenseTaxEntry }>(), "expenses/employee-expense-tax-entry", ["get"]),
   employeeExpenseType: object(shape<{ record: EmployeeExpenseType; create: EmployeeExpenseTypeCreate; update: EmployeeExpenseTypeUpdate }>(), "expenses/employee-expense-type", ["create","delete","get","update"]),
   expenseToApprove: object(shape<{ record: ExpenseToApprove }>(), "expenses/expense-to-approve", ["get"]),
   expenseToApproveLine: object(shape<{ record: ExpenseToApproveLine }>(), "expenses/expense-to-approve-line", ["get"]),

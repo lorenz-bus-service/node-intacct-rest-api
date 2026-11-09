@@ -1313,7 +1313,7 @@ export interface paths {
          * Post a revenue schedule line
          * @description Posts a revenue schedule line. Posting a revenue schedule line recognizes revenue from an `open` line, changing the state to `posted`. When created, but not yet `posted` (recognized) it remains `open` until `posted`.
          *
-         *     For more information, read about [adding a row to the revenue schedule](https://www.intacct.com/ia/docs/en_US/help_action/Contracts/Using_Contracts/Revenue/Revenue_schedules/revenue-schedule.htm?cshid=Termed_revenue_schedules#Addarowtotherevenueschedule) in the Sage Intacct Help Center.
+         *     For more information, read about [adding a row to the revenue schedule](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Termed_revenue_schedules) in the Sage Intacct Help Center.
          */
         post: operations["post-contracts-revenue-schedule-line"];
         delete?: never;
@@ -1335,7 +1335,7 @@ export interface paths {
          * Unpost a revenue schedule line
          * @description Unposts a revenue schedule line. Unposting a revenue schedule line clears recognized revenue from a `posted` line, changing the state to `open`. When `posted`, it can then be unposted (cleared), returning it to the `open` state.
          *
-         *     For more information, read about [clearing a posted revenue journal entry](https://www.intacct.com/ia/docs/en_US/help_action/Contracts/Using_Contracts/Revenue/Revenue_schedules/revenue-schedule.htm?cshid=Termed_revenue_schedules#Clearapostedrevenuejournalentry) in the Sage Intacct Help Center.
+         *     For more information, read about [clearing a posted revenue journal entry](https://www.intacct.com/ia/docs/en_US/help_action/Default.htm#cshid=Termed_revenue_schedules) in the Sage Intacct Help Center.
          */
         post: operations["unpost-contracts-revenue-schedule-line"];
         delete?: never;
@@ -3053,7 +3053,7 @@ export interface components {
                  */
                 billInAdvancePeriod?: null | "days" | "months";
             };
-            /** @description References the [contract renewal template](contracts.contract-renewal-template) used to generate renewal contracts, when `isRenewable` is set to `true`. */
+            /** @description References the [contract renewal template](/intacct/apis/intacct/1/intacct-openapi/groups/contracts-and-revenue-management/groups/contract-management/tags/contracts_and_revenue_management_contract-renewal-templates) used to generate renewal contracts, when `isRenewable` is set to `true`. */
             renewalTemplate?: {
                 /**
                  * @description Unique key for the renewal template.
@@ -4060,7 +4060,7 @@ export interface components {
                  *     Applies only when `amountFrequency` is set to `includeWithEveryInvoice`.
                  * @example 3
                  */
-                durationInPeriods?: string;
+                readonly durationInPeriods?: string;
                 /**
                  * @description Indicates whether to automatically calculate prorated prices when a contract line's start and/or end date results in one or more partial periods.
                  *
@@ -5466,6 +5466,12 @@ export interface components {
              */
             readonly billed?: boolean;
             /**
+             * Format: decimal-precision-4
+             * @description Specifies the billed quantity allocated to the billing schedule line. Returned only when quantity details are enabled in the company Contracts configuration.
+             * @example 25.1091
+             */
+            readonly billedQuantity?: string | null;
+            /**
              * Format: date
              * @description Specifies the actual date the invoice was posted to the General Ledger if the scheduled amount was invoiced.
              * @example 2025-04-30
@@ -5877,7 +5883,7 @@ export interface components {
                  * @description Line number for the contract line.
                  * @example 1
                  */
-                readonly lineNumber?: string;
+                lineNumber?: string;
                 /**
                  * @description URL endpoint for the contract line.
                  * @example /objects/contracts/contract-line/3
