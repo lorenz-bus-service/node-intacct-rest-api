@@ -1903,7 +1903,7 @@
             "approvalLevel": "2",
             "comments": "Approved by Admin",
             "recordDate": "2021-01-23",
-            "state": "submitted",
+            "state": "approved",
             "timesheet": {
              "key": "101",
              "id": "101",
@@ -1920,10 +1920,16 @@
              "id": "cjackson",
              "href": "/objects/company-config/user/202"
             },
-            "approver": {
-             "key": "203",
-             "id": "jlee",
-             "href": "/objects/company-config/user/203"
+            "enableDelegation": true,
+            "delegate": {
+             "key": "207",
+             "id": "approver.user",
+             "href": "/objects/company-config/user/207"
+            },
+            "approverUserGroup": {
+             "key": "12",
+             "id": "Time approvers",
+             "href": "/objects/company-config/user-group/12"
             },
             "completedBy": {
              "key": "204",
@@ -3686,12 +3692,14 @@
        "key": {
         "type": "string",
         "readOnly": true,
+        "nullable": true,
         "description": "Unique key for the user.",
         "example": "203"
        },
        "id": {
         "type": "string",
         "readOnly": true,
+        "nullable": true,
         "description": "Unique identifier of the user.",
         "example": "jlee"
        },
@@ -3700,6 +3708,67 @@
         "readOnly": true,
         "description": "URL endpoint for the user.",
         "example": "/objects/company-config/user/203"
+       }
+      },
+      "readOnly": true
+     },
+     "enableDelegation": {
+      "type": "boolean",
+      "description": "Indicates whether this approval record was routed through delegation.",
+      "default": false,
+      "example": false,
+      "readOnly": true
+     },
+     "delegate": {
+      "type": "object",
+      "description": "Reference to the original approver associated with this delegated approval record.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "readOnly": true,
+        "nullable": true,
+        "description": "System-assigned key for the user.",
+        "example": "207"
+       },
+       "id": {
+        "type": "string",
+        "readOnly": true,
+        "nullable": true,
+        "description": "Unique identifier for the user.",
+        "example": "approver.user"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user.",
+        "example": "/objects/company-config/user/207"
+       }
+      },
+      "readOnly": true
+     },
+     "approverUserGroup": {
+      "type": "object",
+      "description": "Reference to the user group assigned to approve the timesheet line entry.",
+      "properties": {
+       "key": {
+        "type": "string",
+        "readOnly": true,
+        "nullable": true,
+        "description": "System-assigned key for the user group.",
+        "example": "12"
+       },
+       "id": {
+        "type": "string",
+        "readOnly": true,
+        "nullable": true,
+        "description": "Unique name of the user group.",
+        "example": "Time approvers"
+       },
+       "href": {
+        "type": "string",
+        "readOnly": true,
+        "description": "URL endpoint for the user group.",
+        "example": "/objects/company-config/user-group/12"
        }
       },
       "readOnly": true
@@ -4637,6 +4706,37 @@
         "description": "URL endpoint for the work order.",
         "readOnly": true,
         "example": "/objects/construction/work-order/18"
+       }
+      }
+     },
+     "propertyLease": {
+      "description": "Property lease associated with the dimension.",
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "System-assigned key for the property lease.",
+        "example": "1",
+        "nullable": true
+       },
+       "id": {
+        "type": "string",
+        "description": "Unique identifier for the property lease.",
+        "example": "PL-01",
+        "nullable": true
+       },
+       "name": {
+        "type": "string",
+        "description": "Name for the property lease.",
+        "readOnly": true,
+        "example": "Lease for 123 Main St.",
+        "nullable": true
+       },
+       "href": {
+        "type": "string",
+        "description": "URL endpoint for the property lease.",
+        "readOnly": true,
+        "example": "/objects/construction/property-lease/1"
        }
       }
      }

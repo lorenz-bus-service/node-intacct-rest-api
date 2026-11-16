@@ -484,7 +484,7 @@ export interface paths {
          * @description Deletes a setup posting rule.
          *
          *     Before deleting a setup posting rule, ensure that there are no depreciation rules using that posting rule. Edit the depreciation rule on the classification or asset to remove the setup posting rule first.
-         *     For more information, see [classification depreciation rule](fixed-assets.classification-depreciation-rule) or [asset depreciation rule](fixed-assets.asset-depreciation-rule).
+         *     For more information, see [classification depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_classification-depreciation-rules) or [asset depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_asset-depreciation-rules).
          */
         delete: operations["delete-fixed-assets-setup-posting-rule-key"];
         options?: never;
@@ -494,7 +494,7 @@ export interface paths {
          * @description Updates an existing setup posting rule by setting field values. Any fields not provided remain unchanged.
          *
          *     Before editing a setup posting rule, ensure that there are no depreciation rules using that posting rule. Edit the depreciation rule on the classification or asset to temporarily remove the posting rule first.
-         *     For more information, see [classification depreciation rule](fixed-assets.classification-depreciation-rule) or [asset depreciation rule](fixed-assets.asset-depreciation-rule).
+         *     For more information, see [classification depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_classification-depreciation-rules) or [asset depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_asset-depreciation-rules).
          */
         patch: operations["patch-fixed-assets-setup-posting-rule-key"];
         trace?: never;
@@ -804,8 +804,8 @@ export interface components {
             inServiceDate?: string;
             /**
              * Format: date
-             * @description The date when the CIP asset was capitalized. This date is set when the asset state changes from `constructionInProgress` to `readyForReview`.
-             * @example 2020-01-01
+             * @deprecated
+             * @description This field has been deprecated. Use the capitalizationDate field in the asset-capitalization object instead.
              */
             capitalizationDate?: string | null;
             /**
@@ -1556,7 +1556,10 @@ export interface components {
                  */
                 readonly href?: string;
             };
-            /** @description The journal entry associated with CIP (Construction in Progress) transactions for this asset. */
+            /**
+             * @deprecated
+             * @description This field has been deprecated. Use the cipJournalEntry field in the asset-capitalization object instead.
+             */
             readonly cipJournalEntry?: {
                 /**
                  * @description System-assigned unique key for the CIP journal entry.
@@ -2120,7 +2123,7 @@ export interface components {
              */
             usefulLife?: number;
             /**
-             * @description Tracks the loss in value of an asset over the period of its useful life using a specified [depreciation rule](fixed-assets.setup-posting-rule).
+             * @description Tracks the loss in value of an asset over the period of its useful life using a specified [depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_setup-posting-rules).
              *     The depreciation schedule also tracks the gain and loss when an asset is disposed.
              */
             readonly depreciationSchedule?: {
@@ -2883,7 +2886,7 @@ export interface components {
              * @description Setup posting rules identify journal, useful life units, convention, and so forth for fixed asset transactions.
              *
              *     Before updating a setup posting rule, ensure that there are no depreciation rules using that posting rule. Update the depreciation rule on the classification or asset to temporarily remove the posting rule first.
-             *     For more information, see [classification depreciation rule](fixed-assets.classification-depreciation-rule) or [asset depreciation rule](fixed-assets.asset-depreciation-rule).
+             *     For more information, see [classification depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_classification-depreciation-rules) or [asset depreciation rule](/intacct/apis/intacct/1/intacct-openapi/groups/fixed-assets-management/tags/fixed_assets_asset-depreciation-rules).
              */
             setupPostingRules?: components["schemas"]["objects.fixed-assets.setup-posting-rule"][];
         };
@@ -3016,8 +3019,47 @@ export interface components {
              */
             transferDate?: string;
             /**
+             * @description For a reversed transfer, the value has the system-assigned postfix ' - Reversed'.
+             * @example 2 - Reversed
+             */
+            readonly reversedId?: string;
+            /**
+             * Format: date
+             * @description The date on which the transfer was reversed.
+             * @example 2026-07-09
+             */
+            readonly reversalDate?: string;
+            /**
+             * @description Indicates whether the transfer is active or has been reversed.
+             * @default active
+             * @example active
+             * @enum {string}
+             */
+            readonly state?: "active" | "reversed";
+            /**
+             * @description Journal entries label for the asset transfer.
+             * @example Journal entries
+             */
+            readonly journalEntryLabel?: string;
+            /**
+             * @description Journal entries filter for an asset transfer.
+             * @example [
+             *       {
+             *         "$eq": {
+             *           "key": "472"
+             *         }
+             *       },
+             *       {
+             *         "$eq": {
+             *           "key": "473"
+             *         }
+             *       }
+             *     ]
+             */
+            readonly journalEntryFilter?: unknown[];
+            /**
              * @deprecated
-             * @description Transfer journal entry corresponding to this asset transfer. This property is deprecated.
+             * @description Transfer journal entry corresponding to this asset transfer. This field has been deprecated. Use the `journalEntries` field instead.
              */
             transferJournalEntry?: {
                 /**
@@ -3049,20 +3091,22 @@ export interface components {
                  * @description Unique ID for the asset.
                  * @example CE_ASSET-1
                  */
-                id?: string;
+                readonly id?: string;
                 /**
                  * @description Represents stages in the asset life cycle:
                  *
+                 *     - `constructionInProgress` - the asset is being constructed and is not yet ready for use.
                  *     - `readyForReview` - new asset exists in Sage Intacct but it is not yet depreciating.
                  *     - `inService` - the asset is currently in use by a business and its value can depreciate on a schedule.
                  *     - `disposed` - the asset was removed from service, typically due to a sale.
+                 *     - `split` - the asset was split into multiple assets.
                  *
-                 *     Assets are moved from `readyForReview` to `inService` and ultimately to `disposed` state.
+                 *     Assets are moved from `constructionInProgress` to `readyForReview` to `inService` and ultimately to `disposed` state.
                  * @default readyForReview
                  * @example inService
                  * @enum {string}
                  */
-                state?: "inService" | "readyForReview" | "disposed";
+                readonly state?: "constructionInProgress" | "inService" | "readyForReview" | "disposed" | "split";
                 /**
                  * @description URL endpoint for the asset.
                  * @example /objects/fixed-assets/asset/2
@@ -3442,6 +3486,7 @@ export interface components {
             };
             audit?: components["schemas"]["audit.s1"];
         };
+        "fixed-assets-transfer-historyRequiredProperties": Record<string, never>;
         /** @description Journal entry created during asset transfer. */
         "objects.fixed-assets.transfer-journal-entry-map": {
             /**
@@ -3541,6 +3586,27 @@ export interface components {
                  */
                 readonly name?: string;
             };
+            /**
+             * @description Journal entries label for the transfer journal entry map.
+             * @example Journal entries
+             */
+            readonly journalEntryLabel?: string;
+            /**
+             * @description Journal entries filter for a transfer journal entry map.
+             * @example [
+             *       {
+             *         "$eq": {
+             *           "key": "472"
+             *         }
+             *       },
+             *       {
+             *         "$eq": {
+             *           "key": "473"
+             *         }
+             *       }
+             *     ]
+             */
+            readonly journalEntryFilter?: unknown[];
             audit?: components["schemas"]["audit.s1"];
         };
         /** @description Asset disposal details. */
@@ -5200,7 +5266,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["objects.fixed-assets.transfer-history"];
+                "application/json": components["schemas"]["objects.fixed-assets.transfer-history"] & components["schemas"]["fixed-assets-transfer-historyRequiredProperties"];
             };
         };
         responses: {
