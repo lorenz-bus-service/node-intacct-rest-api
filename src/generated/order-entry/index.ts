@@ -40,6 +40,10 @@ export type PriceListUpdate = RequestBody<operations["update-order-entry-price-l
 export type PriceListEntry = components["schemas"]["objects.order-entry.price-list-entry"];
 export type PriceListEntryCreate = RequestBody<operations["create-order-entry-price-list-entry"]>;
 export type PriceListEntryUpdate = RequestBody<operations["update-order-entry-price-list-entry-key"]>;
+/** order-entry/price-list-entry-tier */
+export type PriceListEntryTier = components["schemas"]["objects.order-entry.price-list-entry-tier"];
+export type PriceListEntryTierCreate = RequestBody<operations["create-order-entry-price-list-entry-tier"]>;
+export type PriceListEntryTierUpdate = RequestBody<operations["update-order-entry-price-list-entry-tier-key"]>;
 /** order-entry/price-schedule */
 export type PriceSchedule = components["schemas"]["objects.order-entry.price-schedule"];
 export type PriceScheduleCreate = RequestBody<operations["create-order-entry-price-schedule"]>;
@@ -48,7 +52,6 @@ export type PriceScheduleUpdate = RequestBody<operations["update-order-entry-pri
 export type RecurringDocument = components["schemas"]["objects.order-entry.recurring-document"];
 /** order-entry/recurring-document-line */
 export type RecurringDocumentLine = components["schemas"]["objects.order-entry.recurring-document-line"];
-export type RecurringDocumentLineCreate = RequestBody<operations["create-order-entry-recurring-document-line"]>;
 /** order-entry/recurring-document-subtotal */
 export type RecurringDocumentSubtotal = components["schemas"]["objects.order-entry.recurring-document-subtotal"];
 /** order-entry/recurring-document::{documentName} */
@@ -122,9 +125,10 @@ export const orderEntry = defineApplication({
   documentByDocumentName: parameterizedObject(shape<{ record: DocumentByDocumentName; create: DocumentByDocumentNameCreate; update: DocumentByDocumentNameUpdate }>(), "order-entry/document::{documentName}", ["create","delete","get","update"]),
   priceList: object(shape<{ record: PriceList; create: PriceListCreate; update: PriceListUpdate }>(), "order-entry/price-list", ["create","delete","get","update"]),
   priceListEntry: object(shape<{ record: PriceListEntry; create: PriceListEntryCreate; update: PriceListEntryUpdate }>(), "order-entry/price-list-entry", ["create","delete","get","update"]),
+  priceListEntryTier: object(shape<{ record: PriceListEntryTier; create: PriceListEntryTierCreate; update: PriceListEntryTierUpdate }>(), "order-entry/price-list-entry-tier", ["create","delete","get","update"]),
   priceSchedule: object(shape<{ record: PriceSchedule; create: PriceScheduleCreate; update: PriceScheduleUpdate }>(), "order-entry/price-schedule", ["create","delete","get","update"]),
   recurringDocument: object(shape<{ record: RecurringDocument }>(), "order-entry/recurring-document", ["get"]),
-  recurringDocumentLine: object(shape<{ record: RecurringDocumentLine; create: RecurringDocumentLineCreate }>(), "order-entry/recurring-document-line", ["create","delete","get"]),
+  recurringDocumentLine: object(shape<{ record: RecurringDocumentLine }>(), "order-entry/recurring-document-line", ["delete","get"]),
   recurringDocumentSubtotal: object(shape<{ record: RecurringDocumentSubtotal }>(), "order-entry/recurring-document-subtotal", ["get"]),
   recurringDocumentByDocumentName: parameterizedObject(shape<{ record: RecurringDocumentByDocumentName; create: RecurringDocumentByDocumentNameCreate; update: RecurringDocumentByDocumentNameUpdate }>(), "order-entry/recurring-document::{documentName}", ["create","delete","get","update"]),
   recurringSchedule: object(shape<{ record: RecurringSchedule; create: RecurringScheduleCreate; update: RecurringScheduleUpdate }>(), "order-entry/recurring-schedule", ["create","delete","get","update"]),

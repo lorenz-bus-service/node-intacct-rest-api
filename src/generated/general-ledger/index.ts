@@ -44,6 +44,8 @@ export type AccountGroupUpdate = RequestBody<operations["update-general-ledger-a
 export type AccountGroupCategoryMember = components["schemas"]["objects.general-ledger.account-group-category-member"];
 /** general-ledger/account-group-computation */
 export type AccountGroupComputation = components["schemas"]["objects.general-ledger.account-group-computation"];
+/** general-ledger/account-group-hierarchy */
+export type AccountGroupHierarchy = components["schemas"]["objects.general-ledger.account-group-hierarchy"];
 /** general-ledger/account-group-map */
 export type AccountGroupMap = components["schemas"]["objects.general-ledger.account-group-map"];
 /** general-ledger/account-group-member */
@@ -104,6 +106,13 @@ export type JournalEntryTxnTemplateLine = components["schemas"]["objects.general
 export type RecurringAccountAllocation = components["schemas"]["objects.general-ledger.recurring-account-allocation"];
 export type RecurringAccountAllocationCreate = RequestBody<operations["create-general-ledger-recurring-account-allocation"]>;
 export type RecurringAccountAllocationUpdate = RequestBody<operations["update-general-ledger-recurring-account-allocation-key"]>;
+/** general-ledger/recurring-journal-entry */
+export type RecurringJournalEntry = components["schemas"]["objects.general-ledger.recurring-journal-entry"];
+export type RecurringJournalEntryCreate = RequestBody<operations["create-general-ledger-recurring-journal-entry"]>;
+export type RecurringJournalEntryUpdate = RequestBody<operations["update-general-ledger-recurring-journal-entry-key"]>;
+/** general-ledger/recurring-journal-entry-line */
+export type RecurringJournalEntryLine = components["schemas"]["objects.general-ledger.recurring-journal-entry-line"];
+export type RecurringJournalEntryLineUpdate = RequestBody<operations["update-general-ledger-recurring-journal-entry-line-key"]>;
 /** general-ledger/report-audience */
 export type ReportAudience = components["schemas"]["objects.general-ledger.report-audience"];
 export type ReportAudienceCreate = RequestBody<operations["create-general-ledger-report-audience"]>;
@@ -181,6 +190,7 @@ export const generalLedger = defineApplication({
   accountGroup: object(shape<{ record: AccountGroup; create: AccountGroupCreate; update: AccountGroupUpdate }>(), "general-ledger/account-group", ["create","delete","get","update"]),
   accountGroupCategoryMember: object(shape<{ record: AccountGroupCategoryMember }>(), "general-ledger/account-group-category-member", ["get"]),
   accountGroupComputation: object(shape<{ record: AccountGroupComputation }>(), "general-ledger/account-group-computation", ["get"]),
+  accountGroupHierarchy: object(shape<{ record: AccountGroupHierarchy }>(), "general-ledger/account-group-hierarchy", ["get"]),
   accountGroupMap: object(shape<{ record: AccountGroupMap }>(), "general-ledger/account-group-map", ["get"]),
   accountGroupMember: object(shape<{ record: AccountGroupMember }>(), "general-ledger/account-group-member", ["get"]),
   accountGroupPurpose: object(shape<{ record: AccountGroupPurpose; create: AccountGroupPurposeCreate; update: AccountGroupPurposeUpdate }>(), "general-ledger/account-group-purpose", ["create","delete","get","update"]),
@@ -200,6 +210,8 @@ export const generalLedger = defineApplication({
   journalEntryTxnTemplate: object(shape<{ record: JournalEntryTxnTemplate; create: JournalEntryTxnTemplateCreate; update: JournalEntryTxnTemplateUpdate }>(), "general-ledger/journal-entry-txn-template", ["create","delete","get","update"]),
   journalEntryTxnTemplateLine: object(shape<{ record: JournalEntryTxnTemplateLine }>(), "general-ledger/journal-entry-txn-template-line", ["delete","get"]),
   recurringAccountAllocation: object(shape<{ record: RecurringAccountAllocation; create: RecurringAccountAllocationCreate; update: RecurringAccountAllocationUpdate }>(), "general-ledger/recurring-account-allocation", ["create","delete","get","update"]),
+  recurringJournalEntry: object(shape<{ record: RecurringJournalEntry; create: RecurringJournalEntryCreate; update: RecurringJournalEntryUpdate }>(), "general-ledger/recurring-journal-entry", ["create","delete","get","update"]),
+  recurringJournalEntryLine: object(shape<{ record: RecurringJournalEntryLine; update: RecurringJournalEntryLineUpdate }>(), "general-ledger/recurring-journal-entry-line", ["delete","get","update"]),
   reportAudience: object(shape<{ record: ReportAudience; create: ReportAudienceCreate; update: ReportAudienceUpdate }>(), "general-ledger/report-audience", ["create","delete","get","update"]),
   reportType: object(shape<{ record: ReportType; create: ReportTypeCreate; update: ReportTypeUpdate }>(), "general-ledger/report-type", ["create","delete","get","update"]),
   reportingAccount: object(shape<{ record: ReportingAccount }>(), "general-ledger/reporting-account", ["delete","get"]),

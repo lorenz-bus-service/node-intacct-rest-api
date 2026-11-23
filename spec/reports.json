@@ -584,6 +584,7 @@
             "addReportToMenu": false,
             "status": "active",
             "fromLibrary": false,
+            "isStandardPeriodIncluded": false,
             "audit": {
              "createdDateTime": "2025-06-02T14:33:01Z",
              "modifiedDateTime": "2025-06-02T14:36:05Z",

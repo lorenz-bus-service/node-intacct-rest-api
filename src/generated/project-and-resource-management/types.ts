@@ -1133,6 +1133,102 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/objects/projects/txn-rule": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List transaction rules
+         * @description Returns a collection with a key, ID, and link for each transaction rule. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-projects-txn-rule"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/projects/txn-rule/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key of the transaction rule.
+                 * @example 23
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a transaction rule
+         * @description Returns detailed information for a specified transaction rule.
+         */
+        get: operations["get-projects-txn-rule-key"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a transaction rule
+         * @description Deletes a transaction rule.
+         */
+        delete: operations["delete-txn-rule-key"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/projects/txn-rule-detail": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List transaction rule details
+         * @description Returns a collection with a key, ID, and link for each transaction rule detail. This operation is mostly for use in testing; use the [query service](/intacct/apis/intacct/1/intacct-openapi/groups/common-resources/tags/common_resources_query) to find objects that meet certain criteria and to specify properties that are returned.
+         */
+        get: operations["list-projects-txn-rule-detail"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/objects/projects/txn-rule-detail/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key of the transaction rule detail.
+                 * @example 101
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Get a transaction rule detail
+         * @description Returns detailed information for a specified transaction rule detail.
+         */
+        get: operations["get-projects-txn-rule-detail-key"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1563,6 +1659,29 @@ export interface components {
                 /**
                  * @description URL endpoint for the project manager.
                  * @example /objects/company-config/employee/1
+                 */
+                readonly href?: string;
+            };
+            /** @description References the quantity surveyor for the project. Quantity surveyor is responsible for the commercial and financial management of the project. */
+            quantitySurveyor?: {
+                /**
+                 * @description Unique key for the quantity surveyor.
+                 * @example 2
+                 */
+                key?: string | null;
+                /**
+                 * @description Identifier for the quantity surveyor.
+                 * @example EMP00002
+                 */
+                id?: string | null;
+                /**
+                 * @description Name for the quantity surveyor.
+                 * @example Rob Lee
+                 */
+                readonly name?: string | null;
+                /**
+                 * @description URL endpoint for the quantity surveyor.
+                 * @example /objects/company-config/employee/2
                  */
                 readonly href?: string;
             };
@@ -3596,6 +3715,13 @@ export interface components {
                  */
                 id?: string;
                 /**
+                 * @description Cost category for the accumulation type.
+                 * @default null
+                 * @example labor
+                 * @enum {string|null}
+                 */
+                readonly costCategory?: null | "material" | "labor" | "equipment" | "subcontract" | "overhead" | "other";
+                /**
                  * @description URL endpoint of the accumulation type.
                  * @example /objects/construction/accumulation-type/1
                  */
@@ -3847,6 +3973,13 @@ export interface components {
                  * @example Equipment
                  */
                 readonly name?: string;
+                /**
+                 * @description Cost category for the standard cost type.
+                 * @default null
+                 * @example equipment
+                 * @enum {string|null}
+                 */
+                readonly standardCostCategory?: null | "material" | "labor" | "equipment" | "subcontract" | "overhead" | "other";
                 /**
                  * @description URL endpoint of the standard cost type.
                  * @example /objects/construction/standard-cost-type/1
@@ -4258,6 +4391,442 @@ export interface components {
                 /**
                  * @description URL endpoint for the employee out of office.
                  * @example /objects/projects/employee-out-of-office/11
+                 */
+                readonly href?: string;
+            };
+            audit?: components["schemas"]["audit.s1"];
+        };
+        /** @description A transaction rule defines how qualifying project transactions are processed. */
+        "objects.projects.txn-rule": {
+            /**
+             * @description System-assigned unique key for the transaction rule.
+             * @example 23
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the transaction rule.
+             * @example PTR-INDIRECT-COST-23
+             */
+            id?: string;
+            /**
+             * @description URL endpoint for the transaction rule.
+             * @example /objects/projects/txn-rule/23
+             */
+            readonly href?: string;
+            /**
+             * @description Description of the transaction rule.
+             * @example Transaction rule for processing project transactions.
+             */
+            description?: string;
+            /** @description General ledger (GL) or statistical journal used to post secondary transactions generated by the transaction rule. */
+            glJournal?: {
+                /**
+                 * @description Unique key for the GL journal.
+                 * @example 3
+                 */
+                key?: string;
+                /**
+                 * @description ID for the GL journal.
+                 * @example EJ
+                 */
+                id?: string;
+                /**
+                 * @description URL endpoint for the GL journal.
+                 * @example /objects/general-ledger/journal/3
+                 */
+                readonly href?: string;
+            };
+            status?: components["schemas"]["status"];
+            audit?: components["schemas"]["audit.s1"];
+            entity?: components["schemas"]["entity-ref"];
+            /** @description Ordered transaction rule details that define how qualifying project transactions are processed. */
+            details?: components["schemas"]["objects.projects.txn-rule-detail"][];
+        };
+        /** @description A transaction rule detail defines one processing step in a project transaction rule. A transaction rule can contain multiple details that are processed in sequence. */
+        "objects.projects.txn-rule-detail": {
+            /**
+             * @description System-assigned unique key for the transaction rule detail.
+             * @example 23
+             */
+            readonly key?: string;
+            /**
+             * @description Unique ID for the transaction rule detail. This value is the same as the `key` for this object.
+             * @example 23
+             */
+            readonly id?: string;
+            /**
+             * @description URL endpoint for the transaction rule detail.
+             * @example /objects/projects/txn-rule-detail/23
+             */
+            readonly href?: string;
+            /**
+             * @description Sequence number that determines the processing order.
+             * @example 1
+             */
+            sequenceNumber?: string;
+            /**
+             * @description Description of the processing step in the transaction rule.
+             * @example Markup time by 120%
+             */
+            description?: string;
+            /**
+             * @description Action performed by the processing step.
+             * @default processSourceTxn
+             * @example processSourceTxn
+             * @enum {string}
+             */
+            action?: "processSourceTxn" | "subtotalPreviousLines";
+            /**
+             * @description Indicates whether the processing step applies only to billable transaction lines.
+             * @default false
+             * @example false
+             */
+            applyToBillableOnly?: boolean;
+            /**
+             * @description Indicates whether the processing step generates general ledger posting entries.
+             * @default false
+             * @example false
+             */
+            isPost?: boolean;
+            /**
+             * @description Sequence numbers or ranges of earlier processing steps to subtotal when the action is `subtotalPreviousLines`.
+             * @example 5-14
+             */
+            subtotalRange?: string;
+            /**
+             * @description Source transaction value used by the processing step.
+             * @default costAmount
+             * @example costAmount
+             * @enum {string}
+             */
+            txnAmountSource?: "costAmount" | "billingAmount" | "units";
+            /**
+             * @description Multiplier applied to the source transaction value.
+             * @example 0.30
+             */
+            rate?: string;
+            /**
+             * @description Note describing the rate applied to the source transaction value.
+             * @example 30% markup
+             */
+            rateNote?: string;
+            /**
+             * @description Resulting action performed after processing the transaction rule detail.
+             * @example Determine billing amount and hold result.
+             */
+            resultingAction?: string;
+            /** @description Debit account and dimension details used to post the resulting transaction to the general ledger. */
+            debitPosting?: {
+                /** @description GL account associated with the debit posting. */
+                glAccount?: {
+                    /**
+                     * @description Unique key for the GL account.
+                     * @example 158
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the GL account.
+                     * @example 6775.30
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the GL account.
+                     * @example /objects/general-ledger/account/158
+                     */
+                    readonly href?: string;
+                };
+                /** @description Location override for the debit posting. */
+                location?: {
+                    /**
+                     * @description Unique key for the location.
+                     * @example 1
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the location.
+                     * @example DIA
+                     */
+                    id?: string;
+                    /**
+                     * @description Location name.
+                     * @example US
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the location.
+                     * @example /objects/company-config/location/1
+                     */
+                    readonly href?: string;
+                };
+                /** @description Department override for the debit posting. */
+                department?: {
+                    /**
+                     * @description Unique key for the department.
+                     * @example 10
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the department.
+                     * @example 20
+                     */
+                    id?: string;
+                    /**
+                     * @description Department name.
+                     * @example Sales
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the department.
+                     * @example /objects/company-config/department/1
+                     */
+                    readonly href?: string;
+                };
+                /** @description Class override for the debit posting. */
+                class?: {
+                    /**
+                     * @description Unique key for the class.
+                     * @example 1
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the class.
+                     * @example 10
+                     */
+                    id?: string;
+                    /**
+                     * @description Class name.
+                     * @example Construction
+                     */
+                    readonly name?: string;
+                    /**
+                     * @description URL endpoint for the class.
+                     * @example /objects/company-config/class/1
+                     */
+                    readonly href?: string;
+                };
+                /** @description Project override for the debit posting. */
+                project?: {
+                    /**
+                     * @description Unique key for the project.
+                     * @example 114
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the project.
+                     * @example 15-GAR
+                     */
+                    id?: string;
+                    /**
+                     * @description Project name.
+                     * @example Parking garage renovation
+                     */
+                    readonly name?: string;
+                };
+                /**
+                 * @description Indicates whether the debit posting is billable.
+                 * @default false
+                 * @example false
+                 */
+                isBillable?: boolean;
+            };
+            /** @description Credit account and dimension details used to post the resulting transaction. */
+            creditPosting?: {
+                /** @description GL account associated with the credit posting. */
+                glAccount?: {
+                    /**
+                     * @description Unique key for the GL account.
+                     * @example 150
+                     */
+                    key?: string;
+                    /**
+                     * @description ID for the GL account.
+                     * @example 1501.04
+                     */
+                    id?: string;
+                    /**
+                     * @description URL endpoint for the GL account.
+                     * @example /objects/general-ledger/account/150
+                     */
+                    readonly href?: string;
+                };
+                /** @description Department override for the credit posting. */
+                department?: {
+                    /**
+                     * @description Unique key for the department.
+                     * @example 10
+                     */
+                    key?: string;
+                    /**
+                     * @description URL endpoint for the department.
+                     * @example /objects/company-config/department/10
+                     */
+                    readonly href?: string;
+                    /**
+                     * @description ID for the department.
+                     * @example SW
+                     */
+                    id?: string;
+                    /**
+                     * @description Department name.
+                     * @example Software Dev
+                     */
+                    readonly name?: string;
+                };
+                /** @description Location override for the credit posting. */
+                location?: {
+                    /**
+                     * @description Unique key for the location.
+                     * @example 1
+                     */
+                    key?: string;
+                    /**
+                     * @description URL endpoint for the location.
+                     * @example /objects/company-config/location/1
+                     */
+                    readonly href?: string;
+                    /**
+                     * @description ID for the location.
+                     * @example Lyon
+                     */
+                    id?: string;
+                    /**
+                     * @description Location name.
+                     * @example Lyon-France
+                     */
+                    readonly name?: string;
+                };
+                /** @description Class override for the credit posting. */
+                class?: {
+                    /**
+                     * @description Unique key for the class.
+                     * @example 1
+                     */
+                    key?: string;
+                    /**
+                     * @description URL endpoint for the class.
+                     * @example /objects/company-config/class/1
+                     */
+                    readonly href?: string;
+                    /**
+                     * @description ID for the class.
+                     * @example 1-Goods
+                     */
+                    id?: string;
+                    /**
+                     * @description Class name.
+                     * @example Goods
+                     */
+                    readonly name?: string;
+                };
+                /** @description Project override for the credit posting. */
+                project?: {
+                    /**
+                     * @description Unique key for the project.
+                     * @example 114
+                     */
+                    key?: string;
+                    /**
+                     * @description URL endpoint for the project.
+                     * @example /objects/projects/project/114
+                     */
+                    readonly href?: string;
+                    /**
+                     * @description ID for the project.
+                     * @example IMPL0045
+                     */
+                    id?: string;
+                    /**
+                     * @description Project name.
+                     * @example Implementation Project
+                     */
+                    readonly name?: string;
+                };
+                /**
+                 * @description Indicates whether the credit posting is billable.
+                 * @default false
+                 * @example false
+                 */
+                isBillable?: boolean;
+            };
+            /** @description Employee used as matching criteria. */
+            employee?: {
+                /**
+                 * @description Unique key for the employee.
+                 * @example 134
+                 */
+                key?: string;
+                /**
+                 * @description ID for the employee.
+                 * @example E134
+                 */
+                id?: string;
+                /**
+                 * @description Employee name.
+                 * @example John Smith
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the employee.
+                 * @example /objects/company-config/employee/134
+                 */
+                readonly href?: string;
+            };
+            /** @description Employee group used as matching criteria. */
+            employeeGroup?: {
+                /**
+                 * @description Unique key for the employee group.
+                 * @example 23
+                 */
+                readonly key?: string;
+                /**
+                 * @description ID for the employee group.
+                 * @example MGR
+                 */
+                id?: string;
+                /**
+                 * @description Employee group name.
+                 * @example Sr. Managers
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the employee group.
+                 * @example /objects/company-config/employee-group/23
+                 */
+                readonly href?: string;
+            };
+            /** @description Item GL group used as matching criteria. */
+            itemGLGroup?: {
+                /**
+                 * @description Unique key for the item GL group.
+                 * @example 23
+                 */
+                readonly key?: string;
+                /**
+                 * @description Item GL group name.
+                 * @example Services
+                 */
+                readonly name?: string;
+                /**
+                 * @description URL endpoint for the item GL group.
+                 * @example /objects/inventory-control/item-gl-group/23
+                 */
+                readonly href?: string;
+            };
+            /** @description Transaction rule associated with the transaction rule detail. */
+            txnRule?: {
+                /**
+                 * @description Unique key for the transaction rule.
+                 * @example 2
+                 */
+                readonly key?: string;
+                /**
+                 * @description Name of the transaction rule.
+                 * @example Timesheet transaction rule
+                 */
+                readonly id?: string;
+                /**
+                 * @description URL endpoint for the transaction rule.
+                 * @example /objects/projects/txn-rule/2
                  */
                 readonly href?: string;
             };
@@ -7192,6 +7761,139 @@ export interface operations {
                 content: {
                     "application/json": {
                         "ia::result"?: components["schemas"]["objects.projects.employee-out-of-office-line"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-projects-txn-rule": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-projects-txn-rule-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key of the transaction rule.
+                 * @example 23
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.projects.txn-rule"];
+                        "ia::meta"?: components["schemas"]["metadata"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "delete-txn-rule-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key of the transaction rule.
+                 * @example 23
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "list-projects-txn-rule-detail": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["object-reference"][];
+                        "ia::meta"?: components["schemas"]["metadata-pages"];
+                    };
+                };
+            };
+            400: components["responses"]["400error"];
+        };
+    };
+    "get-projects-txn-rule-detail-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description System-assigned unique key of the transaction rule detail.
+                 * @example 101
+                 */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        "ia::result"?: components["schemas"]["objects.projects.txn-rule-detail"];
                         "ia::meta"?: components["schemas"]["metadata"];
                     };
                 };
